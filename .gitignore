@@ -5,6 +5,7 @@
 *.gdoc
 
 Raw_CSVs/*
+!Raw_CSVs/sample_RAW_PUBLIC.csv
 FM_CSVs/*
 FM_Persistent/*
 PP_Persistent/*

@@ -13,17 +13,16 @@ from utils import FileManagement as FM
 from utils import Preprocess as PP
 from utils.DataCorrection import main as DCmain
 from utils import Visualize as VS
-from utils import Exhibit as XH
+# from utils import Exhibit as XH
 from src.TimesheetGlobals import PPPath, rootProjectPath, Privacy
-# from kiwilib import Aliasable
-# import i18n_l10n.internationalization as i18n
 
 
 def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC):
 
+    dataFiles = ['sample_RAW_PUBLIC.csv']
     # dataFiles = ['timesheet_20180822202600.csv']
-    dataFiles = ['timesheet_2017-12-16.csv', '2017_20230207.csv', '20230201-20230403.csv', '20230401_20230701.csv',
-                 '20230601-20231001.csv']
+    # dataFiles = ['timesheet_2017-12-16.csv', '2017_20230207.csv', '20230201-20230403.csv', '20230401_20230701.csv',
+    #              '20230601-20231001.csv']
     # dataFiles = ['20230201-20230403.csv', '20230401_20230701.csv', '20230601-20231001.csv']
     # dataFiles = ['timesheet_2017-12-16.csv']
     # dataFiles = ['timesheet_2018-08-01_2018-08-22.csv']
@@ -49,7 +48,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC):
 
     # PP_filePath = os.path.join(PPPath(), "PP_2020-09-17-0747_2021-01-05-1222.pkl")
     # PP_filePath = os.path.join(PPPath(), "PP_2017-09-06-2136_2018-02-10-2211.pkl")
-    PP_filePath = os.path.join(PPPath(), "PP_2017-09-06-2136_2017-12-16-1252.pkl")
+    # PP_filePath = os.path.join(PPPath(), "PP_2017-09-06-2136_2017-12-16-1252.pkl")
     # PP_filePath = os.path.join(PPPath(), 'PP_2017-12-17-1030_2018-08-22-1745.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2017-09-06-2136_2018-08-22-1745.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2018-08-22-1640_2019-09-02-1659.pkl')
@@ -68,12 +67,12 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC):
                                # 'DC_2020-09-17-0647_2021-12-14-2208',
                                # 'DC_2021-12-14-2201_2022-04-02-1327',
                                # 'DC_2022-04-02-1305_2023-06-30-2228',
-                               'DC_2017-09-06-2136_2023-10-01-0906',
+                               # 'DC_2017-09-06-2136_2023-10-01-0906',
                            ]))
 
-    # FM_filePath = FM.main(dataFiles)
-    # PP_filePath = PP.main(FM_filePath)
-    # DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
+    FM_filePath = FM.main(dataFiles)
+    PP_filePath = PP.main(FM_filePath)
+    DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
     VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
     # XH.main(VS_filePath)
 

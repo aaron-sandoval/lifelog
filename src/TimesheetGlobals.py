@@ -125,7 +125,7 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
         path2 = getPersistentFilePath(name2, phaseFlag) + fileSuffix + '.pkl'
         with open(path1, 'wb') as file:
             pickle.dump(df, file, protocol=-1)
-        shutil.copyfile(path1, path2)
+        # shutil.copyfile(path1, path2)
         return path2
 
 
