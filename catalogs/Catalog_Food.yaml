@@ -1,0 +1,2080 @@
+- HEADER:
+    FILE TYPE: DAGCatalog
+    DATE WRITTEN: 2023-10-17
+    TASK ID RANGE: !CodecMisc/portion.Interval
+      atomicIntervals:
+      - - true
+        - 3584169
+        - 35486719
+        - true
+    COLLECTIBLE TYPE: food
+    CATALOG COUNT: 70
+- id: MERIENDA
+  name: MERIENDA
+  firstTaskID: 3667089
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 12
+    hour: 15
+    minute: 48
+  firstCircad: 2017-09-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 4
+    seconds: 60960
+  taskCount: 112
+  lastTaskID: 35347929.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 21
+    hour: 17
+    minute: 38
+  startTaskIDs: !!set {}
+- id: COMPRADO
+  name: COMPRADO
+  firstTaskID: 3679309
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 13
+    hour: 12
+    minute: 10
+  firstCircad: 2017-09-13
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 27
+    seconds: 16200
+  taskCount: 530
+  lastTaskID: 35476659.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 30
+    hour: 17
+    minute: 3
+  startTaskIDs: !!set {}
+- id: GRATIS
+  name: GRATIS
+  firstTaskID: 3867689
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 26
+    hour: 14
+    minute: 8
+  firstCircad: 2017-09-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 27
+    seconds: 39720
+  taskCount: 429
+  lastTaskID: 35102349.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 4
+    hour: 21
+    minute: 33
+  startTaskIDs: !!set
+    7384569: null
+- id: CARNE
+  name: CARNE
+  firstTaskID: 5209219
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 12
+    day: 28
+    hour: 18
+    minute: 1
+  firstCircad: 2017-12-28
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 6
+    seconds: 45720
+  taskCount: 131
+  lastTaskID: 31526299.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 12
+    day: 30
+    hour: 8
+    minute: 15
+  startTaskIDs: !!set
+    30639979: null
+- id: POZOLE
+  name: POZOLE
+  firstTaskID: 5583319
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 23
+    hour: 17
+    minute: 31
+  firstCircad: &id001 2018-01-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 10560
+  taskCount: 18
+  lastTaskID: 31762649.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 1
+    day: 15
+    hour: 21
+    minute: 18
+  startTaskIDs: !!set
+    14007969: null
+    5583319: null
+    31762649: null
+    8578949: null
+    19048229: null
+    7961039: null
+    22475409: null
+    7069109: null
+    6260599: null
+    9786489: null
+    10678329: null
+- id: POROTOS
+  name: POROTOS
+  firstTaskID: 5583319
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 23
+    hour: 17
+    minute: 31
+  firstCircad: *id001
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 7
+    seconds: 55080
+  taskCount: 162
+  lastTaskID: 34928079.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 23
+    hour: 14
+    minute: 2
+  startTaskIDs: !!set
+    29977859: null
+    8578949: null
+    14930309: null
+    30352519: null
+    6260599: null
+    22475409: null
+    6030739: null
+    14007969: null
+    28726689: null
+    19048229: null
+    31215909: null
+    27083429: null
+    26103719: null
+    29790249: null
+    32064809: null
+    12539179: null
+    28422699: null
+    30837929: null
+    28595629: null
+    30467379: null
+    30114739: null
+    29920309: null
+    7069109: null
+    32554039: null
+    10678329: null
+    7956669: null
+    6735939: null
+    25815109: null
+    27112389: null
+    27026759: null
+    31115209: null
+    11198539: null
+    30567499: null
+    30208459: null
+    27771219: null
+    5583319: null
+    33082839: null
+    31762649: null
+    31173339: null
+    31029219: null
+    13114469: null
+    34815079: null
+    28682349: null
+    5699309: null
+    8272239: null
+    27811309: null
+    27904369: null
+    33677169: null
+    9486839: null
+    9786489: null
+    16323839: null
+- id: PAPAS
+  name: PAPAS
+  firstTaskID: 5583319
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 23
+    hour: 17
+    minute: 31
+  firstCircad: *id001
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 70200
+  taskCount: 17
+  lastTaskID: 34803979.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 14
+    hour: 23
+    minute: 20
+  startTaskIDs: !!set
+    5959839: null
+    19048229: null
+    7961039: null
+    6260599: null
+    22475409: null
+    27629779: null
+    7069109: null
+    5583319: null
+    17867069: null
+    16323839: null
+- id: "BR\xD3COLI"
+  name: "BR\xD3COLI"
+  firstTaskID: 5583319
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 23
+    hour: 17
+    minute: 31
+  firstCircad: *id001
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 3
+    seconds: 19980
+  taskCount: 55
+  lastTaskID: 34928079.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 23
+    hour: 14
+    minute: 2
+  startTaskIDs: !!set
+    6735939: null
+    8578949: null
+    14930309: null
+    34815559: null
+    11198539: null
+    7961039: null
+    14426319: null
+    16902929: null
+    26777809: null
+    6030739: null
+    6260599: null
+    12107799: null
+    5583319: null
+    13807319: null
+    12508889: null
+    10678329: null
+    14007969: null
+    13114469: null
+    15333689: null
+    12539179: null
+    10291759: null
+    8272239: null
+    8983089: null
+    15759039: null
+    31587059: null
+    7069109: null
+    11517429: null
+    9486839: null
+    9786489: null
+    16323839: null
+- id: COMIDA
+  name: COMIDA
+  firstTaskID: 5942109
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 17
+    hour: 15
+    minute: 30
+  firstCircad: 2018-02-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 4
+    seconds: 55260
+  taskCount: 246
+  lastTaskID: 35274639.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 16
+    hour: 15
+    minute: 48
+  startTaskIDs: !!set {}
+- id: SANDWICH
+  name: SANDWICH
+  firstTaskID: 5955279
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 18
+    hour: 13
+    minute: 27
+  firstCircad: &id002 2018-02-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 16
+    seconds: 29100
+  taskCount: 372
+  lastTaskID: 35449989.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 28
+    hour: 20
+    minute: 13
+  startTaskIDs: !!set
+    5955279: null
+- id: SOPA
+  name: SOPA
+  firstTaskID: 5959839
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 18
+    hour: 21
+    minute: 3
+  firstCircad: *id002
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 16500
+  taskCount: 6
+  lastTaskID: 31073609.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 11
+    day: 28
+    hour: 22
+    minute: 27
+  startTaskIDs: !!set
+    30150259: null
+    30265709: null
+    30231159: null
+    5959839: null
+- id: PASTA
+  name: PASTA
+  firstTaskID: 6030739
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 23
+    hour: 19
+    minute: 13
+  firstCircad: 2018-02-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 8
+    seconds: 49920
+  taskCount: 201
+  lastTaskID: 34780009.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 13
+    hour: 7
+    minute: 33
+  startTaskIDs: !!set
+    29977859: null
+    24866179: null
+    14930309: null
+    13659399: null
+    24376839: null
+    30352519: null
+    24246409: null
+    26434959: null
+    6030739: null
+    30755219: null
+    28178849: null
+    28726689: null
+    31215909: null
+    26968229: null
+    27083429: null
+    29790249: null
+    30837929: null
+    27004459: null
+    28422699: null
+    26608429: null
+    28595629: null
+    26909489: null
+    26565809: null
+    30114739: null
+    29920309: null
+    27702709: null
+    30452919: null
+    18918519: null
+    20215679: null
+    28309309: null
+    6735939: null
+    27112389: null
+    19811399: null
+    27747399: null
+    28453449: null
+    30567499: null
+    30208459: null
+    28149329: null
+    28020689: null
+    29070169: null
+    27661149: null
+    28998749: null
+    31086429: null
+    26708579: null
+    31029219: null
+    13114469: null
+    27832679: null
+    17837799: null
+    30691819: null
+    28682349: null
+    30265709: null
+    8272239: null
+    24275439: null
+    30150259: null
+    9486839: null
+    28120189: null
+    27933439: null
+- id: ESPINACAS
+  name: ESPINACAS
+  firstTaskID: 6260599
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 11
+    hour: 18
+    minute: 19
+  firstCircad: 2018-03-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 22140
+  taskCount: 7
+  lastTaskID: 7069329.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 7
+    minute: 26
+  startTaskIDs: !!set
+    6735939: null
+    7069109: null
+    6260599: null
+- id: COLOMBIANA
+  name: COLOMBIANA
+  firstTaskID: 6531339
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 30
+    hour: 13
+    minute: 33
+  firstCircad: 2018-03-30
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1740
+  taskCount: 1
+  lastTaskID: 6531339.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 30
+    hour: 14
+    minute: 2
+  startTaskIDs: !!set {}
+- id: "MEDITERR\xC1NEA"
+  name: "MEDITERR\xC1NEA"
+  firstTaskID: 6546829
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 31
+    hour: 15
+    minute: 22
+  firstCircad: &id003 2018-03-31
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 2
+    seconds: 2580
+  taskCount: 45
+  lastTaskID: 35132459.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 6
+    hour: 18
+    minute: 59
+  startTaskIDs: !!set
+    19537589: null
+    20947559: null
+- id: AMERICANA
+  name: AMERICANA
+  firstTaskID: 6550219
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 31
+    hour: 21
+    minute: 1
+  firstCircad: *id003
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 9
+    seconds: 20100
+  taskCount: 153
+  lastTaskID: 35275089.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 16
+    hour: 16
+    minute: 29
+  startTaskIDs: !!set
+    20529899: null
+- id: PIZZA
+  name: PIZZA
+  firstTaskID: 6579329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 4
+    day: 2
+    hour: 21
+    minute: 32
+  firstCircad: 2018-04-02
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 5
+    seconds: 14700
+  taskCount: 88
+  lastTaskID: 35102349.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 4
+    hour: 21
+    minute: 33
+  startTaskIDs: !!set
+    17824009: null
+    10779269: null
+- id: JAPONESA
+  name: JAPONESA
+  firstTaskID: 6590609
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 4
+    day: 3
+    hour: 16
+    minute: 20
+  firstCircad: 2018-04-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 59820
+  taskCount: 12
+  lastTaskID: 28250509.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 5
+    day: 16
+    hour: 21
+    minute: 20
+  startTaskIDs: !!set {}
+- id: TAILANDESA
+  name: TAILANDESA
+  firstTaskID: 6603139
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 4
+    day: 4
+    hour: 13
+    minute: 13
+  firstCircad: &id004 2018-04-04
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 27420
+  taskCount: 23
+  lastTaskID: 33966469.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 17
+    hour: 19
+    minute: 20
+  startTaskIDs: !!set
+    32265509: null
+    27614959: null
+- id: MEXICANA
+  name: MEXICANA
+  firstTaskID: 6607159
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 4
+    day: 4
+    hour: 19
+    minute: 55
+  firstCircad: *id004
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 11
+    seconds: 23400
+  taskCount: 161
+  lastTaskID: 34569449.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 7
+    day: 29
+    hour: 16
+    minute: 32
+  startTaskIDs: !!set
+    28969559: null
+    23280399: null
+- id: ENSALADA
+  name: ENSALADA
+  firstTaskID: 6822599
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 4
+    day: 19
+    hour: 18
+    minute: 59
+  firstCircad: 2018-04-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 2
+    seconds: 60480
+  taskCount: 52
+  lastTaskID: 35420409.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 26
+    hour: 20
+    minute: 10
+  startTaskIDs: !!set {}
+- id: INDIA
+  name: INDIA
+  firstTaskID: 7297799
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 22
+    hour: 18
+    minute: 59
+  firstCircad: 2018-05-22
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 8
+    seconds: 56640
+  taskCount: 145
+  lastTaskID: 35476659.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 30
+    hour: 17
+    minute: 3
+  startTaskIDs: !!set
+    21278689: null
+    22774659: null
+    33084709: null
+    25311529: null
+    19697099: null
+    17477679: null
+    32870289: null
+    19624309: null
+    17448119: null
+    21566299: null
+    24892189: null
+- id: "ET\xCDOPE"
+  name: "ET\xCDOPE"
+  firstTaskID: 7327789
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 24
+    hour: 20
+    minute: 58
+  firstCircad: 2018-05-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 11340
+  taskCount: 2
+  lastTaskID: 33016019.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 4
+    day: 12
+    hour: 19
+    minute: 58
+  startTaskIDs: !!set {}
+- id: ITALIANA
+  name: ITALIANA
+  firstTaskID: 7468759
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 3
+    hour: 15
+    minute: 55
+  firstCircad: 2018-06-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 30300
+  taskCount: 22
+  lastTaskID: 33864589.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 10
+    hour: 18
+    minute: 16
+  startTaskIDs: !!set {}
+- id: DAL
+  name: DAL
+  firstTaskID: 7653739
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 16
+    hour: 12
+    minute: 13
+  firstCircad: 2018-06-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 3
+    seconds: 84900
+  taskCount: 81
+  lastTaskID: 35444659.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 28
+    hour: 10
+    minute: 50
+  startTaskIDs: !!set
+    13659399: null
+    24376839: null
+    35330059: null
+    9942029: null
+    16902929: null
+    28653329: null
+    28754579: null
+    28178849: null
+    26968229: null
+    27004459: null
+    8983089: null
+    26909489: null
+    27702709: null
+    28309309: null
+    31374399: null
+    27747399: null
+    14426319: null
+    26777809: null
+    28020689: null
+    28149329: null
+    29027029: null
+    13807319: null
+    28466009: null
+    29070169: null
+    21883229: null
+    34122879: null
+    27832679: null
+    7653739: null
+    20270699: null
+    19941619: null
+    31587059: null
+    11517429: null
+    28120189: null
+    27933439: null
+- id: COREANA
+  name: COREANA
+  firstTaskID: 7845599
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 29
+    hour: 19
+    minute: 59
+  firstCircad: 2018-06-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 42060
+  taskCount: 9
+  lastTaskID: 28639769.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 6
+    day: 12
+    hour: 21
+    minute: 37
+  startTaskIDs: !!set
+    18400349: null
+- id: GUACAMOLE
+  name: GUACAMOLE
+  firstTaskID: 8378719
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 5
+    hour: 20
+    minute: 31
+  firstCircad: 2018-08-05
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 51540
+  taskCount: 34
+  lastTaskID: 33158009.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 4
+    day: 22
+    hour: 16
+    minute: 2
+  startTaskIDs: !!set
+    8593689: null
+    18342529: null
+    9786489: null
+- id: VIETNAMITA
+  name: VIETNAMITA
+  firstTaskID: 8474239
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 12
+    hour: 11
+    minute: 43
+  firstCircad: 2018-08-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 34500
+  taskCount: 19
+  lastTaskID: 31330909.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 12
+    day: 16
+    hour: 19
+    minute: 38
+  startTaskIDs: !!set {}
+- id: CHINA
+  name: CHINA
+  firstTaskID: 6577329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 4
+    day: 2
+    hour: 18
+    minute: 12
+  firstCircad: 2018-04-02
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 2
+    seconds: 10800
+  taskCount: 46
+  lastTaskID: 34628809.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 2
+    hour: 20
+    minute: 53
+  startTaskIDs: !!set
+    18557769: null
+    19739169: null
+    10855159: null
+    31285559: null
+- id: ARGENTINA
+  name: ARGENTINA
+  firstTaskID: 8589529
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 20
+    hour: 11
+    minute: 52
+  firstCircad: 2018-08-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 55680
+  taskCount: 9
+  lastTaskID: 35117709.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 5
+    hour: 20
+  startTaskIDs: !!set {}
+- id: "SAND\xCDA"
+  name: "SAND\xCDA"
+  firstTaskID: 8791929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 3
+    hour: 13
+    minute: 12
+  firstCircad: 2018-09-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 12720
+  taskCount: 8
+  lastTaskID: 24506739.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 8
+    day: 29
+    hour: 20
+    minute: 48
+  startTaskIDs: !!set {}
+- id: ARROZ
+  name: ARROZ
+  firstTaskID: 8983089
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 16
+    hour: 19
+    minute: 48
+  firstCircad: 2018-09-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 3
+    seconds: 8460
+  taskCount: 87
+  lastTaskID: 35444659.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 28
+    hour: 10
+    minute: 50
+  startTaskIDs: !!set
+    15333689: null
+    34122879: null
+    34815559: null
+    13807319: null
+    12539179: null
+    35330059: null
+    14426319: null
+    10291759: null
+    16902929: null
+    8983089: null
+    26777809: null
+    31587059: null
+    11891349: null
+    12107799: null
+    12508889: null
+    15759039: null
+- id: RAJMA MASALA
+  name: RAJMA MASALA
+  firstTaskID: 10291759
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 12
+    day: 16
+    hour: 16
+    minute: 55
+  firstCircad: 2018-12-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 23100
+  taskCount: 3
+  lastTaskID: 15333689.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 12
+    day: 1
+    hour: 22
+    minute: 47
+  startTaskIDs: !!set
+    15333689: null
+    10291759: null
+- id: LENTEJAS
+  name: LENTEJAS
+  firstTaskID: 10898819
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 1
+    day: 27
+    hour: 20
+    minute: 41
+  firstCircad: 2019-01-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 26880
+  taskCount: 32
+  lastTaskID: 35321309.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 19
+    hour: 21
+    minute: 3
+  startTaskIDs: !!set
+    10898819: null
+    26708579: null
+    31258789: null
+    24246409: null
+    30691819: null
+    31086429: null
+    26608429: null
+    26434959: null
+    24275439: null
+    26565809: null
+    27241619: null
+    30755219: null
+    30452919: null
+    27661149: null
+    30582719: null
+- id: DESAYUNO
+  name: DESAYUNO
+  firstTaskID: 10963329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 2
+    day: 1
+    hour: 8
+    minute: 12
+  firstCircad: 2019-02-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 4
+    seconds: 59340
+  taskCount: 102
+  lastTaskID: 35270919.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 16
+    hour: 9
+    minute: 31
+  startTaskIDs: !!set
+    28979179: null
+- id: SHAHI PANEER
+  name: SHAHI PANEER
+  firstTaskID: 11198539
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 2
+    day: 17
+    hour: 16
+    minute: 13
+  firstCircad: 2019-02-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 12660
+  taskCount: 2
+  lastTaskID: 20270699.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 11
+    day: 8
+    hour: 19
+    minute: 42
+  startTaskIDs: !!set
+    20270699: null
+    11198539: null
+- id: TAMALES
+  name: TAMALES
+  firstTaskID: 11517429
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 11
+    hour: 19
+    minute: 42
+  firstCircad: &id005 2019-03-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6180
+  taskCount: 1
+  lastTaskID: 11517429.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 11
+    hour: 21
+    minute: 26
+  startTaskIDs: !!set
+    11517429: null
+- id: CHILE VERDE
+  name: CHILE VERDE
+  firstTaskID: 11517429
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 11
+    hour: 19
+    minute: 42
+  firstCircad: *id005
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6180
+  taskCount: 1
+  lastTaskID: 11517429.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 11
+    hour: 21
+    minute: 26
+  startTaskIDs: !!set
+    11517429: null
+- id: KORMA DE VEGETALES
+  name: KORMA DE VEGETALES
+  firstTaskID: 11891349
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 4
+    day: 6
+    hour: 18
+    minute: 54
+  firstCircad: &id006 2019-04-06
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9180
+  taskCount: 1
+  lastTaskID: 11891349.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 4
+    day: 6
+    hour: 21
+    minute: 27
+  startTaskIDs: !!set
+    11891349: null
+- id: TOFU
+  name: TOFU
+  firstTaskID: 11891349
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 4
+    day: 6
+    hour: 18
+    minute: 54
+  firstCircad: *id006
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9180
+  taskCount: 1
+  lastTaskID: 11891349.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 4
+    day: 6
+    hour: 21
+    minute: 27
+  startTaskIDs: !!set
+    11891349: null
+- id: SHAHI TOFU
+  name: SHAHI TOFU
+  firstTaskID: 12508889
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 5
+    day: 19
+    hour: 16
+    minute: 8
+  firstCircad: 2019-05-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 48300
+  taskCount: 4
+  lastTaskID: 15759039.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 12
+    day: 31
+    hour: 16
+    minute: 36
+  startTaskIDs: !!set
+    12508889: null
+    12539179: null
+    15759039: null
+- id: ACCIDENTE
+  name: ACCIDENTE
+  firstTaskID: 12838049
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 6
+    day: 11
+    hour: 12
+    minute: 44
+  firstCircad: 2019-06-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 71280
+  taskCount: 21
+  lastTaskID: 30164539.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 9
+    day: 26
+    hour: 19
+    minute: 14
+  startTaskIDs: !!set {}
+- id: RESTOS
+  name: RESTOS
+  firstTaskID: 12856549
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 6
+    day: 12
+    hour: 19
+    minute: 34
+  firstCircad: 2019-06-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 2
+    seconds: 8880
+  taskCount: 51
+  lastTaskID: 34766989.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 12
+    hour: 9
+    minute: 50
+  startTaskIDs: !!set {}
+- id: AVENA
+  name: AVENA
+  firstTaskID: 16658589
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 3
+    day: 2
+    hour: 20
+    minute: 18
+  firstCircad: 2020-03-02
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 12
+    seconds: 37740
+  taskCount: 258
+  lastTaskID: 34709029.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 8
+    hour: 9
+    minute: 17
+  startTaskIDs: !!set
+    27011249: null
+- id: HUMMUS
+  name: HUMMUS
+  firstTaskID: 17550149
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 3
+    hour: 18
+    minute: 14
+  firstCircad: 2020-05-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 74280
+  taskCount: 21
+  lastTaskID: 32366449.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 26
+    hour: 17
+    minute: 34
+  startTaskIDs: !!set
+    17824009: null
+- id: HUEVOS
+  name: HUEVOS
+  firstTaskID: 17623239
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 8
+    hour: 20
+    minute: 3
+  firstCircad: 2020-05-08
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4140
+  taskCount: 2
+  lastTaskID: 27629779.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 4
+    day: 3
+    hour: 18
+    minute: 12
+  startTaskIDs: !!set
+    27629779: null
+- id: NAAN
+  name: NAAN
+  firstTaskID: 17738189
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 16
+    hour: 19
+    minute: 38
+  firstCircad: 2020-05-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4680
+  taskCount: 1
+  lastTaskID: 17738189.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 16
+    hour: 20
+    minute: 57
+  startTaskIDs: !!set {}
+- id: VEGETALES
+  name: VEGETALES
+  firstTaskID: 17837799
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 23
+    hour: 17
+    minute: 39
+  firstCircad: 2020-05-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 14940
+  taskCount: 5
+  lastTaskID: 35046299.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 31
+    hour: 19
+    minute: 41
+  startTaskIDs: !!set
+    17837799: null
+    18918519: null
+- id: SOPA DE LENTEJAS
+  name: SOPA DE LENTEJAS
+  firstTaskID: 17867069
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 25
+    hour: 18
+    minute: 26
+  firstCircad: 2020-05-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4260
+  taskCount: 1
+  lastTaskID: 17867069.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 25
+    hour: 19
+    minute: 37
+  startTaskIDs: !!set
+    17867069: null
+- id: FRANCESA
+  name: FRANCESA
+  firstTaskID: 18208679
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 18
+    hour: 11
+    minute: 47
+  firstCircad: 2020-06-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 12300
+  taskCount: 3
+  lastTaskID: 30522539.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 10
+    day: 21
+    hour: 15
+    minute: 30
+  startTaskIDs: !!set {}
+- id: GUISO
+  name: GUISO
+  firstTaskID: 18904889
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 8
+    day: 5
+    hour: 20
+    minute: 8
+  firstCircad: 2020-08-05
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 15480
+  taskCount: 4
+  lastTaskID: 19005989.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 8
+    day: 12
+    hour: 21
+    minute: 31
+  startTaskIDs: !!set {}
+- id: "\xC1RABE"
+  name: "\xC1RABE"
+  firstTaskID: 19465559
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 13
+    hour: 18
+    minute: 35
+  firstCircad: 2020-09-13
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 19560
+  taskCount: 5
+  lastTaskID: 27673889.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 4
+    day: 6
+    hour: 20
+    minute: 27
+  startTaskIDs: !!set
+    19465559: null
+- id: "BENGAL\xCD"
+  name: "BENGAL\xCD"
+  firstTaskID: 19970889
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 10
+    day: 18
+    hour: 20
+    minute: 48
+  firstCircad: 2020-10-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9060
+  taskCount: 2
+  lastTaskID: 19998829.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 10
+    day: 20
+    hour: 20
+    minute: 47
+  startTaskIDs: !!set {}
+- id: GRANADA
+  name: GRANADA
+  firstTaskID: 20704209
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 12
+    day: 8
+    hour: 19
+  firstCircad: 2020-12-08
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 13020
+  taskCount: 2
+  lastTaskID: 31182279.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 12
+    day: 6
+    hour: 13
+    minute: 12
+  startTaskIDs: !!set {}
+- id: PASTEL DE PAPA
+  name: PASTEL DE PAPA
+  firstTaskID: 21984979
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 3
+    day: 7
+    hour: 17
+    minute: 37
+  firstCircad: 2021-03-07
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 23100
+  taskCount: 4
+  lastTaskID: 25009189.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 10
+    day: 3
+    hour: 19
+    minute: 46
+  startTaskIDs: !!set {}
+- id: "PI\xD1A"
+  name: "PI\xD1A"
+  firstTaskID: 22288649
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 3
+    day: 28
+    hour: 19
+    minute: 44
+  firstCircad: 2021-03-28
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 13200
+  taskCount: 8
+  lastTaskID: 35014779.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 29
+    hour: 14
+    minute: 18
+  startTaskIDs: !!set {}
+- id: SALSA
+  name: SALSA
+  firstTaskID: 23656999
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 7
+    day: 1
+    hour: 20
+    minute: 19
+  firstCircad: 2021-07-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2040
+  taskCount: 1
+  lastTaskID: 23656999.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 7
+    day: 1
+    hour: 20
+    minute: 53
+  startTaskIDs: !!set {}
+- id: ESPECIAS
+  name: ESPECIAS
+  firstTaskID: 24486839
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 8
+    day: 28
+    hour: 11
+    minute: 23
+  firstCircad: 2021-08-28
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2640
+  taskCount: 1
+  lastTaskID: 24486839.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 8
+    day: 28
+    hour: 12
+    minute: 7
+  startTaskIDs: !!set {}
+- id: PAN
+  name: PAN
+  firstTaskID: 26572119
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 1
+    day: 20
+    hour: 6
+    minute: 51
+  firstCircad: 2022-01-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 2
+    seconds: 79440
+  taskCount: 58
+  lastTaskID: 31752239.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 1
+    day: 15
+    hour: 1
+    minute: 13
+  startTaskIDs: !!set {}
+- id: "BRIT\xC1NICA"
+  name: "BRIT\xC1NICA"
+  firstTaskID: 26752549
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 2
+    day: 1
+    hour: 19
+    minute: 34
+  firstCircad: 2022-02-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3720
+  taskCount: 1
+  lastTaskID: 26752549.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 2
+    day: 1
+    hour: 20
+    minute: 36
+  startTaskIDs: !!set {}
+- id: FRUTA
+  name: FRUTA
+  firstTaskID: 27656429
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 4
+    day: 5
+    hour: 14
+    minute: 2
+  firstCircad: 2022-04-05
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 38520
+  taskCount: 15
+  lastTaskID: 29763389.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 8
+    day: 29
+    hour: 22
+    minute: 8
+  startTaskIDs: !!set {}
+- id: INDONESIA
+  name: INDONESIA
+  firstTaskID: 27875879
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 4
+    day: 20
+    hour: 19
+    minute: 47
+  firstCircad: 2022-04-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 11100
+  taskCount: 2
+  lastTaskID: 27991039.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 4
+    day: 28
+    hour: 20
+    minute: 12
+  startTaskIDs: !!set {}
+- id: EUROPEA
+  name: EUROPEA
+  firstTaskID: 28581589
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 6
+    day: 8
+    hour: 19
+    minute: 58
+  firstCircad: 2022-06-08
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 49380
+  taskCount: 7
+  lastTaskID: 30885709.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 11
+    day: 15
+    hour: 21
+    minute: 44
+  startTaskIDs: !!set {}
+- id: AUSTRIACA
+  name: AUSTRIACA
+  firstTaskID: 28712249
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 6
+    day: 17
+    hour: 21
+    minute: 44
+  firstCircad: 2022-06-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2640
+  taskCount: 1
+  lastTaskID: 28712249.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 6
+    day: 17
+    hour: 22
+    minute: 28
+  startTaskIDs: !!set {}
+- id: ALEMANA
+  name: ALEMANA
+  firstTaskID: 28855439
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 6
+    day: 27
+    hour: 20
+    minute: 23
+  firstCircad: 2022-06-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 35400
+  taskCount: 5
+  lastTaskID: 30051049.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 9
+    day: 18
+    hour: 22
+    minute: 28
+  startTaskIDs: !!set {}
+- id: LETONA
+  name: LETONA
+  firstTaskID: 29618349
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 8
+    day: 19
+    hour: 19
+    minute: 54
+  firstCircad: 2022-08-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9300
+  taskCount: 2
+  lastTaskID: 29631749.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 8
+    day: 20
+    hour: 19
+    minute: 44
+  startTaskIDs: !!set {}
+- id: POLACA
+  name: POLACA
+  firstTaskID: 29801649
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 9
+    day: 1
+    hour: 13
+    minute: 24
+  firstCircad: 2022-09-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9840
+  taskCount: 3
+  lastTaskID: 29959849.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 9
+    day: 12
+    hour: 13
+    minute: 56
+  startTaskIDs: !!set {}
+- id: "ESPA\xD1OLA"
+  name: "ESPA\xD1OLA"
+  firstTaskID: 30795259
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 11
+    day: 9
+    hour: 13
+    minute: 25
+  firstCircad: 2022-11-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 20400
+  taskCount: 3
+  lastTaskID: 31303659.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 12
+    day: 14
+    hour: 22
+    minute: 49
+  startTaskIDs: !!set {}
+- id: NUEVO MEXICANA
+  name: NUEVO MEXICANA
+  firstTaskID: 9684319
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 4
+    hour: 12
+    minute: 31
+  firstCircad: 2018-11-04
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 480
+  taskCount: 23
+  lastTaskID: 31526299.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 12
+    day: 30
+    hour: 8
+    minute: 15
+  startTaskIDs: !!set {}
+- id: "ASI\xC1TICA"
+  name: "ASI\xC1TICA"
+  firstTaskID: 34337439
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 7
+    day: 13
+    hour: 13
+    minute: 3
+  firstCircad: 2023-07-13
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5820
+  taskCount: 1
+  lastTaskID: 34337439.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 7
+    day: 13
+    hour: 14
+    minute: 40
+  startTaskIDs: !!set
+    34337439: null
+---
+adj:
+  $FOOD: {}
+  $FOOD_UNDEFINED:
+    $FOOD:
+      p: 0
+  $ETNIAS:
+    $FOOD:
+      p: 0
+  $PLATOS:
+    $FOOD:
+      p: 0
+  $PRIMITIVAS:
+    $FOOD:
+      p: 0
+  $OTRO:
+    $FOOD:
+      p: 0
+  OCCIDENTAL:
+    $ETNIAS:
+      p: 0
+  ORIENTAL:
+    $ETNIAS:
+      p: 0
+  AFRICANA:
+    $ETNIAS:
+      p: 0
+  "ASI\xC1TICA":
+    ORIENTAL:
+      p: 0
+  LATINOAMERICANA:
+    $ETNIAS:
+      p: 0
+  MERIENDA:
+    $OTRO:
+      p: 0
+  COMPRADO:
+    $OTRO:
+      p: 0
+  GRATIS:
+    $OTRO:
+      p: 0
+  CARNE:
+    $PRIMITIVAS:
+      p: 0
+  POZOLE:
+    SOPA:
+      p: 0
+    MEXICANA:
+      p: 20
+  POROTOS:
+    $PLATOS:
+      p: 0
+  PAPAS:
+    $PRIMITIVAS:
+      p: 0
+  "BR\xD3COLI":
+    VEGETALES:
+      p: 0
+  COMIDA:
+    $FOOD_UNDEFINED:
+      p: 0
+  SANDWICH:
+    $PLATOS:
+      p: 0
+    OCCIDENTAL:
+      p: 20
+  SOPA:
+    $PLATOS:
+      p: 0
+  PASTA:
+    $PLATOS:
+      p: 0
+    ITALIANA:
+      p: 20
+  ESPINACAS:
+    VEGETALES:
+      p: 0
+  COLOMBIANA:
+    LATINOAMERICANA:
+      p: 0
+  "MEDITERR\xC1NEA":
+    OCCIDENTAL:
+      p: 0
+  AMERICANA:
+    OCCIDENTAL:
+      p: 0
+  PIZZA:
+    $PLATOS:
+      p: 0
+    AMERICANA:
+      p: 20
+  JAPONESA:
+    "ASI\xC1TICA":
+      p: 0
+  TAILANDESA:
+    "ASI\xC1TICA":
+      p: 0
+  MEXICANA:
+    LATINOAMERICANA:
+      p: 0
+  ENSALADA:
+    $PLATOS:
+      p: 0
+    VEGETALES:
+      p: 40
+  INDIA:
+    "ASI\xC1TICA":
+      p: 0
+  "ET\xCDOPE":
+    AFRICANA:
+      p: 0
+  ITALIANA:
+    EUROPEA:
+      p: 0
+  DAL:
+    GUISO:
+      p: 0
+    LENTEJAS:
+      p: 40
+    INDIA:
+      p: 20
+  COREANA:
+    "ASI\xC1TICA":
+      p: 0
+  GUACAMOLE:
+    $PLATOS:
+      p: 0
+    MEXICANA:
+      p: 20
+  VIETNAMITA:
+    "ASI\xC1TICA":
+      p: 0
+  CHINA:
+    "ASI\xC1TICA":
+      p: 0
+  ARGENTINA:
+    LATINOAMERICANA:
+      p: 0
+  "SAND\xCDA":
+    FRUTA:
+      p: 0
+  ARROZ:
+    $PRIMITIVAS:
+      p: 0
+  RAJMA MASALA:
+    $PLATOS:
+      p: 0
+    INDIA:
+      p: 20
+  LENTEJAS:
+    $PRIMITIVAS:
+      p: 0
+  DESAYUNO:
+    OCCIDENTAL:
+      p: 0
+  SHAHI PANEER:
+    $PLATOS:
+      p: 0
+    INDIA:
+      p: 20
+  TAMALES:
+    $PLATOS:
+      p: 0
+    MEXICANA:
+      p: 20
+  CHILE VERDE:
+    VEGETALES:
+      p: 0
+    NUEVO MEXICANA:
+      p: 20
+  KORMA DE VEGETALES:
+    $PLATOS:
+      p: 0
+    INDIA:
+      p: 20
+    VEGETALES:
+      p: 40
+  TOFU:
+    $PRIMITIVAS:
+      p: 0
+    "ASI\xC1TICA":
+      p: 20
+  SHAHI TOFU:
+    $PLATOS:
+      p: 0
+    TOFU:
+      p: 40
+    INDIA:
+      p: 20
+  ACCIDENTE:
+    $OTRO:
+      p: 0
+  RESTOS:
+    $OTRO:
+      p: 0
+  AVENA:
+    $PLATOS:
+      p: 0
+    DESAYUNO:
+      p: 20
+  HUMMUS:
+    $PLATOS:
+      p: 0
+    "MEDITERR\xC1NEA":
+      p: 20
+  HUEVOS:
+    $PLATOS:
+      p: 0
+    DESAYUNO:
+      p: 20
+  NAAN:
+    PAN:
+      p: 0
+    INDIA:
+      p: 20
+  VEGETALES:
+    $PRIMITIVAS:
+      p: 0
+  SOPA DE LENTEJAS:
+    LENTEJAS:
+      p: 40
+    SOPA:
+      p: 0
+  FRANCESA:
+    EUROPEA:
+      p: 0
+  GUISO:
+    $PLATOS:
+      p: 0
+  "\xC1RABE":
+    "ASI\xC1TICA":
+      p: 0
+  "BENGAL\xCD":
+    "ASI\xC1TICA":
+      p: 0
+  GRANADA:
+    FRUTA:
+      p: 0
+  PASTEL DE PAPA:
+    $PLATOS:
+      p: 0
+    PAPAS:
+      p: 40
+  "PI\xD1A":
+    FRUTA:
+      p: 0
+  SALSA:
+    $PLATOS:
+      p: 0
+    MEXICANA:
+      p: 20
+  ESPECIAS:
+    $PRIMITIVAS:
+      p: 0
+  PAN:
+    $PRIMITIVAS:
+      p: 0
+  "BRIT\xC1NICA":
+    EUROPEA:
+      p: 0
+  FRUTA:
+    $PRIMITIVAS:
+      p: 0
+  INDONESIA:
+    "ASI\xC1TICA":
+      p: 0
+  EUROPEA:
+    OCCIDENTAL:
+      p: 0
+  AUSTRIACA:
+    EUROPEA:
+      p: 0
+  ALEMANA:
+    EUROPEA:
+      p: 0
+  LETONA:
+    EUROPEA:
+      p: 0
+  POLACA:
+    EUROPEA:
+      p: 0
+  "ESPA\xD1OLA":
+    EUROPEA:
+      p: 0
+  NUEVO MEXICANA:
+    MEXICANA:
+      p: 0
+    AMERICANA:
+      p: 1

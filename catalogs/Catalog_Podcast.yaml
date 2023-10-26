@@ -1,0 +1,369 @@
+- HEADER:
+    FILE TYPE: LinearCatalog
+    DATE WRITTEN: 2023-10-17
+    TASK ID RANGE: !CodecMisc/portion.Interval
+      atomicIntervals:
+      - - true
+        - 3584169
+        - 35486719
+        - true
+    COLLECTIBLE TYPE: podcast
+    CATALOG COUNT: 13
+- id: THE WAR ON CARS_01126
+  name: THE WAR ON CARS
+  firstTaskID: 16224269
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 2
+    day: 1
+    hour: 16
+    minute: 26
+  firstCircad: 2020-02-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 3
+    seconds: 62280
+  taskCount: 88.0
+  lastTaskID: 35330059.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 20
+    hour: 13
+    minute: 31
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    &id001 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: THE ANTHROPOCENE REVIEWED_01145
+  name: THE ANTHROPOCENE REVIEWED
+  firstTaskID: 16500539
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 2
+    day: 20
+    hour: 20
+    minute: 53
+  firstCircad: 2020-02-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 43920
+  taskCount: 10.0
+  lastTaskID: 23668689.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 7
+    day: 2
+    hour: 19
+    minute: 5
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: THE DAILY_01153
+  name: THE DAILY
+  firstTaskID: 16617339
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 2
+    day: 28
+    hour: 23
+    minute: 33
+  firstCircad: 2020-02-28
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 25
+    seconds: 24360
+  taskCount: 627.0
+  lastTaskID: 35303219.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 18
+    hour: 15
+    minute: 11
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: DEAR HANK AND JOHN_01168
+  name: DEAR HANK AND JOHN
+  firstTaskID: 16826149
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 3
+    day: 14
+    hour: 11
+    minute: 34
+  firstCircad: 2020-03-14
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 13
+    seconds: 78600
+  taskCount: 302.0
+  lastTaskID: 35386429.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 24
+    hour: 10
+    minute: 2
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: RABBIT HOLE_01211
+  name: RABBIT HOLE
+  firstTaskID: 17442409
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 4
+    day: 26
+    hour: 6
+    minute: 40
+  firstCircad: 2020-04-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 14640
+  taskCount: 4.0
+  lastTaskID: 18048969.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 7
+    hour: 10
+    minute: 28
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: THE PEDALSHIFT PROJECT_01659
+  name: THE PEDALSHIFT PROJECT
+  firstTaskID: 23894999
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 7
+    day: 18
+    hour: 8
+    minute: 59
+  firstCircad: 2021-07-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 44940
+  taskCount: 13.0
+  lastTaskID: 25966929.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 9
+    hour: 7
+    minute: 2
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    &id002 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: THE EZRA KLEIN SHOW_01683
+  name: THE EZRA KLEIN SHOW
+  firstTaskID: 24246409
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 8
+    day: 11
+    hour: 18
+    minute: 40
+  firstCircad: 2021-08-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 9
+    seconds: 46800
+  taskCount: 216.0
+  lastTaskID: 35331429.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 20
+    hour: 14
+    minute: 14
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id002: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: THE 3B1B PODCAST_01703
+  name: THE 3B1B PODCAST
+  firstTaskID: 24535979
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 8
+    day: 31
+    hour: 21
+    minute: 17
+  firstCircad: 2021-08-31
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 35580
+  taskCount: 9.0
+  lastTaskID: 24902779.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 9
+    day: 26
+    hour: 9
+    minute: 23
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id002: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: MAKING SENSE WITH SAM HARRIS_01820
+  name: MAKING SENSE WITH SAM HARRIS
+  firstTaskID: 26213279
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 26
+    hour: 8
+    minute: 47
+  firstCircad: 2021-12-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 8
+    seconds: 71760
+  taskCount: 231.0
+  lastTaskID: 35330059.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 20
+    hour: 13
+    minute: 31
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: BBC GLOBAL NEWS PODCAST_01934
+  name: BBC GLOBAL NEWS PODCAST
+  firstTaskID: 27861039
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 4
+    day: 19
+    hour: 19
+    minute: 3
+  firstCircad: 2022-04-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 15
+    seconds: 52680
+  taskCount: 352.0
+  lastTaskID: 34782409.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 8
+    day: 13
+    hour: 11
+    minute: 3
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    &id003 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: 80000 HOURS_02311
+  name: 80000 HOURS
+  firstTaskID: 33283479
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 1
+    hour: 8
+    minute: 27
+  firstCircad: 2023-05-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 4
+    seconds: 31620
+  taskCount: 135.0
+  lastTaskID: 35460709.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 29
+    hour: 13
+    minute: 38
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: EA FORUM PODCAST_02347
+  name: EA FORUM PODCAST
+  firstTaskID: 33805109
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 6
+    hour: 13
+    minute: 50
+  firstCircad: 2023-06-06
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 26160
+  taskCount: 13.0
+  lastTaskID: 35244479.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 14
+    hour: 13
+    minute: 16
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: THE HAPPINESS LAB_02453
+  name: THE HAPPINESS LAB
+  firstTaskID: 35331749
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 20
+    hour: 14
+    minute: 14
+  firstCircad: 2023-09-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8580
+  taskCount: 2.0
+  lastTaskID: 35335839.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 9
+    day: 20
+    hour: 22
+    minute: 53
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}

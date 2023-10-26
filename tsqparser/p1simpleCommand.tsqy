@@ -1,0 +1,95 @@
+"""
+Holds a TimesheetQuery rulelist.
+Criteria for rules are stored here:
+Rules which don't fit the criteria for independent.tsqy
+Rules with a single command (simple command).
+Rules which may need to be applied after Collectible population.
+"""
+
+# Project.MAE_5700
+# Project.MAE_5730
+# Project.MAE_5780
+# Project.SYSEN_5220
+# Project.SYSEN_5220_CALIFICACIÓN
+# Project.MENG_PROYECTO
+# Project.TRANSPORTE
+# Project.ERRANDS_AFUERAS
+# Project.CARRERA
+# Project.TAREAS_DOMÉSTICAS
+# Project.EMAIL_Y_LOGÍSTICA
+# Project.COMER_VESTIRSE_U_HIGIENE
+# Project.RECREO_SOCIAL
+# Project.RECREO_ELECTRÓNICO
+# Project.RECREO_MISC
+# Project.TRABAJO_MISC
+# Project.DORMIR ;  # 'Dormir' & Project.COMER in independent.tsqy
+# Project.RECREO_LEER # Filter 'Leer' | 'Audiolibro' in independent.tsqy
+# Project.MAE_6060
+# Project.MAE_5710
+# Project.MAE_6780
+# Project.MAE_2030_TA
+# Project.CLASES_EXTRAS
+# Project.CARRERA_ENTRENAMIENTO_DISCRECIONAL
+# Project.CARRERA_ENTRENAMIENTO_MANDATORIO
+# Project.CARRERA_OMPS
+# Project.CARRERA_OPIR
+# Project.ACADÉMICO
+# Project.TIMESHEET_ANÁLISIS  # descToken filters in independent.tsqy
+# Project.PÉNDULO_INVERTIDO
+# Project.TAMBORES
+# Project.OPIR_INGENIERÍA_DE_SISTEMAS_MECÁNICOS
+# Project.OPIR_OTA_OPTOMECÁNICA_DISEÑO_Y_ANÁLISIS
+# Project.OPIR_PRB_DISEÑO_Y_ANÁLISIS
+# Project.CARRERA_MENTOR_DE_PASANTÍA
+# Project.OPIR_PDR
+# Project.OPIR_CDR
+# Project.OPIR_ARQUITECTURA_DE_SISTEMAS
+# Project.OPIR_PROPÓSITO_ACÚSTICO
+# Project.OPIR_ICU
+# Project.OPIR_OTA_SUSTITUTA_DE_LENTE
+# Project.OPIR_RADIADOR_ANÁLISIS_ESTRUCTURAL
+# Project.OPIR_GSE_AI_T
+# Project.OPIR_GSE_SOC
+# Project.NGP
+# Project.NGP_STOP
+# Project.NGP_OTA
+# Project.NGP_ESTRUCTURA
+# Project.OPIR_B1_OTA
+# Project.CS_AUTOAPRENDIZAJE
+# Project.MÚSICA
+# Project.BAJO
+# Project.CICLISMO
+# 'Escribir' & ('diario' | 'carta' | 'blog') : Project.ESCRITURA_Y_VÍDEOS ;  # independent.tsqy
+# Project.MAE_4060
+# ! Tag.BICI_E & ('Montar' | 'cicloturismo') : Tag.BICI ;  # independent.tsqy
+# 'FF1' : Tag.COLECTIVO ;  # independent.tsqy
+# Project.RECREO_ELECTRÓNICO | Tag.NETFLIX | (('Investigar' | 'Leer') & ! Tag.PAPEL )
+# | 'Jugar, vídeo juegos' | 'Jugar, juegos del internet' 
+	# : Tag.ELECTRÓNICA ;  # independent.tsqy
+	# TODO: Software prediactes in post-Collectible tsqy file
+# 'Clase' : Tag.EN_CLASE ;  # independent.tsqy
+# Tag.FAMILIA # TODO: add Tag during People initialization
+# Tag.HW ; # TODO: Regex rule on 'HW[0-9]* 
+Project.RECREO_LEER : Tag.LECTURA ;
+# Tag.NETFLIX # descToken filter in independent.tsqy
+# Tag.NFL # descToken filter in independent.tsqy
+# Tag.PAPEL
+# Tag.PIE # descToken filter in independent.tsqy
+# Project.TIMESHEET_ANÁLISIS | Project.PÉNDULO_INVERTIDO | Project.MENG_PROYECTO 
+	# : Tag.PROYECTO_ACADÉMICO ;  # independent.tsqy
+# Tag.RUTINA # TODO: major expansion? See Todoist
+Project.RECREO_SOCIAL | 'Charlar' | 'Hablar' | 'Videollamada'
+	: Tag.SOCIAL_GRUPO ; # p1 because charlar could be added later.
+	# Reunion is controversial, default to whatever was logged since it's likely mixed.
+Tag.BICI | Tag.PIE : Tag.EJERCICIO ;
+# 'Comer' | 'Merienda' : Tag.COMER ; # independent.tsqy
+# Tag.AUTO # descToken filter in independent.tsqy
+# Tag.BICI_ELÉCTRICA
+# Tag.PODCAST # Initializaiton, marking, etc. of media is done later in the DataCorrection phase
+# Tag.MÚSICA # independent.tsqy
+# Tag.TREN # descToken filter in independent.tsqy
+# Metaproject.Carrera
+Tag.EN_CLASE | Tag.HW : Metaproject.Academico ; # Not quite true, fails for non-academic classes
+# Metaproject.Logistica
+# Metaproject.Recreo
+Project.DORMIR : Metaproject.Dormir ;

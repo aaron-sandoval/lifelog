@@ -1,0 +1,118 @@
+"""
+Holds a TimesheetQuery rulelist.
+Criteria for rules are stored here:
+Rules whose filter matches won't be modified by any subsequent DC ops.
+Essentially, rules which should need only 1 invocation in DataCorrection.
+A common type is rules for updating obsolete data formats,
+especially obsolete descToken filters.
+
+Documentation best practices:
+Some rules may seem to belong in multiple files.
+To reduce duplicates, log a commented out copy of the rule in the other files.
+"""
+
+""" Diction
+This section shares a similar function as DescriptionSTDLISTS.STD_DICTION.
+Using tsqy is more robust since searching takes place after tokenization.
+When matching tokens, no erroneous partial word matches are possible.
+"""
+:
+	'Citas en linea'.replace('Citas en línea') ;
+	'Hinge'.replace('Citas en línea') ;
+	'Bumble'.replace('Citas en línea') ;
+	# 'Carta'.replace('Cartas') ;
+	'Barrer'.replace('Limpiar') ;
+	'Fijar'.replace('Reparar') ;
+	'Afinar'.replace('Mantener') ;
+	'Compra'.replace('Comprar') ;
+	'Cenar'.replace('Comer') ;
+	'Cena'.replace('Comer') ;
+	'Indio'.replace('India') ;
+	'Chino'.replace('China') ;
+	'Reunion'.replace('Reunión') ;
+	'la basura'.replace('basura') ;
+	'intimo'.replace('íntimo') ;
+	'francés'.replace('francesa') ;
+	'nueva mexicana'.replace('nuevo mexicana') ;
+epoch < Epoch.e2018_Boulder_Solo : 'Visitar'.replace('Charlar') ;
+
+""" People Names """
+# All people names rules are in the PRIVATE file.
+	
+""" Transportation """
+epoch < Epoch.e2018_Boulder_Solo :
+	"Subir".replace("Casa a Cornell") ;
+	"Subi".replace("Casa a Cornell") ;
+	"Subí".replace("Casa a Cornell") ;
+	"Bajar".replace("Cornell a casa") ;
+Tag.Bici & ! Tag.Colectivo : Tag.Ejercicio ;
+! Tag.BICI_E & ('Montar' | 'cicloturismo') : Tag.Bici ;
+'FF1' : Tag.COLECTIVO ;
+
+
+""" Cornell Epoch """
+"HW" & Tag.Elec & Project.MAE_5730 : "MATLAB" ;
+"Getting Things Done" : Project.Trabajo_Misc ; Metaproject.Logistica ; Tag.Lectura ;
+"MAE 7999" | "MAE 5780" | "MAE 5160" | "MAE 5190" : Project.Clases_Extras ;
+"Barrer la alfombra" : Tag.Rutina ;
+# "Cornell Cinema" : Project.Recreo_E ; 'Cornell Cinema'.replace("Cine") ; Tag.Netflix ;  # In DescriptionSTDLISTS
+"Empacar" & epoch < Epoch.e2018_BCH : Project.Tareas ; Metaproject.Logistica ;
+"Timesheet analisis" : Tag.Proyecto_A ; Project.Timesheet ; Metaproject.Academico ; !"Timesheet analisis" ;
+Project.PÉNDULO_INVERTIDO | Project.MENG_PROYECTO 
+	: Tag.PROYECTO_ACADÉMICO ;
+"Escuchar" & ! 'Discurso' & Project.Recreo_Misc 
+	: Tag.Lectura ; Project.Recreo_Leer ; Metaproject.Recreo ;
+
+""" Reading & Media """
+# Initializaiton, marking, etc. of media is done later in the DataCorrection phase
+"Leer" | 'Audiolibro' : Tag.LECTURA ;
+"NYTimes" | "Atlantic" | "Economist" | "The Economist" 
+	: Tag.Lectura ; "Leer"; Tag.Elec ; Project.Recreo_Leer ;
+(
+	( ! ( "Leer" | "Investigar" | "Personal" ) & Tag.LECTURA ) # TODO: test this set of audiolibro queries
+	|
+	( ! description & Project.Recreo_Leer & ! Tag.Papel )
+)
+&
+start > datetime(2018,2,10,0)
+	: 'Audiolibro' ; # Probably stays here rather than post-COllectible initialization
+Project.RECREO_ELECTRÓNICO | Tag.NETFLIX | (('Investigar' | 'Leer' | 'Escribir') & ! Tag.PAPEL )
+| 'Jugar, vídeo juegos' | 'Jugar, juegos del internet' 
+	: Tag.ELECTRÓNICA ;
+'Jugar' & 'Rock Band' : Tag.MÚSICA ; Tag.Elec ;
+	
+"""Post-Cornell Academics"""
+"Nand2Tetris" & !"Hack Assembly" & !"HDL" : Tag.En_Clase ;
+'Clase' : Tag.En_Clase ; !'Clase' ;
+( Project.Timesheet | Project.CS ) & ! Tag.Papel : Tag.Elec ; # TODO: expand predicate
+'Pronóstico' : Project.Academico ; Metaproject.Academico ;
+Project.CS & 'AI Safety Fundamentals' & Tag.En_Clase : 'Leer, temas, seguridad de inteligencia artificial' ; Tag.Elec ;
+
+""" Simple Tag descToken Substitutes"""
+"NFL" : Tag.NFL ; # Don't delete token to preserve "TV, NFL" instances
+"Ejercicio" : Tag.Ejercicio ; !"Ejercicio" ;
+"Tren" | "Subte" : Tag.Tren ; !'Tren' ;
+"Auto" & ( Project.Transporte | Project.Errands | ! 'Investigar' ) : Tag.Auto ; !'Auto' ;
+"Avión" : Tag.Avión ; !'Avión' ;
+'Comer' | 'Merienda' : Tag.COMER ;
+'Dormir' & Project.COMER : Project.DORMIR ; Metaproject.Dormir ;
+'Tambores' & Project.Recreo_Misc : Project.Tambores ; !'Tambores' ;
+'Caminar' | ('Senderismo' & ! 'Preparar') : Tag.PIE ;
+'Stranger Things' : Tag.Netflix ;
+'Investigar, películas' : ! Tag.Netflix ;
+
+""" Time-dependent diction """
+epoch < Epoch.e2021_Tour_Start :
+	'Meditar'.replace('íntimo') ;
+
+""" Misc descToken Filters """
+"Gimnasio" : Tag.Ejercicio ;
+"Cine" : Tag.Elec ; Tag.Netflix ;
+"Auto" : Tag.Auto ; !"Auto" ;
+'Clase' : Tag.EN_CLASE ;
+# "Iglesia" : Project.Errands_Afueras ;  # Not sure, could be Recreo_Social
+"Skype" | 'Videollamada' | 'Charlar' | 'Hablar' : Tag.Social_Grupo ;
+'Cartas' & ! 'Jugar' : 'Cartas'.replace('Carta') ;
+'Escribir' & ('diario' | 'carta' | 'blog') : Project.Escritura ; #  No metaproject change, hard to say
+'Escuchar, música' |  'Practicar, conjunto' | ( 'Tocar' & ( Project.TAMBORES | Project.Bajo | Project.Musica ))
+	: Tag.MÚSICA ;

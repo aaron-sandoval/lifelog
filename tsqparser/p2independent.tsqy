@@ -1,0 +1,27 @@
+"""
+Holds a TimesheetQuery rulelist.
+Criteria for rules are stored here:
+Rules whose filter matches won't be modified by any subsequent DC ops.
+Rules which must be applied after Collectible initialization.
+Essentially, rules which should need only 1 invocation in DataCorrection.
+
+
+Documentation best practices:
+Some rules may seem to belong in multiple files.
+To reduce duplicates, log a commented out copy of the rule in the other files, and point to the file where the rule is active.
+"""
+
+""" Simple Collectible Presence """
+Audiobook : Tag.LECTURA ;
+TVShow | Movie : Tag.Elec ;  # TODO: Add Software when ready
+Podcast : Tag.podcast ;  # Don't use case-sensitive 'Podcast' as the suffix of 'Tag.', parser breaks
+( TVShow | Movie ) & ! Person & Project.Comer : Project.Recreo_E ; Metaproject.Recreo ;  # TODO: you sure?
+Person & !'Escribir' : Tag.Social_Grupo ;
+Food & ! ('Cocinar' | 'Preparar') : Tag.Comer ; !'Comer' ;
+# Person & Tag.Comer & Project.Comer : Project.Recreo_Social ; Metaproject.Recreo ; # TODO: you sure?
+# Person(sg=Family) : Tag.Familia ;  # TimesheetDataset.postCatalogCorrect()
+
+""" Temporary Rules.
+New/modified rules in independent.tsqy which should be applied to old DC datasets. """
+"Auto" & ( Project.Transporte | Project.Errands | ! 'Investigar' ) : Tag.Auto ; !'Auto' ;
+'Cartas' & ! 'Jugar' : 'Cartas'.replace('Carta') ;

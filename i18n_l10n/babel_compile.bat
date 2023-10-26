@@ -1,0 +1,1 @@
+pybabel compile --domain=timesheet --directory=locale --use-fuzzy
