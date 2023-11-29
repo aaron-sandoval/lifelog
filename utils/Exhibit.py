@@ -39,39 +39,30 @@ def main(path: str = os.path.join(rootProjectPath(), 'VS_Persistent', 'figs_PUBL
         )
         st.divider()
 
-    gxhs = loadData(path)
-    # privacy = figDF.privacy[figDF.privacy.argmax()]
-    # TODO: replace assertion with mapped exhibition function calls for different privacies
-    assert all([g.privacy == Privacy.PUBLIC for g in gxhs])
+    # gxhs = loadData(path)
+
     exhibitHeader()
-    for i, gxh in enumerate(gxhs):
-        # fig1: plt.Figure = row.figure
-        # postTextMD = \
-        #     'Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.\n'\
-        #     '2 Lorem ipsum.'
-        # st.pyplot(row.figure, use_container_width=True)
-        # st.text(postTextMD, )
-        if i == 0 or gxh.section != gxhs[i-1].section:
-            gxh.section.exhibitStreamlitEnter()
-        st.divider()
-        gxh.exhibitStreamlit()
-        st.divider()
-        if i == len(gxhs)-1 or gxh.section != gxhs[i+1].section:
-            gxh.section.exhibitStreamlitExit()
-    # st.markdown('MANUAL: Most sleep was on tour. More analysis/commentary here.\n\nNew paragraph of analysis.\n\n'
-    #             'Inline equation: $\\alpha=\\frac{d\omega}{dt}$\n\n'
-    #             'Inline code `foo = bar ** 2`\n\n'
-    #             'Code block:\n\n')
-    # st.code('''
-    # def func(a):
-    #     return a ** 2
-    # ''')
+    # for i, gxh in enumerate(gxhs):
+    #     if i == 0 or gxh.section != gxhs[i-1].section:
+    #         gxh.section.exhibitStreamlitEnter()
+    #     st.divider()
+    #     gxh.exhibitStreamlit()
+    #     st.divider()
+    #     if i == len(gxhs)-1 or gxh.section != gxhs[i+1].section:
+    #         gxh.section.exhibitStreamlitExit()
 
 
 @st.cache_data
 def loadData(path: str) -> List[GraphicExhibit]:
+    """
+    Loads visualization data from disk.
+    """
     with open(path, 'rb') as f:
-        return pickle.load(f)
+        data = pickle.load(f)
+    # TODO: figure out how to securely generalize for different privacies
+    # assert all([g.privacy == Privacy.PUBLIC for g in data])
+    return list(filter(lambda x: x.privacy == Privacy.PUBLIC, data))
+
 
 if __name__ == '__main__':
     main(os.path.join(rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl'))

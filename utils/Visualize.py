@@ -85,9 +85,9 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
 class XHSectionData(NamedTuple):
     """Enum member values for ExhibitSection."""
     sortKey: int = 0
-    title: str = 'Section Title'
-    intro: str = 'Section intro.'
-    outro: str = 'Section outro.'
+    # title: str = 'Section Title'
+    # intro: str = 'Section intro.'
+    # outro: str = 'Section outro.'
 
 
 # @dataclass
@@ -108,55 +108,9 @@ class ExhibitSection(Enum):
         if self.value.outro not in (None, ''):
             st.markdown(self.value.outro)
 
-    SLEEP = XHSectionData(sortKey=64, title=_k('Sleep'),
-                          intro=_k(
-                            f'Sleep is one of the most basic features in the dataset, and one which spans the full '
-                            f'collection period with little change in collection behavior.\n\n'
-                            f'**Data Collection Changelog**\n\n'
-                            f'*2023-04*: Added rough tracking of sleep quality. Long periods lying awake or otherwise '
-                            f'not sleeping are now roughly tracked as tasks with descriptions under '
-                            f'`Project.{Global.Project.DORMIR.alias()}`. '
-                            f'These tasks no longer count toward measurements of sleep time duration. '
-                            f'Change reduces the upward bias of sleep durations.'
-                          ),  # TODO: alias() calls in enum values can't follow locale spec in main(). Needs rethink.
-                          outro=None
-                         )
-    PEOPLE = XHSectionData(sortKey=96, title=_k('People'), intro=_k(
-                     f"This is probably the data feature which has the most potential for interesting analysis. "
-                     f"Due to signal-to-noise ratio, data on time spent with people is particularly susceptible to "
-                     f"collection errors for people with whom I've spent little time. "
-                     f"I usually decide whether to add a new person to the dataset if I've interacted with them "
-                     f"meaningfully for >15 minutes or expect to in the future. "
-                     f"But I make frequent errors in both errors relative to "
-                     f"this rule of thumb, adding noise to the data most visible in the long tail of people whom "
-                     f"I've spent little time. "
-                     f"\n\n"
-                     f"**Data Collection Changelog**\n\n"
-                     f"*2017-12*: Started regularly collecting data on time spent with individual people."
-                          ),
-                          outro=None
-                         )
-    METAPROJECT = XHSectionData(sortKey=8, title=_k('Metaprojects'), intro=_k(
-        f"Much of the design work in this project has been in abstracting as much as possible about daily activities"
-        f" into data structures like `Project`, `Tag`, `Collectible`, etc. "
-        f"At the top of the `Project` taxonomy is the `Metaproject`, "
-        f"a set of 5 broad categories, containing every `Project`. "
-        f"This is a useful data feature to begin with in a top-down analysis approach, "
-        f"since major shifts in lifestyle are evident while smaller details don't muddy the waters.\n\n"
-        f"- `Metaproject.{Global.Metaproject.Carrera.alias()}`: Working, career planning\n"
-        f"- `Metaproject.{Global.Metaproject.Academico.alias()}`: Studying, independent learning and projects\n"
-        f"- `Metaproject.{Global.Metaproject.Logistica.alias()}`: Transport, researching, email, chores, "
-        f"the 'everything else' bucket\n"
-        f"- `Metaproject.{Global.Metaproject.Recreo.alias()}`: Fun stuff\n"
-        f"- `Metaproject.{Global.Metaproject.Dormir.alias()}`: :sleeping:\n\n"
-        f"Errors in `Metaproject` attribution mostly come from `Project` instances which don't cleanly fit into a "
-        f"single `Metaproject`. "
-        f"For example, `Project.{Global.Project.CICLISMO.alias()}` contains tasks for both rec riding and "
-        f"bike maintenance, which belong to `Metaproject.{Global.Metaproject.Recreo.alias()}` and "
-        f"`Metaproject.{Global.Metaproject.Logistica.alias()}`, respectively. "
-        f"Some of these split attribution cases have been handled in data cleaning, but I haven't caught all of them."
-    ),
-                                outro=None)
+    SLEEP = XHSectionData(sortKey=64)
+    PEOPLE = XHSectionData(sortKey=96)
+    METAPROJECT = XHSectionData(sortKey=8)
 
 
 # @dataclass
@@ -167,7 +121,7 @@ class GraphicExhibit:
     }
 
     def __init__(self,
-                 graphic: Union[plt.Figure] = None,
+                 graphic: Union[plt.Figure],
                  privacy: Global.Privacy = Global.Privacy.PRIVATE,  # Default to PRIVATE for security.
                  preText: str = None,
                  postText: str = None,
@@ -182,6 +136,9 @@ class GraphicExhibit:
         self.postTextMD = postText  # Markdown-format text.
         self.section = section
         self.sortKey = sortKey
+
+    def __repr__(self):
+        return f'{type(self).__name__}: {self.section} at {id(self)}'
 
     def exhibitStreamlit(self):
         if self.preTextMD is not None:
@@ -223,27 +180,12 @@ class GraphicMaker:
         title = _k('Avg Sleep Duration by Weekday and Life Phase')  # + ': ' + epochScheme.alias()
         auxText = getDateRangeString(tsds.timesheetdf.df)
         graphic = SingleAxisStaticVisual(data=visData, kind='clusteredBar', domain='weekday',
-                                                       title=title, ylabel=_k('[hours]'), grid='on', text=auxText,
-                                                       textPos=ArtistAlignment.SW, figsize=(8, 4.5))
+                                         title=title, ylabel=_k('[hours]'), grid='on', text=auxText,
+                                         textPos=ArtistAlignment.SW, figsize=(10, 5))
         # sleep_epoch_wkday_VIS.show()
         graphic.save(fileName=auxText + '_' + title)
-        section = ExhibitSection.SLEEP
-        postText = _k(
-            "While not as interesting as I had hoped for, this plot does exhibit the general consistency "
-            "of sleep over time. "
-            "Notably, average sleep during grad school, the busiest life phase in the dataset, "
-            "isn't that significantly lower than other more relaxed intervals. "
-            "Sleep is one of the last things I compromise on for productivity's sake. "
-            "The amount of sleep during the `{0}` life phase was lower than I expected; "
-            "I had estimated an average of 9 hours from subjective memory. "
-            "Subjectively, this phase had the best-quality sleep I've experienced, but there's not much "
-            "other analysis that I can think of to support that claim. "
-            "\n\n**Future work**\n\n"
-            "- Add error bars\n"
-            "- Add an overall average for each life phase"
-            .format(epochScheme.labelDT(datetime.datetime(2022, 4, 1, 1))))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC, postText=postText,
-                              section=section, sortKey=64)
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.SLEEP, sortKey=64)
 
     @staticmethod
     def time_spent_by_person_stairs_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
@@ -251,12 +193,12 @@ class GraphicMaker:
         # df1 = tsds.timesheetdf.tsquery('Person : ;').df
         df1 = tsds.cats['person'].collxn['timeSpent'].sort_values(ascending=False).reset_index(drop=True)\
             .apply(lambda x: x.total_seconds() / 3600)
-        title = _k('Total Time Spent with Individual People, Sorted')  # + ': ' + epochScheme.alias()
+        title = _k('Total Time Spent\n with Individual People, Sorted')  # + ': ' + epochScheme.alias()
         auxText = getDateRangeString(tsds.timesheetdf.df)
         xlabel = _k('Person index')
         ylabel = _k('[hours]')
 
-        graphic = MatplotlibVisual(figsize=(12, 5))
+        graphic = MatplotlibVisual(figsize=(10, 4))
         plt.subplot(1, 2, 1)
         plt.stairs(df1, fill=True, color='orange')
         plt.title(title)
@@ -269,29 +211,12 @@ class GraphicMaker:
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
         plt.semilogy()
-        plt.title(_k('Total Time Spent with Individual People, Sorted, Log Scale'))
+        plt.title(_k('Total Time Spent\n with Individual People, Sorted, Log Scale'))
         plt.grid(axis='y')
         ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
-        # graphic = SingleAxisStaticVisual(data=df1, kind='bar', domain=None,
-        #                                  title=title, ylabel=_k('[hours]'), grid='on', text=auxText,
-        #                                  textPos=ArtistAlignment.SW)
-        graphic.save(fileName=auxText + '_' + title)
-        section = ExhibitSection.PEOPLE
-        postText = _k(
-            "Excluding people with whom I've spent <3 hours with in total, where the data is noisy, "
-            "the distribution of time spent is even more skewed than a power law distribution. "
-            "That is to say, the curve has distinctly positive curvature in that domain "
-            "in a log plot, not a linear relationship. "
-            "I'm curious how the shape of this distribution compares to other peoples' "
-            "and how the distribution has looked in different phases of my life. "
-            "\n\n**Future work**\n\n"
-            "- Create a scalar metric of breadth/tightness of social activities related to "
-            "the curvature of the semilog plot. "
-            "Evaluate this metric over different time domains.\n"
-            "- Compare versions of this plot over various life phases and other time intervals."
-            )
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC, postText=postText,
-                              section=section, sortKey=128)
+        graphic.save(fileName=auxText + '_' + title.replace('\n', ''))
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.PEOPLE, sortKey=128)
 
     @staticmethod
     def metaproject_area_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
@@ -310,7 +235,7 @@ class GraphicMaker:
         # xlabel = _k('')
         ylabel = _k('[hours/day]')
 
-        graphic = MatplotlibVisual(figsize=(12, 5.5))
+        graphic = MatplotlibVisual(figsize=(10, 5))
         plt.stackplot(visData.index, visData.values.transpose())
         plt.title(title)
         # plt.xlabel(xlabel)
@@ -333,31 +258,8 @@ class GraphicMaker:
             ax.text(dat+datetime.timedelta(days=7), 27.5, label, va='center')
 
         graphic.save(fileName=auxText + '_' + title)
-        section = ExhibitSection.METAPROJECT
-        postText = _k(
-            "In this plot, the phases of my adult life with different `Metaproject` focus are clear. "
-            "You can easily see the shifts from grad school, to working, to long-haul cycle touring in 2022, "
-            "and to independent study in 2023. "
-            "\n\nThere's so much to see in the details of this plot. "
-            "Like how data collection was consistently incomplete until 2018-06. "
-            "This is probably because, when I started my first job, I used this same data to fill in my timesheet "
-            "at work, and I got into the habit of logging data more precisely at all hours. "
-            "\n\nOr the big zero-sum spike-trough pairs poking above the 24-hour total line. "
-            "I'm not sure what is causing them. Most likely some unclean data. "
-            "\n\nOr comparing how overworked I was in grad school vs in the busiest periods in my first job. "
-            "Grad school was consistently more consuming than work, with only 2 spikes around 2021-01 coming close. "
-            "\n\nOr how as my studies in Spring 2018 gradually ate up more time over the course of the semester, "
-            "it was mostly `Recreation` which was sacrificed, `Sleep` only dropping a bit. "
-            "\n\n**Future work**\n\n"
-            "- Check out the spikes about 24 hours noted above.\n"
-            "- Add labels for smaller events like the short cycle tours in 2019 and 2021.\n"
-            "- Split this plot into 2 subplots looking at weekdays and weekends."
-        )
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC, postText=postText,
-                              section=section, sortKey=4)
-    @staticmethod
-    def vis2():
-        pass
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.METAPROJECT, sortKey=4)
 
 
 def getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicExhibit]:
@@ -675,8 +577,8 @@ class ArtistAlignment(Enum):
 
 
 class MatplotlibVisual:
-    def __init__(self, **kwargs):
-        self.fig = plt.figure(**kwargs)
+    def __init__(self, figsize=(10, 5), **kwargs):
+        self.fig = plt.figure(figsize=figsize, **kwargs)
 
     def save(self, fileName):
         self.fig.savefig(os.path.join(Global.rootProjectPath(), 'VS_Figures', fileName + '.png'))

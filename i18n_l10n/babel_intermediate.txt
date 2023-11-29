@@ -486,3 +486,13 @@ _("Much of the design work in this project has been in abstracting as much as po
 _("There's so much to see in the details of this plot. Like how data collection was consistently incomplete until 2018-06. This is probably because, when I started my first job, I used this same data to fill in my timesheet at work, and I got into the habit of logging data more precisely at all hours. ")
 _("Excluding people with whom I've spent <3 hours with in total, where the data is noisy, the distribution of time spent is even more skewed than a power law distribution. That is to say, the curve has distinctly positive curvature in that domain in a log plot, not a linear relationship. I'm curious how the shape of this distribution compares to other peoples' and how the distribution has looked in different phases of my life. ")
 _("Or the big zero-sum spike-trough pairs poking above the 24-hour total line. I'm not sure what is causing them. Most likely some unclean data. ")
+
+***WRITE*** 2023-11-28 18:13:53.791221
+Extraction summary: 
+_("Excluding people with whom I've spent <3 hours with in total, where the data is noisy, the distribution of time spent is even more skewed than a power law distribution. That is to say, the curve has distinctly positive curvature in a log plot, not a linear relationship. I'm curious how the shape of this distribution compares to other peoples' and how the distribution has looked in different phases of my life. ")
+_("This is probably the data feature which has the most potential for interesting analysis. Due to signal-to-noise ratio, data on time spent with people is particularly susceptible to collection errors for people with whom I've spent little time. I usually decide whether to add a new person to the dataset if I've interacted with them meaningfully for >15 minutes or expect to in the future. But I make frequent errors in both directions relative to this rule of thumb, adding noise to the data most visible in the long tail of people with whom I've spent little time. ")
+
+***WRITE*** 2023-11-28 19:59:29.120526
+Extraction summary: 
+_('Total Time Spent\n with Individual People, Sorted')
+_('Total Time Spent\n with Individual People, Sorted, Log Scale')

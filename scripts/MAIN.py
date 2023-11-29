@@ -17,9 +17,8 @@ from utils import Visualize as VS
 from src.TimesheetGlobals import PPPath, rootProjectPath, Privacy
 
 
-def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC):
+def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=True):
 
-    dataFiles = ['sample_RAW_PUBLIC.csv']
     # dataFiles = ['timesheet_20180822202600.csv']
     # dataFiles = ['timesheet_2017-12-16.csv', '2017_20230207.csv', '20230201-20230403.csv', '20230401_20230701.csv',
     #              '20230601-20231001.csv']
@@ -31,6 +30,8 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC):
     # dataFiles = ['testCSV_short1.csv']
     # dataFiles = ['timesheet_2017-12-16.csv', 'timesheet_20180822202600.csv']
     # dataFiles = ['timesheet_20180822202600.csv']
+    if runPublic:
+        dataFiles = ['sample_RAW_PUBLIC.csv']
 
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs\\FM_test3.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs\\FM_2020-09-17-0747_2021-01-05-1222.csv')
@@ -67,15 +68,23 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC):
                                # 'DC_2020-09-17-0647_2021-12-14-2208',
                                # 'DC_2021-12-14-2201_2022-04-02-1327',
                                # 'DC_2022-04-02-1305_2023-06-30-2228',
-                               # 'DC_2017-09-06-2136_2023-10-01-0906',
+                               'DC_2017-09-06-2136_2023-10-01-0906',
                            ]))
 
-    FM_filePath = FM.main(dataFiles)
-    PP_filePath = PP.main(FM_filePath)
-    DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
-    VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
+    if runPublic:
+        FM_filePath = FM.main(dataFiles)
+        PP_filePath = PP.main(FM_filePath)
+        DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
+        VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
+    else:
+        # FM_filePath = FM.main(dataFiles)
+        # PP_filePath = PP.main(FM_filePath)
+        # DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
+        VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
+
     # XH.main(VS_filePath)
 
 
 if __name__ == '__main__':
-    main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC)
+    # TODO: always change to runPublic=True before git commit
+    main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=True)

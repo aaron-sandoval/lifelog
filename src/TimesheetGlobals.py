@@ -18,7 +18,6 @@ from enum import Enum
 from src.TimePeriod import TimePeriod
 import pandas as pd
 # import numpy as np
-# from itertools import chain
 from collections import defaultdict
 from pandas.core.dtypes.inference import is_list_like
 from typing import Union, List, Iterable, Dict, Set, Callable
@@ -125,7 +124,7 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
         path2 = getPersistentFilePath(name2, phaseFlag) + fileSuffix + '.pkl'
         with open(path1, 'wb') as file:
             pickle.dump(df, file, protocol=-1)
-        # shutil.copyfile(path1, path2)
+        shutil.copyfile(path1, path2)
         return path2
 
 
@@ -520,6 +519,7 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
     def aliasFuncs(cls) -> Dict[str, Callable]:
         if not hasattr(cls, '_aliasFuncs'):
             cls._aliasFuncs: Dict[str, Callable] = defaultdict(lambda: lambda slf: slf.name)  # Ignore language
+            cls._aliasFuncs['en_US'] = lambda slf: slf.name  # Have to include >=1 key for Aliasable.defaultLocale()
         return cls._aliasFuncs
 
     def epochGroupAliasFuncs(self):
