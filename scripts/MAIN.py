@@ -86,5 +86,5 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
 
 
 if __name__ == '__main__':
-    # TODO: always change to runPublic=True before git commit
+    # TODO: always change to runPublic=True before doing a git commit
     main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=True)
