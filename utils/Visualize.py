@@ -187,6 +187,10 @@ class GraphicMaker:
         return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.SLEEP, sortKey=64)
 
+    # @staticmethod
+    # def sleep_start_and_end_violin_by_epoch_group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+    #     df = tsds.timesheetdf.tsquery('Project.Dormir & ')
+
     @staticmethod
     def time_spent_by_person_stairs_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
@@ -235,14 +239,14 @@ class GraphicMaker:
         # xlabel = _k('')
         ylabel = _k('[hours/day]')
 
-        graphic = MatplotlibVisual(figsize=(10, 5))
+        graphic = MatplotlibVisual(figsize=(10, 6))
         plt.stackplot(visData.index, visData.values.transpose())
         plt.title(title)
         # plt.xlabel(xlabel)
         plt.ylabel(ylabel)
         plt.legend(visData.columns.values, loc='lower right')
         plt.yticks(range(0, 28, 4))
-        # plt.grid(axis='x')
+        plt.grid(axis='y', alpha=0.5)
         # ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
         ax = plt.gca()
         ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(1, 4, 7, 10)))
@@ -250,12 +254,12 @@ class GraphicMaker:
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.value.keys()]
         ep = Global.Epoch
-        lineLabels = [a.alias() for a in
+        lineLabels = [kiwilib.addLineBreaks(a.alias(), delimIndices=[0]) for a in
                       [ep.e2017_Cornell, ep.e2018_Boulder_Solo, ep.e2022_Tour_Start, ep.e2022_Tour_End]]
-        lineLabels[1] = _k('Start First Job')
-        plt.vlines(lineDates, 24, 27.5, linestyles='dashed')
+        lineLabels[1] = _k('Start\nFirst Job')
+        plt.vlines(lineDates, 24, 26.5, linestyles='dashed')
         for dat, label in zip(lineDates, lineLabels):
-            ax.text(dat+datetime.timedelta(days=7), 27.5, label, va='center')
+            ax.text(dat, 26.5, label, ha='center', va='bottom')
 
         graphic.save(fileName=auxText + '_' + title)
         return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,

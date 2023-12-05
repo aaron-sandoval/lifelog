@@ -496,3 +496,7 @@ _("This is probably the data feature which has the most potential for interestin
 Extraction summary: 
 _('Total Time Spent\n with Individual People, Sorted')
 _('Total Time Spent\n with Individual People, Sorted, Log Scale')
+
+***WRITE*** 2023-12-05 10:45:21.760334
+Extraction summary: 
+_('Start\nFirst Job')

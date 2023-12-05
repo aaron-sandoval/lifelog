@@ -28,7 +28,7 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         f"Much of the design work in this project has been in abstracting as much as possible about daily activities"
         f" into data structures like `Project`, `Tag`, `Collectible`, etc. "
         f"At the top of the `Project` taxonomy is the `Metaproject`, "
-        f"a set of 5 broad categories, containing every `Project`. "
+        f"a set of 5 broad categories which together contain every `Project`. "
         f"This is a useful data feature to begin with in a top-down analysis approach, "
         f"since major shifts in lifestyle are evident while smaller details don't muddy the waters.\n\n"
         f"- `Metaproject.{Global.Metaproject.Carrera.alias()}`: Working, career planning\n"

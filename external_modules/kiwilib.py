@@ -179,6 +179,38 @@ def consolidateInterval(iv: portion.Interval, minIv) -> portion.Interval:
     return functools.reduce(lambda x, y: x | y if y.lower-x.upper > minIv else x[:-1] | (x[-1] | y).enclosure, iv)
 
 
+def addLineBreaks(s: str, delim: str = ' ', maxLen=None, delimIndices: List[int] = None, insert: int = 0) -> str:
+    """
+    Replaces certain occurences of delim with newlines into a string
+    :param s: String to process
+    :param delim: Substring to replace with or insert a newline at certain instances
+    :param maxLen: Either maxLen or delimIndices, but not both may be specified.
+    Max number of characters to reach before inserting a newline.
+    :param delimIndices: Either maxLen or delimIndices, but not both may be specified.
+    Indices of the occurences of delim to replace with a newline.
+    Similarly to the stdlib str.split, consecutive instances of delim are not grouped together for indexing purposes.
+    :param insert: -1: insert newline before delim; 0: replace delim with newline; 1: insert newline after delim
+    :return:
+    """
+    if delim not in s:
+        return s
+    if maxLen is not None:
+        raise NotImplementedError('maxLen functionality not yet implemented.')
+    if not ((maxLen is None) ^ (delimIndices is None)):
+        raise ValueError('Either maxLen or delimIndices, but not both, must be specified.')
+    if delimIndices is not None:
+        segments = s.split(delim)
+        delimIndices = set(delimIndices)
+        out = segments[0]
+        for i, seg in enumerate(segments[:-1]):
+            # if i == 0:
+            #     continue
+            if i in delimIndices:
+                out = '\n'.join([out, segments[i+1]])
+            else:
+                out = delim.join([out, segments[i+1]])
+    return out
+        # return '\n'.join([delim.join([])])
 def backtrack(sol, cur):
     """
 
