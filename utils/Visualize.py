@@ -6,6 +6,9 @@ Holds functions used to collect datasets from database and SingleAxisStaticVisua
 """
 import datetime
 import os
+
+import portion
+
 from src.Description import Description
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -18,6 +21,7 @@ from enum import Enum
 from bisect import bisect_right
 import inspect
 import streamlit as st
+import seaborn as sns
 
 
 global babelx  # Babel extractor wrapper, must be accessible everywhere in the module
@@ -25,26 +29,6 @@ babelx = i18n.BabelIntermediateExtractor(extract=True, locale=i18n.lang_en, buff
 
 
 def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Privacy.PUBLIC):
-    def loadAndMergeDatasets(paths: List[str], fileSuffix='') -> TimesheetDataset:
-        """
-        Loads one or more TimesheetDataset objects from pickle files.
-        If >1 file specified, merges the TimesheetDataFrame objects and writes the merged tsdf to a pickle.
-        :param paths: List of full paths to TimesheetDataset .pkl files.
-        :param fileSuffix: TimesheetDataset write and Catalog read/write file suffixes.
-        :return: Merged TimesheetDataset.
-        """
-        tsdsList = [TimesheetDataset(pd.read_pickle(p), fileSuffix=fileSuffix) for p in paths]
-        if len(tsdsList) > 1:
-            mergedTSDF = TimesheetDataFrame.mergeTSDFs([t.timesheetdf for t in tsdsList])
-            tsds = TimesheetDataset(mergedTSDF, fileSuffix=fileSuffix)
-        else:
-            tsds = tsdsList[0]
-        tsds.loadCatalogs(fileSuffix=fileSuffix)
-        # tsds.validate()
-        # tsds.postCatalogCorrect()  # Temporary
-        # if len(tsdsList) > 1:
-        # Global.writePersistent(tsds.timesheetdf.df, 3, tsds.fileSuffix)
-        return tsds
 
     def babelExtractEnumLike() -> None:
         # classes = kiwilib.getAllSubclasses(kiwilib.HierarchicalEnum)
@@ -82,15 +66,36 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
     return Global.writePersistent(figs, 4, privacy=audience)
 
 
+def loadAndMergeDatasets(paths: List[str], fileSuffix='') -> TimesheetDataset:
+    """
+    Loads one or more TimesheetDataset objects from pickle files.
+    If >1 file specified, merges the TimesheetDataFrame objects and writes the merged tsdf to a pickle.
+    :param paths: List of full paths to TimesheetDataset .pkl files.
+    :param fileSuffix: TimesheetDataset write and Catalog read/write file suffixes.
+    :return: Merged TimesheetDataset.
+    """
+    tsdsList = [TimesheetDataset(pd.read_pickle(p), fileSuffix=fileSuffix) for p in paths]
+    if len(tsdsList) > 1:
+        mergedTSDF = TimesheetDataFrame.mergeTSDFs([t.timesheetdf for t in tsdsList])
+        tsds = TimesheetDataset(mergedTSDF, fileSuffix=fileSuffix)
+    else:
+        tsds = tsdsList[0]
+    tsds.loadCatalogs(fileSuffix=fileSuffix)
+    # tsds.validate()
+    # tsds.postCatalogCorrect()  # Temporary
+    # if len(tsdsList) > 1:
+    # Global.writePersistent(tsds.timesheetdf.df, 3, tsds.fileSuffix)
+    return tsds
+
+
 class XHSectionData(NamedTuple):
     """Enum member values for ExhibitSection."""
-    sortKey: int = 0
+    sortKey: int = 0  # TODO: get rid of sortKey, sorting determined by pages filename prefixes
     # title: str = 'Section Title'
     # intro: str = 'Section intro.'
     # outro: str = 'Section outro.'
 
 
-# @dataclass
 class ExhibitSection(Enum):
     @classmethod
     def srted(cls):
@@ -113,7 +118,6 @@ class ExhibitSection(Enum):
     METAPROJECT = XHSectionData(sortKey=8)
 
 
-# @dataclass
 class GraphicExhibit:
     """ Type containing data for exhibiting generic graphics. See GRAPHIC_TYPE_FUNCS for supported graphic types. """
     GRAPHIC_TYPE_FUNCS = {
@@ -164,7 +168,7 @@ class GraphicMaker:
     @staticmethod
     def avg_Sleep_by_Weekday_and_Epoch_Group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
-        df1 = tsds.timesheetdf.tsquery('Project.Dormir & ! description : ;').df
+        df1 = tsds.timesheetdf.tsquery('Project.Dormir & ( !description | "Dormir" | "Siesta") : ;').df
         df1 = pd.concat([df1, getWeekday(df1.circad)], axis=1)
         epochScheme = Global.EpochScheme.MP_COARSE_ATOMIC
         df1 = pd.concat([df1, epochScheme.labelDT(df1.start.rename('epochGroup', copy=False))], axis=1)
@@ -175,7 +179,7 @@ class GraphicMaker:
         visData = (wkdayDuration / wkdayCount)['duration']
         # TODO: add another cluster for the average over each epoch group
         visData = timeToFloat(visData, 'hour')
-        visData = visData[[col for col in epochScheme.sortedEpochGroups() if col in visData.columns]]
+        visData = visData[[col for col in epochScheme.sortedEpochGroupNames() if col in visData.columns]]
         # visData.rename(lambda x: Global.Epoch[x].alias(), axis=1)
         title = _k('Avg Sleep Duration by Weekday and Life Phase')  # + ': ' + epochScheme.alias()
         auxText = getDateRangeString(tsds.timesheetdf.df)
@@ -187,9 +191,66 @@ class GraphicMaker:
         return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.SLEEP, sortKey=64)
 
-    # @staticmethod
-    # def sleep_start_and_end_violin_by_epoch_group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-    #     df = tsds.timesheetdf.tsquery('Project.Dormir & ')
+    @staticmethod
+    def sleep_start_and_end_violin_by_epoch_group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+        df = tsds.timesheetdf.tsquery(
+            'Project.Dormir & !description & duration<timedelta(hours=20) & duration>timedelta(minutes=30) : ;').df
+        group = df[['start', 'end', 'circad']].groupby('circad')
+        df = pd.concat([group.min().start, group.max().end], axis=1)
+        df['duration'] = df.end - df.start
+        df['durationHours'] = df['duration'].apply(lambda x: x.total_seconds()/3600)
+
+        df['wakeTimeHours'] = (df['end'] - df['end'].dt.normalize()) / pd.Timedelta(hours=1)
+        df['fallAsleepTimeHours'] = (df['start'] - df['start'].dt.normalize()) / pd.Timedelta(hours=1)
+        df['fallAsleepTimeHoursNorm'] = (df['fallAsleepTimeHours'] + 6) % 24 - 6
+
+        epochScheme = Global.EpochScheme.MP_COARSE_ATOMIC
+        df['epochGroup'] = epochScheme.labelDT(df.start)
+        cat = pd.concat([df[['fallAsleepTimeHoursNorm', 'epochGroup']],
+                         df[['wakeTimeHours', 'epochGroup']]]
+                        , axis=0)
+        cat['isWake'] = pd.isna(cat.fallAsleepTimeHoursNorm)
+        cat['time'] = cat.fallAsleepTimeHoursNorm.fillna(0) + cat.wakeTimeHours.fillna(0)
+
+        title = _k('Distributions of Time of Falling Asleep and Waking Up by Life Phase')
+
+        graphic = MatplotlibVisual(figsize=(10, 6))
+        ax = sns.violinplot(data=cat,
+                            # y='wakeTimeHours',
+                            x='time',
+                            # y='duration',
+                            y='epochGroup',
+                            hue='isWake',
+                            cut=True,
+                            dodge=True,
+                            scale='width',
+                            scale_hue=False,
+                            # width=1.2,
+                            bw=.12,
+                            )
+
+        # Set tick values and format display as HH:MM
+        from matplotlib.ticker import MaxNLocator, MultipleLocator
+        ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+        ax.xaxis.set_minor_locator(MultipleLocator())
+        rawTicks = plt.xticks()[0]
+        hr = list(map(lambda x: int(x % 24), rawTicks))
+        labels = [f'{h}:00' for h in hr]
+        plt.xticks(rawTicks, labels=labels)
+        ax.yaxis.set_ticklabels([kiwilib.addLineBreaks(s.get_text(), delimIndices=[0]) for s in plt.yticks()[1]])
+
+        ax.autoscale(enable=True, axis='x')
+        plt.grid(axis='x', alpha=0.4)
+        plt.xlabel(_k('Time of day'))
+        plt.ylabel(_k('Life Phase'))
+        h, _ = ax.get_legend_handles_labels()
+        ax.legend(h, [_k('Fall asleep'), _k('Wake up')])
+        plt.title(title)
+        auxText = getDateRangeString(tsds.timesheetdf.df)
+        ArtistAlignment.SW.text(auxText, ax)
+
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.SLEEP, sortKey=32)
 
     @staticmethod
     def time_spent_by_person_stairs_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
@@ -246,7 +307,7 @@ class GraphicMaker:
         plt.ylabel(ylabel)
         plt.legend(visData.columns.values, loc='lower right')
         plt.yticks(range(0, 28, 4))
-        plt.grid(axis='y', alpha=0.5)
+        plt.grid(axis='y', alpha=0.4)
         # ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
         ax = plt.gca()
         ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(1, 4, 7, 10)))
@@ -282,7 +343,7 @@ def getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicExh
     # inversePrivacyMap = {v[:5]: k for k,v in privacyMap.items()}
     figFuncs = [v for _, v in inspect.getmembers(GraphicMaker(), inspect.isfunction)
                 if v.__name__[-5:] in privacyMap[audience]]
-    curFigFunc = GraphicMaker.metaproject_area_PUBL
+    curFigFunc = GraphicMaker.sleep_start_and_end_violin_by_epoch_group_PUBL
     # return [curFigFunc(tsds)]
     return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
 

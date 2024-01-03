@@ -530,8 +530,9 @@ class AutofillPrevious(StartIDsCataloged, abc.ABC):
     def getAutofillRows(cls, timesheetdf: TimesheetDataFrame) -> Tuple[pd.Index, pd.Index]:
         """
         Returns the indices of a given tsdf necessary for TimesheetDataset.autofillPreviousCollectibles().
-        :return: 0: sources: Indices of already populated rows defining the source of the autofill operation.
-        1: targets: Indices of the rows to be autofilled with the Collectible instances in return[0].
+        :return:
+            [0]: sources: Indices of already populated rows defining the source of the autofill operation.
+            [1]: targets: Indices of the rows to be autofilled with the Collectible instances in return[0].
         """
         return timesheetdf.df.loc[~timesheetdf.isEmpty(cls.name())].index, \
             timesheetdf.df[timesheetdf.df.description.apply(

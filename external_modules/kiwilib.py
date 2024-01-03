@@ -169,15 +169,21 @@ def popAndClear(ser: pd.Series, iterNest=0):
 
 def consolidateInterval(iv: portion.Interval, minIv) -> portion.Interval:
     """
-    Consolidates atomicIntervals in an Interval such that there is no gap less than minIv between any atomicIntervals.
+    Consolidates AtomicIntervals in an Interval such that there is no gap less than minIv between any atomicIntervals.
     Where such gaps are found, they are filled via portion.enclosure().
     :param minIv: Shortest allowable gap between any atomicIntervals.
     Must be comparable to the data type returned by T.__sub__(), where T is the type contained in iv.
-    :param iv:
-    :return:
     """
     return functools.reduce(lambda x, y: x | y if y.lower-x.upper > minIv else x[:-1] | (x[-1] | y).enclosure, iv)
 
+
+def consolidateIntervalGaps(iv: portion.Interval, minIv) -> portion.Interval:
+    """
+    Deletes all AtomicIntervals in an Interval whose length is below minIv.
+    :param minIv: Shortest allowable AtomicInterval.
+    Must be comparable to the data type returned by T.__sub__(), where T is the type contained in iv.
+    """
+    return iv.apply(lambda x: x.replace(upper=x.upper-(x.upper-x.lower)) if x.upper-x.lower < minIv else x)
 
 def addLineBreaks(s: str, delim: str = ' ', maxLen=None, delimIndices: List[int] = None, insert: int = 0) -> str:
     """

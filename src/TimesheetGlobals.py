@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 import pickle
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import portion as P
 from enum import Enum
 from src.TimePeriod import TimePeriod
@@ -195,7 +195,7 @@ class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumA
         if not hasattr(cls, '_aliasFuncs'):
             cls._aliasFuncs: Dict[str, Callable] = {
                'en_US': lambda slf: slf.value[1],
-               'es_MX': lambda slf: slf.name,
+               'es_MX': lambda slf: slf.name.replace('_', ' '),
             }
         return cls._aliasFuncs
     
@@ -203,6 +203,7 @@ class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumA
     def dfcolumn() -> str:
         return 'metaproject'
 
+    Sin_Datos = -1, 'No Data'
     Carrera = 0, 'Career'
     Academico = 1, 'Academics'
     Logistica = 2, 'Logistics'
@@ -244,6 +245,7 @@ class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMe
             }
         return cls._aliasFuncs
 
+    SIN_DATOS                               =  0, -1,'NO DATA'                  , ''
     MAE_5700                                =  1, 1, ''                         , ''
     MAE_5730                                =  2, 1, ''                         , ''
     MAE_5780                                =  3, 1, ''                         , ''
@@ -325,6 +327,7 @@ class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMe
     MAE_4060                                = 55, 1, ''                         , ''
     EA_COMUNIDAD                            = 56, 1, 'EA COMMUNITY'             , ''
     EA                                      = 56, 1, 'EA COMMUNITY'             , ''
+    AISC                                    = 57, 0, 'AI SAFETY CAMP'           , 'CAMPAMENTO DE LA SEGURIDAD DE IA'
 
 
 # noinspection NonAsciiCharacters
@@ -465,6 +468,11 @@ class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta
     e2019_SpChg_Nick_End =    33, datetime(2020, 1, 1, 0, 0, 0), '2019 SpChg Fin con Nick'  # Nick leaves, George joins Spare Change
     e2021_SpChg_KO_Start =    34, datetime(2021, 9, 10, 0, 0, 0), '2021 SpChg Inicio con KO'  # Kristin joins Spare Change
     e2022_SpChg_JW_KS_Start = 35, datetime(2022, 9, 1, 0, 0, 0), '2022 SpChg Inicio con JW KS'  # Kirsten, Jonathan join Spare Change
+    e2024_AISC =              36, datetime(2024, 1, 13, 3, 0, 0), '2023 Campamento de Securidad de IA'  # AISC starts
+# TODO: add apochs for data feature introductions
+# Naps: 2021-05-05
+# Overnight sleep interruptions: 2023-05-15
+# People: 2017-12-??
 
 
 def appendIntervalDictComplement(dct: P.IntervalDict, complementVal, bigInterval: P.IntervalDict = P.closedopen(
@@ -497,11 +505,10 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
 
     def labelDT(self, dt: Union[datetime, Iterable[datetime]], locale: str = None) -> Union[str, Iterable[str]]:
         """
-        Returns the string representation of the epoch group containing dt for an EpochScheme.
         String returned is dependent on the specified locale. If unspecified, self.defaultLocale() is used.
         :param dt: Datetimes to be mapped to epoch groups.
         :param locale: String representation of locale. See epochGroupAliasFuncs() for allowable locale values.
-        :return:
+        :return: string representation of the epoch group containing dt for an EpochScheme
         """
         if locale is None:
             locale = self.defaultLocale()
@@ -509,7 +516,7 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
             return kiwilib.mapOverListLike(lambda x: EpochScheme.labelDT(self, x, locale), dt)
         return self.epochGroupAliasFuncs()[locale](self, dt)
 
-    def sortedEpochGroups(self) -> List[str]:
+    def sortedEpochGroupNames(self) -> List[str]:
         if not hasattr(self, '_sortedEpochGroups'):
             temp = {self.labelDT(iv.lower): iv.lower for iv, names in self.value.items()}
             self._sortedEpochGroups: List[str] = sorted(temp.keys(), key=lambda x: temp[x])
@@ -523,6 +530,10 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
         return cls._aliasFuncs
 
     def epochGroupAliasFuncs(self):
+        def getAlias(ind: int, slf, dt: Union[datetime, date]):
+            # TODO: type check and convert date and datetime. Change base method to a functools.partial of getAlias
+            pass
+
         if not hasattr(type(self), '_epochGroupAliasFuncs'):
             type(self)._epochGroupAliasFuncs: dict[str, Callable] = {
                 'en_US': lambda slf, dt: slf.value[dt][1],

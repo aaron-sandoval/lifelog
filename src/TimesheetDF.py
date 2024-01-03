@@ -313,7 +313,6 @@ class TimesheetDataFrame:
     def independentTSQY(self):
         PRIVATE_FILENAME = Path(os.path.abspath(self.independentTSQYRules))\
                                .parent / f'{os.path.splitext(self.independentTSQYRules)[0]}_PRIVATE.tsqy'
-        # PRIVATE_ACCESS =
         if os.path.isfile(PRIVATE_FILENAME):
             self.df = self.tsqueryFromFile(PRIVATE_FILENAME).df
         self.df = self.tsqueryFromFile(self.independentTSQYRules).df

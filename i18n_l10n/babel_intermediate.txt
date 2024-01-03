@@ -500,3 +500,11 @@ _('Total Time Spent\n with Individual People, Sorted, Log Scale')
 ***WRITE*** 2023-12-05 10:45:21.760334
 Extraction summary: 
 _('Start\nFirst Job')
+
+***WRITE*** 2024-01-02 12:24:42.462848
+Extraction summary: 
+_('Fall asleep')
+_('Life Phase')
+_('Distributions of Time of Falling Asleep and Waking Up by Life Phase')
+_('Time of day')
+_('Wake up')

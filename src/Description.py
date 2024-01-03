@@ -62,6 +62,9 @@ class Description(SingleInstanceColumn):
     def __str__(self):
         return self.standardString
 
+    def __repr__(self):
+        return self.standardString
+
     def __contains__(self, item):
         return self.hasToken(item)
     

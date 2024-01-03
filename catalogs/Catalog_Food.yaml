@@ -1,6 +1,6 @@
 - HEADER:
     FILE TYPE: DAGCatalog
-    DATE WRITTEN: 2023-10-26
+    DATE WRITTEN: 2023-12-13
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
@@ -122,15 +122,15 @@
     minute: 18
   startTaskIDs: !!set
     14007969: null
-    5583319: null
-    31762649: null
+    9786489: null
     8578949: null
     19048229: null
     7961039: null
+    6260599: null
     22475409: null
     7069109: null
-    6260599: null
-    9786489: null
+    5583319: null
+    31762649: null
     10678329: null
 - id: POROTOS
   name: POROTOS
@@ -158,7 +158,6 @@
     8578949: null
     14930309: null
     30352519: null
-    6260599: null
     22475409: null
     6030739: null
     14007969: null
@@ -194,6 +193,7 @@
     31762649: null
     31173339: null
     31029219: null
+    9486839: null
     13114469: null
     34815079: null
     28682349: null
@@ -202,7 +202,7 @@
     27811309: null
     27904369: null
     33677169: null
-    9486839: null
+    6260599: null
     9786489: null
     16323839: null
 - id: PAPAS
@@ -226,16 +226,16 @@
     hour: 23
     minute: 20
   startTaskIDs: !!set
-    5959839: null
+    5583319: null
+    16323839: null
     19048229: null
     7961039: null
-    6260599: null
     22475409: null
     27629779: null
     7069109: null
-    5583319: null
+    6260599: null
     17867069: null
-    16323839: null
+    5959839: null
 - id: "BR\xD3COLI"
   name: "BR\xD3COLI"
   firstTaskID: 5583319
@@ -258,6 +258,7 @@
     hour: 14
     minute: 2
   startTaskIDs: !!set
+    9786489: null
     6735939: null
     8578949: null
     14930309: null
@@ -268,26 +269,25 @@
     16902929: null
     26777809: null
     6030739: null
-    6260599: null
     12107799: null
     5583319: null
     13807319: null
     12508889: null
-    10678329: null
     14007969: null
+    9486839: null
+    16323839: null
     13114469: null
     15333689: null
     12539179: null
     10291759: null
     8272239: null
     8983089: null
-    15759039: null
     31587059: null
     7069109: null
     11517429: null
-    9486839: null
-    9786489: null
-    16323839: null
+    6260599: null
+    10678329: null
+    15759039: null
 - id: COMIDA
   name: COMIDA
   firstTaskID: 5942109
@@ -354,10 +354,10 @@
     hour: 22
     minute: 27
   startTaskIDs: !!set
+    5959839: null
     30150259: null
     30265709: null
     30231159: null
-    5959839: null
 - id: PASTA
   name: PASTA
   firstTaskID: 6030739
@@ -407,8 +407,6 @@
     29920309: null
     27702709: null
     30452919: null
-    18918519: null
-    20215679: null
     28309309: null
     6735939: null
     27112389: null
@@ -419,6 +417,7 @@
     30208459: null
     28149329: null
     28020689: null
+    27933439: null
     29070169: null
     27661149: null
     28998749: null
@@ -426,6 +425,7 @@
     26708579: null
     31029219: null
     13114469: null
+    9486839: null
     27832679: null
     17837799: null
     30691819: null
@@ -434,9 +434,9 @@
     8272239: null
     24275439: null
     30150259: null
-    9486839: null
+    18918519: null
     28120189: null
-    27933439: null
+    20215679: null
 - id: ESPINACAS
   name: ESPINACAS
   firstTaskID: 6260599
@@ -619,8 +619,8 @@
     hour: 16
     minute: 32
   startTaskIDs: !!set
-    28969559: null
     23280399: null
+    28969559: null
 - id: ENSALADA
   name: ENSALADA
   firstTaskID: 6822599
@@ -761,12 +761,12 @@
     26777809: null
     28020689: null
     28149329: null
+    27933439: null
     29027029: null
     13807319: null
     28466009: null
     29070169: null
     21883229: null
-    34122879: null
     27832679: null
     7653739: null
     20270699: null
@@ -774,7 +774,7 @@
     31587059: null
     11517429: null
     28120189: null
-    27933439: null
+    34122879: null
 - id: COREANA
   name: COREANA
   firstTaskID: 7845599
@@ -866,10 +866,10 @@
     hour: 20
     minute: 53
   startTaskIDs: !!set
-    19739169: null
     18557769: null
-    31285559: null
+    19739169: null
     10855159: null
+    31285559: null
 - id: ARGENTINA
   name: ARGENTINA
   firstTaskID: 8589529
@@ -942,13 +942,13 @@
     13807319: null
     12107799: null
     12508889: null
-    34122879: null
     12539179: null
     10291759: null
     8983089: null
+    15759039: null
     31587059: null
     15333689: null
-    15759039: null
+    34122879: null
 - id: RAJMA MASALA
   name: RAJMA MASALA
   firstTaskID: 10291759
@@ -999,7 +999,7 @@
     31258789: null
     24246409: null
     30691819: null
-    31086429: null
+    27661149: null
     26608429: null
     26434959: null
     24275439: null
@@ -1007,7 +1007,7 @@
     27241619: null
     30755219: null
     30452919: null
-    27661149: null
+    31086429: null
     30582719: null
 - id: DESAYUNO
   name: DESAYUNO
@@ -1053,8 +1053,8 @@
     hour: 19
     minute: 42
   startTaskIDs: !!set
-    20270699: null
     11198539: null
+    20270699: null
 - id: TAMALES
   name: TAMALES
   firstTaskID: 11517429
@@ -1320,8 +1320,8 @@
     hour: 19
     minute: 41
   startTaskIDs: !!set
-    17837799: null
     18918519: null
+    17837799: null
 - id: SOPA DE LENTEJAS
   name: SOPA DE LENTEJAS
   firstTaskID: 17867069

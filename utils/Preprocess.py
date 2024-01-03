@@ -5,13 +5,16 @@ Created on Jan 22, 2018
 Holds functions used to preprocess timesheet data. 
 '''
 import csv
+import portion
 from src import TimesheetGlobals as Global
 import numpy as np, pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time
+from functools import reduce
 from src.Description import Description
-from src.TimePeriod import TimePeriod
+# from src.TimePeriod import TimePeriod
 from src.TimesheetDataset import TimesheetDataset
 from src.BodyPartsUsage import BodyPartsUsage
+from copy import copy
 
 
 def main(FM_file):
@@ -21,8 +24,9 @@ def main(FM_file):
     :return: File path to a persistent data file containing the post-PP data
     """
     FM_data = importCSV(FM_file)
-    df = Global.getDF([initTask(row) for row in FM_data], 2)
+    df = Global.getDF([initTask(row) for row in FM_data], 2).sort_index()
     Global.writePersistent(df, 1)  # Writes persistent data type of the FM outputs just for records
+    df = trimDeadTasks(df)
     df = trimTaskOverlaps(df)
     df = pd.concat([df, __genSleepTasks(df)]).sort_index()
     tsds = TimesheetDataset(
@@ -53,10 +57,24 @@ def initTask(FMstdList):
     try:
         mood = __getMood(FMstdList[FMCols.index('Mood')])
     except(IndexError):
-        mood = __getMood('-')
+        mood = Global.Mood.Neutral
     desc = Description(FMstdList[FMCols.index('Description')])
     epoch = 0  # Handle this later
     return [id, start, end, duration, project, tags, desc, epoch, mood]
+
+
+def trimDeadTasks(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Removes tasks whose existence is evaluated to be in error.
+    """
+    def dfToInterval(df) -> portion.Interval:
+        return reduce(lambda x, row: x | portion.closedopen(row.start, row.end), df)
+
+    dead = df.tsdf.tsquery('duration < timedelta(minutes=2) & ! description : ;').df
+    # TODO: Default length is 1 hr for manually-added task in timesheet.io. These are sometimes extraneous.
+    # hourTasks = df.loc[df.duration == timedelta(hours=1)]
+    # iv = hourTasks.apply(lambda row: df.shift(-1).loc[(row.index.values[0]):].head(10))
+    return df.drop(dead.index)
 
 
 def trimTaskOverlaps(df: pd.DataFrame) -> pd.DataFrame:
@@ -65,6 +83,45 @@ def trimTaskOverlaps(df: pd.DataFrame) -> pd.DataFrame:
     Reduces the duration per above, and also reduces anomalous durations which exceed end-start to end-start.
     Deletes tasks whose duration is now <= 0.
     """
+    # df.sort_index(inplace=True)
+
+    # Tasks whose time interval encapsulates the time interval of the next task
+    containsNext =  df[df.end >= df.shift(-1).end]
+
+    # Clean erroneous raw logs whose duration is 12 hours too long due to user AM/PM selection error
+    # TODO: check if it makes more sense to trim the starting or ending 12 hours. Currently always trimming the end.
+    over12Hrs = df[df.duration > timedelta(hours=12)]
+    # Indices of tasks whose logging likely contains an error in the end time's AM/PM attribute
+    ampmError = list(set(over12Hrs.index).intersection(set(containsNext.index)))
+    df.loc[ampmError, 'duration'] -= timedelta(hours=12)
+    df.loc[ampmError, 'end'] -= timedelta(hours=12)
+
+    # Clean erroneous raw logs where a task time interval contains the interval of the next task
+    containsNext = df[df.end >= df.shift(-1).end]
+    nextTasks = df.shift(-1).loc[containsNext.index]
+    # Bool mask, true if the longer task should have its start trimmed, false if it should have its end trimmed
+    trimStart = (containsNext.end - nextTasks.end) > (nextTasks.start - containsNext.start)
+    trimEndIDs = trimStart[~trimStart].index
+    shiftTimeDelta = df.loc[trimEndIDs, 'end'] - df.shift(-1).start.loc[trimEndIDs]
+    df.loc[trimEndIDs, 'end'] -= shiftTimeDelta
+    df.loc[trimEndIDs, 'duration'] -= shiftTimeDelta
+
+    trimStartIDs = trimStart[trimStart].index
+    allTrimStartIDs = copy(trimStartIDs)
+    i = 1
+    while len(trimStartIDs) > 0:
+        # TODO: breaks when updated ID collides with existing. Fix
+        shiftTimeDelta = df.shift(-i).end.loc[trimStartIDs] - df.loc[trimStartIDs, 'start']
+        df.loc[trimStartIDs, 'start'] += shiftTimeDelta
+        df.loc[trimStartIDs, 'duration'] -= shiftTimeDelta
+        i += 1
+        trimStart = df.loc[trimStartIDs].end > df.shift(-i).loc[trimStartIDs].end
+        trimStartIDs = trimStart[trimStart].index
+    newIDs = [Global.getTaskID(df.loc[j, 'start'], df.loc[j, 'end']) for j in allTrimStartIDs]
+    df.rename(index=dict(zip(allTrimStartIDs, newIDs)), inplace=True)
+
+    # Clean common errors of small overlaps between time periods of adjacent tasks. Start is preserved, end is updated.
+    df.sort_index(inplace=True)
     newEnd = np.minimum(df.start.shift(-1).head(-1), df.end.head(-1))
     df.loc[:df.index[-2], 'duration'] -= df.end.head(-1) - newEnd
     df.loc[:, 'duration'] = np.minimum(df.duration, df.end-df.start)  # Duration must be <= end-start
@@ -163,11 +220,16 @@ def __genSleepTasks(df):
         startI = to_datetime_MANUAL(row[1].end + startOffset)
         endI = to_datetime_MANUAL(row[1].start + endOffset)
         idI = Global.getTaskID(startI, endI)
-        projectI = getProject('Dormir')
-        moodI = __getMood('-')
-        descriptionI = Description('')
-        tagsI = []
-        PPlist[i] = [idI, startI, endI, endI - startI, projectI, tagsI, descriptionI, 0, moodI]
+        if endI - startI > timedelta(hours=2) and time(hour=18) > startI.time() > time(hour=10):
+            projectI = Global.Project.SIN_DATOS
+            metaprojectI = -1
+        else:
+            projectI = Global.Project.DORMIR
+            metaprojectI = 0
+        # moodI = __getMood('-')
+        # descriptionI = Description('')
+        # tagsI = []
+        PPlist[i] = [idI, startI, endI, endI - startI, projectI, [], Description(''), metaprojectI, Global.Mood.Neutral]
     retDF = pd.DataFrame(PPlist, columns=Global.PP_COLUMN_STRINGS[:Global.IND_mood + 2])
     # +2 because +1 needed since id is still a regular column, and +1 for slice end index convention
     retDF.set_index('id', inplace=True, drop=True)
@@ -188,7 +250,8 @@ def __genCircad(df):
     newSeries = pd.Series(np.zeros(len(df)), index=df.index, name = colName)
     newSeries = pd.to_datetime(newSeries)
     df = pd.concat([df, newSeries], axis=1)
-    sleepTasks = df[(df.project == Global.Project.DORMIR) & (df.duration > timedelta(hours=2))]  # Criteria for assuming a sleep task
+    # TODO: Refine criteria for detecting overnight sleep tasks
+    sleepTasks = df[(df.project == Global.Project.DORMIR) & (df.duration > timedelta(hours=2))]
     prevID = 0
     for sleepTask in sleepTasks.iterrows():
         curID = sleepTask[0]
