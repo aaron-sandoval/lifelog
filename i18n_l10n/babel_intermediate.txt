@@ -508,3 +508,17 @@ _('Life Phase')
 _('Distributions of Time of Falling Asleep and Waking Up by Life Phase')
 _('Time of day')
 _('Wake up')
+
+***WRITE*** 2024-01-18 11:36:27.626641
+Extraction summary: 
+_('Average Person-Hours of Social Interaction per Day, by Gender')
+_('Average Hours of Social Interaction per Day, by Gender')
+_('[person-hours]')
+
+***WRITE*** 2024-01-18 12:41:34.030642
+Extraction summary: 
+_('[person-hours/day]')
+
+***WRITE*** 2024-01-18 15:39:09.615646
+Extraction summary: 
+_('Total\nPerson-Hours')

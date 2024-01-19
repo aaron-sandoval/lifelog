@@ -1,18 +1,71 @@
 from enum import Enum
 import yaml
 from yamlable import yaml_info, YamlAble
-from typing import Dict, Callable
-import kiwilib
+from typing import Any, Dict, Callable, Tuple, Type, NamedTuple
+from external_modules import kiwilib
 import src.TimesheetGlobals as Global
+from dataclasses import fields as dataclass_fields, dataclass, make_dataclass
+
+
+@dataclass
+class Vizable:
+    en_US: str = ''
+    es_MX: str = ''
+    color: Tuple[float] = None
+
+    # def __getattr__(self, item):
+    #     # if not hasattr(type(self), 'attrs'):
+    #     if item == 'attrs':
+    #         setattr(self, 'attrs', {fld.name for fld in dataclass_fields(self)})
+    #         return self.attrs
+    #     raise AttributeError(f'{self} has no attribute named {item}.')
 
 
 class Gender(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
-    # UNDEFINED = -1  # Use pd.NA for instances which are yet to be defined
-    NOTAPPLICABLE = 0, 'N/A', 'N/A'   # This is for Person instances which have no gender, e.g., MultiplePeople.
-    MALE          = 1, ''   , 'HOMBRE'
-    FEMALE        = 2, ''   , 'MUJER'
-    NONBINARY     = 3, ''   , 'NO BINARIO'
+    # UNDEFINED = -1  # Use pd.NA for instances which are yet to be defined/unknown
+    NOTAPPLICABLE = 0
+    MALE = 1
+    FEMALE = 2
+    NONBINARY = 3
 
+    @classmethod
+    def _enum_data(cls, c: Type[NamedTuple]):
+        return {
+            Gender.NOTAPPLICABLE: c('N/A', 'N/A', (.6, .6, .6)), # For Person instances w/out gender, e.g., MultiplePeople
+            Gender.MALE: c('', 'HOMBRE', (.54, .81, .94)),
+            Gender.FEMALE: c('', 'MUJER', (.96, .76, .76)),
+            Gender.NONBINARY: c('', 'NO BINARIO', (.7, .7, .1)),
+        }
+
+    @staticmethod
+    def _named_tuple_class_args() -> Tuple[Dict[str, Any], Tuple]:
+        return [('dom', int, 2)], (Vizable, )
+    @classmethod
+    def _named_tuple_class(cls) -> Type[dataclass]:
+        key = '_NamedTupleClass'
+        if not hasattr(cls, key):
+            fields, bases = cls._named_tuple_class_args()
+            setattr(cls,
+                    key,
+                    # type(key, (Vizable,), {'dom': 2})
+                    make_dataclass(key, fields, bases=bases)
+                    )
+        return cls._NamedTupleClass
+    @classmethod
+    def _get_enum_data(cls) -> dict:
+        if not hasattr(cls, '_data'):
+            cls._data = cls._enum_data(cls._named_tuple_class())
+        return cls._data
+
+    def __getattr__(self, item):
+        c = type(self)
+        if item in type(self)._NamedTupleClass.__dataclass_fields__:
+            return self._get_enum_data()[self].__getattribute__(item)
+        raise AttributeError(f'{self} has no attribute named {item}.')
+
+    def color_hex(self) -> str:
+        """Hexadecimal string representation of the float color tuple."""
+        return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
     @classmethod
     def valueDict(cls):
         return {a.name: a for a in Gender}
@@ -26,16 +79,19 @@ class Gender(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
         value = loader.construct_scalar(node).strip()
         return Gender.valueDict()[value]
 
-    def aliasFuncs(self) -> Dict[str, Callable]:
-        """
-        Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
-        """
-        if not hasattr(type(self), '_aliasFuncs'):
-            type(self)._aliasFuncs = {
-               'en_US': lambda slf: slf.value[1] if slf.value[1] != '' else slf.name,
-               'es_MX': lambda slf: slf.value[2],
-            }
-        return type(self)._aliasFuncs
+    @classmethod
+    def _aliasDict(cls):
+        """Defines a map between locale strings and Callables returning the localization of an instance."""
+        return {
+           'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name,
+           'es_MX': lambda slf: slf.es_MX,
+        }
+
+    @classmethod
+    def aliasFuncs(cls) -> Dict[str, Callable]:
+        if not hasattr(cls, '_aliasFuncs'):
+            cls._aliasFuncs = cls._aliasDict()
+        return cls._aliasFuncs
 
 
 class Review(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
@@ -72,18 +128,20 @@ class Review(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
             }
         return cls._moodMap[mood]
 
-    def aliasFuncs(self) -> Dict[str, Callable]:
+    @classmethod
+    def aliasFuncs(cls) -> Dict[str, Callable]:
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(type(self), '_aliasFuncs'):
-            type(self)._aliasFuncs = {
+        if not hasattr(cls, '_aliasFuncs'):
+            cls._aliasFuncs = {
                'en_US': lambda slf: slf.value[1] if slf.value[1] != '' else slf.name,
                'es_MX': lambda slf: slf.value[2],
             }
-        return type(self)._aliasFuncs
+        return cls._aliasFuncs
 
 
+Gender._get_enum_data()
 yaml.add_constructor(u'!Gender', Gender._constructor, Loader=yaml.SafeLoader)
 yaml.add_representer(Gender, Gender._representer)
 yaml.add_constructor(u'!Review', Review._constructor, Loader=yaml.SafeLoader)
@@ -91,20 +149,33 @@ yaml.add_representer(Review, Review._representer)
 
 
 @yaml_info(yaml_tag_ns='SocialGroup')
-class SocialGroup(kiwilib.HierarchicalEnum, YamlAble): pass
+class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
+    es_MX = 'Grupo social'
+
+    @classmethod
+    def aliasFuncs(cls) -> Dict[str, Callable]:
+        """
+        Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
+        """
+        if not hasattr(cls, '_aliasFuncs'):
+            cls._aliasFuncs = {
+               'en_US': lambda slf: type(slf).__name__,
+               'es_MX': lambda slf: type(slf).es_MX,
+            }
+        return cls._aliasFuncs
 @yaml_info(yaml_tag_ns='SocialGroup')
-class SocialGroupUndefined(SocialGroup): pass  # Default. Marks one whose SocialGroup is not yet manually defined.
+class SocialGroupUndefined(SocialGroup): es_MX = 'Indefinido'  # Default. Marks one whose SocialGroup is not yet manually defined.
 @yaml_info(yaml_tag_ns='SocialGroup')
-class Relation(SocialGroup): pass
+class Relation(SocialGroup): es_MX = 'Relación'
 @yaml_info(yaml_tag_ns='SocialGroup')
-class Activity(SocialGroup): pass
+class Activity(SocialGroup): es_MX = 'Actividad'
 
 @yaml_info(yaml_tag_ns='SocialGroup')
-class ActivityProductive(Activity): pass
+class ActivityProductive(Activity): es_MX = 'Actividad productiva'
 @yaml_info(yaml_tag_ns='SocialGroup')
-class ActivityRecreational(Activity): pass
+class ActivityRecreational(Activity): es_MX = 'Actividad recreacional'
 @yaml_info(yaml_tag_ns='SocialGroup')
-class ActivityStudy(ActivityProductive): pass
+class ActivityStudy(ActivityProductive): es_MX = 'Actividad productiva'
 @yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityWork(ActivityProductive): pass
 @yaml_info(yaml_tag_ns='SocialGroup')

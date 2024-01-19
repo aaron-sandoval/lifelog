@@ -19,6 +19,7 @@ from typing import Union, Iterable, List, Tuple, Set, NamedTuple
 from enum import Enum
 # from dataclasses import dataclass
 from bisect import bisect_right
+from itertools import accumulate
 import inspect
 import streamlit as st
 import seaborn as sns
@@ -51,6 +52,7 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
         babelx.flush()
 
     global babelx
+    babelx.setLang(i18n.localeDict[locale])
     babelx.setLang(i18n.localeDict[locale])
     kiwilib.Aliasable.setDefaultLocale(locale)
     tsds = loadAndMergeDatasets(paths, catalogSuffix)
@@ -164,7 +166,6 @@ class GraphicMaker:
         '_PUBL',  # Resulting plot may be published for general public viewing.
     ]
     """
-
     @staticmethod
     def avg_Sleep_by_Weekday_and_Epoch_Group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
@@ -284,6 +285,64 @@ class GraphicMaker:
                               section=ExhibitSection.PEOPLE, sortKey=128)
 
     @staticmethod
+    def avg_social_interaction_by_gender_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+        df = copy(tsds.timesheetdf.df)
+        df = df[Global.Epoch.e2018_Data_Log_Person < df.start]
+        df['bin'] = kiwilib.date_range_bins(df['circad'], 'MS', normalize=True)
+        genders = df.person.apply(lambda plist: [tsds.cats['person'].collxn.loc[pid].gender for pid in plist])
+
+        enumCls = sg.Gender
+        enumList = list(enumCls)
+
+        df = pd.concat([df, kiwilib.enum_counts(genders, enumCls)], axis=1)
+        gend = df[['bin', 'duration'] + enumList]
+
+        # Compute the enum-hours for each enum instance. Enum-hours scale with the number of instances present in a row.
+        multNames = [g.name + '_mult' for g in enumCls]
+        if multNames[0] not in gend.columns:
+            for g, col in zip(enumList, multNames):
+                gend.loc[:, col] = gend.duration * gend[g]
+        gend = gend[['bin'] + multNames]
+        visData = gend.groupby('bin').sum()
+
+        # Total person-hours for subplot(1,2,2)
+        totals = visData[multNames].sum(axis=0) / np.timedelta64(1, 'h')  # float person-days
+        totalsAug = pd.concat([pd.Series([0]), totals])
+        totalsAug = pd.Series(accumulate(totalsAug), index=np.concatenate([[0], totals.index]))
+
+        # Data for subplot(1,2,1)
+        visData = visData / np.timedelta64(1, 'h')  # Timedelta to float hours
+        x = pd.arrays.IntervalArray(visData.index).left  # Get the start of each IntervalIndex for x coordinate in plots
+        visData = (visData.T / pd.DatetimeIndex(x).daysinmonth).T  # Set units to hours per day
+
+        # Plots
+        graphic = MatplotlibVisual(figsize=(10, 4), constrained_layout=True)
+        fig = graphic.fig
+        gridspec = fig.add_gridspec(1, 10)
+        ax0 = fig.add_subplot(gridspec[0, :-1])
+        ax1 = fig.add_subplot(gridspec[0, -1])
+        ax0.stackplot(x, visData[multNames].T, colors=[g.color for g in enumList])
+        ax0.legend([x.alias() for x in enumList], loc='upper left')
+        ax0.set_ylabel(_k('[person-hours/day]'))
+        title = _k('Average Person-Hours of Social Interaction per Day, by Gender')
+        ax0.set_title(title)
+        ax0.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+        ax0.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(1, 4, 7, 10)))
+        ax0.grid(axis='y', alpha=0.4)
+
+        ax1.bar([1], totals, bottom=totalsAug.iloc[:-1], color=[e.color_hex() for e in enumList])
+        ax1.set_title(_k('Total\nPerson-Hours'))
+        for side in ['top', 'right', 'bottom', 'left']:
+            ax1.spines[side].set_visible(False)
+        ax1.get_xaxis().set_visible(False)
+
+        auxText = getDateRangeString(df)
+        graphic.save(fileName=auxText + '_' + title.replace('\n', ''))
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.PEOPLE, sortKey=180)
+
+
+    @staticmethod
     def metaproject_area_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
         # df1 = tsds.timesheetdf.tsquery('Person : ;').df
@@ -343,7 +402,7 @@ def getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicExh
     # inversePrivacyMap = {v[:5]: k for k,v in privacyMap.items()}
     figFuncs = [v for _, v in inspect.getmembers(GraphicMaker(), inspect.isfunction)
                 if v.__name__[-5:] in privacyMap[audience]]
-    curFigFunc = GraphicMaker.sleep_start_and_end_violin_by_epoch_group_PUBL
+    curFigFunc = GraphicMaker.avg_social_interaction_by_gender_PUBL
     # return [curFigFunc(tsds)]
     return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
 

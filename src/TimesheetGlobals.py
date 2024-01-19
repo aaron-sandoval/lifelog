@@ -20,7 +20,7 @@ import pandas as pd
 # import numpy as np
 from collections import defaultdict
 from pandas.core.dtypes.inference import is_list_like
-from typing import Union, List, Iterable, Dict, Set, Callable
+from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
 import abc
 
 
@@ -134,6 +134,29 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
 class EnumABCMeta(abc.ABCMeta, type(Enum)):
     pass
 
+
+class AliasNamedTuple(NamedTuple):
+    en_US: str = '',
+    es_MX: str = ''
+
+
+class StyleNamedTuple(NamedTuple):
+    color: Tuple[float, float, float]
+
+
+class StyleColored(abc.ABC):
+    @property
+    @abc.abstractmethod
+    def color(self) -> Tuple[float, float, float]: pass
+
+
+# class EnumNamedTupleVal(abc.ABC, Enum, metaclass=EnumABCMeta):
+#     @classmethod
+#     def _named_tuple_class(cls) -> type:
+#         key = ''.join(['NT_', cls.__name__])
+#         if not hasattr(cls, key):
+#             setattr(cls, key, type('_'+key, (NamedTuple, ), {}))
+#         return getattr(cls, key)
 
 class ColumnEnum(abc.ABC):
     """Marks association of child classes to a string column name of a TimesheetDF"""
@@ -398,16 +421,24 @@ class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta
         return cls._srted
 
     def __le__(self, other):
-        return self.dt() <= other.dt()
+        if isinstance(other, Epoch):
+            return self.dt() <= other.dt()
+        return self.dt() <= other
 
     def __lt__(self, other):
-        return self.dt() < other.dt()
+        if isinstance(other, Epoch):
+            return self.dt() < other.dt()
+        return self.dt() < other
 
     def __ge__(self, other):
-        return self.dt() >= other.dt()
+        if isinstance(other, Epoch):
+            return self.dt() >= other.dt()
+        return self.dt() >= other
 
     def __gt__(self, other):
-        return self.dt() > other.dt()
+        if isinstance(other, Epoch):
+            return self.dt() > other.dt()
+        return self.dt() > other
 
     def __str__(self):
         return f'{self.name}: {self.dt().strftime("%Y-%m-%d %H:%M")}'
@@ -469,6 +500,7 @@ class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta
     e2021_SpChg_KO_Start =    34, datetime(2021, 9, 10, 0, 0, 0), '2021 SpChg Inicio con KO'  # Kristin joins Spare Change
     e2022_SpChg_JW_KS_Start = 35, datetime(2022, 9, 1, 0, 0, 0), '2022 SpChg Inicio con JW KS'  # Kirsten, Jonathan join Spare Change
     e2024_AISC =              36, datetime(2024, 1, 13, 3, 0, 0), '2023 Campamento de Securidad de IA'  # AISC starts
+    e2018_Data_Log_Person =   37, datetime(2018, 2, 10, 3, 0, 0), '2018 Datos Persona'  # Data on time spent with individuals somewhat consistent
 # TODO: add apochs for data feature introductions
 # Naps: 2021-05-05
 # Overnight sleep interruptions: 2023-05-15
@@ -517,10 +549,10 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
         return self.epochGroupAliasFuncs()[locale](self, dt)
 
     def sortedEpochGroupNames(self) -> List[str]:
-        if not hasattr(self, '_sortedEpochGroups'):
+        if not hasattr(self, '_sortedEpochGroupNames'):
             temp = {self.labelDT(iv.lower): iv.lower for iv, names in self.value.items()}
-            self._sortedEpochGroups: List[str] = sorted(temp.keys(), key=lambda x: temp[x])
-        return self._sortedEpochGroups
+            self._sortedEpochGroupNames: List[str] = sorted(temp.keys(), key=lambda x: temp[x])
+        return self._sortedEpochGroupNames
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
