@@ -36,7 +36,7 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         f"I've spent little time. "
         f"\n\n"
         f"**Data Collection Changelog**\n\n"
-        f"*2017-12*: Started regularly collecting data on time spent with individual people."
+        f"*2018-02*: Started regularly collecting data on time spent with individual people."
     ))
     st.divider()
 
@@ -126,14 +126,15 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         f"The only month in which I spent more time with women was 2022-03. "
         f"This month was an anomaly within an anomaly. "
         f"The outer anomaly was the lonely cycle tour spanning 2022, "
-        f"and the inner anomaly was the two weeks in 2022-03 that I toured along with two girls Suzie and Veronika, "
+        f"and the inner anomaly was the two weeks in 2022-03 when I toured along with two girls Suzie and Veronika, "
         f"during which we spent nearly every hour together. "
         f"The other 2022 anomaly was 2022-09, when I spent a week in Germany with several friends from back home.\n\n"
         f"There are plenty of questions this plot raises to be investigated further. "
         f"I'm not sure what caused the spike in 2022-10 through 2022-11, nor the dip in 2021-02. "
         f"\n\n**Future work**\n\n"
         f"- Analyze other demographics, including relation, age, and shared activities\n"
-        f"- Decompose groups logged as `Gender.{sg.Gender.NOTAPPLICABLE.alias()}` into their constituent individuals"
+        f"- Decompose remaining groups logged as `Gender.{sg.Gender.NOTAPPLICABLE.alias()}` "
+        f"into their constituent individuals"
     ))
 
 

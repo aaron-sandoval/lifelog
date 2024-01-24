@@ -61,8 +61,6 @@ class Catalog(abc.ABC):
     def collxn(self, val):
         self._collxn = val
 
-    # @abc.abstractmethod
-    # def collect(self, collxble: Collectible):
     def collect(self, collxbles: Union[dict, Iterable[dict], Collectible, Iterable[Collectible]]) -> None:
         """
         Adds a set of Collectibles to self.collxn if not already present. If already present, the collxble is skipped.
@@ -86,7 +84,6 @@ class Catalog(abc.ABC):
                 item['id'] = self.COLLXBLE_CLASS.generateID(**item)
         self.collxn = pd.concat((self.collxn, pd.DataFrame(collxbles).set_index('id')))
 
-    # @abc.abstractmethod
     def hasCollectible(self, collxble: Collectible) -> bool:
         return collxble.id in self.collxn.index
 
@@ -105,7 +102,6 @@ class Catalog(abc.ABC):
         # Task ID range update eliminated b/c it interferes w/ updateScalingFields(). Task ID range updated afterwards.
         self.collect(objs)
 
-    # @abc.abstractmethod
     def getObjects(self, collxn=None, ids: Iterable[str] = None) -> List[Collectible]:
         """
         If no args, constructs and returns a list of Collectibles encoded in the Catalog.

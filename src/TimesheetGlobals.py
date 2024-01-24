@@ -762,6 +762,8 @@ class Privacy(Enum):
     PRIVATE = 2
 
 
+class DataEntryException(Exception): pass
+
 ########################
 # Dataframe Operations #
 ########################

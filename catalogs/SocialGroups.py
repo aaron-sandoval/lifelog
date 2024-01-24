@@ -151,20 +151,26 @@ yaml.add_representer(Review, Review._representer)
 @yaml_info(yaml_tag_ns='SocialGroup')
 class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
     es_MX = 'Grupo social'
+    color = (0.5, 0.5, 0.5)
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
-        """
-        Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
-        """
         if not hasattr(cls, '_aliasFuncs'):
             cls._aliasFuncs = {
                'en_US': lambda slf: type(slf).__name__,
                'es_MX': lambda slf: type(slf).es_MX,
             }
         return cls._aliasFuncs
+
+    def color_hex(self) -> str:
+        """Hexadecimal string representation of the float color tuple."""
+        return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
+
+
 @yaml_info(yaml_tag_ns='SocialGroup')
 class SocialGroupUndefined(SocialGroup): es_MX = 'Indefinido'  # Default. Marks one whose SocialGroup is not yet manually defined.
+@yaml_info(yaml_tag_ns='SocialGroup')
+class MultiplePeople(SocialGroup): pass
 @yaml_info(yaml_tag_ns='SocialGroup')
 class Relation(SocialGroup): es_MX = 'Relación'
 @yaml_info(yaml_tag_ns='SocialGroup')
@@ -190,11 +196,15 @@ class ActivityBike(ActivityRecreational): pass
 class ActivityTravel(ActivityRecreational): pass  # Interacted while they or I are leisure traveling. Not work travel
 @yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityHospitality(ActivityTravel): pass  # Host or guest while leisure traveling
-@yaml_info(yaml_tag_ns='SocialGroup')
-class WarmshowersHospitality(ActivityHospitality, ActivityBike): pass  # Host or guest through Warmshowers or similar
+
 
 @yaml_info(yaml_tag_ns='SocialGroup')
-class Colleague(Relation): pass  # Includes any professional, client, volunteer, etc. relationship.
+class Colleague(Relation):
+    # Includes any professional, client, volunteer, and other structured relationships
+    es_MX = 'Colega'
+    color = (.9, .2, .2)
+
+
 @yaml_info(yaml_tag_ns='SocialGroup')
 class ColleagueWork(Colleague, ActivityWork): pass
 @yaml_info(yaml_tag_ns='SocialGroup')
@@ -213,9 +223,24 @@ class ColleagueBallStructures(ColleagueBall): pass  # Includes people from other
 class ColleagueBallOPIR(ColleagueBall): pass  # Includes peo[ple from other orgs
 
 @yaml_info(yaml_tag_ns='SocialGroup')
-class Family(Relation): pass
+class Family(Relation):
+    es_MX = 'Familia'
+    color = (.7, .2, .9)
+
+
 @yaml_info(yaml_tag_ns='SocialGroup')
-class Friend(Relation): pass
+class Friend(Relation):
+    es_MX = 'Amigo'
+    color = (.2, .4, .9)
+
+
+@yaml_info(yaml_tag_ns='SocialGroup')
+class Acquaintance(Relation):
+    # People w/out much personal bond like Friend nor structured context like Colleague
+    es_MX = 'Conocido'
+    color = (.5, .85, .9)
+
+
 @yaml_info(yaml_tag_ns='SocialGroup')
 class FamilyMom(Family): pass
 @yaml_info(yaml_tag_ns='SocialGroup')
@@ -224,4 +249,4 @@ class FamilyDad(Family): pass
 class FamilyNuclear(Family, ActivityRoommate): pass
 
 @yaml_info(yaml_tag_ns='SocialGroup')
-class MultiplePeople(Relation): pass
+class WarmshowersHospitality(ActivityHospitality, ActivityBike, Acquaintance): pass  # Host or guest via Warmshowers or similar

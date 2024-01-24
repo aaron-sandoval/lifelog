@@ -306,7 +306,7 @@ class GraphicMaker:
         visData = gend.groupby('bin').sum()
 
         # Total person-hours for subplot(1,2,2)
-        totals = visData[multNames].sum(axis=0) / np.timedelta64(1, 'h')  # float person-days
+        totals = visData[multNames].sum(axis=0) / np.timedelta64(1, 'h')  # float person-hours
         totalsAug = pd.concat([pd.Series([0]), totals])
         totalsAug = pd.Series(accumulate(totalsAug), index=np.concatenate([[0], totals.index]))
 

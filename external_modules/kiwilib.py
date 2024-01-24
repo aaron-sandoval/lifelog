@@ -343,7 +343,7 @@ class HierarchicalEnum:
         return type(self) == type(other)
 
     def __hash__(self):
-        return hash(type(self).__name__)
+        return hash(repr(type(self)))
 
 
 class LinkedHeapNode:

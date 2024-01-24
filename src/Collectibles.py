@@ -944,8 +944,6 @@ class Person(Collectible, IncompletePersistent, Global.ListColumn):
     _CATALOG_FIELDS = []
 
     def __init__(self, *args, **kwargs):
-        if kwargs['name'] in ('ANGELA SANDOVAL',  'DAVID KINCH', 'DOUG SWINDELL', 'GERALYN CREADON-SWINDELL', 'TAMMY GONZALES'):
-            a = 1
         super().__init__(*args, **kwargs)
         #  Assume that whenMet is the first time they appear in the TSDF record, unless a value is passed in kwargs.
         now = pd.Timestamp.now().date()
@@ -1039,6 +1037,28 @@ class Person(Collectible, IncompletePersistent, Global.ListColumn):
     @classmethod
     def processingPrecedence(cls) -> int:
         return 15  # Relatively early
+
+    def primaryRelation(self) -> sg.Relation:
+        """
+        Returns an instance of the primary `SocialGroups.Relation` immediate subclass of `self`.
+        If `self` contains multiple `Relation` instances, uses the following precedence:
+        1. `SocialGroups.Family`
+        2. `SocialGroups.Friend`
+        3. `SocialGroups.Colleague`
+        :return:
+        """
+        rels = list(filter(lambda x: isinstance(x, sg.Relation), self.relationships))
+        if len(rels) == 0:
+            return pd.NA
+            # raise Global.DataEntryException(
+            #     f"{self.id}'s relationships {self.relationships} contain no {sg.Relation()}.")
+        if any([isinstance(r, sg.Family)       for r in rels]): return sg.Family()
+        if any([isinstance(r, sg.Friend)       for r in rels]): return sg.Friend()
+        if any([isinstance(r, sg.Colleague)    for r in rels]): return sg.Colleague()
+        if any([isinstance(r, sg.Acquaintance) for r in rels]): return sg.Acquaintance()
+        raise Exception(f"{self.id}'s relationships {self.relationships} contain an unaccounted {sg.Relation()}.")
+
+
 
 
 class Food(AutofillPrevious, DAGCollectible, BareNameID, Global.ListColumn):
