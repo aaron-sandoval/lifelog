@@ -53,8 +53,7 @@ def rootProjectPath() -> str:
 
 sys.path.append(rootProjectPath())
 sys.path.append(os.path.join(rootProjectPath(), 'external_modules'))
-# from external_modules
-import kiwilib
+from external_modules import kiwilib
 
 
 def PPPath():

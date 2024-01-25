@@ -73,9 +73,6 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
     st.header(_k('Demographics'))
 
     st.subheader(_k('Gender'))
-    # st.markdown(_k(
-    #     "Here we examine the demographic properties over time."
-    # ))
 
     # Total Time Spent with Individual People, Sorted
     st.markdown(_k(
@@ -137,6 +134,33 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         f"into their constituent individuals"
     ))
 
+    st.subheader(_k('Primary Relation'))
+    st.markdown(_k(
+        f"The primary relations are {['`'+g().alias()+'`' for g in list(sg.Relation.__subclasses__())]}. "
+        f"Similarly to `{sg.Gender().alias()}`, every person is assigned to a primary relation. "
+        f"But primary relations are just part of "
+        f"a more complex, hierarchical classification system of `{sg.SocialGroup().alias()}`s. "
+        f"`{sg.SocialGroup().alias()}` is the root of collection of categories structured in a "
+        f"distributed acyclic graph (DAG). "
+        f"For example, `{sg.Colleague().alias()}` is the parent of the subcategories "
+        f"{['`'+g().alias()+'`' for g in list(sg.Colleague.__subclasses__())]}. "
+        f"All members of `{sg.ColleagueWork().alias()}` are also members of `{sg.Colleague().alias()}`. "
+        f"Each person in the catalog may belong to several `{sg.SocialGroup().alias()}`s. "
+        f"I'll explore the `{sg.SocialGroup().alias()}` structure more fully"
+    ))
+    next(gxhs).exhibitStreamlit()
+    st.markdown(_k(
+        f"The total profile of this plot matches that of the *Person-Hours by Gender* plot in the previous section; "
+        f"it's only the division of the total which differs. "
+        f"Some hypotheses presented in that subsection are confirmed here. "
+        f"I don't spend that much time overall with family, "
+        f"and the time I do is concentrated in spikes when I visit my dad's family and around holidays. "
+        f"It appears that most of the dip in 2021-02 comes from "
+        f"a sharp reduction in time with {sg.Colleague.alias()}s. "
+        f"But I don't recall why that reduction took place. "
+        f"\n\n**Future work**\n\n"
+        f"- Analyze other demographics, including relation, age, and shared activities\n"
+    ))
 
 if __name__ == '__main__':
     main(os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl'))

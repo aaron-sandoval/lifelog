@@ -522,3 +522,7 @@ _('[person-hours/day]')
 ***WRITE*** 2024-01-18 15:39:09.615646
 Extraction summary: 
 _('Total\nPerson-Hours')
+
+***WRITE*** 2024-01-24 16:47:14.554436
+Extraction summary: 
+_('Average Person-Hours of Social Interaction per Day, by Primary Relation')
