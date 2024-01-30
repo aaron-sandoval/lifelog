@@ -28,6 +28,7 @@ tsqparser/testQueries_1.txt
 Annotated_Excel/
 .idea/
 .pytest_cache/
+.ipynb_checkpoints/
 spec-list*.txt
 Timesheet Analysis Outline.txt
 desktop.ini
