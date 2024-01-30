@@ -154,24 +154,24 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         f"who's grown close enough to be considered a `{sg.Friend().alias()}`, "
         f"that would be considered time with a `{sg.Friend().alias()}` in this analysis. "
     ))
-    next(gxhs).exhibitStreamlit()
-    st.markdown(_k(
-        f"The total profile of this plot matches that of the *Person-Hours by Gender* plot in the previous section; "
-        f"it's only the division of the total profile among the categories which differs. "
-        f"Some hypotheses presented in that subsection are confirmed here. "
-        f"I don't spend that much time overall with family, "
-        f"and the time I do is concentrated in spikes when I visit my dad's family and around holidays. "
-        f"It appears that most of the dip in 2021-02 comes from "
-        f"a sharp reduction in time with {sg.Colleague().alias()}s, "
-        f"but I don't recall what happened at work which would have caused that reduction.\n\n"
-        f"In 2022, the scant social time contained almost no time with "
-        f"`{sg.Family().alias()}` or `{sg.Colleague().alias()}`s. "
-        f"It's also when I have the most time with `{sg.Acquaintance().alias()}`s logged. "
-        f"But I hesitate to conclude much from that observation, because in 2022 I was more consistent in logging "
-        f"time spent with `{sg.Acquaintance().alias()}`s than in other periods due to the overall low social time. "
-        f"\n\n**Future work**\n\n"
-        f"- Analyze other demographics, including age and shared activities\n"
-    ))
+    # next(gxhs).exhibitStreamlit()
+    # st.markdown(_k(
+    #     f"The total profile of this plot matches that of the *Person-Hours by Gender* plot in the previous section; "
+    #     f"it's only the division of the total profile among the categories which differs. "
+    #     f"Some hypotheses presented in that subsection are confirmed here. "
+    #     f"I don't spend that much time overall with family, "
+    #     f"and the time I do is concentrated in spikes when I visit my dad's family and around holidays. "
+    #     f"It appears that most of the dip in 2021-02 comes from "
+    #     f"a sharp reduction in time with {sg.Colleague().alias()}s, "
+    #     f"but I don't recall what happened at work which would have caused that reduction.\n\n"
+    #     f"In 2022, the scant social time contained almost no time with "
+    #     f"`{sg.Family().alias()}` or `{sg.Colleague().alias()}`s. "
+    #     f"It's also when I have the most time with `{sg.Acquaintance().alias()}`s logged. "
+    #     f"But I hesitate to conclude much from that observation, because in 2022 I was more consistent in logging "
+    #     f"time spent with `{sg.Acquaintance().alias()}`s than in other periods due to the overall low social time. "
+    #     f"\n\n**Future work**\n\n"
+    #     f"- Analyze other demographics, including age and shared activities\n"
+    # ))
 
 if __name__ == '__main__':
     main(os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl'))
