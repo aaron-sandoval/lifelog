@@ -15,6 +15,8 @@ import src.TimesheetGlobals as Global
 import catalogs.SocialGroups as sg
 from utils import Visualize
 from utils import Exhibit
+from external_modules import kiwilib
+from typing import Type
 
 
 def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):
@@ -129,37 +131,95 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         f"There are plenty of questions this plot raises to be investigated further. "
         f"I'm not sure what caused the spike in 2022-10 through 2022-11, nor the dip in 2021-02. "
         f"\n\n**Future work**\n\n"
-        f"- Analyze other demographics, including relation, age, and shared activities\n"
         f"- Decompose remaining groups logged as `Gender.{sg.Gender.NOTAPPLICABLE.alias()}` "
         f"into their constituent individuals"
     ))
 
     st.subheader(_k('Primary Relation'))
     st.markdown(_k(
-        f"The primary relations are {['`'+g().alias()+'`' for g in list(sg.Relation.__subclasses__())]}. "
-        f"Similarly to `{sg.Gender().alias()}`, every person is assigned to a primary relation. "
-        f"But primary relations are just part of "
-        f"a more complex, hierarchical classification system of `{sg.SocialGroup().alias()}`s. "
-        f"`{sg.SocialGroup().alias()}` is the root of collection of categories structured in a "
-        f"distributed acyclic graph (DAG). "
-        f"For example, `{sg.Colleague().alias()}` is the parent of the subcategories "
-        f"{['`'+g().alias()+'`' for g in list(sg.Colleague.__subclasses__())]}. "
-        f"All members of `{sg.ColleagueWork().alias()}` are also members of `{sg.Colleague().alias()}`. "
-        f"Each person in the catalog may belong to several `{sg.SocialGroup().alias()}`s. "
-        f"I'll explore the `{sg.SocialGroup().alias()}` structure more fully"
+        f"Primary relations are another high-level lens through which to characterize my social time. "
+        f"Analyzing primary relation can distinguish when I'm having fun with my friends vs "
+        f"meeting with work colleagues or hanging out with family. "
+        f"The types of primary relation are :\n"
+        f"1. `{sg.Family().alias()}`\n"
+        f"1. `{sg.Friend().alias()}`\n"
+        f"1. `{sg.Colleague().alias()}`\n"
+        f"1. `{sg.Acquaintance().alias()}`\n\n"
+        f"Every `Person` has a `{sg.Relation().alias()}`, and some people have multiple. "
+        f"In those instances, the primary relation follows the order of precedence in the above list. "
+        f"So when I'm with a `{sg.Colleague().alias()}` "
+        f"who's grown close enough to be considered a `{sg.Friend().alias()}`, "
+        f"that would be considered time with a `{sg.Friend().alias()}` in this analysis. "
     ))
+    with st.expander(Visualize.STR_BACKEND + f': `{sg.Relation().alias()}` and the `{sg.SocialGroup().alias()}` Graph'):
+        st.markdown(_k(
+            f"Each `Person` has a `relationships` property containing at least one `{sg.Relation().alias()}`. "
+            # f"in that set must correspond to one of the "
+            # f"{len(sg.Relation.__subclasses__())} primary relations above. "
+            f"But not every `Person` has one of the {len(sg.Relation.__subclasses__())} primary relations above "
+            f"explicitly listed in their `relationships`. "
+            f"So how do you figure out what their primary relation is? "
+            f"Primary relations are just part of "
+            f"a more complex, hierarchical `{sg.SocialGroup().alias()}` classification system. "
+            f"I'm not talking about a social group hierarchy of nobles and peasants, "
+            f"but rather a hierarchy which relates the different groups of people you spend time with, "
+            f"like your climbing friends, the widget testing team at work, or your secret religious cult. "
+            f"`{sg.SocialGroup().alias()}` is the root of collection of categories structured in a "
+            f"distributed acyclic graph (DAG) "
+            f"which encodes the inheritance of `{sg.SocialGroup().alias()}` membership. "
+            f"Here is a subgraph of the full hierarchy showing the descendants of the `{sg.Relation().alias()}` node. "
+        ))
+
+        import pygraphviz as pgv
+        import re
+
+        def newline_before_caps(s: str):
+            return re.sub(r"([a-z])([A-Z])", r"\1\n\2", s)
+
+        def draw_descendants(cls: Type[kiwilib.Aliasable], g: pgv.AGraph):
+            """Plots descendant DAG of `cls`. To be refactored and relocated."""
+            for ch in cls.__subclasses__():
+                g.add_edge(newline_before_caps(cls().alias()), newline_before_caps(ch().alias()))
+                draw_descendants(ch, g)
+        Sg = sg.Relation
+        G = pgv.AGraph(directed=True)
+        G.graph_attr['nodesep'] = 0.1
+        G.node_attr["shape"] = "box"
+        G.node_attr["margin"] = 0.02
+        G.node_attr["width"] = 0.02
+        G.edge_attr["color"] = "blue"
+        G.add_node(newline_before_caps(Sg.__name__))
+        draw_descendants(Sg, G)
+        st.graphviz_chart(G.string(), use_container_width=True)
+
+        st.markdown(_k(
+            f"The primary relations are the immediate children of `{sg.Relation().alias()}`. "
+            f"If one's `relationships` property doesn't contain a primary relation, "
+            f"then it must contain one of the other child nodes in the tree above, "
+            f"and her primary relation is resolved by tracing the inheritance. "
+            f"For example, if someone with `{sg.ColleagueBall().alias()}` doesn't also have "
+            f"any higher precedence `{sg.Relation().alias()}` or any of their children, "
+            f"then their primary relation is `{sg.Colleague().alias()}`.\n\n"
+            f"I'll explore the rest of the `{sg.SocialGroup().alias()}` "
+            f"structure comprehensively in another {Visualize.STR_BACKEND}."
+        ))
     next(gxhs).exhibitStreamlit()
     st.markdown(_k(
         f"The total profile of this plot matches that of the *Person-Hours by Gender* plot in the previous section; "
-        f"it's only the division of the total which differs. "
+        f"it's only the division of the total profile among the categories which differs. "
         f"Some hypotheses presented in that subsection are confirmed here. "
         f"I don't spend that much time overall with family, "
         f"and the time I do is concentrated in spikes when I visit my dad's family and around holidays. "
         f"It appears that most of the dip in 2021-02 comes from "
-        f"a sharp reduction in time with {sg.Colleague.alias()}s. "
-        f"But I don't recall why that reduction took place. "
+        f"a sharp reduction in time with {sg.Colleague().alias()}s, "
+        f"but I don't recall what happened at work which would have caused that reduction.\n\n"
+        f"In 2022, the scant social time contained almost no time with "
+        f"`{sg.Family().alias()}` or `{sg.Colleague().alias()}`s. "
+        f"It's also when I have the most time with `{sg.Acquaintance().alias()}`s logged. "
+        f"But I hesitate to conclude much from that observation, because in 2022 I was more consistent in logging "
+        f"time spent with `{sg.Acquaintance().alias()}`s than in other periods due to the overall low social time. "
         f"\n\n**Future work**\n\n"
-        f"- Analyze other demographics, including relation, age, and shared activities\n"
+        f"- Analyze other demographics, including age and shared activities\n"
     ))
 
 if __name__ == '__main__':
