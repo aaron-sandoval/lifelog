@@ -75,6 +75,9 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
     st.header(_k('Demographics'))
 
     st.subheader(_k('Gender'))
+    # st.markdown(_k(
+    #     "Here we examine the demographic properties over time."
+    # ))
 
     # Total Time Spent with Individual People, Sorted
     st.markdown(_k(
@@ -151,58 +154,6 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         f"who's grown close enough to be considered a `{sg.Friend().alias()}`, "
         f"that would be considered time with a `{sg.Friend().alias()}` in this analysis. "
     ))
-    with st.expander(Visualize.STR_BACKEND + f': `{sg.Relation().alias()}` and the `{sg.SocialGroup().alias()}` Graph'):
-        st.markdown(_k(
-            f"Each `Person` has a `relationships` property containing at least one `{sg.Relation().alias()}`. "
-            # f"in that set must correspond to one of the "
-            # f"{len(sg.Relation.__subclasses__())} primary relations above. "
-            f"But not every `Person` has one of the {len(sg.Relation.__subclasses__())} primary relations above "
-            f"explicitly listed in their `relationships`. "
-            f"So how do you figure out what their primary relation is? "
-            f"Primary relations are just part of "
-            f"a more complex, hierarchical `{sg.SocialGroup().alias()}` classification system. "
-            f"I'm not talking about a social group hierarchy of nobles and peasants, "
-            f"but rather a hierarchy which relates the different groups of people you spend time with, "
-            f"like your climbing friends, the widget testing team at work, or your secret religious cult. "
-            f"`{sg.SocialGroup().alias()}` is the root of collection of categories structured in a "
-            f"distributed acyclic graph (DAG) "
-            f"which encodes the inheritance of `{sg.SocialGroup().alias()}` membership. "
-            f"Here is a subgraph of the full hierarchy showing the descendants of the `{sg.Relation().alias()}` node. "
-        ))
-
-        import pygraphviz as pgv
-        import re
-
-        def newline_before_caps(s: str):
-            return re.sub(r"([a-z])([A-Z])", r"\1\n\2", s)
-
-        def draw_descendants(cls: Type[kiwilib.Aliasable], g: pgv.AGraph):
-            """Plots descendant DAG of `cls`. To be refactored and relocated."""
-            for ch in cls.__subclasses__():
-                g.add_edge(newline_before_caps(cls().alias()), newline_before_caps(ch().alias()))
-                draw_descendants(ch, g)
-        Sg = sg.Relation
-        G = pgv.AGraph(directed=True)
-        G.graph_attr['nodesep'] = 0.1
-        G.node_attr["shape"] = "box"
-        G.node_attr["margin"] = 0.02
-        G.node_attr["width"] = 0.02
-        G.edge_attr["color"] = "blue"
-        G.add_node(newline_before_caps(Sg.__name__))
-        draw_descendants(Sg, G)
-        st.graphviz_chart(G.string(), use_container_width=True)
-
-        st.markdown(_k(
-            f"The primary relations are the immediate children of `{sg.Relation().alias()}`. "
-            f"If one's `relationships` property doesn't contain a primary relation, "
-            f"then it must contain one of the other child nodes in the tree above, "
-            f"and her primary relation is resolved by tracing the inheritance. "
-            f"For example, if someone with `{sg.ColleagueBall().alias()}` doesn't also have "
-            f"any higher precedence `{sg.Relation().alias()}` or any of their children, "
-            f"then their primary relation is `{sg.Colleague().alias()}`.\n\n"
-            f"I'll explore the rest of the `{sg.SocialGroup().alias()}` "
-            f"structure comprehensively in another {Visualize.STR_BACKEND}."
-        ))
     next(gxhs).exhibitStreamlit()
     st.markdown(_k(
         f"The total profile of this plot matches that of the *Person-Hours by Gender* plot in the previous section; "

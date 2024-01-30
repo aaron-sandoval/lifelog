@@ -8,10 +8,10 @@ import itertools
 import datetime
 import math
 from enum import EnumMeta, Enum
-from collections import defaultdict
+import collections
 import portion
 from pandas.core.dtypes.inference import is_list_like
-from typing import Union, TypeVar, Type, Any, Iterable, Tuple, List, Generator, Dict, Callable
+from typing import TypeVar, Type, Any, Iterable, Tuple, List, Generator, Dict, Callable
 import pandas as pd
 import numpy as np
 from yamlable import YamlCodec
@@ -73,7 +73,7 @@ def flatten(it: Iterable, numLevels: int = pd.NA) -> Generator:
     """
     for x in it:
         # TODO: swap type check with more general check for __iter__() or __next__() or whatever
-        if isinstance(x, Iterable) and not isinstance(x, (str, bytes, EnumMeta)) and \
+        if isinstance(x, collections.abc.Iterable) and not isinstance(x, (str, bytes, EnumMeta)) and \
                 (pd.isna(numLevels) or numLevels > 0):
             yield from flatten(x, numLevels-1)
         else:
@@ -220,6 +220,91 @@ def addLineBreaks(s: str, delim: str = ' ', maxLen=None, delimIndices: List[int]
         # return '\n'.join([delim.join([])])
 
 
+def date_range_bins(ser: pd.Series, freq: str = 'W', normalize: bool = True, **kwargs) -> pd.Series:
+    """
+    Maps `ser` of datetime-like values to a Categorical dtype Series.
+    Categories are pd.IntervalIndex instances, each of which is a time interval as specified by `freq`.
+    :param ser: Series of type `date` or `datetime`-like. Must be processable by `pd.to_datetime()`.
+    :param freq: pd.DateOffset alias. See https://pandas.pydata.org/docs/user_guide/timeseries.html#offset-aliases
+    :param normalize: Whether to start the bins at midnight of the first day.
+    If False, bins will start at `ser.iloc[0]` and `freq` will be applied from there.
+    Generally, `bool=True` for `freq` specs of days or longer base intervals.
+    """
+    circ = pd.to_datetime(ser)
+    if 'bins' not in kwargs:
+        a: pd.DatetimeIndex = pd.date_range(circ.head(1).values[0], circ.tail(1).values[0], freq=freq,
+                                            normalize=normalize)
+
+        # `a` spans most of `ser`, but due to pandas' design both the head and tail of `ser` may lie outside.
+        # `ser.head(1)` should only be at worst 1 `a.freq` less than `a[0]`, so extend head by 1.
+        headExtension = np.expand_dims(np.array(a[0] - a.freq), axis=(0,))
+
+        if a.freq.name in 'W D C B BH H T S L U N us ms min':  # frequency in weeks, days, or shorter
+            # `ser.tail(1)` may be many units of `a.freq` greater than `a[-1]` if `normalize`==True.
+            # Concatenate however many are needed to `a` to bound `ser.tail(1)`.
+            tailExtension = a[-1] + np.arange(((circ.iloc[-1] - a[-1]) // a.freq + 2)) * a.freq
+        else:
+            tailExtension = np.expand_dims(np.array(a[-1] + a.freq), axis=(0,))
+        # Expand the DateTimeIndex by on either end. Ensures that `ser.head` and `ser.tail` are both contained inside.
+        a = a.union(np.concatenate([headExtension, tailExtension]))
+        kwargs['bins'] = a
+    return pd.cut(circ, right=False, **kwargs)
+
+
+def enum_counts(ser: pd.Series, enumCls: Type[Enum]) -> pd.DataFrame:
+    """
+    Counts the instances of `enumCls` members in a Series of iterables.
+    :param ser: Series of Iterable[Any], possibly containing members of `enumCls`.
+    :param enumCls: An Enum subclass whose instances in the rows of `ser` are to be counted
+    :return: A integer-valued DataFrame with columns as all the members of `enumCls`.
+    Data is the count of instances of that enum member in that row in `ser`.
+    """
+    def make_count(lst: Iterable, enumCls1: type):
+        if len(lst) == 0:
+            lst.extend([0] * len(enumCls1))
+        countDict = {enum_member: 0 for enum_member in enumCls1}
+        for item in filter(lambda x: isinstance(x, enumCls1), lst):
+            countDict[item] += 1
+        lst.clear()
+        lst.extend(countDict.values())
+
+    ser.apply(make_count, args=(enumCls,))
+    out = pd.DataFrame(np.vstack(ser.values), index=ser.index)
+    return out.rename(dict(zip(range(len(enumCls)), list(enumCls))), axis=1)
+
+
+def backtrack(sol, cur):
+    """
+
+    :param sol:
+    :param cur:
+    :return:
+    """
+    # TODO: generalize this to be callable like a library function.
+    # Prob pass in procedures for isSolution, constructCandidates, processSolution
+    # Figure out how to handle processSolution appending to an outside list.
+
+    def isSolution(a, k):
+        # nonlocal n
+        return k == n
+
+    def constructCandidates(a, k):
+        return [a[:k] + [i] + a[k + 1:] for i in nums if i not in a]
+
+    def processSolution(a):
+        # nonlocal out
+        out.append(a)
+
+    if isSolution(sol, cur):
+        processSolution(sol)
+    else:
+        nextSols = constructCandidates(sol, cur)
+        cur += 1
+        for nextSol in nextSols:
+            # print(f'nextSol: {nextSol}')
+            backtrack(nextSol, cur)
+
+
 class HierarchicalEnum:
     """
     A superclass for defining a hierarchical enum-like data structure using a class hierarchy.
@@ -259,93 +344,6 @@ class HierarchicalEnum:
 
     def __hash__(self):
         return hash(repr(type(self)))
-
-
-def date_range_bins(ser: pd.Series, freq: str = 'W', normalize: bool = True, **kwargs) -> pd.Series:
-    """
-    Maps `ser` of datetime-like values to a Categorical dtype Series.
-    Categories are pd.IntervalIndex instances, each of which is a time interval as specified by `freq`.
-    :param ser: Series of type `date` or `datetime`-like. Must be processable by `pd.to_datetime()`.
-    :param freq: pd.DateOffset alias. See https://pandas.pydata.org/docs/user_guide/timeseries.html#offset-aliases
-    :param normalize: Whether to start the bins at midnight of the first day.
-    If False, bins will start at `ser.iloc[0]` and `freq` will be applied from there.
-    Generally, `bool=True` for `freq` specs of days or longer base intervals.
-    """
-    circ = pd.to_datetime(ser)
-    if 'bins' not in kwargs:
-        a: pd.DatetimeIndex = pd.date_range(circ.head(1).values[0], circ.tail(1).values[0], freq=freq,
-                                            normalize=normalize)
-
-        # `a` spans most of `ser`, but due to pandas' design both the head and tail of `ser` may lie outside.
-        # `ser.head(1)` should only be at worst 1 `a.freq` less than `a[0]`, so extend head by 1.
-        headExtension = np.expand_dims(np.array(a[0] - a.freq), axis=(0,))
-
-        if a.freq.name in 'W D C B BH H T S L U N us ms min':  # frequency in weeks, days, or shorter
-            # `ser.tail(1)` may be many units of `a.freq` greater than `a[-1]` if `normalize`==True.
-            # Concatenate however many are needed to `a` to bound `ser.tail(1)`.
-            tailExtension = a[-1] + np.arange(((circ.iloc[-1] - a[-1]) // a.freq + 2)) * a.freq
-        else:
-            tailExtension = np.expand_dims(np.array(a[-1] + a.freq), axis=(0,))
-        # Expand the DateTimeIndex by on either end. Ensures that `ser.head` and `ser.tail` are both contained inside.
-        a = a.union(np.concatenate([headExtension, tailExtension]))
-        kwargs['bins'] = a
-    return pd.cut(circ, right=False, **kwargs)
-
-
-def enum_counts(ser: pd.Series, enumCls: Union[Type[Enum], Iterable[HierarchicalEnum]]) -> pd.DataFrame:
-    """
-    Counts the instances of `enumCls` members in a Series of iterables.
-    :param ser: Series of Iterable[Any], possibly containing members of `enumCls`.
-    :param enumCls: An Enum subclass whose instances in the rows of `ser` are to be counted
-    :return: A integer-valued DataFrame with columns as all the members of `enumCls`.
-    Data is the count of instances of that enum member in that row in `ser`.
-    """
-    def make_count(lst: Iterable, enumCls1: Iterable[type]) -> List[int]:
-        if len(lst) == 0:
-            lst.extend([0] * len(enumCls1))
-            return lst
-        countDict = defaultdict(lambda: 0)
-        for item in lst:
-            countDict[item] += 1
-        lst.clear()
-        lst.extend([countDict[e] for e in enumCls1])
-
-    enumList = list(enumCls)
-    ser.apply(make_count, args=(enumList,))
-    out = pd.DataFrame(np.vstack(ser.values), index=ser.index)
-    return out.rename(dict(zip(range(len(enumList)), enumList)), axis=1)
-
-
-def backtrack(sol, cur):
-    """
-
-    :param sol:
-    :param cur:
-    :return:
-    """
-    # TODO: generalize this to be callable like a library function.
-    # Prob pass in procedures for isSolution, constructCandidates, processSolution
-    # Figure out how to handle processSolution appending to an outside list.
-
-    def isSolution(a, k):
-        # nonlocal n
-        return k == n
-
-    def constructCandidates(a, k):
-        return [a[:k] + [i] + a[k + 1:] for i in nums if i not in a]
-
-    def processSolution(a):
-        # nonlocal out
-        out.append(a)
-
-    if isSolution(sol, cur):
-        processSolution(sol)
-    else:
-        nextSols = constructCandidates(sol, cur)
-        cur += 1
-        for nextSol in nextSols:
-            # print(f'nextSol: {nextSol}')
-            backtrack(nextSol, cur)
 
 
 class LinkedHeapNode:

@@ -15,7 +15,7 @@ import matplotlib.dates as mdates
 # from pandas.core.dtypes.inference import is_list_like
 from src.TimesheetDataset import *
 from i18n_l10n import internationalization as i18n
-from typing import Union, Iterable, List, Tuple, Set, NamedTuple, Type, Any
+from typing import Union, Iterable, List, Tuple, Set, NamedTuple
 from enum import Enum
 # from dataclasses import dataclass
 from bisect import bisect_right
@@ -153,6 +153,258 @@ class GraphicExhibit:
         if self.postTextMD is not None:
             st.markdown(self.postTextMD)
 
+
+class GraphicMaker:
+    """
+    Not really used as a class, merely a container for a collection of visualization functions.
+    Each function takes a TimesheetDataset object as an input and outputs a figure object.
+    The figure may be a matplotlib.pyplot Figure, or possibly figure objects from other plotting libraries.
+    To be registered and processed by Visualize.getFigs, the name of each method must end with one of the following:
+    [
+        '_PRIV',  # Resulting plot is for private use only.
+        '_FRND',  # Resulting plot may be shown to friends and colleagues, but not published for the general public.
+        '_PUBL',  # Resulting plot may be published for general public viewing.
+    ]
+    """
+    @staticmethod
+    def avg_Sleep_by_Weekday_and_Epoch_Group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+        # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
+        df1 = tsds.timesheetdf.tsquery('Project.Dormir & ( !description | "Dormir" | "Siesta") : ;').df
+        df1 = pd.concat([df1, getWeekday(df1.circad)], axis=1)
+        epochScheme = Global.EpochScheme.MP_COARSE_ATOMIC
+        df1 = pd.concat([df1, epochScheme.labelDT(df1.start.rename('epochGroup', copy=False))], axis=1)
+        df1 = df1[['duration', 'weekday', 'epochGroup']]
+        grouped = df1.groupby(['weekday', 'epochGroup'])
+        wkdayCount = grouped.count().unstack()
+        wkdayDuration = grouped.sum().unstack()
+        visData = (wkdayDuration / wkdayCount)['duration']
+        # TODO: add another cluster for the average over each epoch group
+        visData = timeToFloat(visData, 'hour')
+        visData = visData[[col for col in epochScheme.sortedEpochGroupNames() if col in visData.columns]]
+        # visData.rename(lambda x: Global.Epoch[x].alias(), axis=1)
+        title = _k('Avg Sleep Duration by Weekday and Life Phase')  # + ': ' + epochScheme.alias()
+        auxText = getDateRangeString(tsds.timesheetdf.df)
+        graphic = SingleAxisStaticVisual(data=visData, kind='clusteredBar', domain='weekday',
+                                         title=title, ylabel=_k('[hours]'), grid='on', text=auxText,
+                                         textPos=ArtistAlignment.SW, figsize=(10, 5))
+        # sleep_epoch_wkday_VIS.show()
+        graphic.save(fileName=auxText + '_' + title)
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.SLEEP, sortKey=64)
+
+    @staticmethod
+    def sleep_start_and_end_violin_by_epoch_group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+        df = tsds.timesheetdf.tsquery(
+            'Project.Dormir & !description & duration<timedelta(hours=20) & duration>timedelta(minutes=30) : ;').df
+        group = df[['start', 'end', 'circad']].groupby('circad')
+        df = pd.concat([group.min().start, group.max().end], axis=1)
+        df['duration'] = df.end - df.start
+        df['durationHours'] = df['duration'].apply(lambda x: x.total_seconds()/3600)
+
+        df['wakeTimeHours'] = (df['end'] - df['end'].dt.normalize()) / pd.Timedelta(hours=1)
+        df['fallAsleepTimeHours'] = (df['start'] - df['start'].dt.normalize()) / pd.Timedelta(hours=1)
+        df['fallAsleepTimeHoursNorm'] = (df['fallAsleepTimeHours'] + 6) % 24 - 6
+
+        epochScheme = Global.EpochScheme.MP_COARSE_ATOMIC
+        df['epochGroup'] = epochScheme.labelDT(df.start)
+        cat = pd.concat([df[['fallAsleepTimeHoursNorm', 'epochGroup']],
+                         df[['wakeTimeHours', 'epochGroup']]]
+                        , axis=0)
+        cat['isWake'] = pd.isna(cat.fallAsleepTimeHoursNorm)
+        cat['time'] = cat.fallAsleepTimeHoursNorm.fillna(0) + cat.wakeTimeHours.fillna(0)
+
+        title = _k('Distributions of Time of Falling Asleep and Waking Up by Life Phase')
+
+        graphic = MatplotlibVisual(figsize=(10, 6))
+        ax = sns.violinplot(data=cat,
+                            # y='wakeTimeHours',
+                            x='time',
+                            # y='duration',
+                            y='epochGroup',
+                            hue='isWake',
+                            cut=True,
+                            dodge=True,
+                            scale='width',
+                            scale_hue=False,
+                            # width=1.2,
+                            bw=.12,
+                            )
+
+        # Set tick values and format display as HH:MM
+        from matplotlib.ticker import MaxNLocator, MultipleLocator
+        ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+        ax.xaxis.set_minor_locator(MultipleLocator())
+        rawTicks = plt.xticks()[0]
+        hr = list(map(lambda x: int(x % 24), rawTicks))
+        labels = [f'{h}:00' for h in hr]
+        plt.xticks(rawTicks, labels=labels)
+        ax.yaxis.set_ticklabels([kiwilib.addLineBreaks(s.get_text(), delimIndices=[0]) for s in plt.yticks()[1]])
+
+        ax.autoscale(enable=True, axis='x')
+        plt.grid(axis='x', alpha=0.4)
+        plt.xlabel(_k('Time of day'))
+        plt.ylabel(_k('Life Phase'))
+        h, _ = ax.get_legend_handles_labels()
+        ax.legend(h, [_k('Fall asleep'), _k('Wake up')])
+        plt.title(title)
+        auxText = getDateRangeString(tsds.timesheetdf.df)
+        ArtistAlignment.SW.text(auxText, ax)
+
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.SLEEP, sortKey=32)
+
+    @staticmethod
+    def time_spent_by_person_stairs_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+        # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
+        # df1 = tsds.timesheetdf.tsquery('Person : ;').df
+        df1 = tsds.cats['person'].collxn['timeSpent'].sort_values(ascending=False).reset_index(drop=True)\
+            .apply(lambda x: x.total_seconds() / 3600)
+        title = _k('Total Time Spent\n with Individual People, Sorted')  # + ': ' + epochScheme.alias()
+        auxText = getDateRangeString(tsds.timesheetdf.df)
+        xlabel = _k('Person index')
+        ylabel = _k('[hours]')
+
+        graphic = MatplotlibVisual(figsize=(10, 4))
+        plt.subplot(1, 2, 1)
+        plt.stairs(df1, fill=True, color='orange')
+        plt.title(title)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.grid(axis='y')
+
+        plt.subplot(1, 2, 2)
+        plt.stairs(df1, fill=True, color='orange')
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.semilogy()
+        plt.title(_k('Total Time Spent\n with Individual People, Sorted, Log Scale'))
+        plt.grid(axis='y')
+        ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
+        graphic.save(fileName=auxText + '_' + title.replace('\n', ''))
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.PEOPLE, sortKey=128)
+
+    @staticmethod
+    def avg_social_interaction_by_gender_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+        df = copy(tsds.timesheetdf.df)
+        df = df[Global.Epoch.e2018_Data_Log_Person < df.start]
+        df['bin'] = kiwilib.date_range_bins(df['circad'], 'MS', normalize=True)
+        genders = df.person.apply(lambda plist: [tsds.cats['person'].collxn.loc[pid].gender for pid in plist])
+
+        enumCls = sg.Gender
+        enumList = list(enumCls)
+
+        df = pd.concat([df, kiwilib.enum_counts(genders, enumCls)], axis=1)
+        gend = df[['bin', 'duration'] + enumList]
+
+        # Compute the enum-hours for each enum instance. Enum-hours scale with the number of instances present in a row.
+        multNames = [g.name + '_mult' for g in enumCls]
+        if multNames[0] not in gend.columns:
+            for g, col in zip(enumList, multNames):
+                gend.loc[:, col] = gend.duration * gend[g]
+        gend = gend[['bin'] + multNames]
+        visData = gend.groupby('bin').sum()
+
+        # Total person-hours for subplot(1,2,2)
+        totals = visData[multNames].sum(axis=0) / np.timedelta64(1, 'h')  # float person-hours
+        totalsAug = pd.concat([pd.Series([0]), totals])
+        totalsAug = pd.Series(accumulate(totalsAug), index=np.concatenate([[0], totals.index]))
+
+        # Data for subplot(1,2,1)
+        visData = visData / np.timedelta64(1, 'h')  # Timedelta to float hours
+        x = pd.arrays.IntervalArray(visData.index).left  # Get the start of each IntervalIndex for x coordinate in plots
+        visData = (visData.T / pd.DatetimeIndex(x).daysinmonth).T  # Set units to hours per day
+
+        # Plots
+        graphic = MatplotlibVisual(figsize=(10, 4), constrained_layout=True)
+        fig = graphic.fig
+        gridspec = fig.add_gridspec(1, 10)
+        ax0 = fig.add_subplot(gridspec[0, :-1])
+        ax1 = fig.add_subplot(gridspec[0, -1])
+        ax0.stackplot(x, visData[multNames].T, colors=[g.color for g in enumList])
+        ax0.legend([x.alias() for x in enumList], loc='upper left')
+        ax0.set_ylabel(_k('[person-hours/day]'))
+        title = _k('Average Person-Hours of Social Interaction per Day, by Gender')
+        ax0.set_title(title)
+        ax0.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+        ax0.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(1, 4, 7, 10)))
+        ax0.grid(axis='y', alpha=0.4)
+
+        ax1.bar([1], totals, bottom=totalsAug.iloc[:-1], color=[e.color_hex() for e in enumList])
+        ax1.set_title(_k('Total\nPerson-Hours'))
+        for side in ['top', 'right', 'bottom', 'left']:
+            ax1.spines[side].set_visible(False)
+        ax1.get_xaxis().set_visible(False)
+
+        auxText = getDateRangeString(df)
+        graphic.save(fileName=auxText + '_' + title.replace('\n', ''))
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.PEOPLE, sortKey=180)
+
+
+    @staticmethod
+    def metaproject_area_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+        # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
+        # df1 = tsds.timesheetdf.tsquery('Person : ;').df
+        df1 = tsds.timesheetdf.df
+        df1['week'] = df1.circad - df1.circad.apply(datetime.date.weekday).apply(lambda x: datetime.timedelta(days=x))
+        df1 = df1[['week', 'duration', 'metaproject']]
+        visData = df1.groupby(['week', 'metaproject']).sum().unstack().duration.fillna(datetime.timedelta(hours=0))
+        visData = visData[sorted(visData.columns.values, reverse=True)]\
+            .rename({x: x.alias() for x in Global.Metaproject}, axis=1)\
+            .applymap(lambda x: x.total_seconds()/3600/7)
+        # visData[_k('Untracked')] = datetime.timedelta(weeks=1) - visData.sum(axis=1)
+        title = _k('Duration by Metaproject per Day, Averaged over 1 Week')  # + ': ' + epochScheme.alias()
+        auxText = getDateRangeString(tsds.timesheetdf.df)
+        # xlabel = _k('')
+        ylabel = _k('[hours/day]')
+
+        graphic = MatplotlibVisual(figsize=(10, 6))
+        plt.stackplot(visData.index, visData.values.transpose())
+        plt.title(title)
+        # plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.legend(visData.columns.values, loc='lower right')
+        plt.yticks(range(0, 28, 4))
+        plt.grid(axis='y', alpha=0.4)
+        # ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
+        ax = plt.gca()
+        ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(1, 4, 7, 10)))
+        # plt.gca().xaxis.set_major_locator(mdates.MonthLocator(bymonth=(1, 7)))
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+        lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.value.keys()]
+        ep = Global.Epoch
+        lineLabels = [kiwilib.addLineBreaks(a.alias(), delimIndices=[0]) for a in
+                      [ep.e2017_Cornell, ep.e2018_Boulder_Solo, ep.e2022_Tour_Start, ep.e2022_Tour_End]]
+        lineLabels[1] = _k('Start\nFirst Job')
+        plt.vlines(lineDates, 24, 26.5, linestyles='dashed')
+        for dat, label in zip(lineDates, lineLabels):
+            ax.text(dat, 26.5, label, ha='center', va='bottom')
+
+        graphic.save(fileName=auxText + '_' + title)
+        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+                              section=ExhibitSection.METAPROJECT, sortKey=4)
+
+
+def getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicExhibit]:
+    """
+    Returns a list of full exhibit graphics data in the format expected by Exhibit.py.
+    Contains any number of graphics and the accompanying inline text commentary and exhibit structural information.
+    :param tsds: Data from which to create graphics.
+    :param audience:
+    :return:
+    """
+    privacyMap = {
+        Global.Privacy.PUBLIC : '_PUBL',
+        Global.Privacy.FRIENDS: '_FRND_PUBL',
+        Global.Privacy.PRIVATE: '_PRIV_FRND_PUBL',
+    }  # Concatenated strings encoding the method privacy ratings accepted for each acceptable value of audience
+    # inversePrivacyMap = {v[:5]: k for k,v in privacyMap.items()}
+    figFuncs = [v for _, v in inspect.getmembers(GraphicMaker(), inspect.isfunction)
+                if v.__name__[-5:] in privacyMap[audience]]
+    curFigFunc = GraphicMaker.avg_social_interaction_by_gender_PUBL
+    # return [curFigFunc(tsds)]
+    return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
 
 '''
 def joinTest(df):
@@ -359,6 +611,77 @@ def parseDatetime(x):
 '''
 
 
+def getDateRangeString(df) -> str:
+    """
+    Produces a string representing the date range of a dataframe. Useful for title or auxiliary plot text
+    :param df:
+    :return: String representing the date range of a dataframe
+    """
+    startString = df.head(1).circad.values[0].strftime('%Y-%m-%d')
+    endString = df.tail(1).circad.values[0].strftime('%Y-%m-%d')
+    return startString + '_' + endString
+
+
+def getLabels(data, domain, subset=-1):
+    domainMap = {
+        'weekday': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        'monthday': range(1, 32),
+        'epoch': [epoch.alias() for epoch in list(Global.Epoch)]
+    }
+    try:
+        labels = domainMap[domain]
+    except(KeyError):
+        print('Domain not in map')
+    if (subset != -1):
+        labels = np.array(labels)[subset].tolist()
+    return labels
+
+
+def getWeekday(ser):
+    day = ser.apply(lambda x: x.weekday())
+    return day.rename('weekday')
+
+
+def getWeek(ser):
+    #     For a series of dates, returns Timesheet week numbers, measured since TASK_ID_EPOCH
+    ser = ser - Global.TASK_ID_EPOCH
+    daysSinceEpoch = [t.days for t in list(ser)]
+    weekList = [int(np.ceil(t / 7)) for t in daysSinceEpoch]
+    week = pd.Series(weekList, name='week', index=ser.index)
+    #     week = week.rename('week')
+    return week
+
+
+def getWeekDate(ser):
+    EP = Global.TASK_ID_EPOCH
+    ser1 = EP + ser.apply(lambda x: datetime.timedelta(weeks=x))
+    return ser1 - datetime.timedelta(days=EP.weekday())
+
+
+def timeToFloat(dfser, units='hour'):
+    divisorMap = {
+        'second': 1,
+        'minute': 60,
+        'hour': 3600,
+        'day': 86400,
+        'week': 604800
+    }
+    if (units not in divisorMap.keys()):
+        print('Invalid time unit arg')
+    if (isinstance(dfser, pd.Series)):
+        dfser = dfser.apply(datetime.timedelta.total_seconds) / divisorMap[units]
+    elif (isinstance(dfser, pd.DataFrame)):
+        for col in dfser.columns:
+            dfser[col] = timeToFloat(dfser[col], units)
+    else:
+        if (not is_list_like(dfser)):
+            dfser = (dfser,)
+            dfser = [datetime.timedelta.total_seconds(i) / divisorMap[units] for i in dfser]
+            return dfser[0]
+        else:
+            dfser = [datetime.timedelta.total_seconds(i) / divisorMap[units] for i in dfser]
+    return dfser
+
 
 _ArtistAlignment = NamedTuple('_ArtistAlignment', [('name', str), ('x', float), ('y', float),
                                                   ('ha', str), ('va', str)])
@@ -516,496 +839,3 @@ class SingleAxisStaticVisual(MatplotlibVisual):
         if xlabel:          plt.xlabel(_k(xlabel))
         if ylabel:          plt.ylabel(_k(ylabel))
         if show:            self.show()
-
-
-def stackplot_and_totals_stackbar(
-        x: pd.Series,
-        y: pd.DataFrame,
-        totals: pd.Series = None,
-        stack_names: Iterable[Any] = None,
-        figsize: Tuple = (10, 4),
-        titles: Tuple[str, str] = (None, 'Totals'),
-        xlabel: str = None,
-        ylabels: Tuple[str, str] = (None, None),
-        colors: Iterable[Union[Tuple, str]] = None,
-        legend_labels: Iterable[str] = None,
-        legend_loc: str = 'best',
-        xlabel_major_formatter=mdates.DateFormatter('%Y-%m'),
-        xtick_minor_locator=mdates.MonthLocator(bymonth=(1, 4, 7, 10)),
-        **kwargs
-) -> MatplotlibVisual:
-    """
-    Returns a figure primarily featuring a stackplot.
-    Also includes a small subplot with a stacked bar plot of the totals.
-    """
-
-    # Assign defaults for None-valued args
-    if stack_names is None: stack_names = y.columns
-    if colors is None: colors = [x.color_hex for x in stack_names]
-    if legend_labels is None: legend_labels = [x.alias() for x in stack_names]
-
-    graphic = MatplotlibVisual(figsize=figsize, constrained_layout=True)
-    fig = graphic.fig
-    gridspec = fig.add_gridspec(1, 10 if 'gridspec_w' not in kwargs else kwargs['gridspec_w'])
-    ax0 = fig.add_subplot(gridspec[0, :-1])
-    ax1 = fig.add_subplot(gridspec[0, -1])
-
-    # Subplot 1
-    ax0.stackplot(x, y.T, colors=colors)
-    ax0.legend(legend_labels, loc=legend_loc)
-    ax0.grid(axis='y', alpha=0.4)
-    if xlabel is not None: ax0.set_xlabel(xlabel)
-    if ylabels[0] is not None: ax0.set_ylabel(ylabels[0])
-    if titles[0] is not None: ax0.set_title(titles[0])
-    if xlabel_major_formatter is not None: ax0.xaxis.set_major_formatter(xlabel_major_formatter)
-    if xtick_minor_locator is not None: ax0.xaxis.set_minor_locator(xtick_minor_locator)
-
-    # Calculate totals for subplot 2
-    if totals is None:
-        totals = y.sum(axis=0)
-    totalsAug = pd.concat([pd.Series([0]), totals])
-    totalsAug = pd.Series(accumulate(totalsAug), index=np.concatenate([[0], totals.index]))
-
-    # Subplot 2
-    ax1.bar([1], totals, bottom=totalsAug.iloc[:-1], color=colors)
-    if titles[1] is not None: ax1.set_title(titles[1])
-    if ylabels[1] is not None: ax1.set_ylabel(ylabels[1])
-    for side in ['top', 'right', 'bottom', 'left']:
-        ax1.spines[side].set_visible(False)
-    ax1.get_xaxis().set_visible(False)
-
-    return graphic
-
-
-def stackbarplot_and_totals(
-        x: pd.Series,
-        y: pd.DataFrame,
-        totals: pd.Series = None,
-        stack_names: Iterable[Any] = None,
-        figsize: Tuple = (10, 4),
-        titles: Tuple[str] = (None, 'Totals'),
-        xlabel: str = None,
-        ylabels: Tuple[str] = (None, None),
-        colors: Iterable[Union[Tuple, str]] = None,
-        legend_labels: Iterable[str] = None,
-        legend_loc: str = 'best',
-        xlabel_major_formatter=mdates.DateFormatter('%Y-%m'),
-        xtick_minor_locator=mdates.MonthLocator(bymonth=(1, 4, 7, 10)),
-        **kwargs
-) -> plt.Figure:
-    """
-    Returns a figure primarily featuring a stacked bar plot.
-    Also includes a small subplot with a stacked bar plot of the totals.
-    """
-    # Assign defaults for None-valued args
-    if stack_names is None: stack_names = y.columns
-    if colors is None: colors = [x.color_hex for x in stack_names]
-    if legend_labels is None: legend_labels = [x.alias() for x in stack_names]
-
-    graphic = MatplotlibVisual(figsize=figsize, constrained_layout=True)
-    fig = graphic.fig
-    gridspec = fig.add_gridspec(1, 10 if 'gridspec_w' not in kwargs else kwargs['gridspec_w'])
-    ax0 = fig.add_subplot(gridspec[0, :-1])
-    ax1 = fig.add_subplot(gridspec[0, -1])
-
-    # Prepare subplot 1 `plt.stairs` data
-    bottom = pd.Series(0, index=x)
-    # a = pd.DatetimeIndex([x[0]-0.5*x[0].daysinmonth*pd.Timedelta(1, 'D')])
-    # edges = (x+0.5*pd.DatetimeIndex(x).daysinmonth*pd.Timedelta(1, 'D')).union(a)
-    # a = pd.DatetimeIndex([x[0]-np.diff(x)[0]])
-    # import pdb; pdb.set_trace()
-    # d = x.union(np.array([x[0] - x.freq, x[-1] + x.freq]))
-    # # c = np.diff(x, append=x[-1]+np.diff(x)[-1])
-    # c = np.diff(d)
-    # b = pd.DatetimeIndex(0.5*c)
-    # edges = d[:-1]+b
-
-    # Subplot 1
-    for i, c in enumerate(y.columns):
-        # import pdb; pdb.set_trace()
-        ax0.bar(x, y[c].T, color=colors[i], width=pd.DatetimeIndex(x).daysinmonth + 1, bottom=bottom)
-        # ax0.stairs(y.iloc[:,i].values+bottom, edges, color=colors[i], baseline=bottom, fill=True)
-        # print(f'{c}: {bottom =}')
-        bottom += y[c].values
-    ax0.grid(axis='y', alpha=0.4)
-    # ax0.autoscale_view(tight=True)
-    ax0.legend(legend_labels, loc=legend_loc)
-    if xlabel is not None: ax0.set_xlabel(xlabel)
-    if ylabels[0] is not None: ax0.set_ylabel(ylabels[0])
-    if titles[0] is not None: ax0.set_title(titles[0])
-    if xlabel_major_formatter is not None: ax0.xaxis.set_major_formatter(xlabel_major_formatter)
-    if xtick_minor_locator is not None: ax0.xaxis.set_minor_locator(xtick_minor_locator)
-
-    # Calculate totals for subplot 2
-    if totals is None:
-        totals = y.sum(axis=0)
-    totalsAug = pd.concat([pd.Series([0]), totals])
-    totalsAug = pd.Series(accumulate(totalsAug), index=np.concatenate([[0], totals.index]))
-
-    # Subplot 2
-    ax1.bar([1], totals, bottom=totalsAug.iloc[:-1], color=colors)
-    if titles[1] is not None: ax1.set_title(titles[1])
-    if ylabels[1] is not None: ax1.set_ylabel(ylabels[1])
-    for side in ['top', 'right', 'bottom', 'left']:
-        ax1.spines[side].set_visible(False)
-    ax1.get_xaxis().set_visible(False)
-
-    return graphic
-
-
-def getDateRangeString(df) -> str:
-    """
-    Produces a string representing the date range of a dataframe. Useful for title or auxiliary plot text
-    :param df:
-    :return: String representing the date range of a dataframe
-    """
-    startString = df.head(1).circad.values[0].strftime('%Y-%m-%d')
-    endString = df.tail(1).circad.values[0].strftime('%Y-%m-%d')
-    return startString + '_' + endString
-
-
-def getLabels(data, domain, subset=-1):
-    domainMap = {
-        'weekday': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        'monthday': range(1, 32),
-        'epoch': [epoch.alias() for epoch in list(Global.Epoch)]
-    }
-    try:
-        labels = domainMap[domain]
-    except(KeyError):
-        print('Domain not in map')
-    if (subset != -1):
-        labels = np.array(labels)[subset].tolist()
-    return labels
-
-
-def getWeekday(ser):
-    day = ser.apply(lambda x: x.weekday())
-    return day.rename('weekday')
-
-
-def getWeek(ser):
-    #     For a series of dates, returns Timesheet week numbers, measured since TASK_ID_EPOCH
-    ser = ser - Global.TASK_ID_EPOCH
-    daysSinceEpoch = [t.days for t in list(ser)]
-    weekList = [int(np.ceil(t / 7)) for t in daysSinceEpoch]
-    week = pd.Series(weekList, name='week', index=ser.index)
-    #     week = week.rename('week')
-    return week
-
-
-def getWeekDate(ser):
-    EP = Global.TASK_ID_EPOCH
-    ser1 = EP + ser.apply(lambda x: datetime.timedelta(weeks=x))
-    return ser1 - datetime.timedelta(days=EP.weekday())
-
-
-def timeToFloat(dfser, units='hour'):
-    divisorMap = {
-        'second': 1,
-        'minute': 60,
-        'hour': 3600,
-        'day': 86400,
-        'week': 604800
-    }
-    if (units not in divisorMap.keys()):
-        print('Invalid time unit arg')
-    if (isinstance(dfser, pd.Series)):
-        dfser = dfser.apply(datetime.timedelta.total_seconds) / divisorMap[units]
-    elif (isinstance(dfser, pd.DataFrame)):
-        for col in dfser.columns:
-            dfser[col] = timeToFloat(dfser[col], units)
-    else:
-        if (not is_list_like(dfser)):
-            dfser = (dfser,)
-            dfser = [datetime.timedelta.total_seconds(i) / divisorMap[units] for i in dfser]
-            return dfser[0]
-        else:
-            dfser = [datetime.timedelta.total_seconds(i) / divisorMap[units] for i in dfser]
-    return dfser
-
-
-class GraphicMaker:
-    """
-    Not really used as a class, merely a container for a collection of visualization functions.
-    Each function takes a TimesheetDataset object as an input and outputs a figure object.
-    The figure may be a matplotlib.pyplot Figure, or possibly figure objects from other plotting libraries.
-    To be registered and processed by Visualize.getFigs, the name of each method must end with one of the following:
-    [
-        '_PRIV',  # Resulting plot is for private use only.
-        '_FRND',  # Resulting plot may be shown to friends and colleagues, but not published for the general public.
-        '_PUBL',  # Resulting plot may be published for general public viewing.
-    ]
-    """
-    @staticmethod
-    def avg_Sleep_by_Weekday_and_Epoch_Group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-        # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
-        df1 = tsds.timesheetdf.tsquery('Project.Dormir & ( !description | "Dormir" | "Siesta") : ;').df
-        df1 = pd.concat([df1, getWeekday(df1.circad)], axis=1)
-        epochScheme = Global.EpochScheme.MP_COARSE_ATOMIC
-        df1 = pd.concat([df1, epochScheme.labelDT(df1.start.rename('epochGroup', copy=False))], axis=1)
-        df1 = df1[['duration', 'weekday', 'epochGroup']]
-        grouped = df1.groupby(['weekday', 'epochGroup'])
-        wkdayCount = grouped.count().unstack()
-        wkdayDuration = grouped.sum().unstack()
-        visData = (wkdayDuration / wkdayCount)['duration']
-        # TODO: add another cluster for the average over each epoch group
-        visData = timeToFloat(visData, 'hour')
-        visData = visData[[col for col in epochScheme.sortedEpochGroupNames() if col in visData.columns]]
-        # visData.rename(lambda x: Global.Epoch[x].alias(), axis=1)
-        title = _k('Avg Sleep Duration by Weekday and Life Phase')  # + ': ' + epochScheme.alias()
-        auxText = getDateRangeString(tsds.timesheetdf.df)
-        graphic = SingleAxisStaticVisual(data=visData, kind='clusteredBar', domain='weekday',
-                                         title=title, ylabel=_k('[hours]'), grid='on', text=auxText,
-                                         textPos=ArtistAlignment.SW, figsize=(10, 5))
-        # sleep_epoch_wkday_VIS.show()
-        graphic.save(fileName=auxText + '_' + title)
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
-                              section=ExhibitSection.SLEEP, sortKey=64)
-
-    @staticmethod
-    def sleep_start_and_end_violin_by_epoch_group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-        df = tsds.timesheetdf.tsquery(
-            'Project.Dormir & !description & duration<timedelta(hours=20) & duration>timedelta(minutes=30) : ;').df
-        group = df[['start', 'end', 'circad']].groupby('circad')
-        df = pd.concat([group.min().start, group.max().end], axis=1)
-        df['duration'] = df.end - df.start
-        df['durationHours'] = df['duration'].apply(lambda x: x.total_seconds()/3600)
-
-        df['wakeTimeHours'] = (df['end'] - df['end'].dt.normalize()) / pd.Timedelta(hours=1)
-        df['fallAsleepTimeHours'] = (df['start'] - df['start'].dt.normalize()) / pd.Timedelta(hours=1)
-        df['fallAsleepTimeHoursNorm'] = (df['fallAsleepTimeHours'] + 6) % 24 - 6
-
-        epochScheme = Global.EpochScheme.MP_COARSE_ATOMIC
-        df['epochGroup'] = epochScheme.labelDT(df.start)
-        cat = pd.concat([df[['fallAsleepTimeHoursNorm', 'epochGroup']],
-                         df[['wakeTimeHours', 'epochGroup']]]
-                        , axis=0)
-        cat['isWake'] = pd.isna(cat.fallAsleepTimeHoursNorm)
-        cat['time'] = cat.fallAsleepTimeHoursNorm.fillna(0) + cat.wakeTimeHours.fillna(0)
-
-        title = _k('Distributions of Time of Falling Asleep and Waking Up by Life Phase')
-
-        graphic = MatplotlibVisual(figsize=(10, 6))
-        ax = sns.violinplot(data=cat,
-                            # y='wakeTimeHours',
-                            x='time',
-                            # y='duration',
-                            y='epochGroup',
-                            hue='isWake',
-                            cut=True,
-                            dodge=True,
-                            scale='width',
-                            scale_hue=False,
-                            # width=1.2,
-                            bw=.12,
-                            )
-
-        # Set tick values and format display as HH:MM
-        from matplotlib.ticker import MaxNLocator, MultipleLocator
-        ax.xaxis.set_major_locator(MaxNLocator(integer=True))
-        ax.xaxis.set_minor_locator(MultipleLocator())
-        rawTicks = plt.xticks()[0]
-        hr = list(map(lambda x: int(x % 24), rawTicks))
-        labels = [f'{h}:00' for h in hr]
-        plt.xticks(rawTicks, labels=labels)
-        ax.yaxis.set_ticklabels([kiwilib.addLineBreaks(s.get_text(), delimIndices=[0]) for s in plt.yticks()[1]])
-
-        ax.autoscale(enable=True, axis='x')
-        plt.grid(axis='x', alpha=0.4)
-        plt.xlabel(_k('Time of day'))
-        plt.ylabel(_k('Life Phase'))
-        h, _ = ax.get_legend_handles_labels()
-        ax.legend(h, [_k('Fall asleep'), _k('Wake up')])
-        plt.title(title)
-        auxText = getDateRangeString(tsds.timesheetdf.df)
-        ArtistAlignment.SW.text(auxText, ax)
-
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
-                              section=ExhibitSection.SLEEP, sortKey=32)
-
-    @staticmethod
-    def time_spent_by_person_stairs_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-        # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
-        # df1 = tsds.timesheetdf.tsquery('Person : ;').df
-        df1 = tsds.cats['person'].collxn['timeSpent'].sort_values(ascending=False).reset_index(drop=True)\
-            .apply(lambda x: x.total_seconds() / 3600)
-        title = _k('Total Time Spent\n with Individual People, Sorted')  # + ': ' + epochScheme.alias()
-        auxText = getDateRangeString(tsds.timesheetdf.df)
-        xlabel = _k('Person index')
-        ylabel = _k('[hours]')
-
-        graphic = MatplotlibVisual(figsize=(10, 4))
-        plt.subplot(1, 2, 1)
-        plt.stairs(df1, fill=True, color='orange')
-        plt.title(title)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.grid(axis='y')
-
-        plt.subplot(1, 2, 2)
-        plt.stairs(df1, fill=True, color='orange')
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.semilogy()
-        plt.title(_k('Total Time Spent\n with Individual People, Sorted, Log Scale'))
-        plt.grid(axis='y')
-        ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
-        graphic.save(fileName=auxText + '_' + title.replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
-                              section=ExhibitSection.PEOPLE, sortKey=128)
-
-    @staticmethod
-    def avg_social_interaction_by_gender_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-        df = copy(tsds.timesheetdf.df)
-        df = df[Global.Epoch.e2018_Data_Log_Person < df.start]
-        df['bin'] = kiwilib.date_range_bins(df['circad'], 'MS', normalize=True)
-        genders = df.person.apply(lambda plist: [tsds.cats['person'].collxn.loc[pid].gender for pid in plist])
-
-        enumCls = sg.Gender
-        enumList = list(enumCls)
-
-        df = pd.concat([df, kiwilib.enum_counts(genders, enumCls)], axis=1)
-        gend = df[['bin', 'duration'] + enumList]
-
-        # Compute the enum-hours for each enum instance. Enum-hours scale with the number of instances present in a row.
-        multNames = [g.name + '_mult' for g in enumCls]
-        if multNames[0] not in gend.columns:
-            for g, col in zip(enumList, multNames):
-                gend.loc[:, col] = gend.duration * gend[g]
-        gend = gend[['bin'] + multNames]
-        visData = gend.groupby('bin').sum()
-
-        # Total person-hours for subplot(1,2,2)
-        totals = visData[multNames].sum(axis=0) / np.timedelta64(1, 'h')  # float person-hours
-        # totalsAug = pd.concat([pd.Series([0]), totals])
-        # totalsAug = pd.Series(accumulate(totalsAug), index=np.concatenate([[0], totals.index]))
-
-        # Data for subplot(1,2,1)
-        visData = visData / np.timedelta64(1, 'h')  # Timedelta to float hours
-        x = pd.arrays.IntervalArray(visData.index).left  # Get the start of each IntervalIndex for x coordinate in plots
-        visData = (visData.T / pd.DatetimeIndex(x).daysinmonth).T  # Set units to hours per day
-
-        titles = (_k('Average Person-Hours of Social Interaction per Day, by Gender'), _k('Total\nPerson-Hours'))
-        graphic = stackplot_and_totals_stackbar(
-            x,
-            visData[multNames],
-            totals,
-            stack_names=enumList,
-            ylabels=(_k('[person-hours/day]'), None),
-            titles=titles,
-            legend_loc='upper left'
-        )
-
-        auxText = getDateRangeString(df)
-        graphic.save(fileName=auxText + '_' + titles[0].replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
-                              section=ExhibitSection.PEOPLE, sortKey=180)
-
-    @staticmethod
-    def avg_social_interaction_by_primary_relation_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-        cat = tsds.cats['person']
-        df = copy(tsds.timesheetdf.df)
-        df = df[Global.Epoch.e2018_Data_Log_Person < df.start]
-        df['bin'] = kiwilib.date_range_bins(df['circad'], 'MS', normalize=True)
-
-        primaryMap = dict(zip(cat.collxn.index, map(lambda x: x.primaryRelation(), cat.getObjects())))
-        rels = df.person.apply(lambda pList: [primaryMap[pid] for pid in pList])
-
-        enumList = [c() for c in sg.Relation.__subclasses__()]
-        df = pd.concat([df, kiwilib.enum_counts(rels, enumList)], axis=1)
-        df1 = df[['bin', 'duration'] + enumList]
-
-        # Compute the enum-hours for each enum instance. Enum-hours scale with the number of instances present in a row.
-        multNames = [g.alias('en_US') + '_mult' for g in enumList]
-        if multNames[0] not in df1.columns:
-            for g, col in zip(enumList, multNames):
-                df1.loc[:, col] = df1.duration * df1[g]
-        df1 = df1[['bin'] + multNames]
-
-        visData = df1.groupby('bin').sum()
-        totals = visData[multNames].sum(axis=0) / np.timedelta64(1, 'h')  # float person-hours
-        visData = visData / np.timedelta64(1, 'h')  # Timedelta to float hours
-        x = pd.arrays.IntervalArray(visData.index).left  # Get the start of each IntervalIndex for x coordinate in plots
-        visData = (visData.T / pd.DatetimeIndex(x).daysinmonth).T  # Set units to hours per day
-
-        titles = _k('Average Person-Hours of Social Interaction per Day, by Primary Relation'), \
-                 _k('Total\nPerson-Hours')
-        graphic = stackplot_and_totals_stackbar(
-            x,
-            visData[multNames],
-            totals,
-            stack_names=enumList,
-            ylabels=(_k('[person-hours/day]'), None),
-            titles=titles,
-            legend_loc='upper left'
-        )
-
-        auxText = getDateRangeString(df)
-        graphic.save(fileName=auxText + '_' + titles[0].replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
-                              section=ExhibitSection.PEOPLE, sortKey=190)
-
-    @staticmethod
-    def metaproject_area_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-        # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
-        # df1 = tsds.timesheetdf.tsquery('Person : ;').df
-        df1 = tsds.timesheetdf.df
-        df1['week'] = df1.circad - df1.circad.apply(datetime.date.weekday).apply(lambda x: datetime.timedelta(days=x))
-        df1 = df1[['week', 'duration', 'metaproject']]
-        visData = df1.groupby(['week', 'metaproject']).sum().unstack().duration.fillna(datetime.timedelta(hours=0))
-        visData = visData[sorted(visData.columns.values, reverse=True)]\
-            .rename({x: x.alias() for x in Global.Metaproject}, axis=1)\
-            .applymap(lambda x: x.total_seconds()/3600/7)
-        # visData[_k('Untracked')] = datetime.timedelta(weeks=1) - visData.sum(axis=1)
-        title = _k('Duration by Metaproject per Day, Averaged over 1 Week')  # + ': ' + epochScheme.alias()
-        auxText = getDateRangeString(tsds.timesheetdf.df)
-        # xlabel = _k('')
-        ylabel = _k('[hours/day]')
-
-        graphic = MatplotlibVisual(figsize=(10, 6))
-        plt.stackplot(visData.index, visData.values.transpose())
-        plt.title(title)
-        # plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.legend(visData.columns.values, loc='lower right')
-        plt.yticks(range(0, 28, 4))
-        plt.grid(axis='y', alpha=0.4)
-        # ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
-        ax = plt.gca()
-        ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(1, 4, 7, 10)))
-        # plt.gca().xaxis.set_major_locator(mdates.MonthLocator(bymonth=(1, 7)))
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
-        lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.value.keys()]
-        ep = Global.Epoch
-        lineLabels = [kiwilib.addLineBreaks(a.alias(), delimIndices=[0]) for a in
-                      [ep.e2017_Cornell, ep.e2018_Boulder_Solo, ep.e2022_Tour_Start, ep.e2022_Tour_End]]
-        lineLabels[1] = _k('Start\nFirst Job')
-        plt.vlines(lineDates, 24, 26.5, linestyles='dashed')
-        for dat, label in zip(lineDates, lineLabels):
-            ax.text(dat, 26.5, label, ha='center', va='bottom')
-
-        graphic.save(fileName=auxText + '_' + title)
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
-                              section=ExhibitSection.METAPROJECT, sortKey=4)
-
-
-def getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicExhibit]:
-    """
-    Returns a list of full exhibit graphics data in the format expected by Exhibit.py.
-    Contains any number of graphics and the accompanying inline text commentary and exhibit structural information.
-    :param tsds: Data from which to create graphics.
-    :param audience:
-    :return:
-    """
-    privacyMap = {
-        Global.Privacy.PUBLIC : '_PUBL',
-        Global.Privacy.FRIENDS: '_FRND_PUBL',
-        Global.Privacy.PRIVATE: '_PRIV_FRND_PUBL',
-    }  # Concatenated strings encoding the method privacy ratings accepted for each acceptable value of audience
-    # inversePrivacyMap = {v[:5]: k for k,v in privacyMap.items()}
-    figFuncs = [v for _, v in inspect.getmembers(GraphicMaker(), inspect.isfunction)
-                if v.__name__[-5:] in privacyMap[audience]]
-    curFigFunc = GraphicMaker.avg_social_interaction_by_primary_relation_PUBL
-    # return [curFigFunc(tsds)]
-    return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))

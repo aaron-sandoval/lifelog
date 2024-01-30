@@ -63,14 +63,9 @@ class Gender(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
             return self._get_enum_data()[self].__getattribute__(item)
         raise AttributeError(f'{self} has no attribute named {item}.')
 
-    @property
     def color_hex(self) -> str:
         """Hexadecimal string representation of the float color tuple."""
-        if isinstance(self.color[0], int):
-            return "#{0:02x}{1:02x}{2:02x}".format(*self.color)
-        else:
-            return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
-
+        return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
     @classmethod
     def valueDict(cls):
         return {a.name: a for a in Gender}
@@ -167,13 +162,9 @@ class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
             }
         return cls._aliasFuncs
 
-    @property
     def color_hex(self) -> str:
         """Hexadecimal string representation of the float color tuple."""
-        if isinstance(self.color[0], int):
-            return "#{0:02x}{1:02x}{2:02x}".format(*self.color)
-        else:
-            return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
+        return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
 
 
 @yaml_info(yaml_tag_ns='SocialGroup')
@@ -211,7 +202,7 @@ class ActivityHospitality(ActivityTravel): pass  # Host or guest while leisure t
 class Colleague(Relation):
     # Includes any professional, client, volunteer, and other structured relationships
     es_MX = 'Colega'
-    color = (.9, .8, .3)
+    color = (.9, .2, .2)
 
 
 @yaml_info(yaml_tag_ns='SocialGroup')
@@ -247,8 +238,7 @@ class Friend(Relation):
 class Acquaintance(Relation):
     # People w/out much personal bond like Friend nor structured context like Colleague
     es_MX = 'Conocido'
-    # color = (.6, .9, .85)
-    color = (144, 196, 198)
+    color = (.5, .85, .9)
 
 
 @yaml_info(yaml_tag_ns='SocialGroup')
@@ -256,7 +246,7 @@ class FamilyMom(Family): pass
 @yaml_info(yaml_tag_ns='SocialGroup')
 class FamilyDad(Family): pass
 @yaml_info(yaml_tag_ns='SocialGroup')
-class FamilyNuclear(Family): pass
+class FamilyNuclear(Family, ActivityRoommate): pass
 
 @yaml_info(yaml_tag_ns='SocialGroup')
 class WarmshowersHospitality(ActivityHospitality, ActivityBike, Acquaintance): pass  # Host or guest via Warmshowers or similar
