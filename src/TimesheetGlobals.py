@@ -6,6 +6,7 @@ Created on Jan 15, 2018
 Holds all global variables, data standards, etc. needed in multiple stages of
 the data analysis
 """
+import enum
 import os.path
 import shutil
 import sys
@@ -15,12 +16,15 @@ import time
 from datetime import datetime, timedelta, date
 import portion as P
 from enum import Enum
+
+from external_modules.kiwilib import IsDataclass
 from src.TimePeriod import TimePeriod
 import pandas as pd
 # import numpy as np
 from collections import defaultdict
 from pandas.core.dtypes.inference import is_list_like
 from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
+from dataclasses import dataclass
 import abc
 
 
@@ -130,6 +134,40 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
 ##############
 # Enum Fields#
 ##############
+@kiwilib.init_DataclassValuedEnum
+class Colored(kiwilib.DataclassValuedEnum):
+    @staticmethod
+    def _get_dataclass() -> IsDataclass:
+        @dataclass
+        class Color:
+            color: Tuple[int, int, int] = 128, 128, 128
+        return Color
+
+    @property
+    def color_hex(self) -> str:
+        """Hexadecimal string representation of the float color tuple."""
+        if isinstance(self.color[0], int):
+            return "#{0:02x}{1:02x}{2:02x}".format(*self.color)
+        else:
+            return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x * 256), 255)) for x in self.color])
+
+
+# @kiwilib.init_DataclassValuedEnum
+# class AliasableEnum(kiwilib.DataclassValuedEnum):
+#
+
+@kiwilib.init_DataclassValuedEnum
+class TestColor(Colored):
+    RED = enum.auto()
+    GREEN = enum.auto()
+
+    @classmethod
+    def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        return {
+            cls.RED: c((256, 0, 0)),
+            cls.GREEN: c((0, 256, 0)),
+        }
+
 class AliasNamedTuple(NamedTuple):
     en_US: str = '',
     es_MX: str = ''

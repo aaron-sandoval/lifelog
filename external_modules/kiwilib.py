@@ -16,7 +16,7 @@ from typing import \
 import pandas as pd
 import numpy as np
 from yamlable import YamlCodec
-from dataclasses import fields as dataclass_fields, dataclass, make_dataclass
+from dataclasses import fields as dataclass_fields, dataclass
 
 
 def kiwiTest():
@@ -229,6 +229,7 @@ class IsDataclass(Protocol):
 
 _T = TypeVar('T')
 
+
 class EnumABCMeta(abc.ABCMeta, type(Enum)):
     pass
 
@@ -259,7 +260,7 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
         key = '_DATACLASS'
         if not hasattr(cls, key):
             setattr(cls, key, cls._get_dataclass())
-        return cls.__getattribute__(key)
+        return getattr(cls, key)
 
     @classmethod
     @abc.abstractmethod
@@ -279,9 +280,14 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
 
     def __getattr__(self, item):
         # c = type(self)
-        if item in type(self)._dataclass().__dataclass_fields__:
-            return self._get_enum_data()[self].__getattribute__(item)
-        raise AttributeError(f'{self} has no attribute named {item}.')
+        # if item in type(self)._dataclass().__dataclass_fields__:
+        return self._get_enum_data()[self].__getattribute__(item)
+        # raise AttributeError(f'{self} has no attribute named {item}.')
+
+
+def init_DataclassValuedEnum(cls: Type[DataclassValuedEnum]):
+    cls._dataclass()
+    return cls
 
 
 class HierarchicalEnum:
