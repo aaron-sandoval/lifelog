@@ -11,7 +11,8 @@ from enum import EnumMeta, Enum
 from collections import defaultdict
 import portion
 from pandas.core.dtypes.inference import is_list_like
-from typing import Union, TypeVar, Type, Any, Iterable, Tuple, List, Generator, Dict, Callable
+from typing import \
+    Union, TypeVar, Type, Any, Iterable, Tuple, List, Generator, Dict, Callable, Optional, Protocol, ClassVar
 import pandas as pd
 import numpy as np
 from yamlable import YamlCodec
@@ -219,6 +220,68 @@ def addLineBreaks(s: str, delim: str = ' ', maxLen=None, delimIndices: List[int]
                 out = delim.join([out, segments[i+1]])
     return out
         # return '\n'.join([delim.join([])])
+
+
+class IsDataclass(Protocol):
+    # the most reliable way to ascertain that something is a dataclass
+    __dataclass_fields__: ClassVar[Dict]
+
+
+_T = TypeVar('T')
+
+class EnumABCMeta(abc.ABCMeta, type(Enum)):
+    pass
+
+
+class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
+    """
+    ABC for Enum classes whose members have dataclass-like attribute access.
+    Each subclass is associated with a dataclass containing the member attributes.
+    However, the Enum values for each member are NOT the dataclass instances.
+    Instead, these are held in `_enum_data`.
+    This is to overcome a drawback of storing complex data directly in the Enum member values.
+    In this implementation, the properties of the dataclass and the member's data to be updated
+    without invalidating any previous instance of that enum stored in files.
+    When the enum is read from a file, its attributes will effectively be updated to the latest values in `_enum_data`.
+    """
+
+    @staticmethod
+    @abc.abstractmethod
+    def _get_dataclass(
+    ) -> IsDataclass:
+        """
+        Returns a existing dataclass or constructs and returns a new one.
+        This dataclass holds all the attributes of the outer class enum members.
+        """
+
+    @classmethod
+    def _dataclass(cls) -> IsDataclass:
+        key = '_DATACLASS'
+        if not hasattr(cls, key):
+            setattr(cls, key, cls._get_dataclass())
+        return cls.__getattribute__(key)
+
+    @classmethod
+    @abc.abstractmethod
+    def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        """
+        Instantiates dataclass members associated with each enum member.
+        This method contains the data that would traditionally be located in the enum definitions.
+        :param c: Will always be passed `cls._DATACLASS`. Only here so that each subclass need not make that reference.
+        :return: Mapping from enum members to their data.
+        """
+        pass
+    @classmethod
+    def _get_enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        if not hasattr(cls, '_data'):
+            cls._data = cls._enum_data(cls._dataclass())
+        return cls._data
+
+    def __getattr__(self, item):
+        # c = type(self)
+        if item in type(self)._dataclass().__dataclass_fields__:
+            return self._get_enum_data()[self].__getattribute__(item)
+        raise AttributeError(f'{self} has no attribute named {item}.')
 
 
 class HierarchicalEnum:

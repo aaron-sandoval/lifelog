@@ -21,7 +21,7 @@ class Vizable:
     #     raise AttributeError(f'{self} has no attribute named {item}.')
 
 
-class Gender(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
+class Gender(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     # UNDEFINED = -1  # Use pd.NA for instances which are yet to be defined/unknown
     NOTAPPLICABLE = 0
     MALE = 1
@@ -29,7 +29,7 @@ class Gender(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
     NONBINARY = 3
 
     @classmethod
-    def _enum_data(cls, c: Type[NamedTuple]):
+    def _enum_data(cls, c: Type[dataclass]) -> Dict[Enum, dataclass]:
         return {
             Gender.NOTAPPLICABLE: c('N/A', 'N/A', (.6, .6, .6)), # For Person instances w/out gender, e.g., MultiplePeople
             Gender.MALE: c('', 'HOMBRE', (.54, .81, .94)),
@@ -99,7 +99,7 @@ class Gender(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
         return cls._aliasFuncs
 
 
-class Review(kiwilib.Aliasable, Enum, metaclass=Global.EnumABCMeta):
+class Review(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     # UNDEFINED = -1  # Use pd.NA for undefined
     NOREVIEW  = 0, 'NO REVIEW', 'SIN OPINIÓN'
     POOR      = 1, ''         , 'MALO'

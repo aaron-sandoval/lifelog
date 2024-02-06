@@ -130,10 +130,6 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
 ##############
 # Enum Fields#
 ##############
-class EnumABCMeta(abc.ABCMeta, type(Enum)):
-    pass
-
-
 class AliasNamedTuple(NamedTuple):
     en_US: str = '',
     es_MX: str = ''
@@ -185,7 +181,7 @@ class ListColumn(ColumnEnum):
         raise NotImplementedError('dfcolumn() not implemented in child class')
 
 
-class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     #     Each project falls into a metaproject category y default, though that broad assumption is refined in DC
     def __le__(self, other):
         return self.id <= other.id
@@ -233,7 +229,7 @@ class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumA
     Dormir = 4, 'Sleep'
 
 
-class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     #     Project = (project id, metaproject id)
 
     @staticmethod
@@ -353,7 +349,7 @@ class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMe
 
 
 # noinspection NonAsciiCharacters
-class Tag(ListColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Tag(ListColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     @staticmethod
     def dfcolumn() -> str:
         return 'tags'
@@ -398,7 +394,7 @@ class Tag(ListColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
     AVIÓN              = 22, ''                  , 'AIRPLANE'
 
 
-class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     """
     Enum class to define all the global significant dates marking transitions.
     These dates are here called epochs, and are used in VS for analysis considering different periods of life
@@ -515,7 +511,7 @@ def appendIntervalDictComplement(dct: P.IntervalDict, complementVal, bigInterval
     return dct
 
 
-class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class EpochScheme(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     """
     Enum class containing all the global data and procedures for epoch schemes and groups.
     Each enum member is a scheme for creating a set of epoch groups.
@@ -634,7 +630,7 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
     # TODO: 'Casa' location groups
 
 
-class Mood(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Mood(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     @staticmethod
     def dfcolumn() -> str:
         return 'mood'
