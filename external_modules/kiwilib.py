@@ -15,6 +15,7 @@ from typing import Union, TypeVar, Type, Any, Iterable, Tuple, List, Generator, 
 import pandas as pd
 import numpy as np
 from yamlable import YamlCodec
+from dataclasses import fields as dataclass_fields, dataclass, make_dataclass
 
 
 def kiwiTest():
