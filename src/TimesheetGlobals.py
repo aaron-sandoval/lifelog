@@ -153,7 +153,7 @@ class Colored(kiwilib.DataclassValuedEnum):
 
 
 @kiwilib.DataclassValuedEnum.init
-class AliasableEnum(kiwilib.DataclassValuedEnum):
+class AliasableEnum(kiwilib.DataclassValuedEnum, kiwilib.Aliasable):
     @staticmethod
     def _get_dataclass() -> IsDataclass:
         @dataclass
@@ -161,6 +161,8 @@ class AliasableEnum(kiwilib.DataclassValuedEnum):
             en_US: str = ""
             es_MX: str = ""
         return L10nEngEsp
+
+    # def _aliasFuncs
 
 
 @kiwilib.DataclassValuedEnum.init

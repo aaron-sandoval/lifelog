@@ -146,6 +146,7 @@ class Review(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
         return cls._aliasFuncs
 
 
+# TODO: Refactor yaml ops below into a decorator procedure defined in kiwilib, probably
 Gender._get_enum_data()
 yaml.add_constructor(u'!Gender', Gender._constructor, Loader=yaml.SafeLoader)
 yaml.add_representer(Gender, Gender._representer)

@@ -271,7 +271,10 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
 
     @staticmethod
     def init(cls: Type['DataclassValuedEnum']):
-        """Initializes the internal dataclass and fields of a DataclassValuedEnum subclass."""
+        """
+        Decorator proccedure to initialize the internal dataclass and fields of a DataclassValuedEnum subclass.
+        Never call this method on DataclassValuedEnum itself. Only used for its (abstract) subclasses.
+        """
         cls.DATACLASS = cls._get_dataclass()
         cls._data = cls._enum_data(cls.DATACLASS)
         if cls._data is not None:
@@ -787,6 +790,7 @@ YamlCodecMisc.register_with_pyyaml()
 class Aliasable(abc.ABC):
     # _aliasFuncs: dict[str, function]
     # defaultLocale: str = None
+    # TODO: refactor to move initialization to decorator procedure `init`
 
     def alias(self, locale: str = None):
         if locale is None:
