@@ -245,6 +245,7 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
     without invalidating any previous instance of that enum stored in files.
     When the enum is read from a file, its attributes will effectively be updated to the latest values in `_enum_data`.
     """
+    # TODO: private method that can be called in `subclass._get_dataclass` which auto-builds a new dataclass inherited from its superclasses' dataclasses
 
     @staticmethod
     @abc.abstractmethod
@@ -254,12 +255,14 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
         Returns a existing dataclass or constructs and returns a new one.
         This dataclass holds all the attributes of the outer class enum members.
         """
+        pass
 
     @classmethod
     def _dataclass(cls) -> IsDataclass:
-        key = '_DATACLASS'
-        if not hasattr(cls, key):
-            setattr(cls, key, cls._get_dataclass())
+        # TODO: move this functionality directly to decorator, eliminate method
+        key = 'DATACLASS'
+        # if not hasattr(cls, key):
+        setattr(cls, key, cls._get_dataclass())
         return getattr(cls, key)
 
     @classmethod
@@ -274,19 +277,24 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
         pass
     @classmethod
     def _get_enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
-        if not hasattr(cls, '_data'):
-            cls._data = cls._enum_data(cls._dataclass())
+        # TODO: move this functionality directly to decorator, eliminate method
+        # if not hasattr(cls, '_data'):
+        cls._data = cls._enum_data(cls.DATACLASS)
         return cls._data
 
-    def __getattr__(self, item):
+    # def __getattr__(self, item):
         # c = type(self)
         # if item in type(self)._dataclass().__dataclass_fields__:
-        return self._get_enum_data()[self].__getattribute__(item)
+        # return self._data[self].__getattribute__(item)
         # raise AttributeError(f'{self} has no attribute named {item}.')
 
 
 def init_DataclassValuedEnum(cls: Type[DataclassValuedEnum]):
     cls._dataclass()
+    cls._get_enum_data()
+    if cls._data is not None:
+        for fld in cls.DATACLASS.__dataclass_fields__:
+            setattr(cls, fld, property(lambda slf, f=fld: getattr(slf._data[slf], f)))
     return cls
 
 

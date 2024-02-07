@@ -152,20 +152,40 @@ class Colored(kiwilib.DataclassValuedEnum):
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x * 256), 255)) for x in self.color])
 
 
-# @kiwilib.init_DataclassValuedEnum
-# class AliasableEnum(kiwilib.DataclassValuedEnum):
-#
+@kiwilib.init_DataclassValuedEnum
+class AliasableEnum(kiwilib.DataclassValuedEnum):
+    @staticmethod
+    def _get_dataclass() -> IsDataclass:
+        @dataclass
+        class L10nEngEsp:
+            en_US: str = ""
+            es_MX: str = ""
+        return L10nEngEsp
+
 
 @kiwilib.init_DataclassValuedEnum
-class TestColor(Colored):
+class TestColor(Colored, AliasableEnum):
     RED = enum.auto()
     GREEN = enum.auto()
 
+    @staticmethod
+    def _get_dataclass() -> IsDataclass:
+        @dataclass
+        class ColoredAliasableEnum(Colored.DATACLASS, AliasableEnum.DATACLASS): pass
+        return ColoredAliasableEnum
     @classmethod
-    def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+    def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum].DATACLASS']:
         return {
-            cls.RED: c((256, 0, 0)),
-            cls.GREEN: c((0, 256, 0)),
+            cls.RED: c(
+                color=(256, 0, 0),
+                en_US='',
+                es_MX='ROJO'
+            ),
+            cls.GREEN: c(
+                color=(0, 256, 0),
+                en_US='GREEEEN',
+                es_MX='VERDE'
+            ),
         }
 
 class AliasNamedTuple(NamedTuple):
