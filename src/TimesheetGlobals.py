@@ -134,7 +134,7 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
 ##############
 # Enum Fields#
 ##############
-@kiwilib.init_DataclassValuedEnum
+@kiwilib.DataclassValuedEnum.init
 class Colored(kiwilib.DataclassValuedEnum):
     @staticmethod
     def _get_dataclass() -> IsDataclass:
@@ -152,7 +152,7 @@ class Colored(kiwilib.DataclassValuedEnum):
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x * 256), 255)) for x in self.color])
 
 
-@kiwilib.init_DataclassValuedEnum
+@kiwilib.DataclassValuedEnum.init
 class AliasableEnum(kiwilib.DataclassValuedEnum):
     @staticmethod
     def _get_dataclass() -> IsDataclass:
@@ -163,7 +163,7 @@ class AliasableEnum(kiwilib.DataclassValuedEnum):
         return L10nEngEsp
 
 
-@kiwilib.init_DataclassValuedEnum
+@kiwilib.DataclassValuedEnum.init
 class TestColor(Colored, AliasableEnum):
     RED = enum.auto()
     GREEN = enum.auto()
@@ -202,14 +202,6 @@ class StyleColored(abc.ABC):
     @abc.abstractmethod
     def color(self) -> Tuple[float, float, float]: pass
 
-
-# class EnumNamedTupleVal(abc.ABC, Enum, metaclass=EnumABCMeta):
-#     @classmethod
-#     def _named_tuple_class(cls) -> type:
-#         key = ''.join(['NT_', cls.__name__])
-#         if not hasattr(cls, key):
-#             setattr(cls, key, type('_'+key, (NamedTuple, ), {}))
-#         return getattr(cls, key)
 
 class ColumnEnum(abc.ABC):
     """Marks association of child classes to a string column name of a TimesheetDF"""
