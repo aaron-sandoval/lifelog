@@ -829,5 +829,5 @@ class Aliasable(abc.ABC):
         return cls
 
     def __init_subclass__(cls, **kwargs):
-        super().__init_subclass__(kwargs)
+        super().__init_subclass__(**kwargs)
         cls.init(cls)

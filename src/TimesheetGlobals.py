@@ -187,12 +187,12 @@ class TestColor(Colored, AliasableEnum):
     def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum].DATACLASS']:
         return {
             cls.RED: c(
-                color=(256, 0, 0),
+                color=(255, 0, 0),
                 en_US='',
                 es_MX='ROJO'
             ),
             cls.GREEN: c(
-                color=(0, 256, 0),
+                color=(0, 255, 0),
                 # es_MX='VERDE'
             ),
         }
