@@ -257,7 +257,6 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
         """
         pass
 
-
     @classmethod
     @abc.abstractmethod
     def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
@@ -272,15 +271,20 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
     @staticmethod
     def init(cls: Type['DataclassValuedEnum']):
         """
-        Decorator proccedure to initialize the internal dataclass and fields of a DataclassValuedEnum subclass.
+        Decorator procedure to initialize the internal dataclass and fields of a DataclassValuedEnum subclass.
         Never call this method on DataclassValuedEnum itself. Only used for its (abstract) subclasses.
         """
-        cls.DATACLASS = cls._get_dataclass()
-        cls._data = cls._enum_data(cls.DATACLASS)
+        cls.dataclass = cls._get_dataclass()
+        cls._data = cls._enum_data(cls.dataclass)
         if cls._data is not None:
-            for fld in cls.DATACLASS.__dataclass_fields__:
+            for fld in cls.dataclass.__dataclass_fields__:
                 setattr(cls, fld, property(lambda slf, f=fld: getattr(slf._data[slf], f)))
         return cls
+
+    # def __init_subclass__(cls, **kwargs):
+    #     a=1
+    #     super().__init_subclass__(**kwargs)
+    #     cls = cls.init(cls)
 
 
 class HierarchicalEnum:
@@ -795,8 +799,8 @@ class Aliasable(abc.ABC):
     def alias(self, locale: str = None):
         if locale is None:
             # locale = self.aliasFuncs()[self.defaultLocale]
-            locale = self.defaultLocale()
-        return self.aliasFuncs()[locale](self)
+            locale = self._defaultLocale
+        return self._aliasFuncs[locale](self)
 
     @classmethod
     @abc.abstractmethod
@@ -804,16 +808,26 @@ class Aliasable(abc.ABC):
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {}  # Essentially this defines abstract static class data
-        return cls._aliasFuncs
+        # if not hasattr(cls, '_aliasFuncs'):
+        return {}  # Essentially this defines abstract static class data
+        # return cls._aliasFuncs
 
     @classmethod
     def defaultLocale(cls) -> str:
-        if not hasattr(cls, '_defaultLocale'):
-            cls._defaultLocale: str = next(iter(cls.aliasFuncs().keys()))
+        # if not hasattr(cls, '_defaultLocale'):
+        #     cls._defaultLocale: str = next(iter(cls.aliasFuncs().keys()))
         return cls._defaultLocale
 
     @classmethod
     def setDefaultLocale(cls, locale: str):
         cls._defaultLocale = locale
+
+    @staticmethod
+    def init(cls: type):
+        cls._aliasFuncs: Dict[str, Callable] = cls.aliasFuncs()
+        cls._defaultLocale: str = next(iter(cls._aliasFuncs.keys()))
+        return cls
+
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(kwargs)
+        cls.init(cls)

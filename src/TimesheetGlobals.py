@@ -153,7 +153,7 @@ class Colored(kiwilib.DataclassValuedEnum):
 
 
 @kiwilib.DataclassValuedEnum.init
-class AliasableEnum(kiwilib.DataclassValuedEnum, kiwilib.Aliasable):
+class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
     @staticmethod
     def _get_dataclass() -> IsDataclass:
         @dataclass
@@ -162,7 +162,15 @@ class AliasableEnum(kiwilib.DataclassValuedEnum, kiwilib.Aliasable):
             es_MX: str = ""
         return L10nEngEsp
 
-    # def _aliasFuncs
+    @classmethod
+    def aliasFuncs(cls) -> Dict[str, Callable]:
+        # if not hasattr(cls, '_aliasFuncs'):
+        #     cls._aliasFuncs: Dict[str, Callable] = {
+        return {
+                'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name,
+                'es_MX': lambda slf: slf.es_MX if slf.es_MX != '' else ''.join([slf.name, 'O']),
+        }
+        # return cls._aliasFuncs
 
 
 @kiwilib.DataclassValuedEnum.init
@@ -173,7 +181,7 @@ class TestColor(Colored, AliasableEnum):
     @staticmethod
     def _get_dataclass() -> IsDataclass:
         @dataclass
-        class ColoredAliasableEnum(Colored.DATACLASS, AliasableEnum.DATACLASS): pass
+        class ColoredAliasableEnum(Colored.dataclass, AliasableEnum.dataclass): pass
         return ColoredAliasableEnum
     @classmethod
     def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum].DATACLASS']:
@@ -185,10 +193,10 @@ class TestColor(Colored, AliasableEnum):
             ),
             cls.GREEN: c(
                 color=(0, 256, 0),
-                en_US='GREEEEN',
-                es_MX='VERDE'
+                # es_MX='VERDE'
             ),
         }
+
 
 class AliasNamedTuple(NamedTuple):
     en_US: str = '',

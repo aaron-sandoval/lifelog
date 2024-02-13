@@ -29,6 +29,7 @@ global babelx  # Babel extractor wrapper, must be accessible everywhere in the m
 babelx = i18n.BabelIntermediateExtractor(extract=True, locale=i18n.lang_en, bufferSize=50)  # Sets builtins '_a', '_b'
 STR_BACKEND = _k('👀 *Peek into the Backend*')
 
+
 def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Privacy.PUBLIC):
 
     def babelExtractEnumLike() -> None:
