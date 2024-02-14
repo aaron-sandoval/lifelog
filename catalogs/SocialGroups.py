@@ -5,6 +5,7 @@ from typing import Any, Dict, Callable, Tuple, Type, NamedTuple
 from external_modules import kiwilib
 import src.TimesheetGlobals as Global
 from dataclasses import fields as dataclass_fields, dataclass, make_dataclass
+import i18n_l10n.internationalization as i18n
 
 
 @dataclass
@@ -21,7 +22,8 @@ class Vizable:
     #     raise AttributeError(f'{self} has no attribute named {item}.')
 
 
-class Gender(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
+@kiwilib.DataclassValuedEnum.init
+class Gender(Global.Colored, i18n.AliasableEnum):
     # UNDEFINED = -1  # Use pd.NA for instances which are yet to be defined/unknown
     NOTAPPLICABLE = 0
     MALE = 1
@@ -29,47 +31,35 @@ class Gender(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     NONBINARY = 3
 
     @classmethod
-    def _enum_data(cls, c: Type[dataclass]) -> Dict[Enum, dataclass]:
+    def _enum_data(cls, c: kiwilib.IsDataclass) -> Dict[Enum, 'c']:
         return {
-            Gender.NOTAPPLICABLE: c('N/A', 'N/A', (.6, .6, .6)), # For Person instances w/out gender, e.g., MultiplePeople
-            Gender.MALE: c('', 'HOMBRE', (.54, .81, .94)),
-            Gender.FEMALE: c('', 'MUJER', (.96, .76, .76)),
-            Gender.NONBINARY: c('', 'NO BINARIO', (.7, .7, .1)),
+            cls.NOTAPPLICABLE: c(  # Person instances w/out gender, e.g., MultiplePeople
+                en_US='N/A',
+                es_MX='N/A',
+                color=(.6, .6, .6)
+            ),
+            cls.MALE: c(
+                en_US='',
+                es_MX='HOMBRE',
+                color=(.54, .81, .94)
+            ),
+            cls.FEMALE: c(
+                en_US='',
+                es_MX='MUJER',
+                color=(.96, .76, .76)
+            ),
+            cls.NONBINARY: c(
+                en_US='',
+                es_MX='NO BINARIO',
+                color=(.7, .7, .1)
+            ),
         }
 
-    @staticmethod
-    def _named_tuple_class_args() -> Tuple[Dict[str, Any], Tuple]:
-        return [('dom', int, 2)], (Vizable, )
     @classmethod
-    def _named_tuple_class(cls) -> Type[dataclass]:
-        key = '_NamedTupleClass'
-        if not hasattr(cls, key):
-            fields, bases = cls._named_tuple_class_args()
-            setattr(cls,
-                    key,
-                    # type(key, (Vizable,), {'dom': 2})
-                    make_dataclass(key, fields, bases=bases)
-                    )
-        return cls._NamedTupleClass
-    @classmethod
-    def _get_enum_data(cls) -> dict:
-        if not hasattr(cls, '_data'):
-            cls._data = cls._enum_data(cls._named_tuple_class())
-        return cls._data
-
-    def __getattr__(self, item):
-        c = type(self)
-        if item in type(self)._NamedTupleClass.__dataclass_fields__:
-            return self._get_enum_data()[self].__getattribute__(item)
-        raise AttributeError(f'{self} has no attribute named {item}.')
-
-    @property
-    def color_hex(self) -> str:
-        """Hexadecimal string representation of the float color tuple."""
-        if isinstance(self.color[0], int):
-            return "#{0:02x}{1:02x}{2:02x}".format(*self.color)
-        else:
-            return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
+    def _get_dataclass(cls) -> Type[dataclass]:
+        @dataclass
+        class GenderDataclass(Global.Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+        return GenderDataclass
 
     @classmethod
     def valueDict(cls):
@@ -85,18 +75,12 @@ class Gender(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
         return Gender.valueDict()[value]
 
     @classmethod
-    def _aliasDict(cls):
+    def _aliasFuncs(cls):
         """Defines a map between locale strings and Callables returning the localization of an instance."""
         return {
            'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name,
            'es_MX': lambda slf: slf.es_MX,
         }
-
-    @classmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs = cls._aliasDict()
-        return cls._aliasFuncs
 
 
 class Review(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
@@ -147,7 +131,7 @@ class Review(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
 
 
 # TODO: Refactor yaml ops below into a decorator procedure defined in kiwilib, probably
-Gender._get_enum_data()
+# Gender._get_enum_data()
 yaml.add_constructor(u'!Gender', Gender._constructor, Loader=yaml.SafeLoader)
 yaml.add_representer(Gender, Gender._representer)
 yaml.add_constructor(u'!Review', Review._constructor, Loader=yaml.SafeLoader)

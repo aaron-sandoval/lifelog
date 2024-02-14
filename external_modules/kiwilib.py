@@ -246,6 +246,7 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
     When the enum is read from a file, its attributes will effectively be updated to the latest values in `_enum_data`.
     """
     # TODO: public method that can be called in `subclass._get_dataclass` which auto-builds a new dataclass inherited from its superclasses' dataclasses
+    # TODO: change enum instance repr to print datclass value
 
     @staticmethod
     @abc.abstractmethod

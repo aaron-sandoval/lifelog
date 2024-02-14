@@ -18,6 +18,7 @@ import portion as P
 from enum import Enum
 
 from external_modules.kiwilib import IsDataclass
+import i18n_l10n.internationalization as i18n
 from src.TimePeriod import TimePeriod
 import pandas as pd
 # import numpy as np
@@ -152,39 +153,19 @@ class Colored(kiwilib.DataclassValuedEnum):
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x * 256), 255)) for x in self.color])
 
 
-@kiwilib.DataclassValuedEnum.init
-class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
-    @staticmethod
-    def _get_dataclass() -> IsDataclass:
-        @dataclass
-        class L10nEngEsp:
-            en_US: str = ""
-            es_MX: str = ""
-        return L10nEngEsp
-
-    @classmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
-        # if not hasattr(cls, '_aliasFuncs'):
-        #     cls._aliasFuncs: Dict[str, Callable] = {
-        return {
-                'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name,
-                'es_MX': lambda slf: slf.es_MX if slf.es_MX != '' else ''.join([slf.name, 'O']),
-        }
-        # return cls._aliasFuncs
-
 
 @kiwilib.DataclassValuedEnum.init
-class TestColor(Colored, AliasableEnum):
+class TestColor(Colored, i18n.AliasableEnum):
     RED = enum.auto()
     GREEN = enum.auto()
 
     @staticmethod
     def _get_dataclass() -> IsDataclass:
         @dataclass
-        class ColoredAliasableEnum(Colored.dataclass, AliasableEnum.dataclass): pass
+        class ColoredAliasableEnum(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
         return ColoredAliasableEnum
     @classmethod
-    def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum].DATACLASS']:
+    def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'c']:
         return {
             cls.RED: c(
                 color=(255, 0, 0),

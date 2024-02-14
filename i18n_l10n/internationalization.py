@@ -1,9 +1,11 @@
 import gettext
-from src.TimesheetGlobals import rootProjectPath
+# from src.TimesheetGlobals import rootProjectPath
 import os
 import builtins
 from datetime import datetime
-
+from external_modules import kiwilib
+from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
+from dataclasses import dataclass
 
 def test1():
     lang_en.install()  # Magically make the _ function globally available
@@ -17,7 +19,7 @@ def test1():
     print(_b('test1'))
 
 
-localeDir = os.path.join(rootProjectPath(), 'i18n_l10n', 'locale')
+localeDir = os.path.join(os.path.dirname(__file__), 'locale')
 lang_en = gettext.translation(
     domain='timesheet',
     localedir=localeDir,
@@ -144,6 +146,27 @@ class BabelIntermediateExtractor:
             f.writelines([''.join(['_(', repr(s), ')\n']) for s in self.newWords])
         self.words.update(self.newWords)
         self.newWords.clear()
+
+
+@kiwilib.DataclassValuedEnum.init
+class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
+    @staticmethod
+    def _get_dataclass() -> kiwilib.IsDataclass:
+        @dataclass
+        class L10nEngEsp:
+            en_US: str = ""
+            es_MX: str = ""
+        return L10nEngEsp
+
+    @classmethod
+    def aliasFuncs(cls) -> Dict[str, Callable]:
+        # if not hasattr(cls, '_aliasFuncs'):
+        #     cls._aliasFuncs: Dict[str, Callable] = {
+        return {
+                'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name,
+                'es_MX': lambda slf: slf.es_MX if slf.es_MX != '' else ''.join([slf.name, 'O']),
+        }
+        # return cls._aliasFuncs
 
 
 def test2():
