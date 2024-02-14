@@ -247,6 +247,7 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
     """
     # TODO: public method that can be called in `subclass._get_dataclass` which auto-builds a new dataclass inherited from its superclasses' dataclasses
     # TODO: change enum instance repr to print datclass value
+    # TODO: refactor with aenum and see if __init_subclass__ works so I can get rid of decorators on all subclasses
 
     @staticmethod
     @abc.abstractmethod

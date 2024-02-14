@@ -8,20 +8,6 @@ from dataclasses import fields as dataclass_fields, dataclass, make_dataclass
 import i18n_l10n.internationalization as i18n
 
 
-@dataclass
-class Vizable:
-    en_US: str = ''
-    es_MX: str = ''
-    color: Tuple[float] = None
-
-    # def __getattr__(self, item):
-    #     # if not hasattr(type(self), 'attrs'):
-    #     if item == 'attrs':
-    #         setattr(self, 'attrs', {fld.name for fld in dataclass_fields(self)})
-    #         return self.attrs
-    #     raise AttributeError(f'{self} has no attribute named {item}.')
-
-
 @kiwilib.DataclassValuedEnum.init
 class Gender(Global.Colored, i18n.AliasableEnum):
     # UNDEFINED = -1  # Use pd.NA for instances which are yet to be defined/unknown
@@ -61,9 +47,9 @@ class Gender(Global.Colored, i18n.AliasableEnum):
         class GenderDataclass(Global.Colored.dataclass, i18n.AliasableEnum.dataclass): pass
         return GenderDataclass
 
-    @classmethod
-    def valueDict(cls):
-        return {a.name: a for a in Gender}
+    # @classmethod
+    # def valueDict(cls):
+    #     return {a.name: a for a in Gender}
 
     @staticmethod
     def _representer(dumper, data):
@@ -72,7 +58,7 @@ class Gender(Global.Colored, i18n.AliasableEnum):
     @staticmethod
     def _constructor(loader, node):
         value = loader.construct_scalar(node).strip()
-        return Gender.valueDict()[value]
+        return Gender(value)
 
     @classmethod
     def _aliasFuncs(cls):
@@ -143,6 +129,11 @@ class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
     es_MX = 'Grupo social'
     color = (0.5, 0.5, 0.5)
 
+    def __init_subclass__(cls, **kwargs):
+        """Register all subclasses in the 'SocialGroup' namespace."""
+        super().__init_subclass__(**kwargs)
+        yaml_info(yaml_tag_ns='SocialGroup')(cls)
+
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
         if not hasattr(cls, '_aliasFuncs'):
@@ -160,88 +151,49 @@ class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
         else:
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
 
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class SocialGroupUndefined(SocialGroup): es_MX = 'Indefinido'  # Default. Marks one whose SocialGroup is not yet manually defined.
-@yaml_info(yaml_tag_ns='SocialGroup')
 class MultiplePeople(SocialGroup): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Relation(SocialGroup): es_MX = 'Relación'
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Activity(SocialGroup): es_MX = 'Actividad'
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityProductive(Activity): es_MX = 'Actividad productiva'
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityRecreational(Activity): es_MX = 'Actividad recreacional'
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityStudy(ActivityProductive): es_MX = 'Actividad productiva'
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityWork(ActivityProductive): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityRoommate(ActivityProductive): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityGames(ActivityRecreational): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityMusic(ActivityRecreational): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityBike(ActivityRecreational): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityTravel(ActivityRecreational): pass  # Interacted while they or I are leisure traveling. Not work travel
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ActivityHospitality(ActivityTravel): pass  # Host or guest while leisure traveling
 
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Colleague(Relation):
     # Includes any professional, client, volunteer, and other structured relationships
     es_MX = 'Colega'
     color = (.9, .8, .3)
 
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ColleagueWork(Colleague, ActivityWork): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ColleagueAcademic(Colleague, ActivityStudy): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Superior(Colleague): pass  # Not by seniority, but rather our individual work relationship, if they assign me work
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Subordinate(Colleague): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Peer(Colleague): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ColleagueBall(ColleagueWork): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ColleagueBallStructures(ColleagueBall): pass  # Includes people from other orgs
-@yaml_info(yaml_tag_ns='SocialGroup')
 class ColleagueBallOPIR(ColleagueBall): pass  # Includes peo[ple from other orgs
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Family(Relation):
     es_MX = 'Familia'
     color = (.7, .2, .9)
 
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Friend(Relation):
     es_MX = 'Amigo'
     color = (.2, .4, .9)
 
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class Acquaintance(Relation):
     # People w/out much personal bond like Friend nor structured context like Colleague
     es_MX = 'Conocido'
     # color = (.6, .9, .85)
     color = (144, 196, 198)
 
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class FamilyMom(Family): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class FamilyDad(Family): pass
-@yaml_info(yaml_tag_ns='SocialGroup')
 class FamilyNuclear(Family): pass
-
-@yaml_info(yaml_tag_ns='SocialGroup')
 class WarmshowersHospitality(ActivityHospitality, ActivityBike, Acquaintance): pass  # Host or guest via Warmshowers or similar
