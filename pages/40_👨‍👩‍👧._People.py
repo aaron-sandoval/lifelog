@@ -13,10 +13,7 @@ import sys
 sys.path.append(os.curdir)
 import src.TimesheetGlobals as Global
 import catalogs.SocialGroups as sg
-from utils import Visualize
-from utils import Exhibit
-from external_modules import kiwilib
-from typing import Type
+from scripts import Visualize, Exhibit
 
 
 def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):

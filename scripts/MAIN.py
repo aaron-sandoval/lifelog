@@ -9,11 +9,9 @@ import sys
 import os
 from pathlib import Path
 sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent.absolute()))
-from utils import FileManagement as FM
-from utils import Preprocess as PP
-from utils.DataCorrection import main as DCmain
-from utils import Visualize as VS
-# from utils import Exhibit as XH
+from scripts import FileManagement as FM, Preprocess as PP, Visualize as VS
+from scripts.DataCorrection import main as DCmain
+# from scripts import Exhibit as XH
 from src.TimesheetGlobals import PPPath, rootProjectPath, Privacy
 
 

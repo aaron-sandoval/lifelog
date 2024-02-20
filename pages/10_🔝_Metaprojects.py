@@ -12,8 +12,7 @@ import os
 import sys
 sys.path.append(os.curdir)
 import src.TimesheetGlobals as Global
-from utils import Visualize
-from utils import Exhibit
+from scripts import Visualize, Exhibit
 
 
 def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):
