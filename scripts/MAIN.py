@@ -72,7 +72,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
         FM_filePath = FM.main(['sample_RAW_PUBLIC.csv'])
         PP_filePath = PP.main(FM_filePath)
         DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
-        VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
+        # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
     else:
         # FM_filePath = FM.main(dataFiles)
         # PP_filePath = PP.main(FM_filePath)
@@ -84,4 +84,4 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
 
 if __name__ == '__main__':
     # TODO: always change to runPublic=True before git commit
-    main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=False)
+    main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=True)

@@ -4,6 +4,7 @@
 *_PRIVATE.yaml
 *.bak
 *.gdoc
+*checkpoint.ipynb
 
 Raw_CSVs/*
 !Raw_CSVs/sample_RAW_PUBLIC.csv
@@ -14,8 +15,6 @@ DC_Persistent/*
 VS_Figures/*
 VS_Persistent/*
 !VS_Persistent/figs_PUBL.pkl
-tests/*
-# !tests/MAIN.py
 
 Catalogs/Catalog*
 !Catalogs/Catalog_Audiobook.yaml
@@ -23,6 +22,9 @@ Catalogs/Catalog*
 !Catalogs/Catalog_Movie.yaml
 !Catalogs/Catalog_Podcast.yaml
 !Catalogs/Catalog_TVShow.yaml
+
+# tests/*
+tests/PROFILE_*
 
 */__pycache__/
 tsqparser/testQueries_1.txt

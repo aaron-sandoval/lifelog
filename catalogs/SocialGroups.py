@@ -58,7 +58,7 @@ class Gender(Global.Colored, i18n.AliasableEnum):
     @staticmethod
     def _constructor(loader, node):
         value = loader.construct_scalar(node).strip()
-        return Gender(value)
+        return getattr(Gender, value)
 
     @classmethod
     def _aliasFuncs(cls):

@@ -1,0 +1,40 @@
+- HEADER:
+    FILE TYPE: DAGCatalog
+    DATE WRITTEN: 2024-01-23
+    TASK ID RANGE: !CodecMisc/portion.Interval
+      atomicIntervals: []
+    COLLECTIBLE TYPE: food
+    CATALOG COUNT: 0
+---
+adj:
+  $FOOD: {}
+  $FOOD_UNDEFINED:
+    $FOOD:
+      p: 0
+  $ETNIAS:
+    $FOOD:
+      p: 0
+  $PLATOS:
+    $FOOD:
+      p: 0
+  $PRIMITIVAS:
+    $FOOD:
+      p: 0
+  $OTRO:
+    $FOOD:
+      p: 0
+  OCCIDENTAL:
+    $ETNIAS:
+      p: 0
+  ORIENTAL:
+    $ETNIAS:
+      p: 0
+  AFRICANA:
+    $ETNIAS:
+      p: 0
+  "ASI\xC1TICA":
+    ORIENTAL:
+      p: 0
+  LATINOAMERICANA:
+    $ETNIAS:
+      p: 0

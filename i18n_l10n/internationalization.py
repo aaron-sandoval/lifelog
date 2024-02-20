@@ -6,6 +6,7 @@ from datetime import datetime
 from external_modules import kiwilib
 from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
 from dataclasses import dataclass
+from pathlib import Path
 
 def test1():
     lang_en.install()  # Magically make the _ function globally available
@@ -53,7 +54,8 @@ class BabelIntermediateExtractor:
 
     def __init__(self, extract=True, fileSuffix: str = '', locale: gettext.GNUTranslations = lang_en, bufferSize=100):
         self.toExtract = extract  # Should this object extract messages into intermediate file or just duplicate gettext
-        self.file = os.path.join(rootProjectPath(), 'i18n_l10n', f'babel_intermediate{fileSuffix}.txt')
+        self.file = str(Path(
+            os.path.abspath(__file__)).parent.parent.absolute()/'i18n_l10n'/f'babel_intermediate{fileSuffix}.txt')
         self.words = set()  # Existing set of words, all languages together, read from the intermediate file.
         self.newWords = set()  # New words found via extract() not yet present in self.words
         self.bufferSize = bufferSize  # Num words to accumulate in self.newWords before appending contents to self.file
