@@ -261,7 +261,7 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
 
     @classmethod
     @abc.abstractmethod
-    def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
         """
         Instantiates dataclass members associated with each enum member.
         This method contains the data that would traditionally be located in the enum definitions.
@@ -277,7 +277,7 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
         Never call this method on DataclassValuedEnum itself. Only used for its (abstract) subclasses.
         """
         cls.dataclass = cls._get_dataclass()
-        cls._data = cls._enum_data(cls.dataclass)
+        cls._data = cls._enum_data()
         if cls._data is not None:
             for fld in cls.dataclass.__dataclass_fields__:
                 setattr(cls, fld, property(lambda slf, f=fld: getattr(slf._data[slf], f)))

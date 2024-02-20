@@ -6,6 +6,7 @@ from external_modules import kiwilib
 import src.TimesheetGlobals as Global
 from dataclasses import fields as dataclass_fields, dataclass, make_dataclass
 import i18n_l10n.internationalization as i18n
+import re
 
 
 @kiwilib.DataclassValuedEnum.init
@@ -17,27 +18,25 @@ class Gender(Global.Colored, i18n.AliasableEnum):
     NONBINARY = 3
 
     @classmethod
-    def _enum_data(cls, c: kiwilib.IsDataclass) -> Dict[Enum, 'c']:
+    def _enum_data(cls) -> Dict[Enum, 'c']:
+        c = cls.dataclass
         return {
             cls.NOTAPPLICABLE: c(  # Person instances w/out gender, e.g., MultiplePeople
                 en_US='N/A',
                 es_MX='N/A',
-                color=(.6, .6, .6)
+                color=(.6, .6, .6),
             ),
             cls.MALE: c(
-                en_US='',
                 es_MX='HOMBRE',
-                color=(.54, .81, .94)
+                color=(.54, .81, .94),
             ),
             cls.FEMALE: c(
-                en_US='',
                 es_MX='MUJER',
-                color=(.96, .76, .76)
+                color=(.96, .76, .76),
             ),
             cls.NONBINARY: c(
-                en_US='',
                 es_MX='NO BINARIO',
-                color=(.7, .7, .1)
+                color=(.7, .7, .1),
             ),
         }
 
@@ -136,12 +135,11 @@ class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs = {
+        return {
+               # 'en_US': lambda slf: re.sub(r"([a-z])([A-Z])", r"\1 \2", type(slf).__name__),
                'en_US': lambda slf: type(slf).__name__,
-               'es_MX': lambda slf: type(slf).es_MX,
-            }
-        return cls._aliasFuncs
+               'es_MX': lambda slf: type(slf).es_MX if hasattr(slf) else lambda slf: type(slf).__name__ + 'o'
+        }
 
     @property
     def color_hex(self) -> str:

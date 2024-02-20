@@ -165,7 +165,8 @@ class TestColor(Colored, i18n.AliasableEnum):
         class ColoredAliasableEnum(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
         return ColoredAliasableEnum
     @classmethod
-    def _enum_data(cls, c: IsDataclass) -> Dict[Enum, 'c']:
+    def _enum_data(cls) -> Dict[Enum, 'c']:
+        c = cls.dataclass
         return {
             cls.RED: c(
                 color=(255, 0, 0),
