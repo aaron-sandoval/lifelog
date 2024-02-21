@@ -67,28 +67,45 @@ class Gender(Global.ColoredAliasable):
         }
 
 
-class Review(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
+class Review(Global.ColoredAliasable):
     # UNDEFINED = -1  # Use pd.NA for undefined
-    NOREVIEW  = 0, 'NO REVIEW', 'SIN OPINIÓN'
-    POOR      = 1, ''         , 'MALO'
-    FAIR      = 2, ''         , 'PASABLE'
-    GOOD      = 3, ''         , 'BUENO'
-    EXCELLENT = 4, ''         , 'EXCELENTE'
-
-    # def _enum_data(cls) -> Dict[Enum, 'cls.dataclass']:
-    #     c: kiwilib.IsDataclass = cls.dataclass
-    #     return {
-    #         cls.NOREVIEW: c(0, 'NO REVIEW', 'SIN OPINIÓN'),
-    #         cls.POOR: c( '', 'MALO'),
-    #         cls.FAIR: c( '', 'PASABLE'),
-    #         cls.GOOD: c( '', 'BUENO'),
-    #         cls.EXCELLENT: c( '', 'EXCELENTE'),
-    #     }
-
+    NOREVIEW  = 0
+    POOR      = 1
+    FAIR      = 2
+    GOOD      = 3
+    EXCELLENT = 4
 
     @classmethod
-    def valueDict(cls) -> dict:
-        return {a.name: a for a in cls}
+    def _enum_data(cls) -> Dict[Enum, 'cls.dataclass']:
+        c: kiwilib.IsDataclass = cls.dataclass
+        return {
+            cls.NOREVIEW: c(
+                en_US='NO REVIEW',
+                es_MX='SIN OPINIÓN',
+                color=(128, 128, 128),
+            ),
+            cls.POOR: c(
+                es_MX='MALO',
+                color=(220, 60, 40),
+            ),
+            cls.FAIR: c(
+                es_MX='PASABLE',
+                color=(230, 220, 70),
+            ),
+            cls.GOOD: c(
+                es_MX='BUENO',
+                color=(160, 240, 80),
+            ),
+            cls.EXCELLENT: c(
+                es_MX='EXCELENTE',
+                color=(20, 250, 100),
+            ),
+        }
+
+
+    # @classmethod
+    # def valueDict(cls) -> dict:
+    #     return {a.name: a for a in cls}
 
     @staticmethod
     def _representer(dumper, data):
@@ -97,36 +114,30 @@ class Review(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     @staticmethod
     def _constructor(loader, node):
         value = loader.construct_scalar(node).strip()
-        return Review.valueDict()[value]
+        return getattr(Review, value)
 
     @classmethod
     def moodMap(cls, mood: Global.Mood):
         """ Map to extract reviews for Reviewable objects, which are encoded in the mood field of a tsdf."""
         if not hasattr(cls, '_moodMap'):
             cls._moodMap = {
-                Global.Mood.Awful: Review.POOR,
-                Global.Mood.Bad: Review.FAIR,
-                Global.Mood.Neutral: Review.NOREVIEW,
-                Global.Mood.Happy: Review.GOOD,
-                Global.Mood.Overjoyed: Review.EXCELLENT,
+                Global.Mood.Awful:       Review.POOR,
+                Global.Mood.Bad:         Review.FAIR,
+                Global.Mood.Neutral:     Review.NOREVIEW,
+                Global.Mood.Happy:       Review.GOOD,
+                Global.Mood.Overjoyed:   Review.EXCELLENT,
             }
         return cls._moodMap[mood]
 
-    @classmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
-        """
-        Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
-        """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs = {
-               'en_US': lambda slf: slf.value[1] if slf.value[1] != '' else slf.name,
-               'es_MX': lambda slf: slf.value[2],
-            }
-        return cls._aliasFuncs
+    # @classmethod
+    # def aliasFuncs(cls) -> Dict[str, Callable]:
+    #     return {
+    #            'en_US': lambda slf: slf.value[1] if slf.value[1] != '' else slf.name,
+    #            'es_MX': lambda slf: slf.value[2],
+    #     }
 
 
 # TODO: Refactor yaml ops below into a decorator procedure defined in kiwilib, probably
-# Gender._get_enum_data()
 yaml.add_constructor(u'!Gender', Gender._constructor, Loader=yaml.SafeLoader)
 yaml.add_representer(Gender, Gender._representer)
 yaml.add_constructor(u'!Review', Review._constructor, Loader=yaml.SafeLoader)

@@ -176,7 +176,14 @@ def test_SocialGroup():
     assert sg.FamilyMom() == yaml.load(yaml.dump(sg.FamilyMom()), Loader=yaml.SafeLoader)
 
 
+def test_Review():
+    assert sg.Review.POOR.color[0] > sg.Review.EXCELLENT.color[0]
+    assert all([hasattr(sg.Review.NOREVIEW, k) for k in sg.Review.dataclass.__dataclass_fields__])
+    assert sg.Review.GOOD == yaml.load(yaml.dump(sg.Review.GOOD), Loader=yaml.SafeLoader)
+
+
 if __name__ == "__main__":
     # test_TimesheetDF()
     test_Gender()
     test_SocialGroup()
+    test_Review()
