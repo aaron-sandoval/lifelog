@@ -186,21 +186,6 @@ class TestColor(Colored, i18n.AliasableEnum):
         }
 
 
-class AliasNamedTuple(NamedTuple):
-    en_US: str = '',
-    es_MX: str = ''
-
-
-class StyleNamedTuple(NamedTuple):
-    color: Tuple[float, float, float]
-
-
-class StyleColored(abc.ABC):
-    @property
-    @abc.abstractmethod
-    def color(self) -> Tuple[float, float, float]: pass
-
-
 class ColumnEnum(abc.ABC):
     """Marks association of child classes to a string column name of a TimesheetDF"""
     @staticmethod
@@ -229,7 +214,7 @@ class ListColumn(ColumnEnum):
         raise NotImplementedError('dfcolumn() not implemented in child class')
 
 
-class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
+class Metaproject(SingleInstanceColumn, ColoredAliasable):
     #     Each project falls into a metaproject category y default, though that broad assumption is refined in DC
     def __le__(self, other):
         return self.id <= other.id
@@ -258,23 +243,51 @@ class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwil
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.value[1],
+        return {
+               'en_US': lambda slf: slf.en_US,
                'es_MX': lambda slf: slf.name.replace('_', ' '),
             }
-        return cls._aliasFuncs
-    
+
     @staticmethod
     def dfcolumn() -> str:
         return 'metaproject'
 
-    Sin_Datos = -1, 'No Data'
-    Carrera = 0, 'Career'
-    Academico = 1, 'Academics'
-    Logistica = 2, 'Logistics'
-    Recreo = 3, 'Recreation'
-    Dormir = 4, 'Sleep'
+    SIN_DATOS = -1
+    CARRERA = 0
+    ACADEMICO = 1
+    LOGISTICA = 2
+    RECREO = 3
+    DORMIR = 4
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.SIN_DATOS: c(
+                color=(181, 181, 181),
+                en_US='NO DATA'
+                             ),
+            cls.CARRERA: c(
+                color=(220, 60, 40),
+                en_US='CAREER'
+                           ),
+            cls.ACADEMICO: c(
+                color=(60, 160, 30),
+                en_US='ACADEMICS'
+                             ),
+            cls.LOGISTICA: c(
+                color=(120, 200, 190),
+                en_US='LOGISTICS'
+                             ),
+            cls.RECREO: c(
+                color=(0, 220, 250),
+                en_US='RECREATION'
+                          ),
+            cls.DORMIR: c(
+                color=(20, 40, 140),
+                en_US='SLEEP'
+                          ),
+        }
 
 
 class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
@@ -624,9 +637,9 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
          P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.END.dt()))
         : (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
         P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
-        : (1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'),
+        : (1, 'Recreation Focus Epochs', 'Épocas Enfocados en el RECREO'),
         P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
-        : (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
+        : (2, 'Career Focus Epochs', 'Épocas Enfocados en la CARRERA'),
     })
     MP_FINE = appendIntervalDictComplement(
         P.IntervalDict({  # Fine-grained metaproject and lifestyle focus, includes short bike tours, et al
@@ -637,8 +650,8 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
             (P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_Tour_Start.dt()) |
              P.closedopen(Epoch.e2019_Tour_End.dt(), Epoch.e2021_Tour_Start.dt()) |
              P.closedopen(Epoch.e2021_Tour_End.dt(), Epoch.e2022_Tour_Start.dt())
-             ): (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
-        }), complementVal=(1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'))
+             ): (2, 'Career Focus Epochs', 'Épocas Enfocados en la CARRERA'),
+        }), complementVal=(1, 'Recreation Focus Epochs', 'Épocas Enfocados en el RECREO'))
     WORK_LOCATION = appendIntervalDictComplement(  # Where is my primary work/study location?
         P.IntervalDict({  # First set of epoch groups commonly needed for DC queries
             P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt())
@@ -671,7 +684,7 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
         P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
         : (2, 'First Job', 'First Job'),
         (P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.END.dt()))
-        : (0, '2023 Career Pivot', '2023 Cambio de Carrera'),
+        : (0, '2023 Career Pivot', '2023 Cambio de CARRERA'),
     })
     # TODO: sequential life phases, like 1 but each group is only a single period: Cornell, Ball, Tour22, post-tour
     # TODO: meal 'Rutina' default groups

@@ -741,7 +741,7 @@ class GraphicMaker:
     @staticmethod
     def avg_Sleep_by_Weekday_and_Epoch_Group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
-        df1 = tsds.timesheetdf.tsquery('Project.Dormir & ( !description | "Dormir" | "Siesta") : ;').df
+        df1 = tsds.timesheetdf.tsquery('Project.DORMIR & ( !description | "DORMIR" | "Siesta") : ;').df
         df1 = pd.concat([df1, getWeekday(df1.circad)], axis=1)
         epochScheme = Global.EpochScheme.MP_COARSE_ATOMIC
         df1 = pd.concat([df1, epochScheme.labelDT(df1.start.rename('epochGroup', copy=False))], axis=1)
@@ -767,7 +767,7 @@ class GraphicMaker:
     @staticmethod
     def sleep_start_and_end_violin_by_epoch_group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         df = tsds.timesheetdf.tsquery(
-            'Project.Dormir & !description & duration<timedelta(hours=20) & duration>timedelta(minutes=30) : ;').df
+            'Project.DORMIR & !description & duration<timedelta(hours=20) & duration>timedelta(minutes=30) : ;').df
         group = df[['start', 'end', 'circad']].groupby('circad')
         df = pd.concat([group.min().start, group.max().end], axis=1)
         df['duration'] = df.end - df.start
