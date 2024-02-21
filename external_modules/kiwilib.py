@@ -8,6 +8,7 @@ import itertools
 import datetime
 import math
 from enum import EnumMeta, Enum
+import aenum
 from collections import defaultdict
 import portion
 from pandas.core.dtypes.inference import is_list_like
@@ -234,7 +235,11 @@ class EnumABCMeta(abc.ABCMeta, type(Enum)):
     pass
 
 
-class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
+class AenumABCMeta(abc.ABCMeta, aenum.EnumMeta):
+    pass
+
+
+class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMeta):
     """
     ABC for Enum classes whose members have dataclass-like attribute access.
     Each subclass is associated with a dataclass containing the member attributes.
@@ -271,7 +276,7 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
         pass
 
     @staticmethod
-    def init(cls: Type['DataclassValuedEnum']):
+    def init_DVE(cls: Type['DataclassValuedEnum']):
         """
         Decorator procedure to initialize the internal dataclass and fields of a DataclassValuedEnum subclass.
         Never call this method on DataclassValuedEnum itself. Only used for its (abstract) subclasses.
@@ -283,10 +288,9 @@ class DataclassValuedEnum(abc.ABC, Enum, metaclass=EnumABCMeta):
                 setattr(cls, fld, property(lambda slf, f=fld: getattr(slf._data[slf], f)))
         return cls
 
-    # def __init_subclass__(cls, **kwargs):
-    #     a=1
-    #     super().__init_subclass__(**kwargs)
-    #     cls = cls.init(cls)
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
+        cls = cls.init_DVE(cls)
 
 
 class HierarchicalEnum:
@@ -806,13 +810,12 @@ class Aliasable(abc.ABC):
 
     @classmethod
     @abc.abstractmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
+    def aliasFuncs(cls) -> Dict[str, Callable[['Aliasable'], str]]:
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
+        Callables must match the API of no-arg methods in a class, taking only a single `self` arg.
         """
-        # if not hasattr(cls, '_aliasFuncs'):
         return {}  # Essentially this defines abstract static class data
-        # return cls._aliasFuncs
 
     @classmethod
     def defaultLocale(cls) -> str:
@@ -825,11 +828,11 @@ class Aliasable(abc.ABC):
         cls._defaultLocale = locale
 
     @staticmethod
-    def init(cls: type):
+    def initAliasable(cls: type):
         cls._aliasFuncs: Dict[str, Callable] = cls.aliasFuncs()
         cls._defaultLocale: str = next(iter(cls._aliasFuncs.keys()))
         return cls
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
-        cls.init(cls)
+        cls.initAliasable(cls)

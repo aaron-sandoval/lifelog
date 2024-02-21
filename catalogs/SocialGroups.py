@@ -9,8 +9,7 @@ import i18n_l10n.internationalization as i18n
 import re
 
 
-@kiwilib.DataclassValuedEnum.init
-class Gender(Global.Colored, i18n.AliasableEnum):
+class Gender(Global.ColoredAliasable):
     # UNDEFINED = -1  # Use pd.NA for instances which are yet to be defined/unknown
     NOTAPPLICABLE = 0
     MALE = 1
@@ -18,7 +17,7 @@ class Gender(Global.Colored, i18n.AliasableEnum):
     NONBINARY = 3
 
     @classmethod
-    def _enum_data(cls) -> Dict[Enum, 'c']:
+    def _enum_data(cls) -> Dict[Enum, 'cls.dataclass']:
         c = cls.dataclass
         return {
             cls.NOTAPPLICABLE: c(  # Person instances w/out gender, e.g., MultiplePeople
@@ -40,11 +39,11 @@ class Gender(Global.Colored, i18n.AliasableEnum):
             ),
         }
 
-    @classmethod
-    def _get_dataclass(cls) -> Type[dataclass]:
-        @dataclass
-        class GenderDataclass(Global.Colored.dataclass, i18n.AliasableEnum.dataclass): pass
-        return GenderDataclass
+    # @classmethod
+    # def _get_dataclass(cls) -> kiwilib.IsDataclass:
+    #     @dataclass
+    #     class GenderDataclass(Global.Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+    #     return GenderDataclass
 
     # @classmethod
     # def valueDict(cls):
@@ -75,6 +74,17 @@ class Review(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     FAIR      = 2, ''         , 'PASABLE'
     GOOD      = 3, ''         , 'BUENO'
     EXCELLENT = 4, ''         , 'EXCELENTE'
+
+    # def _enum_data(cls) -> Dict[Enum, 'cls.dataclass']:
+    #     c: kiwilib.IsDataclass = cls.dataclass
+    #     return {
+    #         cls.NOREVIEW: c(0, 'NO REVIEW', 'SIN OPINIÓN'),
+    #         cls.POOR: c( '', 'MALO'),
+    #         cls.FAIR: c( '', 'PASABLE'),
+    #         cls.GOOD: c( '', 'BUENO'),
+    #         cls.EXCELLENT: c( '', 'EXCELENTE'),
+    #     }
+
 
     @classmethod
     def valueDict(cls) -> dict:
@@ -134,11 +144,11 @@ class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
         yaml_info(yaml_tag_ns='SocialGroup')(cls)
 
     @classmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
+    def aliasFuncs(cls) -> Dict[str, Callable[['SocialGroup'], str]]:
         return {
                # 'en_US': lambda slf: re.sub(r"([a-z])([A-Z])", r"\1 \2", type(slf).__name__),
                'en_US': lambda slf: type(slf).__name__,
-               'es_MX': lambda slf: type(slf).es_MX if hasattr(slf) else lambda slf: type(slf).__name__ + 'o'
+               'es_MX': lambda slf: slf.es_MX if hasattr(slf, 'es_MX') else lambda slf: type(slf).__name__ + 'o'
         }
 
     @property

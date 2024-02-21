@@ -24,7 +24,7 @@ import pandas as pd
 # import numpy as np
 from collections import defaultdict
 from pandas.core.dtypes.inference import is_list_like
-from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
+from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple, Type
 from dataclasses import dataclass
 import abc
 
@@ -135,7 +135,6 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
 ##############
 # Enum Fields#
 ##############
-@kiwilib.DataclassValuedEnum.init
 class Colored(kiwilib.DataclassValuedEnum):
     @staticmethod
     def _get_dataclass() -> IsDataclass:
@@ -153,8 +152,14 @@ class Colored(kiwilib.DataclassValuedEnum):
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x * 256), 255)) for x in self.color])
 
 
+class ColoredAliasable(Colored, i18n.AliasableEnum):
+    @classmethod
+    def _get_dataclass(cls) -> kiwilib.IsDataclass:
+        @dataclass
+        class ColoredAliasableDataclass(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+        return ColoredAliasableDataclass
 
-@kiwilib.DataclassValuedEnum.init
+
 class TestColor(Colored, i18n.AliasableEnum):
     RED = enum.auto()
     GREEN = enum.auto()
@@ -164,6 +169,7 @@ class TestColor(Colored, i18n.AliasableEnum):
         @dataclass
         class ColoredAliasableEnum(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
         return ColoredAliasableEnum
+
     @classmethod
     def _enum_data(cls) -> Dict[Enum, 'c']:
         c = cls.dataclass

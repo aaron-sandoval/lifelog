@@ -179,3 +179,4 @@ def test_SocialGroup():
 if __name__ == "__main__":
     # test_TimesheetDF()
     test_Gender()
+    test_SocialGroup()

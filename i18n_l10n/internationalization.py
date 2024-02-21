@@ -150,7 +150,7 @@ class BabelIntermediateExtractor:
         self.newWords.clear()
 
 
-@kiwilib.DataclassValuedEnum.init
+# @kiwilib.DataclassValuedEnum.init
 class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
     @staticmethod
     def _get_dataclass() -> kiwilib.IsDataclass:
