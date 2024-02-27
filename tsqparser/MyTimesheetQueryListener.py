@@ -437,7 +437,7 @@ class MyTimesheetQueryListener(TimesheetQueryListener):
     # Exit a parse tree produced by TimesheetQueryParser#metaprojectLiteral.
     def exitMetaprojectLiteral(self, ctx:TimesheetQueryParser.MetaprojectLiteralContext):
         ctx.dtype = 'L'
-        ctx.data = Global.Metaproject[ctx.stop.text]
+        ctx.data = Global.Metaproject[ctx.stop.text.upper()]
 
     # Exit a parse tree produced by TimesheetQueryParser#epochLiteral.
     def exitEpochLiteral(self, ctx: TimesheetQueryParser.EpochLiteralContext):

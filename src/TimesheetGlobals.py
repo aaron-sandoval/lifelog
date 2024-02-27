@@ -480,8 +480,9 @@ class Project(SingleInstanceColumn, ColoredAliasable):
             cls.AISC          : c(default_metaproject=0, en_US='AI SAFETY CAMP'           , es_MX='CAMPAMENTO DE LA SEGURIDAD DE IA'),
         }
 
+
 # noinspection NonAsciiCharacters
-class Tag(ListColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
+class Tag(ListColumn, ColoredAliasable):
     @staticmethod
     def dfcolumn() -> str:
         return 'tags'
@@ -491,39 +492,66 @@ class Tag(ListColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.value[2],
-               'es_MX': lambda slf: slf.name.replace('_', ' ') if slf.value[1] == '' else slf.value[1],
-            }
-        return cls._aliasFuncs
+        return {
+           'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name.replace('_', ' '),
+           'es_MX': lambda slf: slf.es_MX if slf.es_MX != '' else slf.name.replace('_', ' '),
+        }
 
-    BICI               =  1, ''                  , 'BIKE'
-    COLECTIVO          =  2, ''                  , 'BUS'
-    ELECTRÓNICA        =  3, 'TIEMPO DE PANTALLA', 'SCREEN TIME'
-    ELEC               =  3, 'TIEMPO DE PANTALLA', 'SCREEN TIME'
-    EN_CLASE           =  4, ''                  , 'IN CLASS'
-    FAMILIA            =  5, ''                  , 'FAMILY'
-    HW                 =  6, 'TAREA'             , 'HOMEWORK'
-    LECTURA            =  7, ''                  , 'READING'
-    NETFLIX            =  8, 'TV/PELÍCULA'       , 'TV/MOVIE'
-    NFL                =  9, ''                  , 'NFL'
-    PAPEL              = 10, ''                  , 'PAPER'
-    PIE                = 11, ''                  , 'WALK'
-    PROYECTO_ACADÉMICO = 12, ''                  , 'ACADEMIC PROJECT'
-    PROYECTO_A         = 12, ''                  , 'ACADEMIC PROJECT'
-    RUTINA             = 13, ''                  , 'ROUTINE'
-    SOCIAL_GRUPO       = 14, 'SOCIAL'            , 'SOCIAL'
-    SOCIAL             = 14, 'SOCIAL'            , 'SOCIAL'
-    EJERCICIO          = 15, ''                  , 'EXERCISE'
-    COMER              = 16, ''                  , 'EATING'
-    AUTO               = 17, ''                  , 'CAR'
-    BICI_ELÉCTRICA     = 18, ''                  , 'E-BIKE'
-    BICI_E             = 18, ''                  , 'E-BIKE'
-    PODCAST            = 19, ''                  , 'PODCAST'
-    MÚSICA             = 20, ''                  , 'MUSIC'
-    TREN               = 21, ''                  , 'TRAIN'
-    AVIÓN              = 22, ''                  , 'AIRPLANE'
+    BICI               =  1
+    COLECTIVO          =  2
+    ELECTRÓNICA        =  3
+    ELEC               =  3
+    EN_CLASE           =  4
+    FAMILIA            =  5
+    HW                 =  6
+    LECTURA            =  7
+    NETFLIX            =  8
+    NFL                =  9
+    PAPEL              = 10
+    PIE                = 11
+    PROYECTO_ACADÉMICO = 12
+    PROYECTO_A         = 12
+    RUTINA             = 13
+    SOCIAL_GRUPO       = 14
+    SOCIAL             = 14
+    EJERCICIO          = 15
+    COMER              = 16
+    AUTO               = 17
+    BICI_ELÉCTRICA     = 18
+    BICI_E             = 18
+    PODCAST            = 19
+    MÚSICA             = 20
+    MUSICA             = 20
+    TREN               = 21
+    AVIÓN              = 22
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.BICI : c(es_MX='', en_US='BIKE'),
+            cls.COLECTIVO : c(es_MX='', en_US='BUS'),
+            cls.ELEC : c(es_MX='TIEMPO DE PANTALLA', en_US='SCREEN TIME'),
+            cls.EN_CLASE : c(es_MX='', en_US='IN CLASS'),
+            cls.FAMILIA : c(es_MX='', en_US='FAMILY'),
+            cls.HW : c(es_MX='TAREA', en_US= 'HOMEWORK'),
+            cls.LECTURA : c(es_MX='', en_US='READING'),
+            cls.NETFLIX : c(es_MX='TV/PELÍCULA', en_US='TV/MOVIE'),
+            cls.NFL : c(es_MX='', en_US='NFL'),
+            cls.PAPEL : c(es_MX='', en_US='PAPER'),
+            cls.PIE : c(es_MX='', en_US='WALK'),
+            cls.PROYECTO_A : c(es_MX='', en_US='ACADEMIC PROJECT'),
+            cls.RUTINA : c(es_MX='', en_US='ROUTINE'),
+            cls.SOCIAL : c(es_MX='SOCIAL', en_US='SOCIAL'),
+            cls.EJERCICIO : c(es_MX='', en_US='EXERCISE'),
+            cls.COMER : c(es_MX='', en_US='EATING'),
+            cls.AUTO : c(es_MX='', en_US='CAR'),
+            cls.BICI_E : c(es_MX='', en_US='E-BIKE'),
+            cls.PODCAST : c(es_MX='', en_US='PODCAST'),
+            cls.MUSICA : c(es_MX='', en_US='MUSIC'),
+            cls.TREN : c(es_MX='', en_US='TRAIN'),
+            cls.AVIÓN : c(es_MX='', en_US='AIRPLANE'),
+        }
 
 
 class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):

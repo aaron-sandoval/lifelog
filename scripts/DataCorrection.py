@@ -12,9 +12,11 @@ from src.TimesheetDataset import TimesheetDataset
 # import src.TimesheetGlobals as Global
 
 
-def main(PP_path, catalogSuffix = ''):
+def main(PP_path, catalogSuffix = '', write=True):
     myTSDS = TimesheetDataset(pd.read_pickle(PP_path))
     myTSDS.preCatalogCorrect()
     myTSDS.initCatalogs(fileSuffix=catalogSuffix)
     myTSDS.postCatalogCorrect()
-    return myTSDS.write(phaseFlag=3)
+    if write:
+        return myTSDS.write(phaseFlag=3)
+    return None
