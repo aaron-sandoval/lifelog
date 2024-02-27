@@ -10,6 +10,7 @@ import math
 from enum import EnumMeta, Enum
 import aenum
 from collections import defaultdict
+from functools import cached_property
 import portion
 from pandas.core.dtypes.inference import is_list_like
 from typing import \
@@ -251,16 +252,15 @@ class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMeta):
     When the enum is read from a file, its attributes will effectively be updated to the latest values in `_enum_data`.
     """
     # TODO: public method that can be called in `subclass._get_dataclass` which auto-builds a new dataclass inherited from its superclasses' dataclasses
-    # TODO: change enum instance repr to print datclass value
-    # TODO: refactor with aenum and see if __init_subclass__ works so I can get rid of decorators on all subclasses
 
     @staticmethod
     @abc.abstractmethod
-    def _get_dataclass(
-    ) -> IsDataclass:
+    def _get_dataclass() -> IsDataclass:
         """
         Returns a existing dataclass or constructs and returns a new one.
+        Called only once by __init_subclass__ and stored in `cls.dataclass`.
         This dataclass holds all the attributes of the outer class enum members.
+        It's recommended that these dataclasses be frozen.
         """
         pass
 
@@ -276,7 +276,7 @@ class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMeta):
         pass
 
     @staticmethod
-    def init_DVE(cls: Type['DataclassValuedEnum']):
+    def _init_DVE(cls: Type['DataclassValuedEnum']):
         """
         Decorator procedure to initialize the internal dataclass and fields of a DataclassValuedEnum subclass.
         Never call this method on DataclassValuedEnum itself. Only used for its (abstract) subclasses.
@@ -290,7 +290,13 @@ class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMeta):
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
-        cls = cls.init_DVE(cls)
+        cls = cls._init_DVE(cls)
+
+    def __repr__(self):
+        return ''.join(['<', str(self), ': ', repr(self.value), '; ', repr(self._data[self]), '>'])
+
+    def asdict(self):
+        return self._data[self].__dict__
 
 
 class HierarchicalEnum:

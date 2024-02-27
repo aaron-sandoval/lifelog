@@ -230,7 +230,7 @@ class Metaproject(SingleInstanceColumn, ColoredAliasable):
 
     @property
     def id(self):
-        return self.value[0]
+        return self.value
 
     @classmethod
     def idMap(cls):
