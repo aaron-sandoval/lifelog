@@ -138,7 +138,7 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
 class Colored(kiwilib.DataclassValuedEnum):
     @staticmethod
     def _get_dataclass() -> IsDataclass:
-        @dataclass
+        @dataclass(frozen=True)
         class Color:
             color: Tuple[int, int, int] = 128, 128, 128
         return Color
@@ -155,7 +155,7 @@ class Colored(kiwilib.DataclassValuedEnum):
 class ColoredAliasable(Colored, i18n.AliasableEnum):
     @classmethod
     def _get_dataclass(cls) -> kiwilib.IsDataclass:
-        @dataclass
+        @dataclass(frozen=True)
         class ColoredAliasableDataclass(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
         return ColoredAliasableDataclass
 
@@ -166,7 +166,7 @@ class TestColor(Colored, i18n.AliasableEnum):
 
     @staticmethod
     def _get_dataclass() -> IsDataclass:
-        @dataclass
+        @dataclass(frozen=True)
         class ColoredAliasableEnum(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
         return ColoredAliasableEnum
 
@@ -234,6 +234,7 @@ class Metaproject(SingleInstanceColumn, ColoredAliasable):
 
     @classmethod
     def idMap(cls):
+        # TODO: refactor and delete this unnecessary method. Just replace Metaproject.idMap[id] with Metaproject(id)
         if not hasattr(cls, '_idMap'):
             cls._idMap = {a.id: a for a in cls}
         return cls._idMap
@@ -290,7 +291,7 @@ class Metaproject(SingleInstanceColumn, ColoredAliasable):
         }
 
 
-class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
+class Project(SingleInstanceColumn, ColoredAliasable):
     #     Project = (project id, metaproject id)
 
     @staticmethod
@@ -298,116 +299,186 @@ class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.E
         return 'project'
 
     def __le__(self, other):
-        return self.value[0] <= other.value[0]
+        return self.value <= other.value
 
     def __lt__(self, other):
-        return self.value[0] < other.value[0]
+        return self.value < other.value
 
     def __ge__(self, other):
-        return self.value[0] >= other.value[0]
+        return self.value >= other.value
 
     def __gt__(self, other):
-        return self.value[0] > other.value[0]
+        return self.value > other.value
 
     def defaultMetaproject(self) -> Metaproject:
-        return Metaproject.idMap()[self.value[1]]
+        return Metaproject(self.default_metaproject)
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.value[2] if slf.value[2] != '' else slf.name.replace('_', ' '),
-               'es_MX': lambda slf: slf.name.replace('_', ' ') if slf.value[3] == '' else slf.value[3],
-            }
-        return cls._aliasFuncs
+        return {
+           'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name.replace('_', ' '),
+           'es_MX': lambda slf: slf.name.replace('_', ' ') if slf.es_MX == '' else slf.es_MX,
+        }
 
-    SIN_DATOS                               =  0, -1,'NO DATA'                  , ''
-    MAE_5700                                =  1, 1, ''                         , ''
-    MAE_5730                                =  2, 1, ''                         , ''
-    MAE_5780                                =  3, 1, ''                         , ''
-    SYSEN_5220                              =  4, 1, ''                         , ''
-    SYSEN_5220_CALIFICACIÓN                 =  5, 1, 'SYSEN 5220 GRADING'       , ''
-    SYSEN_5220_C                            =  5, 1, 'SYSEN 5220 GRADING'       , ''
-    MENG_PROYECTO                           =  6, 1, 'MENG PROJECT'             , ''
-    MENG                                    =  6, 1, 'MENG PROJECT'             , ''
-    TRANSPORTE                              =  7, 2, 'TRANSPORT'                , ''
-    ERRANDS_AFUERAS                         =  8, 2, 'ERRANDS'                  , 'MANDADOS'
-    ERRANDS                                 =  8, 2, 'ERRANDS'                  , 'MANDADOS'
-    CARRERA                                 =  9, 0, 'CAREER'                   , ''
-    TAREAS_DOMÉSTICAS                       = 10, 2, 'HOUSEHOLD CHORES'         , ''
-    TAREAS                                  = 10, 2, 'HOUSEHOLD CHORES'         , ''
-    EMAIL_Y_LOGÍSTICA                       = 11, 2, 'EMAIL & LOGISTICS'        , ''
-    EMAIL                                   = 11, 2, 'EMAIL & LOGISTICS'        , ''
-    COMER_VESTIRSE_U_HIGIENE                = 12, 2, 'EAT DRESS & HYGIENE'      , ''
-    COMER                                   = 12, 2, 'EAT DRESS & HYGIENE'      , ''
-    RECREO_SOCIAL                           = 13, 3, 'SOCIAL FUN'               , ''
-    RECREO_ELECTRÓNICO                      = 14, 3, 'SCREEN TIME FUN'          , ''
-    RECREO_E                                = 14, 3, 'SCREEN TIME FUN'          , ''
-    RECREO_MISC                             = 15, 3, 'MISC FUN'                 , ''
-    TRABAJO_MISC                            = 16, 1, 'MISC WORK'                , ''
-    DORMIR                                  = 17, 4, 'SLEEP'                    , ''
-    RECREO_LEER                             = 18, 3, 'READ'                     , ''
-    MAE_6060                                = 19, 1, ''                         , ''
-    MAE_5710                                = 20, 1, ''                         , ''
-    MAE_6780                                = 21, 1, ''                         , ''
-    MAE_2030_TA                             = 22, 1, ''                         , ''
-    CLASES_EXTRAS                           = 23, 1, 'EXTRA CLASSES'            , ''
-    CARRERA_ENTRENAMIENTO_DISCRECIONAL      = 24, 0, 'DISCRETIONARY TRAINING'   , 'ENTRENAMIENTO DISCRECIONAL'
-    CARRERA_ED                              = 24, 0, 'DISCRETIONARY TRAINING'   , 'ENTRENAMIENTO DISCRECIONAL'
-    CARRERA_ENTRENAMIENTO_MANDATORIO        = 25, 0, 'MANDATORY TRAINING'       , 'ENTRENAMIENTO MANDATORIO'
-    CARRERA_EM                              = 25, 0, 'MANDATORY TRAINING'       , 'ENTRENAMIENTO MANDATORIO'
-    CARRERA_OMPS                            = 26, 0, 'BALL OMPS'                , 'BALL OMPS'
-    CARRERA_OPIR                            = 27, 0, 'BALL OPIR'                , 'BALL OPIR'
-    ACADÉMICO                               = 28, 1, 'ACADEMICS'                , ''
-    ACADEMICO                               = 28, 1, 'ACADEMICS'                , ''
-    TIMESHEET_ANÁLISIS                      = 29, 1, 'LIFELOG PROJECT'          , 'REGISTRO DE VIDA'
-    TIMESHEET                               = 29, 1, 'LIFELOG PROJECT'          , 'REGISTRO DE VIDA'
-    PÉNDULO_INVERTIDO                       = 30, 1, 'INVERTED PENDULUM'        , ''
-    PENDULO                                 = 30, 1, 'INVERTED PENDULUM'        , ''
-    TAMBORES                                = 31, 3, 'DRUMS'                    , ''
-    OPIR_INGENIERÍA_DE_SISTEMAS_MECÁNICOS   = 32, 0, 'OPIR MECHANICAL SYSTEMS'  , 'OPIR SISTEMAS MECÁNICOS'
-    OPIR_ISM                                = 32, 0, 'OPIR MECHANICAL SYSTEMS'  , 'OPIR SISTEMAS MECÁNICOS'
-    OPIR_OTA_OPTOMECÁNICA_DISEÑO_Y_ANÁLISIS = 33, 0, 'OPIR OTA'                 , 'OPIR OTA'
-    OPIR_OTA                                = 33, 0, 'OPIR OTA'                 , 'OPIR OTA'
-    OPIR_PRB_DISEÑO_Y_ANÁLISIS              = 34, 0, 'OPIR PRB'                 , 'OPIR PRB'
-    OPIR_PRB                                = 34, 0, 'OPIR PRB'                 , 'OPIR PRB'
-    CARRERA_MENTOR_DE_PASANTÍA              = 35, 0, 'INTERN MENTORSHIP'        , 'MENTOR DE PASANTÍA'
-    CARRERA_MENTOR                          = 35, 0, 'INTERN MENTORSHIP'        , 'MENTOR DE PASANTÍA'
-    OPIR_PDR                                = 36, 0, 'OPIR PDR'                 , ''
-    OPIR_CDR                                = 37, 0, 'OPIR CDR'                 , ''
-    OPIR_ARQUITECTURA_DE_SISTEMAS           = 38, 0, 'OPIR SYSTEMS ARCHITECTURE', ''
-    OPIR_ARQ                                = 38, 0, 'OPIR SYSTEMS ARCHITECTURE', ''
-    OPIR_PROPÓSITO_ACÚSTICO                 = 39, 0, 'OPIR ACOUSTIC PROPOSAL'   , ''
-    OPIR_ACUSTICO                           = 39, 0, 'OPIR ACOUSTIC PROPOSAL'   , ''
-    OPIR_ICU                                = 40, 0, 'OPIR ICU'                 , ''
-    OPIR_OTA_SUSTITUTA_DE_LENTE             = 41, 0, 'OPIR LENS SURROGATE'      , 'OPIR SUSTITUTA DE LENTE'
-    OPIR_OTA_SL                             = 41, 0, 'OPIR LENS SURROGATE'      , 'OPIR SUSTITUTA DE LENTE'
-    OPIR_RADIADOR_ANÁLISIS_ESTRUCTURAL      = 42, 0, 'OPIR RADIATOR'            , 'OPIR RADIADOR'
-    OPIR_RADIADOR                           = 42, 0, 'OPIR RADIATOR'            , 'OPIR RADIADOR'
-    OPIR_GSE_AI_T                           = 43, 0, 'OPIR GSE AI&T'            , 'OPIR GSE AI&T'
-    OPIR_GSE_AIT                            = 43, 0, 'OPIR GSE AI&T'            , 'OPIR GSE AI&T'
-    OPIR_GSE_SOC                            = 44, 0, ''                         , ''
-    NGP                                     = 45, 0, ''                         , ''
-    NGP_STOP                                = 46, 0, ''                         , ''
-    NGP_OTA                                 = 47, 0, ''                         , ''
-    NGP_ESTRUCTURA                          = 48, 0, 'NGP STRUCTURE'            , ''
-    OPIR_B1_OTA                             = 49, 0, ''                         , ''
-    CS_AUTOAPRENDIZAJE                      = 50, 1, 'CS SELF-TEACHING'         , ''
-    CS                                      = 50, 1, 'CS SELF-TEACHING'         , ''
-    MÚSICA                                  = 51, 3, 'MUSIC'                    , ''
-    MUSICA                                  = 51, 3, 'MUSIC'                    , ''
-    BAJO                                    = 52, 3, 'BASS'                     , ''
-    CICLISMO                                = 53, 3, 'CYCLING'                  , ''
-    ESCRITURA_Y_VÍDEOS                      = 54, 3, 'WRITING AND VIDEOS'       , ''
-    ESCRITURA                               = 54, 3, 'WRITING AND VIDEOS'       , ''
-    MAE_4060                                = 55, 1, ''                         , ''
-    EA_COMUNIDAD                            = 56, 1, 'EA COMMUNITY'             , ''
-    EA                                      = 56, 1, 'EA COMMUNITY'             , ''
-    AISC                                    = 57, 0, 'AI SAFETY CAMP'           , 'CAMPAMENTO DE LA SEGURIDAD DE IA'
+    @staticmethod
+    def _get_dataclass() -> kiwilib.IsDataclass:
+        @dataclass(frozen=True)
+        class ProjectDC(ColoredAliasable.dataclass):
+            default_metaproject: int = 0  # Default Metaproject initially assigned to tasks with this project.
+        return ProjectDC
 
+    SIN_DATOS                               =  0
+    MAE_5700                                =  1
+    MAE_5730                                =  2
+    MAE_5780                                =  3
+    SYSEN_5220                              =  4
+    SYSEN_5220_CALIFICACIÓN                 =  5
+    SYSEN_5220_C                            =  5
+    MENG_PROYECTO                           =  6
+    MENG                                    =  6
+    TRANSPORTE                              =  7
+    ERRANDS_AFUERAS                         =  8
+    ERRANDS                                 =  8
+    CARRERA                                 =  9
+    TAREAS_DOMÉSTICAS                       = 10
+    TAREAS                                  = 10
+    EMAIL_Y_LOGÍSTICA                       = 11
+    EMAIL                                   = 11
+    COMER_VESTIRSE_U_HIGIENE                = 12
+    COMER                                   = 12
+    RECREO_SOCIAL                           = 13
+    RECREO_ELECTRÓNICO                      = 14
+    RECREO_E                                = 14
+    RECREO_MISC                             = 15
+    TRABAJO_MISC                            = 16
+    DORMIR                                  = 17
+    RECREO_LEER                             = 18
+    MAE_6060                                = 19
+    MAE_5710                                = 20
+    MAE_6780                                = 21
+    MAE_2030_TA                             = 22
+    CLASES_EXTRAS                           = 23
+    CARRERA_ENTRENAMIENTO_DISCRECIONAL      = 24
+    CARRERA_ED                              = 24
+    CARRERA_ENTRENAMIENTO_MANDATORIO        = 25
+    CARRERA_EM                              = 25
+    CARRERA_OMPS                            = 26
+    CARRERA_OPIR                            = 27
+    ACADÉMICO                               = 28
+    ACADEMICO                               = 28
+    TIMESHEET_ANÁLISIS                      = 29
+    TIMESHEET                               = 29
+    PÉNDULO_INVERTIDO                       = 30
+    PENDULO                                 = 30
+    TAMBORES                                = 31
+    OPIR_INGENIERÍA_DE_SISTEMAS_MECÁNICOS   = 32
+    OPIR_ISM                                = 32
+    OPIR_OTA_OPTOMECÁNICA_DISEÑO_Y_ANÁLISIS = 33
+    OPIR_OTA                                = 33
+    OPIR_PRB_DISEÑO_Y_ANÁLISIS              = 34
+    OPIR_PRB                                = 34
+    CARRERA_MENTOR_DE_PASANTÍA              = 35
+    CARRERA_MENTOR                          = 35
+    OPIR_PDR                                = 36
+    OPIR_CDR                                = 37
+    OPIR_ARQUITECTURA_DE_SISTEMAS           = 38
+    OPIR_ARQ                                = 38
+    OPIR_PROPÓSITO_ACÚSTICO                 = 39
+    OPIR_ACUSTICO                           = 39
+    OPIR_ICU                                = 40
+    OPIR_OTA_SUSTITUTA_DE_LENTE             = 41
+    OPIR_OTA_SL                             = 41
+    OPIR_RADIADOR_ANÁLISIS_ESTRUCTURAL      = 42
+    OPIR_RADIADOR                           = 42
+    OPIR_GSE_AI_T                           = 43
+    OPIR_GSE_AIT                            = 43
+    OPIR_GSE_SOC                            = 44
+    NGP                                     = 45
+    NGP_STOP                                = 46
+    NGP_OTA                                 = 47
+    NGP_ESTRUCTURA                          = 48
+    OPIR_B1_OTA                             = 49
+    CS_AUTOAPRENDIZAJE                      = 50
+    CS                                      = 50
+    MÚSICA                                  = 51
+    MUSICA                                  = 51
+    BAJO                                    = 52
+    CICLISMO                                = 53
+    ESCRITURA_Y_VÍDEOS                      = 54
+    ESCRITURA                               = 54
+    MAE_4060                                = 55
+    EA_COMUNIDAD                            = 56
+    EA                                      = 56
+    AISC                                    = 57
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.SIN_DATOS     : c(default_metaproject=-1,en_US='NO DATA'                  , es_MX=''),
+            cls.MAE_5700      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_5730      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_5780      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.SYSEN_5220    : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.SYSEN_5220_C  : c(default_metaproject=1, en_US='SYSEN 5220 GRADING'       , es_MX=''),
+            cls.MENG_PROYECTO : c(default_metaproject=1, en_US='MENG PROJECT'             , es_MX=''),
+            cls.MENG          : c(default_metaproject=1, en_US='MENG PROJECT'             , es_MX=''),
+            cls.TRANSPORTE    : c(default_metaproject=2, en_US='TRANSPORT'                , es_MX=''),
+            cls.ERRANDS       : c(default_metaproject=2, en_US='ERRANDS'                  , es_MX='MANDADOS'),
+            cls.CARRERA       : c(default_metaproject=0, en_US='CAREER'                   , es_MX=''),
+            cls.TAREAS        : c(default_metaproject=2, en_US='HOUSEHOLD CHORES'         , es_MX=''),
+            cls.EMAIL         : c(default_metaproject=2, en_US='EMAIL & LOGISTICS'        , es_MX=''),
+            cls.COMER         : c(default_metaproject=2, en_US='EAT DRESS & HYGIENE'      , es_MX=''),
+            cls.RECREO_SOCIAL : c(default_metaproject=3, en_US='SOCIAL FUN'               , es_MX=''),
+            cls.RECREO_E      : c(default_metaproject=3, en_US='SCREEN TIME FUN'          , es_MX=''),
+            cls.RECREO_MISC   : c(default_metaproject=3, en_US='MISC FUN'                 , es_MX=''),
+            cls.TRABAJO_MISC  : c(default_metaproject=1, en_US='MISC WORK'                , es_MX=''),
+            cls.DORMIR        : c(default_metaproject=4, en_US='SLEEP'                    , es_MX=''),
+            cls.RECREO_LEER   : c(default_metaproject=3, en_US='READ'                     , es_MX=''),
+            cls.MAE_6060      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_5710      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_6780      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_2030_TA   : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.CLASES_EXTRAS : c(default_metaproject=1, en_US='EXTRA CLASSES'            , es_MX=''),
+            cls.CARRERA_ED    : c(default_metaproject=0, en_US='DISCRETIONARY TRAINING'   , es_MX='ENTRENAMIENTO DISCRECIONAL'),
+            cls.CARRERA_EM    : c(default_metaproject=0, en_US='MANDATORY TRAINING'       , es_MX='ENTRENAMIENTO MANDATORIO'),
+            cls.CARRERA_OMPS  : c(default_metaproject=0, en_US='BALL OMPS'                , es_MX='BALL OMPS'),
+            cls.CARRERA_OPIR  : c(default_metaproject=0, en_US='BALL OPIR'                , es_MX='BALL OPIR'),
+            cls.ACADEMICO     : c(default_metaproject=1, en_US='ACADEMICS'                , es_MX=''),
+            cls.TIMESHEET     : c(default_metaproject=1, en_US='LIFELOG PROJECT'          , es_MX='REGISTRO DE VIDA'),
+            cls.PENDULO       : c(default_metaproject=1, en_US='INVERTED PENDULUM'        , es_MX=''),
+            cls.TAMBORES      : c(default_metaproject=3, en_US='DRUMS'                    , es_MX=''),
+            cls.OPIR_ISM      : c(default_metaproject=0, en_US='OPIR MECHANICAL SYSTEMS'  , es_MX='OPIR SISTEMAS MECÁNICOS'),
+            cls.OPIR_OTA      : c(default_metaproject=0, en_US='OPIR OTA'                 , es_MX='OPIR OTA'),
+            cls.OPIR_PRB      : c(default_metaproject=0, en_US='OPIR PRB'                 , es_MX='OPIR PRB'),
+            cls.CARRERA_MENTOR: c(default_metaproject=0, en_US='INTERN MENTORSHIP'        , es_MX='MENTOR DE PASANTÍA'),
+            cls.OPIR_PDR      : c(default_metaproject=0, en_US='OPIR PDR'                 , es_MX=''),
+            cls.OPIR_CDR      : c(default_metaproject=0, en_US='OPIR CDR'                 , es_MX=''),
+            cls.OPIR_ARQ      : c(default_metaproject=0, en_US='OPIR SYSTEMS ARCHITECTURE', es_MX=''),
+            cls.OPIR_ACUSTICO : c(default_metaproject=0, en_US='OPIR ACOUSTIC PROPOSAL'   , es_MX=''),
+            cls.OPIR_ICU      : c(default_metaproject=0, en_US='OPIR ICU'                 , es_MX=''),
+            cls.OPIR_OTA_SL   : c(default_metaproject=0, en_US='OPIR LENS SURROGATE'      , es_MX='OPIR SUSTITUTA DE LENTE'),
+            cls.OPIR_RADIADOR : c(default_metaproject=0, en_US='OPIR RADIATOR'            , es_MX='OPIR RADIADOR'),
+            cls.OPIR_GSE_AIT  : c(default_metaproject=0, en_US='OPIR GSE AI&T'            , es_MX='OPIR GSE AI&T'),
+            cls.OPIR_GSE_SOC  : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.NGP           : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.NGP_STOP      : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.NGP_OTA       : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.NGP_ESTRUCTURA: c(default_metaproject=0, en_US='NGP STRUCTURE'            , es_MX=''),
+            cls.OPIR_B1_OTA   : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.CS            : c(default_metaproject=1, en_US='CS SELF-TEACHING'         , es_MX=''),
+            cls.MUSICA        : c(default_metaproject=3, en_US='MUSIC'                    , es_MX=''),
+            cls.BAJO          : c(default_metaproject=3, en_US='BASS'                     , es_MX=''),
+            cls.CICLISMO      : c(default_metaproject=3, en_US='CYCLING'                  , es_MX=''),
+            cls.ESCRITURA     : c(default_metaproject=3, en_US='WRITING AND VIDEOS'       , es_MX=''),
+            cls.MAE_4060      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.EA_COMUNIDAD  : c(default_metaproject=1, en_US='EA COMMUNITY'             , es_MX=''),
+            cls.EA            : c(default_metaproject=1, en_US='EA COMMUNITY'             , es_MX=''),
+            cls.AISC          : c(default_metaproject=0, en_US='AI SAFETY CAMP'           , es_MX='CAMPAMENTO DE LA SEGURIDAD DE IA'),
+        }
 
 # noinspection NonAsciiCharacters
 class Tag(ListColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):

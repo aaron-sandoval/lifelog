@@ -283,15 +283,12 @@ def __genEpoch(df):
 
 def __genMetaproject(df) -> pd.DataFrame:
     """
-    Adds a new column and populates the metaproject based purely on the existing
+    Adds a new column and populates the metaproject based on Project.default_metaproject
     :param df:
     :return: augmented df
     """
-    # Returns df joined with another column for metaproject
-    # projectEnums = Global.getEnum(list(df.project), 'project')
-    metaproject = pd.Series([Global.Metaproject.idMap()[p.value[1]] for p in df.loc[:, 'project']],
+    metaproject = pd.Series([Global.Metaproject(p.default_metaproject) for p in df.loc[:, 'project']],
                             index=df.index, name='metaproject')
-    #         df1 = df.join(metaproject)
     return pd.concat([df, metaproject], axis=1)
 
 

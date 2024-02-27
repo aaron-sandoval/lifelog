@@ -154,7 +154,7 @@ class BabelIntermediateExtractor:
 class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
     @staticmethod
     def _get_dataclass() -> kiwilib.IsDataclass:
-        @dataclass
+        @dataclass(frozen=True)
         class L10nEngEsp:
             en_US: str = ""
             es_MX: str = ""
