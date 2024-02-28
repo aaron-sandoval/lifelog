@@ -615,14 +615,11 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
-        """
-        Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
-        """
         return {
-           'en_US': lambda slf: slf.en_US if slf.en_US != "" else slf.name[1:].replace('_', ' '),
-           'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name[1:].replace('_', ' '),
+            'en_US': lambda slf: slf.en_US if slf.en_US != "" else slf.name[1:].replace('_', ' '),
+            'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name[1:].replace('_', ' '),
         }
-        
+
     eEND =                    0
     e2017_Cornell =           1
     e2017_Winter =            2
@@ -720,7 +717,7 @@ def appendIntervalDictComplement(dct: P.IntervalDict, complementVal, bigInterval
     return dct
 
 
-class EpochScheme(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
+class EpochScheme(i18n.AliasableEnum):
     """
     Enum class containing all the global data and procedures for epoch schemes and groups.
     Each enum member is a scheme for creating a set of epoch groups.
@@ -734,106 +731,141 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     # IntervalDict.get(<>, default=EpochScheme.KEY_DEFAULT_VAL)
     # Effectively acts as the value for the complement of intervals defined in an EpochScheme instance
 
+    @staticmethod
+    def _get_dataclass() -> kiwilib.IsDataclass:
+        @dataclass(frozen=True)
+        class EpochSchemeDataclass(i18n.AliasableEnum.dataclass):
+            scheme: P.IntervalDict = P.IntervalDict({})  # Dummy default, must define in args
+        return EpochSchemeDataclass
+
     def id(self, dt: Union[datetime, Iterable[datetime]]) -> Union[int, Iterable[int]]:
+
         if is_list_like(dt):
             return kiwilib.mapOverListLike(lambda x: EpochScheme.id(self, x), dt)
-        return self.value[dt][0]
+        return self.scheme[dt][0]
 
-    def labelDT(self, dt: Union[datetime, Iterable[datetime]], locale: str = None) -> Union[str, Iterable[str]]:
+    def labelDT(self, dt: Union[datetime, Iterable[datetime]], locale: str = 'en_US') -> Union[str, Iterable[str]]:
         """
         String returned is dependent on the specified locale. If unspecified, self.defaultLocale() is used.
         :param dt: Datetimes to be mapped to epoch groups.
         :param locale: String representation of locale. See epochGroupAliasFuncs() for allowable locale values.
         :return: string representation of the epoch group containing dt for an EpochScheme
         """
-        if locale is None:
-            locale = self.defaultLocale()
         if is_list_like(dt):
             return kiwilib.mapOverListLike(lambda x: EpochScheme.labelDT(self, x, locale), dt)
-        return self.epochGroupAliasFuncs()[locale](self, dt)
+        return self._epochGroupAliasFuncs()[locale](self, dt)
 
-    def sortedEpochGroupNames(self) -> List[str]:
+    def sortedEpochGroupNames(self, locale: str = 'en_US') -> List[str]:
         if not hasattr(self, '_sortedEpochGroupNames'):
-            temp = {self.labelDT(iv.lower): iv.lower for iv, names in self.value.items()}
+            temp = {self.labelDT(iv.lower, locale=locale): iv.lower for iv in self.scheme.keys()}
             self._sortedEpochGroupNames: List[str] = sorted(temp.keys(), key=lambda x: temp[x])
         return self._sortedEpochGroupNames
 
     @classmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = defaultdict(lambda: lambda slf: slf.name)  # Ignore language
-            cls._aliasFuncs['en_US'] = lambda slf: slf.name  # Have to include >=1 key for Aliasable.defaultLocale()
-        return cls._aliasFuncs
-
-    def epochGroupAliasFuncs(self):
+    def _epochGroupAliasFuncs(cls):
         def getAlias(ind: int, slf, dt: Union[datetime, date]):
             # TODO: type check and convert date and datetime. Change base method to a functools.partial of getAlias
             pass
 
-        if not hasattr(type(self), '_epochGroupAliasFuncs'):
-            type(self)._epochGroupAliasFuncs: dict[str, Callable] = {
-                'en_US': lambda slf, dt: slf.value[dt][1],
-                'es_MX': lambda slf, dt: slf.value[dt][2],
+        if not hasattr(cls, '_epochGroupAliasFuncs_'):
+            cls._epochGroupAliasFuncs_: dict[str, Callable] = {
+                'en_US': lambda slf, dt: slf.scheme[dt][1],
+                'es_MX': lambda slf, dt: slf.scheme[dt][2],
             }
-        return self._epochGroupAliasFuncs
+        return cls._epochGroupAliasFuncs_
 
-    INDIVIDUAL = P.IntervalDict({P.closedopen(Epoch.sortedIter()[i - 1].dt(), ep.dt()): (ep.id(), ep.name, ep.name)
-                                 for i, ep in enumerate(Epoch.sortedIter()[1:])}) # TODO: modify 2nd ep.name for es_MX
-    # TODO: update usage of epochGroups in VS to account for new data format
-    MP_COARSE = P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, what I spend most of my attention on
-        (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()) |
-         P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt()))
-        : (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
-        P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
-        : (1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'),
-        P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
-        : (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
-    })
-    MP_FINE = appendIntervalDictComplement(
-        P.IntervalDict({  # Fine-grained metaproject and lifestyle focus, includes short bike tours, et al
-            (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2017_Winter.dt()) |
-             P.closedopen(Epoch.e2018_Cornell.dt(), Epoch.e2018_Interim.dt()) |
-             P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt())
-             ): (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
-            (P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_Tour_Start.dt()) |
-             P.closedopen(Epoch.e2019_Tour_End.dt(), Epoch.e2021_Tour_Start.dt()) |
-             P.closedopen(Epoch.e2021_Tour_End.dt(), Epoch.e2022_Tour_Start.dt())
-             ): (2, 'Career Focus Epochs', 'Épocas Enfocados en la CARRERA'),
-        }), complementVal=(1, 'Recreation Focus Epochs', 'Épocas Enfocados en el RECREO'))
-    WORK_LOCATION = appendIntervalDictComplement(  # Where is my primary work/study location?
-        P.IntervalDict({  # First set of epoch groups commonly needed for DC queries
-            P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt())
-            : (0, 'Cornell', 'Cornell'),
-            P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2018_BCH.dt())
-            : (1, 'Ball Boulder', 'Ball Boulder'),
-            P.closedopen(Epoch.e2018_BCH.dt(), Epoch.e2020_WFH.dt())
-            : (2, 'Ball Broomfield', 'Ball Broomfield'),
-            P.closedopen(Epoch.e2020_WFH.dt(), Epoch.e2022_Tour_Start.dt())
-            : (3, 'WFH', 'WFH'),
-        }), complementVal=(4, 'Unemployed', 'Sin Empleo'))
-    SPARE_CHANGE_PERSONNEL = appendIntervalDictComplement(
-        P.IntervalDict({  # Spare Change band membership
-            P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_SpChg_Glenn_End.dt())
-            : (0, 'Spare Change with Glenn', 'Spare Change con Glenn'),
-            P.closedopen(Epoch.e2019_SpChg_Glenn_End.dt(), Epoch.e2019_SpChg_Alex_End.dt())
-            : (1, 'Spare Change without Glenn', 'Spare Change sin Glenn'),
-            P.closedopen(Epoch.e2019_SpChg_Alex_End.dt(), Epoch.e2019_SpChg_Nick_End.dt())
-            : (2, 'Spare Change with Steve on Guitar', 'Spare Change con Steve en la Guitarra'),
-            P.closedopen(Epoch.e2019_SpChg_Nick_End.dt(), Epoch.e2021_SpChg_KO_Start.dt())
-            : (3, 'Spare Change with George', 'Spare Change con George'),
-            P.closedopen(Epoch.e2021_SpChg_KO_Start.dt(), Epoch.e2022_SpChg_JW_KS_Start.dt())
-            : (4, 'Spare Change with Kristin', 'Spare Change con Kristin'),
-        }), complementVal=(5, 'Spare Change with Jonathan and Kirsten', 'Spare Change con Jonathan y Kirsten'))
-    MP_COARSE_ATOMIC = P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, only atomic intervals
-        (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()))
-        : (0, 'Grad School', 'Posgrado'),
-        P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
-        : (1, '2022 Cycle Tour', '2022 Cicloturismo'),
-        P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
-        : (2, 'First Job', 'First Job'),
-        (P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt()))
-        : (0, '2023 Career Pivot', '2023 Cambio de CARRERA'),
-    })
+    INDIVIDUAL = 0
+    MP_COARSE = 1
+    MP_FINE = 2
+    WORK_LOCATION = 3
+    SPARE_CHANGE_PERSONNEL = 4
+    MP_COARSE_ATOMIC = 5
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.INDIVIDUAL: c(
+                scheme=P.IntervalDict({
+                    P.closedopen(ep.dt(), Epoch.sortedIter()[i+1].dt()): (ep.id(), ep.alias('en_US'), ep.alias('es_MX'))
+                    for i, ep in enumerate(Epoch.sortedIter()[:-1])
+                })
+            ), # TODO: modify 2nd ep.name for es_MX
+            # TODO: update usage of epochGroups in VS to account for new data format
+            cls.MP_COARSE: c(
+                scheme=P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, what I spend most of my attention on
+                    (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()) |
+                     P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt()))
+                    : (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
+                    P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
+                    : (1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'),
+                    P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
+                    : (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
+                }),
+                es_MX='MP_GRUESA',
+            ),
+            cls.MP_FINE: c(
+                scheme=appendIntervalDictComplement(
+                    P.IntervalDict({  # Fine-grained metaproject and lifestyle focus, includes short bike tours, et al
+                        (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2017_Winter.dt()) |
+                         P.closedopen(Epoch.e2018_Cornell.dt(), Epoch.e2018_Interim.dt()) |
+                         P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt())
+                         ): (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
+                        (P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_Tour_Start.dt()) |
+                         P.closedopen(Epoch.e2019_Tour_End.dt(), Epoch.e2021_Tour_Start.dt()) |
+                         P.closedopen(Epoch.e2021_Tour_End.dt(), Epoch.e2022_Tour_Start.dt())
+                         ): (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
+                    }), complementVal=(1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'),
+                ),
+                es_MX='MP_FINO',
+            ),
+            cls.WORK_LOCATION: c(
+                scheme=appendIntervalDictComplement(  # Where is my primary work/study location?
+                    P.IntervalDict({  # First set of epoch groups commonly needed for DC queries
+                        P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt())
+                        : (0, 'Cornell', 'Cornell'),
+                        P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2018_BCH.dt())
+                        : (1, 'Ball Boulder', 'Ball Boulder'),
+                        P.closedopen(Epoch.e2018_BCH.dt(), Epoch.e2020_WFH.dt())
+                        : (2, 'Ball Broomfield', 'Ball Broomfield'),
+                        P.closedopen(Epoch.e2020_WFH.dt(), Epoch.e2022_Tour_Start.dt())
+                        : (3, 'WFH', 'WFH'),
+                    }), complementVal=(4, 'Unemployed', 'Sin Empleo')
+                ),
+                es_MX='UBICACIÓN DE TRABAJO',
+            ),
+            cls.SPARE_CHANGE_PERSONNEL: c(
+                scheme=appendIntervalDictComplement(
+                    P.IntervalDict({  # Spare Change band membership
+                        P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_SpChg_Glenn_End.dt())
+                        : (0, 'Spare Change with Glenn', 'Spare Change con Glenn'),
+                        P.closedopen(Epoch.e2019_SpChg_Glenn_End.dt(), Epoch.e2019_SpChg_Alex_End.dt())
+                        : (1, 'Spare Change without Glenn', 'Spare Change sin Glenn'),
+                        P.closedopen(Epoch.e2019_SpChg_Alex_End.dt(), Epoch.e2019_SpChg_Nick_End.dt())
+                        : (2, 'Spare Change with Steve on Guitar', 'Spare Change con Steve en la Guitarra'),
+                        P.closedopen(Epoch.e2019_SpChg_Nick_End.dt(), Epoch.e2021_SpChg_KO_Start.dt())
+                        : (3, 'Spare Change with George', 'Spare Change con George'),
+                        P.closedopen(Epoch.e2021_SpChg_KO_Start.dt(), Epoch.e2022_SpChg_JW_KS_Start.dt())
+                        : (4, 'Spare Change with Kristin', 'Spare Change con Kristin'),
+                    }),
+                    complementVal=(5, 'Spare Change with Jonathan and Kirsten', 'Spare Change con Jonathan y Kirsten')
+                ),
+                es_MX='SPARE CHANGE PERSONAL',
+            ),
+            cls.MP_COARSE_ATOMIC: c(
+                scheme=P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, only atomic intervals
+                    (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()))
+                    : (0, 'Grad School', 'Posgrado'),
+                    P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
+                    : (1, '2022 Cycle Tour', '2022 Cicloturismo'),
+                    P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
+                    : (2, 'First Job', 'Primer Trabajo'),
+                    (P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt()))
+                    : (3, '2023 Career Pivot', '2023 Cambio de Carrera'),
+                }),
+                es_MX='MP GRUESA ATÓMICA',
+            ),
+        }
     # TODO: sequential life phases, like 1 but each group is only a single period: Cornell, Ball, Tour22, post-tour
     # TODO: meal 'Rutina' default groups
     # TODO: 'Casa' location groups

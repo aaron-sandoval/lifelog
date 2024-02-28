@@ -31,10 +31,21 @@ def test_tag():
 def test_epoch():
     assert len(Epoch.e2023_EA_Discovery.color) == 3
     assert Epoch.e2018_Boulder_Solo.alias('en_US')[:2] == Epoch.e2021_Tour_Start.alias('en_US')[:2]
+    assert Epoch.e2018_Boulder_Solo.alias('en_US')[:4] == Epoch.e2018_BCH.alias('en_US')[:4]
     assert Epoch.e2018_Boulder_Solo.alias('es_MX')[:2] == Epoch.e2021_Tour_Start.alias('es_MX')[:2]
     assert Epoch(0) == Epoch.eEND
     assert Epoch.e2017_Cornell.dt() == Epoch.e2017_Cornell.start
 
+
+def test_epochscheme():
+    assert EpochScheme.MP_COARSE_ATOMIC.alias('en_US')[0] == 'M'
+    assert EpochScheme.MP_COARSE.id(datetime(2017, 10, 1, 1)) == 0
+    assert EpochScheme.MP_COARSE.id(datetime(2018, 10, 1, 1)) == 2
+    assert EpochScheme.MP_COARSE_ATOMIC.labelDT(datetime(2023, 2, 1, 1)) == '2023 Career Pivot'
+    assert EpochScheme.INDIVIDUAL.labelDT(datetime(2017, 9, 7, 1)) == '2017 Cornell'
+    assert EpochScheme.INDIVIDUAL.labelDT(datetime(2022, 7, 10, 14, 59)) == '2022 Tim Start'
+    assert EpochScheme.INDIVIDUAL.labelDT(datetime(2022, 7, 10, 14, 59), locale='es_MX') == '2022 Inicio con Tim'
+    assert EpochScheme.MP_COARSE_ATOMIC.labelDT(datetime(2018, 1, 1, 1), locale='es_MX') == 'Posgrado'
 
 if __name__ == "__main__":
     pass

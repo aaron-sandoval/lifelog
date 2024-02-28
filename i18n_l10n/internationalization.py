@@ -162,13 +162,10 @@ class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
-        # if not hasattr(cls, '_aliasFuncs'):
-        #     cls._aliasFuncs: Dict[str, Callable] = {
         return {
-                'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name,
-                'es_MX': lambda slf: slf.es_MX if slf.es_MX != '' else ''.join([slf.name, 'O']),
+           'en_US': lambda slf: slf.en_US if slf.en_US != "" else slf.name.replace('_', ' '),
+           'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name.replace('_', ' '),
         }
-        # return cls._aliasFuncs
 
 
 def test2():
