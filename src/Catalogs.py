@@ -306,7 +306,7 @@ class Catalog(abc.ABC):
                 # Clear review-initing mood from timesheetdf and assign the Review to the Catalog entry
                 self.collxn.at[cid, 'review'] = \
                     self.COLLXBLE_CLASS.getFirstFieldDicts(timesheetdf.df.loc[[tsdfRows.index[0]]].tsdf)[0]['review']
-                timesheetdf.df.at[tsdfRows.index[0], 'mood'] = Global.Mood.Neutral
+                timesheetdf.df.at[tsdfRows.index[0], 'mood'] = Global.Mood.NEUTRAL
             if issubclass(self.COLLXBLE_CLASS, MonolithicMedia) and \
                     portion.closed(*tsdfRows.iloc[[0, -1], :].index) not in self.headerData['TASK ID RANGE']:
                 if self.collxn.at[cid, 'firstTaskID'] not in catRow.startTaskIDs:

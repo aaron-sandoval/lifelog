@@ -57,7 +57,7 @@ def initTask(FMstdList):
     try:
         mood = __getMood(FMstdList[FMCols.index('Mood')])
     except(IndexError):
-        mood = Global.Mood.Neutral
+        mood = Global.Mood.NEUTRAL
     desc = Description(FMstdList[FMCols.index('Description')])
     epoch = 0  # Handle this later
     return [id, start, end, duration, project, tags, desc, epoch, mood]
@@ -229,7 +229,7 @@ def __genSleepTasks(df):
         # moodI = __getMood('-')
         # descriptionI = Description('')
         # tagsI = []
-        PPlist[i] = [idI, startI, endI, endI - startI, projectI, [], Description(''), metaprojectI, Global.Mood.Neutral]
+        PPlist[i] = [idI, startI, endI, endI - startI, projectI, [], Description(''), metaprojectI, Global.Mood.NEUTRAL]
     retDF = pd.DataFrame(PPlist, columns=Global.PP_COLUMN_STRINGS[:Global.IND_mood + 2])
     # +2 because +1 needed since id is still a regular column, and +1 for slice end index convention
     retDF.set_index('id', inplace=True, drop=True)

@@ -47,5 +47,14 @@ def test_epochscheme():
     assert EpochScheme.INDIVIDUAL.labelDT(datetime(2022, 7, 10, 14, 59), locale='es_MX') == '2022 Inicio con Tim'
     assert EpochScheme.MP_COARSE_ATOMIC.labelDT(datetime(2018, 1, 1, 1), locale='es_MX') == 'Posgrado'
 
+
+def test_mood():
+    assert Mood.OVERJOYED.color[0] < Mood.AWFUL.color[0]
+    assert Mood.AWFUL.id == -2
+    assert Mood.BAD.alias('en_US')[0] < Mood.HAPPY.alias('en_US')[0]
+    assert Mood.BAD.alias('es_MX')[0] > Mood.HAPPY.alias('es_MX')[0]
+    assert Mood(0) == Mood.NEUTRAL
+
+
 if __name__ == "__main__":
     pass

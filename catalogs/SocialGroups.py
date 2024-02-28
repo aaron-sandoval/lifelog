@@ -121,11 +121,11 @@ class Review(Global.ColoredAliasable):
         """ Map to extract reviews for Reviewable objects, which are encoded in the mood field of a tsdf."""
         if not hasattr(cls, '_moodMap'):
             cls._moodMap = {
-                Global.Mood.Awful:       Review.POOR,
-                Global.Mood.Bad:         Review.FAIR,
-                Global.Mood.Neutral:     Review.NOREVIEW,
-                Global.Mood.Happy:       Review.GOOD,
-                Global.Mood.Overjoyed:   Review.EXCELLENT,
+                Global.Mood.AWFUL:       Review.POOR,
+                Global.Mood.BAD:         Review.FAIR,
+                Global.Mood.NEUTRAL:     Review.NOREVIEW,
+                Global.Mood.HAPPY:       Review.GOOD,
+                Global.Mood.OVERJOYED:   Review.EXCELLENT,
             }
         return cls._moodMap[mood]
 

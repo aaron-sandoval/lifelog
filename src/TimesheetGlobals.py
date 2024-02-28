@@ -871,14 +871,14 @@ class EpochScheme(i18n.AliasableEnum):
     # TODO: 'Casa' location groups
 
 
-class Mood(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
+class Mood(SingleInstanceColumn, ColoredAliasable):
     @staticmethod
     def dfcolumn() -> str:
         return 'mood'
 
     @property
     def id(self):
-        return self.value[0]
+        return self.value
 
     @classmethod
     def idMap(cls):
@@ -910,27 +910,26 @@ class Mood(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.Enum
         else:
             return self.id > other
 
+    AWFUL = -2
+    BAD = -1
+    NEUTRAL = 0
+    HAPPY = 1
+    OVERJOYED = 2
+
     @classmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
-        """
-        Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
-        """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.name,
-               'es_MX': lambda slf: slf.value[1],
-            }
-        return cls._aliasFuncs
-    
-    Awful = -2, 'Horrible'
-    Bad = -1, 'Malo'
-    Neutral = 0, 'Neutral'
-    Happy = 1, 'Contento'
-    Overjoyed = 2, 'Extático'
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.AWFUL:      c(color=(240, 30, 30), es_MX='HORRIBLE'),
+            cls.BAD:        c(color=(240, 170, 30), es_MX='MALO'),
+            cls.NEUTRAL:    c(color=(240, 240, 220), es_MX='NEUTRAL'),
+            cls.HAPPY:      c(color=(180, 250, 150), es_MX='CONTENTO'),
+            cls.OVERJOYED:  c(color=(30, 200, 40), es_MX='EXTÁTICO'),
+        }
 
 # Map raw string input to encoded data storage value 
-MOOD_RAW_STRINGS = {'Very Bad': -2,
-                    'Bad': -1,
+MOOD_RAW_STRINGS = {'Very BAD': -2,
+                    'BAD': -1,
                     '-': 0,
                     'Normal': 1,
                     'Good': 2,  # Output from app, English
