@@ -554,7 +554,7 @@ class Tag(ListColumn, ColoredAliasable):
         }
 
 
-class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
+class Epoch(SingleInstanceColumn, ColoredAliasable):
     """
     Enum class to define all the global significant dates marking transitions.
     These dates are here called epochs, and are used in VS for analysis considering different periods of life
@@ -600,71 +600,120 @@ class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=kiwilib.Enu
 
     def dt(self) -> datetime:
         """Returns the datetime object for a given Epoch instance"""
-        return self.value[1]
+        return self.start
 
     def id(self) -> int:
         """Returns the id for a given Epoch instance"""
-        return self.value[0]
+        return self.value
+
+    @staticmethod
+    def _get_dataclass() -> kiwilib.IsDataclass:
+        @dataclass(frozen=True)
+        class EpochDataClass(ColoredAliasable.dataclass):
+            start: datetime = NotImplemented  # Sentinel value, must define, but can't enforce it in Python 3.8 dataclasses
+        return EpochDataClass
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.name[1:].replace('_', ' '),
-               'es_MX': lambda slf: slf.value[2],
-            }
-        return cls._aliasFuncs
-
-    END =                     0, datetime(2025, 1, 1, 0, 0, 0), 'FIN'
-    e2017_Cornell =           1, datetime(2017, 9, 6, 0, 0, 0), '2017 Cornell'  # Start of data collection
-    e2017_Winter =            2, datetime(2017, 12, 13, 9, 36, 0), '2017 Invierno'
-    e2018_Cornell =           3, datetime(2018, 1, 12, 21, 58, 0), '2018 Cornell'
-    e2018_Interim =           4, datetime(2018, 5, 22, 3, 0, 0), ' 2018 Interregno'  # End of finals, before CO move
-    e2018_Boulder_Solo =      5, datetime(2018, 6, 18, 3, 0, 0), '2018 Boulder Solo'  # I move to Boulder
-    e2018_Boulder_Padraig =   6, datetime(2018, 8, 24, 3, 0, 0), '2018 Boulder Padraig'  # Padraig moves in
-    e2018_BCH =               7, datetime(2018, 10, 28, 0, 0, 0), '2018 BCH'  # Office move to BCH
-    e2019_Tour_Start =        8, datetime(2019, 8, 4, 7, 19, 0), '2019 Inicio de Gira'  # 2019 tour start
-    e2019_Tour_End =          9, datetime(2019, 8, 13, 12, 17, 0), '2019 Fin de Gira'  # 2019 tour end
-    e2020_WFH =               10, datetime(2020, 3, 18, 0, 0, 0), '2020 Teletrabajo'  # Start WFH
-    e2020_Boulder_Dip =       11, datetime(2020, 3, 29, 18, 42, 0), '2020 Boulder Dip'  # Dip move to CO
-    e2021_COVID_Ease =        12, datetime(2021, 4, 10, 0, 0, 0), '2021 Alivio de COVID'  # Ease of COVID restrictions
-    e2021_Tour_Start =        13, datetime(2021, 8, 11, 7, 14, 0), '2021 Inicio de Gira'  # 2021 tour start
-    e2021_Tour_End =          14, datetime(2021, 8, 21, 12, 46, 0), '2021 Fin de Gira'  # 2021 tour end
-    e2022_Tour_Start =        15, datetime(2022, 1, 7, 18, 7, 0), '2022 Inicio de Gira'  # 2022 tour start
-    e2022_Suzie_Start =       16, datetime(2022, 3, 12, 19, 13, 0), '2022 Inicio con Suzie'  # Start Suzie
-    e2022_Suzie_End =         17, datetime(2022, 3, 25, 15, 34, 0), '2022 Fin con Suzie'  # ENd SVF
-    e2022_Alexandre_Start =   18, datetime(2022, 6, 4, 9, 7, 0), '2022 Inicio con Alexandre'  # Start ride  w/ Alexandre
-    e2022_Alexandre_End =     19, datetime(2022, 6, 11, 7, 52), '2022 Fin con Alexandre'  # End ride w/ Alexandre
-    e2022_Tim_Start =         20, datetime(2022, 7, 10, 14, 58, 0), '2022 Inicio con Tim'  # Start TIm Sprinz
-    e2022_Tim_End =           21, datetime(2022, 7, 12, 5, 5, 0), '2022 Fin con Tim'  # End Tim Sprinz, or really Lars
-    e2022_USA_Friends_Start = 22, datetime(2022, 9, 14, 16, 54, 0), '2022 Inicio con amigos de EEUU'  # Start BFish+
-    e2022_USA_Friends_End =   23, datetime(2022, 9, 21, 10, 33, 0), '2022 Fin con amigos de EEUU'  # End BFish+
-    e2022_Tour_End =          24, datetime(2022, 12, 15, 10, 10, 0), '2022 Fin de Gira'  # 2022 tour end
-    e2020_Tech_Start =        25, datetime(2020, 9, 19, 20, 35, 0), '2020 Inicio con Tech' # Tech arrival in CO
-    e2020_Tech_End =          26, datetime(2020, 11, 1, 8, 30, 0), '2020 Fin con Tech' # Tech leave from CO
-    e2022_Europe_Start =      27, datetime(2022, 4, 2, 6, 9, 0), '2022 Inicio en Europa' # Flight CDMX >> Europe
-    e2022_MEX_GER_TZ_SHIFT =  28, datetime(2022, 4, 2, 0, 0, 0), '2022 MEX ALE ZH CAMBIO' # Marks time zone shift in data
-    e2022_ESP_USA_TZ_SHIFT =  29, datetime(2022, 12, 15, 7, 42, 0), '2022 ESP EEUU ZH CAMBIO'
-    e2023_EA_Discovery =      30, datetime(2023, 4, 17, 9, 51, 0), '2023 EA Descubrimiento'  # Podcast triggers EA interest
-    e2019_SpChg_Glenn_End =   31, datetime(2019, 4, 1, 0, 0, 0), '2019 SpChg Fin con Glenn'  # Glenn leaves Spare Change
-    e2019_SpChg_Alex_End =    32, datetime(2019, 11, 1, 0, 0, 0), '2019 SpChg Fin con Alex'  # Alex leaves, Steve joins Spare Change
-    e2019_SpChg_Nick_End =    33, datetime(2020, 1, 1, 0, 0, 0), '2019 SpChg Fin con Nick'  # Nick leaves, George joins Spare Change
-    e2021_SpChg_KO_Start =    34, datetime(2021, 9, 10, 0, 0, 0), '2021 SpChg Inicio con KO'  # Kristin joins Spare Change
-    e2022_SpChg_JW_KS_Start = 35, datetime(2022, 9, 1, 0, 0, 0), '2022 SpChg Inicio con JW KS'  # Kirsten, Jonathan join Spare Change
-    e2024_AISC =              36, datetime(2024, 1, 13, 3, 0, 0), '2023 Campamento de Securidad de IA'  # AISC starts
-    e2018_Data_Log_Person =   37, datetime(2018, 2, 10, 3, 0, 0), '2018 Datos Persona'  # Data on time spent with individuals somewhat consistent
-# TODO: add apochs for data feature introductions
+        return {
+           'en_US': lambda slf: slf.en_US if slf.en_US != "" else slf.name[1:].replace('_', ' '),
+           'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name[1:].replace('_', ' '),
+        }
+        
+    eEND =                    0
+    e2017_Cornell =           1
+    e2017_Winter =            2
+    e2018_Cornell =           3
+    e2018_Interim =           4
+    e2018_Boulder_Solo =      5
+    e2018_Boulder_Padraig =   6
+    e2018_BCH =               7
+    e2019_Tour_Start =        8
+    e2019_Tour_End =          9
+    e2020_WFH =               10
+    e2020_Boulder_Dip =       11
+    e2021_COVID_Ease =        12
+    e2021_Tour_Start =        13
+    e2021_Tour_End =          14
+    e2022_Tour_Start =        15
+    e2022_Suzie_Start =       16
+    e2022_Suzie_End =         17
+    e2022_Alexandre_Start =   18
+    e2022_Alexandre_End =     19
+    e2022_Tim_Start =         20
+    e2022_Tim_End =           21
+    e2022_USA_Friends_Start = 22
+    e2022_USA_Friends_End =   23
+    e2022_Tour_End =          24
+    e2020_Tech_Start =        25
+    e2020_Tech_End =          26
+    e2022_Europe_Start =      27
+    e2022_MEX_GER_TZ_SHIFT =  28
+    e2022_ESP_USA_TZ_SHIFT =  29
+    e2023_EA_Discovery =      30
+    e2019_SpChg_Glenn_End =   31
+    e2019_SpChg_Alex_End =    32
+    e2019_SpChg_Nick_End =    33
+    e2021_SpChg_KO_Start =    34
+    e2022_SpChg_JW_KS_Start = 35
+    e2024_AISC =              36
+    e2018_Data_Log_Person =   37
+    
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.eEND:                    c(start=datetime(2025, 1, 1, 0, 0), es_MX='FIN'),
+            cls.e2017_Cornell:           c(start=datetime(2017, 9, 6, 0, 0), es_MX='2017 Cornell'), # Start of data collection
+            cls.e2017_Winter:            c(start=datetime(2017, 12, 13, 9, 36), es_MX='2017 Invierno'), # Start winter break
+            cls.e2018_Cornell:           c(start=datetime(2018, 1, 12, 21, 58), es_MX='2018 Cornell'), # Start semester
+            cls.e2018_Interim:           c(start=datetime(2018, 5, 22, 3, 0), es_MX='2018 Interregno'), # End of finals, before CO move
+            cls.e2018_Boulder_Solo:      c(start=datetime(2018, 6, 18, 3, 0), es_MX='2018 Boulder Solo'), # I move to Boulder
+            cls.e2018_Boulder_Padraig:   c(start=datetime(2018, 8, 24, 3, 0), es_MX='2018 Boulder Padraig'), # Padraig moves in
+            cls.e2018_BCH:               c(start=datetime(2018, 10, 28, 0, 0), es_MX='2018 BCH'), # Office move to BCH
+            cls.e2019_Tour_Start:        c(start=datetime(2019, 8, 4, 7, 19), es_MX='2019 Inicio de Gira'), # 2019 tour start
+            cls.e2019_Tour_End:          c(start=datetime(2019, 8, 13, 12, 17), es_MX='2019 Fin de Gira'), # 2019 tour end
+            cls.e2020_WFH:               c(start=datetime(2020, 3, 18, 0, 0), es_MX='2020 Teletrabajo'), # Start WFH
+            cls.e2020_Boulder_Dip:       c(start=datetime(2020, 3, 29, 18, 42), es_MX='2020 Boulder Dip'), # Dip move to CO
+            cls.e2021_COVID_Ease:        c(start=datetime(2021, 4, 10, 0, 0), es_MX='2021 Alivio de COVID'), # Ease of COVID restrictions
+            cls.e2021_Tour_Start:        c(start=datetime(2021, 8, 11, 7, 14), es_MX='2021 Inicio de Gira'), # 2021 tour start
+            cls.e2021_Tour_End:          c(start=datetime(2021, 8, 21, 12, 46), es_MX='2021 Fin de Gira'), # 2021 tour end
+            cls.e2022_Tour_Start:        c(start=datetime(2022, 1, 7, 18, 7), es_MX='2022 Inicio de Gira'), # 2022 tour start
+            cls.e2022_Suzie_Start:       c(start=datetime(2022, 3, 12, 19, 13), es_MX='2022 Inicio con Suzie'), # Start Suzie
+            cls.e2022_Suzie_End:         c(start=datetime(2022, 3, 25, 15, 34), es_MX='2022 Fin con Suzie'), # ENd SVF
+            cls.e2022_Alexandre_Start:   c(start=datetime(2022, 6, 4, 9, 7), es_MX='2022 Inicio con Alexandre'), # Start ride  w/ Alexandre
+            cls.e2022_Alexandre_End:     c(start=datetime(2022, 6, 11, 7, 52), es_MX='2022 Fin con Alexandre'), # End ride w/ Alexandre
+            cls.e2022_Tim_Start:         c(start=datetime(2022, 7, 10, 14, 58), es_MX='2022 Inicio con Tim'), # Start TIm Sprinz
+            cls.e2022_Tim_End:           c(start=datetime(2022, 7, 12, 5, 5), es_MX='2022 Fin con Tim'), # End Tim Sprinz, or really Lars
+            cls.e2022_USA_Friends_Start: c(start=datetime(2022, 9, 14, 16, 54), es_MX='2022 Inicio con amigos de EEUU'), # Start BFish+
+            cls.e2022_USA_Friends_End:   c(start=datetime(2022, 9, 21, 10, 33), es_MX='2022 Fin con amigos de EEUU'), # End BFish+
+            cls.e2022_Tour_End:          c(start=datetime(2022, 12, 15, 10, 10), es_MX='2022 Fin de Gira'), # 2022 tour end
+            cls.e2020_Tech_Start:        c(start=datetime(2020, 9, 19, 20, 35), es_MX='2020 Inicio con Tech'),# Tech arrival in CO
+            cls.e2020_Tech_End:          c(start=datetime(2020, 11, 1, 8, 30), es_MX='2020 Fin con Tech'),# Tech leave from CO
+            cls.e2022_Europe_Start:      c(start=datetime(2022, 4, 2, 6, 9), es_MX='2022 Inicio en Europa'),# Flight CDMX >> Europe
+            cls.e2022_MEX_GER_TZ_SHIFT:  c(start=datetime(2022, 4, 2, 0, 0), es_MX='2022 MEX ALE ZH CAMBIO'), # Marks time zone shift in data
+            cls.e2022_ESP_USA_TZ_SHIFT:  c(start=datetime(2022, 12, 15, 7, 42), es_MX='2022 ESP EEUU ZH CAMBIO'), # Marks time zone shift in data
+            cls.e2023_EA_Discovery:      c(start=datetime(2023, 4, 17, 9, 51), es_MX='2023 EA Descubrimiento'), # Podcast triggers EA interest
+            cls.e2019_SpChg_Glenn_End:   c(start=datetime(2019, 4, 1, 0, 0), es_MX='2019 SpChg Fin con Glenn'), # Glenn leaves Spare Change
+            cls.e2019_SpChg_Alex_End:    c(start=datetime(2019, 11, 1, 0, 0), es_MX='2019 SpChg Fin con Alex'), # Alex leaves, Steve joins Spare Change
+            cls.e2019_SpChg_Nick_End:    c(start=datetime(2020, 1, 1, 0, 0), es_MX='2019 SpChg Fin con Nick'), # Nick leaves, George joins Spare Change
+            cls.e2021_SpChg_KO_Start:    c(start=datetime(2021, 9, 10, 0, 0), es_MX='2021 SpChg Inicio con KO'), # Kristin joins Spare Change
+            cls.e2022_SpChg_JW_KS_Start: c(start=datetime(2022, 9, 1, 0, 0), es_MX='2022 SpChg Inicio con JW KS'), # Kirsten, Jonathan join Spare Change
+            cls.e2024_AISC:              c(start=datetime(2024, 1, 13, 3, 0), es_MX='2023 Campamento de Securidad de IA'), # AISC starts
+            cls.e2018_Data_Log_Person:   c(start=datetime(2018, 2, 10, 3), es_MX='2018 Datos Persona'), # Data on time spent with individuals somewhat consistent
+        }
+# TODO: add epochs for data feature introductions
 # Naps: 2021-05-05
 # Overnight sleep interruptions: 2023-05-15
 # People: 2017-12-??
 
 
 def appendIntervalDictComplement(dct: P.IntervalDict, complementVal, bigInterval: P.IntervalDict = P.closedopen(
-        Epoch.e2017_Cornell.dt(), Epoch.END.dt())) -> P.IntervalDict:
-    # temp = P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.END.dt())
+        Epoch.e2017_Cornell.dt(), Epoch.eEND.dt())) -> P.IntervalDict:
+    # temp = P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.eEND.dt())
     for interval in dct.keys():
         bigInterval = bigInterval - interval
     dct[bigInterval] = complementVal
@@ -733,18 +782,18 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
     # TODO: update usage of epochGroups in VS to account for new data format
     MP_COARSE = P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, what I spend most of my attention on
         (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()) |
-         P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.END.dt()))
+         P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt()))
         : (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
         P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
-        : (1, 'Recreation Focus Epochs', 'Épocas Enfocados en el RECREO'),
+        : (1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'),
         P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
-        : (2, 'Career Focus Epochs', 'Épocas Enfocados en la CARRERA'),
+        : (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
     })
     MP_FINE = appendIntervalDictComplement(
         P.IntervalDict({  # Fine-grained metaproject and lifestyle focus, includes short bike tours, et al
             (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2017_Winter.dt()) |
              P.closedopen(Epoch.e2018_Cornell.dt(), Epoch.e2018_Interim.dt()) |
-             P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.END.dt())
+             P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt())
              ): (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
             (P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_Tour_Start.dt()) |
              P.closedopen(Epoch.e2019_Tour_End.dt(), Epoch.e2021_Tour_Start.dt()) |
@@ -782,7 +831,7 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=kiwilib.EnumABCMeta):
         : (1, '2022 Cycle Tour', '2022 Cicloturismo'),
         P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
         : (2, 'First Job', 'First Job'),
-        (P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.END.dt()))
+        (P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt()))
         : (0, '2023 Career Pivot', '2023 Cambio de CARRERA'),
     })
     # TODO: sequential life phases, like 1 but each group is only a single period: Cornell, Ball, Tour22, post-tour

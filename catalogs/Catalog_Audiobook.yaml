@@ -1932,8 +1932,8 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: THE END OF ETERNITY_00881
-  name: THE END OF ETERNITY
+- id: THE eEND OF ETERNITY_00881
+  name: THE eEND OF ETERNITY
   firstTaskID: 12699159
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2019
@@ -5552,7 +5552,7 @@
   duration: .nan
   numReruns: 1
 - id: DEATH'S END_01951
-  name: DEATH'S END
+  name: DEATH'S eEND
   firstTaskID: 28107609
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2022

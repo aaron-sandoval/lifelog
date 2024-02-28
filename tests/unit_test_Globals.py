@@ -28,5 +28,13 @@ def test_tag():
     assert Tag(1) == Tag.BICI
 
 
+def test_epoch():
+    assert len(Epoch.e2023_EA_Discovery.color) == 3
+    assert Epoch.e2018_Boulder_Solo.alias('en_US')[:2] == Epoch.e2021_Tour_Start.alias('en_US')[:2]
+    assert Epoch.e2018_Boulder_Solo.alias('es_MX')[:2] == Epoch.e2021_Tour_Start.alias('es_MX')[:2]
+    assert Epoch(0) == Epoch.eEND
+    assert Epoch.e2017_Cornell.dt() == Epoch.e2017_Cornell.start
+
+
 if __name__ == "__main__":
     pass
