@@ -201,7 +201,7 @@ def getTags(tagStrings: str):
 
 
 def __getMood(raw):
-    return Global.Mood.idMap()[Global.MOOD_RAW_STRINGS[raw]]
+    return Global.MOOD_RAW_STRINGS[raw]
 
 
 def __genSleepTasks(df):

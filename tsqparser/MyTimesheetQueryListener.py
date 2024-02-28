@@ -480,7 +480,7 @@ class MyTimesheetQueryListener(TimesheetQueryListener):
     def exitMoodLiteral(self, ctx:TimesheetQueryParser.MoodLiteralContext):
         ctx.dtype = 'L'
         if ctx.intKey:
-            ctx.data = Global.Mood.idMap()[int(ctx.intKey.text)]
+            ctx.data = Global.Mood(int(ctx.intKey.text))
             # ctx.data = dict((a.value, a) for a in Global.Mood.__members__.values())[int(ctx.intKey.text)]
         elif ctx.nameKey:
             ctx.data = Global.Mood[ctx.nameKey.text]

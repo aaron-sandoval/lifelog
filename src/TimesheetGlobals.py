@@ -880,12 +880,6 @@ class Mood(SingleInstanceColumn, ColoredAliasable):
     def id(self):
         return self.value
 
-    @classmethod
-    def idMap(cls):
-        if not hasattr(cls, '_idMap'):
-            cls._idMap = {a.id: a for a in cls}
-        return cls._idMap
-
     def __le__(self, other):
         if isinstance(other, Mood):
             return self.id <= other.id
@@ -927,17 +921,18 @@ class Mood(SingleInstanceColumn, ColoredAliasable):
             cls.OVERJOYED:  c(color=(30, 200, 40), es_MX='EXTÁTICO'),
         }
 
+
 # Map raw string input to encoded data storage value 
-MOOD_RAW_STRINGS = {'Very BAD': -2,
-                    'BAD': -1,
-                    '-': 0,
-                    'Normal': 1,
-                    'Good': 2,  # Output from app, English
-                    'Muy malo': -2,  # Output from app, Spanish
-                    'Malo': -1,
-                    '-': 0,
-                    'Normal': 1,
-                    'Bueno': 2}  # Output from app
+MOOD_RAW_STRINGS = {'Very Bad': Mood.AWFUL,
+                    'Bad': Mood.BAD,
+                    '-': Mood.NEUTRAL,
+                    'Normal': Mood.HAPPY,
+                    'Good': Mood.OVERJOYED,  # Output from app, English
+                    'Muy malo': Mood.AWFUL,  # Output from app, Spanish
+                    'Malo': Mood.BAD,
+                    '-': Mood.NEUTRAL,
+                    'Normal': Mood.HAPPY,
+                    'Bueno': Mood.OVERJOYED}  # Output from app
 
 
 ####################
