@@ -24,20 +24,18 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
     # dataFiles = ['timesheet_2017-12-16.csv']
     # dataFiles = ['timesheet_2018-08-01_2018-08-22.csv']
     dataFiles = ['20230901-20240101.csv']
-    # dataFiles = ['testCSV_short1.csv', 'testCSV_short2.csv', 'testCSV_short3.csv']
-    # dataFiles = ['testCSV_short1.csv']
     # dataFiles = ['timesheet_2017-12-16.csv', 'timesheet_20180822202600.csv']
     # dataFiles = ['timesheet_20180822202600.csv']
     # dataFiles = ['sample_RAW_PUBLIC.csv']
 
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_test3.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2020-09-17-0747_2021-01-05-1222.csv')
-    FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2024-01-01-0144.csv')
+    # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2024-01-01-0144.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2018-02-10-2211.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2017-12-16-1700.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-12-17-1030_2018-08-22-1745.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2018-08-22-1745.csv')
-    # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2018-08-22-1640_2019-09-02-1659.csv')
+    FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2018-08-22-1640_2019-09-02-1659.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2019-09-02-1625_2020-09-17-0747.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2020-09-17-0647_2021-12-14-2208.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2021-12-14-2201_2022-04-02-1327.csv')
@@ -49,7 +47,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
     # PP_filePath = os.path.join(PPPath(), "PP_2017-09-06-2136_2017-12-16-1252.pkl")
     # PP_filePath = os.path.join(PPPath(), 'PP_2017-12-17-1030_2018-08-22-1745.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2017-09-06-2136_2018-08-22-1745.pkl')
-    # PP_filePath = os.path.join(PPPath(), 'PP_2018-08-22-1640_2019-09-02-1659.pkl')
+    # PP_filePath = os.path.join(PPPath(), 'PP_2018-08-22-1640_2019-09-02-1659_PRIV.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2019-09-02-1625_2020-09-17-0747.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2020-09-17-0647_2021-12-14-2208.pkl')
     # PP_filePath = os.path.join(PPPath(), "PP_2021-12-14-2201_2022-04-02-1327.pkl")
@@ -75,13 +73,13 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
         # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
     else:
         # FM_filePath = FM.main(dataFiles)
-        # PP_filePath = PP.main(FM_filePath)
+        PP_filePath = PP.main(FM_filePath)
         # DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
-        VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
+        # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
 
     # XH.main(VS_filePath)
 
 
 if __name__ == '__main__':
     # TODO: always change to runPublic=True before git commit
-    main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=True)
+    main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=False)

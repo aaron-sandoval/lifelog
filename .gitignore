@@ -1,4 +1,4 @@
-*_PRIVATE.py
+*_PRIVATE.*
 *_PRIV.*
 *_PRIVATE.tsqy
 *_PRIVATE.yaml
@@ -27,11 +27,12 @@ Catalogs/Catalog*
 # tests/*
 tests/PROFILE_*
 
-*/__pycache__/
+**/__pycache__/*
+*.pytest_cache/*
+**/.ipynb_checkpoints
 tsqparser/testQueries_1.txt
 Annotated_Excel/
 .idea/
-.pytest_cache/
 spec-list*.txt
 Timesheet Analysis Outline.txt
 desktop.ini

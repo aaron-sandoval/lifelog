@@ -41,6 +41,20 @@ class TimesheetDataset:
     def __copy__(self):
         return TimesheetDataset(copy(self.timesheetdf), self.cats)
 
+    @property
+    def fileSuffix(self):
+        return self._fileSuffix
+
+    @fileSuffix.setter
+    def fileSuffix(self, v: str):
+        self._fileSuffix = str
+        if not hasattr(self, 'cats'):
+            return
+        for cat in self.cats:
+            cCls = cat.COLLXBLE_CLASS
+            file = os.path.join(Global.rootProjectPath(), 'catalogs', f'Catalog_{cCls.__name__}{v}.yaml')
+            cat.CATALOG_FILE = file
+
     def preCatalogCorrect(self):
         """Make all corrections available before Catalogs and Collectibles are initialized."""
         [self.timesheetdf.df.loc[key, 'description'].initExceptRaw(DC_oneoff[key]) for key in DC_oneoff.keys() if
@@ -81,10 +95,12 @@ class TimesheetDataset:
         Uses the writePersistent method for the TimesheetDataFrame.
         Calls the write method of each Catalog.
         """
+        if fileSuffix is None:
+            fileSuffix = self.fileSuffix
         for cat in self.cats.values():
             # cat.write(file=cat.CATALOG_FILE[:-5] + fileSuffix + '.yaml')
             cat.write()
-        return Global.writePersistent(self.timesheetdf.df, phaseFlag, self.fileSuffix)
+        return Global.writePersistent(self.timesheetdf.df, phaseFlag, fileSuffix)
 
     ###############################
     """Catalogs and Collectibles"""

@@ -69,6 +69,11 @@ def VSPath():
     return os.path.join(rootProjectPath(), 'VS_Figures')
 
 
+def isPrivate():
+    """ Returns whether the project contains private files or not. """
+    return os.path.exists(os.path.join(rootProjectPath(), 'utils', 'IS_PRIVATE.txt'))
+
+
 def getFileNameByTasks(startTask, endTask, phaseFlag):
     # Returns string for std filename given 2 task objects
     TP = startTask.spanningTimePeriod(endTask)

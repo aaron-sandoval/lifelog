@@ -1,5 +1,6 @@
+import copy
 import sys, os, pytest
-
+import warnings
 from pathlib import Path
 sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent.absolute()))
 from src.TimesheetDataset import *
@@ -8,62 +9,62 @@ from src.TimesheetDataset import *
 test_dir = os.path.join(Global.rootProjectPath(), 'tests')
 
 
-def loadTestTSDS(file=os.path.join(test_dir, 'PP_test3.pkl'), suffix='_test3'):
-    if file == os.path.join(test_dir, 'PP_test3.pkl'):
-        raise NotImplementedError(f'File {file} is out of date and no longer supported.')
+def loadTestTSDS(file=os.path.join(test_dir, 'PP_2018-08-22-1640_2019-09-02-1659_PRIV.pkl'), suffix='_test4'):
+    if not os.path.exists(file):
+        if Global.isPrivate():
+            fallback = os.path.join(test_dir, 'PP_test3_PUBL.pkl')
+            warnings.warn(f"File {file} does not exist. "
+                          f"This could be because the specified file is private and not uploaded to the repository. "
+                          f"Using public fallback file {fallback} instead", Warning)
+            file = fallback
+        else:
+            raise FileNotFoundError(f"File {file} does not exist.")
     myTimesheetDataset = TimesheetDataset(pd.read_pickle(file), fileSuffix=suffix)
     myTimesheetDataset.preCatalogCorrect()
     myTimesheetDataset.loadCatalogs(fileSuffix=suffix)
+    myTimesheetDataset.fileSuffix = suffix + '_W'  # Don't modify original test files
+    # TODO: get tsdf to write to test directory
     return myTimesheetDataset
 
 
-def test_Header():
+def test_tsds_write():
     tsds = loadTestTSDS()
-    # assert
-    tsds.write(3)
-    for catalog in tsds.cats.values():
-        oldLen = len(catalog)
-        catalog.autoCollect(tsds.timesheetdf)
     tsds.write(3)
 
-    file = os.path.join(Global.rootProjectPath(), 'tests', 'Catalog_Audiobook_TEST1.yaml')
+
+def test_collect_idempotent():
+    orig = loadTestTSDS()
+    tsds = copy.deepcopy(orig)
+    for origCat, catalog in zip(orig.cats.values(), tsds.cats.values()):
+        catalog.autoCollect(tsds.timesheetdf)
+        assert len(catalog) == len(origCat)
+        assert origCat.headerData == catalog.headerData
+        assert origCat == catalog
+
+
+def test_Header():
+    file = os.path.join(test_dir, 'Catalog_Audiobook_TEST1.yaml')
+    file_out = os.path.join(test_dir, 'Catalog_Audiobook_TEST1_w.yaml')
     a = LinearCatalog(Audiobook, loadYaml=False)
-    a.write(file)
+    a.write(file_out)
     assert a.headerData['CATALOG COUNT'] == 0
     assert a.headerData['TASK ID RANGE'] == portion.empty()
-    assert a._METADATA_HEADER_DEFAULT == {'HEADER': {
+    emptyHeader = {'HEADER': {
         'FILE TYPE': 'Catalog',
         'DATE WRITTEN': None,
         'TASK ID RANGE': portion.empty(),
         'COLLECTIBLE TYPE': '',
         'CATALOG COUNT': 0,
     }}
+    assert a._METADATA_HEADER_DEFAULT == emptyHeader
     a.collect([Audiobook.NULL_INSTANCE()])
-    assert a._METADATA_HEADER_DEFAULT == {'HEADER': {
-        'FILE TYPE': 'Catalog',
-        'DATE WRITTEN': None,
-        'TASK ID RANGE': portion.empty(),
-        'COLLECTIBLE TYPE': '',
-        'CATALOG COUNT': 0,
-    }}
-    a.write(file)
-    assert a._METADATA_HEADER_DEFAULT == {'HEADER': {
-        'FILE TYPE': 'Catalog',
-        'DATE WRITTEN': None,
-        'TASK ID RANGE': portion.empty(),
-        'COLLECTIBLE TYPE': '',
-        'CATALOG COUNT': 0,
-    }}
+    assert a._METADATA_HEADER_DEFAULT == emptyHeader
+    a.write(file_out)
+    assert a._METADATA_HEADER_DEFAULT == emptyHeader
     assert a.headerData['CATALOG COUNT'] == 1
     assert a.headerData['TASK ID RANGE'] == portion.empty()
     a = LinearCatalog(Audiobook, loadYaml=True, file=file)
-    assert a._METADATA_HEADER_DEFAULT == {'HEADER': {
-        'FILE TYPE': 'Catalog',
-        'DATE WRITTEN': None,
-        'TASK ID RANGE': portion.empty(),
-        'COLLECTIBLE TYPE': '',
-        'CATALOG COUNT': 0,
-    }}
+    assert a._METADATA_HEADER_DEFAULT == emptyHeader
     assert a.headerData['CATALOG COUNT'] == 1
     assert a.headerData['TASK ID RANGE'] == portion.empty()
 
@@ -183,7 +184,7 @@ def test_Review():
 
 
 if __name__ == "__main__":
-    # test_TimesheetDF()
+    test_TimesheetDF()
     test_Gender()
     test_SocialGroup()
     test_Review()
