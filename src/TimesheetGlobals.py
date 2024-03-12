@@ -85,12 +85,13 @@ def getFileName(TP, phaseFlag):
     return PREFIX_PHASE[phaseFlag] + '_' + TP.start.strftime('%Y-%m-%d-%H%M_') + TP.end.strftime('%Y-%m-%d-%H%M')
 
 
-def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix='', **kwargs) -> str:
+def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix='', file: str = None,  **kwargs) -> str:
     """
     Writes a dataframe to persistent storage. Currently uses pickle filetype
     :param df: Dataframe, TimesheetDataset, or GraphicExhibit whose data to write
     :param phaseFlag: Encoding of the most recently completed data processing phase. See PREFIX_PHASE for options.
     :param fileSuffix: Suffix to be added to the end of the filename.
+    :param file: Overrides the default write locations and filenames. If provided, `fileSuffix` is also ignored.
     :return: Full path of the file just written
     """
 
@@ -116,25 +117,35 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
     # if obj.__class__ == TimesheetDataset:
     #     df = obj.timesheetdf.df
     # else: df = obj
-    if phaseFlag != 4:
-        name = getPersistentFileName(df, phaseFlag)
-        path = getPersistentFilePath(name, phaseFlag) + fileSuffix + '.pkl'
+    if phaseFlag in (1, 2, 3):
+        if file is not None:
+            name = getPersistentFileName(df, phaseFlag)
+            path = getPersistentFilePath(name, phaseFlag) + fileSuffix + '.pkl'
+        else:
+            path = file
         pd.to_pickle(df, path)
         return path
-    else:
+    elif phaseFlag == 4:
         privacyPaths = {
-        Privacy.PUBLIC : '_PUBL',
-        Privacy.FRIENDS: '_FRND',
-        Privacy.PRIVATE: '_PRIV',
+            Privacy.PUBLIC : '_PUBL',
+            Privacy.FRIENDS: '_FRND',
+            Privacy.PRIVATE: '_PRIV',
         }
-        name1 = 'figs' + privacyPaths[kwargs['privacy']] + pd.Timestamp.now().strftime('_%Y-%m-%d_%H-%M')
-        name2 = 'figs' + privacyPaths[kwargs['privacy']]
-        path1 = getPersistentFilePath(name1, phaseFlag) + fileSuffix + '.pkl'
-        path2 = getPersistentFilePath(name2, phaseFlag) + fileSuffix + '.pkl'
-        with open(path1, 'wb') as file:
-            pickle.dump(df, file, protocol=-1)
-        shutil.copyfile(path1, path2)
-        return path2
+        if file is None:
+            name1 = 'figs' + privacyPaths[kwargs['privacy']] + pd.Timestamp.now().strftime('_%Y-%m-%d_%H-%M')
+            name2 = 'figs' + privacyPaths[kwargs['privacy']]
+            path1 = getPersistentFilePath(name1, phaseFlag) + fileSuffix + '.pkl'
+            path2 = getPersistentFilePath(name2, phaseFlag) + fileSuffix + '.pkl'
+            with open(path1, 'wb') as file:
+                pickle.dump(df, file, protocol=-1)
+            shutil.copyfile(path1, path2)
+            return path2
+        else:
+            with open(file, 'wb') as f:
+                pickle.dump(df, f, protocol=-1)
+            return file
+    else:
+        raise ValueError(f'{phaseFlag =} is not a valid value. Please use a value in (1, 2, 3, 4).')
 
 
 ##############

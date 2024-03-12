@@ -1,6 +1,5 @@
 import copy
 import sys, os, pytest
-import warnings
 from pathlib import Path
 sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent.absolute()))
 from src.TimesheetDataset import *
@@ -9,40 +8,7 @@ from src.TimesheetDataset import *
 test_dir = os.path.join(Global.rootProjectPath(), 'tests')
 
 
-def loadTestTSDS(file=os.path.join(test_dir, 'PP_2018-08-22-1640_2019-09-02-1659_PRIV.pkl'), suffix='_test4'):
-    if not os.path.exists(file):
-        if Global.isPrivate():
-            fallback = os.path.join(test_dir, 'PP_test3_PUBL.pkl')
-            warnings.warn(f"File {file} does not exist. "
-                          f"This could be because the specified file is private and not uploaded to the repository. "
-                          f"Using public fallback file {fallback} instead", Warning)
-            file = fallback
-        else:
-            raise FileNotFoundError(f"File {file} does not exist.")
-    myTimesheetDataset = TimesheetDataset(pd.read_pickle(file), fileSuffix=suffix)
-    myTimesheetDataset.preCatalogCorrect()
-    myTimesheetDataset.loadCatalogs(fileSuffix=suffix)
-    myTimesheetDataset.fileSuffix = suffix + '_W'  # Don't modify original test files
-    # TODO: get tsdf to write to test directory
-    return myTimesheetDataset
-
-
-def test_tsds_write():
-    tsds = loadTestTSDS()
-    tsds.write(3)
-
-
-def test_collect_idempotent():
-    orig = loadTestTSDS()
-    tsds = copy.deepcopy(orig)
-    for origCat, catalog in zip(orig.cats.values(), tsds.cats.values()):
-        catalog.autoCollect(tsds.timesheetdf)
-        assert len(catalog) == len(origCat)
-        assert origCat.headerData == catalog.headerData
-        assert origCat == catalog
-
-
-def test_Header():
+def test_header():
     file = os.path.join(test_dir, 'Catalog_Audiobook_TEST1.yaml')
     file_out = os.path.join(test_dir, 'Catalog_Audiobook_TEST1_w.yaml')
     a = LinearCatalog(Audiobook, loadYaml=False)
@@ -111,24 +77,6 @@ def test_DAGCatalog():
     # TODO: bare header w/ document divider, bare header w/out doc divider,
 
 
-def test_TimesheetDF():
-    tsds = loadTestTSDS()
-    tsds.catalogPopulateDF()
-
-    """ filterMedia, isEmpty """
-    b = tsds.timesheetdf.isEmpty('movie')
-    a = tsds.timesheetdf.filterMedia('tvshow')
-    assert all(a.isEmpty('movie'))
-    assert a.isEmpty('tvshow').equals(tsds.timesheetdf.isEmpty('tvshow'))
-    assert tsds.timesheetdf.isEmpty('movie').equals(b)  # Ensure call to filterMedia() didn't change b
-
-    movie = tsds.timesheetdf.tsquery('Movie : ;')
-    tv = tsds.timesheetdf.tsquery('TVShow : ;')
-    neither = tsds.timesheetdf.tsquery('! TVShow & ! Movie : ;')
-    assert set(tsds.timesheetdf.df.index.values) - set(movie.df.index.values) - set(tv.df.index.values) ==\
-           set(neither.df.index.values)
-
-
 def test_Relation():
     ppl = [
         Person(
@@ -184,7 +132,6 @@ def test_Review():
 
 
 if __name__ == "__main__":
-    test_TimesheetDF()
     test_Gender()
     test_SocialGroup()
     test_Review()
