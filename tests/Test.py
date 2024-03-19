@@ -1,7 +1,7 @@
 """
 Created on Jan 10, 2018
-
 @author: Aaron
+Temporary development code snippets to test out features in development. Not permanent test code.
 """
 import sys
 import src.TimesheetGlobals as Global
@@ -237,7 +237,7 @@ def test10():
     print(df1)
 
 
-def test11():
+# def test11():
     # from kiwilib import HeapNode
     # lists = [HeapNode(1, HeapNode(3, HeapNode(5, HeapNode(7, HeapNode(9))))),
     #          # HeapNode(0, HeapNode(2, HeapNode(3, HeapNode(10, HeapNode(11))))),
@@ -470,4 +470,18 @@ def test24():
     b=1
 
 
-test24()
+# Debug TimesheetDataset.fileSuffix assignment to str rather than ''. It was just a bug in @fileSuffix.setter method.
+def test25():
+    class A:
+        def __init__(self, df, cats=None, f: str = ''):
+            self.f = f
+            if self.f != f or self.f is str:
+                raise TypeError(f'f assignment error: {f=}, {self.f=}')
+
+    df = pd.DataFrame([1, 2, 3])
+    a = A(df)
+    a = A(df, f='hi')
+    a = A(df, f='')
+
+
+test25()

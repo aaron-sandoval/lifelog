@@ -4,6 +4,8 @@ Created on Mar 5, 2023
 @author: Aaron
 The top-level dataset object created in the project.
 """
+import pandas as pd
+
 from src.Catalogs import *
 from src.TimesheetDF import TimesheetDataFrame
 import src.TimesheetGlobals as Global
@@ -24,12 +26,18 @@ class TimesheetDataset:
     COLLECTIBLE_CLASS_MAP = {collxble: CATALOG_SUBCLASS_STRING_MAP[collxble.CATALOG_CLASS()] for collxble in
                              sorted(kiwilib.leafClasses(Collectible), key=lambda x: x.processingPrecedence())}
 
-    def __init__(self, df, catalogs=None, fileSuffix=''):
+    def __init__(self,
+                 df: Union[pd.DataFrame, TimesheetDataFrame],
+                 catalogs: Iterable[Catalog] = None,
+                 fileSuffix: str = ''
+                 ):
         """
         Initializes self.df to the arg and all other member data to empty instances
         :param df: pd.Dataframe or TimesheetDataFrame object
         """
-        self.fileSuffix = fileSuffix
+        self.fileSuffix: str = fileSuffix
+        if self.fileSuffix is str or self.fileSuffix != fileSuffix:
+            raise TypeError(f'fileSuffix assignment error: {fileSuffix=}, {self.fileSuffix=}')
         if isinstance(df, TimesheetDataFrame):
             self.timesheetdf = df
         else:
@@ -48,7 +56,7 @@ class TimesheetDataset:
 
     @fileSuffix.setter
     def fileSuffix(self, v: str):
-        self._fileSuffix = str
+        self._fileSuffix = v
         if not hasattr(self, 'cats'):
             return
         for cat in self.cats.values():
