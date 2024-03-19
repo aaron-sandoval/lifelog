@@ -118,7 +118,7 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
     #     df = obj.timesheetdf.df
     # else: df = obj
     if phaseFlag in (1, 2, 3):
-        if file is not None:
+        if file is None:
             name = getPersistentFileName(df, phaseFlag)
             path = getPersistentFilePath(name, phaseFlag) + fileSuffix + '.pkl'
         else:

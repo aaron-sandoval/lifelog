@@ -504,6 +504,24 @@ adj:
   $FOOD: {}
   $FOOD_UNDEFINED:
     - $FOOD
+  $ETNIAS:
+    $FOOD: {}
+  $PLATOS:
+    $FOOD: {}
+  $PRIMITIVAS:
+    $FOOD: {}
+  $OTRO:
+    $FOOD: {}
+  OCCIDENTAL:
+    $ETNIAS: {}
+  ORIENTAL:
+    $ETNIAS: {}
+  AFRICANA:
+    $ETNIAS: {}
+  "ASI\xC1TICA":
+    ORIENTAL: {}
+  LATINOAMERICANA:
+    $ETNIAS: {}
   MERIENDA: {}
   GRATIS: {}
   COMIDA: {}

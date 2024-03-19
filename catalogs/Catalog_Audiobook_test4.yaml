@@ -1,0 +1,464 @@
+- HEADER:
+    FILE TYPE: LinearCatalog
+    DATE WRITTEN: 2023-09-15
+    TASK ID RANGE: !CodecMisc/portion.Interval
+      atomicIntervals:
+      - - true
+        - 7092609
+        - 7643109
+        - true
+      - - true
+        - 26048419
+        - 27612659
+        - true
+    COLLECTIBLE TYPE: audiobook
+    CATALOG COUNT: 18
+- id: FOUNDATION'S EDGE_00492
+  name: FOUNDATION'S EDGE
+  firstTaskID: 7099909
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 9
+    hour: 1
+    minute: 10
+  firstCircad: 2018-05-08
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    7099909: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    &id001 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: STRANGER IN A STRANGE LAND_00514
+  name: STRANGER IN A STRANGE LAND
+  firstTaskID: 7411099
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 30
+    hour: 15
+    minute: 49
+  firstCircad: &id002 2018-05-30
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    7411099: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: STRANGER IN A STRANGE LAND_00514
+  name: STRANGER IN A STRANGE LAND
+  firstTaskID: 7414079
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 30
+    hour: 20
+    minute: 47
+  firstCircad: *id002
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    7414079: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: THE LEFT HAND OF DARKNESS_00529
+  name: THE LEFT HAND OF DARKNESS
+  firstTaskID: 7632429
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 15
+    minute: 42
+  firstCircad: 2018-06-14
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    7632429: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: STONE MATTRESS_01814
+  name: STONE MATTRESS
+  firstTaskID: 26133409
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 20
+    hour: 19
+    minute: 40
+  firstCircad: 2021-12-20
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26133409: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    &id003 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: GLOBAL DISCONTENTS_01818
+  name: GLOBAL DISCONTENTS
+  firstTaskID: 26189279
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 24
+    hour: 16
+    minute: 47
+  firstCircad: 2021-12-24
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26189279: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: THE DARK FOREST_01824
+  name: THE DARK FOREST
+  firstTaskID: 26270179
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 30
+    hour: 7
+    minute: 37
+  firstCircad: 2021-12-30
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26270179: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: CAT'S CRADLE_01832
+  name: CAT'S CRADLE
+  firstTaskID: 26391679
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 1
+    day: 7
+    hour: 18
+    minute: 7
+  firstCircad: 2022-01-07
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26391679: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: THE YEARS OF RICE AND SALT_01834
+  name: THE YEARS OF RICE AND SALT
+  firstTaskID: 26418739
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 1
+    day: 9
+    hour: 15
+    minute: 13
+  firstCircad: 2022-01-09
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26418739: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: PARABLE OF THE SOWER_01847
+  name: PARABLE OF THE SOWER
+  firstTaskID: 26608429
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 1
+    day: 22
+    hour: 19
+    minute: 22
+  firstCircad: 2022-01-22
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26608429: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: CONTACT_01851
+  name: CONTACT
+  firstTaskID: 26666759
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 1
+    day: 26
+    hour: 20
+    minute: 35
+  firstCircad: 2022-01-26
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26666759: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: PARABLE OF THE TALENTS_01855
+  name: PARABLE OF THE TALENTS
+  firstTaskID: 26724219
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 1
+    day: 30
+    hour: 20
+    minute: 21
+  firstCircad: 2022-01-30
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26724219: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: WHO RULES THE WORLD_01863
+  name: WHO RULES THE WORLD
+  firstTaskID: 26834859
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 2
+    day: 7
+    hour: 12
+    minute: 45
+  firstCircad: 2022-02-07
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26834859: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: ROBOT VISIONS_01869
+  name: ROBOT VISIONS
+  firstTaskID: 26925669
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 2
+    day: 13
+    hour: 20
+    minute: 6
+  firstCircad: 2022-02-13
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    26925669: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: PAUL OF DUNE_01877
+  name: PAUL OF DUNE
+  firstTaskID: 27033679
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 2
+    day: 21
+    hour: 8
+    minute: 7
+  firstCircad: 2022-02-21
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    27033679: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: KINDRED_01884
+  name: KINDRED
+  firstTaskID: 27134309
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 2
+    day: 28
+    hour: 7
+    minute: 50
+  firstCircad: 2022-02-28
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    27134309: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: FLEDGLING_01888
+  name: FLEDGLING
+  firstTaskID: 27191839
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 3
+    day: 4
+    hour: 7
+    minute: 43
+  firstCircad: 2022-03-04
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    27191839: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
+- id: THE WORLD UNTIL YESTERDAY_01893
+  name: THE WORLD UNTIL YESTERDAY
+  firstTaskID: 27270859
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 3
+    day: 9
+    hour: 19
+    minute: 25
+  firstCircad: 2022-03-09
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    27270859: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id003: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1

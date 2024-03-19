@@ -11,7 +11,7 @@ from src.DescriptionSTDLISTS import DC_ONE_OFF_TOKEN_REPLACEMENT_LIST as DC_oneo
 
 from typing import Iterable
 import portion
-from copy import copy
+import copy
 import os
 import warnings
 # import ruamel.yaml
@@ -40,7 +40,7 @@ class TimesheetDataset:
             self.cats = dict()
 
     def __copy__(self):
-        return TimesheetDataset(copy(self.timesheetdf), self.cats)
+        return TimesheetDataset(copy.copy(self.timesheetdf), self.cats)
 
     @property
     def fileSuffix(self):
@@ -51,7 +51,7 @@ class TimesheetDataset:
         self._fileSuffix = str
         if not hasattr(self, 'cats'):
             return
-        for cat in self.cats:
+        for cat in self.cats.values():
             cCls = cat.COLLXBLE_CLASS
             file = os.path.join(Global.rootProjectPath(), 'catalogs', f'Catalog_{cCls.__name__}{v}.yaml')
             cat.CATALOG_FILE = file
@@ -90,7 +90,7 @@ class TimesheetDataset:
         assert isinstance(other, TimesheetDataset), 'TsDS may only be updated with another TsDS.'
         self.timesheetdf.outerUpdate(other.timesheetdf)
 
-    def write(self, phaseFlag, fileSuffix:str = None, tsdfFile:str = None):
+    def write(self, phaseFlag, fileSuffix: str = None, tsdfFile: str = None):
         """
         Writes the TimesheetDataset to persistent storage.
         Uses the writePersistent method for the TimesheetDataFrame.
@@ -103,36 +103,6 @@ class TimesheetDataset:
             cat.write()
         return Global.writePersistent(self.timesheetdf.df, phaseFlag, fileSuffix, file=tsdfFile)
 
-    @classmethod
-    def loadTestTSDS(cls, file: str = None, suffix='_test4') -> 'TimesheetDataset':
-        """
-        Testing method to load a TimesheetDataset from disk and do some setup to help avoid overwriting loaded files.
-        Defaults args build a TimesheetDataset from the default testing files.
-        Default catalog files are the same regardless of repo public/private status.
-        Default tsdf pkl file is a more comprehensive private file.
-        If that is unavailable, it falls back to a narrow scope public tsdf pkl file.
-        :param file: Path to tsdf pkl file
-        :param suffix: Suffix for reading catalog files.
-        :return:
-        """
-        test_dir = os.path.join(Global.rootProjectPath(), 'tests')
-        if file is None:
-            file = os.path.join(test_dir, 'PP_2018-08-22-1640_2019-09-02-1659_PRIV.pkl')
-        if not os.path.exists(file):
-            if Global.isPrivate():
-                fallback = os.path.join(test_dir, 'PP_test3_PUBL.pkl')
-                warnings.warn(f"File {file} does not exist. "
-                              f"This could be because the specified file is private and not uploaded to the repository. "
-                              f"Using public fallback file {fallback} instead", Warning)
-                file = fallback
-            else:
-                raise FileNotFoundError(f"File {file} does not exist.")
-        myTimesheetDataset = cls(pd.read_pickle(file), fileSuffix=suffix)
-        myTimesheetDataset.preCatalogCorrect()
-        myTimesheetDataset.loadCatalogs(fileSuffix=suffix)
-        myTimesheetDataset.fileSuffix = suffix + '_W'  # Don't modify original test files
-        # TODO: get tsdf to write to test directory
-        return myTimesheetDataset
 
     ###############################
     """Catalogs and Collectibles"""

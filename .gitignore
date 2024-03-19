@@ -23,8 +23,12 @@ Catalogs/Catalog*
 !Catalogs/Catalog_Movie.yaml
 !Catalogs/Catalog_Podcast.yaml
 !Catalogs/Catalog_TVShow.yaml
+!Catalogs/Catalog_*test5*.yaml
+!Catalogs/Catalog_*test4*.yaml
+Catalogs/Catalog_*_W.yaml
+Catalogs/Catalog_Person*.yaml
 
-# tests/*
+tests/data/write/*
 tests/PROFILE_*
 
 **/__pycache__/*

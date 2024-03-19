@@ -2,15 +2,12 @@ import copy
 import sys, os, pytest
 from pathlib import Path
 sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent.absolute()))
+from testing_utils import READ_DIR, WRITE_DIR
 from src.TimesheetDataset import *
 
-
-test_dir = os.path.join(Global.rootProjectPath(), 'tests')
-
-
 def test_header():
-    file = os.path.join(test_dir, 'Catalog_Audiobook_TEST1.yaml')
-    file_out = os.path.join(test_dir, 'Catalog_Audiobook_TEST1_w.yaml')
+    file = os.path.join(READ_DIR, 'Catalog_Audiobook_TEST1.yaml')
+    file_out = os.path.join(WRITE_DIR, 'Catalog_Audiobook_TEST1_w.yaml')
     a = LinearCatalog(Audiobook, loadYaml=False)
     a.write(file_out)
     assert a.headerData['CATALOG COUNT'] == 0
@@ -36,12 +33,12 @@ def test_header():
 
 
 def test_DAGCatalog():
-    cat = DAGCatalog(Food, file=os.path.join(test_dir, 'unit_test_DAGCatalog_2.yaml'))
+    cat = DAGCatalog(Food, file=os.path.join(READ_DIR, 'unit_test_DAGCatalog_3.yaml'))
     assert type(cat.dag) == nx.DiGraph
     # read1_nodes = set(cat.dag.nodes)
     # read1_adj = cat.dag.adj
-    cat.write(file=os.path.join(test_dir, 'unit_test_DAGCatalog_2rw.yaml'))
-    catRoundTrip = DAGCatalog(Food, file=os.path.join(test_dir, 'unit_test_DAGCatalog_2rw.yaml'))
+    cat.write(file=os.path.join(WRITE_DIR, 'unit_test_DAGCatalog_2rw.yaml'))
+    catRoundTrip = DAGCatalog(Food, file=os.path.join(WRITE_DIR, 'unit_test_DAGCatalog_2rw.yaml'))
     assert type(catRoundTrip.dag) == nx.DiGraph
     assert set(cat.dag.nodes) == set(catRoundTrip.dag.nodes)
     assert cat.dag.adj == catRoundTrip.dag.adj
@@ -61,7 +58,7 @@ def test_DAGCatalog():
     catRoundTrip.collect(Food.NULL_INSTANCE())  # Collect duplicate, shouldn't change Catalog
     assert len(catRoundTrip) == len(cat) + 1
     # Empty file
-    catFromEmpty = DAGCatalog(Food, file=os.path.join(test_dir, 'empty.yaml'))
+    catFromEmpty = DAGCatalog(Food, file=os.path.join(READ_DIR, 'empty.yaml'))
     assert len(catFromEmpty) == 0
     assert catFromEmpty == DAGCatalog(Food, loadYaml=False)
 
@@ -71,9 +68,9 @@ def test_DAGCatalog():
 
     # Test yamls with missing entries
     with pytest.raises(AssertionError):
-        catMissingItemFromAdj = DAGCatalog(Food, file=os.path.join(test_dir, 'unit_test_DAGCatalog_Food_missing_1.yml'))
+        catMissingItemFromAdj = DAGCatalog(Food, file=os.path.join(READ_DIR, 'unit_test_DAGCatalog_Food_missing_1.yml'))
     with pytest.raises(AssertionError):
-        catMissingItemFromCollxn = DAGCatalog(Food, file=os.path.join(test_dir, 'unit_test_DAGCatalog_Food_missing_2.yml'))
+        catMissingItemFromCollxn = DAGCatalog(Food, file=os.path.join(READ_DIR, 'unit_test_DAGCatalog_Food_missing_2.yml'))
     # TODO: bare header w/ document divider, bare header w/out doc divider,
 
 
