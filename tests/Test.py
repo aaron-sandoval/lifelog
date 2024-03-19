@@ -6,6 +6,7 @@ Temporary development code snippets to test out features in development. Not per
 import sys
 import src.TimesheetGlobals as Global
 from src.Task import Task
+from src.Description import Description
 import pandas as pd
 import datetime
 from matplotlib import pyplot as plt
@@ -483,5 +484,9 @@ def test25():
     a = A(df, f='hi')
     a = A(df, f='')
 
+
+# Test description equality
+def test26():
+    a = Description('')
 
 test25()

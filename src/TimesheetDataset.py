@@ -47,6 +47,11 @@ class TimesheetDataset:
         else:
             self.cats = dict()
 
+    def __eq__(self, other):
+        if not isinstance(other, TimesheetDataset):
+            return False
+        return self.timesheetdf == other.timesheetdf and self.cats == other.cats and self.fileSuffix == other.fileSuffix
+
     def __copy__(self):
         return TimesheetDataset(copy.copy(self.timesheetdf), self.cats)
 

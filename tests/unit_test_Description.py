@@ -72,5 +72,34 @@ def test_genTokensSequence():
     assert Description('').standardString == ''
 
 
-test_genTokenTree()
-# test_genTokensSequence()
+def test_eq():
+    d1 = Description("COMER, GRATIS, CARNE, AUDIOLIBRO, SEVENTH SON")
+    d2 = Description("comer, gratis, carne, audiolibro, seventh son")
+    assert d1 == d2
+    d1 = Description("COMER, GRATIS, CARNE, AUDIOLIBRO, SEVENTH SON")
+    d2 = Description("COMER, GRATIS, CARNE, AUDIOLIBRO, SEVENTH SON")
+    d2.removeToken('SEVENTH SON')
+    d2.addToken('SEVENTH SON')
+    assert d1.tokens == d2.tokens
+    assert d1 != d2
+    d1 = Description('Charlar, Doug Juarez, Joug Duarez')
+    d2 = Description('Charlar, Joug Duarez, Doug Juarez')
+    # assert d1 == d2
+    d1 = Description('AUDIOLIBRO, MY TITLE, LEER, NOTICIAS')
+    d1 = Description('LEER, NOTICIAS, AUDIOLIBRO, MY TITLE')
+    # assert d1 == d2
+    d1 = Description('Haarlem a "Amsterdam, Países Bajos"')
+
+
+def test_PPDescTokens():
+    d1 = Description("JUGAR, JUEGOS DE MESA")
+    d2 = Description("JUEGOS DE MESA")
+    assert d1 == d2
+    d1 = Description("TV")
+    d2 = Description("TV, TVSHOW_UNDEFINED")
+    assert d1 == d2
+
+
+if __name__ == '__main__':
+    test_eq()
+    # test_genTokensSequence()
