@@ -10,6 +10,8 @@ READ_DIR = os.path.join(TEST_DIR, 'data', 'read_only')
 WRITE_DIR = os.path.join(TEST_DIR, 'data', 'write')
 
 
+def loadTestTSDF(file: str = None):
+
 def loadTestTSDS(file: str = None, suffix='_test4') -> TimesheetDataset:
     """
     Testing method to load a TimesheetDataset from disk and do some setup to help avoid overwriting loaded files.
@@ -33,9 +35,9 @@ def loadTestTSDS(file: str = None, suffix='_test4') -> TimesheetDataset:
         else:
             raise FileNotFoundError(f"File {file} does not exist.")
     myTimesheetDataset = TimesheetDataset(pd.read_pickle(file), fileSuffix=suffix)
-    myTimesheetDataset.preCatalogCorrect()
     myTimesheetDataset.loadCatalogs(fileSuffix=suffix)
+    myTimesheetDataset.preCatalogCorrect()
     myTimesheetDataset.catalogPopulateDF()
     myTimesheetDataset.fileSuffix = suffix + '_W'  # Don't modify original test files
-    # TODO: get tsdf to write to test directory
+# TODO: get tsdf to write to test directory
     return myTimesheetDataset

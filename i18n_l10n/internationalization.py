@@ -141,7 +141,7 @@ class BabelIntermediateExtractor:
         """ FLush the buffer in self.newWords."""
         if len(self.newWords) == 0:
             return
-        with open(self.file, 'a') as f:
+        with open(self.file, 'a', encoding='utf-8') as f:
             if self.firstWrite:
                 f.write(f'\n***WRITE*** {datetime.now()}\nExtraction summary: \n')
                 self.firstWrite = False

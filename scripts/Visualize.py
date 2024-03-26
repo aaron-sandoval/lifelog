@@ -858,7 +858,7 @@ class GraphicMaker:
 
     @staticmethod
     def avg_social_interaction_by_gender_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-        df = copy(tsds.timesheetdf.df)
+        df = copy.copy(tsds.timesheetdf.df)
         df = df[Global.Epoch.e2018_Data_Log_Person < df.start]
         df['bin'] = kiwilib.date_range_bins(df['circad'], 'MS', normalize=True)
         genders = df.person.apply(lambda plist: [tsds.cats['person'].collxn.loc[pid].gender for pid in plist])
@@ -906,7 +906,7 @@ class GraphicMaker:
     @staticmethod
     def avg_social_interaction_by_primary_relation_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         cat = tsds.cats['person']
-        df = copy(tsds.timesheetdf.df)
+        df = copy.copy(tsds.timesheetdf.df)
         df = df[Global.Epoch.e2018_Data_Log_Person < df.start]
         df['bin'] = kiwilib.date_range_bins(df['circad'], 'MS', normalize=True)
 
@@ -977,7 +977,7 @@ class GraphicMaker:
         ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(1, 4, 7, 10)))
         # plt.gca().xaxis.set_major_locator(mdates.MonthLocator(bymonth=(1, 7)))
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
-        lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.value.keys()]
+        lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.scheme.keys()]
         ep = Global.Epoch
         lineLabels = [kiwilib.addLineBreaks(a.alias(), delimIndices=[0]) for a in
                       [ep.e2017_Cornell, ep.e2018_Boulder_Solo, ep.e2022_Tour_Start, ep.e2022_Tour_End]]

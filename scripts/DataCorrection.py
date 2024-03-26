@@ -8,15 +8,16 @@ Initiates and populates Catalogs, and re-populates the dataframe with appropriat
 """
 
 import pandas as pd
+from typing import Union
 from src.TimesheetDataset import TimesheetDataset
 # import src.TimesheetGlobals as Global
 
 
-def main(PP_path, catalogSuffix = '', write=True):
+def main(PP_path, catalogSuffix='', write=True) -> Union[str, TimesheetDataset]:
     myTSDS = TimesheetDataset(pd.read_pickle(PP_path))
     myTSDS.preCatalogCorrect()
     myTSDS.initCatalogs(fileSuffix=catalogSuffix)
     myTSDS.postCatalogCorrect()
     if write:
         return myTSDS.write(phaseFlag=3)
-    return None
+    return myTSDS
