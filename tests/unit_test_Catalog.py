@@ -2,8 +2,30 @@ import copy
 import sys, os, pytest
 from pathlib import Path
 sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent.absolute()))
-from testing_utils import READ_DIR, WRITE_DIR
+from tests.testing_utils import READ_DIR, WRITE_DIR
+import tests.testing_utils as testing_utils
 from src.TimesheetDataset import *
+
+
+def test_equality():
+    a = LinearCatalog(Audiobook, loadYaml=False)
+    b = LinearCatalog(Audiobook, loadYaml=False)
+    assert a == b
+    refCat = testing_utils.loadTestCatalog(Audiobook, suffix='_test4')
+    assert len(refCat) > 0
+    a.collect(refCat.getObjects(refCat.collxn.iloc[[0], :]))
+    assert a != b
+    b.collect(refCat.getObjects(refCat.collxn.iloc[[0], :]))
+    assert a == b
+
+    temp = a.CATALOG_FILE
+    a.CATALOG_FILE = 'blah'
+    assert a == b
+    a.CATALOG_FILE = temp
+
+    a.updateHeaderData()
+    assert a == b
+
 
 def test_header():
     file = os.path.join(READ_DIR, 'Catalog_Audiobook_TEST1.yaml')

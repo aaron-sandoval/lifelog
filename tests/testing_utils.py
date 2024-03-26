@@ -1,6 +1,10 @@
 import sys, os
 from pathlib import Path
+
+import pandas as pd
+
 sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent.absolute()))
+from typing import Type
 from src.TimesheetGlobals import rootProjectPath
 from src.TimesheetDataset import *
 
@@ -8,9 +12,18 @@ from src.TimesheetDataset import *
 TEST_DIR = os.path.join(rootProjectPath(), 'tests')
 READ_DIR = os.path.join(TEST_DIR, 'data', 'read_only')
 WRITE_DIR = os.path.join(TEST_DIR, 'data', 'write')
+CAT_DIR = os.path.join(rootProjectPath(), 'catalogs')
 
 
-def loadTestTSDF(file: str = None):
+# def loadTestTSDF(file: str = None):
+
+
+def loadTestCatalog(collxble: Type[Collectible], suffix='_test4') -> Catalog:
+    # file = Path(CAT_DIR)/('Catalog_'+collxble.__name__+suffix+'.yaml')
+    tsds = TimesheetDataset(pd.DataFrame())
+    tsds.loadCatalogs([collxble], fileSuffix=suffix)
+    return tsds.cats[collxble.name()]
+
 
 def loadTestTSDS(file: str = None, suffix='_test4') -> TimesheetDataset:
     """

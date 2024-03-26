@@ -136,7 +136,7 @@ class Catalog(abc.ABC):
     # @abc.abstractmethod
     def write(self, file=None):
         # Maybe not abstract, depends on if tree can be yaml'd easily
-        self._updateHeaderData()
+        self.updateHeaderData()
         data = self._getYamlable()
         if not file:
             if len(data) > 1 and set(data[1].keys()) - set(self.COLLXBLE_CLASS.CATALOG_FIELDS()) != set():
@@ -200,7 +200,7 @@ class Catalog(abc.ABC):
             # self.collxn.set_index('id', inplace=True)
 
     # @abc.abstractmethod
-    def _updateHeaderData(self):
+    def updateHeaderData(self):
         """Updates self.headerData to reflect the current state of the Catalog."""
         self.headerData['FILE TYPE'] = self.__class__.__name__
         self.headerData['DATE WRITTEN'] = pd.Timestamp.now().date()
@@ -407,7 +407,7 @@ class DAGCatalog(Catalog):
 
     def write(self, file=None):
         # Maybe not abstract, depends on if tree can be yaml'd easily
-        self._updateHeaderData()
+        self.updateHeaderData()
         data = self._getYamlable()
         if file is None:
             if len(data[0]) > 1 and set(data[0][1].keys()) - set(self.COLLXBLE_CLASS.CATALOG_FIELDS()) != set():

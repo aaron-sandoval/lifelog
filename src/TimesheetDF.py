@@ -72,7 +72,7 @@ class TimesheetDataFrame:
     def validate(obj):
         # verify that it's a dataframe
         if obj.__class__ != pd.DataFrame:
-            raise AttributeError(f"TimesheetDataFrame must be passed a pandas dataframe, not a {obj.__class__}")
+            raise AttributeError(f"TimesheetDataFrame must be passed a pandas DataFrame, not a {obj.__class__}")
 
     @staticmethod
     def _validateStartEnd(obj):
