@@ -57,7 +57,7 @@ def initTask(FMstdList):
     try:
         mood = __getMood(FMstdList[FMCols.index('Mood')])
     except(IndexError):
-        mood = Global.Mood.Neutral
+        mood = Global.Mood.NEUTRAL
     desc = Description(FMstdList[FMCols.index('Description')])
     epoch = 0  # Handle this later
     return [id, start, end, duration, project, tags, desc, epoch, mood]
@@ -201,7 +201,7 @@ def getTags(tagStrings: str):
 
 
 def __getMood(raw):
-    return Global.Mood.idMap()[Global.MOOD_RAW_STRINGS[raw]]
+    return Global.MOOD_RAW_STRINGS[raw]
 
 
 def __genSleepTasks(df):
@@ -229,7 +229,7 @@ def __genSleepTasks(df):
         # moodI = __getMood('-')
         # descriptionI = Description('')
         # tagsI = []
-        PPlist[i] = [idI, startI, endI, endI - startI, projectI, [], Description(''), metaprojectI, Global.Mood.Neutral]
+        PPlist[i] = [idI, startI, endI, endI - startI, projectI, [], Description(''), metaprojectI, Global.Mood.NEUTRAL]
     retDF = pd.DataFrame(PPlist, columns=Global.PP_COLUMN_STRINGS[:Global.IND_mood + 2])
     # +2 because +1 needed since id is still a regular column, and +1 for slice end index convention
     retDF.set_index('id', inplace=True, drop=True)
@@ -283,15 +283,12 @@ def __genEpoch(df):
 
 def __genMetaproject(df) -> pd.DataFrame:
     """
-    Adds a new column and populates the metaproject based purely on the existing
+    Adds a new column and populates the metaproject based on Project.default_metaproject
     :param df:
     :return: augmented df
     """
-    # Returns df joined with another column for metaproject
-    # projectEnums = Global.getEnum(list(df.project), 'project')
-    metaproject = pd.Series([Global.Metaproject.idMap()[p.value[1]] for p in df.loc[:, 'project']],
+    metaproject = pd.Series([Global.Metaproject(p.default_metaproject) for p in df.loc[:, 'project']],
                             index=df.index, name='metaproject')
-    #         df1 = df.join(metaproject)
     return pd.concat([df, metaproject], axis=1)
 
 

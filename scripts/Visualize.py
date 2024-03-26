@@ -29,6 +29,7 @@ global babelx  # Babel extractor wrapper, must be accessible everywhere in the m
 babelx = i18n.BabelIntermediateExtractor(extract=True, locale=i18n.lang_en, bufferSize=50)  # Sets builtins '_a', '_b'
 STR_BACKEND = _k('👀 *Peek into the Backend*')
 
+
 def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Privacy.PUBLIC):
 
     def babelExtractEnumLike() -> None:
@@ -740,7 +741,7 @@ class GraphicMaker:
     @staticmethod
     def avg_Sleep_by_Weekday_and_Epoch_Group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
-        df1 = tsds.timesheetdf.tsquery('Project.Dormir & ( !description | "Dormir" | "Siesta") : ;').df
+        df1 = tsds.timesheetdf.tsquery('Project.DORMIR & ( !description | "DORMIR" | "Siesta") : ;').df
         df1 = pd.concat([df1, getWeekday(df1.circad)], axis=1)
         epochScheme = Global.EpochScheme.MP_COARSE_ATOMIC
         df1 = pd.concat([df1, epochScheme.labelDT(df1.start.rename('epochGroup', copy=False))], axis=1)
@@ -766,7 +767,7 @@ class GraphicMaker:
     @staticmethod
     def sleep_start_and_end_violin_by_epoch_group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         df = tsds.timesheetdf.tsquery(
-            'Project.Dormir & !description & duration<timedelta(hours=20) & duration>timedelta(minutes=30) : ;').df
+            'Project.DORMIR & !description & duration<timedelta(hours=20) & duration>timedelta(minutes=30) : ;').df
         group = df[['start', 'end', 'circad']].groupby('circad')
         df = pd.concat([group.min().start, group.max().end], axis=1)
         df['duration'] = df.end - df.start
@@ -857,7 +858,7 @@ class GraphicMaker:
 
     @staticmethod
     def avg_social_interaction_by_gender_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
-        df = copy(tsds.timesheetdf.df)
+        df = copy.copy(tsds.timesheetdf.df)
         df = df[Global.Epoch.e2018_Data_Log_Person < df.start]
         df['bin'] = kiwilib.date_range_bins(df['circad'], 'MS', normalize=True)
         genders = df.person.apply(lambda plist: [tsds.cats['person'].collxn.loc[pid].gender for pid in plist])
@@ -905,7 +906,7 @@ class GraphicMaker:
     @staticmethod
     def avg_social_interaction_by_primary_relation_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         cat = tsds.cats['person']
-        df = copy(tsds.timesheetdf.df)
+        df = copy.copy(tsds.timesheetdf.df)
         df = df[Global.Epoch.e2018_Data_Log_Person < df.start]
         df['bin'] = kiwilib.date_range_bins(df['circad'], 'MS', normalize=True)
 
@@ -976,7 +977,7 @@ class GraphicMaker:
         ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(1, 4, 7, 10)))
         # plt.gca().xaxis.set_major_locator(mdates.MonthLocator(bymonth=(1, 7)))
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
-        lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.value.keys()]
+        lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.scheme.keys()]
         ep = Global.Epoch
         lineLabels = [kiwilib.addLineBreaks(a.alias(), delimIndices=[0]) for a in
                       [ep.e2017_Cornell, ep.e2018_Boulder_Solo, ep.e2022_Tour_Start, ep.e2022_Tour_End]]

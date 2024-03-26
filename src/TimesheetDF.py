@@ -80,6 +80,11 @@ class TimesheetDataFrame:
         if 'start' not in obj.columns or 'end' not in obj.columns:
             raise AttributeError("This TimesheetDataFrame must have 'start' and 'end' columns")
 
+    def __eq__(self, other):
+        if not isinstance(other, TimesheetDataFrame):
+            return False
+        return self.df.equals(other.df)
+
     def __copy__(self):
         return TimesheetDataFrame(self.df.copy(deep=False))
 

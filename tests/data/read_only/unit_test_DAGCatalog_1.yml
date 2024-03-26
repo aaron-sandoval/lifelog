@@ -1,0 +1,48 @@
+- HEADER:
+    FILE TYPE: DAGCatalog
+    DATE WRITTEN: 2023-08-03
+    TASK ID RANGE: !CodecMisc/portion.Interval
+      atomicIntervals:
+      - - true
+        - 3584169
+        - 14035459
+        - true
+      - - true
+        - 14044009
+        - 34155799
+        - true
+    COLLECTIBLE TYPE: food
+    CATALOG COUNT: 12
+- id: PIZZA
+  name: PIZZA
+  firstTaskID: 14767089
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 10
+    day: 23
+    hour: 11
+    minute: 48
+  firstCircad: 2019-10-23
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+---
+# nodes:
+  # 0: {}
+  # 1: {}
+  # 2: {}
+  # 3: {}
+  # 4: {}
+  # 55: !!set {}
+adj:
+  ab: {}
+  bc:
+    ab: {}
+  cd:
+    ab: {}
+  de:
+    cd: {}
+    ef: {}
+  ef:
+    ab: {}

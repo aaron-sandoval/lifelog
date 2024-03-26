@@ -56,8 +56,17 @@ class Description(SingleInstanceColumn):
         return 'description'
 
     def __eq__(self, other):
-        # TODO: fix this to only check equality of .tokens and .tokenTree
-        return self.__dict__ == other.__dict__
+        # TODO: return True for isomorphic tokenTrees
+        if not isinstance(other, type(self)):
+            return False
+        if self.tokens != other.tokens:
+            print(f'Mismatch:\n{self.tokens=}\n{other.tokens=}')
+            return False
+        for t1, t2 in zip(anytree.PostOrderIter(self.tokenTree), anytree.PostOrderIter(other.tokenTree)):
+            if t1.name != t2.name:
+                print(f'Mismatch:\n{t1.name=}\n{t2.name=}')
+                return False
+        return True
     
     def __str__(self):
         return self.standardString
@@ -232,7 +241,7 @@ class Description(SingleInstanceColumn):
             DT.insert(DT.index('PROPUESTA'), 'ESCRIBIR')
         if ('AUTO' in DT) & ('PASAJERO' in DT):
             DT.remove('PASAJERO')
-        if ('JUEGOS DE MESA' in DT) & ('JUGAR' not in DT):
+        if ('JUEGOS DE MESA' in DT) & ('JUGAR' not in DT) & ('INVESTIGAR' not in DT):
             DT.insert(DT.index('JUEGOS DE MESA'), 'JUGAR')
         if ('DIARIO' in DT) & ('ESCRIBIR' not in DT) & ('LEER' not in DT):
             DT.insert(DT.index('DIARIO'), 'ESCRIBIR')

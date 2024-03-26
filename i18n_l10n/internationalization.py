@@ -1,9 +1,12 @@
 import gettext
-from src.TimesheetGlobals import rootProjectPath
+# from src.TimesheetGlobals import rootProjectPath
 import os
 import builtins
 from datetime import datetime
-
+from external_modules import kiwilib
+from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
+from dataclasses import dataclass
+from pathlib import Path
 
 def test1():
     lang_en.install()  # Magically make the _ function globally available
@@ -17,7 +20,7 @@ def test1():
     print(_b('test1'))
 
 
-localeDir = os.path.join(rootProjectPath(), 'i18n_l10n', 'locale')
+localeDir = os.path.join(os.path.dirname(__file__), 'locale')
 lang_en = gettext.translation(
     domain='timesheet',
     localedir=localeDir,
@@ -51,7 +54,8 @@ class BabelIntermediateExtractor:
 
     def __init__(self, extract=True, fileSuffix: str = '', locale: gettext.GNUTranslations = lang_en, bufferSize=100):
         self.toExtract = extract  # Should this object extract messages into intermediate file or just duplicate gettext
-        self.file = os.path.join(rootProjectPath(), 'i18n_l10n', f'babel_intermediate{fileSuffix}.txt')
+        self.file = str(Path(
+            os.path.abspath(__file__)).parent.parent.absolute()/'i18n_l10n'/f'babel_intermediate{fileSuffix}.txt')
         self.words = set()  # Existing set of words, all languages together, read from the intermediate file.
         self.newWords = set()  # New words found via extract() not yet present in self.words
         self.bufferSize = bufferSize  # Num words to accumulate in self.newWords before appending contents to self.file
@@ -137,13 +141,31 @@ class BabelIntermediateExtractor:
         """ FLush the buffer in self.newWords."""
         if len(self.newWords) == 0:
             return
-        with open(self.file, 'a') as f:
+        with open(self.file, 'a', encoding='utf-8') as f:
             if self.firstWrite:
                 f.write(f'\n***WRITE*** {datetime.now()}\nExtraction summary: \n')
                 self.firstWrite = False
             f.writelines([''.join(['_(', repr(s), ')\n']) for s in self.newWords])
         self.words.update(self.newWords)
         self.newWords.clear()
+
+
+# @kiwilib.DataclassValuedEnum.init
+class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
+    @staticmethod
+    def _get_dataclass() -> kiwilib.IsDataclass:
+        @dataclass(frozen=True)
+        class L10nEngEsp:
+            en_US: str = ""
+            es_MX: str = ""
+        return L10nEngEsp
+
+    @classmethod
+    def aliasFuncs(cls) -> Dict[str, Callable]:
+        return {
+           'en_US': lambda slf: slf.en_US if slf.en_US != "" else slf.name.replace('_', ' '),
+           'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name.replace('_', ' '),
+        }
 
 
 def test2():

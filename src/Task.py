@@ -9,10 +9,9 @@ timekeeping aspect. Not suitable for tasks longer than 24 hours.
 
 import src.TimesheetGlobals as Global
 # import TimesheetGlobals as Global
-from datetime import datetime, timedelta
 from src.TimePeriod import TimePeriod
 from src.Description import Description
-from utils.Preprocess import processEnumString, getDateTime, getProject
+from scripts.Preprocess import processEnumString, getDateTime, getProject
 
 
 class Task(TimePeriod):

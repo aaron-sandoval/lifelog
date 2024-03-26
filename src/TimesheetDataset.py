@@ -4,6 +4,8 @@ Created on Mar 5, 2023
 @author: Aaron
 The top-level dataset object created in the project.
 """
+import pandas as pd
+
 from src.Catalogs import *
 from src.TimesheetDF import TimesheetDataFrame
 import src.TimesheetGlobals as Global
@@ -11,8 +13,9 @@ from src.DescriptionSTDLISTS import DC_ONE_OFF_TOKEN_REPLACEMENT_LIST as DC_oneo
 
 from typing import Iterable
 import portion
-from copy import copy
+import copy
 import os
+import warnings
 # import ruamel.yaml
 
 
@@ -23,12 +26,18 @@ class TimesheetDataset:
     COLLECTIBLE_CLASS_MAP = {collxble: CATALOG_SUBCLASS_STRING_MAP[collxble.CATALOG_CLASS()] for collxble in
                              sorted(kiwilib.leafClasses(Collectible), key=lambda x: x.processingPrecedence())}
 
-    def __init__(self, df, catalogs=None, fileSuffix=''):
+    def __init__(self,
+                 df: Union[pd.DataFrame, TimesheetDataFrame],
+                 catalogs: Iterable[Catalog] = None,
+                 fileSuffix: str = ''
+                 ):
         """
         Initializes self.df to the arg and all other member data to empty instances
         :param df: pd.Dataframe or TimesheetDataFrame object
         """
-        self.fileSuffix = fileSuffix
+        self.fileSuffix: str = fileSuffix
+        if self.fileSuffix is str or self.fileSuffix != fileSuffix:
+            raise TypeError(f'fileSuffix assignment error: {fileSuffix=}, {self.fileSuffix=}')
         if isinstance(df, TimesheetDataFrame):
             self.timesheetdf = df
         else:
@@ -38,8 +47,27 @@ class TimesheetDataset:
         else:
             self.cats = dict()
 
+    def __eq__(self, other):
+        if not isinstance(other, TimesheetDataset):
+            return False
+        return self.timesheetdf == other.timesheetdf and self.cats == other.cats and self.fileSuffix == other.fileSuffix
+
     def __copy__(self):
-        return TimesheetDataset(copy(self.timesheetdf), self.cats)
+        return TimesheetDataset(copy.copy(self.timesheetdf), self.cats)
+
+    @property
+    def fileSuffix(self):
+        return self._fileSuffix
+
+    @fileSuffix.setter
+    def fileSuffix(self, v: str):
+        self._fileSuffix = v
+        if not hasattr(self, 'cats'):
+            return
+        for cat in self.cats.values():
+            cCls = cat.COLLXBLE_CLASS
+            file = os.path.join(Global.rootProjectPath(), 'catalogs', f'Catalog_{cCls.__name__}{v}.yaml')
+            cat.CATALOG_FILE = file
 
     def preCatalogCorrect(self):
         """Make all corrections available before Catalogs and Collectibles are initialized."""
@@ -75,16 +103,19 @@ class TimesheetDataset:
         assert isinstance(other, TimesheetDataset), 'TsDS may only be updated with another TsDS.'
         self.timesheetdf.outerUpdate(other.timesheetdf)
 
-    def write(self, phaseFlag, fileSuffix=None):
+    def write(self, phaseFlag, fileSuffix: str = None, tsdfFile: str = None):
         """
         Writes the TimesheetDataset to persistent storage.
         Uses the writePersistent method for the TimesheetDataFrame.
         Calls the write method of each Catalog.
         """
+        if fileSuffix is None:
+            fileSuffix = self.fileSuffix
         for cat in self.cats.values():
             # cat.write(file=cat.CATALOG_FILE[:-5] + fileSuffix + '.yaml')
             cat.write()
-        return Global.writePersistent(self.timesheetdf.df, phaseFlag, self.fileSuffix)
+        return Global.writePersistent(self.timesheetdf.df, phaseFlag, fileSuffix, file=tsdfFile)
+
 
     ###############################
     """Catalogs and Collectibles"""

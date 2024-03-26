@@ -1,13 +1,11 @@
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
 import pickle
 from typing import List
 import os
 import sys
 sys.path.append(os.curdir)
 from src.TimesheetGlobals import rootProjectPath, Privacy
-from utils.Visualize import GraphicExhibit
+from scripts.Visualize import GraphicExhibit
 
 
 def main(path: str = os.path.join(rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):

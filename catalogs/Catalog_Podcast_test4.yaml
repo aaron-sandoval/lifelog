@@ -1,0 +1,116 @@
+- HEADER:
+    FILE TYPE: LinearCatalog
+    DATE WRITTEN: 2023-09-15
+    TASK ID RANGE: !CodecMisc/portion.Interval
+      atomicIntervals:
+      - - true
+        - 26048419
+        - 27612659
+        - true
+    COLLECTIBLE TYPE: podcast
+    CATALOG COUNT: 5
+- id: THE DAILY_01809
+  name: THE DAILY
+  firstTaskID: 26053399
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 15
+    hour: 6
+    minute: 19
+  firstCircad: 2021-12-15
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    &id001 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: THE EZRA KLEIN SHOW_01813
+  name: THE EZRA KLEIN SHOW
+  firstTaskID: 26111459
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 19
+    hour: 7
+    minute: 5
+  firstCircad: 2021-12-19
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: THE WAR ON CARS_01814
+  name: THE WAR ON CARS
+  firstTaskID: 26128579
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 20
+    hour: 11
+    minute: 37
+  firstCircad: 2021-12-20
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: DEAR HANK AND JOHN_01817
+  name: DEAR HANK AND JOHN
+  firstTaskID: 26175559
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 23
+    hour: 17
+    minute: 55
+  firstCircad: 2021-12-23
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+- id: MAKING SENSE WITH SAM HARRIS_01820
+  name: MAKING SENSE WITH SAM HARRIS
+  firstTaskID: 26213279
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 12
+    day: 26
+    hour: 8
+    minute: 47
+  firstCircad: 2021-12-26
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    *id001: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}

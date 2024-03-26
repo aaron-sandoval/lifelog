@@ -6,6 +6,7 @@ Created on Jan 15, 2018
 Holds all global variables, data standards, etc. needed in multiple stages of
 the data analysis
 """
+import enum
 import os.path
 import shutil
 import sys
@@ -15,12 +16,16 @@ import time
 from datetime import datetime, timedelta, date
 import portion as P
 from enum import Enum
+
+from external_modules.kiwilib import IsDataclass
+import i18n_l10n.internationalization as i18n
 from src.TimePeriod import TimePeriod
 import pandas as pd
 # import numpy as np
 from collections import defaultdict
 from pandas.core.dtypes.inference import is_list_like
-from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
+from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple, Type
+from dataclasses import dataclass
 import abc
 
 
@@ -64,6 +69,11 @@ def VSPath():
     return os.path.join(rootProjectPath(), 'VS_Figures')
 
 
+def isPrivate():
+    """ Returns whether the project contains private files or not. """
+    return os.path.exists(os.path.join(rootProjectPath(), 'utils', 'IS_PRIVATE.txt'))
+
+
 def getFileNameByTasks(startTask, endTask, phaseFlag):
     # Returns string for std filename given 2 task objects
     TP = startTask.spanningTimePeriod(endTask)
@@ -75,12 +85,13 @@ def getFileName(TP, phaseFlag):
     return PREFIX_PHASE[phaseFlag] + '_' + TP.start.strftime('%Y-%m-%d-%H%M_') + TP.end.strftime('%Y-%m-%d-%H%M')
 
 
-def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix='', **kwargs) -> str:
+def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix='', file: str = None,  **kwargs) -> str:
     """
     Writes a dataframe to persistent storage. Currently uses pickle filetype
     :param df: Dataframe, TimesheetDataset, or GraphicExhibit whose data to write
     :param phaseFlag: Encoding of the most recently completed data processing phase. See PREFIX_PHASE for options.
     :param fileSuffix: Suffix to be added to the end of the filename.
+    :param file: Overrides the default write locations and filenames. If provided, `fileSuffix` is also ignored.
     :return: Full path of the file just written
     """
 
@@ -106,56 +117,90 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
     # if obj.__class__ == TimesheetDataset:
     #     df = obj.timesheetdf.df
     # else: df = obj
-    if phaseFlag != 4:
-        name = getPersistentFileName(df, phaseFlag)
-        path = getPersistentFilePath(name, phaseFlag) + fileSuffix + '.pkl'
+    if phaseFlag in (1, 2, 3):
+        if file is None:
+            name = getPersistentFileName(df, phaseFlag)
+            path = getPersistentFilePath(name, phaseFlag) + fileSuffix + '.pkl'
+        else:
+            path = file
         pd.to_pickle(df, path)
         return path
-    else:
+    elif phaseFlag == 4:
         privacyPaths = {
-        Privacy.PUBLIC : '_PUBL',
-        Privacy.FRIENDS: '_FRND',
-        Privacy.PRIVATE: '_PRIV',
+            Privacy.PUBLIC : '_PUBL',
+            Privacy.FRIENDS: '_FRND',
+            Privacy.PRIVATE: '_PRIV',
         }
-        name1 = 'figs' + privacyPaths[kwargs['privacy']] + pd.Timestamp.now().strftime('_%Y-%m-%d_%H-%M')
-        name2 = 'figs' + privacyPaths[kwargs['privacy']]
-        path1 = getPersistentFilePath(name1, phaseFlag) + fileSuffix + '.pkl'
-        path2 = getPersistentFilePath(name2, phaseFlag) + fileSuffix + '.pkl'
-        with open(path1, 'wb') as file:
-            pickle.dump(df, file, protocol=-1)
-        shutil.copyfile(path1, path2)
-        return path2
+        if file is None:
+            name1 = 'figs' + privacyPaths[kwargs['privacy']] + pd.Timestamp.now().strftime('_%Y-%m-%d_%H-%M')
+            name2 = 'figs' + privacyPaths[kwargs['privacy']]
+            path1 = getPersistentFilePath(name1, phaseFlag) + fileSuffix + '.pkl'
+            path2 = getPersistentFilePath(name2, phaseFlag) + fileSuffix + '.pkl'
+            with open(path1, 'wb') as file:
+                pickle.dump(df, file, protocol=-1)
+            shutil.copyfile(path1, path2)
+            return path2
+        else:
+            with open(file, 'wb') as f:
+                pickle.dump(df, f, protocol=-1)
+            return file
+    else:
+        raise ValueError(f'{phaseFlag =} is not a valid value. Please use a value in (1, 2, 3, 4).')
 
 
 ##############
 # Enum Fields#
 ##############
-class EnumABCMeta(abc.ABCMeta, type(Enum)):
-    pass
+class Colored(kiwilib.DataclassValuedEnum):
+    @staticmethod
+    def _get_dataclass() -> IsDataclass:
+        @dataclass(frozen=True)
+        class Color:
+            color: Tuple[int, int, int] = 128, 128, 128
+        return Color
 
-
-class AliasNamedTuple(NamedTuple):
-    en_US: str = '',
-    es_MX: str = ''
-
-
-class StyleNamedTuple(NamedTuple):
-    color: Tuple[float, float, float]
-
-
-class StyleColored(abc.ABC):
     @property
-    @abc.abstractmethod
-    def color(self) -> Tuple[float, float, float]: pass
+    def color_hex(self) -> str:
+        """Hexadecimal string representation of the float color tuple."""
+        if isinstance(self.color[0], int):
+            return "#{0:02x}{1:02x}{2:02x}".format(*self.color)
+        else:
+            return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x * 256), 255)) for x in self.color])
 
 
-# class EnumNamedTupleVal(abc.ABC, Enum, metaclass=EnumABCMeta):
-#     @classmethod
-#     def _named_tuple_class(cls) -> type:
-#         key = ''.join(['NT_', cls.__name__])
-#         if not hasattr(cls, key):
-#             setattr(cls, key, type('_'+key, (NamedTuple, ), {}))
-#         return getattr(cls, key)
+class ColoredAliasable(Colored, i18n.AliasableEnum):
+    @classmethod
+    def _get_dataclass(cls) -> kiwilib.IsDataclass:
+        @dataclass(frozen=True)
+        class ColoredAliasableDataclass(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+        return ColoredAliasableDataclass
+
+
+class TestColor(Colored, i18n.AliasableEnum):
+    RED = enum.auto()
+    GREEN = enum.auto()
+
+    @staticmethod
+    def _get_dataclass() -> IsDataclass:
+        @dataclass(frozen=True)
+        class ColoredAliasableEnum(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+        return ColoredAliasableEnum
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'c']:
+        c = cls.dataclass
+        return {
+            cls.RED: c(
+                color=(255, 0, 0),
+                en_US='',
+                es_MX='ROJO'
+            ),
+            cls.GREEN: c(
+                color=(0, 255, 0),
+                # es_MX='VERDE'
+            ),
+        }
+
 
 class ColumnEnum(abc.ABC):
     """Marks association of child classes to a string column name of a TimesheetDF"""
@@ -185,7 +230,7 @@ class ListColumn(ColumnEnum):
         raise NotImplementedError('dfcolumn() not implemented in child class')
 
 
-class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Metaproject(SingleInstanceColumn, ColoredAliasable):
     #     Each project falls into a metaproject category y default, though that broad assumption is refined in DC
     def __le__(self, other):
         return self.id <= other.id
@@ -201,10 +246,11 @@ class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumA
 
     @property
     def id(self):
-        return self.value[0]
+        return self.value
 
     @classmethod
     def idMap(cls):
+        # TODO: refactor and delete this unnecessary method. Just replace Metaproject.idMap[id] with Metaproject(id)
         if not hasattr(cls, '_idMap'):
             cls._idMap = {a.id: a for a in cls}
         return cls._idMap
@@ -214,26 +260,54 @@ class Metaproject(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumA
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.value[1],
+        return {
+               'en_US': lambda slf: slf.en_US,
                'es_MX': lambda slf: slf.name.replace('_', ' '),
             }
-        return cls._aliasFuncs
-    
+
     @staticmethod
     def dfcolumn() -> str:
         return 'metaproject'
 
-    Sin_Datos = -1, 'No Data'
-    Carrera = 0, 'Career'
-    Academico = 1, 'Academics'
-    Logistica = 2, 'Logistics'
-    Recreo = 3, 'Recreation'
-    Dormir = 4, 'Sleep'
+    SIN_DATOS = -1
+    CARRERA = 0
+    ACADEMICO = 1
+    LOGISTICA = 2
+    RECREO = 3
+    DORMIR = 4
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.SIN_DATOS: c(
+                color=(181, 181, 181),
+                en_US='NO DATA'
+                             ),
+            cls.CARRERA: c(
+                color=(220, 60, 40),
+                en_US='CAREER'
+                           ),
+            cls.ACADEMICO: c(
+                color=(60, 160, 30),
+                en_US='ACADEMICS'
+                             ),
+            cls.LOGISTICA: c(
+                color=(120, 200, 190),
+                en_US='LOGISTICS'
+                             ),
+            cls.RECREO: c(
+                color=(0, 220, 250),
+                en_US='RECREATION'
+                          ),
+            cls.DORMIR: c(
+                color=(20, 40, 140),
+                en_US='SLEEP'
+                          ),
+        }
 
 
-class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Project(SingleInstanceColumn, ColoredAliasable):
     #     Project = (project id, metaproject id)
 
     @staticmethod
@@ -241,119 +315,190 @@ class Project(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMe
         return 'project'
 
     def __le__(self, other):
-        return self.value[0] <= other.value[0]
+        return self.value <= other.value
 
     def __lt__(self, other):
-        return self.value[0] < other.value[0]
+        return self.value < other.value
 
     def __ge__(self, other):
-        return self.value[0] >= other.value[0]
+        return self.value >= other.value
 
     def __gt__(self, other):
-        return self.value[0] > other.value[0]
+        return self.value > other.value
 
     def defaultMetaproject(self) -> Metaproject:
-        return Metaproject.idMap()[self.value[1]]
+        return Metaproject(self.default_metaproject)
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.value[2] if slf.value[2] != '' else slf.name.replace('_', ' '),
-               'es_MX': lambda slf: slf.name.replace('_', ' ') if slf.value[3] == '' else slf.value[3],
-            }
-        return cls._aliasFuncs
+        return {
+           'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name.replace('_', ' '),
+           'es_MX': lambda slf: slf.name.replace('_', ' ') if slf.es_MX == '' else slf.es_MX,
+        }
 
-    SIN_DATOS                               =  0, -1,'NO DATA'                  , ''
-    MAE_5700                                =  1, 1, ''                         , ''
-    MAE_5730                                =  2, 1, ''                         , ''
-    MAE_5780                                =  3, 1, ''                         , ''
-    SYSEN_5220                              =  4, 1, ''                         , ''
-    SYSEN_5220_CALIFICACIÓN                 =  5, 1, 'SYSEN 5220 GRADING'       , ''
-    SYSEN_5220_C                            =  5, 1, 'SYSEN 5220 GRADING'       , ''
-    MENG_PROYECTO                           =  6, 1, 'MENG PROJECT'             , ''
-    MENG                                    =  6, 1, 'MENG PROJECT'             , ''
-    TRANSPORTE                              =  7, 2, 'TRANSPORT'                , ''
-    ERRANDS_AFUERAS                         =  8, 2, 'ERRANDS'                  , 'MANDADOS'
-    ERRANDS                                 =  8, 2, 'ERRANDS'                  , 'MANDADOS'
-    CARRERA                                 =  9, 0, 'CAREER'                   , ''
-    TAREAS_DOMÉSTICAS                       = 10, 2, 'HOUSEHOLD CHORES'         , ''
-    TAREAS                                  = 10, 2, 'HOUSEHOLD CHORES'         , ''
-    EMAIL_Y_LOGÍSTICA                       = 11, 2, 'EMAIL & LOGISTICS'        , ''
-    EMAIL                                   = 11, 2, 'EMAIL & LOGISTICS'        , ''
-    COMER_VESTIRSE_U_HIGIENE                = 12, 2, 'EAT DRESS & HYGIENE'      , ''
-    COMER                                   = 12, 2, 'EAT DRESS & HYGIENE'      , ''
-    RECREO_SOCIAL                           = 13, 3, 'SOCIAL FUN'               , ''
-    RECREO_ELECTRÓNICO                      = 14, 3, 'SCREEN TIME FUN'          , ''
-    RECREO_E                                = 14, 3, 'SCREEN TIME FUN'          , ''
-    RECREO_MISC                             = 15, 3, 'MISC FUN'                 , ''
-    TRABAJO_MISC                            = 16, 1, 'MISC WORK'                , ''
-    DORMIR                                  = 17, 4, 'SLEEP'                    , ''
-    RECREO_LEER                             = 18, 3, 'READ'                     , ''
-    MAE_6060                                = 19, 1, ''                         , ''
-    MAE_5710                                = 20, 1, ''                         , ''
-    MAE_6780                                = 21, 1, ''                         , ''
-    MAE_2030_TA                             = 22, 1, ''                         , ''
-    CLASES_EXTRAS                           = 23, 1, 'EXTRA CLASSES'            , ''
-    CARRERA_ENTRENAMIENTO_DISCRECIONAL      = 24, 0, 'DISCRETIONARY TRAINING'   , 'ENTRENAMIENTO DISCRECIONAL'
-    CARRERA_ED                              = 24, 0, 'DISCRETIONARY TRAINING'   , 'ENTRENAMIENTO DISCRECIONAL'
-    CARRERA_ENTRENAMIENTO_MANDATORIO        = 25, 0, 'MANDATORY TRAINING'       , 'ENTRENAMIENTO MANDATORIO'
-    CARRERA_EM                              = 25, 0, 'MANDATORY TRAINING'       , 'ENTRENAMIENTO MANDATORIO'
-    CARRERA_OMPS                            = 26, 0, 'BALL OMPS'                , 'BALL OMPS'
-    CARRERA_OPIR                            = 27, 0, 'BALL OPIR'                , 'BALL OPIR'
-    ACADÉMICO                               = 28, 1, 'ACADEMICS'                , ''
-    ACADEMICO                               = 28, 1, 'ACADEMICS'                , ''
-    TIMESHEET_ANÁLISIS                      = 29, 1, 'LIFELOG PROJECT'          , 'REGISTRO DE VIDA'
-    TIMESHEET                               = 29, 1, 'LIFELOG PROJECT'          , 'REGISTRO DE VIDA'
-    PÉNDULO_INVERTIDO                       = 30, 1, 'INVERTED PENDULUM'        , ''
-    PENDULO                                 = 30, 1, 'INVERTED PENDULUM'        , ''
-    TAMBORES                                = 31, 3, 'DRUMS'                    , ''
-    OPIR_INGENIERÍA_DE_SISTEMAS_MECÁNICOS   = 32, 0, 'OPIR MECHANICAL SYSTEMS'  , 'OPIR SISTEMAS MECÁNICOS'
-    OPIR_ISM                                = 32, 0, 'OPIR MECHANICAL SYSTEMS'  , 'OPIR SISTEMAS MECÁNICOS'
-    OPIR_OTA_OPTOMECÁNICA_DISEÑO_Y_ANÁLISIS = 33, 0, 'OPIR OTA'                 , 'OPIR OTA'
-    OPIR_OTA                                = 33, 0, 'OPIR OTA'                 , 'OPIR OTA'
-    OPIR_PRB_DISEÑO_Y_ANÁLISIS              = 34, 0, 'OPIR PRB'                 , 'OPIR PRB'
-    OPIR_PRB                                = 34, 0, 'OPIR PRB'                 , 'OPIR PRB'
-    CARRERA_MENTOR_DE_PASANTÍA              = 35, 0, 'INTERN MENTORSHIP'        , 'MENTOR DE PASANTÍA'
-    CARRERA_MENTOR                          = 35, 0, 'INTERN MENTORSHIP'        , 'MENTOR DE PASANTÍA'
-    OPIR_PDR                                = 36, 0, 'OPIR PDR'                 , ''
-    OPIR_CDR                                = 37, 0, 'OPIR CDR'                 , ''
-    OPIR_ARQUITECTURA_DE_SISTEMAS           = 38, 0, 'OPIR SYSTEMS ARCHITECTURE', ''
-    OPIR_ARQ                                = 38, 0, 'OPIR SYSTEMS ARCHITECTURE', ''
-    OPIR_PROPÓSITO_ACÚSTICO                 = 39, 0, 'OPIR ACOUSTIC PROPOSAL'   , ''
-    OPIR_ACUSTICO                           = 39, 0, 'OPIR ACOUSTIC PROPOSAL'   , ''
-    OPIR_ICU                                = 40, 0, 'OPIR ICU'                 , ''
-    OPIR_OTA_SUSTITUTA_DE_LENTE             = 41, 0, 'OPIR LENS SURROGATE'      , 'OPIR SUSTITUTA DE LENTE'
-    OPIR_OTA_SL                             = 41, 0, 'OPIR LENS SURROGATE'      , 'OPIR SUSTITUTA DE LENTE'
-    OPIR_RADIADOR_ANÁLISIS_ESTRUCTURAL      = 42, 0, 'OPIR RADIATOR'            , 'OPIR RADIADOR'
-    OPIR_RADIADOR                           = 42, 0, 'OPIR RADIATOR'            , 'OPIR RADIADOR'
-    OPIR_GSE_AI_T                           = 43, 0, 'OPIR GSE AI&T'            , 'OPIR GSE AI&T'
-    OPIR_GSE_AIT                            = 43, 0, 'OPIR GSE AI&T'            , 'OPIR GSE AI&T'
-    OPIR_GSE_SOC                            = 44, 0, ''                         , ''
-    NGP                                     = 45, 0, ''                         , ''
-    NGP_STOP                                = 46, 0, ''                         , ''
-    NGP_OTA                                 = 47, 0, ''                         , ''
-    NGP_ESTRUCTURA                          = 48, 0, 'NGP STRUCTURE'            , ''
-    OPIR_B1_OTA                             = 49, 0, ''                         , ''
-    CS_AUTOAPRENDIZAJE                      = 50, 1, 'CS SELF-TEACHING'         , ''
-    CS                                      = 50, 1, 'CS SELF-TEACHING'         , ''
-    MÚSICA                                  = 51, 3, 'MUSIC'                    , ''
-    MUSICA                                  = 51, 3, 'MUSIC'                    , ''
-    BAJO                                    = 52, 3, 'BASS'                     , ''
-    CICLISMO                                = 53, 3, 'CYCLING'                  , ''
-    ESCRITURA_Y_VÍDEOS                      = 54, 3, 'WRITING AND VIDEOS'       , ''
-    ESCRITURA                               = 54, 3, 'WRITING AND VIDEOS'       , ''
-    MAE_4060                                = 55, 1, ''                         , ''
-    EA_COMUNIDAD                            = 56, 1, 'EA COMMUNITY'             , ''
-    EA                                      = 56, 1, 'EA COMMUNITY'             , ''
-    AISC                                    = 57, 0, 'AI SAFETY CAMP'           , 'CAMPAMENTO DE LA SEGURIDAD DE IA'
+    @staticmethod
+    def _get_dataclass() -> kiwilib.IsDataclass:
+        @dataclass(frozen=True)
+        class ProjectDC(ColoredAliasable.dataclass):
+            default_metaproject: int = 0  # Default Metaproject initially assigned to tasks with this project.
+        return ProjectDC
+
+    SIN_DATOS                               =  0
+    MAE_5700                                =  1
+    MAE_5730                                =  2
+    MAE_5780                                =  3
+    SYSEN_5220                              =  4
+    SYSEN_5220_CALIFICACIÓN                 =  5
+    SYSEN_5220_C                            =  5
+    MENG_PROYECTO                           =  6
+    MENG                                    =  6
+    TRANSPORTE                              =  7
+    ERRANDS_AFUERAS                         =  8
+    ERRANDS                                 =  8
+    CARRERA                                 =  9
+    TAREAS_DOMÉSTICAS                       = 10
+    TAREAS                                  = 10
+    EMAIL_Y_LOGÍSTICA                       = 11
+    EMAIL                                   = 11
+    COMER_VESTIRSE_U_HIGIENE                = 12
+    COMER                                   = 12
+    RECREO_SOCIAL                           = 13
+    RECREO_ELECTRÓNICO                      = 14
+    RECREO_E                                = 14
+    RECREO_MISC                             = 15
+    TRABAJO_MISC                            = 16
+    DORMIR                                  = 17
+    RECREO_LEER                             = 18
+    MAE_6060                                = 19
+    MAE_5710                                = 20
+    MAE_6780                                = 21
+    MAE_2030_TA                             = 22
+    CLASES_EXTRAS                           = 23
+    CARRERA_ENTRENAMIENTO_DISCRECIONAL      = 24
+    CARRERA_ED                              = 24
+    CARRERA_ENTRENAMIENTO_MANDATORIO        = 25
+    CARRERA_EM                              = 25
+    CARRERA_OMPS                            = 26
+    CARRERA_OPIR                            = 27
+    ACADÉMICO                               = 28
+    ACADEMICO                               = 28
+    TIMESHEET_ANÁLISIS                      = 29
+    TIMESHEET                               = 29
+    PÉNDULO_INVERTIDO                       = 30
+    PENDULO                                 = 30
+    TAMBORES                                = 31
+    OPIR_INGENIERÍA_DE_SISTEMAS_MECÁNICOS   = 32
+    OPIR_ISM                                = 32
+    OPIR_OTA_OPTOMECÁNICA_DISEÑO_Y_ANÁLISIS = 33
+    OPIR_OTA                                = 33
+    OPIR_PRB_DISEÑO_Y_ANÁLISIS              = 34
+    OPIR_PRB                                = 34
+    CARRERA_MENTOR_DE_PASANTÍA              = 35
+    CARRERA_MENTOR                          = 35
+    OPIR_PDR                                = 36
+    OPIR_CDR                                = 37
+    OPIR_ARQUITECTURA_DE_SISTEMAS           = 38
+    OPIR_ARQ                                = 38
+    OPIR_PROPÓSITO_ACÚSTICO                 = 39
+    OPIR_ACUSTICO                           = 39
+    OPIR_ICU                                = 40
+    OPIR_OTA_SUSTITUTA_DE_LENTE             = 41
+    OPIR_OTA_SL                             = 41
+    OPIR_RADIADOR_ANÁLISIS_ESTRUCTURAL      = 42
+    OPIR_RADIADOR                           = 42
+    OPIR_GSE_AI_T                           = 43
+    OPIR_GSE_AIT                            = 43
+    OPIR_GSE_SOC                            = 44
+    NGP                                     = 45
+    NGP_STOP                                = 46
+    NGP_OTA                                 = 47
+    NGP_ESTRUCTURA                          = 48
+    OPIR_B1_OTA                             = 49
+    CS_AUTOAPRENDIZAJE                      = 50
+    CS                                      = 50
+    MÚSICA                                  = 51
+    MUSICA                                  = 51
+    BAJO                                    = 52
+    CICLISMO                                = 53
+    ESCRITURA_Y_VÍDEOS                      = 54
+    ESCRITURA                               = 54
+    MAE_4060                                = 55
+    EA_COMUNIDAD                            = 56
+    EA                                      = 56
+    AISC                                    = 57
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.SIN_DATOS     : c(default_metaproject=-1,en_US='NO DATA'                  , es_MX=''),
+            cls.MAE_5700      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_5730      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_5780      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.SYSEN_5220    : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.SYSEN_5220_C  : c(default_metaproject=1, en_US='SYSEN 5220 GRADING'       , es_MX=''),
+            cls.MENG_PROYECTO : c(default_metaproject=1, en_US='MENG PROJECT'             , es_MX=''),
+            cls.MENG          : c(default_metaproject=1, en_US='MENG PROJECT'             , es_MX=''),
+            cls.TRANSPORTE    : c(default_metaproject=2, en_US='TRANSPORT'                , es_MX=''),
+            cls.ERRANDS       : c(default_metaproject=2, en_US='ERRANDS'                  , es_MX='MANDADOS'),
+            cls.CARRERA       : c(default_metaproject=0, en_US='CAREER'                   , es_MX=''),
+            cls.TAREAS        : c(default_metaproject=2, en_US='HOUSEHOLD CHORES'         , es_MX=''),
+            cls.EMAIL         : c(default_metaproject=2, en_US='EMAIL & LOGISTICS'        , es_MX=''),
+            cls.COMER         : c(default_metaproject=2, en_US='EAT DRESS & HYGIENE'      , es_MX=''),
+            cls.RECREO_SOCIAL : c(default_metaproject=3, en_US='SOCIAL FUN'               , es_MX=''),
+            cls.RECREO_E      : c(default_metaproject=3, en_US='SCREEN TIME FUN'          , es_MX=''),
+            cls.RECREO_MISC   : c(default_metaproject=3, en_US='MISC FUN'                 , es_MX=''),
+            cls.TRABAJO_MISC  : c(default_metaproject=1, en_US='MISC WORK'                , es_MX=''),
+            cls.DORMIR        : c(default_metaproject=4, en_US='SLEEP'                    , es_MX=''),
+            cls.RECREO_LEER   : c(default_metaproject=3, en_US='READ'                     , es_MX=''),
+            cls.MAE_6060      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_5710      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_6780      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.MAE_2030_TA   : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.CLASES_EXTRAS : c(default_metaproject=1, en_US='EXTRA CLASSES'            , es_MX=''),
+            cls.CARRERA_ED    : c(default_metaproject=0, en_US='DISCRETIONARY TRAINING'   , es_MX='ENTRENAMIENTO DISCRECIONAL'),
+            cls.CARRERA_EM    : c(default_metaproject=0, en_US='MANDATORY TRAINING'       , es_MX='ENTRENAMIENTO MANDATORIO'),
+            cls.CARRERA_OMPS  : c(default_metaproject=0, en_US='BALL OMPS'                , es_MX='BALL OMPS'),
+            cls.CARRERA_OPIR  : c(default_metaproject=0, en_US='BALL OPIR'                , es_MX='BALL OPIR'),
+            cls.ACADEMICO     : c(default_metaproject=1, en_US='ACADEMICS'                , es_MX=''),
+            cls.TIMESHEET     : c(default_metaproject=1, en_US='LIFELOG PROJECT'          , es_MX='REGISTRO DE VIDA'),
+            cls.PENDULO       : c(default_metaproject=1, en_US='INVERTED PENDULUM'        , es_MX=''),
+            cls.TAMBORES      : c(default_metaproject=3, en_US='DRUMS'                    , es_MX=''),
+            cls.OPIR_ISM      : c(default_metaproject=0, en_US='OPIR MECHANICAL SYSTEMS'  , es_MX='OPIR SISTEMAS MECÁNICOS'),
+            cls.OPIR_OTA      : c(default_metaproject=0, en_US='OPIR OTA'                 , es_MX='OPIR OTA'),
+            cls.OPIR_PRB      : c(default_metaproject=0, en_US='OPIR PRB'                 , es_MX='OPIR PRB'),
+            cls.CARRERA_MENTOR: c(default_metaproject=0, en_US='INTERN MENTORSHIP'        , es_MX='MENTOR DE PASANTÍA'),
+            cls.OPIR_PDR      : c(default_metaproject=0, en_US='OPIR PDR'                 , es_MX=''),
+            cls.OPIR_CDR      : c(default_metaproject=0, en_US='OPIR CDR'                 , es_MX=''),
+            cls.OPIR_ARQ      : c(default_metaproject=0, en_US='OPIR SYSTEMS ARCHITECTURE', es_MX=''),
+            cls.OPIR_ACUSTICO : c(default_metaproject=0, en_US='OPIR ACOUSTIC PROPOSAL'   , es_MX=''),
+            cls.OPIR_ICU      : c(default_metaproject=0, en_US='OPIR ICU'                 , es_MX=''),
+            cls.OPIR_OTA_SL   : c(default_metaproject=0, en_US='OPIR LENS SURROGATE'      , es_MX='OPIR SUSTITUTA DE LENTE'),
+            cls.OPIR_RADIADOR : c(default_metaproject=0, en_US='OPIR RADIATOR'            , es_MX='OPIR RADIADOR'),
+            cls.OPIR_GSE_AIT  : c(default_metaproject=0, en_US='OPIR GSE AI&T'            , es_MX='OPIR GSE AI&T'),
+            cls.OPIR_GSE_SOC  : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.NGP           : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.NGP_STOP      : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.NGP_OTA       : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.NGP_ESTRUCTURA: c(default_metaproject=0, en_US='NGP STRUCTURE'            , es_MX=''),
+            cls.OPIR_B1_OTA   : c(default_metaproject=0, en_US=''                         , es_MX=''),
+            cls.CS            : c(default_metaproject=1, en_US='CS SELF-TEACHING'         , es_MX=''),
+            cls.MUSICA        : c(default_metaproject=3, en_US='MUSIC'                    , es_MX=''),
+            cls.BAJO          : c(default_metaproject=3, en_US='BASS'                     , es_MX=''),
+            cls.CICLISMO      : c(default_metaproject=3, en_US='CYCLING'                  , es_MX=''),
+            cls.ESCRITURA     : c(default_metaproject=3, en_US='WRITING AND VIDEOS'       , es_MX=''),
+            cls.MAE_4060      : c(default_metaproject=1, en_US=''                         , es_MX=''),
+            cls.EA_COMUNIDAD  : c(default_metaproject=1, en_US='EA COMMUNITY'             , es_MX=''),
+            cls.EA            : c(default_metaproject=1, en_US='EA COMMUNITY'             , es_MX=''),
+            cls.AISC          : c(default_metaproject=0, en_US='AI SAFETY CAMP'           , es_MX='CAMPAMENTO DE LA SEGURIDAD DE IA'),
+        }
 
 
 # noinspection NonAsciiCharacters
-class Tag(ListColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Tag(ListColumn, ColoredAliasable):
     @staticmethod
     def dfcolumn() -> str:
         return 'tags'
@@ -363,42 +508,69 @@ class Tag(ListColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.value[2],
-               'es_MX': lambda slf: slf.name.replace('_', ' ') if slf.value[1] == '' else slf.value[1],
-            }
-        return cls._aliasFuncs
+        return {
+           'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name.replace('_', ' '),
+           'es_MX': lambda slf: slf.es_MX if slf.es_MX != '' else slf.name.replace('_', ' '),
+        }
 
-    BICI               =  1, ''                  , 'BIKE'
-    COLECTIVO          =  2, ''                  , 'BUS'
-    ELECTRÓNICA        =  3, 'TIEMPO DE PANTALLA', 'SCREEN TIME'
-    ELEC               =  3, 'TIEMPO DE PANTALLA', 'SCREEN TIME'
-    EN_CLASE           =  4, ''                  , 'IN CLASS'
-    FAMILIA            =  5, ''                  , 'FAMILY'
-    HW                 =  6, 'TAREA'             , 'HOMEWORK'
-    LECTURA            =  7, ''                  , 'READING'
-    NETFLIX            =  8, 'TV/PELÍCULA'       , 'TV/MOVIE'
-    NFL                =  9, ''                  , 'NFL'
-    PAPEL              = 10, ''                  , 'PAPER'
-    PIE                = 11, ''                  , 'WALK'
-    PROYECTO_ACADÉMICO = 12, ''                  , 'ACADEMIC PROJECT'
-    PROYECTO_A         = 12, ''                  , 'ACADEMIC PROJECT'
-    RUTINA             = 13, ''                  , 'ROUTINE'
-    SOCIAL_GRUPO       = 14, 'SOCIAL'            , 'SOCIAL'
-    SOCIAL             = 14, 'SOCIAL'            , 'SOCIAL'
-    EJERCICIO          = 15, ''                  , 'EXERCISE'
-    COMER              = 16, ''                  , 'EATING'
-    AUTO               = 17, ''                  , 'CAR'
-    BICI_ELÉCTRICA     = 18, ''                  , 'E-BIKE'
-    BICI_E             = 18, ''                  , 'E-BIKE'
-    PODCAST            = 19, ''                  , 'PODCAST'
-    MÚSICA             = 20, ''                  , 'MUSIC'
-    TREN               = 21, ''                  , 'TRAIN'
-    AVIÓN              = 22, ''                  , 'AIRPLANE'
+    BICI               =  1
+    COLECTIVO          =  2
+    ELECTRÓNICA        =  3
+    ELEC               =  3
+    EN_CLASE           =  4
+    FAMILIA            =  5
+    HW                 =  6
+    LECTURA            =  7
+    NETFLIX            =  8
+    NFL                =  9
+    PAPEL              = 10
+    PIE                = 11
+    PROYECTO_ACADÉMICO = 12
+    PROYECTO_A         = 12
+    RUTINA             = 13
+    SOCIAL_GRUPO       = 14
+    SOCIAL             = 14
+    EJERCICIO          = 15
+    COMER              = 16
+    AUTO               = 17
+    BICI_ELÉCTRICA     = 18
+    BICI_E             = 18
+    PODCAST            = 19
+    MÚSICA             = 20
+    MUSICA             = 20
+    TREN               = 21
+    AVIÓN              = 22
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.BICI : c(es_MX='', en_US='BIKE'),
+            cls.COLECTIVO : c(es_MX='', en_US='BUS'),
+            cls.ELEC : c(es_MX='TIEMPO DE PANTALLA', en_US='SCREEN TIME'),
+            cls.EN_CLASE : c(es_MX='', en_US='IN CLASS'),
+            cls.FAMILIA : c(es_MX='', en_US='FAMILY'),
+            cls.HW : c(es_MX='TAREA', en_US= 'HOMEWORK'),
+            cls.LECTURA : c(es_MX='', en_US='READING'),
+            cls.NETFLIX : c(es_MX='TV/PELÍCULA', en_US='TV/MOVIE'),
+            cls.NFL : c(es_MX='', en_US='NFL'),
+            cls.PAPEL : c(es_MX='', en_US='PAPER'),
+            cls.PIE : c(es_MX='', en_US='WALK'),
+            cls.PROYECTO_A : c(es_MX='', en_US='ACADEMIC PROJECT'),
+            cls.RUTINA : c(es_MX='', en_US='ROUTINE'),
+            cls.SOCIAL : c(es_MX='SOCIAL', en_US='SOCIAL'),
+            cls.EJERCICIO : c(es_MX='', en_US='EXERCISE'),
+            cls.COMER : c(es_MX='', en_US='EATING'),
+            cls.AUTO : c(es_MX='', en_US='CAR'),
+            cls.BICI_E : c(es_MX='', en_US='E-BIKE'),
+            cls.PODCAST : c(es_MX='', en_US='PODCAST'),
+            cls.MUSICA : c(es_MX='', en_US='MUSIC'),
+            cls.TREN : c(es_MX='', en_US='TRAIN'),
+            cls.AVIÓN : c(es_MX='', en_US='AIRPLANE'),
+        }
 
 
-class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Epoch(SingleInstanceColumn, ColoredAliasable):
     """
     Enum class to define all the global significant dates marking transitions.
     These dates are here called epochs, and are used in VS for analysis considering different periods of life
@@ -444,78 +616,124 @@ class Epoch(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta
 
     def dt(self) -> datetime:
         """Returns the datetime object for a given Epoch instance"""
-        return self.value[1]
+        return self.start
 
     def id(self) -> int:
         """Returns the id for a given Epoch instance"""
-        return self.value[0]
+        return self.value
+
+    @staticmethod
+    def _get_dataclass() -> kiwilib.IsDataclass:
+        @dataclass(frozen=True)
+        class EpochDataClass(ColoredAliasable.dataclass):
+            start: datetime = NotImplemented  # Sentinel value, must define, but can't enforce it in Python 3.8 dataclasses
+        return EpochDataClass
 
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable]:
-        """
-        Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
-        """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.name[1:].replace('_', ' '),
-               'es_MX': lambda slf: slf.value[2],
-            }
-        return cls._aliasFuncs
+        return {
+            'en_US': lambda slf: slf.en_US if slf.en_US != "" else slf.name[1:].replace('_', ' '),
+            'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name[1:].replace('_', ' '),
+        }
 
-    END =                     0, datetime(2025, 1, 1, 0, 0, 0), 'FIN'
-    e2017_Cornell =           1, datetime(2017, 9, 6, 0, 0, 0), '2017 Cornell'  # Start of data collection
-    e2017_Winter =            2, datetime(2017, 12, 13, 9, 36, 0), '2017 Invierno'
-    e2018_Cornell =           3, datetime(2018, 1, 12, 21, 58, 0), '2018 Cornell'
-    e2018_Interim =           4, datetime(2018, 5, 22, 3, 0, 0), ' 2018 Interregno'  # End of finals, before CO move
-    e2018_Boulder_Solo =      5, datetime(2018, 6, 18, 3, 0, 0), '2018 Boulder Solo'  # I move to Boulder
-    e2018_Boulder_Padraig =   6, datetime(2018, 8, 24, 3, 0, 0), '2018 Boulder Padraig'  # Padraig moves in
-    e2018_BCH =               7, datetime(2018, 10, 28, 0, 0, 0), '2018 BCH'  # Office move to BCH
-    e2019_Tour_Start =        8, datetime(2019, 8, 4, 7, 19, 0), '2019 Inicio de Gira'  # 2019 tour start
-    e2019_Tour_End =          9, datetime(2019, 8, 13, 12, 17, 0), '2019 Fin de Gira'  # 2019 tour end
-    e2020_WFH =               10, datetime(2020, 3, 18, 0, 0, 0), '2020 Teletrabajo'  # Start WFH
-    e2020_Boulder_Dip =       11, datetime(2020, 3, 29, 18, 42, 0), '2020 Boulder Dip'  # Dip move to CO
-    e2021_COVID_Ease =        12, datetime(2021, 4, 10, 0, 0, 0), '2021 Alivio de COVID'  # Ease of COVID restrictions
-    e2021_Tour_Start =        13, datetime(2021, 8, 11, 7, 14, 0), '2021 Inicio de Gira'  # 2021 tour start
-    e2021_Tour_End =          14, datetime(2021, 8, 21, 12, 46, 0), '2021 Fin de Gira'  # 2021 tour end
-    e2022_Tour_Start =        15, datetime(2022, 1, 7, 18, 7, 0), '2022 Inicio de Gira'  # 2022 tour start
-    e2022_Suzie_Start =       16, datetime(2022, 3, 12, 19, 13, 0), '2022 Inicio con Suzie'  # Start Suzie
-    e2022_Suzie_End =         17, datetime(2022, 3, 25, 15, 34, 0), '2022 Fin con Suzie'  # ENd SVF
-    e2022_Alexandre_Start =   18, datetime(2022, 6, 4, 9, 7, 0), '2022 Inicio con Alexandre'  # Start ride  w/ Alexandre
-    e2022_Alexandre_End =     19, datetime(2022, 6, 11, 7, 52), '2022 Fin con Alexandre'  # End ride w/ Alexandre
-    e2022_Tim_Start =         20, datetime(2022, 7, 10, 14, 58, 0), '2022 Inicio con Tim'  # Start TIm Sprinz
-    e2022_Tim_End =           21, datetime(2022, 7, 12, 5, 5, 0), '2022 Fin con Tim'  # End Tim Sprinz, or really Lars
-    e2022_USA_Friends_Start = 22, datetime(2022, 9, 14, 16, 54, 0), '2022 Inicio con amigos de EEUU'  # Start BFish+
-    e2022_USA_Friends_End =   23, datetime(2022, 9, 21, 10, 33, 0), '2022 Fin con amigos de EEUU'  # End BFish+
-    e2022_Tour_End =          24, datetime(2022, 12, 15, 10, 10, 0), '2022 Fin de Gira'  # 2022 tour end
-    e2020_Tech_Start =        25, datetime(2020, 9, 19, 20, 35, 0), '2020 Inicio con Tech' # Tech arrival in CO
-    e2020_Tech_End =          26, datetime(2020, 11, 1, 8, 30, 0), '2020 Fin con Tech' # Tech leave from CO
-    e2022_Europe_Start =      27, datetime(2022, 4, 2, 6, 9, 0), '2022 Inicio en Europa' # Flight CDMX >> Europe
-    e2022_MEX_GER_TZ_SHIFT =  28, datetime(2022, 4, 2, 0, 0, 0), '2022 MEX ALE ZH CAMBIO' # Marks time zone shift in data
-    e2022_ESP_USA_TZ_SHIFT =  29, datetime(2022, 12, 15, 7, 42, 0), '2022 ESP EEUU ZH CAMBIO'
-    e2023_EA_Discovery =      30, datetime(2023, 4, 17, 9, 51, 0), '2023 EA Descubrimiento'  # Podcast triggers EA interest
-    e2019_SpChg_Glenn_End =   31, datetime(2019, 4, 1, 0, 0, 0), '2019 SpChg Fin con Glenn'  # Glenn leaves Spare Change
-    e2019_SpChg_Alex_End =    32, datetime(2019, 11, 1, 0, 0, 0), '2019 SpChg Fin con Alex'  # Alex leaves, Steve joins Spare Change
-    e2019_SpChg_Nick_End =    33, datetime(2020, 1, 1, 0, 0, 0), '2019 SpChg Fin con Nick'  # Nick leaves, George joins Spare Change
-    e2021_SpChg_KO_Start =    34, datetime(2021, 9, 10, 0, 0, 0), '2021 SpChg Inicio con KO'  # Kristin joins Spare Change
-    e2022_SpChg_JW_KS_Start = 35, datetime(2022, 9, 1, 0, 0, 0), '2022 SpChg Inicio con JW KS'  # Kirsten, Jonathan join Spare Change
-    e2024_AISC =              36, datetime(2024, 1, 13, 3, 0, 0), '2023 Campamento de Securidad de IA'  # AISC starts
-    e2018_Data_Log_Person =   37, datetime(2018, 2, 10, 3, 0, 0), '2018 Datos Persona'  # Data on time spent with individuals somewhat consistent
-# TODO: add apochs for data feature introductions
+    eEND =                    0
+    e2017_Cornell =           1
+    e2017_Winter =            2
+    e2018_Cornell =           3
+    e2018_Interim =           4
+    e2018_Boulder_Solo =      5
+    e2018_Boulder_Padraig =   6
+    e2018_BCH =               7
+    e2019_Tour_Start =        8
+    e2019_Tour_End =          9
+    e2020_WFH =               10
+    e2020_Boulder_Dip =       11
+    e2021_COVID_Ease =        12
+    e2021_Tour_Start =        13
+    e2021_Tour_End =          14
+    e2022_Tour_Start =        15
+    e2022_Suzie_Start =       16
+    e2022_Suzie_End =         17
+    e2022_Alexandre_Start =   18
+    e2022_Alexandre_End =     19
+    e2022_Tim_Start =         20
+    e2022_Tim_End =           21
+    e2022_USA_Friends_Start = 22
+    e2022_USA_Friends_End =   23
+    e2022_Tour_End =          24
+    e2020_Tech_Start =        25
+    e2020_Tech_End =          26
+    e2022_Europe_Start =      27
+    e2022_MEX_GER_TZ_SHIFT =  28
+    e2022_ESP_USA_TZ_SHIFT =  29
+    e2023_EA_Discovery =      30
+    e2019_SpChg_Glenn_End =   31
+    e2019_SpChg_Alex_End =    32
+    e2019_SpChg_Nick_End =    33
+    e2021_SpChg_KO_Start =    34
+    e2022_SpChg_JW_KS_Start = 35
+    e2024_AISC =              36
+    e2018_Data_Log_Person =   37
+    
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.eEND:                    c(start=datetime(2025, 1, 1, 0, 0), es_MX='FIN'),
+            cls.e2017_Cornell:           c(start=datetime(2017, 9, 6, 0, 0), es_MX='2017 Cornell'), # Start of data collection
+            cls.e2017_Winter:            c(start=datetime(2017, 12, 13, 9, 36), es_MX='2017 Invierno'), # Start winter break
+            cls.e2018_Cornell:           c(start=datetime(2018, 1, 12, 21, 58), es_MX='2018 Cornell'), # Start semester
+            cls.e2018_Interim:           c(start=datetime(2018, 5, 22, 3, 0), es_MX='2018 Interregno'), # End of finals, before CO move
+            cls.e2018_Boulder_Solo:      c(start=datetime(2018, 6, 18, 3, 0), es_MX='2018 Boulder Solo'), # I move to Boulder
+            cls.e2018_Boulder_Padraig:   c(start=datetime(2018, 8, 24, 3, 0), es_MX='2018 Boulder Padraig'), # Padraig moves in
+            cls.e2018_BCH:               c(start=datetime(2018, 10, 28, 0, 0), es_MX='2018 BCH'), # Office move to BCH
+            cls.e2019_Tour_Start:        c(start=datetime(2019, 8, 4, 7, 19), es_MX='2019 Inicio de Gira'), # 2019 tour start
+            cls.e2019_Tour_End:          c(start=datetime(2019, 8, 13, 12, 17), es_MX='2019 Fin de Gira'), # 2019 tour end
+            cls.e2020_WFH:               c(start=datetime(2020, 3, 18, 0, 0), es_MX='2020 Teletrabajo'), # Start WFH
+            cls.e2020_Boulder_Dip:       c(start=datetime(2020, 3, 29, 18, 42), es_MX='2020 Boulder Dip'), # Dip move to CO
+            cls.e2021_COVID_Ease:        c(start=datetime(2021, 4, 10, 0, 0), es_MX='2021 Alivio de COVID'), # Ease of COVID restrictions
+            cls.e2021_Tour_Start:        c(start=datetime(2021, 8, 11, 7, 14), es_MX='2021 Inicio de Gira'), # 2021 tour start
+            cls.e2021_Tour_End:          c(start=datetime(2021, 8, 21, 12, 46), es_MX='2021 Fin de Gira'), # 2021 tour end
+            cls.e2022_Tour_Start:        c(start=datetime(2022, 1, 7, 18, 7), es_MX='2022 Inicio de Gira'), # 2022 tour start
+            cls.e2022_Suzie_Start:       c(start=datetime(2022, 3, 12, 19, 13), es_MX='2022 Inicio con Suzie'), # Start Suzie
+            cls.e2022_Suzie_End:         c(start=datetime(2022, 3, 25, 15, 34), es_MX='2022 Fin con Suzie'), # ENd SVF
+            cls.e2022_Alexandre_Start:   c(start=datetime(2022, 6, 4, 9, 7), es_MX='2022 Inicio con Alexandre'), # Start ride  w/ Alexandre
+            cls.e2022_Alexandre_End:     c(start=datetime(2022, 6, 11, 7, 52), es_MX='2022 Fin con Alexandre'), # End ride w/ Alexandre
+            cls.e2022_Tim_Start:         c(start=datetime(2022, 7, 10, 14, 58), es_MX='2022 Inicio con Tim'), # Start TIm Sprinz
+            cls.e2022_Tim_End:           c(start=datetime(2022, 7, 12, 5, 5), es_MX='2022 Fin con Tim'), # End Tim Sprinz, or really Lars
+            cls.e2022_USA_Friends_Start: c(start=datetime(2022, 9, 14, 16, 54), es_MX='2022 Inicio con amigos de EEUU'), # Start BFish+
+            cls.e2022_USA_Friends_End:   c(start=datetime(2022, 9, 21, 10, 33), es_MX='2022 Fin con amigos de EEUU'), # End BFish+
+            cls.e2022_Tour_End:          c(start=datetime(2022, 12, 15, 10, 10), es_MX='2022 Fin de Gira'), # 2022 tour end
+            cls.e2020_Tech_Start:        c(start=datetime(2020, 9, 19, 20, 35), es_MX='2020 Inicio con Tech'),# Tech arrival in CO
+            cls.e2020_Tech_End:          c(start=datetime(2020, 11, 1, 8, 30), es_MX='2020 Fin con Tech'),# Tech leave from CO
+            cls.e2022_Europe_Start:      c(start=datetime(2022, 4, 2, 6, 9), es_MX='2022 Inicio en Europa'),# Flight CDMX >> Europe
+            cls.e2022_MEX_GER_TZ_SHIFT:  c(start=datetime(2022, 4, 2, 0, 0), es_MX='2022 MEX ALE ZH CAMBIO'), # Marks time zone shift in data
+            cls.e2022_ESP_USA_TZ_SHIFT:  c(start=datetime(2022, 12, 15, 7, 42), es_MX='2022 ESP EEUU ZH CAMBIO'), # Marks time zone shift in data
+            cls.e2023_EA_Discovery:      c(start=datetime(2023, 4, 17, 9, 51), es_MX='2023 EA Descubrimiento'), # Podcast triggers EA interest
+            cls.e2019_SpChg_Glenn_End:   c(start=datetime(2019, 4, 1, 0, 0), es_MX='2019 SpChg Fin con Glenn'), # Glenn leaves Spare Change
+            cls.e2019_SpChg_Alex_End:    c(start=datetime(2019, 11, 1, 0, 0), es_MX='2019 SpChg Fin con Alex'), # Alex leaves, Steve joins Spare Change
+            cls.e2019_SpChg_Nick_End:    c(start=datetime(2020, 1, 1, 0, 0), es_MX='2019 SpChg Fin con Nick'), # Nick leaves, George joins Spare Change
+            cls.e2021_SpChg_KO_Start:    c(start=datetime(2021, 9, 10, 0, 0), es_MX='2021 SpChg Inicio con KO'), # Kristin joins Spare Change
+            cls.e2022_SpChg_JW_KS_Start: c(start=datetime(2022, 9, 1, 0, 0), es_MX='2022 SpChg Inicio con JW KS'), # Kirsten, Jonathan join Spare Change
+            cls.e2024_AISC:              c(start=datetime(2024, 1, 13, 3, 0), es_MX='2023 Campamento de Securidad de IA'), # AISC starts
+            cls.e2018_Data_Log_Person:   c(start=datetime(2018, 2, 10, 3), es_MX='2018 Datos Persona'), # Data on time spent with individuals somewhat consistent
+        }
+# TODO: add epochs for data feature introductions
 # Naps: 2021-05-05
 # Overnight sleep interruptions: 2023-05-15
 # People: 2017-12-??
 
 
 def appendIntervalDictComplement(dct: P.IntervalDict, complementVal, bigInterval: P.IntervalDict = P.closedopen(
-        Epoch.e2017_Cornell.dt(), Epoch.END.dt())) -> P.IntervalDict:
-    # temp = P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.END.dt())
+        Epoch.e2017_Cornell.dt(), Epoch.eEND.dt())) -> P.IntervalDict:
+    # temp = P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.eEND.dt())
     for interval in dct.keys():
         bigInterval = bigInterval - interval
     dct[bigInterval] = complementVal
     return dct
 
 
-class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class EpochScheme(i18n.AliasableEnum):
     """
     Enum class containing all the global data and procedures for epoch schemes and groups.
     Each enum member is a scheme for creating a set of epoch groups.
@@ -529,125 +747,154 @@ class EpochScheme(kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
     # IntervalDict.get(<>, default=EpochScheme.KEY_DEFAULT_VAL)
     # Effectively acts as the value for the complement of intervals defined in an EpochScheme instance
 
+    @staticmethod
+    def _get_dataclass() -> kiwilib.IsDataclass:
+        @dataclass(frozen=True)
+        class EpochSchemeDataclass(i18n.AliasableEnum.dataclass):
+            scheme: P.IntervalDict = P.IntervalDict({})  # Dummy default, must define in args
+        return EpochSchemeDataclass
+
     def id(self, dt: Union[datetime, Iterable[datetime]]) -> Union[int, Iterable[int]]:
+
         if is_list_like(dt):
             return kiwilib.mapOverListLike(lambda x: EpochScheme.id(self, x), dt)
-        return self.value[dt][0]
+        return self.scheme[dt][0]
 
-    def labelDT(self, dt: Union[datetime, Iterable[datetime]], locale: str = None) -> Union[str, Iterable[str]]:
+    def labelDT(self, dt: Union[datetime, Iterable[datetime]], locale: str = 'en_US') -> Union[str, Iterable[str]]:
         """
         String returned is dependent on the specified locale. If unspecified, self.defaultLocale() is used.
         :param dt: Datetimes to be mapped to epoch groups.
         :param locale: String representation of locale. See epochGroupAliasFuncs() for allowable locale values.
         :return: string representation of the epoch group containing dt for an EpochScheme
         """
-        if locale is None:
-            locale = self.defaultLocale()
         if is_list_like(dt):
             return kiwilib.mapOverListLike(lambda x: EpochScheme.labelDT(self, x, locale), dt)
-        return self.epochGroupAliasFuncs()[locale](self, dt)
+        return self._epochGroupAliasFuncs()[locale](self, dt)
 
-    def sortedEpochGroupNames(self) -> List[str]:
+    def sortedEpochGroupNames(self, locale: str = 'en_US') -> List[str]:
         if not hasattr(self, '_sortedEpochGroupNames'):
-            temp = {self.labelDT(iv.lower): iv.lower for iv, names in self.value.items()}
+            temp = {self.labelDT(iv.lower, locale=locale): iv.lower for iv in self.scheme.keys()}
             self._sortedEpochGroupNames: List[str] = sorted(temp.keys(), key=lambda x: temp[x])
         return self._sortedEpochGroupNames
 
     @classmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = defaultdict(lambda: lambda slf: slf.name)  # Ignore language
-            cls._aliasFuncs['en_US'] = lambda slf: slf.name  # Have to include >=1 key for Aliasable.defaultLocale()
-        return cls._aliasFuncs
-
-    def epochGroupAliasFuncs(self):
+    def _epochGroupAliasFuncs(cls):
         def getAlias(ind: int, slf, dt: Union[datetime, date]):
             # TODO: type check and convert date and datetime. Change base method to a functools.partial of getAlias
             pass
 
-        if not hasattr(type(self), '_epochGroupAliasFuncs'):
-            type(self)._epochGroupAliasFuncs: dict[str, Callable] = {
-                'en_US': lambda slf, dt: slf.value[dt][1],
-                'es_MX': lambda slf, dt: slf.value[dt][2],
+        if not hasattr(cls, '_epochGroupAliasFuncs_'):
+            cls._epochGroupAliasFuncs_: dict[str, Callable] = {
+                'en_US': lambda slf, dt: slf.scheme[dt][1],
+                'es_MX': lambda slf, dt: slf.scheme[dt][2],
             }
-        return self._epochGroupAliasFuncs
+        return cls._epochGroupAliasFuncs_
 
-    INDIVIDUAL = P.IntervalDict({P.closedopen(Epoch.sortedIter()[i - 1].dt(), ep.dt()): (ep.id(), ep.name, ep.name)
-                                 for i, ep in enumerate(Epoch.sortedIter()[1:])}) # TODO: modify 2nd ep.name for es_MX
-    # TODO: update usage of epochGroups in VS to account for new data format
-    MP_COARSE = P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, what I spend most of my attention on
-        (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()) |
-         P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.END.dt()))
-        : (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
-        P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
-        : (1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'),
-        P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
-        : (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
-    })
-    MP_FINE = appendIntervalDictComplement(
-        P.IntervalDict({  # Fine-grained metaproject and lifestyle focus, includes short bike tours, et al
-            (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2017_Winter.dt()) |
-             P.closedopen(Epoch.e2018_Cornell.dt(), Epoch.e2018_Interim.dt()) |
-             P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.END.dt())
-             ): (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
-            (P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_Tour_Start.dt()) |
-             P.closedopen(Epoch.e2019_Tour_End.dt(), Epoch.e2021_Tour_Start.dt()) |
-             P.closedopen(Epoch.e2021_Tour_End.dt(), Epoch.e2022_Tour_Start.dt())
-             ): (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
-        }), complementVal=(1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'))
-    WORK_LOCATION = appendIntervalDictComplement(  # Where is my primary work/study location?
-        P.IntervalDict({  # First set of epoch groups commonly needed for DC queries
-            P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt())
-            : (0, 'Cornell', 'Cornell'),
-            P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2018_BCH.dt())
-            : (1, 'Ball Boulder', 'Ball Boulder'),
-            P.closedopen(Epoch.e2018_BCH.dt(), Epoch.e2020_WFH.dt())
-            : (2, 'Ball Broomfield', 'Ball Broomfield'),
-            P.closedopen(Epoch.e2020_WFH.dt(), Epoch.e2022_Tour_Start.dt())
-            : (3, 'WFH', 'WFH'),
-        }), complementVal=(4, 'Unemployed', 'Sin Empleo'))
-    SPARE_CHANGE_PERSONNEL = appendIntervalDictComplement(
-        P.IntervalDict({  # Spare Change band membership
-            P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_SpChg_Glenn_End.dt())
-            : (0, 'Spare Change with Glenn', 'Spare Change con Glenn'),
-            P.closedopen(Epoch.e2019_SpChg_Glenn_End.dt(), Epoch.e2019_SpChg_Alex_End.dt())
-            : (1, 'Spare Change without Glenn', 'Spare Change sin Glenn'),
-            P.closedopen(Epoch.e2019_SpChg_Alex_End.dt(), Epoch.e2019_SpChg_Nick_End.dt())
-            : (2, 'Spare Change with Steve on Guitar', 'Spare Change con Steve en la Guitarra'),
-            P.closedopen(Epoch.e2019_SpChg_Nick_End.dt(), Epoch.e2021_SpChg_KO_Start.dt())
-            : (3, 'Spare Change with George', 'Spare Change con George'),
-            P.closedopen(Epoch.e2021_SpChg_KO_Start.dt(), Epoch.e2022_SpChg_JW_KS_Start.dt())
-            : (4, 'Spare Change with Kristin', 'Spare Change con Kristin'),
-        }), complementVal=(5, 'Spare Change with Jonathan and Kirsten', 'Spare Change con Jonathan y Kirsten'))
-    MP_COARSE_ATOMIC = P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, only atomic intervals
-        (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()))
-        : (0, 'Grad School', 'Posgrado'),
-        P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
-        : (1, '2022 Cycle Tour', '2022 Cicloturismo'),
-        P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
-        : (2, 'First Job', 'First Job'),
-        (P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.END.dt()))
-        : (0, '2023 Career Pivot', '2023 Cambio de Carrera'),
-    })
+    INDIVIDUAL = 0
+    MP_COARSE = 1
+    MP_FINE = 2
+    WORK_LOCATION = 3
+    SPARE_CHANGE_PERSONNEL = 4
+    MP_COARSE_ATOMIC = 5
+
+    @classmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.INDIVIDUAL: c(
+                scheme=P.IntervalDict({
+                    P.closedopen(ep.dt(), Epoch.sortedIter()[i+1].dt()): (ep.id(), ep.alias('en_US'), ep.alias('es_MX'))
+                    for i, ep in enumerate(Epoch.sortedIter()[:-1])
+                })
+            ), # TODO: modify 2nd ep.name for es_MX
+            # TODO: update usage of epochGroups in VS to account for new data format
+            cls.MP_COARSE: c(
+                scheme=P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, what I spend most of my attention on
+                    (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()) |
+                     P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt()))
+                    : (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
+                    P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
+                    : (1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'),
+                    P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
+                    : (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
+                }),
+                es_MX='MP_GRUESA',
+            ),
+            cls.MP_FINE: c(
+                scheme=appendIntervalDictComplement(
+                    P.IntervalDict({  # Fine-grained metaproject and lifestyle focus, includes short bike tours, et al
+                        (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2017_Winter.dt()) |
+                         P.closedopen(Epoch.e2018_Cornell.dt(), Epoch.e2018_Interim.dt()) |
+                         P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt())
+                         ): (0, 'Academics Focus Epochs', 'Épocas Enfocados en la Académica'),
+                        (P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_Tour_Start.dt()) |
+                         P.closedopen(Epoch.e2019_Tour_End.dt(), Epoch.e2021_Tour_Start.dt()) |
+                         P.closedopen(Epoch.e2021_Tour_End.dt(), Epoch.e2022_Tour_Start.dt())
+                         ): (2, 'Career Focus Epochs', 'Épocas Enfocados en la Carrera'),
+                    }), complementVal=(1, 'Recreation Focus Epochs', 'Épocas Enfocados en el Recreo'),
+                ),
+                es_MX='MP_FINO',
+            ),
+            cls.WORK_LOCATION: c(
+                scheme=appendIntervalDictComplement(  # Where is my primary work/study location?
+                    P.IntervalDict({  # First set of epoch groups commonly needed for DC queries
+                        P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt())
+                        : (0, 'Cornell', 'Cornell'),
+                        P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2018_BCH.dt())
+                        : (1, 'Ball Boulder', 'Ball Boulder'),
+                        P.closedopen(Epoch.e2018_BCH.dt(), Epoch.e2020_WFH.dt())
+                        : (2, 'Ball Broomfield', 'Ball Broomfield'),
+                        P.closedopen(Epoch.e2020_WFH.dt(), Epoch.e2022_Tour_Start.dt())
+                        : (3, 'WFH', 'WFH'),
+                    }), complementVal=(4, 'Unemployed', 'Sin Empleo')
+                ),
+                es_MX='UBICACIÓN DE TRABAJO',
+            ),
+            cls.SPARE_CHANGE_PERSONNEL: c(
+                scheme=appendIntervalDictComplement(
+                    P.IntervalDict({  # Spare Change band membership
+                        P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2019_SpChg_Glenn_End.dt())
+                        : (0, 'Spare Change with Glenn', 'Spare Change con Glenn'),
+                        P.closedopen(Epoch.e2019_SpChg_Glenn_End.dt(), Epoch.e2019_SpChg_Alex_End.dt())
+                        : (1, 'Spare Change without Glenn', 'Spare Change sin Glenn'),
+                        P.closedopen(Epoch.e2019_SpChg_Alex_End.dt(), Epoch.e2019_SpChg_Nick_End.dt())
+                        : (2, 'Spare Change with Steve on Guitar', 'Spare Change con Steve en la Guitarra'),
+                        P.closedopen(Epoch.e2019_SpChg_Nick_End.dt(), Epoch.e2021_SpChg_KO_Start.dt())
+                        : (3, 'Spare Change with George', 'Spare Change con George'),
+                        P.closedopen(Epoch.e2021_SpChg_KO_Start.dt(), Epoch.e2022_SpChg_JW_KS_Start.dt())
+                        : (4, 'Spare Change with Kristin', 'Spare Change con Kristin'),
+                    }),
+                    complementVal=(5, 'Spare Change with Jonathan and Kirsten', 'Spare Change con Jonathan y Kirsten')
+                ),
+                es_MX='SPARE CHANGE PERSONAL',
+            ),
+            cls.MP_COARSE_ATOMIC: c(
+                scheme=P.IntervalDict({  # Coarse-grained metaproject and lifestyle focus, only atomic intervals
+                    (P.closedopen(Epoch.e2017_Cornell.dt(), Epoch.e2018_Boulder_Solo.dt()))
+                    : (0, 'Grad School', 'Posgrado'),
+                    P.closedopen(Epoch.e2022_Tour_Start.dt(), Epoch.e2022_Tour_End.dt())
+                    : (1, '2022 Cycle Tour', '2022 Cicloturismo'),
+                    P.closedopen(Epoch.e2018_Boulder_Solo.dt(), Epoch.e2022_Tour_Start.dt())
+                    : (2, 'First Job', 'Primer Trabajo'),
+                    (P.closedopen(Epoch.e2022_Tour_End.dt(), Epoch.eEND.dt()))
+                    : (3, '2023 Career Pivot', '2023 Cambio de Carrera'),
+                }),
+                es_MX='MP GRUESA ATÓMICA',
+            ),
+        }
     # TODO: sequential life phases, like 1 but each group is only a single period: Cornell, Ball, Tour22, post-tour
     # TODO: meal 'Rutina' default groups
     # TODO: 'Casa' location groups
 
 
-class Mood(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta):
+class Mood(SingleInstanceColumn, ColoredAliasable):
     @staticmethod
     def dfcolumn() -> str:
         return 'mood'
 
     @property
     def id(self):
-        return self.value[0]
-
-    @classmethod
-    def idMap(cls):
-        if not hasattr(cls, '_idMap'):
-            cls._idMap = {a.id: a for a in cls}
-        return cls._idMap
+        return self.value
 
     def __le__(self, other):
         if isinstance(other, Mood):
@@ -673,35 +920,35 @@ class Mood(SingleInstanceColumn, kiwilib.Aliasable, Enum, metaclass=EnumABCMeta)
         else:
             return self.id > other
 
+    AWFUL = -2
+    BAD = -1
+    NEUTRAL = 0
+    HAPPY = 1
+    OVERJOYED = 2
+
     @classmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
-        """
-        Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
-        """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {
-               'en_US': lambda slf: slf.name,
-               'es_MX': lambda slf: slf.value[1],
-            }
-        return cls._aliasFuncs
-    
-    Awful = -2, 'Horrible'
-    Bad = -1, 'Malo'
-    Neutral = 0, 'Neutral'
-    Happy = 1, 'Contento'
-    Overjoyed = 2, 'Extático'
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        c = cls.dataclass
+        return {
+            cls.AWFUL:      c(color=(240, 30, 30), es_MX='HORRIBLE'),
+            cls.BAD:        c(color=(240, 170, 30), es_MX='MALO'),
+            cls.NEUTRAL:    c(color=(240, 240, 220), es_MX='NEUTRAL'),
+            cls.HAPPY:      c(color=(180, 250, 150), es_MX='CONTENTO'),
+            cls.OVERJOYED:  c(color=(30, 200, 40), es_MX='EXTÁTICO'),
+        }
+
 
 # Map raw string input to encoded data storage value 
-MOOD_RAW_STRINGS = {'Very Bad': -2,
-                    'Bad': -1,
-                    '-': 0,
-                    'Normal': 1,
-                    'Good': 2,  # Output from app, English
-                    'Muy malo': -2,  # Output from app, Spanish
-                    'Malo': -1,
-                    '-': 0,
-                    'Normal': 1,
-                    'Bueno': 2}  # Output from app
+MOOD_RAW_STRINGS = {'Very Bad': Mood.AWFUL,
+                    'Bad': Mood.BAD,
+                    '-': Mood.NEUTRAL,
+                    'Normal': Mood.HAPPY,
+                    'Good': Mood.OVERJOYED,  # Output from app, English
+                    'Muy malo': Mood.AWFUL,  # Output from app, Spanish
+                    'Malo': Mood.BAD,
+                    '-': Mood.NEUTRAL,
+                    'Normal': Mood.HAPPY,
+                    'Bueno': Mood.OVERJOYED}  # Output from app
 
 
 ####################

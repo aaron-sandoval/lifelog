@@ -1,11 +1,14 @@
-*_PRIVATE.py
+*_PRIVATE.*
+*_PRIV.*
 *_PRIVATE.tsqy
 *_PRIVATE.yaml
 *.bak
 *.gdoc
+*checkpoint.ipynb
 
 Raw_CSVs/*
 !Raw_CSVs/sample_RAW_PUBLIC.csv
+!Raw_CSVs/test_1_PUBLIC.csv
 FM_CSVs/*
 FM_Persistent/*
 PP_Persistent/*
@@ -13,8 +16,6 @@ DC_Persistent/*
 VS_Figures/*
 VS_Persistent/*
 !VS_Persistent/figs_PUBL.pkl
-scripts/*
-!scripts/MAIN.py
 
 Catalogs/Catalog*
 !Catalogs/Catalog_Audiobook.yaml
@@ -22,12 +23,20 @@ Catalogs/Catalog*
 !Catalogs/Catalog_Movie.yaml
 !Catalogs/Catalog_Podcast.yaml
 !Catalogs/Catalog_TVShow.yaml
+!Catalogs/Catalog_*test5*.yaml
+!Catalogs/Catalog_*test4*.yaml
+Catalogs/Catalog_*_W.yaml
+Catalogs/Catalog_Person*.yaml
 
-*/__pycache__/
+tests/data/write/*
+tests/PROFILE_*
+
+**/__pycache__/*
+*.pytest_cache/*
+**/.ipynb_checkpoints
 tsqparser/testQueries_1.txt
 Annotated_Excel/
 .idea/
-.pytest_cache/
 spec-list*.txt
 Timesheet Analysis Outline.txt
 desktop.ini

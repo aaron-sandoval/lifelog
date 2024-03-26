@@ -8,13 +8,17 @@ import itertools
 import datetime
 import math
 from enum import EnumMeta, Enum
+import aenum
 from collections import defaultdict
+from functools import cached_property
 import portion
 from pandas.core.dtypes.inference import is_list_like
-from typing import Union, TypeVar, Type, Any, Iterable, Tuple, List, Generator, Dict, Callable
+from typing import \
+    Union, TypeVar, Type, Any, Iterable, Tuple, List, Generator, Dict, Callable, Optional, Protocol, ClassVar
 import pandas as pd
 import numpy as np
 from yamlable import YamlCodec
+from dataclasses import fields as dataclass_fields, dataclass
 
 
 def kiwiTest():
@@ -218,6 +222,81 @@ def addLineBreaks(s: str, delim: str = ' ', maxLen=None, delimIndices: List[int]
                 out = delim.join([out, segments[i+1]])
     return out
         # return '\n'.join([delim.join([])])
+
+
+class IsDataclass(Protocol):
+    # the most reliable way to ascertain that something is a dataclass
+    __dataclass_fields__: ClassVar[Dict]
+
+
+_T = TypeVar('T')
+
+
+class EnumABCMeta(abc.ABCMeta, type(Enum)):
+    pass
+
+
+class AenumABCMeta(abc.ABCMeta, aenum.EnumMeta):
+    pass
+
+
+class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMeta):
+    """
+    ABC for Enum classes whose members have dataclass-like attribute access.
+    Each subclass is associated with a dataclass containing the member attributes.
+    However, the Enum values for each member are NOT the dataclass instances.
+    Instead, these are defined in `_enum_data`.
+    This is to overcome a drawback of storing complex data directly in the Enum member values.
+    In this implementation, the properties of the dataclass and the member's data to be updated
+    without invalidating any previous instance of that enum stored in files.
+    When the enum is read from a file, its attributes will effectively be updated to the latest values in `_enum_data`.
+    """
+    # TODO: public method that can be called in `subclass._get_dataclass` which auto-builds a new dataclass inherited from its superclasses' dataclasses
+
+    @staticmethod
+    @abc.abstractmethod
+    def _get_dataclass() -> IsDataclass:
+        """
+        Returns a existing dataclass or constructs and returns a new one.
+        Called only once by __init_subclass__ and stored in `cls.dataclass`.
+        This dataclass holds all the attributes of the outer class enum members.
+        It's recommended that these dataclasses be frozen.
+        """
+        pass
+
+    @classmethod
+    @abc.abstractmethod
+    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+        """
+        Instantiates dataclass members associated with each enum member.
+        This method contains the data that would traditionally be located in the enum definitions.
+        :param c: Will always be passed `cls._DATACLASS`. Only here so that each subclass need not make that reference.
+        :return: Mapping from enum members to their data.
+        """
+        pass
+
+    @staticmethod
+    def _init_DVE(cls: Type['DataclassValuedEnum']):
+        """
+        Decorator procedure to initialize the internal dataclass and fields of a DataclassValuedEnum subclass.
+        Never call this method on DataclassValuedEnum itself. Only used for its (abstract) subclasses.
+        """
+        cls.dataclass = cls._get_dataclass()
+        cls._data = cls._enum_data()
+        if cls._data is not None:
+            for fld in cls.dataclass.__dataclass_fields__:
+                setattr(cls, fld, property(lambda slf, f=fld: getattr(slf._data[slf], f)))
+        return cls
+
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
+        cls = cls._init_DVE(cls)
+
+    def __repr__(self):
+        return ''.join(['<', str(self), ': ', repr(self.value), '; ', repr(self._data[self]), '>'])
+
+    def asdict(self):
+        return self._data[self].__dict__
 
 
 class HierarchicalEnum:
@@ -727,29 +806,39 @@ YamlCodecMisc.register_with_pyyaml()
 class Aliasable(abc.ABC):
     # _aliasFuncs: dict[str, function]
     # defaultLocale: str = None
+    # TODO: refactor to move initialization to decorator procedure `init`
 
     def alias(self, locale: str = None):
         if locale is None:
             # locale = self.aliasFuncs()[self.defaultLocale]
-            locale = self.defaultLocale()
-        return self.aliasFuncs()[locale](self)
+            locale = self._defaultLocale
+        return self._aliasFuncs[locale](self)
 
     @classmethod
     @abc.abstractmethod
-    def aliasFuncs(cls) -> Dict[str, Callable]:
+    def aliasFuncs(cls) -> Dict[str, Callable[['Aliasable'], str]]:
         """
         Defines a map between locale strings, e.g., 'en_US', and Callables returning the localization of an instance.
+        Callables must match the API of no-arg methods in a class, taking only a single `self` arg.
         """
-        if not hasattr(cls, '_aliasFuncs'):
-            cls._aliasFuncs: Dict[str, Callable] = {}  # Essentially this defines abstract static class data
-        return cls._aliasFuncs
+        return {}  # Essentially this defines abstract static class data
 
     @classmethod
     def defaultLocale(cls) -> str:
-        if not hasattr(cls, '_defaultLocale'):
-            cls._defaultLocale: str = next(iter(cls.aliasFuncs().keys()))
+        # if not hasattr(cls, '_defaultLocale'):
+        #     cls._defaultLocale: str = next(iter(cls.aliasFuncs().keys()))
         return cls._defaultLocale
 
     @classmethod
     def setDefaultLocale(cls, locale: str):
         cls._defaultLocale = locale
+
+    @staticmethod
+    def initAliasable(cls: type):
+        cls._aliasFuncs: Dict[str, Callable] = cls.aliasFuncs()
+        cls._defaultLocale: str = next(iter(cls._aliasFuncs.keys()))
+        return cls
+
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
+        cls.initAliasable(cls)

@@ -1,0 +1,30 @@
+- HEADER:
+    FILE TYPE: LinearCatalog
+    DATE WRITTEN: 2023-09-15
+    TASK ID RANGE: !CodecMisc/portion.Interval
+      atomicIntervals: []
+    COLLECTIBLE TYPE: audiobook
+    CATALOG COUNT: 1
+- id: audiobook_NULL_00000
+  name: audiobook_NULL
+  firstTaskID: 0
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 1
+    day: 1
+  firstCircad: 2017-01-01
+  timeSpent: .nan
+  taskCount: .nan
+  lastTaskID: .nan
+  lastTime: .nan
+  startTaskIDs: !!set
+    0: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}
+  duration: .nan
+  numReruns: 1
