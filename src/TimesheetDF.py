@@ -6,9 +6,7 @@ Defines a class implementing a custom accessor for pandas dataframes.
 Adds functionality specific to the Timesheet project directly callable on a Dataframe object
 """
 import os
-import typing
 from datetime import datetime, date, timedelta
-from copy import copy, deepcopy
 import pickle
 from typing import Union, Iterable, List, Tuple, Set
 from collections import Counter
@@ -87,6 +85,9 @@ class TimesheetDataFrame:
 
     def __copy__(self):
         return TimesheetDataFrame(self.df.copy(deep=False))
+
+    def __deepcopy__(self, memodict={}):
+        return TimesheetDataFrame(pickle.loads(pickle.dumps(self.df)))
 
     def __len__(self):
         return len(self.df)
@@ -347,7 +348,7 @@ class TimesheetDataFrame:
         return tree.data.timesheetdf
 
     @classmethod
-    def mergeTSDFs(cls, tsdfs: List):
+    def mergeTSDFs(cls, tsdfs: List) -> 'TimesheetDataFrame':
         """
         Merges tsdfs into a single TimesheetDataFrame.
         Precedence for overlaps is given to the later tsdf.

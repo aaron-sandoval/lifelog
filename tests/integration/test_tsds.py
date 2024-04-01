@@ -1,22 +1,40 @@
 import copy
-import sys, os, pytest
+import os
+import sys
 from pathlib import Path
+
 sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent.parent.absolute()))
 from src.TimesheetDataset import *
 from tests import testing_utils
 
 
 def test_tsds_roundtrip():
-    tsds = TimesheetDataset.testing_utils.loadTestTSDS(suffix='_test4')
-    file1 = os.path.join(testing_utils.WRITE_DIR, 'test_tsds_write_W.pkl')
+    tsds = testing_utils.loadTestTSDS(file=testing_utils.PUBLIC_TSDF, suffix='_test4')
+    file1 = os.path.join(testing_utils.WRITE_DIR, 'test_tsds_roundtrip_W.pkl')
     tsds.write(3, tsdfFile=file1)
-    tsds_rt = TimesheetDataset.testing_utils.loadTestTSDS(file=file1, suffix='test4_W')
+    tsds_rt = testing_utils.loadTestTSDS(file=file1, suffix='_test4_W')
+    tsds_rt.fileSuffix = tsds.fileSuffix
+    assert tsds == tsds_rt
 
-    assert tsds == tsds_rt  # TODO: This is going to fail for now. Implement/fix __eq__ for TimesheetDataset and components
 
+def test_deepcopy():
+    a = testing_utils.loadTestTSDS(testing_utils.PUBLIC_TSDF, suffix='_test4')
+    b = copy.deepcopy(a)
+    assert a is not b
+    assert a.timesheetdf == b.timesheetdf
+    assert a.timesheetdf is not b.timesheetdf
+
+    # Single task
+    assert a.timesheetdf.df.iloc[0, :].description == b.timesheetdf.df.iloc[0, :].description
+    assert a.timesheetdf.df.iloc[0, :].description is not b.timesheetdf.df.iloc[0, :].description
+    # assert a.timesheetdf.df.iloc[0, :].description.tokenTree == b.timesheetdf.df.iloc[0, :].description.tokenTree
+    assert a.timesheetdf.df.iloc[0, :].description.tokenTree is not b.timesheetdf.df.iloc[0, :].description.tokenTree
+
+    # All tasks
+    assert a.timesheetdf.df.description.equals(b.timesheetdf.df.description)
 
 def test_collect_idempotent():
-    orig = testing_utils.loadTestTSDS(suffix='_test5')
+    orig = testing_utils.loadTestTSDS(testing_utils.PUBLIC_TSDF, suffix='_test5')
     tsds = copy.deepcopy(orig)
     for origCat, catalog in zip(orig.cats.values(), tsds.cats.values()):
         catalog.autoCollect(tsds.timesheetdf)
@@ -24,8 +42,7 @@ def test_collect_idempotent():
             continue
         assert len(catalog) == len(origCat)
         assert origCat.headerData == catalog.headerData
-        # assert origCat == catalog
-    # TODO: This is going to fail for now. Implement/fix __eq__ for TimesheetDataset and components
+        assert origCat == catalog
 
 
 def test_filterMedia():

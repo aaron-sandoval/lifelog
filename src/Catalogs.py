@@ -51,7 +51,8 @@ class Catalog(abc.ABC):
     def __eq__(self, other):
         if not isinstance(other, Catalog):
             return False
-        return self.collxn.equals(other.collxn)
+        return self.collxn.equals(other.collxn) or (self.collxn.isna().equals(other.collxn.isna()) and
+                                                    self.collxn.fillna(0).equals(other.collxn.fillna(0)))
 
     @property
     def collxn(self):
