@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-03-26
+    DATE WRITTEN: 2024-04-01
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 35486719
+        - 36803699
         - true
     COLLECTIBLE TYPE: tvshow
-    CATALOG COUNT: 27
+    CATALOG COUNT: 29
 - id: 3%_00248
   name: 3%
   firstTaskID: 3585359
@@ -48,15 +48,15 @@
   firstCircad: 2017-09-07
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 34500
-  taskCount: 20
-  lastTaskID: 31461249.0
+    seconds: 51480
+  taskCount: 23
+  lastTaskID: 36257219.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 12
-    day: 25
+    year: 2023
+    month: 11
+    day: 23
     hour: 21
-    minute: 59
+    minute: 34
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -184,15 +184,15 @@
   firstCircad: 2017-12-14
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 4
-    seconds: 44220
-  taskCount: 68
-  lastTaskID: 34729239.0
+    seconds: 53580
+  taskCount: 70
+  lastTaskID: 36250889.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 8
-    day: 9
-    hour: 18
-    minute: 15
+    month: 11
+    day: 23
+    hour: 11
+    minute: 59
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -734,3 +734,56 @@
   review: .nan
   externalReview: .nan
   subjectMatters: !!set {}
+- id: JEOPARDY_02514
+  name: JEOPARDY
+  firstTaskID: 36212469
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 20
+    hour: 18
+    minute: 6
+  firstCircad: 2023-11-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1440
+  taskCount: 1
+  lastTaskID: 36212469.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 20
+    hour: 18
+    minute: 30
+  creator: .nan
+  creationTime: .nan
+  genres: &id004 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: &id005 !!set {}
+- id: THE AMAZING RACE_02516
+  name: THE AMAZING RACE
+  firstTaskID: 36242929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 22
+    hour: 20
+    minute: 52
+  firstCircad: 2023-11-22
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5160
+  taskCount: 1
+  lastTaskID: 36242929.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 22
+    hour: 22
+    minute: 18
+  creator: .nan
+  creationTime: .nan
+  genres: *id004
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id005

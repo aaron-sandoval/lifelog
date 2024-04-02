@@ -1,19 +1,12 @@
-import abc
-import datetime
 import typing
-
-import networkx as nx
-import pandas as pd
-from pandas.core.dtypes.inference import is_list_like
-
-import src.TimesheetGlobals as Global
-from src.Collectibles import *
 import numpy as np
 import yaml
 import kiwilib
 import os.path
-import portion
+import warnings
 from functools import reduce
+
+from src.Collectibles import *
 
 
 class Catalog(abc.ABC):
@@ -283,6 +276,10 @@ class Catalog(abc.ABC):
                     changedID = True
                     tsdfRows.tsdf.deleteItem(self.getObjects(ids=(cid,)))
                 firstFields = self.COLLXBLE_CLASS.getFirstFieldDicts(tsdfRows.head(1).tsdf)[0]
+                warnings.warn(f"Found an instance of {self.COLLXBLE_CLASS.__name__} {oldCid} "
+                              f"older than the cataloged earliest instance.\n"
+                              f"Cataloged first time: {self.collxn.at[cid, 'firstTime']}\n"
+                              f"New first time: {firstFields['firstTime']}")
                 for fld in set(firstFields.keys()).intersection(self.collxn.columns):
                     self.collxn.at[cid, fld] = firstFields[fld]
                 if changedID:

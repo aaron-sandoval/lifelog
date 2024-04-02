@@ -28,3 +28,5 @@ class Fantasy(Fiction): pass
 class Educational(NonFiction): pass
 @yaml_info(yaml_tag_ns=tag)
 class SelfHelp(Educational): pass
+@yaml_info(yaml_tag_ns=tag)
+class Opinion(NonFiction): pass

@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-03-26
+    DATE WRITTEN: 2024-04-01
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 35486719
+        - 36803699
         - true
     COLLECTIBLE TYPE: podcast
-    CATALOG COUNT: 13
+    CATALOG COUNT: 17
 - id: THE WAR ON CARS_01126
   name: THE WAR ON CARS
   firstTaskID: 16224269
@@ -21,15 +21,15 @@
   firstCircad: 2020-02-01
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 3
-    seconds: 62280
-  taskCount: 88.0
-  lastTaskID: 35330059.0
+    seconds: 85680
+  taskCount: 93.0
+  lastTaskID: 36555709.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 9
-    day: 20
-    hour: 13
-    minute: 31
+    month: 12
+    day: 14
+    hour: 15
+    minute: 49
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -76,15 +76,15 @@
   firstCircad: 2020-02-28
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 25
-    seconds: 24360
-  taskCount: 627.0
-  lastTaskID: 35303219.0
+    seconds: 36120
+  taskCount: 633.0
+  lastTaskID: 36508549.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 9
-    day: 18
-    hour: 15
-    minute: 11
+    month: 12
+    day: 11
+    hour: 8
+    minute: 26
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -103,16 +103,16 @@
     minute: 34
   firstCircad: 2020-03-14
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 13
-    seconds: 78600
-  taskCount: 302.0
-  lastTaskID: 35386429.0
+    days: 14
+    seconds: 28200
+  taskCount: 313.0
+  lastTaskID: 36690269.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 9
-    day: 24
-    hour: 10
-    minute: 2
+    month: 12
+    day: 23
+    hour: 23
+    minute: 48
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -186,15 +186,15 @@
   firstCircad: 2021-08-11
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 9
-    seconds: 46800
-  taskCount: 216.0
-  lastTaskID: 35331429.0
+    seconds: 53940
+  taskCount: 220.0
+  lastTaskID: 36567069.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 9
-    day: 20
-    hour: 14
-    minute: 14
+    month: 12
+    day: 15
+    hour: 9
+    minute: 24
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -240,16 +240,16 @@
     minute: 47
   firstCircad: 2021-12-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 8
-    seconds: 71760
-  taskCount: 231.0
-  lastTaskID: 35330059.0
+    days: 9
+    seconds: 63540
+  taskCount: 255.0
+  lastTaskID: 36670989.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 9
-    day: 20
-    hour: 13
-    minute: 31
+    month: 12
+    day: 22
+    hour: 14
+    minute: 53
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -296,16 +296,16 @@
     minute: 27
   firstCircad: 2023-05-01
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 4
-    seconds: 31620
-  taskCount: 135.0
-  lastTaskID: 35460709.0
+    days: 7
+    seconds: 25920
+  taskCount: 223.0
+  lastTaskID: 36754249.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 9
-    day: 29
-    hour: 13
-    minute: 38
+    month: 12
+    day: 28
+    hour: 9
+    minute: 57
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -367,3 +367,108 @@
   review: .nan
   externalReview: .nan
   subjectMatters: !!set {}
+- id: YOUR UNDIVIDED ATTENTION_02474
+  name: YOUR UNDIVIDED ATTENTION
+  firstTaskID: 35638669
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 11
+    hour: 21
+    minute: 46
+  firstCircad: 2023-10-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6180
+  taskCount: 1.0
+  lastTaskID: 35638669.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 11
+    hour: 23
+    minute: 29
+  creator: .nan
+  creationTime: .nan
+  genres: &id004 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: &id005 !!set {}
+- id: JOE CARLSMITH AUDIO_02476
+  name: JOE CARLSMITH AUDIO
+  firstTaskID: 35662349
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 13
+    hour: 13
+    minute: 14
+  firstCircad: 2023-10-13
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 38460
+  taskCount: 17.0
+  lastTaskID: 36768769.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 29
+    hour: 9
+    minute: 59
+  creator: .nan
+  creationTime: .nan
+  genres: *id004
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id005
+- id: INTO AI SAFETY_02519
+  name: INTO AI SAFETY
+  firstTaskID: 36278749
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 25
+    hour: 8
+    minute: 34
+  firstCircad: 2023-11-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5040
+  taskCount: 1.0
+  lastTaskID: 36278749.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 25
+    hour: 9
+    minute: 58
+  creator: .nan
+  creationTime: .nan
+  genres: *id004
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id005
+- id: ON PURPOSE WITH JAY SHETTY_02536
+  name: ON PURPOSE WITH JAY SHETTY
+  firstTaskID: 36523569
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 12
+    hour: 8
+    minute: 36
+  firstCircad: 2023-12-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5640
+  taskCount: 2.0
+  lastTaskID: 36527329.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 12
+    hour: 15
+    minute: 28
+  creator: .nan
+  creationTime: .nan
+  genres: *id004
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id005

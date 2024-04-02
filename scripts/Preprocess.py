@@ -262,8 +262,10 @@ def __genCircad(df):
 #         nextID = sleepTasks[sleepTasks.index>curID].head(1)
         df.loc[(df.index <= curID) & (df.index > prevID), colName] = circad_i
         prevID = curID
-    circadLast = startDate(df[df.index > (sleepTasks.tail(1).index[0])])
-    df.loc[(df.index > (sleepTasks.tail(1).index[0])), colName] = circadLast
+    lastCircadTasks = df[df.index > (sleepTasks.tail(1).index[0])]
+    if len(lastCircadTasks) > 0:
+        circadLast = startDate(lastCircadTasks)
+        df.loc[(df.index > (sleepTasks.tail(1).index[0])), colName] = circadLast
     return df
 
 

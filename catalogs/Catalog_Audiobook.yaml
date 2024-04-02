@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-03-26
+    DATE WRITTEN: 2024-04-01
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 35486719
+        - 36803699
         - true
     COLLECTIBLE TYPE: audiobook
-    CATALOG COUNT: 239
+    CATALOG COUNT: 242
 - id: SPEAKER FOR THE DEAD_00347
   name: SPEAKER FOR THE DEAD
   firstTaskID: 5023259
@@ -64,8 +64,8 @@
     hour: 19
     minute: 59
   startTaskIDs: !!set
-    5327189: null
     29310069: null
+    5327189: null
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -7396,15 +7396,16 @@
     minute: 33
   firstCircad: 2023-09-21
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 63600
-  taskCount: 25
-  lastTaskID: 35486719.0
+    days: 1
+    seconds: 72600
+  taskCount: 42
+  lastTaskID: 36268299.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 10
-    day: 1
-    hour: 9
-    minute: 6
+    month: 11
+    day: 24
+    hour: 17
+    minute: 2
   startTaskIDs: !!set
     35342139: null
   creator: .nan
@@ -7413,5 +7414,99 @@
   review: *id002
   externalReview: .nan
   subjectMatters: *id013
+  duration: .nan
+  numReruns: 1
+- id: IT LOOKS LIKE YOU'RE TRYING TO TAKE OVER THE WORLD, GWERN BRANWEN, SCIFI, TEMAS,
+    SEGURIDAD DE INTELIGENCIA ARTIFICIAL_02521
+  name: IT LOOKS LIKE YOU'RE TRYING TO TAKE OVER THE WORLD, GWERN BRANWEN, SCIFI,
+    TEMAS, SEGURIDAD DE INTELIGENCIA ARTIFICIAL
+  firstTaskID: 36309889
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 27
+    hour: 12
+    minute: 28
+  firstCircad: &id014 2023-11-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6420
+  taskCount: 2
+  lastTaskID: 36315699.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 27
+    hour: 23
+    minute: 18
+  startTaskIDs: !!set
+    36309889: null
+  creator: .nan
+  creationTime: .nan
+  genres: &id015 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: *id002
+  externalReview: .nan
+  subjectMatters: &id016 !!set {}
+  duration: .nan
+  numReruns: 1
+- id: THE THREE BODY PROBLEM, CIXIN LIU, SCIFI_02521
+  name: THE THREE BODY PROBLEM, CIXIN LIU, SCIFI
+  firstTaskID: 36316399
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 27
+    hour: 23
+    minute: 19
+  firstCircad: *id014
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 67140
+  taskCount: 17
+  lastTaskID: 36369559.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 1
+    hour: 17
+    minute: 28
+  startTaskIDs: !!set
+    36316399: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id015
+  review: *id002
+  externalReview: .nan
+  subjectMatters: *id016
+  duration: .nan
+  numReruns: 1
+- id: THE DARK FOREST, CIXIN LIU, SCIFI_02530
+  name: THE DARK FOREST, CIXIN LIU, SCIFI
+  firstTaskID: 36438329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 6
+    hour: 10
+    minute: 32
+  firstCircad: 2023-12-06
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 61020
+  taskCount: 44
+  lastTaskID: 36800609.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 31
+    hour: 14
+    minute: 53
+  startTaskIDs: !!set
+    36438329: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id015
+  review: *id002
+  externalReview: .nan
+  subjectMatters: *id016
   duration: .nan
   numReruns: 1

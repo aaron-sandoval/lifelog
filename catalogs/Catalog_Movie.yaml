@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-03-26
+    DATE WRITTEN: 2024-04-01
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 35486719
+        - 36803699
         - true
     COLLECTIBLE TYPE: movie
-    CATALOG COUNT: 181
+    CATALOG COUNT: 195
 - id: LUCKY NUMBER SLEVIN_00257
   name: LUCKY NUMBER SLEVIN
   firstTaskID: 3715139
@@ -1869,8 +1869,8 @@
     hour: 21
     minute: 2
   startTaskIDs: !!set
-    10512979: null
     31446619: null
+    10512979: null
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -5562,5 +5562,426 @@
   review: *id003
   externalReview: .nan
   subjectMatters: *id017
+  duration: .nan
+  numReruns: 1
+- id: AMERICAN BEAUTY_02465
+  name: AMERICAN BEAUTY
+  firstTaskID: 35508649
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 2
+    hour: 21
+    minute: 4
+  firstCircad: 2023-10-02
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7020
+  taskCount: 1
+  lastTaskID: 35508649.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 2
+    hour: 23
+    minute: 1
+  startTaskIDs: !!set
+    35508649: null
+  creator: .nan
+  creationTime: .nan
+  genres: &id018 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: *id015
+  externalReview: .nan
+  subjectMatters: &id019 !!set {}
+  duration: .nan
+  numReruns: 2
+- id: CATCH ME IF YOU CAN_02473
+  name: CATCH ME IF YOU CAN
+  firstTaskID: 35623919
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 10
+    hour: 21
+    minute: 11
+  firstCircad: 2023-10-10
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8160
+  taskCount: 1
+  lastTaskID: 35623919.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 10
+    hour: 23
+    minute: 27
+  startTaskIDs: !!set
+    35623919: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: ACROSS THE SPIDERVERSE_02494
+  name: ACROSS THE SPIDERVERSE
+  firstTaskID: 35924389
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 31
+    hour: 17
+    minute: 58
+  firstCircad: &id020 2023-10-31
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3180
+  taskCount: 2
+  lastTaskID: 35924859.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 31
+    hour: 19
+    minute: 25
+  startTaskIDs: !!set
+    35924389: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: LITTLE WOMEN_02494
+  name: LITTLE WOMEN
+  firstTaskID: 35925259
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 31
+    hour: 19
+    minute: 25
+  firstCircad: *id020
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3300
+  taskCount: 1
+  lastTaskID: 35925259.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 10
+    day: 31
+    hour: 20
+    minute: 20
+  startTaskIDs: !!set
+    35925259: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: THE WONDERFUL STORY OF HENRY SUGAR_02517
+  name: THE WONDERFUL STORY OF HENRY SUGAR
+  firstTaskID: 36257759
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 23
+    hour: 21
+    minute: 35
+  firstCircad: 2023-11-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2400
+  taskCount: 1
+  lastTaskID: 36257759.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 23
+    hour: 22
+    minute: 15
+  startTaskIDs: !!set
+    36257759: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: MEGAMIND_02518
+  name: MEGAMIND
+  firstTaskID: 36269789
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 24
+    hour: 17
+    minute: 38
+  firstCircad: 2023-11-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5880
+  taskCount: 1
+  lastTaskID: 36269789.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 24
+    hour: 19
+    minute: 16
+  startTaskIDs: !!set
+    36269789: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: BLACKKKLANSMAN_02519
+  name: BLACKKKLANSMAN
+  firstTaskID: 36281329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 25
+    hour: 12
+    minute: 52
+  firstCircad: &id021 2023-11-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7980
+  taskCount: 1
+  lastTaskID: 36281329.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 25
+    hour: 15
+    minute: 5
+  startTaskIDs: !!set
+    36281329: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: THE WOLF OF WALL STREET_02519
+  name: THE WOLF OF WALL STREET
+  firstTaskID: 36285289
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 25
+    hour: 19
+    minute: 28
+  firstCircad: *id021
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 10740
+  taskCount: 1
+  lastTaskID: 36285289.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 11
+    day: 25
+    hour: 22
+    minute: 27
+  startTaskIDs: !!set
+    36285289: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 2
+- id: THE BIG LEBOWSKI_02532
+  name: THE BIG LEBOWSKI
+  firstTaskID: 36473219
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 8
+    hour: 20
+    minute: 41
+  firstCircad: 2023-12-08
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6780
+  taskCount: 1
+  lastTaskID: 36473219.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 8
+    hour: 22
+    minute: 34
+  startTaskIDs: !!set
+    36473219: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 2
+- id: THE HATEFUL EIGHT_02533
+  name: THE HATEFUL EIGHT
+  firstTaskID: 36486849
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 9
+    hour: 19
+    minute: 24
+  firstCircad: 2023-12-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 10920
+  taskCount: 2
+  lastTaskID: 36487369.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 9
+    hour: 22
+    minute: 26
+  startTaskIDs: !!set
+    36486849: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 2
+- id: BOYZ N THE HOOD_02539
+  name: BOYZ N THE HOOD
+  firstTaskID: 36573919
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 15
+    hour: 20
+    minute: 31
+  firstCircad: 2023-12-15
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6720
+  taskCount: 1
+  lastTaskID: 36573919.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 15
+    hour: 22
+    minute: 23
+  startTaskIDs: !!set
+    36573919: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: EL CAMINO_02548
+  name: EL CAMINO
+  firstTaskID: 36702889
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 24
+    hour: 19
+    minute: 28
+  firstCircad: 2023-12-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8340
+  taskCount: 2
+  lastTaskID: 36703319.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 24
+    hour: 21
+    minute: 47
+  startTaskIDs: !!set
+    36702889: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: THE NICE GUYS_02549
+  name: THE NICE GUYS
+  firstTaskID: 36717369
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 25
+    hour: 19
+    minute: 36
+  firstCircad: 2023-12-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6660
+  taskCount: 1
+  lastTaskID: 36717369.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 25
+    hour: 21
+    minute: 27
+  startTaskIDs: !!set
+    36717369: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
+  duration: .nan
+  numReruns: 1
+- id: THE ADJUSTMENT BUREAU_02551
+  name: THE ADJUSTMENT BUREAU
+  firstTaskID: 36747099
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 27
+    hour: 21
+    minute: 9
+  firstCircad: 2023-12-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5940
+  taskCount: 1
+  lastTaskID: 36747099.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 12
+    day: 27
+    hour: 22
+    minute: 48
+  startTaskIDs: !!set
+    36747099: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id018
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id019
   duration: .nan
   numReruns: 1

@@ -43,12 +43,15 @@ class Description(SingleInstanceColumn):
         self.initExceptRaw(rawString)
         
     def initExceptRaw(self, rawString):
+        if '80000 Hours, temas, ingeniería industrial, podcast, Joe Carlsmith Audio' in rawString:
+            debug = 1
         self.tokens = self.PPDescTokens(descDelimit(stdDelimiters(stdDiction(stdPlural(rawString.upper())))))
         if len(self.tokens) != len(set(self.tokens)):  # Delete the later instances of any duplicate tokens
-            for i in range(len(self.tokens)-1, -1, -1):
-                if self.tokens[i] in self.tokens[:i]:
-                    self.tokens.pop(i)
-        self.standardString = catTokens(self.tokens)
+            debug = 1
+        #     for i in range(len(self.tokens)-1, -1, -1):
+        #         if self.tokens[i] in self.tokens[:i]:
+        #             self.tokens.pop(i)
+        self.standardString = '' if emptyDesc(self.tokens) else ', '.join(self.tokens)
         self.tokenTree = self.genTokenTree(self.tokens)
 
     @staticmethod

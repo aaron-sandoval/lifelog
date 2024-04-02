@@ -817,7 +817,7 @@ class Movie(MonolithicMedia, Reviewable):
                                                                  STDList.COLLXBLE_INSTANCES.union(STDList.STD_ROOTS)])
         titlesRoot = titlesRoot[titlesRoot.apply((lambda x: len(x) > 0))].apply(lambda x: x[0]).drop_duplicates(keep='first')
 
-        titleSeries = pd.concat([titlesChild, titlesRoot], axis=0).sort_index()
+        titleSeries = pd.concat([titlesChild, titlesRoot], axis=0).sort_index().drop_duplicates()
         initingRows = initingRows.df.loc[initingRows.df.index.isin(titleSeries.index)].tsdf
         # Get all child tokens of INITIALIZATION_TOKENS()
         titles = [{'name': t} for t in titleSeries]
