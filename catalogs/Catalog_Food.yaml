@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: DAGCatalog
-    DATE WRITTEN: 2024-04-01
+    DATE WRITTEN: 2024-04-09
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 36803699
+        - 38116179
         - true
     COLLECTIBLE TYPE: food
-    CATALOG COUNT: 71
+    CATALOG COUNT: 72
 - id: MERIENDA
   name: MERIENDA
   firstTaskID: 3667089
@@ -21,15 +21,15 @@
   firstCircad: 2017-09-12
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 5
-    seconds: 20880
-  taskCount: 119
-  lastTaskID: 36237959.0
+    seconds: 25020
+  taskCount: 123
+  lastTaskID: 38008759.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 11
-    day: 22
-    hour: 13
-    minute: 15
+    year: 2024
+    month: 3
+    day: 24
+    hour: 12
+    minute: 5
   startTaskIDs: !!set {}
 - id: COMPRADO
   name: COMPRADO
@@ -42,16 +42,16 @@
     minute: 10
   firstCircad: 2017-09-13
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 27
-    seconds: 85560
-  taskCount: 547
-  lastTaskID: 36791209.0
+    days: 28
+    seconds: 3720
+  taskCount: 548
+  lastTaskID: 38011289.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 30
-    hour: 23
-    minute: 9
+    year: 2024
+    month: 3
+    day: 24
+    hour: 17
+    minute: 24
   startTaskIDs: !!set {}
 - id: GRATIS
   name: GRATIS
@@ -64,16 +64,16 @@
     minute: 8
   firstCircad: 2017-09-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 28
-    seconds: 58800
-  taskCount: 451
-  lastTaskID: 36803699.0
+    days: 29
+    seconds: 8880
+  taskCount: 454
+  lastTaskID: 37739179.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 1
-    day: 1
-    hour: 1
-    minute: 44
+    month: 3
+    day: 5
+    hour: 22
+    minute: 29
   startTaskIDs: !!set
     7384569: null
 - id: CARNE
@@ -122,15 +122,15 @@
     minute: 18
   startTaskIDs: !!set
     14007969: null
-    5583319: null
-    31762649: null
+    9786489: null
     8578949: null
     19048229: null
     7961039: null
+    6260599: null
     22475409: null
     7069109: null
-    6260599: null
-    9786489: null
+    5583319: null
+    31762649: null
     10678329: null
 - id: POROTOS
   name: POROTOS
@@ -143,26 +143,27 @@
     minute: 31
   firstCircad: *id001
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 7
-    seconds: 72420
-  taskCount: 169
-  lastTaskID: 36626709.0
+    days: 8
+    seconds: 38640
+  taskCount: 178
+  lastTaskID: 38098869.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 19
-    hour: 13
-    minute: 49
+    year: 2024
+    month: 3
+    day: 30
+    hour: 19
+    minute: 37
   startTaskIDs: !!set
     29977859: null
     8578949: null
     14930309: null
     30352519: null
-    6260599: null
     22475409: null
     6030739: null
+    36859679: null
     14007969: null
     28726689: null
+    16323839: null
     19048229: null
     31215909: null
     27083429: null
@@ -173,6 +174,7 @@
     28422699: null
     30837929: null
     28595629: null
+    37820199: null
     30467379: null
     30114739: null
     29920309: null
@@ -192,9 +194,9 @@
     5583319: null
     33082839: null
     31762649: null
-    36297599: null
     31173339: null
     31029219: null
+    9486839: null
     13114469: null
     34815079: null
     28682349: null
@@ -203,9 +205,9 @@
     27811309: null
     27904369: null
     33677169: null
-    9486839: null
+    6260599: null
     9786489: null
-    16323839: null
+    36297599: null
 - id: PAPAS
   name: PAPAS
   firstTaskID: 5583319
@@ -217,26 +219,28 @@
     minute: 31
   firstCircad: *id001
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 70200
-  taskCount: 17
-  lastTaskID: 34803979.0
+    days: 1
+    seconds: 22440
+  taskCount: 28
+  lastTaskID: 37820619.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 8
-    day: 14
-    hour: 23
-    minute: 20
+    year: 2024
+    month: 3
+    day: 11
+    hour: 13
+    minute: 54
   startTaskIDs: !!set
-    5959839: null
+    5583319: null
+    16323839: null
     19048229: null
+    37820199: null
     7961039: null
-    6260599: null
     22475409: null
     27629779: null
     7069109: null
-    5583319: null
+    6260599: null
     17867069: null
-    16323839: null
+    5959839: null
 - id: "BR\xD3COLI"
   name: "BR\xD3COLI"
   firstTaskID: 5583319
@@ -249,16 +253,17 @@
   firstCircad: *id001
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 3
-    seconds: 26820
-  taskCount: 57
-  lastTaskID: 36626709.0
+    seconds: 52320
+  taskCount: 62
+  lastTaskID: 38098869.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 19
-    hour: 13
-    minute: 49
+    year: 2024
+    month: 3
+    day: 30
+    hour: 19
+    minute: 37
   startTaskIDs: !!set
+    9786489: null
     6735939: null
     8578949: null
     14930309: null
@@ -269,26 +274,26 @@
     16902929: null
     26777809: null
     6030739: null
-    6260599: null
     12107799: null
     5583319: null
     13807319: null
     12508889: null
-    10678329: null
     14007969: null
+    9486839: null
+    16323839: null
     13114469: null
     15333689: null
+    37820199: null
     12539179: null
     10291759: null
     8272239: null
     8983089: null
-    15759039: null
     31587059: null
     7069109: null
     11517429: null
-    9486839: null
-    9786489: null
-    16323839: null
+    6260599: null
+    10678329: null
+    15759039: null
 - id: COMIDA
   name: COMIDA
   firstTaskID: 5942109
@@ -300,16 +305,15 @@
     minute: 30
   firstCircad: 2018-02-17
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 4
-    seconds: 65880
-  taskCount: 253
-  lastTaskID: 36731529.0
+    days: 5
+    seconds: 4440
+  taskCount: 277
+  lastTaskID: 38029639.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 26
-    hour: 19
-    minute: 33
+    year: 2024
+    month: 3
+    day: 25
+    hour: 23
   startTaskIDs: !!set {}
 - id: SANDWICH
   name: SANDWICH
@@ -323,15 +327,15 @@
   firstCircad: &id002 2018-02-18
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 16
-    seconds: 37260
-  taskCount: 376
-  lastTaskID: 36632239.0
+    seconds: 41340
+  taskCount: 379
+  lastTaskID: 37410549.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 19
-    hour: 22
-    minute: 17
+    year: 2024
+    month: 2
+    day: 11
+    hour: 23
+    minute: 22
   startTaskIDs: !!set
     5955279: null
 - id: SOPA
@@ -355,10 +359,10 @@
     hour: 22
     minute: 27
   startTaskIDs: !!set
+    5959839: null
     30150259: null
     30265709: null
     30231159: null
-    5959839: null
 - id: PASTA
   name: PASTA
   firstTaskID: 6030739
@@ -371,15 +375,15 @@
   firstCircad: 2018-02-23
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 8
-    seconds: 49920
-  taskCount: 201
-  lastTaskID: 34780009.0
+    seconds: 82560
+  taskCount: 206
+  lastTaskID: 38098869.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 8
-    day: 13
-    hour: 7
-    minute: 33
+    year: 2024
+    month: 3
+    day: 30
+    hour: 19
+    minute: 37
   startTaskIDs: !!set
     29977859: null
     24866179: null
@@ -408,8 +412,6 @@
     29920309: null
     27702709: null
     30452919: null
-    18918519: null
-    20215679: null
     28309309: null
     6735939: null
     27112389: null
@@ -420,6 +422,7 @@
     30208459: null
     28149329: null
     28020689: null
+    27933439: null
     29070169: null
     27661149: null
     28998749: null
@@ -427,6 +430,7 @@
     26708579: null
     31029219: null
     13114469: null
+    9486839: null
     27832679: null
     17837799: null
     30691819: null
@@ -435,9 +439,9 @@
     8272239: null
     24275439: null
     30150259: null
-    9486839: null
+    18918519: null
     28120189: null
-    27933439: null
+    20215679: null
 - id: ESPINACAS
   name: ESPINACAS
   firstTaskID: 6260599
@@ -494,15 +498,15 @@
   firstCircad: &id003 2018-03-31
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 2
-    seconds: 2580
-  taskCount: 45
-  lastTaskID: 35132459.0
+    seconds: 4560
+  taskCount: 46
+  lastTaskID: 37735549.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 9
-    day: 6
-    hour: 18
-    minute: 59
+    year: 2024
+    month: 3
+    day: 5
+    hour: 13
+    minute: 7
   startTaskIDs: !!set
     19537589: null
     20947559: null
@@ -541,15 +545,15 @@
   firstCircad: 2018-04-02
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 5
-    seconds: 42000
-  taskCount: 90
-  lastTaskID: 36803699.0
+    seconds: 65940
+  taskCount: 91
+  lastTaskID: 37104109.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 1
-    day: 1
-    hour: 1
-    minute: 44
+    day: 21
+    hour: 22
+    minute: 49
   startTaskIDs: !!set
     17824009: null
     10779269: null
@@ -610,18 +614,18 @@
   firstCircad: *id004
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 11
-    seconds: 30000
-  taskCount: 163
-  lastTaskID: 35866809.0
+    seconds: 48480
+  taskCount: 165
+  lastTaskID: 38011289.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 10
-    day: 27
-    hour: 18
-    minute: 37
+    year: 2024
+    month: 3
+    day: 24
+    hour: 17
+    minute: 24
   startTaskIDs: !!set
-    28969559: null
     23280399: null
+    28969559: null
 - id: ENSALADA
   name: ENSALADA
   firstTaskID: 6822599
@@ -710,15 +714,15 @@
   firstCircad: 2018-06-03
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 30300
-  taskCount: 22
-  lastTaskID: 33864589.0
+    seconds: 50880
+  taskCount: 23
+  lastTaskID: 37695429.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 6
-    day: 10
-    hour: 18
-    minute: 16
+    year: 2024
+    month: 3
+    day: 2
+    hour: 23
+    minute: 25
   startTaskIDs: !!set {}
 - id: DAL
   name: DAL
@@ -762,12 +766,12 @@
     26777809: null
     28020689: null
     28149329: null
+    27933439: null
     29027029: null
     13807319: null
     28466009: null
     29070169: null
     21883229: null
-    34122879: null
     27832679: null
     7653739: null
     20270699: null
@@ -775,7 +779,7 @@
     31587059: null
     11517429: null
     28120189: null
-    27933439: null
+    34122879: null
 - id: COREANA
   name: COREANA
   firstTaskID: 7845599
@@ -868,9 +872,9 @@
     minute: 7
   startTaskIDs: !!set
     18557769: null
-    19739169: null
     10855159: null
     31285559: null
+    19739169: null
 - id: ARGENTINA
   name: ARGENTINA
   firstTaskID: 8589529
@@ -924,15 +928,15 @@
   firstCircad: 2018-09-16
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 3
-    seconds: 29940
-  taskCount: 99
-  lastTaskID: 36626709.0
+    seconds: 52800
+  taskCount: 108
+  lastTaskID: 37812189.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 19
-    hour: 13
-    minute: 49
+    year: 2024
+    month: 3
+    day: 10
+    hour: 20
+    minute: 51
   startTaskIDs: !!set
     34815559: null
     35330059: null
@@ -943,14 +947,16 @@
     13807319: null
     12107799: null
     12508889: null
-    36297599: null
     34122879: null
+    36859679: null
     12539179: null
+    37291499: null
     10291759: null
     8983089: null
+    15759039: null
     31587059: null
     15333689: null
-    15759039: null
+    36297599: null
 - id: RAJMA MASALA
   name: RAJMA MASALA
   firstTaskID: 10291759
@@ -986,22 +992,22 @@
   firstCircad: 2019-01-27
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 26880
-  taskCount: 32
-  lastTaskID: 35321309.0
+    seconds: 58020
+  taskCount: 44
+  lastTaskID: 37625259.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 9
-    day: 19
+    year: 2024
+    month: 2
+    day: 26
     hour: 21
-    minute: 3
+    minute: 10
   startTaskIDs: !!set
     10898819: null
     26708579: null
     31258789: null
     24246409: null
     30691819: null
-    31086429: null
+    27661149: null
     26608429: null
     26434959: null
     24275439: null
@@ -1009,7 +1015,7 @@
     27241619: null
     30755219: null
     30452919: null
-    27661149: null
+    31086429: null
     30582719: null
 - id: DESAYUNO
   name: DESAYUNO
@@ -1055,8 +1061,8 @@
     hour: 19
     minute: 42
   startTaskIDs: !!set
-    20270699: null
     11198539: null
+    20270699: null
 - id: TAMALES
   name: TAMALES
   firstTaskID: 11517429
@@ -1134,17 +1140,20 @@
     minute: 54
   firstCircad: *id006
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 9180
-  taskCount: 1
-  lastTaskID: 11891349.0
+    seconds: 41700
+  taskCount: 8
+  lastTaskID: 37820619.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2019
-    month: 4
-    day: 6
-    hour: 21
-    minute: 27
+    year: 2024
+    month: 3
+    day: 11
+    hour: 13
+    minute: 54
   startTaskIDs: !!set
+    37291499: null
     11891349: null
+    37820199: null
+    36859679: null
 - id: SHAHI TOFU
   name: SHAHI TOFU
   firstTaskID: 12508889
@@ -1246,16 +1255,16 @@
     minute: 14
   firstCircad: 2020-05-03
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 1
-    seconds: 74280
-  taskCount: 21
-  lastTaskID: 32366449.0
+    days: 2
+    seconds: 2100
+  taskCount: 23
+  lastTaskID: 37595169.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
+    year: 2024
     month: 2
-    day: 26
-    hour: 17
-    minute: 34
+    day: 24
+    hour: 21
+    minute: 2
   startTaskIDs: !!set
     17824009: null
 - id: HUEVOS
@@ -1322,8 +1331,8 @@
     hour: 19
     minute: 41
   startTaskIDs: !!set
-    17837799: null
     18918519: null
+    17837799: null
 - id: SOPA DE LENTEJAS
   name: SOPA DE LENTEJAS
   firstTaskID: 17867069
@@ -1483,15 +1492,15 @@
     minute: 44
   firstCircad: 2021-03-28
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 15120
-  taskCount: 10
-  lastTaskID: 36454319.0
+    seconds: 18540
+  taskCount: 13
+  lastTaskID: 37767709.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
+    year: 2024
+    month: 3
     day: 7
-    hour: 13
-    minute: 28
+    hour: 18
+    minute: 35
   startTaskIDs: !!set {}
 - id: SALSA
   name: SALSA
@@ -1758,16 +1767,17 @@
   firstCircad: 2018-11-04
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 31440
-  taskCount: 30
-  lastTaskID: 36277209.0
+    seconds: 56940
+  taskCount: 35
+  lastTaskID: 38098869.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 11
-    day: 25
-    hour: 6
-    minute: 35
-  startTaskIDs: !!set {}
+    year: 2024
+    month: 3
+    day: 30
+    hour: 19
+    minute: 37
+  startTaskIDs: !!set
+    37820199: null
 - id: "ASI\xC1TICA"
   name: "ASI\xC1TICA"
   firstTaskID: 34337439
@@ -1811,8 +1821,30 @@
     hour: 13
     minute: 49
   startTaskIDs: !!set
-    36297599: null
     35909999: null
+    36297599: null
+- id: CHILE ROJO
+  name: CHILE ROJO
+  firstTaskID: 37820199
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 11
+    hour: 9
+    minute: 39
+  firstCircad: 2024-03-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 25500
+  taskCount: 5
+  lastTaskID: 38098869.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 30
+    hour: 19
+    minute: 37
+  startTaskIDs: !!set
+    37820199: null
 ---
 adj:
   $FOOD: {}
@@ -2103,3 +2135,6 @@ adj:
       p: 0
     AMERICANA:
       p: 1
+  CHILE ROJO:
+    $FOOD_UNDEFINED:
+      p: 0

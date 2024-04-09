@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-04-01
+    DATE WRITTEN: 2024-04-09
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 36803699
+        - 38116179
         - true
     COLLECTIBLE TYPE: podcast
-    CATALOG COUNT: 17
+    CATALOG COUNT: 18
 - id: THE WAR ON CARS_01126
   name: THE WAR ON CARS
   firstTaskID: 16224269
@@ -20,16 +20,16 @@
     minute: 26
   firstCircad: 2020-02-01
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 3
-    seconds: 85680
-  taskCount: 93.0
-  lastTaskID: 36555709.0
+    days: 4
+    seconds: 17460
+  taskCount: 100.0
+  lastTaskID: 37978829.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 14
-    hour: 15
-    minute: 49
+    year: 2024
+    month: 3
+    day: 22
+    hour: 10
+    minute: 43
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -76,15 +76,15 @@
   firstCircad: 2020-02-28
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 25
-    seconds: 36120
-  taskCount: 633.0
-  lastTaskID: 36508549.0
+    seconds: 49440
+  taskCount: 639.0
+  lastTaskID: 37966719.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 11
-    hour: 8
-    minute: 26
+    year: 2024
+    month: 3
+    day: 21
+    hour: 14
+    minute: 18
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -104,15 +104,15 @@
   firstCircad: 2020-03-14
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 14
-    seconds: 28200
-  taskCount: 313.0
-  lastTaskID: 36690269.0
+    seconds: 46200
+  taskCount: 321.0
+  lastTaskID: 38006109.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 23
-    hour: 23
-    minute: 48
+    year: 2024
+    month: 3
+    day: 24
+    hour: 8
+    minute: 10
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -186,15 +186,15 @@
   firstCircad: 2021-08-11
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 9
-    seconds: 53940
-  taskCount: 220.0
-  lastTaskID: 36567069.0
+    seconds: 83700
+  taskCount: 232.0
+  lastTaskID: 38035059.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 15
-    hour: 9
-    minute: 24
+    year: 2024
+    month: 3
+    day: 26
+    hour: 8
+    minute: 28
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -240,16 +240,16 @@
     minute: 47
   firstCircad: 2021-12-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 9
-    seconds: 63540
-  taskCount: 255.0
-  lastTaskID: 36670989.0
+    days: 10
+    seconds: 30060
+  taskCount: 278.0
+  lastTaskID: 37995699.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 22
+    year: 2024
+    month: 3
+    day: 23
     hour: 14
-    minute: 53
+    minute: 43
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -269,15 +269,15 @@
   firstCircad: 2022-04-19
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 15
-    seconds: 52680
-  taskCount: 352.0
-  lastTaskID: 34782409.0
+    seconds: 54600
+  taskCount: 353.0
+  lastTaskID: 37387929.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 8
-    day: 13
-    hour: 11
-    minute: 3
+    year: 2024
+    month: 2
+    day: 10
+    hour: 9
+    minute: 44
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -296,16 +296,16 @@
     minute: 27
   firstCircad: 2023-05-01
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 7
-    seconds: 25920
-  taskCount: 223.0
-  lastTaskID: 36754249.0
+    days: 8
+    seconds: 10620
+  taskCount: 253.0
+  lastTaskID: 37956429.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 28
-    hour: 9
-    minute: 57
+    year: 2024
+    month: 3
+    day: 20
+    hour: 21
+    minute: 51
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -405,15 +405,15 @@
     minute: 14
   firstCircad: 2023-10-13
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 38460
-  taskCount: 17.0
-  lastTaskID: 36768769.0
+    seconds: 61500
+  taskCount: 26.0
+  lastTaskID: 38081079.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
+    year: 2024
+    month: 3
     day: 29
-    hour: 9
-    minute: 59
+    hour: 12
+    minute: 54
   creator: .nan
   creationTime: .nan
   genres: *id004
@@ -472,3 +472,30 @@
   review: .nan
   externalReview: .nan
   subjectMatters: *id005
+- id: WHAT NOW? WITH TREVOR NOAH_02567
+  name: WHAT NOW? WITH TREVOR NOAH
+  firstTaskID: 36973269
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 1
+    day: 12
+    hour: 14
+    minute: 6
+  firstCircad: 2024-01-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3720
+  taskCount: 2.0
+  lastTaskID: 36984019.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 1
+    day: 13
+    hour: 8
+    minute: 38
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: !!set {}

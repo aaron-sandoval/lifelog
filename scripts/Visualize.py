@@ -84,10 +84,9 @@ def loadAndMergeDatasets(paths: List[str], fileSuffix='') -> TimesheetDataset:
     else:
         tsds = tsdsList[0]
     tsds.loadCatalogs(fileSuffix=fileSuffix)
-    # tsds.validate()
-    # tsds.postCatalogCorrect()  # Temporary
-    # if len(tsdsList) > 1:
-    # Global.writePersistent(tsds.timesheetdf.df, 3, tsds.fileSuffix)
+    tsds.validate()
+    if len(tsdsList) > 1:
+        Global.writePersistent(tsds.timesheetdf.df, 3, tsds.fileSuffix)
     return tsds
 
 
@@ -372,10 +371,10 @@ class ArtistAlignment(Enum):
                  bbox={'facecolor': 'white' if 'facecolor' not in kwargs else kwargs['facecolor'],
                        'alpha': .6 if 'alpha' not in kwargs else kwargs['alpha']})
 
-    NW = _ArtistAlignment('NW', .1, .9, 'left', 'top')
-    NE = _ArtistAlignment('NE', .9, .9, 'right', 'top')
-    SE = _ArtistAlignment('NE', .9, .1, 'right', 'bottom')
-    SW = _ArtistAlignment('NE', .1, .1, 'left', 'bottom')
+    NW = _ArtistAlignment('NW', .05, .95, 'left', 'top')
+    NE = _ArtistAlignment('NE', .95, .95, 'right', 'top')
+    SE = _ArtistAlignment('NE', .95, .05, 'right', 'bottom')
+    SW = _ArtistAlignment('NE', .05, .05, 'left', 'bottom')
 
 
 class MatplotlibVisual:
@@ -851,7 +850,7 @@ class GraphicMaker:
         plt.semilogy()
         plt.title(_k('Total Time Spent\n with Individual People, Sorted, Log Scale'))
         plt.grid(axis='y')
-        ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
+        ArtistAlignment.NE.text(auxText, graphic.fig.axes[1])
         graphic.save(fileName=auxText + '_' + title.replace('\n', ''))
         return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.PEOPLE, sortKey=128)

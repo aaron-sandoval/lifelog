@@ -197,7 +197,9 @@ class Subordinate(Colleague): pass
 class Peer(Colleague): pass
 class ColleagueBall(ColleagueWork): pass
 class ColleagueBallStructures(ColleagueBall): pass  # Includes people from other orgs
-class ColleagueBallOPIR(ColleagueBall): pass  # Includes peo[ple from other orgs
+class ColleagueBallOPIR(ColleagueBall): pass  # Includes people from other orgs
+class ColleagueEA(Colleague): pass
+class ColleagueAISC(ColleagueWork, ColleagueEA): pass
 class Family(Relation):
     es_MX = 'Familia'
     color = (.7, .2, .9)

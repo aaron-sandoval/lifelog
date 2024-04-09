@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-04-01
+    DATE WRITTEN: 2024-04-09
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 36803699
+        - 38116179
         - true
     COLLECTIBLE TYPE: tvshow
-    CATALOG COUNT: 29
+    CATALOG COUNT: 32
 - id: 3%_00248
   name: 3%
   firstTaskID: 3585359
@@ -396,15 +396,15 @@
     day: 2
   firstCircad: 2018-06-01
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 37800
-  taskCount: 9
-  lastTaskID: 21784879.0
+    seconds: 49740
+  taskCount: 12
+  lastTaskID: 38086839.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 2
-    day: 21
-    hour: 21
-    minute: 10
+    year: 2024
+    month: 3
+    day: 29
+    hour: 22
+    minute: 59
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -787,3 +787,82 @@
   review: .nan
   externalReview: .nan
   subjectMatters: *id005
+- id: THE GOOD PLACE_02562
+  name: THE GOOD PLACE
+  firstTaskID: 36906109
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 1
+    day: 7
+    hour: 22
+    minute: 10
+  firstCircad: 2024-01-07
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 56460
+  taskCount: 20
+  lastTaskID: 37525359.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 2
+    day: 19
+    hour: 23
+    minute: 12
+  creator: .nan
+  creationTime: .nan
+  genres: &id006 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: &id007 !!set {}
+- id: BROOKLYN NINE-NINE_02627
+  name: BROOKLYN NINE-NINE
+  firstTaskID: 37842109
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 12
+    hour: 22
+    minute: 10
+  firstCircad: 2024-03-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3900
+  taskCount: 1
+  lastTaskID: 37842109.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 12
+    hour: 23
+    minute: 15
+  creator: .nan
+  creationTime: .nan
+  genres: *id006
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id007
+- id: "ROMPAN TODO: LA HISTORIA DEL ROCK EN AM\xC9RICA LATINA_02632"
+  name: "ROMPAN TODO: LA HISTORIA DEL ROCK EN AM\xC9RICA LATINA"
+  firstTaskID: 37914339
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 17
+    hour: 22
+    minute: 33
+  firstCircad: 2024-03-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9420
+  taskCount: 3
+  lastTaskID: 37957549.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 20
+    hour: 23
+    minute: 30
+  creator: .nan
+  creationTime: .nan
+  genres: *id006
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id007

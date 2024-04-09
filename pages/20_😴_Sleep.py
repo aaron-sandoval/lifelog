@@ -42,7 +42,7 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
     next(gxhs).exhibitStreamlit()
     epsc = Global.EpochScheme.MP_COARSE_ATOMIC
     st.markdown(_k(
-        f"This plot shows an overview of my sleep behavior related to time of day over different phases of life."
+        f"This plot shows an overview of my sleep behavior related to time of day over different phases of life. "
         f"The most obvious feature is the distributional shift between `{epsc.sortedEpochGroupNames()[0]}` and "
         f"`{epsc.sortedEpochGroupNames()[1]}`, when median sleep behavior shifted earlier by 2+ hours. "
         f"The shift in modes is even greater, shifting by about 3 hours. "
@@ -57,7 +57,7 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         f"visible in the diminishing interquartile range. "
         f"Certainly, my schedule during `{epsc.sortedEpochGroupNames()[0]}` was comparatively irregular. "
         f"From subjective memory, during `{epsc.sortedEpochGroupNames()[2]}` and `{epsc.sortedEpochGroupNames()[3]}`, "
-        f"my sleep schedule on weekdays and weekends has has little distinction, "
+        f"my sleep schedule on weekdays and weekends had little distinction, "
         f"but that's a claim that can be backed by data at some point."
         "\n\n**Future work**\n\n"
         "- Compare weekday and weekend distributions\n"

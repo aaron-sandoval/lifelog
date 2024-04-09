@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-04-01
+    DATE WRITTEN: 2024-04-09
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 36803699
+        - 38116179
         - true
     COLLECTIBLE TYPE: audiobook
-    CATALOG COUNT: 242
+    CATALOG COUNT: 248
 - id: SPEAKER FOR THE DEAD_00347
   name: SPEAKER FOR THE DEAD
   firstTaskID: 5023259
@@ -64,8 +64,8 @@
     hour: 19
     minute: 59
   startTaskIDs: !!set
-    29310069: null
     5327189: null
+    29310069: null
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -7134,10 +7134,10 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: WHAT WE OWE THE FUTURE, WILL MACASKILL, EDUCACIONAL, TEMAS, ALTRUISMO EFECTIVO,
-    LARGOPLACISMO, RIESGOS EXISTENCIALES_02362
-  name: WHAT WE OWE THE FUTURE, WILL MACASKILL, EDUCACIONAL, TEMAS, ALTRUISMO EFECTIVO,
-    LARGOPLACISMO, RIESGOS EXISTENCIALES
+- id: "WHAT WE OWE THE FUTURE, WILL MACASKILL, EDUCACIONAL, TEMAS, ALTRUISMO\
+    \ EFECTIVO, LARGOPLACISMO, RIESGOS EXISTENCIALES_02362"
+  name: "WHAT WE OWE THE FUTURE, WILL MACASKILL, EDUCACIONAL, TEMAS, ALTRUISMO\
+    \ EFECTIVO, LARGOPLACISMO, RIESGOS EXISTENCIALES"
   firstTaskID: 34017289
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -7491,15 +7491,15 @@
   firstCircad: 2023-12-06
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 61020
-  taskCount: 44
-  lastTaskID: 36800609.0
+    seconds: 80760
+  taskCount: 52
+  lastTaskID: 36847579.0
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 31
-    hour: 14
-    minute: 53
+    year: 2024
+    month: 1
+    day: 3
+    hour: 21
+    minute: 41
   startTaskIDs: !!set
     36438329: null
   creator: .nan
@@ -7508,5 +7508,188 @@
   review: *id002
   externalReview: .nan
   subjectMatters: *id016
+  duration: .nan
+  numReruns: 1
+- id: TOO LIKE THE LIGHTNING, ADA PALMER, SCIFI_02571
+  name: TOO LIKE THE LIGHTNING, ADA PALMER, SCIFI
+  firstTaskID: 37030099
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 1
+    day: 16
+    hour: 12
+    minute: 49
+  firstCircad: 2024-01-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 70080
+  taskCount: 32
+  lastTaskID: 37273309.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 2
+    day: 2
+    hour: 10
+    minute: 49
+  startTaskIDs: !!set
+    37030099: null
+  creator: .nan
+  creationTime: .nan
+  genres: &id017 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: *id002
+  externalReview: .nan
+  subjectMatters: &id018 !!set {}
+  duration: .nan
+  numReruns: 1
+- id: SEVEN SURRENDERS, ADA PALMER, SCIFI_02589
+  name: SEVEN SURRENDERS, ADA PALMER, SCIFI
+  firstTaskID: 37291499
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 2
+    day: 3
+    hour: 16
+    minute: 29
+  firstCircad: 2024-02-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 56340
+  taskCount: 25
+  lastTaskID: 37520039.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 2
+    day: 19
+    hour: 14
+    minute: 16
+  startTaskIDs: !!set
+    37291499: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id017
+  review: *id007
+  externalReview: .nan
+  subjectMatters: *id018
+  duration: .nan
+  numReruns: 1
+- id: "WHAT\u2019S OUR PROBLEM, TIM URBAN, NO FICCI\xD3N, TEMAS, POL\xCDTICA ESTADOUNIDENSE,\
+    \ RACIONALIDAD, RACISMO_02605"
+  name: "WHAT\u2019S OUR PROBLEM, TIM URBAN, NO FICCI\xD3N, TEMAS, POL\xCDTICA ESTADOUNIDENSE,\
+    \ RACIONALIDAD, RACISMO"
+  firstTaskID: 37524619
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 2
+    day: 19
+    hour: 21
+    minute: 1
+  firstCircad: 2024-02-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 43860
+  taskCount: 17
+  lastTaskID: 37664199.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 2
+    day: 29
+    hour: 14
+    minute: 13
+  startTaskIDs: !!set
+    37524619: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id017
+  review: *id002
+  externalReview: .nan
+  subjectMatters: *id018
+  duration: .nan
+  numReruns: 1
+- id: "THE HIGH COST OF FREE PARKING, DONALD SHOUP, OPINI\xD3N, TEMAS, URBANISMO_02615"
+  name: "THE HIGH COST OF FREE PARKING, DONALD SHOUP, OPINI\xD3N, TEMAS, URBANISMO"
+  firstTaskID: 37668829
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 2
+    day: 29
+    hour: 21
+    minute: 22
+  firstCircad: 2024-02-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 84780
+  taskCount: 27
+  lastTaskID: 37897729.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 16
+    hour: 19
+    minute: 58
+  startTaskIDs: !!set
+    37668829: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id017
+  review: *id002
+  externalReview: .nan
+  subjectMatters: *id018
+  duration: .nan
+  numReruns: 1
+- id: "AGAINST EMPATHY, PAUL BLOOM, OPINI\xD3N, TEMAS, \xC9TICA, PSICOLOG\xCDA_02641"
+  name: "AGAINST EMPATHY, PAUL BLOOM, OPINI\xD3N, TEMAS, \xC9TICA, PSICOLOG\xCDA"
+  firstTaskID: 38037749
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 26
+    hour: 12
+    minute: 14
+  firstCircad: 2024-03-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 24660
+  taskCount: 10
+  lastTaskID: 38081079.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 29
+    hour: 12
+    minute: 54
+  startTaskIDs: !!set
+    38037749: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id017
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id018
+  duration: .nan
+  numReruns: 1
+- id: "HOW MINDS CHANGE, DAVID MCRANEY, EDUCACIONAL, TEMAS, PSICOLOG\xCDA_02645"
+  name: "HOW MINDS CHANGE, DAVID MCRANEY, EDUCACIONAL, TEMAS, PSICOLOG\xCDA"
+  firstTaskID: 38092869
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 30
+    hour: 8
+    minute: 6
+  firstCircad: 2024-03-30
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8640
+  taskCount: 4
+  lastTaskID: 38107299.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 3
+    day: 31
+    hour: 8
+    minute: 58
+  startTaskIDs: !!set
+    38092869: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id017
+  review: *id002
+  externalReview: .nan
+  subjectMatters: *id018
   duration: .nan
   numReruns: 1

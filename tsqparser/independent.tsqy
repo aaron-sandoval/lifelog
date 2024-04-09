@@ -36,10 +36,10 @@ When matching tokens, no erroneous partial word matches are possible.
 	'nueva mexicana'.replace('nuevo mexicana') ;
 epoch < Epoch.e2018_Boulder_Solo : 'Visitar'.replace('Charlar') ;
 
-""" Names """
+""" Names & Titles """
 # All people names rules are in the PRIVATE file.
 "Rompan todo" : "Rompan todo".replace("ROMPAN TODO: LA HISTORIA DEL ROCK EN AMÉRICA LATINA") ;
-	
+
 """ Transportation """
 epoch < Epoch.e2018_Boulder_Solo :
 	"Subir".replace("Casa a Cornell") ;

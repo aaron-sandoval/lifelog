@@ -204,12 +204,12 @@ class TimesheetDataset:
         def validateCIDs():
             """Asserts that all foriegn Collxble IDs found in the tsdf are present in the respective Catalog."""
             for cat in self.cats.values():
-                cidSer = self.timesheetdf.tsquery(f'{cat.COLLXBLE_CLASS.__name__} : ;')  # cidSer starts as a TsDF
+                cidSer: TimesheetDataFrame = self.timesheetdf.tsquery(f'{cat.COLLXBLE_CLASS.__name__} : ;')
                 if len(cidSer) == 0:
                     continue
                 if issubclass(cat.COLLXBLE_CLASS, Media):
                     cidSer = cidSer.filterMedia({cat.COLLXBLE_CLASS.name(), })
-                cidSer = cidSer.df[cat.COLLXBLE_CLASS.dfcolumn()]  # cidSer now a Series
+                cidSer: pd.Series = cidSer.df[cat.COLLXBLE_CLASS.dfcolumn()]  # cidSer now a Series
                 if issubclass(cat.COLLXBLE_CLASS, Global.ListColumn):
                     foreignKeys = np.unique(np.fromiter(kiwilib.flatten(cidSer.values, numLevels=1), tuple))
                 else:
