@@ -97,57 +97,64 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         "It's good to keep this in mind when interpreting this plot and others showing units of 'person-hours'."
     ))
     st.markdown(_k(
-        f"Gender is classified into the mutually-exclusive categories {['`'+g.alias()+'`' for g in list(sg.Gender)]}. "
-        f"`{sg.Gender.NOTAPPLICABLE.alias()}` "
-        f"is used for entries in the `Person` catalog which don't correspond to individual people. "
-        f"For example, there are several `Person` instances which actually correspond to teams and other groups, "
-        f"all of which use `{sg.Gender.NOTAPPLICABLE.alias()}` unless the group is single-gendered. "
-    ))
+        "Gender is classified into the mutually-exclusive categories {0}. "
+        "{1} is used for entries in the `Person` catalog which don't correspond to individual people. "
+        "For example, there are several `Person` instances which actually correspond to teams and other groups, "
+        "all of which use {1} unless the group is single-gendered. ")
+        .format([_ebt(g) for g in sg.Gender], _ebt(sg.Gender.NOTAPPLICABLE))
+    )
     next(gxhs).exhibitStreamlit()
     st.markdown(_k(
-        f"The `{sg.Gender.MALE.alias()}` prevalence is obvious. "
-        f"The right subplot shows the overall proportion of time by gender, "
-        f"with `{sg.Gender.MALE.alias()}` occupying around 75% of the total. "
-        f"Grad school in the first half of 2018 was clearly `{sg.Gender.MALE.alias()}`-dominated. "
-        f"That eased up in 2019, when, I hypothesize, "
-        f"my job became more collaborative within a gender-balanced team."
-        f"Spikes around July, November, or December make sense, "
-        f"since that's when I usually visit my dad's family.\n\n"
-        f"The pandemic didn't have much of an effect in this plot apart from "
-        f"maybe being responsible for the dip in 2020-03 through 2020-04. "
-        f"But this apparent lack of effect may just be a coincidence. "
-        f"A roommate moved in in 2020-04, and we spent lots of time cooped up together for the next 12 months. "
-        f"Perhaps the social time with colleagues was merely approximately supplanted by social time with my roommate. "
-        f"Looking at other demographics will tell.\n\n"
-        f"The only month in which I spent more time with women was 2022-03. "
-        f"This month was an anomaly within an anomaly. "
-        f"The outer anomaly was the lonely cycle tour spanning 2022, "
-        f"and the inner anomaly was the two weeks in 2022-03 when I toured along with two girls Suzie and Veronika, "
-        f"during which we spent nearly every hour together. "
-        f"The other 2022 anomaly was 2022-09, when I spent a week in Germany with several friends from back home.\n\n"
-        f"There are plenty of questions this plot raises to be investigated further. "
-        f"I'm not sure what caused the spike in 2022-10 through 2022-11, nor the dip in 2021-02. "
-        f"\n\n**Future work**\n\n"
-        f"- Decompose remaining groups logged as `Gender.{sg.Gender.NOTAPPLICABLE.alias()}` "
-        f"into their constituent individuals"
-    ))
+        "The {0} prevalence is obvious. "
+        "The right subplot shows the overall proportion of time by gender, "
+        "with {0} occupying around 75% of the total. "
+        "Grad school in the first half of 2018 was clearly {0}-dominated. "
+        "That eased up in 2019, when, I hypothesize, "
+        "my job became more collaborative within a gender-balanced team. "
+        "Spikes around July, November, or December make sense, "
+        "since that's when I usually visit my dad's family and spend time with my grandma, aunts, and cousins.\n\n"
+        "The pandemic didn't have much of an effect in this plot apart from "
+        "maybe being responsible for the dip in 2020-03 through 2020-04. "
+        "But this apparent lack of effect may just be a coincidence. "
+        "A roommate moved in in 2020-04, and we spent lots of time cooped up together for the next 12 months. "
+        "Perhaps the social time with colleagues was merely approximately supplanted by social time with my roommate. "
+        "Looking at other demographics will tell.\n\n"
+        "The only month in which I spent more time with women was 2022-03. "
+        "This month was an anomaly within an anomaly. "
+        "The outer anomaly was the lonely cycle tour spanning 2022, "
+        "and the inner anomaly was the two weeks in 2022-03 when I toured along with two girls Suzie and Veronika, "
+        "during which we spent nearly every hour together. "
+        "The other 2022 anomaly was 2022-09, when I spent a week in Germany with several friends from back home.\n\n"
+        "There are plenty of questions this plot raises to be investigated further. "
+        "I'm not sure what caused the spike in 2022-10 through 2022-11, nor the dip in 2021-02. "
+        "\n\n**Future work**\n\n"
+        "- Decompose remaining groups logged as {1} "
+        "into their constituent individuals")
+        .format(_ebt(sg.Gender.MALE), _ebt(sg.Gender.NOTAPPLICABLE))
+    )
 
     st.subheader(_k('Primary Relation'))
     st.markdown(_k(
-        f"Primary relations are another high-level lens through which to characterize my social time. "
-        f"Analyzing primary relation can distinguish when I'm having fun with my friends vs "
-        f"meeting with work colleagues or hanging out with family. "
-        f"The types of primary relation are :\n"
-        f"1. `{sg.Family().alias()}`\n"
-        f"1. `{sg.Friend().alias()}`\n"
-        f"1. `{sg.Colleague().alias()}`\n"
-        f"1. `{sg.Acquaintance().alias()}`\n\n"
-        f"Every `Person` has a `{sg.Relation().alias()}`, and some people have multiple. "
-        f"In those instances, the primary relation follows the order of precedence in the above list. "
-        f"So when I'm with a `{sg.Colleague().alias()}` "
-        f"who's grown close enough to be considered a `{sg.Friend().alias()}`, "
-        f"that would be considered time with a `{sg.Friend().alias()}` in this analysis. "
-    ))
+        "Primary relations are another high-level lens through which to characterize my social time. "
+        "Analyzing primary relation can distinguish when I'm having fun with my friends vs "
+        "meeting with work colleagues or hanging out with family. "
+        "The types of primary relation are :\n"
+        "1. {0}\n"
+        "1. {1}\n"
+        "1. {2}\n"
+        "1. {3}\n\n"
+        "Every Person has a {4}, and some people have multiple. "
+        "In those instances, the primary {4} follows the order of precedence in the above list. "
+        "So when I'm with a {2} "
+        "who's grown close enough to be considered a {1}, "
+        "that would be considered time with a {1} in this analysis. ")
+        .format(_ebt(sg.Family()),
+                _ebt(sg.Friend()),
+                _ebt(sg.Colleague()),
+                _ebt(sg.Acquaintance()),
+                _ebt(sg.Relation()),
+                )
+    )
     # with st.expander(Visualize.STR_BACKEND + f': `{sg.Relation().alias()}` and the `{sg.SocialGroup().alias()}` Graph'):
     #     st.markdown(_k(
     #         f"Each `Person` has a `relationships` property containing at least one `{sg.Relation().alias()}`. "
@@ -202,22 +209,25 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
     #     ))
     next(gxhs).exhibitStreamlit()
     st.markdown(_k(
-        f"The total profile of this plot matches that of the *Person-Hours by Gender* plot in the previous section; "
-        f"it's only the division of the total profile among the categories which differs. "
-        f"Some hypotheses presented in that subsection are confirmed here. "
-        f"I don't spend that much time overall with family, "
-        f"and the time I do is concentrated in spikes when I visit my dad's family and around holidays. "
-        f"It appears that most of the dip in 2021-02 comes from "
-        f"a sharp reduction in time with {sg.Colleague().alias()}s, "
-        f"but I don't recall what happened at work which would have caused that reduction.\n\n"
-        f"In 2022, the scant social time contained almost no time with "
-        f"`{sg.Family().alias()}` or `{sg.Colleague().alias()}`s. "
-        f"It's also when I have the most time with `{sg.Acquaintance().alias()}`s logged. "
-        f"But I hesitate to conclude much from that observation, because in 2022 I was more consistent in logging "
-        f"time spent with `{sg.Acquaintance().alias()}`s than in other periods due to the overall low social time. "
-        f"\n\n**Future work**\n\n"
-        f"- Analyze other demographics, including age and shared activities\n"
-    ))
+        "The total profile of this plot matches that of the *Person-Hours by Gender* plot in the previous section; "
+        "it's only the division of the total profile among the categories which differs. "
+        "Some hypotheses presented in that subsection are confirmed here. "
+        "I don't spend that much time overall with family, "
+        "and the time I do is concentrated in spikes when I visit my dad's family and around holidays. "
+        "It appears that most of the dip in 2021-02 comes from "
+        "a sharp reduction in time with {0}s, "
+        "but I don't recall what happened at work which would have caused that reduction.\n\n"
+        "In 2022, the scant social time contained almost no time with "
+        "{1} or {0}s. "
+        "It's also when I have the most time with {2}s logged. "
+        "But I hesitate to conclude much from that observation, because in 2022 I was more consistent in logging "
+        "time spent with {2}s than in other periods due to the overall low social time. "
+        "\n\n**Future work**\n\n"
+        "- Analyze other demographics, including age and shared activities\n")
+        .format(_ebt(sg.Colleague()),
+                _ebt(sg.Family()),
+                _ebt(sg.Acquaintance()),)
+    )
 
 if __name__ == '__main__':
     main(os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl'))

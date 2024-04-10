@@ -262,7 +262,7 @@ class Metaproject(SingleInstanceColumn, ColoredAliasable):
         """
         return {
                'en_US': lambda slf: slf.en_US,
-               'es_MX': lambda slf: slf.name.replace('_', ' '),
+               'es_MX': lambda slf: slf.es_MX if slf.es_MX != '' else slf.name.replace('_', ' '),
             }
 
     @staticmethod
@@ -290,11 +290,13 @@ class Metaproject(SingleInstanceColumn, ColoredAliasable):
                            ),
             cls.ACADEMICO: c(
                 color=(60, 160, 30),
-                en_US='ACADEMICS'
+                en_US='ACADEMICS',
+                es_MX='ACADÉMICO',
                              ),
             cls.LOGISTICA: c(
                 color=(120, 200, 190),
-                en_US='LOGISTICS'
+                en_US='LOGISTICS',
+                es_MX='LOGÍSTICA',
                              ),
             cls.RECREO: c(
                 color=(0, 220, 250),
