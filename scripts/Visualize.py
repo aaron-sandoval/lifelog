@@ -26,7 +26,8 @@ import seaborn as sns
 
 
 global babelx  # Babel extractor wrapper, must be accessible everywhere in the module
-babelx = i18n.BabelIntermediateExtractor(extract=True, locale=i18n.lang_en, bufferSize=50)  # Sets builtins '_a', '_b'
+# babelx = i18n.BabelIntermediateExtractor(extract=True, locale=i18n.lang_en, bufferSize=50)  # Sets builtins '_a', '_b'
+babelx = i18n.babelx
 STR_BACKEND = _k('👀 *Peek into the Backend*')
 
 
@@ -35,7 +36,7 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
     def babelExtractEnumLike() -> None:
         # classes = kiwilib.getAllSubclasses(kiwilib.HierarchicalEnum)
         for c in kiwilib.getAllSubclasses(kiwilib.HierarchicalEnum):
-            _a(c())
+            _e(c())
             # _a(c)
         babelx.flush()
 
@@ -49,7 +50,7 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
         toks = tsds.timesheetdf.tokenCounter()
         toks = toks[:bisect_right(-toks.values, -minTokCount)]
         for tok in toks.index:
-            _a(tok)
+            _t(tok)
         babelx.flush()
 
     global babelx

@@ -24,24 +24,29 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
 
     # Section introduction
     st.markdown(_k(
-        f"Much of the design work in this project has been in abstracting as much as possible about daily activities"
-        f" into data structures like `Project`, `Tag`, `Collectible`, etc. "
-        f"At the top of the `Project` taxonomy is the `Metaproject`, "
-        f"a set of 5 broad categories which together contain every `Project`. "
-        f"This is a useful data feature to begin with in a top-down analysis approach, "
-        f"since major shifts in lifestyle are evident while smaller details don't muddy the waters.\n\n"
-        f"- `Metaproject.{Global.Metaproject.CARRERA.alias()}`: Working, career planning\n"
-        f"- `Metaproject.{Global.Metaproject.ACADEMICO.alias()}`: Studying, independent learning and projects\n"
-        f"- `Metaproject.{Global.Metaproject.LOGISTICA.alias()}`: Transport, researching, email, chores, "
-        f"the 'everything else' bucket\n"
-        f"- `Metaproject.{Global.Metaproject.RECREO.alias()}`: Fun stuff\n"
-        f"- `Metaproject.{Global.Metaproject.DORMIR.alias()}`: :sleeping:\n\n"
-        f"Errors in `Metaproject` attribution mostly come from `Project` instances which don't cleanly fit into a "
-        f"single `Metaproject`. "
-        f"For example, `Project.{Global.Project.CICLISMO.alias()}` contains tasks for both rec riding and "
-        f"bike maintenance, which belong to `Metaproject.{Global.Metaproject.RECREO.alias()}` and "
-        f"`Metaproject.{Global.Metaproject.LOGISTICA.alias()}`, respectively. "
-        f"Some of these split attribution cases have been handled in data cleaning, but I haven't caught all of them."
+        "Much of the design work in this project has been in abstracting as much as possible about daily activities"
+        " into data structures like `Project`, `Tag`, `Collectible`, etc. "
+        "At the top of the `Project` taxonomy is the `Metaproject`, "
+        "a set of 5 broad categories which together contain every `Project`. "
+        "This is a useful data feature to begin with in a top-down analysis approach, "
+        "since major shifts in lifestyle are evident while smaller details don't muddy the waters.\n\n"
+        "- {0}: Working, career planning\n"
+        "- {1}: Studying, independent learning and projects\n"
+        "- {2}: Transport, researching, email, chores, the 'everything else' bucket\n"
+        "- {3}: Fun stuff\n"
+        "- {4}: :sleeping:\n\n"
+        "Errors in `Metaproject` attribution mostly come from `Project` instances which don't cleanly fit into a "
+        "single `Metaproject`. "
+        "For example, `Project.{5}` contains tasks for both rec riding and "
+        "bike maintenance, which belong to {3} and {2}, respectively. "
+        "Some of these split attribution cases have been handled in data cleaning, but I haven't caught all of them."
+        .format(_ebt(Global.Metaproject.CARRERA),
+                _ebt(Global.Metaproject.ACADEMICO),
+                _ebt(Global.Metaproject.LOGISTICA),
+                _ebt(Global.Metaproject.RECREO),
+                _ebt(Global.Metaproject.DORMIR),
+                _e(Global.Project.CICLISMO),
+                )
     ))
     st.divider()
 
@@ -50,7 +55,7 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
     # Duration by Metaproject per Day, Averaged over 1 Week
     next(gxhs).exhibitStreamlit()
     st.markdown(_k(
-            "I like how this plot illstrates the phases of my adult life with different `Metaproject` focus. "
+            "I like how this plot illustrates the phases of my adult life with different `Metaproject` focus. "
             "You can easily see the shifts from grad school, to working, to long-haul cycle touring in 2022, "
             "and to independent study in 2023. "
             "\n\nThere's so much to see in the details of this plot. "
@@ -62,12 +67,15 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
             "\n\nOr comparing how overworked I was in grad school vs in the busiest periods in my first job. "
             "Grad school was consistently more consuming than work, with only 2 spikes around 2021-01 coming close. "
             "\n\nOr how as my studies in Spring 2018 gradually ate up more time over the course of the semester, "
-            "it was mostly `Recreation` which was sacrificed, `Sleep` only dropping a bit. "
+            "it was mostly {0} which was sacrificed, {1} only dropping a bit. "
             "\n\n**Future work**\n\n"
             "- Check out the spikes about 24 hours noted above.\n"
             "- Add labels for smaller events like the short cycle tours in 2019 and 2021.\n"
-            "- Split this plot into 2 subplots looking at weekdays and weekends."
-        ))
+            "- Split this plot into 2 subplots looking at weekdays and weekends.")
+            .format(_ebt(Global.Metaproject.RECREO),
+                    _ebt(Global.Metaproject.DORMIR)
+                    )
+        )
 
 
 if __name__ == '__main__':

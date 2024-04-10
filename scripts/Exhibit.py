@@ -5,15 +5,21 @@ import os
 import sys
 sys.path.append(os.curdir)
 from src.TimesheetGlobals import rootProjectPath, Privacy
-from scripts.Visualize import GraphicExhibit
+from scripts.Visualize import GraphicExhibit, babelx
+from i18n_l10n.internationalization import lang_en, lang_es
 
 
 def main(path: str = os.path.join(rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):
     def exhibitHeader():
+        locale = st.selectbox(label='Language/Idioma', options=['English', 'Español'])
+        locale = {'English': lang_en, 'Español': lang_es}[locale]
+        st.markdown({lang_en: 'Hello', lang_es: "Hola"}[locale])
+        babelx.setLang(locale)
+        st.markdown(_k('Genre.Fiction'))
         st.title('Deep Lifelog Data Analysis DEMO')
         st.markdown('[Github](https://github.com/aaron-sandoval/lifelog)')
         st.header('Introduction')
-        st.markdown(
+        st.markdown(_k(
             "Welcome to Deep Lifelog, my first serious data analysis project! "
             "Since I started grad school in September 2017, I've collected continuous time series tabular data "
             "on my daily activities. "
@@ -34,20 +40,10 @@ def main(path: str = os.path.join(rootProjectPath(), 'VS_Persistent', 'figs_PUBL
             "this project is also a mode of introspection, one more objective than fallible memory. "
             "Of course, this is all going to be much more interesting to me that it is to anyone else, "
             "so I'll try to focus on relatable ideas before diving down weird rabbit holes."
-        )
+        ))
         st.divider()
 
-    # gxhs = loadData(path)
-
     exhibitHeader()
-    # for i, gxh in enumerate(gxhs):
-    #     if i == 0 or gxh.section != gxhs[i-1].section:
-    #         gxh.section.exhibitStreamlitEnter()
-    #     st.divider()
-    #     gxh.exhibitStreamlit()
-    #     st.divider()
-    #     if i == len(gxhs)-1 or gxh.section != gxhs[i+1].section:
-    #         gxh.section.exhibitStreamlitExit()
 
 
 @st.cache_data

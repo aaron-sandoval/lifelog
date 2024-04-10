@@ -12,7 +12,7 @@ import shutil
 import sys
 from pathlib import Path
 import pickle
-import time
+from functools import cached_property, lru_cache
 from datetime import datetime, timedelta, date
 import portion as P
 from enum import Enum
@@ -336,7 +336,7 @@ class Project(SingleInstanceColumn, ColoredAliasable):
         """
         return {
            'en_US': lambda slf: slf.en_US if slf.en_US != '' else slf.name.replace('_', ' '),
-           'es_MX': lambda slf: slf.name.replace('_', ' ') if slf.es_MX == '' else slf.es_MX,
+           'es_MX': lambda slf: slf.es_MX if slf.es_MX != '' else slf.name.replace('_', ' '),
         }
 
     @staticmethod
@@ -760,22 +760,30 @@ class EpochScheme(i18n.AliasableEnum):
             return kiwilib.mapOverListLike(lambda x: EpochScheme.id(self, x), dt)
         return self.scheme[dt][0]
 
-    def labelDT(self, dt: Union[datetime, Iterable[datetime]], locale: str = 'en_US') -> Union[str, Iterable[str]]:
+    def labelDT(self,
+                dt: Union[datetime, Iterable[datetime]],
+                locale: str = i18n.locale_to_str[i18n.babelx.curLocale]
+                ) -> Union[str, Iterable[str]]:
         """
         String returned is dependent on the specified locale. If unspecified, self.defaultLocale() is used.
         :param dt: Datetimes to be mapped to epoch groups.
         :param locale: String representation of locale. See epochGroupAliasFuncs() for allowable locale values.
         :return: string representation of the epoch group containing dt for an EpochScheme
         """
+        # if locale is None:
+        #     locale = i18n.locale_to_str[i18n.babelx.curLocale]
         if is_list_like(dt):
             return kiwilib.mapOverListLike(lambda x: EpochScheme.labelDT(self, x, locale), dt)
         return self._epochGroupAliasFuncs()[locale](self, dt)
 
-    def sortedEpochGroupNames(self, locale: str = 'en_US') -> List[str]:
-        if not hasattr(self, '_sortedEpochGroupNames'):
-            temp = {self.labelDT(iv.lower, locale=locale): iv.lower for iv in self.scheme.keys()}
-            self._sortedEpochGroupNames: List[str] = sorted(temp.keys(), key=lambda x: temp[x])
-        return self._sortedEpochGroupNames
+    def sortedEpochGroupNames(self, locale: str = None) -> List[str]:
+        @lru_cache(maxsize=8)
+        def sortedEpochs(epsc: EpochScheme):
+            return [iv.lower for iv in epsc.scheme.keys()]
+        if locale is None:
+            # Can't set as default in function args due to some unwanted caching behind the scenes
+            locale = i18n.locale_to_str[i18n.babelx.curLocale]
+        return [self.labelDT(e, locale=locale) for e in sortedEpochs(self)]
 
     @classmethod
     def _epochGroupAliasFuncs(cls):
@@ -798,7 +806,7 @@ class EpochScheme(i18n.AliasableEnum):
     MP_COARSE_ATOMIC = 5
 
     @classmethod
-    def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
+    def _enum_data(cls) -> Dict['EpochScheme', 'Type[DataclassValuedEnum]._DATACLASS']:
         c = cls.dataclass
         return {
             cls.INDIVIDUAL: c(

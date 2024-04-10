@@ -34,6 +34,7 @@ localeDict = {
     'en_US': lang_en,
     'es_MX': lang_es,
 }
+locale_to_str = {v: k for k, v in localeDict.items()}
 
 
 class BabelIntermediateExtractor:
@@ -59,7 +60,7 @@ class BabelIntermediateExtractor:
         self.words = set()  # Existing set of words, all languages together, read from the intermediate file.
         self.newWords = set()  # New words found via extract() not yet present in self.words
         self.bufferSize = bufferSize  # Num words to accumulate in self.newWords before appending contents to self.file
-        self.curLocale = None  # Current language assigned by last call to self.setLang().
+        self.curLocale: gettext.GNUTranslations = None  # Current language assigned by last call to self.setLang().
         self.setLang(locale)
         self.firstWrite = True  # Stores if the object has or hasn't yet written via flush().
         if extract:
@@ -93,7 +94,7 @@ class BabelIntermediateExtractor:
             locale = self.curLocale
         if not isinstance(x, str):
             x = str(x)
-        strings = x.split('\n\n')
+        strings = x.split('\n\n')  # TODO: incorporate nltk sentence splitter
         for s in strings:
             if s not in self.words and s not in self.newWords:
                 self.newWords.add(s)
@@ -115,24 +116,26 @@ class BabelIntermediateExtractor:
         _a: simple gettext, no postprocessing
         _b: simple gettext for the alternate language specified in cls._langAlts
         _k: 'keep capitalization': Duplicates functionality of _a. Uses: titles
-        _e: 'enums': Uses: Enum and HierarchicalEnum subclasses whose presented capitalization should all be the same.
+        _e: 'enums': Uses: kiwilib.Aliasable instances that contain their own translation data. Only standardize caps.
+        _ebt: 'enum backticks': Uses: Same as `_e` but surrounds output with backticks for markdown printing.
         _t: 'tokens': Uses: Description tokens and strings, whose presented capitalization should be uniform.
         :param locale: Locale to set
         """
-        # global _a, _b
         self.curLocale = locale
         if not self.toExtract:  # Normal gettext functions
             builtins._a = locale.gettext
             builtins._b = self._langAlts[locale][0].gettext
             builtins._k = locale.gettext
-            builtins._e = lambda x: locale.gettext(x).upper()
+            builtins._e = lambda x: x.alias(locale_to_str[locale]).upper()
+            builtins._ebt = lambda x: ''.join(['`', x.alias(locale_to_str[locale]).upper(), '`'])
             builtins._t = lambda x: locale.gettext(x).capitalize()
             # locale.install()
         else:  # Extract and return normal gettext
             builtins._a = self.extract
             builtins._b = lambda x: self.extract(x, self._langAlts[locale][0])
             builtins._k = self.extract
-            builtins._e = lambda x: self.extract(x).upper()
+            builtins._e = lambda x: x.alias(locale_to_str[locale]).upper()
+            builtins._ebt = lambda x: ''.join(['`', x.alias(locale_to_str[locale]).upper(), '`'])
             builtins._t = lambda x: self.extract(x).capitalize()
         # print(f'***SETTING LOCALE***\n  _a(): {locale._info["language"]}\n'
         #       f'  _b(): {self._langAlts[locale][0]._info["language"]}\n')
@@ -143,11 +146,14 @@ class BabelIntermediateExtractor:
             return
         with open(self.file, 'a', encoding='utf-8') as f:
             if self.firstWrite:
-                f.write(f'\n***WRITE*** {datetime.now()}\nExtraction summary: \n')
+                f.write(f'\n***WRITE*** {datetime.now()}\nPlease write extraction summary: \n')
                 self.firstWrite = False
             f.writelines([''.join(['_(', repr(s), ')\n']) for s in self.newWords])
         self.words.update(self.newWords)
         self.newWords.clear()
+
+
+babelx = BabelIntermediateExtractor(extract=True, locale=lang_en, bufferSize=50)
 
 
 # @kiwilib.DataclassValuedEnum.init
@@ -164,9 +170,14 @@ class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
     def aliasFuncs(cls) -> Dict[str, Callable]:
         return {
            'en_US': lambda slf: slf.en_US if slf.en_US != "" else slf.name.replace('_', ' '),
-           'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name.replace('_', ' '),
+           'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name.replace('_', ' ')+'o',
         }
 
+    # def alias(self, locale: str = None):
+    #     if locale is None:
+    #         # Can't set as default in function args due to some unwanted caching behind the scenes
+    #         locale = locale_to_str[babelx.curLocale]
+    #     return self._aliasFuncs[locale](self)
 
 def test2():
     babelx = BabelIntermediateExtractor(extract=False, locale=lang_es, bufferSize=5)
@@ -177,5 +188,5 @@ def test2():
     # _a()
 
 
-if __name__ == '__main__':
-    test2()
+# if __name__ == '__main__':
+#     test2()
