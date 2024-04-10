@@ -44,6 +44,7 @@ def main(path: str = os.path.join(rootProjectPath(), 'VS_Persistent', 'figs_PUBL
         st.divider()
 
     exhibitHeader()
+    babelx.flush()
 
 
 @st.cache_data

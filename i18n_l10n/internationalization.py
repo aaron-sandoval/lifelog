@@ -146,7 +146,7 @@ class BabelIntermediateExtractor:
             return
         with open(self.file, 'a', encoding='utf-8') as f:
             if self.firstWrite:
-                f.write(f'\n***WRITE*** {datetime.now()}\nPlease write extraction summary: \n')
+                f.write(f'\n***WRITE*** {datetime.now()}\nEXTRACTION SUMMARY (MANUAL ENTRY): \n')
                 self.firstWrite = False
             f.writelines([''.join(['_(', repr(s), ')\n']) for s in self.newWords])
         self.words.update(self.newWords)

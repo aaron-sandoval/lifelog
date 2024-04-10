@@ -33,9 +33,9 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         'These tasks no longer count toward measurements of sleep time duration. '
         'Change reduces the upward bias of sleep durations.\n\n'
         '*2023-12-13*: Began explicitly logging all sleep tasks instead of assuming untracked intervals are sleep. '
-        'Change disambiguates naps from occasional erroneously unlogged intervals.'
+        'Change disambiguates naps from occasional erroneously unlogged intervals.')
         .format(_e(Global.Project.DORMIR))
-    ))
+    )
     st.divider()
 
     # Graphics

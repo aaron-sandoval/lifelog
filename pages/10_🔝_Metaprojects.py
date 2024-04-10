@@ -39,7 +39,7 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
         "single `Metaproject`. "
         "For example, `Project.{5}` contains tasks for both rec riding and "
         "bike maintenance, which belong to {3} and {2}, respectively. "
-        "Some of these split attribution cases have been handled in data cleaning, but I haven't caught all of them."
+        "Some of these split attribution cases have been handled in data cleaning, but I haven't caught all of them.")
         .format(_ebt(Global.Metaproject.CARRERA),
                 _ebt(Global.Metaproject.ACADEMICO),
                 _ebt(Global.Metaproject.LOGISTICA),
@@ -47,7 +47,7 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
                 _ebt(Global.Metaproject.DORMIR),
                 _e(Global.Project.CICLISMO),
                 )
-    ))
+    )
     st.divider()
 
     # Graphics

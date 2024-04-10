@@ -209,7 +209,8 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
     #     ))
     next(gxhs).exhibitStreamlit()
     st.markdown(_k(
-        "The total profile of this plot matches that of the *Person-Hours by Gender* plot in the previous section; "
+        "The total profile of this plot exactly matches that of the *Average Person-Hours by Gender* plot "
+        "in the previous section; "
         "it's only the division of the total profile among the categories which differs. "
         "Some hypotheses presented in that subsection are confirmed here. "
         "I don't spend that much time overall with family, "
