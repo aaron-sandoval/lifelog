@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2023 ORGANIZATION
+# Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-18 10:17-0600\n"
+"POT-Creation-Date: 2024-04-16 12:38-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,1023 +17,1738 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: babel_intermediate.txt:9
-msgid "Genre.Fiction"
-msgstr ""
-
-#: babel_intermediate.txt:10
-msgid "SocialGroup.ActivityBike"
-msgstr ""
-
-#: babel_intermediate.txt:11
-msgid "Genre"
-msgstr ""
-
-#: babel_intermediate.txt:12
-msgid "SocialGroup.Friend"
-msgstr ""
-
 #: babel_intermediate.txt:13
-msgid "SocialGroup.ActivityHospitality"
-msgstr ""
-
-#: babel_intermediate.txt:14
-msgid "SocialGroup.ActivityRoommate"
-msgstr ""
-
-#: babel_intermediate.txt:15
-msgid "Genre.Drama"
-msgstr ""
-
-#: babel_intermediate.txt:16
-msgid "SocialGroup.ActivityGames"
-msgstr ""
-
-#: babel_intermediate.txt:17
-msgid "SocialGroup.Family"
-msgstr ""
-
-#: babel_intermediate.txt:18
-msgid "SocialGroup.Relation"
-msgstr ""
-
-#: babel_intermediate.txt:19
-msgid "SocialGroup.ColleagueWork"
-msgstr ""
-
-#: babel_intermediate.txt:20
-msgid "SocialGroup"
-msgstr ""
-
-#: babel_intermediate.txt:21
-msgid "SocialGroup.ActivityMusic"
-msgstr ""
-
-#: babel_intermediate.txt:22
-msgid "Genre.NonFiction"
-msgstr ""
-
-#: babel_intermediate.txt:23
-msgid "SocialGroup.Colleague"
-msgstr ""
-
-#: babel_intermediate.txt:24
-msgid "Genre.Fantasy"
-msgstr ""
-
-#: babel_intermediate.txt:25
-msgid "Genre.GenreUndefined"
-msgstr ""
-
-#: babel_intermediate.txt:26
-msgid "Genre.Historical"
-msgstr ""
-
-#: babel_intermediate.txt:27
-msgid "SocialGroup.ColleagueBall"
-msgstr ""
-
-#: babel_intermediate.txt:28
-msgid "Genre.Comedy"
-msgstr ""
-
-#: babel_intermediate.txt:29
-msgid "SocialGroup.FamilyMom"
-msgstr ""
-
-#: babel_intermediate.txt:30
-msgid "SocialGroup.Superior"
-msgstr ""
-
-#: babel_intermediate.txt:31
-msgid "Genre.Educational"
-msgstr ""
-
-#: babel_intermediate.txt:32
-msgid "SocialGroup.FamilyNuclear"
-msgstr ""
-
-#: babel_intermediate.txt:33
-msgid "Genre.Mystery"
-msgstr ""
-
-#: babel_intermediate.txt:34
-msgid "Genre.SciFi"
-msgstr ""
-
-#: babel_intermediate.txt:35
-msgid "SocialGroup.Subordinate"
-msgstr ""
-
-#: babel_intermediate.txt:36
-msgid "SocialGroup.Activity"
-msgstr ""
-
-#: babel_intermediate.txt:37
-msgid "Genre.SelfHelp"
-msgstr ""
-
-#: babel_intermediate.txt:38
-msgid "SocialGroup.ActivityProductive"
-msgstr ""
-
-#: babel_intermediate.txt:39
-msgid "SocialGroup.ActivityWork"
-msgstr ""
-
-#: babel_intermediate.txt:40
-msgid "SocialGroup.SocialGroupUndefined"
-msgstr ""
-
-#: babel_intermediate.txt:41
-msgid "SocialGroup.ActivityTravel"
-msgstr ""
-
-#: babel_intermediate.txt:42
-msgid "SocialGroup.ColleagueBallOPIR"
-msgstr ""
-
-#: babel_intermediate.txt:43
-msgid "SocialGroup.ActivityRecreational"
-msgstr ""
-
-#: babel_intermediate.txt:44
-msgid "SocialGroup.ColleagueBallStructures"
-msgstr ""
-
-#: babel_intermediate.txt:45
-msgid "SocialGroup.WarmshowersHospitality"
-msgstr ""
-
-#: babel_intermediate.txt:46
-msgid "SocialGroup.MultiplePeople"
-msgstr ""
-
-#: babel_intermediate.txt:47
-msgid "SocialGroup.FamilyDad"
-msgstr ""
-
-#: babel_intermediate.txt:48
-msgid "SocialGroup.ActivityStudy"
-msgstr ""
-
-#: babel_intermediate.txt:49
-msgid "SocialGroup.ColleagueAcademic"
-msgstr ""
-
-#: babel_intermediate.txt:50
-msgid "SocialGroup.Peer"
-msgstr ""
-
-#: babel_intermediate.txt:53
 msgid "REUNIÓN"
 msgstr ""
 
-#: babel_intermediate.txt:54
+#: babel_intermediate.txt:14
 msgid "PPT"
 msgstr ""
 
-#: babel_intermediate.txt:55
+#: babel_intermediate.txt:15
 msgid "TEMAS"
 msgstr ""
 
-#: babel_intermediate.txt:56
+#: babel_intermediate.txt:16
 msgid "STRAVA"
 msgstr ""
 
-#: babel_intermediate.txt:57
+#: babel_intermediate.txt:17
 msgid "GEOGUESSR"
 msgstr ""
 
-#: babel_intermediate.txt:58
+#: babel_intermediate.txt:18
 msgid "PLANEAR"
 msgstr ""
 
-#: babel_intermediate.txt:59
+#: babel_intermediate.txt:19
 msgid "SACAR"
 msgstr ""
 
-#: babel_intermediate.txt:60
+#: babel_intermediate.txt:20
 msgid "VOLUNTAR"
 msgstr ""
 
-#: babel_intermediate.txt:61
+#: babel_intermediate.txt:21
 msgid "REPASO SEMANAL"
 msgstr ""
 
-#: babel_intermediate.txt:62
+#: babel_intermediate.txt:22
 msgid "DORMIR"
 msgstr ""
 
-#: babel_intermediate.txt:63
+#: babel_intermediate.txt:23
 msgid "LAVAR"
 msgstr ""
 
-#: babel_intermediate.txt:64
+#: babel_intermediate.txt:24
 msgid "PRACTICAR"
 msgstr ""
 
-#: babel_intermediate.txt:65
+#: babel_intermediate.txt:25
 msgid "LEER"
 msgstr ""
 
-#: babel_intermediate.txt:66
+#: babel_intermediate.txt:26
 msgid "JUGAR"
 msgstr ""
 
-#: babel_intermediate.txt:67
+#: babel_intermediate.txt:27
 msgid "HIGIENE"
 msgstr ""
 
-#: babel_intermediate.txt:68
+#: babel_intermediate.txt:28
 msgid "DUCHARSE"
 msgstr ""
 
-#: babel_intermediate.txt:69
+#: babel_intermediate.txt:29
 msgid "DESEMPACAR"
 msgstr ""
 
-#: babel_intermediate.txt:70
+#: babel_intermediate.txt:30
 msgid "MANTENER"
 msgstr ""
 
-#: babel_intermediate.txt:71
+#: babel_intermediate.txt:31
 msgid "CHARLAR"
 msgstr ""
 
-#: babel_intermediate.txt:72
+#: babel_intermediate.txt:32
 msgid "MONTAR"
 msgstr ""
 
-#: babel_intermediate.txt:73
+#: babel_intermediate.txt:33
 msgid "FF1"
 msgstr ""
 
-#: babel_intermediate.txt:74
+#: babel_intermediate.txt:34
 msgid "ESTIRARSE"
 msgstr ""
 
-#: babel_intermediate.txt:75
+#: babel_intermediate.txt:35
 msgid "BICI"
 msgstr ""
 
-#: babel_intermediate.txt:76
+#: babel_intermediate.txt:36
 msgid "NX"
 msgstr ""
 
-#: babel_intermediate.txt:77
+#: babel_intermediate.txt:37
 msgid "INVESTIGAR"
 msgstr ""
 
-#: babel_intermediate.txt:78
+#: babel_intermediate.txt:38
 msgid "PERSONAL"
 msgstr ""
 
-#: babel_intermediate.txt:79
+#: babel_intermediate.txt:39
 msgid "PYTHON"
 msgstr ""
 
-#: babel_intermediate.txt:80
+#: babel_intermediate.txt:40
 msgid "COMESTIBLES"
 msgstr ""
 
-#: babel_intermediate.txt:81
+#: babel_intermediate.txt:41
 msgid "ESCUCHAR"
 msgstr ""
 
-#: babel_intermediate.txt:82
+#: babel_intermediate.txt:42
 msgid "EMAIL"
 msgstr ""
 
-#: babel_intermediate.txt:83
+#: babel_intermediate.txt:43
 msgid "SITIO DE CAMPING"
 msgstr ""
 
-#: babel_intermediate.txt:84
+#: babel_intermediate.txt:44
 msgid "MÚSICA"
 msgstr ""
 
-#: babel_intermediate.txt:85
+#: babel_intermediate.txt:45
 msgid "ARREGLAR"
 msgstr ""
 
-#: babel_intermediate.txt:86
+#: babel_intermediate.txt:46
 msgid "CANCIONES"
 msgstr ""
 
-#: babel_intermediate.txt:87
+#: babel_intermediate.txt:47
 msgid "EL DÍA"
 msgstr ""
 
-#: babel_intermediate.txt:88
+#: babel_intermediate.txt:48
 msgid "HABLAR"
 msgstr ""
 
-#: babel_intermediate.txt:89
+#: babel_intermediate.txt:49
 msgid "COMPRAR"
 msgstr ""
 
-#: babel_intermediate.txt:90
+#: babel_intermediate.txt:50
 msgid "EXCEL"
 msgstr ""
 
-#: babel_intermediate.txt:91
+#: babel_intermediate.txt:51
 msgid "LA ROPA"
 msgstr ""
 
-#: babel_intermediate.txt:92
+#: babel_intermediate.txt:52
 msgid "CICLOTURISMO"
 msgstr ""
 
-#: babel_intermediate.txt:93
+#: babel_intermediate.txt:53
 msgid "TAMBORES"
 msgstr ""
 
-#: babel_intermediate.txt:94
+#: babel_intermediate.txt:54
 msgid "PREPARAR"
 msgstr ""
 
-#: babel_intermediate.txt:95
+#: babel_intermediate.txt:55
 msgid "EMPACAR"
 msgstr ""
 
-#: babel_intermediate.txt:96
+#: babel_intermediate.txt:56
 msgid "FC"
 msgstr ""
 
-#: babel_intermediate.txt:97
+#: babel_intermediate.txt:57
 msgid "CASA A BCH"
 msgstr ""
 
-#: babel_intermediate.txt:98
+#: babel_intermediate.txt:58
 msgid "COCINAR"
 msgstr ""
 
-#: babel_intermediate.txt:99
+#: babel_intermediate.txt:59
 msgid "EXPLORAR"
 msgstr ""
 
-#: babel_intermediate.txt:100
+#: babel_intermediate.txt:60
 msgid "PENSAR"
 msgstr ""
 
-#: babel_intermediate.txt:101
+#: babel_intermediate.txt:61
 msgid "ESCRIBIR"
 msgstr ""
 
-#: babel_intermediate.txt:102
+#: babel_intermediate.txt:62
 msgid "YOUTUBE"
 msgstr ""
 
-#: babel_intermediate.txt:103
+#: babel_intermediate.txt:63
 msgid "CASA A RA-11"
 msgstr ""
 
-#: babel_intermediate.txt:104
+#: babel_intermediate.txt:64
 msgid "RECICLAJE"
 msgstr ""
 
-#: babel_intermediate.txt:105
+#: babel_intermediate.txt:65
 msgid "CASA"
 msgstr ""
 
-#: babel_intermediate.txt:106
+#: babel_intermediate.txt:66
 msgid "CASA A BOULDER"
 msgstr ""
 
-#: babel_intermediate.txt:107
+#: babel_intermediate.txt:67
 msgid "BOULDER A CASA"
 msgstr ""
 
-#: babel_intermediate.txt:108
+#: babel_intermediate.txt:68
 msgid "AUTO"
 msgstr ""
 
-#: babel_intermediate.txt:109
+#: babel_intermediate.txt:69
 msgid "CORNELL A CASA"
 msgstr ""
 
-#: babel_intermediate.txt:110
+#: babel_intermediate.txt:70
 msgid "CASA A CORNELL"
 msgstr ""
 
-#: babel_intermediate.txt:111
+#: babel_intermediate.txt:71
 msgid "DOCUMENTOS"
 msgstr ""
 
-#: babel_intermediate.txt:112
+#: babel_intermediate.txt:72
 msgid "NORTHGLENN A CASA"
 msgstr ""
 
-#: babel_intermediate.txt:113
+#: babel_intermediate.txt:73
 msgid "BCH A NORTHGLENN"
 msgstr ""
 
-#: babel_intermediate.txt:114
+#: babel_intermediate.txt:74
 msgid "ROCK BAND"
 msgstr ""
 
-#: babel_intermediate.txt:115
+#: babel_intermediate.txt:75
 msgid "POLÍTICA DE BOULDER"
 msgstr ""
 
-#: babel_intermediate.txt:116
+#: babel_intermediate.txt:76
 msgid "LOGÍSTICA"
 msgstr ""
 
-#: babel_intermediate.txt:117
+#: babel_intermediate.txt:77
 msgid "RA-11 A CASA"
 msgstr ""
 
-#: babel_intermediate.txt:118
+#: babel_intermediate.txt:78
 msgid "CARRERA"
 msgstr ""
 
-#: babel_intermediate.txt:119
+#: babel_intermediate.txt:79
 msgid "MEJORAR"
 msgstr ""
 
-#: babel_intermediate.txt:120
+#: babel_intermediate.txt:80
 msgid "A"
 msgstr ""
 
-#: babel_intermediate.txt:121
+#: babel_intermediate.txt:81
 msgid "BCH A CASA"
 msgstr ""
 
-#: babel_intermediate.txt:122
+#: babel_intermediate.txt:82
 msgid "CASA A NORTHGLENN"
 msgstr ""
 
-#: babel_intermediate.txt:123
+#: babel_intermediate.txt:83
 msgid "ADCS"
 msgstr ""
 
-#: babel_intermediate.txt:124
+#: babel_intermediate.txt:84
 msgid "SIMULINK"
 msgstr ""
 
-#: babel_intermediate.txt:125
+#: babel_intermediate.txt:85
 msgid "CARTAS"
 msgstr ""
 
-#: babel_intermediate.txt:126
+#: babel_intermediate.txt:86
 msgid "BOULDER FOOD RESCUE"
 msgstr ""
 
-#: babel_intermediate.txt:127
+#: babel_intermediate.txt:87
 msgid "CITAS EN LÍNEA"
 msgstr ""
 
-#: babel_intermediate.txt:128
+#: babel_intermediate.txt:88
 msgid "EQUIPO DE CASA"
 msgstr ""
 
-#: babel_intermediate.txt:129
+#: babel_intermediate.txt:89
 msgid "JUEGOS DE MESA"
 msgstr ""
 
-#: babel_intermediate.txt:130
+#: babel_intermediate.txt:90
 msgid "VIDEOLLAMADA"
 msgstr ""
 
-#: babel_intermediate.txt:131
+#: babel_intermediate.txt:91
 msgid "NOTICIAS"
 msgstr ""
 
-#: babel_intermediate.txt:132
+#: babel_intermediate.txt:92
 msgid "COMPOST"
 msgstr ""
 
-#: babel_intermediate.txt:133
+#: babel_intermediate.txt:93
 msgid "ALOJAMIENTO"
 msgstr ""
 
-#: babel_intermediate.txt:134
+#: babel_intermediate.txt:94
 msgid "RUTAS"
 msgstr ""
 
-#: babel_intermediate.txt:135
+#: babel_intermediate.txt:95
 msgid "EQUIPO DE CICLOTURISMO"
 msgstr ""
 
-#: babel_intermediate.txt:136
+#: babel_intermediate.txt:96
 msgid "MENSAJEAR"
 msgstr ""
 
-#: babel_intermediate.txt:137
+#: babel_intermediate.txt:97
 msgid "MATLAB"
 msgstr ""
 
-#: babel_intermediate.txt:138
+#: babel_intermediate.txt:98
 msgid "NORTHGLENN A BOULDER"
 msgstr ""
 
-#: babel_intermediate.txt:139
+#: babel_intermediate.txt:99
 msgid "BLOG"
 msgstr ""
 
-#: babel_intermediate.txt:140
+#: babel_intermediate.txt:100
 msgid "VESTIRSE"
 msgstr ""
 
-#: babel_intermediate.txt:141
+#: babel_intermediate.txt:101
 msgid "FRAP"
 msgstr ""
 
-#: babel_intermediate.txt:142
+#: babel_intermediate.txt:102
 msgid "FFL"
 msgstr ""
 
-#: babel_intermediate.txt:143
+#: babel_intermediate.txt:103
 msgid "NOTEPAD++"
 msgstr ""
 
-#: babel_intermediate.txt:144
+#: babel_intermediate.txt:104
 msgid "VÍDEO JUEGOS"
 msgstr ""
 
-#: babel_intermediate.txt:145
+#: babel_intermediate.txt:105
 msgid "EQUIPO DE BICI"
 msgstr ""
 
-#: babel_intermediate.txt:146
+#: babel_intermediate.txt:106
 msgid "LEETCODE"
 msgstr ""
 
-#: babel_intermediate.txt:147
+#: babel_intermediate.txt:107
 msgid "ALOJAMIENTO INTERIOR"
 msgstr ""
 
-#: babel_intermediate.txt:148
+#: babel_intermediate.txt:108
 msgid "DISCURSO"
 msgstr ""
 
-#: babel_intermediate.txt:149
+#: babel_intermediate.txt:109
 msgid "TEORÍA"
 msgstr ""
 
-#: babel_intermediate.txt:150
+#: babel_intermediate.txt:110
 msgid "APRENDER"
 msgstr ""
 
-#: babel_intermediate.txt:151
+#: babel_intermediate.txt:111
 msgid "REDDIT"
 msgstr ""
 
-#: babel_intermediate.txt:152
+#: babel_intermediate.txt:112
 msgid "LIMPIAR"
 msgstr ""
 
-#: babel_intermediate.txt:153
+#: babel_intermediate.txt:113
 msgid "MAÑANA"
 msgstr ""
 
-#: babel_intermediate.txt:154
+#: babel_intermediate.txt:114
 msgid "DIARIO"
 msgstr ""
 
-#: babel_intermediate.txt:155
+#: babel_intermediate.txt:115
 msgid "TRANSPORTE"
 msgstr ""
 
-#: babel_intermediate.txt:156
+#: babel_intermediate.txt:116
 msgid "TREN"
 msgstr ""
 
-#: babel_intermediate.txt:157
+#: babel_intermediate.txt:117
 msgid "CARTA"
 msgstr ""
 
-#: babel_intermediate.txt:158
+#: babel_intermediate.txt:118
 msgid "SENDERISMO"
 msgstr ""
 
-#: babel_intermediate.txt:159
+#: babel_intermediate.txt:119
 msgid "ALTRUISMO EFECTIVO"
 msgstr ""
 
-#: babel_intermediate.txt:160
+#: babel_intermediate.txt:120
 msgid "REPARAR"
 msgstr ""
 
-#: babel_intermediate.txt:161
+#: babel_intermediate.txt:121
 msgid "AEROPUERTO"
 msgstr ""
 
-#: babel_intermediate.txt:162
+#: babel_intermediate.txt:122
 msgid "HW03"
 msgstr ""
 
-#: babel_intermediate.txt:163
+#: babel_intermediate.txt:123
 msgid "EXAMEN"
 msgstr ""
 
-#: babel_intermediate.txt:164
+#: babel_intermediate.txt:124
 msgid "TIENDAS"
 msgstr ""
 
-#: babel_intermediate.txt:165
+#: babel_intermediate.txt:125
 msgid "OPIR"
 msgstr ""
 
-#: babel_intermediate.txt:166
+#: babel_intermediate.txt:126
 msgid "VACACIONES"
 msgstr ""
 
-#: babel_intermediate.txt:167
+#: babel_intermediate.txt:127
 msgid "MUSEO"
 msgstr ""
 
-#: babel_intermediate.txt:168
+#: babel_intermediate.txt:128
 msgid "EN CAMPUS"
 msgstr ""
 
-#: babel_intermediate.txt:169
+#: babel_intermediate.txt:129
 msgid "MUDARSE"
 msgstr ""
 
-#: babel_intermediate.txt:170
+#: babel_intermediate.txt:130
 msgid "CORREO"
 msgstr ""
 
-#: babel_intermediate.txt:171
+#: babel_intermediate.txt:131
 msgid "BOULDER A NORTHGLENN"
 msgstr ""
 
-#: babel_intermediate.txt:172
+#: babel_intermediate.txt:132
 msgid "FILOSOFÍA"
 msgstr ""
 
-#: babel_intermediate.txt:173
+#: babel_intermediate.txt:133
 msgid "ECONOMIST"
 msgstr ""
 
-#: babel_intermediate.txt:174
+#: babel_intermediate.txt:134
 msgid "ENFRIARSE"
 msgstr ""
 
-#: babel_intermediate.txt:175
+#: babel_intermediate.txt:135
 msgid "LIDERAZGO"
 msgstr ""
 
-#: babel_intermediate.txt:176
+#: babel_intermediate.txt:136
 msgid "ACTIVIDADES"
 msgstr ""
 
-#: babel_intermediate.txt:177
+#: babel_intermediate.txt:137
 msgid "INFORME"
 msgstr ""
 
-#: babel_intermediate.txt:178
+#: babel_intermediate.txt:138
 msgid "EJERCICIO"
 msgstr ""
 
-#: babel_intermediate.txt:179
+#: babel_intermediate.txt:139
 msgid "CCYCLES A CASA"
 msgstr ""
 
-#: babel_intermediate.txt:180
+#: babel_intermediate.txt:140
 msgid "NORTHGLENN A NORTHGLENN"
 msgstr ""
 
-#: babel_intermediate.txt:181
+#: babel_intermediate.txt:141
 msgid "LYFT"
 msgstr ""
 
-#: babel_intermediate.txt:182
+#: babel_intermediate.txt:142
 msgid "HW04"
 msgstr ""
 
-#: babel_intermediate.txt:183
+#: babel_intermediate.txt:143
 msgid "HW05"
 msgstr ""
 
-#: babel_intermediate.txt:184
+#: babel_intermediate.txt:144
 msgid "TOCAR"
 msgstr ""
 
-#: babel_intermediate.txt:185
+#: babel_intermediate.txt:145
 msgid "INTELIGENCIA ARTIFICIAL"
 msgstr ""
 
-#: babel_intermediate.txt:186
+#: babel_intermediate.txt:146
 msgid "CASA A CCYCLES"
 msgstr ""
 
-#: babel_intermediate.txt:187
+#: babel_intermediate.txt:147
 msgid "HW06"
 msgstr ""
 
-#: babel_intermediate.txt:188
+#: babel_intermediate.txt:148
 msgid "COMPUTADORA"
 msgstr ""
 
-#: babel_intermediate.txt:189
+#: babel_intermediate.txt:149
 msgid "BCH A BOULDER"
 msgstr ""
 
-#: babel_intermediate.txt:190
+#: babel_intermediate.txt:150
 msgid "CCYCLES"
 msgstr ""
 
-#: babel_intermediate.txt:191
+#: babel_intermediate.txt:151
 msgid "AUDACITY"
 msgstr ""
 
-#: babel_intermediate.txt:192
+#: babel_intermediate.txt:152
 msgid "BASURA"
 msgstr ""
 
-#: babel_intermediate.txt:193
+#: babel_intermediate.txt:153
 msgid "PRESENTACIÓN"
 msgstr ""
 
-#: babel_intermediate.txt:194
+#: babel_intermediate.txt:154
 msgid "TECLADO"
 msgstr ""
 
-#: babel_intermediate.txt:195
+#: babel_intermediate.txt:155
 msgid "AVIÓN"
 msgstr ""
 
-#: babel_intermediate.txt:196
+#: babel_intermediate.txt:156
 msgid "BUSCAR"
 msgstr ""
 
-#: babel_intermediate.txt:197
+#: babel_intermediate.txt:157
 msgid "ESTRUCTURA"
 msgstr ""
 
-#: babel_intermediate.txt:198
+#: babel_intermediate.txt:158
 msgid "GRABAR"
 msgstr ""
 
-#: babel_intermediate.txt:199
+#: babel_intermediate.txt:159
 msgid "GOOGLE SHEETS"
 msgstr ""
 
-#: babel_intermediate.txt:200
+#: babel_intermediate.txt:160
 msgid "CITA MÉDICA"
 msgstr ""
 
-#: babel_intermediate.txt:201
+#: babel_intermediate.txt:161
 msgid "AYUDAR"
 msgstr ""
 
-#: babel_intermediate.txt:202
+#: babel_intermediate.txt:162
 msgid "LOS PLATOS"
 msgstr ""
 
-#: babel_intermediate.txt:203
+#: babel_intermediate.txt:163
 msgid "DISCUSIÓN"
 msgstr ""
 
-#: babel_intermediate.txt:204
+#: babel_intermediate.txt:164
 msgid "TERRAFORMING MARS"
 msgstr ""
 
-#: babel_intermediate.txt:205
+#: babel_intermediate.txt:165
 msgid "FINANZAS"
 msgstr ""
 
-#: babel_intermediate.txt:206
+#: babel_intermediate.txt:166
 msgid "EVENTOS"
 msgstr ""
 
-#: babel_intermediate.txt:207
+#: babel_intermediate.txt:167
 msgid "FIESTA"
 msgstr ""
 
-#: babel_intermediate.txt:208
+#: babel_intermediate.txt:168
 msgid "VA ONE"
 msgstr ""
 
-#: babel_intermediate.txt:209
+#: babel_intermediate.txt:169
 msgid "TECNOLOGÍA"
 msgstr ""
 
-#: babel_intermediate.txt:210
+#: babel_intermediate.txt:170
 msgid "EQUIPO DE MÚSICA"
 msgstr ""
 
-#: babel_intermediate.txt:211
+#: babel_intermediate.txt:171
 msgid "BALL AEROSPACE"
 msgstr ""
 
-#: babel_intermediate.txt:212
+#: babel_intermediate.txt:172
 msgid "BIKE TO WORK DAY"
 msgstr ""
 
-#: babel_intermediate.txt:213
+#: babel_intermediate.txt:173
 msgid "BARCO"
 msgstr ""
 
-#: babel_intermediate.txt:214
+#: babel_intermediate.txt:174
 msgid "CASA A DENVER"
 msgstr ""
 
-#: babel_intermediate.txt:215
+#: babel_intermediate.txt:175
 msgid "ROPA"
 msgstr ""
 
-#: babel_intermediate.txt:216
+#: babel_intermediate.txt:176
 msgid "RESTAURANTES"
 msgstr ""
 
-#: babel_intermediate.txt:217
+#: babel_intermediate.txt:177
 msgid "MAE 5160"
 msgstr ""
 
-#: babel_intermediate.txt:218
+#: babel_intermediate.txt:178
 msgid "CAMINAR"
 msgstr ""
 
-#: babel_intermediate.txt:219
+#: babel_intermediate.txt:179
 msgid "NAND2TETRIS"
 msgstr ""
 
-#: babel_intermediate.txt:220
+#: babel_intermediate.txt:180
 msgid "MUSIC THEORY FOR THE BASS PLAYER"
 msgstr ""
 
-#: babel_intermediate.txt:221
+#: babel_intermediate.txt:181
 msgid "SOLIDWORKS"
 msgstr ""
 
-#: babel_intermediate.txt:222
+#: babel_intermediate.txt:182
 msgid "PELÍCULAS"
 msgstr ""
 
-#: babel_intermediate.txt:223
+#: babel_intermediate.txt:183
 msgid "ÉTICA"
 msgstr ""
 
-#: babel_intermediate.txt:224
+#: babel_intermediate.txt:184
 msgid "LIBROS"
 msgstr ""
 
-#: babel_intermediate.txt:225
+#: babel_intermediate.txt:185
 msgid "GRANOLA"
 msgstr ""
 
-#: babel_intermediate.txt:226
+#: babel_intermediate.txt:186
 msgid "BAR"
 msgstr ""
 
-#: babel_intermediate.txt:227
+#: babel_intermediate.txt:187
 msgid "AGUA"
 msgstr ""
 
-#: babel_intermediate.txt:228
+#: babel_intermediate.txt:188
 msgid "CONSTRUIR"
 msgstr ""
 
-#: babel_intermediate.txt:229
+#: babel_intermediate.txt:189
 msgid "A CASA"
 msgstr ""
 
-#: babel_intermediate.txt:230
+#: babel_intermediate.txt:190
 msgid "BASIS"
 msgstr ""
 
-#: babel_intermediate.txt:231
+#: babel_intermediate.txt:191
 msgid "APUNTES"
 msgstr ""
 
-#: babel_intermediate.txt:232
+#: babel_intermediate.txt:192
 msgid "ALGORITMOS"
 msgstr ""
 
-#: babel_intermediate.txt:233
+#: babel_intermediate.txt:193
 msgid "NOSTALGIA"
 msgstr ""
 
-#: babel_intermediate.txt:234
+#: babel_intermediate.txt:194
 msgid "APRENDIZAJE PROFUNDO PARA PROGRAMADORES"
 msgstr ""
 
-#: babel_intermediate.txt:235
+#: babel_intermediate.txt:195
 msgid "HW07"
 msgstr ""
 
-#: babel_intermediate.txt:236
+#: babel_intermediate.txt:196
 msgid "RELACIONES"
 msgstr ""
 
-#: babel_intermediate.txt:237
+#: babel_intermediate.txt:197
 msgid "TELÉFONO"
 msgstr ""
 
-#: babel_intermediate.txt:238
+#: babel_intermediate.txt:198
 msgid "URBANISMO"
 msgstr ""
 
-#: babel_intermediate.txt:239
+#: babel_intermediate.txt:199
 msgid "MANEJAR"
 msgstr ""
 
-#: babel_intermediate.txt:240
+#: babel_intermediate.txt:200
 msgid "INFORMÁTICA"
 msgstr ""
 
-#: babel_intermediate.txt:241
+#: babel_intermediate.txt:201
 msgid "BAJO"
 msgstr ""
 
-#: babel_intermediate.txt:242
+#: babel_intermediate.txt:202
 msgid "GUARDAR"
 msgstr ""
 
-#: babel_intermediate.txt:243
+#: babel_intermediate.txt:203
 msgid "MAE 7999"
 msgstr ""
 
-#: babel_intermediate.txt:244
+#: babel_intermediate.txt:204
 msgid "ANSYS"
 msgstr ""
 
-#: babel_intermediate.txt:245
+#: babel_intermediate.txt:205
 msgid "PRUEBA ESTRUCTURAL"
 msgstr ""
 
-#: babel_intermediate.txt:246
+#: babel_intermediate.txt:206
 msgid "SUBTE"
 msgstr ""
 
-#: babel_intermediate.txt:247
+#: babel_intermediate.txt:207
 msgid "BANCO"
 msgstr ""
 
-#: babel_intermediate.txt:248
+#: babel_intermediate.txt:208
 msgid "GIMNASIO"
 msgstr ""
 
-#: babel_intermediate.txt:249
+#: babel_intermediate.txt:209
 msgid "NFL"
 msgstr ""
 
-#: babel_intermediate.txt:250
+#: babel_intermediate.txt:210
 msgid "VS"
 msgstr ""
 
-#: babel_intermediate.txt:251
+#: babel_intermediate.txt:211
 msgid "PP"
 msgstr ""
 
-#: babel_intermediate.txt:252
+#: babel_intermediate.txt:212
 msgid "TODOIST"
 msgstr ""
 
-#: babel_intermediate.txt:253
+#: babel_intermediate.txt:213
 msgid "DEPARTAMENTOS"
 msgstr ""
 
-#: babel_intermediate.txt:254
+#: babel_intermediate.txt:214
 msgid "HW09"
 msgstr ""
 
-#: babel_intermediate.txt:255
+#: babel_intermediate.txt:215
 msgid "BIBLIOTECA"
 msgstr ""
 
-#: babel_intermediate.txt:256
+#: babel_intermediate.txt:216
 msgid "DENVER A CASA"
 msgstr ""
 
-#: babel_intermediate.txt:257
+#: babel_intermediate.txt:217
 msgid "LECCIONES"
 msgstr ""
 
-#: babel_intermediate.txt:258
+#: babel_intermediate.txt:218
 msgid "COVID-19"
 msgstr ""
 
-#: babel_intermediate.txt:259
+#: babel_intermediate.txt:219
 msgid "30"
 msgstr ""
 
-#: babel_intermediate.txt:260
+#: babel_intermediate.txt:220
 msgid "SALUD"
 msgstr ""
 
-#: babel_intermediate.txt:261
+#: babel_intermediate.txt:221
 msgid "AFEITARSE"
 msgstr ""
 
-#: babel_intermediate.txt:262
+#: babel_intermediate.txt:222
 msgid "RACIONALIDAD"
 msgstr ""
 
-#: babel_intermediate.txt:263
+#: babel_intermediate.txt:223
 msgid "HW02"
 msgstr ""
 
-#: babel_intermediate.txt:264
+#: babel_intermediate.txt:224
 msgid "MAE 5190"
 msgstr ""
 
-#: babel_intermediate.txt:265
+#: babel_intermediate.txt:225
 msgid "REGALOS"
+msgstr ""
+
+#: babel_intermediate.txt:228
+msgid "DUOLINGO"
+msgstr ""
+
+#: babel_intermediate.txt:229
+msgid "EVENTO"
+msgstr ""
+
+#: babel_intermediate.txt:230
+msgid "INSTRUMENTOS"
+msgstr ""
+
+#: babel_intermediate.txt:231
+msgid "HW10"
+msgstr ""
+
+#: babel_intermediate.txt:232
+msgid "HOLANDÉS"
+msgstr ""
+
+#: babel_intermediate.txt:233
+msgid "HW08"
+msgstr ""
+
+#: babel_intermediate.txt:234
+msgid "CINE"
+msgstr ""
+
+#: babel_intermediate.txt:235
+msgid "OH"
+msgstr ""
+
+#: babel_intermediate.txt:236
+msgid "DIBUJOS"
+msgstr ""
+
+#: babel_intermediate.txt:237
+msgid "CLASE"
+msgstr ""
+
+#: babel_intermediate.txt:238
+msgid "BICOPTER CONTROL"
+msgstr ""
+
+#: babel_intermediate.txt:239
+msgid "HW11"
+msgstr ""
+
+#: babel_intermediate.txt:240
+msgid "ENCUESTA"
+msgstr ""
+
+#: babel_intermediate.txt:241
+msgid "EA PROGRAMA VIRTUAL"
+msgstr ""
+
+#: babel_intermediate.txt:242
+msgid "NYTIMES"
+msgstr ""
+
+#: babel_intermediate.txt:243
+msgid "BCH A BROOMFIELD"
+msgstr ""
+
+#: babel_intermediate.txt:244
+msgid "SQL"
+msgstr ""
+
+#: babel_intermediate.txt:245
+msgid "ENTRENAMIENTO"
+msgstr ""
+
+#: babel_intermediate.txt:246
+msgid "URBANISMO LOCAL"
+msgstr ""
+
+#: babel_intermediate.txt:247
+msgid "ESTUDIAR"
+msgstr ""
+
+#: babel_intermediate.txt:248
+msgid "CORRER"
+msgstr ""
+
+#: babel_intermediate.txt:249
+msgid "DIARIO AG"
+msgstr ""
+
+#: babel_intermediate.txt:250
+msgid "ESPAÑOL"
+msgstr ""
+
+#: babel_intermediate.txt:251
+msgid "ENTREVISTA"
+msgstr ""
+
+#: babel_intermediate.txt:252
+msgid "A CHILD"
+msgstr ""
+
+#: babel_intermediate.txt:253
+msgid "BROOMFIELD A CASA"
+msgstr ""
+
+#: babel_intermediate.txt:254
+msgid "POLÍTICA GLOBAL"
+msgstr ""
+
+#: babel_intermediate.txt:255
+msgid "SOLICITUDES"
+msgstr ""
+
+#: babel_intermediate.txt:256
+msgid "TIMESHEET ANÁLISIS"
+msgstr ""
+
+#: babel_intermediate.txt:257
+msgid "CIENCIA ECONÓMICA"
+msgstr ""
+
+#: babel_intermediate.txt:258
+msgid "TEXTO"
+msgstr ""
+
+#: babel_intermediate.txt:259
+msgid "HISTORIA"
+msgstr ""
+
+#: babel_intermediate.txt:260
+msgid "MUEBLES"
+msgstr ""
+
+#: babel_intermediate.txt:261
+msgid "COMMUNITY CYCLES"
+msgstr ""
+
+#: babel_intermediate.txt:262
+msgid "DEPORTES"
+msgstr ""
+
+#: babel_intermediate.txt:263
+msgid "EXPERIMENTAR"
+msgstr ""
+
+#: babel_intermediate.txt:264
+msgid "PUESTOS"
+msgstr ""
+
+#: babel_intermediate.txt:265
+msgid "LATEX"
+msgstr ""
+
+#: babel_intermediate.txt:266
+msgid "BAÑO"
+msgstr ""
+
+#: babel_intermediate.txt:267
+msgid "PING PONG"
+msgstr ""
+
+#: babel_intermediate.txt:268
+msgid "POLÍTICA"
+msgstr ""
+
+#: babel_intermediate.txt:269
+msgid "HORAS DE OFICINA"
+msgstr ""
+
+#: babel_intermediate.txt:270
+msgid "HW13"
+msgstr ""
+
+#: babel_intermediate.txt:271
+msgid "FOTOS"
+msgstr ""
+
+#: babel_intermediate.txt:272
+msgid "VOLUNTARIO"
+msgstr ""
+
+#: babel_intermediate.txt:273
+msgid "ENSEÑAR"
+msgstr ""
+
+#: babel_intermediate.txt:274
+msgid "SOLUCIÓN"
+msgstr ""
+
+#: babel_intermediate.txt:275
+msgid "CORTAR EL PELO"
+msgstr ""
+
+#: babel_intermediate.txt:276
+msgid "OFICINA"
+msgstr ""
+
+#: babel_intermediate.txt:277
+msgid "PSICOLOGÍA"
+msgstr ""
+
+#: babel_intermediate.txt:278
+msgid "SALUD PÚBLICA"
+msgstr ""
+
+#: babel_intermediate.txt:279
+msgid "ELAINE"
+msgstr ""
+
+#: babel_intermediate.txt:280
+msgid "NORTHGLENN A BERNALILLO"
+msgstr ""
+
+#: babel_intermediate.txt:281
+msgid "CAMBIO CLIMÁTICO"
+msgstr ""
+
+#: babel_intermediate.txt:282
+msgid "TUTORIAL"
+msgstr ""
+
+#: babel_intermediate.txt:283
+msgid "GRABACIÓN"
+msgstr ""
+
+#: babel_intermediate.txt:284
+msgid "HW01"
+msgstr ""
+
+#: babel_intermediate.txt:285
+msgid "ESTACIÓN DE TREN"
+msgstr ""
+
+#: babel_intermediate.txt:286
+msgid "BICI ELÉCTRICA"
+msgstr ""
+
+#: babel_intermediate.txt:287
+msgid "TUCSON, AZ"
+msgstr ""
+
+#: babel_intermediate.txt:288
+msgid "HISTORIA DE AMIGOS"
+msgstr ""
+
+#: babel_intermediate.txt:289
+msgid "CASA A A CHILD"
+msgstr ""
+
+#: babel_intermediate.txt:290
+msgid "CHINCHES"
+msgstr ""
+
+#: babel_intermediate.txt:291
+msgid "21"
+msgstr ""
+
+#: babel_intermediate.txt:292
+msgid "PODCASTS"
+msgstr ""
+
+#: babel_intermediate.txt:293
+msgid "IMPRESIÓN 3D"
+msgstr ""
+
+#: babel_intermediate.txt:294
+msgid "COLORADO"
+msgstr ""
+
+#: babel_intermediate.txt:295
+msgid "RIESGOS EXISTENCIALES"
+msgstr ""
+
+#: babel_intermediate.txt:296
+msgid "BCH A CCYCLES"
+msgstr ""
+
+#: babel_intermediate.txt:297
+msgid "POLÍTICA ESTADOUNIDENSE"
+msgstr ""
+
+#: babel_intermediate.txt:298
+msgid "BENEFICIOS"
+msgstr ""
+
+#: babel_intermediate.txt:299
+msgid "SENDEROS"
+msgstr ""
+
+#: babel_intermediate.txt:300
+msgid "LISBOA A"
+msgstr ""
+
+#: babel_intermediate.txt:301
+msgid "RECLUTAMIENTO"
+msgstr ""
+
+#: babel_intermediate.txt:302
+msgid "EVALUACIÓN"
+msgstr ""
+
+#: babel_intermediate.txt:303
+msgid "GASOLINA"
+msgstr ""
+
+#: babel_intermediate.txt:304
+msgid "BERNALILLO A NORTHGLENN"
+msgstr ""
+
+#: babel_intermediate.txt:305
+msgid "VISADOS"
+msgstr ""
+
+#: babel_intermediate.txt:306
+msgid "CONCIERTO"
+msgstr ""
+
+#: babel_intermediate.txt:307
+msgid "DOMINION"
+msgstr ""
+
+#: babel_intermediate.txt:308
+msgid "BICOPTER PLANT"
+msgstr ""
+
+#: babel_intermediate.txt:309
+msgid "WARMSHOWERS"
+msgstr ""
+
+#: babel_intermediate.txt:310
+msgid "VENSIM"
+msgstr ""
+
+#: babel_intermediate.txt:311
+msgid "CASA A BROOMFIELD"
+msgstr ""
+
+#: babel_intermediate.txt:312
+msgid "NORTHGLENN A BCH"
+msgstr ""
+
+#: babel_intermediate.txt:313
+msgid "ARQUITECTURA DE COMPUTADORAS"
+msgstr ""
+
+#: babel_intermediate.txt:314
+msgid "BCH A RA-11"
+msgstr ""
+
+#: babel_intermediate.txt:315
+msgid "COLECCIONAR DONACIONES"
+msgstr ""
+
+#: babel_intermediate.txt:316
+msgid "IMPRIMIR"
+msgstr ""
+
+#: babel_intermediate.txt:320
+msgid "Sunday"
+msgstr ""
+
+#: babel_intermediate.txt:321
+msgid "Friday"
+msgstr ""
+
+#: babel_intermediate.txt:322
+msgid "Thursday"
+msgstr ""
+
+#: babel_intermediate.txt:323
+msgid "Tuesday"
+msgstr ""
+
+#: babel_intermediate.txt:324
+msgid "Monday"
+msgstr ""
+
+#: babel_intermediate.txt:325
+msgid "[hours]"
+msgstr ""
+
+#: babel_intermediate.txt:326
+msgid "Wednesday"
+msgstr ""
+
+#: babel_intermediate.txt:327
+msgid "Saturday"
+msgstr ""
+
+#: babel_intermediate.txt:331
+msgid "Sun"
+msgstr ""
+
+#: babel_intermediate.txt:332
+msgid "Thu"
+msgstr ""
+
+#: babel_intermediate.txt:333
+msgid "Wed"
+msgstr ""
+
+#: babel_intermediate.txt:334
+msgid "Sat"
+msgstr ""
+
+#: babel_intermediate.txt:335
+msgid "Tue"
+msgstr ""
+
+#: babel_intermediate.txt:336
+msgid "Sleep"
+msgstr ""
+
+#: babel_intermediate.txt:337
+msgid "Mon"
+msgstr ""
+
+#: babel_intermediate.txt:338
+msgid "Fri"
+msgstr ""
+
+#: babel_intermediate.txt:342
+msgid "Distributions of Time of Falling Asleep and Waking Up by Life Phase"
+msgstr ""
+
+#: babel_intermediate.txt:343
+msgid ""
+"Start\n"
+"First Job"
+msgstr ""
+
+#: babel_intermediate.txt:344
+msgid "Wake up"
+msgstr ""
+
+#: babel_intermediate.txt:345
+msgid "Duration by Metaproject per Day, Averaged over 1 Week"
+msgstr ""
+
+#: babel_intermediate.txt:346
+msgid "Fall asleep"
+msgstr ""
+
+#: babel_intermediate.txt:347
+msgid "👀 *Peek into the Backend*"
+msgstr ""
+
+#: babel_intermediate.txt:348
+msgid "Time of day"
+msgstr ""
+
+#: babel_intermediate.txt:349
+msgid "Average Person-Hours of Social Interaction per Day, by Gender"
+msgstr ""
+
+#: babel_intermediate.txt:350
+msgid "Life Phase"
+msgstr ""
+
+#: babel_intermediate.txt:351
+msgid ""
+"Total Time Spent\n"
+" with Individual People, Sorted"
+msgstr ""
+
+#: babel_intermediate.txt:352
+msgid "[hours/day]"
+msgstr ""
+
+#: babel_intermediate.txt:353
+msgid ""
+"Total Time Spent\n"
+" with Individual People, Sorted, Log Scale"
+msgstr ""
+
+#: babel_intermediate.txt:354
+msgid "Person index"
+msgstr ""
+
+#: babel_intermediate.txt:355
+msgid "Average Person-Hours of Social Interaction per Day, by Primary Relation"
+msgstr ""
+
+#: babel_intermediate.txt:356
+msgid ""
+"Total\n"
+"Person-Hours"
+msgstr ""
+
+#: babel_intermediate.txt:357
+msgid "Avg Sleep Duration by Weekday and Life Phase"
+msgstr ""
+
+#: babel_intermediate.txt:358
+msgid "[person-hours/day]"
+msgstr ""
+
+#: babel_intermediate.txt:362
+msgid ""
+"Welcome to Deep Lifelog, my first serious data analysis project! Since I "
+"started grad school in September 2017, I've collected continuous time "
+"series tabular data on my daily activities. It started as a small "
+"productivity exercise to track my academic tasks, but as my data "
+"obsession kicked in the scope ballooned out of control :smile:. I was "
+"inspired by [r/dataisbeautiful content like "
+"this](https://www.reddit.com/r/dataisbeautiful/comments/ab4uzz/i_recorded_every_hour_of_my_2018_and_17_oc/),"
+" but I wanted to track way more detail than a single categorical variable"
+" over fixed intervals. Over the years, I've adding data features like:"
+msgstr ""
+
+#: babel_intermediate.txt:363
+msgid ""
+"- Media consumed\n"
+"- People I spend time with\n"
+"- Food\n"
+"- Location\n"
+"- Subject matters researched/discussed"
+msgstr ""
+
+#: babel_intermediate.txt:364
+msgid ""
+"Though all of those features are in the data, there is more feature "
+"engineering and visualization work to be done. In addition to being an "
+"exercise in data analysis and software engineering, this project is also "
+"a mode of introspection, one more objective than fallible memory. Of "
+"course, this is all going to be much more interesting to me that it is to"
+" anyone else, so I'll try to focus on relatable ideas before diving down "
+"weird rabbit holes."
+msgstr ""
+
+#: babel_intermediate.txt:365
+msgid "Genre.Fiction"
+msgstr ""
+
+#: babel_intermediate.txt:366
+msgid "**Future work**"
+msgstr ""
+
+#: babel_intermediate.txt:367
+msgid ""
+"There's so much to see in the details of this plot. Like how data "
+"collection was consistently incomplete until 2018-06. This is probably "
+"because, when I started my first job, I used this same data to fill in my"
+" timesheet at work, and I got into the habit of logging data more "
+"precisely at all hours. "
+msgstr ""
+
+#: babel_intermediate.txt:368
+msgid ""
+"Much of the design work in this project has been in abstracting as much "
+"as possible about daily activities into data structures like `Project`, "
+"`Tag`, `Collectible`, etc. At the top of the `Project` taxonomy is the "
+"`Metaproject`, a set of 5 broad categories which together contain every "
+"`Project`. This is a useful data feature to begin with in a top-down "
+"analysis approach, since major shifts in lifestyle are evident while "
+"smaller details don't muddy the waters."
+msgstr ""
+
+#: babel_intermediate.txt:369
+msgid "Metaprojects"
+msgstr ""
+
+#: babel_intermediate.txt:370
+msgid ""
+"Or the big zero-sum spike-trough pairs poking above the 24-hour total "
+"line. I'm not sure what is causing them. Most likely some unclean data. "
+msgstr ""
+
+#: babel_intermediate.txt:371
+msgid ""
+"- Check out the spikes about 24 hours noted above.\n"
+"- Add labels for smaller events like the short cycle tours in 2019 and "
+"2021.\n"
+"- Split this plot into 2 subplots looking at weekdays and weekends."
+msgstr ""
+
+#: babel_intermediate.txt:372
+msgid ""
+"I like how this plot illustrates the phases of my adult life with "
+"different `Metaproject` focus. You can easily see the shifts from grad "
+"school, to working, to long-haul cycle touring in 2022, and to "
+"independent study in 2023. "
+msgstr ""
+
+#: babel_intermediate.txt:373
+msgid ""
+"Or comparing how overworked I was in grad school vs in the busiest "
+"periods in my first job. Grad school was consistently more consuming than"
+" work, with only 2 spikes around 2021-01 coming close. "
+msgstr ""
+
+#: babel_intermediate.txt:374
+msgid ""
+"Or how as my studies in Spring 2018 gradually ate up more time over the "
+"course of the semester, it was mostly {0} which was sacrificed, {1} only "
+"dropping a bit. "
+msgstr ""
+
+#: babel_intermediate.txt:375
+#, python-format
+msgid ""
+"The {0} prevalence is obvious. The right subplot shows the overall "
+"proportion of time by gender, with {0} occupying around 75% of the total."
+" Grad school in the first half of 2018 was clearly {0}-dominated. That "
+"eased up in 2019, when, I hypothesize, my job became more collaborative "
+"within a gender-balanced team. Spikes around July, November, or December "
+"make sense, since that's when I usually visit my dad's family and spend "
+"time with my grandma, aunts, and cousins."
+msgstr ""
+
+#: babel_intermediate.txt:376
+msgid ""
+"So hypothesizing that the right side of the distribution looks about the "
+"same for most people, I'm curious how the shape of the left side of the "
+"distribution would compare. I can imagine social behavior patterns which "
+"might produce negative curvature at the left side. How common is this "
+"compared to positive curvature? "
+msgstr ""
+
+#: babel_intermediate.txt:377
+msgid ""
+"*2018-02*: Started regularly collecting data on time spent with "
+"individual people."
+msgstr ""
+
+#: babel_intermediate.txt:378
+msgid ""
+"The pandemic didn't have much of an effect in this plot apart from maybe "
+"being responsible for the dip in 2020-03 through 2020-04. But this "
+"apparent lack of effect may just be a coincidence. A roommate moved in in"
+" 2020-04, and we spent lots of time cooped up together for the next 12 "
+"months. Perhaps the social time with colleagues was merely approximately "
+"supplanted by social time with my roommate. Looking at other demographics"
+" will tell."
+msgstr ""
+
+#: babel_intermediate.txt:379
+msgid ""
+"The variance of the `Wake up` distributions also appears to be decreasing"
+" over time, visible in the diminishing interquartile range. Certainly, my"
+" schedule during `{0}` was comparatively irregular. From subjective "
+"memory, during `{2}` and `{3}`, my sleep schedule on weekdays and "
+"weekends had little distinction, but that's a claim that can be backed by"
+" data at some point."
+msgstr ""
+
+#: babel_intermediate.txt:380
+msgid "Gender"
+msgstr ""
+
+#: babel_intermediate.txt:381
+msgid ""
+"- Compare weekday and weekend distributions\n"
+"- Scatterplot of `Wake up` vs `Fall asleep` to examine correlation"
+msgstr ""
+
+#: babel_intermediate.txt:382
+msgid "People"
+msgstr ""
+
+#: babel_intermediate.txt:383
+msgid ""
+"Every Person has a {4}, and some people have multiple. In those "
+"instances, the primary {4} follows the order of precedence in the above "
+"list. So when I'm with a {2} who's grown close enough to be considered a "
+"{1}, that would be considered time with a {1} in this analysis. "
+msgstr ""
+
+#: babel_intermediate.txt:384
+msgid ""
+"It's interesting to compare the shapes of the `Fall asleep` and `Wake up`"
+" distributions for each phase. Ignoring the long tails, there's clearly a"
+" rough correspondence in shape for each pair. The bimodal distributions "
+"of `{1}` likely correspond to weekdays and weekends. I'd estimate that "
+"the bimodality is clearer for `Wake up` just because waking time is "
+"controlled by an alarm clock."
+msgstr ""
+
+#: babel_intermediate.txt:385
+msgid "Primary Relation"
+msgstr ""
+
+#: babel_intermediate.txt:386
+msgid ""
+"Gender is classified into the mutually-exclusive categories {0}. {1} is "
+"used for entries in the `Person` catalog which don't correspond to "
+"individual people. For example, there are several `Person` instances "
+"which actually correspond to teams and other groups, all of which use {1}"
+" unless the group is single-gendered. "
+msgstr ""
+
+#: babel_intermediate.txt:387
+msgid ""
+"This plot shows an overview of my sleep behavior related to time of day "
+"over different phases of life. The most obvious feature is the "
+"distributional shift between `{0}` and `{1}`, when median sleep behavior "
+"shifted earlier by 2+ hours. The shift in modes is even greater, shifting"
+" by about 3 hours. I recall this transition from moderate night owl to "
+"early bird feeling pretty easy. I've never been a caffeine drinker, and "
+"waking early has never been a problem."
+msgstr ""
+
+#: babel_intermediate.txt:388
+msgid ""
+"The only month in which I spent more time with women was 2022-03. This "
+"month was an anomaly within an anomaly. The outer anomaly was the lonely "
+"cycle tour spanning 2022, and the inner anomaly was the two weeks in "
+"2022-03 when I toured along with two girls Suzie and Veronika, during "
+"which we spent nearly every hour together. The other 2022 anomaly was "
+"2022-09, when I spent a week in Germany with several friends from back "
+"home."
+msgstr ""
+
+#: babel_intermediate.txt:389
+msgid ""
+"Sleep is one of the most basic features in the dataset, and one which "
+"spans the full collection period with little change in collection "
+"behavior."
+msgstr ""
+
+#: babel_intermediate.txt:390
+msgid ""
+"- Decompose remaining groups logged as {1} into their constituent "
+"individuals"
+msgstr ""
+
+#: babel_intermediate.txt:391
+msgid ""
+"There are plenty of questions this plot raises to be investigated "
+"further. I'm not sure what caused the spike in 2022-10 through 2022-11, "
+"nor the dip in 2021-02. "
+msgstr ""
+
+#: babel_intermediate.txt:392
+msgid ""
+"This is probably the data feature which has the most potential for "
+"interesting analysis. Due to signal-to-noise ratio, data on time spent "
+"with people is particularly susceptible to collection errors for people "
+"with whom I've spent little time. I usually decide whether to add a new "
+"person to the dataset if I've interacted with them meaningfully for >15 "
+"minutes or expect to in the future. But I make frequent errors in both "
+"directions relative to this rule of thumb, adding noise to the data most "
+"visible in the long tail of people with whom I've spent little time. "
+msgstr ""
+
+#: babel_intermediate.txt:393
+msgid ""
+"But this measure does not reflect how much of my time I spend socializing"
+" in general. I expect there to be quite a difference between a plot of "
+"'Hours per Day of Social Interaction' and the total profile of person-"
+"hours per day in the plot below. Person-hours is a measure more "
+"susceptible to data collection errors than a simple measure of hours. "
+"There's plenty of social time where I didn't record the identities of the"
+" people involved, and all of that data is filtered out during any "
+"analysis of person-hours. Also, large gatherings contribute heavily to "
+"person-hours due to the quantity of people, but the limitations of data "
+"collection frequently lead to misleading results. For example, if I go to"
+" a party with 3 friends, but there are 12 other people whose names I "
+"don't know, that party will be logged as time spent with 3 people, not "
+"15. And maybe that incomplete data is actually a more honest "
+"representation of the time than if I did log all 15 people. Should it "
+"really count as 15 people if you don't really know 12 of them and you "
+"only even talked to 6? It depends on your semantics of 'social "
+"interaction'. It's good to keep this in mind when interpreting this plot "
+"and others showing units of 'person-hours'."
+msgstr ""
+
+#: babel_intermediate.txt:394
+msgid ""
+"*2023-12-13*: Began explicitly logging all sleep tasks instead of "
+"assuming untracked intervals are sleep. Change disambiguates naps from "
+"occasional erroneously unlogged intervals."
+msgstr ""
+
+#: babel_intermediate.txt:395
+msgid "**Data Collection Changelog**"
+msgstr ""
+
+#: babel_intermediate.txt:396
+msgid ""
+"Excluding people with whom I've spent <3 hours with in total, where the "
+"data is noisy, the distribution of time spent is even more skewed than a "
+"power law distribution. That is to say, the curve has distinctly positive"
+" curvature in a log plot, not a linear relationship. What would others' "
+"plots look like if they had collected a lifelog dataset? I imagine that "
+"everyone's version of this plot would have positive log plot curvature in"
+" at least the rightmost region. This is assuming an ideal scenario where "
+"data collection is comprehensive, down to the 30 seconds spent chatting "
+"with Tina the grocery clerk, and maybe even brief moments of eye contact "
+"with strangers. It depends on where you draw the line for what "
+"constitutes a social interaction. In the ideal case where all this data "
+"is collected, the dataset would include thousands of people in a long "
+"tail of very little time spent together, and I suspect that this tail "
+"would generally show positive log plot curvature in everyone's plot."
+msgstr ""
+
+#: babel_intermediate.txt:397
+msgid ""
+"Primary relations are another high-level lens through which to "
+"characterize my social time. Analyzing primary relation can distinguish "
+"when I'm having fun with my friends vs meeting with work colleagues or "
+"hanging out with family. The types of primary relation are :\n"
+"1. {0}\n"
+"1. {1}\n"
+"1. {2}\n"
+"1. {3}"
+msgstr ""
+
+#: babel_intermediate.txt:398
+msgid ""
+"- Create a scalar metric of breadth/tightness of social activities "
+"related to the curvature of the semilog plot. Evaluate this metric over "
+"different time domains.\n"
+"- Compare versions of this plot over life phases and other time intervals."
+msgstr ""
+
+#: babel_intermediate.txt:399
+msgid ""
+"The plot below shows the gender distribution of my social time. "
+"Specifically, this plot is in units of person-hours/day, meaning that an "
+"hour spent with two friends counts for twice as much as an hour spent "
+"with one. This seems like a reasonable way to answer the question 'How "
+"much time do I spend with people of different genders?'"
+msgstr ""
+
+#: babel_intermediate.txt:400
+msgid "Demographics"
+msgstr ""
+
+#: babel_intermediate.txt:404
+msgid ""
+"- {0}: Working, career planning\n"
+"- {1}: Studying, independent learning and projects\n"
+"- {2}: Transport, researching, email, chores, the 'everything else' "
+"bucket\n"
+"- {3}: Fun stuff\n"
+"- {4}: :sleeping:"
+msgstr ""
+
+#: babel_intermediate.txt:405
+msgid ""
+"Errors in `Metaproject` attribution mostly come from `Project` instances "
+"which don't cleanly fit into a single `Metaproject`. For example, "
+"`Project.{5}` contains tasks for both rec riding and bike maintenance, "
+"which belong to {3} and {2}, respectively. Some of these split "
+"attribution cases have been handled in data cleaning, but I haven't "
+"caught all of them."
+msgstr ""
+
+#: babel_intermediate.txt:409
+msgid ""
+"*2023-04*: Added rough tracking of sleep quality. Long periods lying "
+"awake or otherwise not sleeping are now roughly tracked as tasks with "
+"descriptions under `Project.{0}`. These tasks no longer count toward "
+"measurements of sleep time duration. Change reduces the upward bias of "
+"sleep durations."
+msgstr ""
+
+#: babel_intermediate.txt:410
+msgid ""
+"In 2022, the scant social time contained almost no time with {1} or {0}s."
+" It's also when I have the most time with {2}s logged. But I hesitate to "
+"conclude much from that observation, because in 2022 I was more "
+"consistent in logging time spent with {2}s than in other periods due to "
+"the overall low social time. "
+msgstr ""
+
+#: babel_intermediate.txt:411
+msgid ""
+"The total profile of this plot exactly matches that of the *Average "
+"Person-Hours by Gender* plot in the previous section; it's only the "
+"division of the total profile among the categories which differs. Some "
+"hypotheses presented in that subsection are confirmed here. I don't spend"
+" that much time overall with family, and the time I do is concentrated in"
+" spikes when I visit my dad's family and around holidays. It appears that"
+" most of the dip in 2021-02 comes from a sharp reduction in time with "
+"{0}s, but I don't recall what happened at work which would have caused "
+"that reduction."
+msgstr ""
+
+#: babel_intermediate.txt:412
+msgid "- Analyze other demographics, including age and shared activities\n"
 msgstr ""
 

@@ -4,6 +4,7 @@
 *_PRIVATE.yaml
 *.bak
 *.gdoc
+*.mo
 *checkpoint.ipynb
 
 Raw_CSVs/*

@@ -360,8 +360,7 @@ _('[person-hours/day]')
 ***WRITE*** 2024-04-09 19:35:29.157960
 EXTRACTION SUMMARY (MANUAL ENTRY): Exhibit.py and all pages
 _("Welcome to Deep Lifelog, my first serious data analysis project! Since I started grad school in September 2017, I've collected continuous time series tabular data on my daily activities. It started as a small productivity exercise to track my academic tasks, but as my data obsession kicked in the scope ballooned out of control :smile:. I was inspired by [r/dataisbeautiful content like this](https://www.reddit.com/r/dataisbeautiful/comments/ab4uzz/i_recorded_every_hour_of_my_2018_and_17_oc/), but I wanted to track way more detail than a single categorical variable over fixed intervals. Over the years, I've adding data features like:")
-_('- Media consumed\n- People I spend time with\n- Food\n- Location\n- Subject matters researched/discussed')
-_('👀 *Peek into the Backend*')
+_('- Media consumed\n- People I spend time with\n- Food\n- Location\n- Subject matters researched/discussed')
 _("Though all of those features are in the data, there is more feature engineering and visualization work to be done. In addition to being an exercise in data analysis and software engineering, this project is also a mode of introspection, one more objective than fallible memory. Of course, this is all going to be much more interesting to me that it is to anyone else, so I'll try to focus on relatable ideas before diving down weird rabbit holes.")
 _('Genre.Fiction')
 _('**Future work**')
@@ -402,13 +401,11 @@ _('Demographics')
 
 ***WRITE*** 2024-04-09 19:39:26.283043
 EXTRACTION SUMMARY (MANUAL ENTRY): Metaproject page cleanup
-_('👀 *Peek into the Backend*')
 _("- {0}: Working, career planning\n- {1}: Studying, independent learning and projects\n- {2}: Transport, researching, email, chores, the 'everything else' bucket\n- {3}: Fun stuff\n- {4}: :sleeping:")
 _("Errors in `Metaproject` attribution mostly come from `Project` instances which don't cleanly fit into a single `Metaproject`. For example, `Project.{5}` contains tasks for both rec riding and bike maintenance, which belong to {3} and {2}, respectively. Some of these split attribution cases have been handled in data cleaning, but I haven't caught all of them.")
 
 ***WRITE*** 2024-04-09 19:43:09.689113
 EXTRACTION SUMMARY (MANUAL ENTRY): Sleep page cleanup, some People page stuff
-_('👀 *Peek into the Backend*')
 _('*2023-04*: Added rough tracking of sleep quality. Long periods lying awake or otherwise not sleeping are now roughly tracked as tasks with descriptions under `Project.{0}`. These tasks no longer count toward measurements of sleep time duration. Change reduces the upward bias of sleep durations.')
 _("In 2022, the scant social time contained almost no time with {1} or {0}s. It's also when I have the most time with {2}s logged. But I hesitate to conclude much from that observation, because in 2022 I was more consistent in logging time spent with {2}s than in other periods due to the overall low social time. ")
 _("The total profile of this plot exactly matches that of the *Average Person-Hours by Gender* plot in the previous section; it's only the division of the total profile among the categories which differs. Some hypotheses presented in that subsection are confirmed here. I don't spend that much time overall with family, and the time I do is concentrated in spikes when I visit my dad's family and around holidays. It appears that most of the dip in 2021-02 comes from a sharp reduction in time with {0}s, but I don't recall what happened at work which would have caused that reduction.")

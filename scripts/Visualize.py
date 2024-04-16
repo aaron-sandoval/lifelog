@@ -2,7 +2,7 @@
 Created on Nov 22, 2018
 
 @author: Aaron
-Holds functions used to collect datasets from database and SingleAxisStaticVisual it.
+Holds functions used to collect datasets from database and create graphics from them.
 """
 import datetime
 import os

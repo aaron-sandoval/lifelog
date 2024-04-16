@@ -18,7 +18,6 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
     # Section parameters
     section = Visualize.ExhibitSection.SLEEP
     st.title(_k('Sleep'))
-    st.markdown(_k('Genre.Fiction'))
 
     gxhs = filter(lambda x: x.section == section, Exhibit.loadData(path))
 

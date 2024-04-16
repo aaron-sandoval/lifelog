@@ -13,9 +13,7 @@ def main(path: str = os.path.join(rootProjectPath(), 'VS_Persistent', 'figs_PUBL
     def exhibitHeader():
         locale = st.selectbox(label='Language/Idioma', options=['English', 'Español'])
         locale = {'English': lang_en, 'Español': lang_es}[locale]
-        st.markdown({lang_en: 'Hello', lang_es: "Hola"}[locale])
         babelx.setLang(locale)
-        st.markdown(_k('Genre.Fiction'))
         st.title('Deep Lifelog Data Analysis DEMO')
         st.markdown('[Github](https://github.com/aaron-sandoval/lifelog)')
         st.header('Introduction')

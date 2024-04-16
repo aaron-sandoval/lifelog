@@ -7,6 +7,7 @@ from external_modules import kiwilib
 from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
 from dataclasses import dataclass
 from pathlib import Path
+from collections import defaultdict
 
 def test1():
     lang_en.install()  # Magically make the _ function globally available
@@ -58,7 +59,7 @@ class BabelIntermediateExtractor:
         self.file = str(Path(
             os.path.abspath(__file__)).parent.parent.absolute()/'i18n_l10n'/f'babel_intermediate{fileSuffix}.txt')
         self.words = set()  # Existing set of words, all languages together, read from the intermediate file.
-        self.newWords = set()  # New words found via extract() not yet present in self.words
+        self.newWords = dict()  # New words found via extract() not yet present in self.words
         self.bufferSize = bufferSize  # Num words to accumulate in self.newWords before appending contents to self.file
         self.curLocale: gettext.GNUTranslations = None  # Current language assigned by last call to self.setLang().
         self.setLang(locale)
@@ -80,13 +81,14 @@ class BabelIntermediateExtractor:
             # bytes.decode() is to invert the repr() done in flush().
             self.words = {bytes(x[3:-3], 'utf-8').decode('unicode_escape') for x in words.readlines()
                           if len(x) > 0 and x[0] == '_'}
+            # self.words = {x[3:-3] for x in words.readlines() if len(x) > 0 and x[0] == '_'}
 
     def extract(self, x: str, locale: gettext.GNUTranslations = None) -> str:
         """
         Adds s to self.newWords to be added to the .pot file later.
         Returns the translation of s according to the indicated language.
         :param locale: Language to use for the immediate translation.
-        :param s: Any string to be extracted and translated, in any language.
+        :param x: Any string to be extracted and translated, passed in any language.
         If data of any other type is passed, it is converted to a string via str(s).
         :return: s translated according to lang
         """
@@ -94,10 +96,11 @@ class BabelIntermediateExtractor:
             locale = self.curLocale
         if not isinstance(x, str):
             x = str(x)
-        strings = x.split('\n\n')  # TODO: incorporate nltk sentence splitter
+        strings = x.split('\n\n')
         for s in strings:
-            if s not in self.words and s not in self.newWords:
-                self.newWords.add(s)
+            decoded = bytes(s, 'utf-8').decode('unicode_escape')
+            if decoded not in self.words and decoded not in self.newWords:
+                self.newWords[decoded] = None
         if len(self.newWords) >= self.bufferSize:
             self.flush()
         return '\n\n'.join([locale.gettext(s) for s in strings]) if len(strings) > 1 else locale.gettext(x)
