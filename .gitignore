@@ -4,8 +4,6 @@
 *_PRIVATE.yaml
 *.bak
 *.gdoc
-*.mo
-*checkpoint.ipynb
 
 Raw_CSVs/*
 !Raw_CSVs/sample_RAW_PUBLIC.csv
@@ -34,7 +32,10 @@ tests/PROFILE_*
 
 **/__pycache__/*
 *.pytest_cache/*
+.ipynb_checkpoints/
 **/.ipynb_checkpoints
+*.mo
+*checkpoint.ipynb
 tsqparser/testQueries_1.txt
 Annotated_Excel/
 .idea/
