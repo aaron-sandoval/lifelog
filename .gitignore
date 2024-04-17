@@ -34,7 +34,7 @@ tests/PROFILE_*
 *.pytest_cache/*
 .ipynb_checkpoints/
 **/.ipynb_checkpoints
-*.mo
+**/*.mo
 *checkpoint.ipynb
 tsqparser/testQueries_1.txt
 Annotated_Excel/

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-16 12:38-0600\n"
+"POT-Creation-Date: 2024-04-16 19:33-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es_MX\n"
@@ -1379,6 +1379,16 @@ msgid ""
 " but I wanted to track way more detail than a single categorical variable"
 " over fixed intervals. Over the years, I've adding data features like:"
 msgstr ""
+"¡Bienvenidos a Deep Lifelog (Registro Profundo de la Vida), mi primer "
+"proyecto serio de análisis de datos! Desde que empecé el posgrado en "
+"2017, yo collecionaba datos tabulares de series de tiempo continuos sobre"
+" mis actividades cotidianas. Al principio se intentaba para seguir mis "
+"tareas académicas, pero mientras que mi obsesión por los datos se surgió,"
+" el alcance del proyecto se infló fuera de control :smile:. Me inspiró "
+"[contenido de r/dataisbeautiful como "
+"esto](https://www.reddit.com/r/dataisbeautiful/comments/ab4uzz/i_recorded_every_hour_of_my_2018_and_17_oc/),"
+" pero quería rastrear mucho más que una sola variable categórica en "
+"intervalos fijados. A través del tiempo, añadía características como:"
 
 #: babel_intermediate.txt:363
 msgid ""
@@ -1388,6 +1398,11 @@ msgid ""
 "- Location\n"
 "- Subject matters researched/discussed"
 msgstr ""
+"- Los medios consumidos\n"
+"- Las personas con quienes interactúo\n"
+"- La comida\n"
+"- La ubicación\n"
+"- Las temas que investigo/discuto"
 
 #: babel_intermediate.txt:364
 msgid ""
@@ -1398,6 +1413,16 @@ msgid ""
 "course, this is all going to be much more interesting to me that it is to"
 " anyone else, so I'll try to focus on relatable ideas before diving down "
 "weird rabbit holes."
+msgstr ""
+"Aunque todas estas características están presentes en los datos, todavía "
+"queda mucho más ingeniería de características y trabajo de visualización."
+" Además que datos y informática, este proyecto también es un modo de "
+"introspeccionar más objetivo que la memoria falible. Por supuesto, todo "
+"me interesa a mí más que al resto de mundo, así que intento enfocar en "
+"los ideas relacionables antes de meterme en cosas turbias."
+
+#: babel_intermediate.txt:365
+msgid "Genre.Fiction"
 msgstr ""
 
 #: babel_intermediate.txt:366
@@ -1749,4 +1774,24 @@ msgstr ""
 #: babel_intermediate.txt:412
 msgid "- Analyze other demographics, including age and shared activities\n"
 msgstr ""
+
+#: babel_intermediate.txt:416
+msgid "Deep Lifelog Data Analysis DEMO"
+msgstr "Deep Lifelog Análisis de Datos MANÍ"
+
+#: babel_intermediate.txt:417
+msgid "Introduction"
+msgstr "Introducción"
+
+#: babel_intermediate.txt:421
+msgid ""
+"Spanish translations across the site are in work. I apologize for any "
+"confusion."
+msgstr ""
+
+#: babel_intermediate.txt:425
+msgid ""
+"Spanish translations across the site are in work. Apologies for any "
+"confusion this may cause."
+msgstr "Las traducciones al español están en progreso. Discúlpame por la confusión."
 

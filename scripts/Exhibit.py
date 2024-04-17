@@ -14,9 +14,16 @@ def main(path: str = os.path.join(rootProjectPath(), 'VS_Persistent', 'figs_PUBL
         locale = st.selectbox(label='Language/Idioma', options=['English', 'Español'])
         locale = {'English': lang_en, 'Español': lang_es}[locale]
         babelx.setLang(locale)
-        st.title('Deep Lifelog Data Analysis DEMO')
+        if locale is not lang_en:
+            st.warning(
+                _k(
+                    "Spanish translations across the site are in work. Apologies for any confusion this may cause."
+                ),
+                icon="⚠️"
+            )
+        st.title(_k('Deep Lifelog Data Analysis DEMO'))
         st.markdown('[Github](https://github.com/aaron-sandoval/lifelog)')
-        st.header('Introduction')
+        st.header(_k('Introduction'))
         st.markdown(_k(
             "Welcome to Deep Lifelog, my first serious data analysis project! "
             "Since I started grad school in September 2017, I've collected continuous time series tabular data "

@@ -7,7 +7,7 @@ from external_modules import kiwilib
 from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
 from dataclasses import dataclass
 from pathlib import Path
-from collections import defaultdict
+# import googletrans
 
 def test1():
     lang_en.install()  # Magically make the _ function globally available
@@ -36,6 +36,10 @@ localeDict = {
     'es_MX': lang_es,
 }
 locale_to_str = {v: k for k, v in localeDict.items()}
+# _google_locale_dict: Dict[gettext.GNUTranslations, str] = {
+#     lang_es: 'es',
+# }
+# _google_translator = googletrans.Translator(service_urls=['translate.google.com'])
 
 
 class BabelIntermediateExtractor:
@@ -81,7 +85,6 @@ class BabelIntermediateExtractor:
             # bytes.decode() is to invert the repr() done in flush().
             self.words = {bytes(x[3:-3], 'utf-8').decode('unicode_escape') for x in words.readlines()
                           if len(x) > 0 and x[0] == '_'}
-            # self.words = {x[3:-3] for x in words.readlines() if len(x) > 0 and x[0] == '_'}
 
     def extract(self, x: str, locale: gettext.GNUTranslations = None) -> str:
         """
@@ -97,10 +100,14 @@ class BabelIntermediateExtractor:
         if not isinstance(x, str):
             x = str(x)
         strings = x.split('\n\n')
+        # translated: List[str] = []
         for s in strings:
             decoded = bytes(s, 'utf-8').decode('unicode_escape')
             if decoded not in self.words and decoded not in self.newWords:
                 self.newWords[decoded] = None
+            # translated.append(locale.gettext(s))
+            # if translated[-1] == s and locale is not lang_en:  # Str is in another language and nothing provided in .po file
+            #     translated[-1] = _google_translator.translate(s, src='en', dest=_google_locale_dict[locale])
         if len(self.newWords) >= self.bufferSize:
             self.flush()
         return '\n\n'.join([locale.gettext(s) for s in strings]) if len(strings) > 1 else locale.gettext(x)
