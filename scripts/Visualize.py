@@ -4,6 +4,7 @@ Created on Nov 22, 2018
 @author: Aaron
 Holds functions used to collect datasets from database and create graphics from them.
 """
+import abc
 import datetime
 import os
 
@@ -119,40 +120,6 @@ class ExhibitSection(Enum):
     SLEEP = XHSectionData(sortKey=64)
     PEOPLE = XHSectionData(sortKey=96)
     METAPROJECT = XHSectionData(sortKey=8)
-
-
-class GraphicExhibit:
-    """ Type containing data for exhibiting generic graphics. See GRAPHIC_TYPE_FUNCS for supported graphic types. """
-    GRAPHIC_TYPE_FUNCS = {
-        plt.Figure: lambda x: st.pyplot(x, use_container_width=True)
-    }
-
-    def __init__(self,
-                 graphic: Union[plt.Figure],
-                 privacy: Global.Privacy = Global.Privacy.PRIVATE,  # Default to PRIVATE for security.
-                 preText: str = None,
-                 postText: str = None,
-                 section: ExhibitSection = None,
-                 sortKey: int = 0
-                 ):
-        if type(graphic) not in self.GRAPHIC_TYPE_FUNCS:
-            raise TypeError(f'{type(graphic)} graphic type not supported.')
-        self.graphic = graphic
-        self.privacy = privacy
-        self.preTextMD = preText  # Markdown-format text.
-        self.postTextMD = postText  # Markdown-format text.
-        self.section = section
-        self.sortKey = sortKey
-
-    def __repr__(self):
-        return f'{type(self).__name__}: {self.section} at {id(self)}'
-
-    def exhibitStreamlit(self):
-        if self.preTextMD is not None:
-            st.markdown(self.preTextMD)
-        self.GRAPHIC_TYPE_FUNCS[type(self.graphic)](self.graphic)
-        if self.postTextMD is not None:
-            st.markdown(self.postTextMD)
 
 
 '''
@@ -378,12 +345,32 @@ class ArtistAlignment(Enum):
     SW = _ArtistAlignment('NE', .05, .05, 'left', 'bottom')
 
 
-class MatplotlibVisual:
+class Visual(abc.ABC):
+    @abc.abstractmethod
+    def save(self, fileName: str) -> None:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def localize(self) -> None:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def exhibit(self) -> None:
+        raise NotImplementedError
+
+
+class MatplotlibVisual(Visual):
     def __init__(self, figsize=(10, 5), **kwargs):
-        self.fig = plt.figure(figsize=figsize, **kwargs)
+        self.fig: plt.Figure = plt.figure(figsize=figsize, **kwargs)
 
     def save(self, fileName):
         self.fig.savefig(os.path.join(Global.rootProjectPath(), 'VS_Figures', fileName + '.png'))
+
+    def exhibit(self) -> None:
+        st.pyplot(self.fig, use_container_width=True)
+
+    def localize(self):
+        pass
 
 
 class SingleAxisStaticVisual(MatplotlibVisual):
@@ -519,6 +506,40 @@ class SingleAxisStaticVisual(MatplotlibVisual):
         if show:            self.show()
 
 
+class GraphicExhibit:
+    """ Type containing data for exhibiting generic graphics. See GRAPHIC_TYPE_FUNCS for supported graphic types. """
+    # GRAPHIC_TYPE_FUNCS = {
+    #     plt.Figure: lambda x: st.pyplot(x, use_container_width=True)
+    # }
+
+    def __init__(self,
+                 graphic: Visual,
+                 privacy: Global.Privacy = Global.Privacy.PRIVATE,  # Default to PRIVATE for security.
+                 preText: str = None,
+                 postText: str = None,
+                 section: ExhibitSection = None,
+                 sortKey: int = 0
+                 ):
+        # if type(graphic) not in self.GRAPHIC_TYPE_FUNCS:
+        #     raise TypeError(f'{type(graphic)} graphic type not supported.')
+        self.graphic = graphic
+        self.privacy = privacy
+        self.preTextMD = preText  # Markdown-format text.
+        self.postTextMD = postText  # Markdown-format text.
+        self.section = section
+        self.sortKey = sortKey
+
+    def __repr__(self):
+        return f'{type(self).__name__}: {self.section} at {id(self)}'
+
+    def exhibitStreamlit(self):
+        if self.preTextMD is not None:
+            st.markdown(self.preTextMD)
+        self.graphic.exhibit()
+        if self.postTextMD is not None:
+            st.markdown(self.postTextMD)
+
+
 def stackplot_and_totals_stackbar(
         x: pd.Series,
         y: pd.DataFrame,
@@ -593,7 +614,7 @@ def stackbarplot_and_totals(
         xlabel_major_formatter=mdates.DateFormatter('%Y-%m'),
         xtick_minor_locator=mdates.MonthLocator(bymonth=(1, 4, 7, 10)),
         **kwargs
-) -> plt.Figure:
+) -> MatplotlibVisual:
     """
     Returns a figure primarily featuring a stacked bar plot.
     Also includes a small subplot with a stacked bar plot of the totals.
@@ -761,7 +782,7 @@ class GraphicMaker:
                                          textPos=ArtistAlignment.SW, figsize=(10, 5))
         # sleep_epoch_wkday_VIS.show()
         graphic.save(fileName=auxText + '_' + title)
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.SLEEP, sortKey=64)
 
     @staticmethod
@@ -822,7 +843,7 @@ class GraphicMaker:
         auxText = getDateRangeString(tsds.timesheetdf.df)
         ArtistAlignment.SW.text(auxText, ax)
 
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.SLEEP, sortKey=32)
 
     @staticmethod
@@ -853,7 +874,7 @@ class GraphicMaker:
         plt.grid(axis='y')
         ArtistAlignment.NE.text(auxText, graphic.fig.axes[1])
         graphic.save(fileName=auxText + '_' + title.replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.PEOPLE, sortKey=128)
 
     @staticmethod
@@ -900,7 +921,7 @@ class GraphicMaker:
 
         auxText = getDateRangeString(df)
         graphic.save(fileName=auxText + '_' + titles[0].replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.PEOPLE, sortKey=180)
 
     @staticmethod
@@ -944,7 +965,7 @@ class GraphicMaker:
 
         auxText = getDateRangeString(df)
         graphic.save(fileName=auxText + '_' + titles[0].replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.PEOPLE, sortKey=190)
 
     @staticmethod
@@ -987,7 +1008,7 @@ class GraphicMaker:
             ax.text(dat, 26.5, label, ha='center', va='bottom')
 
         graphic.save(fileName=auxText + '_' + title)
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.METAPROJECT, sortKey=4)
 
 

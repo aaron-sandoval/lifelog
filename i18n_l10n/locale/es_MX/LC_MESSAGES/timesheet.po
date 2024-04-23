@@ -1437,6 +1437,11 @@ msgid ""
 " timesheet at work, and I got into the habit of logging data more "
 "precisely at all hours. "
 msgstr ""
+"Hay tan mucho que ver el los detalles del gráfico. "
+"Cómo la recolección de datos no era completo consistentemente hasta 2018-06. "
+"Probablemente se debe a que cuando empecé mi primer trabajo, "
+"usaba estes mismos datos para llenar mi hoja de horas, "
+"y me acostumbré a registrar los datos más precisamente todo el tiempo. "
 
 #: babel_intermediate.txt:368
 msgid ""
@@ -1447,17 +1452,17 @@ msgid ""
 "`Project`. This is a useful data feature to begin with in a top-down "
 "analysis approach, since major shifts in lifestyle are evident while "
 "smaller details don't muddy the waters."
-msgstr ""
+msgstr "Gran parte del trabajo de diseño en este proyecto ha consistido en abstraer tanto como sea posible sobre las actividades diarias en estructuras de datos como `Proyecto`, `Etiqueta`, `Coleccionable`, etc."
 
 #: babel_intermediate.txt:369
 msgid "Metaprojects"
-msgstr ""
+msgstr "Metaproyectos"
 
 #: babel_intermediate.txt:370
 msgid ""
 "Or the big zero-sum spike-trough pairs poking above the 24-hour total "
 "line. I'm not sure what is causing them. Most likely some unclean data. "
-msgstr ""
+msgstr "O los grandes pares de picos y valles de suma cero que se asoman por encima de la línea total de 24 horas. No estoy seguro de qué los está causando. Lo más probable es que se trate de datos sucios."
 
 #: babel_intermediate.txt:371
 msgid ""
@@ -1466,6 +1471,9 @@ msgid ""
 "2021.\n"
 "- Split this plot into 2 subplots looking at weekdays and weekends."
 msgstr ""
+"- Investigar los picos sobre 24 horas mencionados arriba.\n"
+"- Agregar etiquetas a eventos de menor importancia como las giras de bici cortas en 2019 y 2021.\n"
+"- Divida esta gráfico en 2 para los días y los fines de semana."
 
 #: babel_intermediate.txt:372
 msgid ""
@@ -1474,6 +1482,10 @@ msgid ""
 "school, to working, to long-haul cycle touring in 2022, and to "
 "independent study in 2023. "
 msgstr ""
+"Me gusta cómo este gráfico ilustra las fases de mi vida adulta con "
+"diferentes enfoques de `Metaproyecto`. Puedes ver fácilmente los cambios desde el "
+"posgrado, el trabajo, el cicloturismo de larga distancia en 2022 y "
+"el estudio independiente en 2023. "
 
 #: babel_intermediate.txt:373
 msgid ""
@@ -1481,6 +1493,7 @@ msgid ""
 "periods in my first job. Grad school was consistently more consuming than"
 " work, with only 2 spikes around 2021-01 coming close. "
 msgstr ""
+"O comparar el exceso de trabajo que tenía en el posgrado con los períodos más ocupados de mi primer trabajo. El posgrado consumía consistentemente más que el trabajo, con solo 2 picos alrededor de 2021-01 acercándose. "
 
 #: babel_intermediate.txt:374
 msgid ""
@@ -1488,6 +1501,7 @@ msgid ""
 "course of the semester, it was mostly {0} which was sacrificed, {1} only "
 "dropping a bit. "
 msgstr ""
+"O cómo a medida que mis estudios en la primavera de 2018 consumieron gradualmente más tiempo a lo largo del semestre, fue principalmente {0} lo que se sacrificó, y {1} solo disminuyó un poco. "
 
 #: babel_intermediate.txt:375
 #, python-format
@@ -1499,7 +1513,14 @@ msgid ""
 "within a gender-balanced team. Spikes around July, November, or December "
 "make sense, since that's when I usually visit my dad's family and spend "
 "time with my grandma, aunts, and cousins."
-msgstr ""
+msgstr "El predominio de {0} es obvio. "
+" El gráfico a la derecha muestra la proporción de tiempo total por género, "
+"y {0} ocupa un 75% del total. "
+"El posgrado en la primera mitad de 2018 era claramente dominado por {0}. "
+"se patrón se disminuyó en 2019 cuando, yo hipotetizo, "
+"mi trabajo se volvió más colaborativo dentro de un equipo de balancia entre géneros. "
+"Picos en julio, noviembre, o diciembre tienen razón, "
+"puesto estes meses son cuando suelo visitar a la familia de mi papá y pasar tiempo con mi abuela, tías, y primos."
 
 #: babel_intermediate.txt:376
 msgid ""
@@ -1739,6 +1760,11 @@ msgid ""
 "attribution cases have been handled in data cleaning, but I haven't "
 "caught all of them."
 msgstr ""
+"Errores en atribución de `Metaproyecto` suelen originar desde instancias de `Proyecto` los cuales no encajan en un solo `Metaproyecto`. "
+"Por ejemplo, `Proyecto.{5}` contiene tareas de montar en bici y mantener la bici, "
+"las cuales encajan en {3} y {2}, respectivamente. "
+"Algunos de estes casos de atribución dividida ya han sido resueltos por la limpia de datos, "
+"pero no he notado al 100%. "
 
 #: babel_intermediate.txt:409
 msgid ""
