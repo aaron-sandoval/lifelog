@@ -13,21 +13,19 @@ import portion
 from src.Description import Description
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-# from pandas.core.dtypes.inference import is_list_like
-from src.TimesheetDataset import *
-from i18n_l10n import internationalization as i18n
 from typing import Union, Iterable, List, Tuple, Set, NamedTuple, Type, Any
 from enum import Enum
-# from dataclasses import dataclass
 from bisect import bisect_right
 from itertools import accumulate
 import inspect
 import streamlit as st
 import seaborn as sns
 
+from src.TimesheetDataset import *
+from i18n_l10n import internationalization as i18n
+
 
 global babelx  # Babel extractor wrapper, must be accessible everywhere in the module
-# babelx = i18n.BabelIntermediateExtractor(extract=True, locale=i18n.lang_en, bufferSize=50)  # Sets builtins '_a', '_b'
 babelx = i18n.babelx
 STR_BACKEND = _k('👀 *Peek into the Backend*')
 
@@ -55,7 +53,6 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
         babelx.flush()
 
     global babelx
-    babelx.setLang(i18n.localeDict[locale])
     babelx.setLang(i18n.localeDict[locale])
     kiwilib.Aliasable.setDefaultLocale(locale)
     tsds = loadAndMergeDatasets(paths, catalogSuffix)
@@ -367,10 +364,21 @@ class MatplotlibVisual(Visual):
         self.fig.savefig(os.path.join(Global.rootProjectPath(), 'VS_Figures', fileName + '.png'))
 
     def exhibit(self) -> None:
+        self.localize()
         st.pyplot(self.fig, use_container_width=True)
 
     def localize(self):
-        pass
+        def artist_filter(a: plt.Artist):
+            return (
+                isinstance(a, plt.text.Text) and
+                len(a.get_text()) > 0
+            )
+
+        text_artists: List[plt.text.Text] = self.fig.findobj(artist_filter)
+        for art in text_artists:
+            t: str = art.get_text()
+
+
 
 
 class SingleAxisStaticVisual(MatplotlibVisual):

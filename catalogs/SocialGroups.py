@@ -1,12 +1,9 @@
-from enum import Enum
+from aenum import Enum
 import yaml
 from yamlable import yaml_info, YamlAble
 from typing import Any, Dict, Callable, Tuple, Type, NamedTuple
 from external_modules import kiwilib
 import src.TimesheetGlobals as Global
-from dataclasses import fields as dataclass_fields, dataclass, make_dataclass
-import i18n_l10n.internationalization as i18n
-import re
 
 
 class Gender(Global.ColoredAliasable):
@@ -42,7 +39,7 @@ class Gender(Global.ColoredAliasable):
     # @classmethod
     # def _get_dataclass(cls) -> kiwilib.IsDataclass:
     #     @dataclass
-    #     class GenderDataclass(Global.Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+    #     class GenderDataclass(Global.Colored.dataclass, i18n.EnglishSpanishEnum.dataclass): pass
     #     return GenderDataclass
 
     # @classmethod
@@ -145,9 +142,13 @@ yaml.add_representer(Review, Review._representer)
 
 
 @yaml_info(yaml_tag_ns='SocialGroup')
-class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
+class SocialGroup(kiwilib.AliasableHierEnum, YamlAble):
     es_MX = 'Grupo social'
     color = (0.5, 0.5, 0.5)
+
+    @classmethod
+    def root_class(cls) -> type:
+        return SocialGroup
 
     def __init_subclass__(cls, **kwargs):
         """Register all subclasses in the 'SocialGroup' namespace."""

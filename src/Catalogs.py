@@ -1,7 +1,6 @@
 import typing
 import numpy as np
 import yaml
-import kiwilib
 import os.path
 import warnings
 from functools import reduce

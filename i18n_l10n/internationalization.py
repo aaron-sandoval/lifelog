@@ -166,8 +166,7 @@ class BabelIntermediateExtractor:
 babelx = BabelIntermediateExtractor(extract=True, locale=lang_en, bufferSize=50)
 
 
-# @kiwilib.DataclassValuedEnum.init
-class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
+class EnglishSpanishEnum(kiwilib.AliasableEnum):
     @staticmethod
     def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
@@ -183,11 +182,6 @@ class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
            'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name.replace('_', ' ')+'o',
         }
 
-    # def alias(self, locale: str = None):
-    #     if locale is None:
-    #         # Can't set as default in function args due to some unwanted caching behind the scenes
-    #         locale = locale_to_str[babelx.curLocale]
-    #     return self._aliasFuncs[locale](self)
 
 def test2():
     babelx = BabelIntermediateExtractor(extract=False, locale=lang_es, bufferSize=5)

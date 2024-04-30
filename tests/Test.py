@@ -395,7 +395,7 @@ def test18():
     class Treenum(kiwilib.HierarchicalEnum): pass
 
     # @staticmethod
-    # def ROOT_CLASS(): return Treenum
+    # def root_class(): return Treenum
 
     class Branch1(Treenum): pass
 

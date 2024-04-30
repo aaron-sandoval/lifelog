@@ -17,9 +17,6 @@ from datetime import datetime, timedelta, date
 import portion as P
 from enum import Enum
 
-from external_modules.kiwilib import IsDataclass
-import i18n_l10n.internationalization as i18n
-from src.TimePeriod import TimePeriod
 import pandas as pd
 # import numpy as np
 from collections import defaultdict
@@ -28,6 +25,8 @@ from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
 from dataclasses import dataclass
 import abc
 
+import i18n_l10n.internationalization as i18n
+from src.TimePeriod import TimePeriod
 
 ####################
 # Project Constants#
@@ -153,7 +152,7 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
 ##############
 class Colored(kiwilib.DataclassValuedEnum):
     @staticmethod
-    def _get_dataclass() -> IsDataclass:
+    def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
         class Color:
             color: Tuple[int, int, int] = 128, 128, 128
@@ -168,22 +167,22 @@ class Colored(kiwilib.DataclassValuedEnum):
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x * 256), 255)) for x in self.color])
 
 
-class ColoredAliasable(Colored, i18n.AliasableEnum):
+class ColoredAliasable(Colored, i18n.EnglishSpanishEnum):
     @classmethod
     def _get_dataclass(cls) -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
-        class ColoredAliasableDataclass(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+        class ColoredAliasableDataclass(Colored.dataclass, i18n.EnglishSpanishEnum.dataclass): pass
         return ColoredAliasableDataclass
 
 
-class TestColor(Colored, i18n.AliasableEnum):
+class TestColor(Colored, i18n.EnglishSpanishEnum):
     RED = enum.auto()
     GREEN = enum.auto()
 
     @staticmethod
-    def _get_dataclass() -> IsDataclass:
+    def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
-        class ColoredAliasableEnum(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+        class ColoredAliasableEnum(Colored.dataclass, i18n.EnglishSpanishEnum.dataclass): pass
         return ColoredAliasableEnum
 
     @classmethod
@@ -735,7 +734,7 @@ def appendIntervalDictComplement(dct: P.IntervalDict, complementVal, bigInterval
     return dct
 
 
-class EpochScheme(i18n.AliasableEnum):
+class EpochScheme(i18n.EnglishSpanishEnum):
     """
     Enum class containing all the global data and procedures for epoch schemes and groups.
     Each enum member is a scheme for creating a set of epoch groups.
@@ -752,7 +751,7 @@ class EpochScheme(i18n.AliasableEnum):
     @staticmethod
     def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
-        class EpochSchemeDataclass(i18n.AliasableEnum.dataclass):
+        class EpochSchemeDataclass(i18n.EnglishSpanishEnum.dataclass):
             scheme: P.IntervalDict = P.IntervalDict({})  # Dummy default, must define in args
         return EpochSchemeDataclass
 

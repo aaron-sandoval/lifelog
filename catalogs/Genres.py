@@ -4,12 +4,16 @@ import kiwilib
 
 
 @yaml_info(yaml_tag_ns='Genre')
-class Genre(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
+class Genre(kiwilib.AliasableHierEnum, YamlAble):
     es_MX = 'Género'
     color = (0.5, 0.5, 0.5)
 
+    @classmethod
+    def root_class(cls) -> type:
+        return Genre
+
     def __init_subclass__(cls, **kwargs):
-        """Register all subclasses in the 'SocialGroup' namespace."""
+        """Register all subclasses in the namespace. Substitute for decorating every subclass."""
         super().__init_subclass__(**kwargs)
         yaml_info(yaml_tag_ns='Genre')(cls)
 
