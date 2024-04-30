@@ -22,8 +22,8 @@ from scripts.Visualize import *
     ]
 )
 def test_aliasable_inheritance(class_: type):
-    assert class_ in kiwilib.SubclassRegistryMeta._registry
+    assert class_ in kiwilib.getAllSubclasses(kiwilib.Aliasable)
 
 
 def test_aliasable_inheritance2():
-    assert len(kiwilib.SubclassRegistryMeta._registry) >= 64
+    assert len(kiwilib.getAllSubclasses(kiwilib.Aliasable)) >= 59

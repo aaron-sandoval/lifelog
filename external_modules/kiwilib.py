@@ -232,65 +232,11 @@ class IsDataclass(Protocol):
 _T = TypeVar('_T')
 
 
-class SubclassRegistryMeta(type):
-    _registry = dict()
-
-    def __new__(mcs, name, bases, dct):
-        new = super().__new__(mcs, name, bases, dct)
-        setattr(new, '_subclasses', [])
-        SubclassRegistryMeta._registry[new] = []
-        for b in bases:
-            if hasattr(b, '_subclasses'):
-                b._subclasses.append(new)
-            if b in SubclassRegistryMeta._registry:
-                SubclassRegistryMeta._registry[b].append(new)
-        return new
-
-
-class SubclassRegistry(metaclass=SubclassRegistryMeta):
-    @classmethod
-    def subclasses(cls) -> List[type]:
-        return cls._subclasses
-
-    @classmethod
-    def all_subclasses(cls: type, include_self=False) -> Set[type]:
-        """
-        Returns a set containing all child classes in the subclass graph of `cls`.
-        I.e., includes subclasses of subclasses, etc.
-
-        # Parameters
-        - `include_self`: Whether to include `class_` itself in the returned list
-
-        # Development
-        Since most class hierarchies are small,
-        the inefficiencies of the existing recursive implementation aren't problematic.
-        It might be valuable to refactor with memoization
-        if the need arises to use this function on a very large class hierarchy.
-        """
-        subs: list[set] = [
-            sub.all_subclasses(include_self=True)
-            for sub in cls.subclasses()
-            if sub is not None
-        ]
-        subs: set = set(flatten(subs))
-        if include_self:
-            subs.add(cls)
-        return subs
-
-
-class AenumABCMetaSubclass(SubclassRegistryMeta, abc.ABCMeta, aenum.EnumMeta):
+class AenumABCMeta(abc.ABCMeta, aenum.EnumMeta):
     pass
 
 
-class ABCSubclassRegistryMeta(SubclassRegistryMeta, abc.ABCMeta):
-    pass
-
-
-class ABCAenumRegistryMeta(ABCSubclassRegistryMeta, AenumABCMetaSubclass):
-    pass
-
-
-class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMetaSubclass):
+class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMeta):
     """
     ABC for Enum classes whose members have dataclass-like attribute access.
     Each subclass is associated with a dataclass containing the member attributes.
@@ -349,7 +295,7 @@ class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMetaSubclass):
         return self._data[self].__dict__
 
 
-class HierarchicalEnum(SubclassRegistry, abc.ABC, metaclass=ABCSubclassRegistryMeta):
+class HierarchicalEnum(abc.ABC):
     """
     A superclass for defining a hierarchical enum-like data structure using a class hierarchy.
     Supports any hierarchical structure supported by python class inheritance.
@@ -848,7 +794,7 @@ YamlCodecDatetimes.register_with_pyyaml()
 YamlCodecMisc.register_with_pyyaml()
 
 
-class Aliasable(SubclassRegistry, abc.ABC, metaclass=ABCSubclassRegistryMeta):
+class Aliasable(abc.ABC):
     def alias(self, locale: str = None):
         if locale is None:
             # locale = self.aliasFuncs()[self.defaultLocale]
@@ -895,7 +841,7 @@ class Aliasable(SubclassRegistry, abc.ABC, metaclass=ABCSubclassRegistryMeta):
     #     return cls._subclasses
 
 
-class AliasableEnum(Aliasable, DataclassValuedEnum, metaclass=ABCAenumRegistryMeta): pass
+class AliasableEnum(Aliasable, DataclassValuedEnum, metaclass=AenumABCMeta): pass
 
 
 class AliasableHierEnum(Aliasable, HierarchicalEnum):
