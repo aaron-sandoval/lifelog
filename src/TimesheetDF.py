@@ -19,7 +19,6 @@ from tsqparser.TimesheetQueryLexer import TimesheetQueryLexer
 from tsqparser.TimesheetQueryParser import TimesheetQueryParser
 import kiwilib
 
-
 @pd.api.extensions.register_dataframe_accessor("tsdf")
 class TimesheetDataFrame:
     isEmptyColumnMap = {
@@ -307,7 +306,7 @@ class TimesheetDataFrame:
         """
         :return: A counter Series object of all the tokens in all Description objects contained in the TsDF.
         """
-        return pd.Series(kiwilib.flatten(self.df.description.apply(lambda x: x.tokens).values))\
+        return pd.Series(i18n.kiwilib.flatten(self.df.description.apply(lambda x: x.tokens).values))\
             .value_counts()
 
     ##########################

@@ -3,14 +3,15 @@ import datetime
 
 import pandas as pd
 from yamlable import YamlAble, yaml_info
+import portion
+import networkx as nx
+from typing import Union, Iterable, List, Tuple, Set
+
 from src.TimesheetDF import TimesheetDataFrame
 import src.TimesheetGlobals as Global
 import src.DescriptionSTDLISTS as STDList
-from typing import Union, Iterable, List, Tuple, Set
 import catalogs.SocialGroups as sg
 import catalogs.Genres as genres
-import portion
-import networkx as nx
 import kiwilib
 
 
