@@ -17,7 +17,7 @@ from src.TimesheetGlobals import *
 from antlr4 import *
 from tsqparser.TimesheetQueryLexer import TimesheetQueryLexer
 from tsqparser.TimesheetQueryParser import TimesheetQueryParser
-import kiwilib
+# import kiwilib
 
 @pd.api.extensions.register_dataframe_accessor("tsdf")
 class TimesheetDataFrame:

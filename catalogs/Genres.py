@@ -1,6 +1,6 @@
 from yamlable import yaml_info, YamlAble
 from typing import Dict, Callable
-import kiwilib
+from external_modules import kiwilib
 
 
 @yaml_info(yaml_tag_ns='Genre')

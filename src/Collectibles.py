@@ -12,7 +12,7 @@ import src.TimesheetGlobals as Global
 import src.DescriptionSTDLISTS as STDList
 import catalogs.SocialGroups as sg
 import catalogs.Genres as genres
-import kiwilib
+from external_modules import kiwilib
 
 
 class Collectible(abc.ABC):
