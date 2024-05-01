@@ -63,7 +63,7 @@ class BabelIntermediateExtractor:
         self.file = str(Path(
             os.path.abspath(__file__)).parent.parent.absolute()/'i18n_l10n'/f'babel_intermediate{fileSuffix}.txt')
         self.words = set()  # Existing set of words, all languages together, read from the intermediate file.
-        self.newWords = dict()  # New words found via extract() not yet present in self.words
+        self.newWords = dict()  # Words found via extract() not yet in self.words. A dict to preserve insertion order.
         self.bufferSize = bufferSize  # Num words to accumulate in self.newWords before appending contents to self.file
         self.curLocale: gettext.GNUTranslations = None  # Current language assigned by last call to self.setLang().
         self.setLang(locale)

@@ -867,14 +867,17 @@ class Aliasable(abc.ABC):
 class AliasableEnum(Aliasable, DataclassValuedEnum, metaclass=AenumABCMeta):
     @classmethod
     @lru_cache
-    def aliases_to_members_deep(cls, locale: str) -> Dict[str, 'AliasableEnum']:
+    def aliases_to_members_deep(
+            cls,
+            alias_func: Callable[['AliasableEnum', str], str] = lambda x, loc: x.alias(loc)
+    ) -> Dict[str, 'AliasableEnum']:
         """
         Returns a mapping from aliases to enum members for the members of all subclasses of `cls`.
         Warning: In the case of duplicate keys among multiple subclasses,
         the function behavior is undefined for which enum member is returned in the value.
         """
             # return {sub: {a.alias(locale): a for a in sub} for sub in getAllSubclasses(cls, includeSelf=True)}
-        return {a.alias(locale): a for sub in getAllSubclasses(cls, includeSelf=True) for a in sub}
+        return {alias_func(a): a for sub in getAllSubclasses(cls, includeSelf=True) for a in sub}
 
 
 class AliasableHierEnum(Aliasable, HierarchicalEnum):
@@ -898,18 +901,22 @@ class AliasableHierEnum(Aliasable, HierarchicalEnum):
 
     @classmethod
     @lru_cache
-    def aliases_to_members(cls, locale: str) -> Dict[str, 'AliasableHierEnum']:
+    def aliases_to_members(
+            cls,
+            alias_func: Callable[['AliasableHierEnum', str], str] = lambda x, loc: x.alias(loc)
+    ) -> Dict[str, 'AliasableHierEnum']:
         """
         Returns a mapping from aliases to enum members for the members of all subclasses of `cls`.
         Warning: In the case of duplicate keys in the subclass DAG,
         the function behavior is undefined for which enum member is returned in the value.
+        :param alias_func: Alias function. Defaults to standard alias, but others might be wanted, like `builtins._e`.
         """
-        out = {sub().alias(locale): sub for sub in getAllSubclasses(cls)}
+        out = {alias_func(sub()): sub for sub in getAllSubclasses(cls)}
         if len(out) < len(getAllSubclasses(cls)):
             subs: Dict[type, str] = {c: c().alias(locale) for c in getAllSubclasses(cls)}
             for sub, alias in copy.copy(subs).items():
                 if alias in out:
                     subs.pop(sub)
                     out.pop(alias)
-            raise ValueError(f'The subclass DAG of {cls} contains duplicate {locale} localizations: {subs.keys()}')
+            raise ValueError(f'The subclass DAG of {cls} contains duplicate localizations: {subs.keys()}')
         return out

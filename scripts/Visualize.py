@@ -32,16 +32,17 @@ babelx = i18n.babelx
 STR_BACKEND = _k('👀 *Peek into the Backend*')
 
 _enum_alias_map: Dict[str, kiwilib.AliasableEnum] = \
-    kiwilib.AliasableEnum.aliases_to_members_deep(i18n.locale_to_str[babelx.curLocale])
+    kiwilib.AliasableEnum.aliases_to_members_deep(alias_func=_e)
 # Also add keys for the alternative language since the dict isn't updated upon a change in language selection
-_enum_alias_map.update(kiwilib.AliasableEnum.aliases_to_members_deep(
-    i18n.locale_to_str[babelx.lang_alternative[babelx.curLocale][0]]))
+babelx.setLang(i18n.lang_es)
+_enum_alias_map.update(kiwilib.AliasableEnum.aliases_to_members_deep(alias_func=_e))
 
+babelx.setLang(i18n.lang_en)
 _hier_enum_alias_map: Dict[str, kiwilib.AliasableHierEnum] = \
-    kiwilib.AliasableHierEnum.aliases_to_members(i18n.locale_to_str[babelx.curLocale])
-_hier_enum_alias_map.update(kiwilib.AliasableHierEnum.aliases_to_members(
-    i18n.locale_to_str[babelx.lang_alternative[babelx.curLocale][0]]))
-
+    kiwilib.AliasableHierEnum.aliases_to_members(alias_func=_e)
+babelx.setLang(i18n.lang_es)
+_hier_enum_alias_map.update(kiwilib.AliasableHierEnum.aliases_to_members(alias_func=_e))
+babelx.setLang(i18n.lang_en)
 
 def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Privacy.PUBLIC):
 
@@ -799,9 +800,7 @@ class GraphicMaker:
         df1['week'] = df1.circad - df1.circad.apply(datetime.date.weekday).apply(lambda x: datetime.timedelta(days=x))
         df1 = df1[['week', 'duration', 'metaproject']]
         visData = df1.groupby(['week', 'metaproject']).sum().unstack().duration.fillna(datetime.timedelta(hours=0))
-        visData = visData[sorted(visData.columns.values, reverse=True)]\
-            .rename({x: x.alias() for x in Global.Metaproject}, axis=1)\
-            .applymap(lambda x: x.total_seconds()/3600/7)
+        visData = visData[sorted(visData.columns.values, reverse=True)].applymap(lambda x: x.total_seconds()/3600/7)
         # visData[_k('Untracked')] = datetime.timedelta(weeks=1) - visData.sum(axis=1)
         title = _k('Duration by Metaproject per Day, Averaged over 1 Week')  # + ': ' + epochScheme.alias()
         auxText = getDateRangeString(tsds.timesheetdf.df)
@@ -823,7 +822,7 @@ class GraphicMaker:
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.scheme.keys()]
         ep = Global.Epoch
-        lineLabels = [kiwilib.addLineBreaks(_e(a), delimIndices=[0]) for a in
+        lineLabels = [kiwilib.addLineBreaks(" ".join(word.capitalize() for word in _e(a).split(" ")), delimIndices=[0]) for a in
                       [ep.e2017_Cornell, ep.e2018_Boulder_Solo, ep.e2022_Tour_Start, ep.e2022_Tour_End]]
         lineLabels[1] = _k('Start\nFirst Job')
         plt.vlines(lineDates, 24, 26.5, linestyles='dashed')

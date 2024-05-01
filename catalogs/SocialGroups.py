@@ -2,6 +2,8 @@ from aenum import Enum
 import yaml
 from yamlable import yaml_info, YamlAble
 from typing import Any, Dict, Callable, Tuple, Type, NamedTuple
+import re
+
 from external_modules import kiwilib
 import src.TimesheetGlobals as Global
 
@@ -158,8 +160,8 @@ class SocialGroup(kiwilib.AliasableHierEnum, YamlAble):
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable[['SocialGroup'], str]]:
         return {
-               # 'en_US': lambda slf: re.sub(r"([a-z])([A-Z])", r"\1 \2", type(slf).__name__),
-               'en_US': lambda slf: type(slf).__name__,
+               'en_US': lambda slf: re.sub(r"([a-z])([A-Z])", r"\1 \2", type(slf).__name__),
+               # 'en_US': lambda slf: type(slf).__name__,
                'es_MX': lambda slf: slf.es_MX if kiwilib.is_locally_defined(type(slf), 'es_MX') else type(slf).__name__ + 'o'
                # 'es_MX': lambda slf: type(slf).__name__ + 'o'
         }

@@ -27,3 +27,8 @@ def test_aliasable_inheritance(class_: type):
 
 def test_aliasable_inheritance2():
     assert len(kiwilib.getAllSubclasses(kiwilib.Aliasable)) >= 59
+
+
+def test_enum_alias_maps():
+    assert _e(sg.ColleagueBallOPIR) in _hier_enum_alias_map
+    assert _e(sg.ColleagueEA) in _hier_enum_alias_map
