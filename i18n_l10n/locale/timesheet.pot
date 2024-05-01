@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-16 19:33-0600\n"
+"POT-Creation-Date: 2024-04-30 23:09-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1760,15 +1760,51 @@ msgstr ""
 msgid "Introduction"
 msgstr ""
 
-#: babel_intermediate.txt:421
-msgid ""
-"Spanish translations across the site are in work. I apologize for any "
-"confusion."
-msgstr ""
-
 #: babel_intermediate.txt:425
 msgid ""
 "Spanish translations across the site are in work. Apologies for any "
 "confusion this may cause."
+msgstr ""
+
+#: babel_intermediate.txt:429
+msgid ""
+"2017\n"
+"Cornell"
+msgstr ""
+
+#: babel_intermediate.txt:430
+msgid ""
+"2022\n"
+"Tour Start"
+msgstr ""
+
+#: babel_intermediate.txt:431
+msgid ""
+"2022\n"
+"Tour End"
+msgstr ""
+
+#: babel_intermediate.txt:432
+msgid ""
+"Grad\n"
+"School"
+msgstr ""
+
+#: babel_intermediate.txt:433
+msgid ""
+"First\n"
+"Job"
+msgstr ""
+
+#: babel_intermediate.txt:434
+msgid ""
+"2022\n"
+"Cycle Tour"
+msgstr ""
+
+#: babel_intermediate.txt:435
+msgid ""
+"2023\n"
+"Career Pivot"
 msgstr ""
 

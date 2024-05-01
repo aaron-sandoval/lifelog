@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-16 19:33-0600\n"
+"POT-Creation-Date: 2024-04-30 23:09-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es_MX\n"
@@ -1249,7 +1249,7 @@ msgstr ""
 
 #: babel_intermediate.txt:325
 msgid "[hours]"
-msgstr ""
+msgstr "[horas]"
 
 #: babel_intermediate.txt:326
 msgid "Wednesday"
@@ -1293,7 +1293,7 @@ msgstr ""
 
 #: babel_intermediate.txt:342
 msgid "Distributions of Time of Falling Asleep and Waking Up by Life Phase"
-msgstr ""
+msgstr "Distribuciones de la Hora de Dormirse y Levantarse por Fase de la Vida"
 
 #: babel_intermediate.txt:343
 msgid ""
@@ -1307,7 +1307,7 @@ msgstr ""
 
 #: babel_intermediate.txt:345
 msgid "Duration by Metaproject per Day, Averaged over 1 Week"
-msgstr ""
+msgstr "Duración por Metaproyecto por Día, Promedio durante 1 Semana"
 
 #: babel_intermediate.txt:346
 msgid "Fall asleep"
@@ -1319,45 +1319,51 @@ msgstr ""
 
 #: babel_intermediate.txt:348
 msgid "Time of day"
-msgstr ""
+msgstr "Hora"
 
 #: babel_intermediate.txt:349
 msgid "Average Person-Hours of Social Interaction per Day, by Gender"
-msgstr ""
+msgstr "Promedio de Persona-Horas de Interacción Social por Día, por Género"
 
 #: babel_intermediate.txt:350
 msgid "Life Phase"
-msgstr ""
+msgstr "Fase de la Vida"
 
 #: babel_intermediate.txt:351
 msgid ""
 "Total Time Spent\n"
 " with Individual People, Sorted"
 msgstr ""
+"Tiempo Total Pasado\n"
+" con Individuos, Ordenado"
 
 #: babel_intermediate.txt:352
 msgid "[hours/day]"
-msgstr ""
+msgstr "[horas/día]"
 
 #: babel_intermediate.txt:353
 msgid ""
 "Total Time Spent\n"
 " with Individual People, Sorted, Log Scale"
 msgstr ""
+"Tiempo Total Pasado\n"
+" con Individuos, Ordenado, Escala Log"
 
 #: babel_intermediate.txt:354
 msgid "Person index"
-msgstr ""
+msgstr Índice de persona"
 
 #: babel_intermediate.txt:355
 msgid "Average Person-Hours of Social Interaction per Day, by Primary Relation"
-msgstr ""
+msgstr "Promedio de Persona-Horas de Interacción Social por Día, por Relación Principal"
 
 #: babel_intermediate.txt:356
 msgid ""
 "Total\n"
 "Person-Hours"
 msgstr ""
+"Persona-Horas\n"
+"en Total"
 
 #: babel_intermediate.txt:357
 msgid "Avg Sleep Duration by Weekday and Life Phase"
@@ -1365,7 +1371,7 @@ msgstr ""
 
 #: babel_intermediate.txt:358
 msgid "[person-hours/day]"
-msgstr ""
+msgstr "[persona-horas/día]"
 
 #: babel_intermediate.txt:362
 msgid ""
@@ -1437,11 +1443,11 @@ msgid ""
 " timesheet at work, and I got into the habit of logging data more "
 "precisely at all hours. "
 msgstr ""
-"Hay tan mucho que ver el los detalles del gráfico. "
-"Cómo la recolección de datos no era completo consistentemente hasta 2018-06. "
-"Probablemente se debe a que cuando empecé mi primer trabajo, "
-"usaba estes mismos datos para llenar mi hoja de horas, "
-"y me acostumbré a registrar los datos más precisamente todo el tiempo. "
+"Hay tan mucho que ver el los detalles del gráfico. Cómo la recolección de"
+" datos no era completo consistentemente hasta 2018-06. Probablemente se "
+"debe a que cuando empecé mi primer trabajo, usaba estes mismos datos para"
+" llenar mi hoja de horas, y me acostumbré a registrar los datos más "
+"precisamente todo el tiempo. "
 
 #: babel_intermediate.txt:368
 msgid ""
@@ -1452,7 +1458,10 @@ msgid ""
 "`Project`. This is a useful data feature to begin with in a top-down "
 "analysis approach, since major shifts in lifestyle are evident while "
 "smaller details don't muddy the waters."
-msgstr "Gran parte del trabajo de diseño en este proyecto ha consistido en abstraer tanto como sea posible sobre las actividades diarias en estructuras de datos como `Proyecto`, `Etiqueta`, `Coleccionable`, etc."
+msgstr ""
+"Gran parte del trabajo de diseño en este proyecto ha consistido en "
+"abstraer tanto como sea posible sobre las actividades diarias en "
+"estructuras de datos como `Proyecto`, `Etiqueta`, `Coleccionable`, etc."
 
 #: babel_intermediate.txt:369
 msgid "Metaprojects"
@@ -1462,7 +1471,10 @@ msgstr "Metaproyectos"
 msgid ""
 "Or the big zero-sum spike-trough pairs poking above the 24-hour total "
 "line. I'm not sure what is causing them. Most likely some unclean data. "
-msgstr "O los grandes pares de picos y valles de suma cero que se asoman por encima de la línea total de 24 horas. No estoy seguro de qué los está causando. Lo más probable es que se trate de datos sucios."
+msgstr ""
+"O los grandes pares de picos y valles de suma cero que se asoman por "
+"encima de la línea total de 24 horas. No estoy seguro de qué los está "
+"causando. Lo más probable es que se trate de datos sucios."
 
 #: babel_intermediate.txt:371
 msgid ""
@@ -1472,7 +1484,8 @@ msgid ""
 "- Split this plot into 2 subplots looking at weekdays and weekends."
 msgstr ""
 "- Investigar los picos sobre 24 horas mencionados arriba.\n"
-"- Agregar etiquetas a eventos de menor importancia como las giras de bici cortas en 2019 y 2021.\n"
+"- Agregar etiquetas a eventos de menor importancia como las giras de bici"
+" cortas en 2019 y 2021.\n"
 "- Divida esta gráfico en 2 para los días y los fines de semana."
 
 #: babel_intermediate.txt:372
@@ -1483,9 +1496,9 @@ msgid ""
 "independent study in 2023. "
 msgstr ""
 "Me gusta cómo este gráfico ilustra las fases de mi vida adulta con "
-"diferentes enfoques de `Metaproyecto`. Puedes ver fácilmente los cambios desde el "
-"posgrado, el trabajo, el cicloturismo de larga distancia en 2022 y "
-"el estudio independiente en 2023. "
+"diferentes enfoques de `Metaproyecto`. Puedes ver fácilmente los cambios "
+"desde el posgrado, el trabajo, el cicloturismo de larga distancia en 2022"
+" y el estudio independiente en 2023. "
 
 #: babel_intermediate.txt:373
 msgid ""
@@ -1493,7 +1506,9 @@ msgid ""
 "periods in my first job. Grad school was consistently more consuming than"
 " work, with only 2 spikes around 2021-01 coming close. "
 msgstr ""
-"O comparar el exceso de trabajo que tenía en el posgrado con los períodos más ocupados de mi primer trabajo. El posgrado consumía consistentemente más que el trabajo, con solo 2 picos alrededor de 2021-01 acercándose. "
+"O comparar el exceso de trabajo que tenía en el posgrado con los períodos"
+" más ocupados de mi primer trabajo. El posgrado consumía consistentemente"
+" más que el trabajo, con solo 2 picos alrededor de 2021-01 acercándose. "
 
 #: babel_intermediate.txt:374
 msgid ""
@@ -1501,10 +1516,11 @@ msgid ""
 "course of the semester, it was mostly {0} which was sacrificed, {1} only "
 "dropping a bit. "
 msgstr ""
-"O cómo a medida que mis estudios en la primavera de 2018 consumieron gradualmente más tiempo a lo largo del semestre, fue principalmente {0} lo que se sacrificó, y {1} solo disminuyó un poco. "
+"O cómo a medida que mis estudios en la primavera de 2018 consumieron "
+"gradualmente más tiempo a lo largo del semestre, fue principalmente {0} "
+"lo que se sacrificó, y {1} solo disminuyó un poco. "
 
 #: babel_intermediate.txt:375
-#, python-format
 msgid ""
 "The {0} prevalence is obvious. The right subplot shows the overall "
 "proportion of time by gender, with {0} occupying around 75% of the total."
@@ -1513,14 +1529,15 @@ msgid ""
 "within a gender-balanced team. Spikes around July, November, or December "
 "make sense, since that's when I usually visit my dad's family and spend "
 "time with my grandma, aunts, and cousins."
-msgstr "El predominio de {0} es obvio. "
-" El gráfico a la derecha muestra la proporción de tiempo total por género, "
-"y {0} ocupa un 75% del total. "
-"El posgrado en la primera mitad de 2018 era claramente dominado por {0}. "
-"se patrón se disminuyó en 2019 cuando, yo hipotetizo, "
-"mi trabajo se volvió más colaborativo dentro de un equipo de balancia entre géneros. "
-"Picos en julio, noviembre, o diciembre tienen razón, "
-"puesto estes meses son cuando suelo visitar a la familia de mi papá y pasar tiempo con mi abuela, tías, y primos."
+msgstr ""
+"El predominio de {0} es obvio.  El gráfico a la derecha muestra la "
+"proporción de tiempo total por género, y {0} ocupa un 75% del total. El "
+"posgrado en la primera mitad de 2018 era claramente dominado por {0}. Este "
+"patrón se disminuyó en 2019 cuando, yo hipotetizo, mi trabajo se volvió "
+"más colaborativo dentro de un equipo de balancia entre géneros. Picos en "
+"julio, noviembre, o diciembre tienen razón, puesto estes meses son cuando"
+" suelo visitar a la familia de mi papá y pasar tiempo con mi abuela, "
+"tías, y primos."
 
 #: babel_intermediate.txt:376
 msgid ""
@@ -1760,11 +1777,12 @@ msgid ""
 "attribution cases have been handled in data cleaning, but I haven't "
 "caught all of them."
 msgstr ""
-"Errores en atribución de `Metaproyecto` suelen originar desde instancias de `Proyecto` los cuales no encajan en un solo `Metaproyecto`. "
-"Por ejemplo, `Proyecto.{5}` contiene tareas de montar en bici y mantener la bici, "
-"las cuales encajan en {3} y {2}, respectivamente. "
-"Algunos de estes casos de atribución dividida ya han sido resueltos por la limpia de datos, "
-"pero no he notado al 100%. "
+"Errores en atribución de `Metaproyecto` suelen originar desde instancias "
+"de `Proyecto` los cuales no encajan en un solo `Metaproyecto`. Por "
+"ejemplo, `Proyecto.{5}` contiene tareas de montar en bici y mantener la "
+"bici, las cuales encajan en {3} y {2}, respectivamente. Algunos de estes "
+"casos de atribución dividida ya han sido resueltos por la limpia de "
+"datos, pero no he notado al 100%. "
 
 #: babel_intermediate.txt:409
 msgid ""
@@ -1809,15 +1827,73 @@ msgstr "Deep Lifelog Análisis de Datos MANÍ"
 msgid "Introduction"
 msgstr "Introducción"
 
-#: babel_intermediate.txt:421
-msgid ""
-"Spanish translations across the site are in work. I apologize for any "
-"confusion."
-msgstr ""
-
 #: babel_intermediate.txt:425
 msgid ""
 "Spanish translations across the site are in work. Apologies for any "
 "confusion this may cause."
-msgstr "Las traducciones al español están en progreso. Discúlpame por la confusión."
+msgstr ""
+"Las traducciones al español están en progreso. Discúlpame por la "
+"confusión."
+
+#: babel_intermediate.txt:429
+msgid ""
+"2017\n"
+"Cornell"
+msgstr ""
+"2017\n"
+"Cornell"
+
+
+#: babel_intermediate.txt:430
+msgid ""
+"2022\n"
+"Tour Start"
+msgstr ""
+"2022\n"
+"Inicio de Gira"
+
+#: babel_intermediate.txt:431
+msgid ""
+"2022\n"
+"Tour End"
+msgstr ""
+"2022\n"
+"Fin de Gira"
+
+#: babel_intermediate.txt:432
+msgid ""
+"Grad\n"
+"School"
+msgstr ""
+"Posgrado"
+
+#: babel_intermediate.txt:433
+msgid ""
+"First\n"
+"Job"
+msgstr ""
+"Primer\n"
+"Trabajo"
+
+#: babel_intermediate.txt:434
+msgid ""
+"2022\n"
+"Cycle Tour"
+msgstr ""
+"2022\n"
+"Gira en Bici"
+
+#: babel_intermediate.txt:435
+msgid ""
+"2023\n"
+"Career Pivot"
+msgstr ""
+"2023\n"
+"Cambio de Carrera"
+
+#~ msgid ""
+#~ "Spanish translations across the site are"
+#~ " in work. I apologize for any "
+#~ "confusion."
+#~ msgstr ""
 
