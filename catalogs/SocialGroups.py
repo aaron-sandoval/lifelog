@@ -160,7 +160,8 @@ class SocialGroup(kiwilib.AliasableHierEnum, YamlAble):
         return {
                # 'en_US': lambda slf: re.sub(r"([a-z])([A-Z])", r"\1 \2", type(slf).__name__),
                'en_US': lambda slf: type(slf).__name__,
-               'es_MX': lambda slf: slf.es_MX if hasattr(slf, 'es_MX') else lambda slf: type(slf).__name__ + 'o'
+               'es_MX': lambda slf: slf.es_MX if kiwilib.is_locally_defined(type(slf), 'es_MX') else type(slf).__name__ + 'o'
+               # 'es_MX': lambda slf: type(slf).__name__ + 'o'
         }
 
     @property
@@ -171,8 +172,9 @@ class SocialGroup(kiwilib.AliasableHierEnum, YamlAble):
         else:
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
 
-class SocialGroupUndefined(SocialGroup): es_MX = 'Indefinido'  # Default. Marks one whose SocialGroup is not yet manually defined.
-class MultiplePeople(SocialGroup): pass
+class SocialGroupUndefined(SocialGroup): es_MX = 'Grupo Social Indefinido'  # Default. Marks one whose SocialGroup is not yet manually defined.
+class MultiplePeople(SocialGroup):
+    es_MX = 'Personas Múltiples'
 class Relation(SocialGroup): es_MX = 'Relación'
 class Activity(SocialGroup): es_MX = 'Actividad'
 class ActivityProductive(Activity): es_MX = 'Actividad productiva'

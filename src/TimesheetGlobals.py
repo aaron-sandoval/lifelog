@@ -675,6 +675,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
     e2022_SpChg_JW_KS_Start = 35
     e2024_AISC =              36
     e2018_Data_Log_Person =   37
+    e2024_SpChg_JW_End =      38
     
     @classmethod
     def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
@@ -700,8 +701,8 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
             cls.e2022_Suzie_End:         c(start=datetime(2022, 3, 25, 15, 34), es_MX='2022 Fin con Suzie'), # ENd SVF
             cls.e2022_Alexandre_Start:   c(start=datetime(2022, 6, 4, 9, 7), es_MX='2022 Inicio con Alexandre'), # Start ride  w/ Alexandre
             cls.e2022_Alexandre_End:     c(start=datetime(2022, 6, 11, 7, 52), es_MX='2022 Fin con Alexandre'), # End ride w/ Alexandre
-            cls.e2022_Tim_Start:         c(start=datetime(2022, 7, 10, 14, 58), es_MX='2022 Inicio con Tim'), # Start TIm Sprinz
-            cls.e2022_Tim_End:           c(start=datetime(2022, 7, 12, 5, 5), es_MX='2022 Fin con Tim'), # End Tim Sprinz, or really Lars
+            cls.e2022_Tim_Start:         c(start=datetime(2022, 7, 10, 14, 58), es_MX='2022 Inicio con Tim'), # Start TIm
+            cls.e2022_Tim_End:           c(start=datetime(2022, 7, 12, 5, 5), es_MX='2022 Fin con Tim'), # End Tim, or really Lars
             cls.e2022_USA_Friends_Start: c(start=datetime(2022, 9, 14, 16, 54), es_MX='2022 Inicio con amigos de EEUU'), # Start BFish+
             cls.e2022_USA_Friends_End:   c(start=datetime(2022, 9, 21, 10, 33), es_MX='2022 Fin con amigos de EEUU'), # End BFish+
             cls.e2022_Tour_End:          c(start=datetime(2022, 12, 15, 10, 10), es_MX='2022 Fin de Gira'), # 2022 tour end
@@ -716,6 +717,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
             cls.e2019_SpChg_Nick_End:    c(start=datetime(2020, 1, 1, 0, 0), es_MX='2019 SpChg Fin con Nick'), # Nick leaves, George joins Spare Change
             cls.e2021_SpChg_KO_Start:    c(start=datetime(2021, 9, 10, 0, 0), es_MX='2021 SpChg Inicio con KO'), # Kristin joins Spare Change
             cls.e2022_SpChg_JW_KS_Start: c(start=datetime(2022, 9, 1, 0, 0), es_MX='2022 SpChg Inicio con JW KS'), # Kirsten, Jonathan join Spare Change
+            cls.e2024_SpChg_JW_End:      c(start=datetime(2024, 3, 1, 0, 0), es_MX='2022 SpChg Fin con JW'), # Jonathan leaves Spare Change
             cls.e2024_AISC:              c(start=datetime(2024, 1, 13, 3, 0), es_MX='2023 Campamento de Securidad de IA'), # AISC starts
             cls.e2018_Data_Log_Person:   c(start=datetime(2018, 2, 10, 3), es_MX='2018 Datos Persona'), # Data on time spent with individuals somewhat consistent
         }

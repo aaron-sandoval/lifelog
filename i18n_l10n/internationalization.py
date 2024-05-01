@@ -53,7 +53,7 @@ class BabelIntermediateExtractor:
     If disabled, no extraction occurs and the class acts similarly to gettext.
     Inspired by prose description: https://stackoverflow.com/a/77174097/21933315.
     """
-    _langAlts = {
+    lang_alternative = {
         lang_en: (lang_es,),
         lang_es: (lang_en,),
     }
@@ -124,7 +124,7 @@ class BabelIntermediateExtractor:
         If self.toExtract is True, then the bound functions both translate and extract new tokens to intermediate file.
         Else, the bound functions simply wrap gettext.gettext with postprocessing on the translated strings.
         _a: simple gettext, no postprocessing
-        _b: simple gettext for the alternate language specified in cls._langAlts
+        _b: simple gettext for the alternate language specified in cls.lang_alternative
         _k: 'keep capitalization': Duplicates functionality of _a. Uses: titles
         _e: 'enums': Uses: kiwilib.Aliasable instances that contain their own translation data. Only standardize caps.
         _ebt: 'enum backticks': Uses: Same as `_e` but surrounds output with backticks for markdown printing.
@@ -134,7 +134,7 @@ class BabelIntermediateExtractor:
         self.curLocale = locale
         if not self.toExtract:  # Normal gettext functions
             builtins._a = locale.gettext
-            builtins._b = self._langAlts[locale][0].gettext
+            builtins._b = self.lang_alternative[locale][0].gettext
             builtins._k = locale.gettext
             builtins._e = lambda x: x.alias(locale_to_str[locale]).upper()
             builtins._ebt = lambda x: ''.join(['`', x.alias(locale_to_str[locale]).upper(), '`'])
@@ -142,13 +142,13 @@ class BabelIntermediateExtractor:
             # locale.install()
         else:  # Extract and return normal gettext
             builtins._a = self.extract
-            builtins._b = lambda x: self.extract(x, self._langAlts[locale][0])
+            builtins._b = lambda x: self.extract(x, self.lang_alternative[locale][0])
             builtins._k = self.extract
             builtins._e = lambda x: x.alias(locale_to_str[locale]).upper()
             builtins._ebt = lambda x: ''.join(['`', x.alias(locale_to_str[locale]).upper(), '`'])
             builtins._t = lambda x: self.extract(x).capitalize()
         # print(f'***SETTING LOCALE***\n  _a(): {locale._info["language"]}\n'
-        #       f'  _b(): {self._langAlts[locale][0]._info["language"]}\n')
+        #       f'  _b(): {self.lang_alternative[locale][0]._info["language"]}\n')
 
     def flush(self):
         """ FLush the buffer in self.newWords."""
