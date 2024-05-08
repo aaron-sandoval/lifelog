@@ -4,32 +4,44 @@ Created on Nov 22, 2018
 @author: Aaron
 Holds functions used to collect datasets from database and create graphics from them.
 """
+import abc
 import datetime
 import os
+import re
 
 import portion
-
-from src.Description import Description
+import matplotlib.text
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-# from pandas.core.dtypes.inference import is_list_like
-from src.TimesheetDataset import *
-from i18n_l10n import internationalization as i18n
-from typing import Union, Iterable, List, Tuple, Set, NamedTuple, Type, Any
+from typing import Union, Iterable, List, Tuple, Set, NamedTuple, Type, Any, Dict
 from enum import Enum
-# from dataclasses import dataclass
 from bisect import bisect_right
 from itertools import accumulate
 import inspect
 import streamlit as st
 import seaborn as sns
 
+from src.TimesheetDataset import *
+from src.Description import Description
+from i18n_l10n import internationalization as i18n
+
 
 global babelx  # Babel extractor wrapper, must be accessible everywhere in the module
-# babelx = i18n.BabelIntermediateExtractor(extract=True, locale=i18n.lang_en, bufferSize=50)  # Sets builtins '_a', '_b'
 babelx = i18n.babelx
 STR_BACKEND = _k('👀 *Peek into the Backend*')
 
+_enum_alias_map: Dict[str, kiwilib.AliasableEnum] = \
+    kiwilib.AliasableEnum.aliases_to_members_deep(alias_func=_e)
+# Also add keys for the alternative language since the dict isn't updated upon a change in language selection
+babelx.setLang(i18n.lang_es)
+_enum_alias_map.update(kiwilib.AliasableEnum.aliases_to_members_deep(alias_func=_e))
+
+babelx.setLang(i18n.lang_en)
+_hier_enum_alias_map: Dict[str, kiwilib.AliasableHierEnum] = \
+    kiwilib.AliasableHierEnum.aliases_to_members(alias_func=_e)
+babelx.setLang(i18n.lang_es)
+_hier_enum_alias_map.update(kiwilib.AliasableHierEnum.aliases_to_members(alias_func=_e))
+babelx.setLang(i18n.lang_en)
 
 def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Privacy.PUBLIC):
 
@@ -54,7 +66,6 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
         babelx.flush()
 
     global babelx
-    babelx.setLang(i18n.localeDict[locale])
     babelx.setLang(i18n.localeDict[locale])
     kiwilib.Aliasable.setDefaultLocale(locale)
     tsds = loadAndMergeDatasets(paths, catalogSuffix)
@@ -121,246 +132,6 @@ class ExhibitSection(Enum):
     METAPROJECT = XHSectionData(sortKey=8)
 
 
-class GraphicExhibit:
-    """ Type containing data for exhibiting generic graphics. See GRAPHIC_TYPE_FUNCS for supported graphic types. """
-    GRAPHIC_TYPE_FUNCS = {
-        plt.Figure: lambda x: st.pyplot(x, use_container_width=True)
-    }
-
-    def __init__(self,
-                 graphic: Union[plt.Figure],
-                 privacy: Global.Privacy = Global.Privacy.PRIVATE,  # Default to PRIVATE for security.
-                 preText: str = None,
-                 postText: str = None,
-                 section: ExhibitSection = None,
-                 sortKey: int = 0
-                 ):
-        if type(graphic) not in self.GRAPHIC_TYPE_FUNCS:
-            raise TypeError(f'{type(graphic)} graphic type not supported.')
-        self.graphic = graphic
-        self.privacy = privacy
-        self.preTextMD = preText  # Markdown-format text.
-        self.postTextMD = postText  # Markdown-format text.
-        self.section = section
-        self.sortKey = sortKey
-
-    def __repr__(self):
-        return f'{type(self).__name__}: {self.section} at {id(self)}'
-
-    def exhibitStreamlit(self):
-        if self.preTextMD is not None:
-            st.markdown(self.preTextMD)
-        self.GRAPHIC_TYPE_FUNCS[type(self.graphic)](self.graphic)
-        if self.postTextMD is not None:
-            st.markdown(self.postTextMD)
-
-
-'''
-def joinTest(df):
-    #     Basic joins fail with multiple OR criteria in rows of filt. Use 'filterDF'
-    #     filt = pd.DataFrame(columns = df.columns)
-    cols = ['project', 'epoch']
-    #     filt = getFilterTemplate({'project':(5,3),'start':'rrraa'})
-    case = 5
-    if case == 1:
-        filt = getFilterTemplate({'project': (5, 3), 'tags': (1, 2, 3, 4, 5, 6, 7, 8)})
-        filt.loc[1, 'project'] = (1, 2, 4)
-    elif case == 2:
-        filt = getFilterTemplate({'startNOT': (DTparser.parse('2018/01/01'), DTparser.parse('2018/01/03 23:59'))})
-    elif case == 3:
-        filt = getFilterTemplate({'circadNOT': DTparser.parse('2018/1/1')})
-    elif case == 4:
-        filt = getFilterTemplate({'project': (15, 13)})
-    elif case == 5:  # Metaprojects totals by week
-        filt = getFilterTemplate({'metaproject': 1})
-
-    #     filt = pd.DataFrame({cols[0]:[8,12],cols[1]:[3]},index=range(2))
-    #     res = pd.merge(df, filt, on = cols)
-    filtered = filterDF(df, filt)
-    a = 1
-    return filtered
-
-
-def miscTest(tsds, case):
-    df = tsds.timesheetdf.df
-    if case == 1:  # Electronic cumsum
-        data = durationCumSum(df, getFilterTemplate({'tags': Global.Tag.ELECTRÓNICA}), 'hour')
-        visData = pd.Series(tuple(data.durationCumsum), index=data.end, name='Electronic')
-        perDay = visData.tail(1).values[0] / timeRange(visData, 'day', index=1)
-        perDayString = 'Average ' + format(perDay, '.1f') + " hours/day"
-        #         test1 = ser.tail(1).values[0]/timeRange(df.start, 'day', index = 0)
-        electronic_cumsum_VIS = SingleAxisStaticVisual(visData, 'line', domain='realTime', title='Cumsum Screen Time',
-                                                       ylabel='Cumsum [hr]',
-                                                       grid='on', text=perDayString)
-        electronic_cumsum_VIS.show()
-    if case == 2:  # Netflix cumsum
-        data = durationCumSum(df, getFilterTemplate({'tags': Global.Tag.NETFLIX}), 'hour')[0]
-        visData = pd.Series(tuple(data.durationCumsum), index=data.end, name='Electronic')
-        perUnit = visData.tail(1).values[0] / timeRange(visData, 'week', index=1)
-        perUnitString = 'Average ' + format(perUnit, '.1f') + " hours/week"
-        #         test1 = ser.tail(1).values[0]/timeRange(df.start, 'day', index = 0)
-        netflix_cumsum_VIS = SingleAxisStaticVisual(visData, 'line', domain='realTime', title='Cumsum Netflix Time',
-                                                    ylabel='Cumsum [hr]',
-                                                    grid='on', text=perUnitString, show=True)
-    if case == 3:  # Area plot by metaproject
-        # df = df.join(getMetaproject(df))
-        df1 = df[['circad', 'duration', 'metaproject']]
-        df1 = filterDF(df1, getFilterTemplate({'circad': parseDatetime(('2018-08-05', '2018-08-15'))}))
-        #         df1 = df1.join(getWeek(domainBasis(df1)))
-        grouped = df1.groupby(['circad', 'metaproject'])
-        b = grouped.aggregate(np.sum)
-        c = b.unstack()
-        visData = c.duration
-        visData[visData.isna()] = datetime.timedelta(hours=0)
-        for col in visData.columns:
-            visData[col] = timeToFloat(visData[col], 'hour')
-        #         ser = timeToFloat(ser, 'hour')
-        visData.columns = [a.name for a in Global.getEnum(visData.columns, 'metaproject')] # TODO: refactor w/out getEnum()
-        #         SingleAxisStaticVisual(ser, 'area', domain = 'weeks', grid = 'on', ylabel = '[hr]')
-        metaproject_area_VIS = SingleAxisStaticVisual(visData, 'area', grid='on', ylabel='[hr]')
-    if case == 4:  # Clustered bar chart of sleep comparison by weekday and epoch
-        df1 = df[df.project == Global.Project.DORMIR]
-        df1 = pd.concat([df1, getWeekday(df1.circad)], axis=1)
-        epochScheme = Global.EpochScheme.INDIVIDUAL
-        df1 = pd.concat([df1, epochScheme.labelDT(df1.start.rename('epochGroup', copy=False))], axis=1)
-        # df1 = df1.rename(columns={0: 'epochGroup'})
-        df1 = df1[['duration', 'weekday', 'epochGroup']]
-        grouped = df1.groupby(['weekday', 'epochGroup'])
-        wkdayCount = grouped.count().unstack()
-        wkdayDuration = grouped.sum().unstack()
-        visData = (wkdayDuration / wkdayCount)['duration']
-        visData = timeToFloat(visData, 'hour')
-        visData = visData[sorted(visData.columns, key=lambda x: Global.Epoch[x].dt())]
-        print(_a('Test 1'))
-        print("T1_a: {}\nT1_b: {}\nT2_a: {}\nT3_b: {}".format(_a('Test 1'), _b('Test 1'), _a('Test 2'), _b('Test 3')))
-        title = _a('Avg Sleep by Weekday and Epoch Group')
-        auxText = getDateRangeString(df)
-        sleep_epoch_wkday_VIS = SingleAxisStaticVisual(data=visData, kind='clusteredBar', domain='weekday',
-                                                       title=title, ylabel='[hr]', grid='on', text=auxText,
-                                                       textPos='SW')
-        # sleep_epoch_wkday_VIS.show()
-        # sleep_epoch_wkday_VIS.save(fileName=auxText + '_' + title)
-        return sleep_epoch_wkday_VIS
-    if case == 5:  # Filter by a token in Description
-        # filt = getFilterTemplate({'description': ('PAPA',)})
-        # df1 = filterDF(df, filt)
-        df1 = df[df.description.apply(lambda x: Description.hasToken(x, 'COCINAR'))]
-    if case == 6:
-    # Metaproject sum
-        tsds = df
-        tsds.timesheetdf.metaproject = tsds.timesheetdf.df.project.apply(lambda x: x.defaultMetaproject())
-        timesheetdf = tsds.timesheetdf.tsquery('start > datetime(2023,4,1,0) :;')
-        metaDuration = timesheetdf.df[['duration', 'metaproject']].groupby('metaproject').aggregate(np.sum).duration
-        visData = metaDuration.apply(lambda x: x/(timesheetdf.df.tail(1).end.values[0]-timesheetdf.df.head(1).start.values[0])*24*7)
-        visData.index = map(lambda x: x.name, visData.index)
-        # visData[visData.isna()] = datetime.timedelta(hours=0)
-        # for col in visData.columns:
-        #     visData[col] = timeToFloat(visData[col], 'hour')
-        #         ser = timeToFloat(ser, 'hour')
-        # visData.columns = [a.name for a in Global.getEnum(visData.index]
-        #         SingleAxisStaticVisual(ser, 'area', domain = 'weeks', grid = 'on', ylabel = '[hr]')
-        title = 'Metaproject Hours per Week'
-        auxText = getDateRangeString(timesheetdf.df)
-        fig = SingleAxisStaticVisual(visData, 'bar', grid='on', ylabel='[hr]', title=title, text=auxText)
-    if case == 7:
-    # Project sum
-        tsds = df
-        # tsds.timesheetdf.metaproject = tsds.timesheetdf.df.project.apply(lambda x: x.defaultMetaproject())
-        timesheetdf = tsds.timesheetdf.tsquery('start > datetime(2023,4,1,0) :;')
-        metaDuration = timesheetdf.df[['duration', 'project']].groupby('project').aggregate(np.sum).duration
-        metaDuration = pd.concat([metaDuration, pd.Series(metaDuration.index, index=metaDuration.index, name='metaproject').apply(lambda x: x.defaultMetaproject())], axis=1)
-        metaDuration = metaDuration.sort_values('metaproject')
-        visData = metaDuration.duration.apply(lambda x: x/(timesheetdf.df.tail(1).end.values[0]-timesheetdf.df.head(1).start.values[0])*24*7)
-        visData.index = map(lambda x: x.name, visData.index)
-        # visData[visData.isna()] = datetime.timedelta(hours=0)
-        # for col in visData.columns:
-        #     visData[col] = timeToFloat(visData[col], 'hour')
-        #         ser = timeToFloat(ser, 'hour')
-        # visData.columns = [a.name for a in Global.getEnum(visData.index]
-        #         SingleAxisStaticVisual(ser, 'area', domain = 'weeks', grid = 'on', ylabel = '[hr]')
-        # title = 'Project Hours per Week'
-        auxText = getDateRangeString(timesheetdf.df)
-        title = 'Project Hours per Week ' + auxText
-        fig = SingleAxisStaticVisual(visData, 'bar', grid='on', ylabel='[hr]', title=title, text=auxText)
-    fig.fig.savefig(Global.VSPath() + title + '.png')
-    a = 1  # DEBUG
-
-
-def sleepPerCircad(df):
-    # Quick and dirty test run to see what is needed for visualization
-    tasks = df[df.project == Global.Project.DORMIR]
-    day = getWeekday(tasks.circad)
-    #     day.name = 'weekday'
-    tasks = pd.concat([tasks, day], 1)
-    tasks = tasks[['duration', 'weekday']]
-    wkdayCount = tasks.groupby('weekday').count()
-    wkdayTime = [0] * 7
-    for i in range(7):
-        wkdayTime[i] = tasks[tasks.weekday == i].duration.sum()
-    #     wkdayTime = toSeries(wkdayTime,wkdayCount.index)
-    #     .divide(wkdayCount,0)
-    #     wkdayTime = [wkdayTime/count for count in wkdayCount]
-    #     qq = [wkdayTime/count for count in wkdayCount]
-    #     for i in wkdayCount.values:
-    #         wkdayTime.iloc[i] = wkdayTime.iloc[i] / wkdayCount.iloc[i]
-    npWkdayTime = np.array(wkdayTime)
-    npWkdayCount = np.array(wkdayCount)
-    avgTime = npWkdayTime / npWkdayCount[:, 0]
-    data = toSeries(avgTime, wkdayCount.index)
-    data = timeToFloat(data, units='hour')
-    SingleAxisStaticVisual(data=data, domain='workday', kind='bar', ylabel='[hr]',
-                           xlabel='Day', title='Avg. Sleep per Circad', grid='on')
-    a = 1
-
-
-def electronicCumSum(df):
-    #     a = list(map(lambda x: 3 in x, df.tags))
-    #     b = Global.getEnum('COMER')
-    tasks = df[selectAnd(df.tags, [3])]
-    cs = tasks.duration.cumsum(0)
-    cs = timeToFloat(cs, 'hour')
-    domainData = tasks.start
-    data = pd.Series(list(cs), index=domainData)
-    SingleAxisStaticVisual(data, 'line', domain='realTime', title='Cumsum Screen Time', ylabel='Cumsum [hr]', grid='on',
-                           text='Baaaaaa')
-
-    a = 1
-
-
-def durationCumSum(df, filts, units=None):
-    #     a = list(map(lambda x: 3 in x, df.tags))
-    #     b = Global.getEnum('COMER')
-    if ((not is_list_like(filts)) or (isinstance(filts, pd.DataFrame))):
-        filts = (filts,)
-    dfs = [0] * len(filts)
-    for filt in filts:
-        filted = filterDF(df, filt)
-        cs = filted.duration.cumsum(0)
-        if (units):
-            cs = timeToFloat(cs, units)
-        cs = cs.rename('durationCumsum')
-        #         domainData = tasks.start
-        dfi = filted.join(cs)
-        #         data = pd.Series(list(cs), index = domainData)
-        dfs.append(dfi)
-    a = 1
-    return dfs[1:]
-
-
-def parseDatetime(x):
-    if is_list_like(x):
-        return [parseDatetime(i) for i in x]
-    if isinstance(x, str):
-        try:
-            return DTparser.parse(x)
-        except:
-            exit("ERROR: " + x + " could not be parsed into a datetime.")
-    else:
-        return x  # Assume all non-strings are valid datetime-like types
-'''
-
-
-
 _ArtistAlignment = NamedTuple('_ArtistAlignment', [('name', str), ('x', float), ('y', float),
                                                   ('ha', str), ('va', str)])
 
@@ -378,12 +149,53 @@ class ArtistAlignment(Enum):
     SW = _ArtistAlignment('NE', .05, .05, 'left', 'bottom')
 
 
-class MatplotlibVisual:
+class Visual(abc.ABC):
+    @abc.abstractmethod
+    def save(self, fileName: str) -> None:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def localize(self) -> None:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def exhibit(self) -> None:
+        raise NotImplementedError
+
+
+class MatplotlibVisual(Visual):
     def __init__(self, figsize=(10, 5), **kwargs):
-        self.fig = plt.figure(figsize=figsize, **kwargs)
+        self.fig: plt.Figure = plt.figure(figsize=figsize, **kwargs)
 
     def save(self, fileName):
         self.fig.savefig(os.path.join(Global.rootProjectPath(), 'VS_Figures', fileName + '.png'))
+
+    def exhibit(self) -> None:
+        self.localize()
+        st.pyplot(self.fig, use_container_width=True)
+
+    def localize(self):
+        def artist_filter(a: plt.Artist):
+            """
+            Filters out artists which aren't translatable text, such as numbers.
+            """
+            return (
+                isinstance(a, matplotlib.text.Text) and
+                len(a.get_text()) > 0 and
+                re.search(r'[a-zA-Z]', a.get_text()) is not None
+            )
+
+        text_artists: List[matplotlib.text.Text] = self.fig.findobj(artist_filter)
+        for artist in text_artists:
+            t: str = artist.get_text()
+            if t in _enum_alias_map:
+                artist.set_text(_e(_enum_alias_map[t]))
+            elif t in _hier_enum_alias_map:
+                artist.set_text(_e(_hier_enum_alias_map[t]()))
+            else:
+                artist.set_text(_k(t))
+
+
 
 
 class SingleAxisStaticVisual(MatplotlibVisual):
@@ -519,6 +331,41 @@ class SingleAxisStaticVisual(MatplotlibVisual):
         if show:            self.show()
 
 
+class GraphicExhibit:
+    """ Type containing data for exhibiting generic graphics. See GRAPHIC_TYPE_FUNCS for supported graphic types. """
+    # GRAPHIC_TYPE_FUNCS = {
+    #     plt.Figure: lambda x: st.pyplot(x, use_container_width=True)
+    # }
+
+    def __init__(self,
+                 graphic: Visual,
+                 privacy: Global.Privacy = Global.Privacy.PRIVATE,  # Default to PRIVATE for security.
+                 preText: str = None,
+                 postText: str = None,
+                 section: ExhibitSection = None,
+                 sortKey: int = 0
+                 ):
+        # if type(graphic) not in self.GRAPHIC_TYPE_FUNCS:
+        #     raise TypeError(f'{type(graphic)} graphic type not supported.')
+        self.graphic = graphic
+        self.privacy = privacy
+        self.preTextMD = preText  # Markdown-format text.
+        self.postTextMD = postText  # Markdown-format text.
+        self.section = section
+        self.sortKey = sortKey
+
+    def __repr__(self):
+        return f'{type(self).__name__}: {self.section} at {id(self)}'
+
+    def exhibitStreamlit(self):
+        if self.preTextMD is not None:
+            st.markdown(self.preTextMD)
+        self.graphic.localize()
+        self.graphic.exhibit()
+        if self.postTextMD is not None:
+            st.markdown(self.postTextMD)
+
+
 def stackplot_and_totals_stackbar(
         x: pd.Series,
         y: pd.DataFrame,
@@ -543,7 +390,7 @@ def stackplot_and_totals_stackbar(
     # Assign defaults for None-valued args
     if stack_names is None: stack_names = y.columns
     if colors is None: colors = [x.color_hex for x in stack_names]
-    if legend_labels is None: legend_labels = [x.alias() for x in stack_names]
+    if legend_labels is None: legend_labels = [_e(x) for x in stack_names]
 
     graphic = MatplotlibVisual(figsize=figsize, constrained_layout=True)
     fig = graphic.fig
@@ -593,7 +440,7 @@ def stackbarplot_and_totals(
         xlabel_major_formatter=mdates.DateFormatter('%Y-%m'),
         xtick_minor_locator=mdates.MonthLocator(bymonth=(1, 4, 7, 10)),
         **kwargs
-) -> plt.Figure:
+) -> MatplotlibVisual:
     """
     Returns a figure primarily featuring a stacked bar plot.
     Also includes a small subplot with a stacked bar plot of the totals.
@@ -601,7 +448,7 @@ def stackbarplot_and_totals(
     # Assign defaults for None-valued args
     if stack_names is None: stack_names = y.columns
     if colors is None: colors = [x.color_hex for x in stack_names]
-    if legend_labels is None: legend_labels = [x.alias() for x in stack_names]
+    if legend_labels is None: legend_labels = [_e(x) for x in stack_names]
 
     graphic = MatplotlibVisual(figsize=figsize, constrained_layout=True)
     fig = graphic.fig
@@ -761,7 +608,7 @@ class GraphicMaker:
                                          textPos=ArtistAlignment.SW, figsize=(10, 5))
         # sleep_epoch_wkday_VIS.show()
         graphic.save(fileName=auxText + '_' + title)
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.SLEEP, sortKey=64)
 
     @staticmethod
@@ -822,7 +669,7 @@ class GraphicMaker:
         auxText = getDateRangeString(tsds.timesheetdf.df)
         ArtistAlignment.SW.text(auxText, ax)
 
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.SLEEP, sortKey=32)
 
     @staticmethod
@@ -853,7 +700,7 @@ class GraphicMaker:
         plt.grid(axis='y')
         ArtistAlignment.NE.text(auxText, graphic.fig.axes[1])
         graphic.save(fileName=auxText + '_' + title.replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.PEOPLE, sortKey=128)
 
     @staticmethod
@@ -900,7 +747,7 @@ class GraphicMaker:
 
         auxText = getDateRangeString(df)
         graphic.save(fileName=auxText + '_' + titles[0].replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.PEOPLE, sortKey=180)
 
     @staticmethod
@@ -944,7 +791,7 @@ class GraphicMaker:
 
         auxText = getDateRangeString(df)
         graphic.save(fileName=auxText + '_' + titles[0].replace('\n', ''))
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.PEOPLE, sortKey=190)
 
     @staticmethod
@@ -955,21 +802,19 @@ class GraphicMaker:
         df1['week'] = df1.circad - df1.circad.apply(datetime.date.weekday).apply(lambda x: datetime.timedelta(days=x))
         df1 = df1[['week', 'duration', 'metaproject']]
         visData = df1.groupby(['week', 'metaproject']).sum().unstack().duration.fillna(datetime.timedelta(hours=0))
-        visData = visData[sorted(visData.columns.values, reverse=True)]\
-            .rename({x: x.alias() for x in Global.Metaproject}, axis=1)\
-            .applymap(lambda x: x.total_seconds()/3600/7)
+        visData = visData[sorted(visData.columns.values, reverse=True)].applymap(lambda x: x.total_seconds()/3600/7)
         # visData[_k('Untracked')] = datetime.timedelta(weeks=1) - visData.sum(axis=1)
         title = _k('Duration by Metaproject per Day, Averaged over 1 Week')  # + ': ' + epochScheme.alias()
         auxText = getDateRangeString(tsds.timesheetdf.df)
         # xlabel = _k('')
         ylabel = _k('[hours/day]')
 
-        graphic = MatplotlibVisual(figsize=(10, 6))
+        graphic = MatplotlibVisual(figsize=(10, 7))
         plt.stackplot(visData.index, visData.values.transpose())
         plt.title(title)
         # plt.xlabel(xlabel)
         plt.ylabel(ylabel)
-        plt.legend(visData.columns.values, loc='lower right')
+        plt.legend([_e(col) for col in visData.columns.values], loc='lower right')
         plt.yticks(range(0, 28, 4))
         plt.grid(axis='y', alpha=0.4)
         # ArtistAlignment.SW.text(auxText, graphic.fig.axes[1])
@@ -979,7 +824,7 @@ class GraphicMaker:
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         lineDates = [e.lower for e in Global.EpochScheme.MP_COARSE_ATOMIC.scheme.keys()]
         ep = Global.Epoch
-        lineLabels = [kiwilib.addLineBreaks(a.alias(), delimIndices=[0]) for a in
+        lineLabels = [kiwilib.addLineBreaks(" ".join(word.capitalize() for word in _e(a).split(" ")), delimIndices=[0]) for a in
                       [ep.e2017_Cornell, ep.e2018_Boulder_Solo, ep.e2022_Tour_Start, ep.e2022_Tour_End]]
         lineLabels[1] = _k('Start\nFirst Job')
         plt.vlines(lineDates, 24, 26.5, linestyles='dashed')
@@ -987,7 +832,7 @@ class GraphicMaker:
             ax.text(dat, 26.5, label, ha='center', va='bottom')
 
         graphic.save(fileName=auxText + '_' + title)
-        return GraphicExhibit(graphic=graphic.fig, privacy=Global.Privacy.PUBLIC,
+        return GraphicExhibit(graphic=graphic, privacy=Global.Privacy.PUBLIC,
                               section=ExhibitSection.METAPROJECT, sortKey=4)
 
 

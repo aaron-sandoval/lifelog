@@ -38,6 +38,7 @@ tests/PROFILE_*
 tsqparser/testQueries_1.txt
 Annotated_Excel/
 .idea/
+.vscode/
 spec-list*.txt
 Timesheet Analysis Outline.txt
 desktop.ini

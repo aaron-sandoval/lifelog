@@ -53,7 +53,7 @@ class BabelIntermediateExtractor:
     If disabled, no extraction occurs and the class acts similarly to gettext.
     Inspired by prose description: https://stackoverflow.com/a/77174097/21933315.
     """
-    _langAlts = {
+    lang_alternative = {
         lang_en: (lang_es,),
         lang_es: (lang_en,),
     }
@@ -63,7 +63,7 @@ class BabelIntermediateExtractor:
         self.file = str(Path(
             os.path.abspath(__file__)).parent.parent.absolute()/'i18n_l10n'/f'babel_intermediate{fileSuffix}.txt')
         self.words = set()  # Existing set of words, all languages together, read from the intermediate file.
-        self.newWords = dict()  # New words found via extract() not yet present in self.words
+        self.newWords = dict()  # Words found via extract() not yet in self.words. A dict to preserve insertion order.
         self.bufferSize = bufferSize  # Num words to accumulate in self.newWords before appending contents to self.file
         self.curLocale: gettext.GNUTranslations = None  # Current language assigned by last call to self.setLang().
         self.setLang(locale)
@@ -124,7 +124,7 @@ class BabelIntermediateExtractor:
         If self.toExtract is True, then the bound functions both translate and extract new tokens to intermediate file.
         Else, the bound functions simply wrap gettext.gettext with postprocessing on the translated strings.
         _a: simple gettext, no postprocessing
-        _b: simple gettext for the alternate language specified in cls._langAlts
+        _b: simple gettext for the alternate language specified in cls.lang_alternative
         _k: 'keep capitalization': Duplicates functionality of _a. Uses: titles
         _e: 'enums': Uses: kiwilib.Aliasable instances that contain their own translation data. Only standardize caps.
         _ebt: 'enum backticks': Uses: Same as `_e` but surrounds output with backticks for markdown printing.
@@ -134,7 +134,7 @@ class BabelIntermediateExtractor:
         self.curLocale = locale
         if not self.toExtract:  # Normal gettext functions
             builtins._a = locale.gettext
-            builtins._b = self._langAlts[locale][0].gettext
+            builtins._b = self.lang_alternative[locale][0].gettext
             builtins._k = locale.gettext
             builtins._e = lambda x: x.alias(locale_to_str[locale]).upper()
             builtins._ebt = lambda x: ''.join(['`', x.alias(locale_to_str[locale]).upper(), '`'])
@@ -142,13 +142,13 @@ class BabelIntermediateExtractor:
             # locale.install()
         else:  # Extract and return normal gettext
             builtins._a = self.extract
-            builtins._b = lambda x: self.extract(x, self._langAlts[locale][0])
+            builtins._b = lambda x: self.extract(x, self.lang_alternative[locale][0])
             builtins._k = self.extract
             builtins._e = lambda x: x.alias(locale_to_str[locale]).upper()
             builtins._ebt = lambda x: ''.join(['`', x.alias(locale_to_str[locale]).upper(), '`'])
             builtins._t = lambda x: self.extract(x).capitalize()
         # print(f'***SETTING LOCALE***\n  _a(): {locale._info["language"]}\n'
-        #       f'  _b(): {self._langAlts[locale][0]._info["language"]}\n')
+        #       f'  _b(): {self.lang_alternative[locale][0]._info["language"]}\n')
 
     def flush(self):
         """ FLush the buffer in self.newWords."""
@@ -166,8 +166,7 @@ class BabelIntermediateExtractor:
 babelx = BabelIntermediateExtractor(extract=True, locale=lang_en, bufferSize=50)
 
 
-# @kiwilib.DataclassValuedEnum.init
-class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
+class EnglishSpanishEnum(kiwilib.AliasableEnum):
     @staticmethod
     def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
@@ -183,11 +182,6 @@ class AliasableEnum(kiwilib.Aliasable, kiwilib.DataclassValuedEnum):
            'es_MX': lambda slf: slf.es_MX if slf.es_MX != "" else slf.name.replace('_', ' ')+'o',
         }
 
-    # def alias(self, locale: str = None):
-    #     if locale is None:
-    #         # Can't set as default in function args due to some unwanted caching behind the scenes
-    #         locale = locale_to_str[babelx.curLocale]
-    #     return self._aliasFuncs[locale](self)
 
 def test2():
     babelx = BabelIntermediateExtractor(extract=False, locale=lang_es, bufferSize=5)

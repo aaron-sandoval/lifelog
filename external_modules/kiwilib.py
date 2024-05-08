@@ -10,11 +10,12 @@ import math
 from enum import EnumMeta, Enum
 import aenum
 from collections import defaultdict
-from functools import cached_property
+from functools import lru_cache
 import portion
 from pandas.core.dtypes.inference import is_list_like
+import copy
 from typing import \
-    Union, TypeVar, Type, Any, Iterable, Tuple, List, Generator, Dict, Callable, Optional, Protocol, ClassVar
+    Union, TypeVar, Type, Any, Iterable, Tuple, List, Generator, Dict, Callable, Optional, Protocol, ClassVar, Set
 import pandas as pd
 import numpy as np
 from yamlable import YamlCodec
@@ -84,18 +85,28 @@ def flatten(it: Iterable, numLevels: int = pd.NA) -> Generator:
             yield x
 
 
-def getAllSubclasses(myClass: type, includeSelf=False) -> List[type]:
+def getAllSubclasses(class_: type, includeSelf=False) -> Set[type]:
     """
-    Returns a list of all subclasses of myClass, including subclasses of subclasses, etc.
-    :param includeSelf: Whether to include myClass in the returned list
-    :param myClass: Superclass
-    :return: list
+    Returns a set containing all child classes in the subclass graph of `class_`.
+    I.e., includes subclasses of subclasses, etc.
+
+    # Parameters
+    - `include_self`: Whether to include `class_` itself in the returned list
+    - `class_`: Superclass
+
+    # Development
+    Since most class hierarchies are small, the inefficiencies of the existing recursive implementation aren't problematic.
+    It might be valuable to refactor with memoization if the need arises to use this function on a very large class hierarchy.
     """
-    subs: List[list] = [getAllSubclasses(sub, includeSelf=True) for sub in myClass.__subclasses__() if sub is not None]
-    if not includeSelf:
-        return list({c for c in flatten(subs)})
-    else:
-        return [myClass] + subs
+    subs: List[Set[type]] = [
+        getAllSubclasses(sub, includeSelf=True)
+        for sub in class_.__subclasses__()
+        if sub is not None
+    ]
+    subs: set = set(flatten(subs))
+    if includeSelf:
+        subs.add(class_)
+    return subs
 
 
 def leafClasses(cls: type) -> List[type]:
@@ -112,6 +123,15 @@ def leafClasses(cls: type) -> List[type]:
 
     return list(set(leaf for leaf in flatten(leafClassesRecur(cls))))
 
+
+def is_locally_defined(class_: type, binding: str) -> bool:
+    """
+    Returns True if `binding` is a class variable uniquely defined in `class_` as opposed to inherited.
+    If the value assigned to `binding` is defined in `class_` but that values matches tge value in a base class,
+    it also returns True.
+    """
+    return hasattr(class_, binding) and \
+        getattr(class_, binding) not in [getattr(b, binding, NotImplemented) for b in class_.__bases__]
 
 def timedelta2datetime(td: datetime.timedelta) -> datetime.datetime:
     return datetime.datetime(1900, 1, 1, 0)+td
@@ -229,11 +249,7 @@ class IsDataclass(Protocol):
     __dataclass_fields__: ClassVar[Dict]
 
 
-_T = TypeVar('T')
-
-
-class EnumABCMeta(abc.ABCMeta, type(Enum)):
-    pass
+_T = TypeVar('_T')
 
 
 class AenumABCMeta(abc.ABCMeta, aenum.EnumMeta):
@@ -299,38 +315,30 @@ class DataclassValuedEnum(abc.ABC, aenum.Enum, metaclass=AenumABCMeta):
         return self._data[self].__dict__
 
 
-class HierarchicalEnum:
+class HierarchicalEnum(abc.ABC):
     """
     A superclass for defining a hierarchical enum-like data structure using a class hierarchy.
     Supports any hierarchical structure supported by python class inheritance.
-    This is, namely, any directed acyclic graph (DAG), as long as there is a single root node in the DAG (ROOT_CLASS).
+    This is, namely, any directed acyclic graph (DAG), as long as there is a single root node in the DAG (root_class).
     """
-    _ROOT_CLASS = None
 
     @classmethod
-    def ROOT_CLASS(cls) -> type:
+    @abc.abstractmethod
+    def root_class(cls) -> type:
         """
         Return the common superclass for all nodes in the hierarchy.
         Default behavior is to return the member of the hierarchy which is a direct subclass of HierarchicalEnum.
         In the case of multiple inheritance, this will return the first superclass in the MRO which is a direct
         subclass of HierarchicalEnum.
         """
-        if cls._ROOT_CLASS is not None:
-            return cls._ROOT_CLASS
-        elif cls == HierarchicalEnum:
-            return cls
-        elif HierarchicalEnum in cls.__bases__:
-            cls._ROOT_CLASS = cls
-            return cls
-        else:
-            return cls.__bases__[0].ROOT_CLASS()
+        return HierarchicalEnum
 
     def __repr__(self):
-        if type(self) == self.ROOT_CLASS():
+        if type(self) == self.root_class():
             return type(self).__name__
         else:
             # return type(self).__bases__[0]().__repr__() + '.' + type(self).__name__
-            return self.ROOT_CLASS().__name__ + '.' + type(self).__name__
+            return self.root_class().__name__ + '.' + type(self).__name__
             # return type(self).__name__
 
     def __eq__(self, other):
@@ -338,6 +346,12 @@ class HierarchicalEnum:
 
     def __hash__(self):
         return hash(repr(type(self)))
+
+    def __iter__(self):
+        return iter([c() for c in getAllSubclasses(type(self))])
+
+    def __len__(self):
+        return len(getAllSubclasses(type(self)))
 
 
 def date_range_bins(ser: pd.Series, freq: str = 'W', normalize: bool = True, **kwargs) -> pd.Series:
@@ -804,10 +818,6 @@ YamlCodecMisc.register_with_pyyaml()
 
 
 class Aliasable(abc.ABC):
-    # _aliasFuncs: dict[str, function]
-    # defaultLocale: str = None
-    # TODO: refactor to move initialization to decorator procedure `init`
-
     def alias(self, locale: str = None):
         if locale is None:
             # locale = self.aliasFuncs()[self.defaultLocale]
@@ -834,11 +844,79 @@ class Aliasable(abc.ABC):
         cls._defaultLocale = locale
 
     @staticmethod
-    def initAliasable(cls: type):
-        cls._aliasFuncs: Dict[str, Callable] = cls.aliasFuncs()
-        cls._defaultLocale: str = next(iter(cls._aliasFuncs.keys()))
-        return cls
+    def initAliasable(cls_: type):
+        cls_._aliasFuncs: Dict[str, Callable] = cls_.aliasFuncs()
+        cls_._defaultLocale: str = next(iter(cls_._aliasFuncs.keys()))
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
-        cls.initAliasable(cls)
+        if "__isabstractmethod__" not in cls.aliasFuncs.__dict__ or not cls.aliasFuncs.__isabstractmethod__:
+            # Only for subclasses which have implemented `aliasFuncs`
+            cls.initAliasable(cls)
+        # if not any([hasattr(base, '_subclasses') and cls._subclasses == base._subclasses for base in cls.__bases__]):
+        #     cls._subclasses: List[Type['Aliasable']] = []
+        #     for c in cls.__bases__:  # Register subclasses since Aliasable.__subclasses__() doesn't seem to do so reliably
+        #         if issubclass(c, Aliasable):
+        #             c._subclasses.append(cls)
+
+    # @classmethod
+    # def subclasses(cls):
+    #     return cls._subclasses
+
+
+class AliasableEnum(Aliasable, DataclassValuedEnum, metaclass=AenumABCMeta):
+    @classmethod
+    @lru_cache
+    def aliases_to_members_deep(
+            cls,
+            alias_func: Callable[['AliasableEnum', str], str] = lambda x, loc: x.alias(loc)
+    ) -> Dict[str, 'AliasableEnum']:
+        """
+        Returns a mapping from aliases to enum members for the members of all subclasses of `cls`.
+        Warning: In the case of duplicate keys among multiple subclasses,
+        the function behavior is undefined for which enum member is returned in the value.
+        """
+            # return {sub: {a.alias(locale): a for a in sub} for sub in getAllSubclasses(cls, includeSelf=True)}
+        return {alias_func(a): a for sub in getAllSubclasses(cls, includeSelf=True) for a in sub}
+
+
+class AliasableHierEnum(Aliasable, HierarchicalEnum):
+    @classmethod
+    def root_class(cls) -> type:
+        """
+        Return the common superclass for all nodes in the hierarchy.
+        Default behavior is to return the member of the hierarchy which is a direct subclass of HierarchicalEnum.
+        In the case of multiple inheritance, this will return the first superclass in the MRO which is a direct
+        subclass of HierarchicalEnum.
+        """
+        if cls._ROOT_CLASS is not None:
+            return cls._ROOT_CLASS
+        elif cls == AliasableHierEnum:
+            return cls
+        elif AliasableHierEnum in cls.__bases__:
+            cls._ROOT_CLASS = cls
+            return cls
+        else:
+            return cls.__bases__[0].root_class()
+
+    @classmethod
+    @lru_cache
+    def aliases_to_members(
+            cls,
+            alias_func: Callable[['AliasableHierEnum', str], str] = lambda x, loc: x.alias(loc)
+    ) -> Dict[str, 'AliasableHierEnum']:
+        """
+        Returns a mapping from aliases to enum members for the members of all subclasses of `cls`.
+        Warning: In the case of duplicate keys in the subclass DAG,
+        the function behavior is undefined for which enum member is returned in the value.
+        :param alias_func: Alias function. Defaults to standard alias, but others might be wanted, like `builtins._e`.
+        """
+        out = {alias_func(sub()): sub for sub in getAllSubclasses(cls)}
+        if len(out) < len(getAllSubclasses(cls)):
+            subs: Dict[type, str] = {c: c().alias(locale) for c in getAllSubclasses(cls)}
+            for sub, alias in copy.copy(subs).items():
+                if alias in out:
+                    subs.pop(sub)
+                    out.pop(alias)
+            raise ValueError(f'The subclass DAG of {cls} contains duplicate localizations: {subs.keys()}')
+        return out

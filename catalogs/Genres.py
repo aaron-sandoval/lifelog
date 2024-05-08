@@ -1,15 +1,19 @@
 from yamlable import yaml_info, YamlAble
 from typing import Dict, Callable
-import kiwilib
+from external_modules import kiwilib
 
 
 @yaml_info(yaml_tag_ns='Genre')
-class Genre(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
+class Genre(kiwilib.AliasableHierEnum, YamlAble):
     es_MX = 'Género'
     color = (0.5, 0.5, 0.5)
 
+    @classmethod
+    def root_class(cls) -> type:
+        return Genre
+
     def __init_subclass__(cls, **kwargs):
-        """Register all subclasses in the 'SocialGroup' namespace."""
+        """Register all subclasses in the namespace. Substitute for decorating every subclass."""
         super().__init_subclass__(**kwargs)
         yaml_info(yaml_tag_ns='Genre')(cls)
 
@@ -18,7 +22,7 @@ class Genre(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
         return {
                # 'en_US': lambda slf: re.sub(r"([a-z])([A-Z])", r"\1 \2", type(slf).__name__),
                'en_US': lambda slf: type(slf).__name__,
-               'es_MX': lambda slf: slf.es_MX if hasattr(slf, 'es_MX') else lambda slf: type(slf).__name__ + 'o'
+               'es_MX': lambda slf: slf.es_MX if kiwilib.is_locally_defined(type(slf), 'es_MX') else type(slf).__name__ + 'o'
         }
 
     @property
@@ -32,17 +36,28 @@ class Genre(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
 
 class GenreUndefined(Genre):
     # Marks a Media instance as needing Genre(s) assigned. Used in DEFAULT_MEMBERS.
-    es_MX = 'Indefinido'
+    es_MX = 'Género Indefinido'
 
 
-class Fiction(Genre): pass
-class NonFiction(Genre): pass
-class Comedy(Genre): pass
-class Mystery(Genre): pass
-class Historical(Genre): pass
-class Drama(Genre): pass
-class SciFi(Fiction): pass
-class Fantasy(Fiction): pass
-class Educational(NonFiction): pass
-class Opinion(NonFiction): pass
-class SelfHelp(Educational): pass
+class Fiction(Genre):
+    es_MX = 'Ficción'
+class NonFiction(Genre):
+    es_MX = 'No Ficción'
+class Comedy(Genre):
+    es_MX = 'Comedia'
+class Mystery(Genre):
+    es_MX = 'Misterio'
+class Historical(Genre):
+    es_MX = 'Histórico'
+class Drama(Genre):
+    es_MX = 'Drama'
+class SciFi(Fiction):
+    es_MX = 'Ciencia Ficción'
+class Fantasy(Fiction):
+    es_MX = 'Fantasía'
+class Educational(NonFiction):
+    es_MX = 'Educacional'
+class Opinion(NonFiction):
+    es_MX = 'Opinión'
+class SelfHelp(Educational):
+    es_MX = 'Autoayuda'

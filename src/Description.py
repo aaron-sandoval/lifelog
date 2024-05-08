@@ -43,8 +43,6 @@ class Description(SingleInstanceColumn):
         self.initExceptRaw(rawString)
         
     def initExceptRaw(self, rawString):
-        if '80000 Hours, temas, ingeniería industrial, podcast, Joe Carlsmith Audio' in rawString:
-            debug = 1
         self.tokens = self.PPDescTokens(descDelimit(stdDelimiters(stdDiction(stdPlural(rawString.upper())))))
         if len(self.tokens) != len(set(self.tokens)):  # Delete the later instances of any duplicate tokens
             debug = 1

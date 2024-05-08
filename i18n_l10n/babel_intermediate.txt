@@ -416,10 +416,16 @@ EXTRACTION SUMMARY (MANUAL ENTRY): Added _k to msising strings in Exhibit.py
 _('Deep Lifelog Data Analysis DEMO')
 _('Introduction')
 
-***WRITE*** 2024-04-16 19:30:22.099336
-EXTRACTION SUMMARY (MANUAL ENTRY): 
-_('Spanish translations across the site are in work. I apologize for any confusion.')
-
 ***WRITE*** 2024-04-16 19:31:04.603119
 EXTRACTION SUMMARY (MANUAL ENTRY): Added warning
 _('Spanish translations across the site are in work. Apologies for any confusion this may cause.')
+
+***WRITE*** 2024-04-30 18:43:56.823778
+EXTRACTION SUMMARY (MANUAL ENTRY): wip translating plots dynamically
+_('2017\nCornell')
+_('2022\nTour Start')
+_('2022\nTour End')
+_('Grad\nSchool')
+_('First\nJob')
+_('2022\nCycle Tour')
+_('2023\nCareer Pivot')

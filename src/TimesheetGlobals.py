@@ -17,9 +17,6 @@ from datetime import datetime, timedelta, date
 import portion as P
 from enum import Enum
 
-from external_modules.kiwilib import IsDataclass
-import i18n_l10n.internationalization as i18n
-from src.TimePeriod import TimePeriod
 import pandas as pd
 # import numpy as np
 from collections import defaultdict
@@ -28,6 +25,8 @@ from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
 from dataclasses import dataclass
 import abc
 
+import i18n_l10n.internationalization as i18n
+from src.TimePeriod import TimePeriod
 
 ####################
 # Project Constants#
@@ -153,7 +152,7 @@ def writePersistent(df: Union[pd.DataFrame, list], phaseFlag: int, fileSuffix=''
 ##############
 class Colored(kiwilib.DataclassValuedEnum):
     @staticmethod
-    def _get_dataclass() -> IsDataclass:
+    def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
         class Color:
             color: Tuple[int, int, int] = 128, 128, 128
@@ -168,22 +167,22 @@ class Colored(kiwilib.DataclassValuedEnum):
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x * 256), 255)) for x in self.color])
 
 
-class ColoredAliasable(Colored, i18n.AliasableEnum):
+class ColoredAliasable(Colored, i18n.EnglishSpanishEnum):
     @classmethod
     def _get_dataclass(cls) -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
-        class ColoredAliasableDataclass(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+        class ColoredAliasableDataclass(Colored.dataclass, i18n.EnglishSpanishEnum.dataclass): pass
         return ColoredAliasableDataclass
 
 
-class TestColor(Colored, i18n.AliasableEnum):
+class TestColor(Colored, i18n.EnglishSpanishEnum):
     RED = enum.auto()
     GREEN = enum.auto()
 
     @staticmethod
-    def _get_dataclass() -> IsDataclass:
+    def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
-        class ColoredAliasableEnum(Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+        class ColoredAliasableEnum(Colored.dataclass, i18n.EnglishSpanishEnum.dataclass): pass
         return ColoredAliasableEnum
 
     @classmethod
@@ -676,6 +675,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
     e2022_SpChg_JW_KS_Start = 35
     e2024_AISC =              36
     e2018_Data_Log_Person =   37
+    e2024_SpChg_JW_End =      38
     
     @classmethod
     def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
@@ -701,8 +701,8 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
             cls.e2022_Suzie_End:         c(start=datetime(2022, 3, 25, 15, 34), es_MX='2022 Fin con Suzie'), # ENd SVF
             cls.e2022_Alexandre_Start:   c(start=datetime(2022, 6, 4, 9, 7), es_MX='2022 Inicio con Alexandre'), # Start ride  w/ Alexandre
             cls.e2022_Alexandre_End:     c(start=datetime(2022, 6, 11, 7, 52), es_MX='2022 Fin con Alexandre'), # End ride w/ Alexandre
-            cls.e2022_Tim_Start:         c(start=datetime(2022, 7, 10, 14, 58), es_MX='2022 Inicio con Tim'), # Start TIm Sprinz
-            cls.e2022_Tim_End:           c(start=datetime(2022, 7, 12, 5, 5), es_MX='2022 Fin con Tim'), # End Tim Sprinz, or really Lars
+            cls.e2022_Tim_Start:         c(start=datetime(2022, 7, 10, 14, 58), es_MX='2022 Inicio con Tim'), # Start TIm
+            cls.e2022_Tim_End:           c(start=datetime(2022, 7, 12, 5, 5), es_MX='2022 Fin con Tim'), # End Tim, or really Lars
             cls.e2022_USA_Friends_Start: c(start=datetime(2022, 9, 14, 16, 54), es_MX='2022 Inicio con amigos de EEUU'), # Start BFish+
             cls.e2022_USA_Friends_End:   c(start=datetime(2022, 9, 21, 10, 33), es_MX='2022 Fin con amigos de EEUU'), # End BFish+
             cls.e2022_Tour_End:          c(start=datetime(2022, 12, 15, 10, 10), es_MX='2022 Fin de Gira'), # 2022 tour end
@@ -717,6 +717,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
             cls.e2019_SpChg_Nick_End:    c(start=datetime(2020, 1, 1, 0, 0), es_MX='2019 SpChg Fin con Nick'), # Nick leaves, George joins Spare Change
             cls.e2021_SpChg_KO_Start:    c(start=datetime(2021, 9, 10, 0, 0), es_MX='2021 SpChg Inicio con KO'), # Kristin joins Spare Change
             cls.e2022_SpChg_JW_KS_Start: c(start=datetime(2022, 9, 1, 0, 0), es_MX='2022 SpChg Inicio con JW KS'), # Kirsten, Jonathan join Spare Change
+            cls.e2024_SpChg_JW_End:      c(start=datetime(2024, 3, 1, 0, 0), es_MX='2022 SpChg Fin con JW'), # Jonathan leaves Spare Change
             cls.e2024_AISC:              c(start=datetime(2024, 1, 13, 3, 0), es_MX='2023 Campamento de Securidad de IA'), # AISC starts
             cls.e2018_Data_Log_Person:   c(start=datetime(2018, 2, 10, 3), es_MX='2018 Datos Persona'), # Data on time spent with individuals somewhat consistent
         }
@@ -735,7 +736,7 @@ def appendIntervalDictComplement(dct: P.IntervalDict, complementVal, bigInterval
     return dct
 
 
-class EpochScheme(i18n.AliasableEnum):
+class EpochScheme(i18n.EnglishSpanishEnum):
     """
     Enum class containing all the global data and procedures for epoch schemes and groups.
     Each enum member is a scheme for creating a set of epoch groups.
@@ -752,7 +753,7 @@ class EpochScheme(i18n.AliasableEnum):
     @staticmethod
     def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
-        class EpochSchemeDataclass(i18n.AliasableEnum.dataclass):
+        class EpochSchemeDataclass(i18n.EnglishSpanishEnum.dataclass):
             scheme: P.IntervalDict = P.IntervalDict({})  # Dummy default, must define in args
         return EpochSchemeDataclass
 

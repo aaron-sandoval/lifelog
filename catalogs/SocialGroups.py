@@ -1,12 +1,11 @@
-from enum import Enum
+from aenum import Enum
 import yaml
 from yamlable import yaml_info, YamlAble
 from typing import Any, Dict, Callable, Tuple, Type, NamedTuple
+import re
+
 from external_modules import kiwilib
 import src.TimesheetGlobals as Global
-from dataclasses import fields as dataclass_fields, dataclass, make_dataclass
-import i18n_l10n.internationalization as i18n
-import re
 
 
 class Gender(Global.ColoredAliasable):
@@ -42,7 +41,7 @@ class Gender(Global.ColoredAliasable):
     # @classmethod
     # def _get_dataclass(cls) -> kiwilib.IsDataclass:
     #     @dataclass
-    #     class GenderDataclass(Global.Colored.dataclass, i18n.AliasableEnum.dataclass): pass
+    #     class GenderDataclass(Global.Colored.dataclass, i18n.EnglishSpanishEnum.dataclass): pass
     #     return GenderDataclass
 
     # @classmethod
@@ -145,9 +144,13 @@ yaml.add_representer(Review, Review._representer)
 
 
 @yaml_info(yaml_tag_ns='SocialGroup')
-class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
+class SocialGroup(kiwilib.AliasableHierEnum, YamlAble):
     es_MX = 'Grupo social'
     color = (0.5, 0.5, 0.5)
+
+    @classmethod
+    def root_class(cls) -> type:
+        return SocialGroup
 
     def __init_subclass__(cls, **kwargs):
         """Register all subclasses in the 'SocialGroup' namespace."""
@@ -157,9 +160,10 @@ class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
     @classmethod
     def aliasFuncs(cls) -> Dict[str, Callable[['SocialGroup'], str]]:
         return {
-               # 'en_US': lambda slf: re.sub(r"([a-z])([A-Z])", r"\1 \2", type(slf).__name__),
-               'en_US': lambda slf: type(slf).__name__,
-               'es_MX': lambda slf: slf.es_MX if hasattr(slf, 'es_MX') else lambda slf: type(slf).__name__ + 'o'
+               'en_US': lambda slf: re.sub(r"([a-z])([A-Z])", r"\1 \2", type(slf).__name__),
+               # 'en_US': lambda slf: type(slf).__name__,
+               'es_MX': lambda slf: slf.es_MX if kiwilib.is_locally_defined(type(slf), 'es_MX') else type(slf).__name__ + 'o'
+               # 'es_MX': lambda slf: type(slf).__name__ + 'o'
         }
 
     @property
@@ -170,8 +174,9 @@ class SocialGroup(kiwilib.HierarchicalEnum, kiwilib.Aliasable, YamlAble):
         else:
             return "#{0:02x}{1:02x}{2:02x}".format(*[max(0, min(round(x*256), 255)) for x in self.color])
 
-class SocialGroupUndefined(SocialGroup): es_MX = 'Indefinido'  # Default. Marks one whose SocialGroup is not yet manually defined.
-class MultiplePeople(SocialGroup): pass
+class SocialGroupUndefined(SocialGroup): es_MX = 'Grupo Social Indefinido'  # Default. Marks one whose SocialGroup is not yet manually defined.
+class MultiplePeople(SocialGroup):
+    es_MX = 'Personas Múltiples'
 class Relation(SocialGroup): es_MX = 'Relación'
 class Activity(SocialGroup): es_MX = 'Actividad'
 class ActivityProductive(Activity): es_MX = 'Actividad productiva'
