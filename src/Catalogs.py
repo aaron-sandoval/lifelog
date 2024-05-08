@@ -462,7 +462,6 @@ class DAGCatalog(Catalog):
             self.collect([self.COLLXBLE_CLASS(**d) for d in yamlData[0]])
         self.updateFields()
         self.validate()
-        # TODO: validate dag read from yaml
 
     def collect(self, collxbles: Union[dict, Iterable[dict], Collectible, Iterable[Collectible]]) -> None:
         super().collect(collxbles)
@@ -514,6 +513,7 @@ class DAGCatalog(Catalog):
             # nx.bfs self.dag
             return list(nx.descendants(self.dag, cid))
         elif deep and sort:
+            # TODO: sorting is probably broken with call to `flatten`
             return list(kiwilib.flatten(
                 (a[1] for a in nx.bfs_successors(self.dag, cid, sort_neighbors=sortedGenerator(cid)))))
         elif not deep and not sort:

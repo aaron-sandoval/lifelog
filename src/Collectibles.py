@@ -1082,9 +1082,6 @@ class Food(AutofillPrevious, DAGCollectible, BareNameID, Global.ListColumn):
     p in [40, 59]: ingredient relationships Dish >> Primitive
     Connects a dish to an ingredient that it contains.
     """
-    # _CATALOG_FIELDS: list
-    # _NULL_INSTANCE = None
-
     @classmethod
     def DEFAULT_MEMBERS(cls):
         if len(cls._DEFAULT_MEMBERS) == 0:
@@ -1165,3 +1162,51 @@ class Food(AutofillPrevious, DAGCollectible, BareNameID, Global.ListColumn):
         :return:
         """
         return datetime.timedelta(days=2)
+    
+    
+class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
+    @classmethod
+    def DEFAULT_MEMBERS(cls):
+        if len(cls._DEFAULT_MEMBERS) == 0:
+            cls._DEFAULT_MEMBERS = super(SubjectMatter, cls).DEFAULT_MEMBERS()
+        return cls._DEFAULT_MEMBERS
+
+    @classmethod
+    def CATALOG_FIELDS(cls):
+        if len(cls._CATALOG_FIELDS) == 0:
+            cls._CATALOG_FIELDS = list(dict.fromkeys(super(SubjectMatter, cls).CATALOG_FIELDS() +
+                                                     list(cls.DEFAULT_MEMBERS().keys())))
+        return cls._CATALOG_FIELDS
+
+    @classmethod
+    def INITIALIZATION_TSQY(cls) -> str:
+        return f'"INVESTIGAR, " | "TEMAS, " | "{cls.tempInitToken()}" : ;'
+
+    @classmethod
+    def INITIALIZATION_TOKENS(cls) -> Tuple[str]:
+        return 'INVESTIGAR', 'TEMAS', cls.tempInitToken()
+
+    @classmethod
+    def POPULATION_TSQY(cls):
+        return f'"INVESTIGAR, " | "TEMAS, " | "{cls.tempInitToken()}" : ;'
+
+    @classmethod
+    def processingPrecedence(cls) -> int:
+        return 90 # Last unless something else comes up
+
+    @classmethod
+    def emptyDAG(cls) -> nx.DiGraph:
+        out = cls._emptyDAG()
+        p = {'p': 0}  # Sorting key for parental precedence
+        out.add_edges_from([
+            ('FILOSOFÍA', cls.rootVertex(), p),
+            ('CIENCIAS', cls.rootVertex(), p),
+            ('SOCIEDAD', cls.rootVertex(), p),
+            ('PROBLEMAS', cls.rootVertex(), p),
+            ('ASUNTO PERSONAL', cls.rootVertex(), p),
+        ])
+        return out
+    @classmethod
+    def constructObjects(cls, timesheetdf: TimesheetDataFrame, *args) -> List['SubjectMatter']:
+        hasPrefixRows = timesheetdf.tsquery(cls.INITIALIZATION_TSQY())  # Rows which contain the trigger prefix
+        
