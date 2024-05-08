@@ -1299,11 +1299,12 @@ msgstr "Distribuciones de la Hora de Dormirse y Levantarse por Fase de la Vida"
 msgid ""
 "Start\n"
 "First Job"
-msgstr ""
+msgstr "Empezar\n"
+"Primer Trabajo"
 
 #: babel_intermediate.txt:344
 msgid "Wake up"
-msgstr ""
+msgstr "Despertarse"
 
 #: babel_intermediate.txt:345
 msgid "Duration by Metaproject per Day, Averaged over 1 Week"
@@ -1311,7 +1312,7 @@ msgstr "Duración por Metaproyecto por Día, Promedio durante 1 Semana"
 
 #: babel_intermediate.txt:346
 msgid "Fall asleep"
-msgstr ""
+msgstr "Dormirse"
 
 #: babel_intermediate.txt:347
 msgid "👀 *Peek into the Backend*"
@@ -1351,7 +1352,7 @@ msgstr ""
 
 #: babel_intermediate.txt:354
 msgid "Person index"
-msgstr Índice de persona"
+msgstr "Índice de persona"
 
 #: babel_intermediate.txt:355
 msgid "Average Person-Hours of Social Interaction per Day, by Primary Relation"
@@ -1523,8 +1524,8 @@ msgstr ""
 #: babel_intermediate.txt:375
 msgid ""
 "The {0} prevalence is obvious. The right subplot shows the overall "
-"proportion of time by gender, with {0} occupying around 75% of the total."
-" Grad school in the first half of 2018 was clearly {0}-dominated. That "
+"proportion of time by gender, with {0} occupying around 75% of the total. "
+"Grad school in the first half of 2018 was clearly {0}-dominated. That "
 "eased up in 2019, when, I hypothesize, my job became more collaborative "
 "within a gender-balanced team. Spikes around July, November, or December "
 "make sense, since that's when I usually visit my dad's family and spend "
@@ -1535,8 +1536,8 @@ msgstr ""
 "posgrado en la primera mitad de 2018 era claramente dominado por {0}. Este "
 "patrón se disminuyó en 2019 cuando, yo hipotetizo, mi trabajo se volvió "
 "más colaborativo dentro de un equipo de balancia entre géneros. Picos en "
-"julio, noviembre, o diciembre tienen razón, puesto estes meses son cuando"
-" suelo visitar a la familia de mi papá y pasar tiempo con mi abuela, "
+"julio, noviembre, o diciembre tienen razón, puesto que estes meses "
+"suelo visitar a la familia de mi papá y pasar tiempo con mi abuela, "
 "tías, y primos."
 
 #: babel_intermediate.txt:376
@@ -1767,6 +1768,11 @@ msgid ""
 "- {3}: Fun stuff\n"
 "- {4}: :sleeping:"
 msgstr ""
+"- {0}: Trabajar, planear la carrera\n"
+"- {1}: Estudiar, proyectos y aprendizaje independiente\n"
+"- {2}: Transporte, investigar, email, tareas domésticas, la categoría 'el resto'\n"
+"- {3}: Divertirse\n"
+"- {4}: :sleeping:"
 
 #: babel_intermediate.txt:405
 msgid ""

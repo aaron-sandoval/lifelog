@@ -117,3 +117,7 @@ epoch < Epoch.e2021_Tour_Start :
 'Escribir' & ('diario' | 'carta' | 'blog') : Project.Escritura ; #  No metaproject change, hard to say
 'Escuchar, música' |  'Practicar, conjunto' | ( 'Tocar' & ( Project.TAMBORES | Project.Bajo | Project.Musica ))
 	: Tag.MÚSICA ;
+	
+""" Null/empty defaults """
+! description & ! tags & start > datetime(2020,1,1,0) & Project.RECREO_MISC & ! Person & ! Audiobook & ! Podcast & ! Movie & ! TVShow
+	: "Pensar" ;

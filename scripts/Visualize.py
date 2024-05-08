@@ -10,8 +10,6 @@ import os
 import re
 
 import portion
-
-from src.Description import Description
 import matplotlib.text
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -24,6 +22,7 @@ import streamlit as st
 import seaborn as sns
 
 from src.TimesheetDataset import *
+from src.Description import Description
 from i18n_l10n import internationalization as i18n
 
 
@@ -177,10 +176,13 @@ class MatplotlibVisual(Visual):
 
     def localize(self):
         def artist_filter(a: plt.Artist):
+            """
+            Filters out artists which aren't translatable text, such as numbers.
+            """
             return (
                 isinstance(a, matplotlib.text.Text) and
                 len(a.get_text()) > 0 and
-                re.match(r'[a-zA-Z]', a.get_text()) is not None
+                re.search(r'[a-zA-Z]', a.get_text()) is not None
             )
 
         text_artists: List[matplotlib.text.Text] = self.fig.findobj(artist_filter)
@@ -807,7 +809,7 @@ class GraphicMaker:
         # xlabel = _k('')
         ylabel = _k('[hours/day]')
 
-        graphic = MatplotlibVisual(figsize=(10, 6))
+        graphic = MatplotlibVisual(figsize=(10, 7))
         plt.stackplot(visData.index, visData.values.transpose())
         plt.title(title)
         # plt.xlabel(xlabel)
