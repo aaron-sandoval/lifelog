@@ -37,6 +37,7 @@ class TimesheetDataFrame:
         'location': lambda x: True,
         'person': lambda x: x is None or len(x) == 0,
         'food': lambda x: x is None or len(x) == 0,
+        'subjectmatter': lambda x: x is None or len(x) == 0,
         'media': lambda x: x is None or len(x) == 0,
         'audiobook': lambda x: x is None or len(x) == 0 or not any([y[0].name() == 'audiobook' for y in x]),
         'podcast': lambda x: x is None or len(x) == 0 or not any([y[0].name() == 'podcast' for y in x]),

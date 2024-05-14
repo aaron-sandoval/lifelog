@@ -148,8 +148,13 @@ class Collectible(abc.ABC):
     @classmethod
     @abc.abstractmethod
     def INITIALIZATION_TOKENS(cls) -> Tuple[str]:
-        """TimesheetQuery string to filter a df down to only initializable rows for that class"""
+        """Usually just all tokens that appear in `INITIALIZATION_TSQY`, but in a tuple."""
         pass
+
+    @classmethod
+    def INITIALIZATION_TOKENS_TO_CLEAR(cls) -> Tuple[str]:
+        """Subset of `INITIALIZATION_TOKENS` which should be cleared after populating the tsdf with a Collectible."""
+        return cls.INITIALIZATION_TOKENS()
 
     @classmethod
     @abc.abstractmethod
@@ -798,6 +803,11 @@ class Movie(MonolithicMedia, Reviewable):
         return 'CINE', cls.tempInitToken()
 
     @classmethod
+    def INITIALIZATION_TOKENS_TO_CLEAR(cls) -> Tuple[str]:
+        """Subset of `INITIALIZATION_TOKENS` which should be cleared after populating the tsdf with a Collectible."""
+        return (cls.tempInitToken(), )
+    
+    @classmethod
     def POPULATION_TSQY(cls):
         return f'"CINE" | "{cls.tempInitToken()}" | Tag.Netflix : ;'
 
@@ -1001,6 +1011,11 @@ class Person(Collectible, IncompletePersistent, Global.ListColumn):
         return "CHARLAR", "HABLAR", "REUNIÓN", "VIDEOLLAMADA", "MENSAJEAR", cls.tempInitToken()
 
     @classmethod
+    def INITIALIZATION_TOKENS_TO_CLEAR(cls) -> Tuple[str]:
+        """Subset of `INITIALIZATION_TOKENS` which should be cleared after populating the tsdf with a Collectible."""
+        return (cls.tempInitToken(), )
+
+    @classmethod
     def POPULATION_TSQY(cls):
         return Collectible.POPULATION_TSQY()
 
@@ -1165,6 +1180,9 @@ class Food(AutofillPrevious, DAGCollectible, BareNameID, Global.ListColumn):
     
     
 class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
+    _DEFAULT_MEMBERS = {}
+    _CATALOG_FIELDS = []
+    
     @classmethod
     def DEFAULT_MEMBERS(cls):
         if len(cls._DEFAULT_MEMBERS) == 0:
@@ -1185,6 +1203,11 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
     @classmethod
     def INITIALIZATION_TOKENS(cls) -> Tuple[str]:
         return 'INVESTIGAR', 'TEMAS', cls.tempInitToken()
+
+    @classmethod
+    def INITIALIZATION_TOKENS_TO_CLEAR(cls) -> Tuple[str]:
+        """Subset of `INITIALIZATION_TOKENS` which should be cleared after populating the tsdf with a Collectible."""
+        return (cls.tempInitToken(), )
 
     @classmethod
     def POPULATION_TSQY(cls):
@@ -1208,5 +1231,19 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
         return out
     @classmethod
     def constructObjects(cls, timesheetdf: TimesheetDataFrame, *args) -> List['SubjectMatter']:
-        hasPrefixRows = timesheetdf.tsquery(cls.INITIALIZATION_TSQY())  # Rows which contain the trigger prefix
-        
+        hasPrefixRows: TimesheetDataFrame = timesheetdf.tsquery(cls.INITIALIZATION_TSQY())  # Rows which contain the trigger prefix
+        tokDFs = [hasPrefixRows.getDescTokenChildren(prefix).dropna() for prefix in cls.INITIALIZATION_TOKENS()]
+        initingRows = pd.concat(tokDFs).sort_index().drop_duplicates(keep='first')
+        initingRows.drop(initingRows.index[initingRows.apply(lambda x: len(x) == 0)], inplace=True)
+        if all(initingRows.apply(len) == 0):  # Series has no tokens in its lists
+            kiwilib.popAndClear(initingRows, iterNest=0)  # TODO: replace popandclear with something more efficient
+            assert len(initingRows) == 0, f'Indication of empty Series was wrong. Recode this conditional.'
+            return []
+        collxbles = []
+        while len(initingRows) > 0:
+            taskID = initingRows.index[0]
+            name = kiwilib.popAndClear(initingRows, iterNest=1)
+            collxbles.append(cls(**{'name': name},
+                                 **cls.getFirstFieldDicts(timesheetdf.df.loc[[taskID]].tsdf)[0]))
+            initingRows.drop_duplicates(inplace=True)
+        return collxbles

@@ -159,6 +159,8 @@ class TimesheetDataset:
             manyToMany = nameSer.explode()
             swapped = pd.Series(manyToMany.index.values, index=manyToMany.values)
             nameToTaskIDList = swapped.groupby(swapped.index.values).agg(list)
+            # TODO: improve performance by passing ids to `getObjects`. Only ids mapping to nameToTaskIDList.index
+            # TODO: add check on `BareNameID`, if True, call `getObjects(ids=nameToTaskIDList.index)`
             nameObjMap = dict(zip(catalog.collxn.name.values, catalog.getObjects()))
             # collxbleSer = nameSer.apply(lambda nameSet: [nameToObjMap[name] for name in nameSet])
             for name, taskIDs in nameToTaskIDList.items():
@@ -174,10 +176,7 @@ class TimesheetDataset:
         if catalogs is None:
             catalogs = self.cats.values()
         for catalog in catalogs:
-            if catalog.COLLXBLE_CLASS in {Person, Movie}:
-                toksToClear = [catalog.COLLXBLE_CLASS.tempInitToken()]
-            else:
-                toksToClear = catalog.COLLXBLE_CLASS.INITIALIZATION_TOKENS()
+            toksToClear = catalog.COLLXBLE_CLASS.INITIALIZATION_TOKENS_TO_CLEAR()
             self.timesheetdf.df[
                 self.timesheetdf.df.description.apply(
                     lambda x: any([x.hasToken(tok) and len(x.getChildToks(tok)) == 0 for tok in toksToClear]))
