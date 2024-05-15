@@ -283,10 +283,10 @@ def rejectChild(parent: str, tok: str):
     Returns false unless the parent arg has been pre-determined to reject the arg tok.
     Example: 'COMER' parent should reject all elements of PEOPLE_ALL
     """
-    if tok == 'CHARLES GONZALES' and parent == '$PERSON':
-        A = 1
     if parent == 'ROOT': return False
-    if tok in STDList.SOFTWARE_ALL.union(STDList.STD_ROOTS): return True
+    if tok in STDList.STD_ROOTS: return True
+    if parent in {'INVESTIGAR', 'LEER', 'TEMAS'}:
+        if tok in STDList.SOFTWARE_ALL: return False
     # TODO: A bunch of special cases to be added. COMER case is an example.
     if (parent not in Person.INITIALIZATION_TOKENS() and tok in STDList.PEOPLE_ALL)\
         or (parent in Person.INITIALIZATION_TOKENS()

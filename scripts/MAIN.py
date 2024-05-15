@@ -36,7 +36,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2023-10-01-0906.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2018-02-10-2211.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2017-12-16-1700.csv')
-    # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-12-17-1030_2018-08-22-1745.csv')
+    FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-12-17-1030_2018-08-22-1745.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2018-08-22-1745.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2018-08-22-1640_2019-09-02-1659.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2019-09-02-1625_2020-09-17-0747.csv')
@@ -47,8 +47,8 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
 
     # PP_filePath = os.path.join(PPPath(), "PP_2020-09-17-0747_2021-01-05-1222.pkl")
     # PP_filePath = os.path.join(PPPath(), "PP_2017-09-06-2136_2018-02-10-2211.pkl")
-    PP_filePath = os.path.join(PPPath(), "PP_2017-09-06-2136_2017-12-16-1252.pkl")
-    # PP_filePath = os.path.join(PPPath(), 'PP_2017-12-17-1030_2018-08-22-1745.pkl')
+    # PP_filePath = os.path.join(PPPath(), "PP_2017-09-06-2136_2017-12-16-1252.pkl")
+    PP_filePath = os.path.join(PPPath(), 'PP_2017-12-17-1030_2018-08-22-1745.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2017-09-06-2136_2018-08-22-1745.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2018-08-22-1640_2019-09-02-1659.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2019-09-02-1625_2020-09-17-0747.pkl')
@@ -76,7 +76,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
         # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
     else:
         # FM_filePath = FM.main(dataFiles)
-        # PP_filePath = PP.main(FM_filePath)
+        PP_filePath = PP.main(FM_filePath)
         DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
         # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
 

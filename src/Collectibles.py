@@ -211,6 +211,13 @@ class Collectible(abc.ABC):
         # timesheetdf = detectUnpopulated()
 
     @classmethod
+    def filterForPopulation(cls, timesheetdf: TimesheetDataFrame, collxs: List['Collectible']) -> TimesheetDataFrame:
+        """
+        Filters a TSDF to 
+        """
+        return timesheetdf.tsquery(cls.POPULATION_TSQY())
+
+    @classmethod
     @abc.abstractmethod
     def processingPrecedence(cls) -> int:
         """
@@ -1124,12 +1131,11 @@ class Food(AutofillPrevious, DAGCollectible, BareNameID, Global.ListColumn):
 
     @classmethod
     def constructObjects(cls, timesheetdf: TimesheetDataFrame, *args) -> list:
-        # TODO: update and test FOod constructObjects
         hasPrefixRows = timesheetdf.tsquery(cls.INITIALIZATION_TSQY())  # Rows which contain the trigger prefix
         tokDFs = [hasPrefixRows.getDescTokenChildren(prefix).dropna() for prefix in cls.INITIALIZATION_TOKENS()]
         initingRows = pd.concat(tokDFs).sort_index().drop_duplicates(keep='first')
         initingRows.drop(initingRows.index[initingRows.apply(lambda x: len(x) == 0)], inplace=True)
-        if all(initingRows.apply(len) == 0):  # Series has no tokens in its lists
+        if all(initingRows.apply(lambda x: len(x) == 0)):  # Series has no tokens in its lists
             kiwilib.popAndClear(initingRows, iterNest=0)  # TODO: replace popandclear with something more efficient
             assert len(initingRows) == 0, f'Indication of empty Series was wrong. Recode this conditional.'
             return []
@@ -1211,7 +1217,7 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
 
     @classmethod
     def POPULATION_TSQY(cls):
-        return f'"INVESTIGAR, " | "TEMAS, " | "{cls.tempInitToken()}" : ;'
+        return f'"INVESTIGAR, " | "LEER, " | "TEMAS, " | "{cls.tempInitToken()}" | Audiobook | Podcast | TVShow | Movie : ;'
 
     @classmethod
     def processingPrecedence(cls) -> int:
@@ -1235,7 +1241,7 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
         tokDFs = [hasPrefixRows.getDescTokenChildren(prefix).dropna() for prefix in cls.INITIALIZATION_TOKENS()]
         initingRows = pd.concat(tokDFs).sort_index().drop_duplicates(keep='first')
         initingRows.drop(initingRows.index[initingRows.apply(lambda x: len(x) == 0)], inplace=True)
-        if all(initingRows.apply(len) == 0):  # Series has no tokens in its lists
+        if all(initingRows.apply(lambda x: len(x) == 0)):  # Series has no tokens in its lists
             kiwilib.popAndClear(initingRows, iterNest=0)  # TODO: replace popandclear with something more efficient
             assert len(initingRows) == 0, f'Indication of empty Series was wrong. Recode this conditional.'
             return []

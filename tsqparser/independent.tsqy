@@ -105,6 +105,8 @@ Project.CS & 'AI Safety Fundamentals' & Tag.En_Clase : 'Leer, temas, seguridad d
 """ Time-dependent diction """
 epoch < Epoch.e2021_Tour_Start :
 	'Meditar'.replace('íntimo') ;
+epoch < Epoch.e2018_Boulder_Solo :
+	'Salas'.replace('Cornell') ;
 
 """ Misc descToken Filters """
 "Gimnasio" : Tag.Ejercicio ;
