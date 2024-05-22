@@ -95,6 +95,32 @@ class Catalog(abc.ABC):
         # Task ID range update eliminated b/c it interferes w/ updateScalingFields(). Task ID range updated afterwards.
         self.collect(objs)
 
+    def populateDF(self, timesheetdf: TimesheetDataFrame) -> None:
+        """
+        Populates the tsdf with Collectibles from catalogs in steps:
+         1. Filters tsdf to tasks containing Collxble instance names as a token.
+         2. `Catalog.COLLXBLE_CLASS.tsdfPopulationFilter`.
+         3. Populate tsdf according to filtered tokens.
+        Also clears collxble name descTokens from the populated rows of tsdf.
+        """
+        tokSets = timesheetdf.df.description.apply(lambda x: set(x.tokens))
+        clsCandRows = tokSets[tokSets.index.isin(timesheetdf.tsquery(self.COLLXBLE_CLASS.POPULATION_TSQY()).df.index)]
+        catNames = set(self.collxn.name)
+        nameSer = pd.Series(clsCandRows.values & catNames, index=clsCandRows.index)
+        nameSer = nameSer[nameSer.apply(lambda x: len(x) > 0)]
+        manyToMany = self.COLLXBLE_CLASS.tsdfPopulationFilter(timesheetdf, nameSer)
+        manyToMany = manyToMany.explode()
+        swapped = pd.Series(manyToMany.index.values, index=manyToMany.values)
+        nameToTaskIDList = swapped.groupby(swapped.index.values).agg(list)
+        # TODO: improve performance by passing ids to `getObjects`. Only ids mapping to nameToTaskIDList.index
+        # TODO: add check on `BareNameID`, if True, call `getObjects(ids=nameToTaskIDList.index)`
+        nameObjMap = dict(zip(self.collxn.name.values, self.getObjects()))
+        # collxbleSer = nameSer.apply(lambda nameSet: [nameToObjMap[name] for name in nameSet])
+        for name, taskIDs in nameToTaskIDList.items():
+            tsdfRows = timesheetdf.df.loc[taskIDs, :].tsdf
+            tsdfRows.addItem(nameObjMap[name])
+            tsdfRows.df.description.apply(lambda desc: desc.removeToken(name))
+
     def getObjects(self, collxn=None, ids: Iterable[str] = None) -> List[Collectible]:
         """
         If no args, constructs and returns a list of Collectibles encoded in the Catalog.

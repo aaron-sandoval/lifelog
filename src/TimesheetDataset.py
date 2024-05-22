@@ -147,26 +147,11 @@ class TimesheetDataset:
         Also clears collxble name descTokens from the populated rows of tsdf.
         :param catalogs: List of Catalogs. Defaults to all Catalogs in self.cats.
         """
+        # TODO: delete and replace calls with direct calls to `catalog.populateDF(self.timesheetdf)`
         if catalogs is None:
             catalogs = self.cats.values()
-        tokSets = self.timesheetdf.df.description.apply(lambda x: set(x.tokens))
         for catalog in catalogs:
-            clsCandRows = tokSets[tokSets.index.isin(self.timesheetdf.tsquery(catalog.COLLXBLE_CLASS.POPULATION_TSQY()).
-                                                     df.index)]
-            catNames = set(catalog.collxn.name)
-            nameSer = pd.Series(clsCandRows.values & catNames, index=clsCandRows.index)
-            nameSer = nameSer[nameSer.apply(lambda x: len(x) > 0)]
-            manyToMany = nameSer.explode()
-            swapped = pd.Series(manyToMany.index.values, index=manyToMany.values)
-            nameToTaskIDList = swapped.groupby(swapped.index.values).agg(list)
-            # TODO: improve performance by passing ids to `getObjects`. Only ids mapping to nameToTaskIDList.index
-            # TODO: add check on `BareNameID`, if True, call `getObjects(ids=nameToTaskIDList.index)`
-            nameObjMap = dict(zip(catalog.collxn.name.values, catalog.getObjects()))
-            # collxbleSer = nameSer.apply(lambda nameSet: [nameToObjMap[name] for name in nameSet])
-            for name, taskIDs in nameToTaskIDList.items():
-                tsdfRows = self.timesheetdf.df.loc[taskIDs, :].tsdf
-                tsdfRows.addItem(nameObjMap[name])
-                tsdfRows.df.description.apply(lambda desc: desc.removeToken(name))
+            catalog.populateDF(self.timesheetdf)  
 
     def clearInitTokens(self, catalogs: Iterable[Catalog] = None):
         """
@@ -264,14 +249,15 @@ class TimesheetDataset:
         if fileSuffix is None:
             fileSuffix = self.fileSuffix
         self.loadCatalogs(fileSuffix=fileSuffix)
-        self.catalogPopulateDF()
+        for catalog in self.cats.values():
+            catalog.populateDF(self.timesheetdf)    
         self.clearInitTokens([self.cats['tvshow'], self.cats['movie']])
         for catalog in self.cats.values():
         # for catalog in list(self.cats.values())[3:4]:  # Used when populating only a subset of all catalogs
             oldLen = len(catalog)
             catalog.autoCollect(self.timesheetdf)
             if len(catalog) > oldLen:
-                self.catalogPopulateDF((catalog,))  # TODO: only pass newly-added rows of collxn, not whole thing
+                catalog.populateDF(self.timesheetdf)
             if issubclass(catalog.COLLXBLE_CLASS, AutofillPrevious):
                 self.autofillPreviousCollectibles([catalog.COLLXBLE_CLASS])
             catalog.updateScalingFields(self.timesheetdf, reset=())

@@ -211,11 +211,17 @@ class Collectible(abc.ABC):
         # timesheetdf = detectUnpopulated()
 
     @classmethod
-    def filterForPopulation(cls, timesheetdf: TimesheetDataFrame, collxs: List['Collectible']) -> TimesheetDataFrame:
+    def tsdfPopulationFilter(cls, timesheetdf: TimesheetDataFrame, collxs: pd.Series) -> pd.Series:
         """
-        Filters a TSDF to 
+        Filters a set of proposed Collxble instance populations encoded in `collxs` using the data in `timesheetdf`.
+        This method should be overridden in subclasses only when `cls.POPULATION_TSQY` is insufficiently precise/powerful.
+        This method is only called in `Catalog.populateDF`. It may be assumed that `cls.POPULATION_TSQY` has already been applied when `collxs` was constructed.
+        Arguments are not mutated.
+        :param collxs: pd.Series[int, Iterable(str)] An encoding of potential Collxble instances to be later populated in `timesheetdf`.
+        Each row in `collxs` indicates a set of collxbles with names corresponding to those tokens should be added to the row in `timesheetdf` that shares that index.
+        :return: A subset of `collxs`.
         """
-        return timesheetdf.tsquery(cls.POPULATION_TSQY())
+        return collxs
 
     @classmethod
     @abc.abstractmethod
@@ -1217,7 +1223,13 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
 
     @classmethod
     def POPULATION_TSQY(cls):
-        return f'"INVESTIGAR, " | "LEER, " | "TEMAS, " | "{cls.tempInitToken()}" | Audiobook | Podcast | TVShow | Movie : ;'
+        return f'"INVESTIGAR, " | "LEER, " | ("COMPRAR, " & Tag.Elec) | ("COMPRAR, " & ! "COMESTIBLES" & Tag.Social ) | "TEMAS, " | "{cls.tempInitToken()}" : ;'
+
+    @classmethod
+    def tsdfPopulationFilter(cls, timesheetdf: TimesheetDataFrame, collxs: pd.Series) -> pd.Series:
+        df = timesheetdf.df.loc[collxs.index,:]
+        collxs = collxs.explode()
+        return collxs
 
     @classmethod
     def processingPrecedence(cls) -> int:

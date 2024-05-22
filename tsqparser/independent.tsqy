@@ -119,6 +119,9 @@ epoch < Epoch.e2018_Boulder_Solo :
 'Escribir' & ('diario' | 'carta' | 'blog') : Project.Escritura ; #  No metaproject change, hard to say
 'Escuchar, música' |  'Practicar, conjunto' | ( 'Tocar' & ( Project.TAMBORES | Project.Bajo | Project.Musica ))
 	: Tag.MÚSICA ;
+"Enseñar" & !"temas" & Project.TAMBORES : "temas" ; "tambores" ; reloadDescription() ;
+"Enseñar" & !"temas" & "bici" & Project.CICLISMO : !"bici" ; "temas" ; "bici" ; reloadDescription() ;
+"Enseñar" & !"temas" & Project.CICLISMO : "temas" ; "bici" ; reloadDescription() ;
 	
 """ Null/empty defaults """
 ! description & ! tags & start > datetime(2020,1,1,0) & Project.RECREO_MISC & ! Person & ! Audiobook & ! Podcast & ! Movie & ! TVShow
