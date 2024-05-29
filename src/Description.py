@@ -105,41 +105,48 @@ class Description(SingleInstanceColumn):
         self.standardString = catTokens(self.tokens)
         addTokenToTree(self.tokenTree, tok, ind)
 
-    def removeToken(self, val: Union[str, Iterable]) -> Union[bool, List[bool]]:
+    def removeToken(self, val: Union[str, Iterable, anytree.Node]) -> Union[bool, List[bool]]:
         """
         Removes a token from the object if present and updates all associated data structures
         :param val: Either the list index or string representation of the token to be removed, or a list_like thereof
         :return: Boolean to indicate if a token was removed or not, or a list_like thereof
         """
-        def removeTokenFromTree(treeRoot, tok):
+        def removeTokenFromTree(treeRoot, tok: Union[str, anytree.Node]):
             """
             Removes a token, if present, linking all orphan children to the parent node
             :param treeRoot: Root node of the tree to be searched
             :param tok: Token to delete
             """
-            found = anytree.search.find(treeRoot, lambda node: node.name == tok)
-            if not found: return treeRoot
+            if isinstance(tok, str):
+                found = anytree.search.find(treeRoot, lambda node: node.name == tok)
+                if not found: return treeRoot
+            elif isinstance(tok, anytree.Node):
+                found = tok
             orphans = found.children
             for orphan in orphans:
                 orphan.parent = orphan.parent.parent
             found.parent = None # Detach node to delete from the tree
-#             print(anytree.RenderTree(treeRoot))
-            return treeRoot
-
+            
         if is_list_like(val):
             return [self.removeToken(v) for v in val]
-        # print(f'remove token: {val}')  # DEBUG
+        if isinstance(val, anytree.Node):
+            if val.name not in self.tokens: return False
+            for i, nd in enumerate(anytree.PreOrderIter(self.tokenTree)):
+                if val is nd:
+                    del self.tokens[i-1]
+                    self.standardString = catTokens(self.tokens)
+                    removeTokenFromTree(self.tokenTree, val)
+                    return True           
+            raise ValueError(f"{val} not found in tokenTree of {self}")
         if isinstance(val, int):
             if val >= len(self.tokens):
                 raise IndexError(f'ERROR: Index {val} to remove out of bounds of {self.tokens}')
-                return False 
             token = self.tokens[val]
         elif isinstance(val, str): token = val
         if token not in self.tokens: return False
         self.tokens.remove(token)
         self.standardString = catTokens(self.tokens)
-        self.tokenTree = removeTokenFromTree(self.tokenTree, token)
-#         a = removeTokenFromTree(None, val)
+        removeTokenFromTree(self.tokenTree, token)
         return True
 
     def replaceToken(self, old: str, new: str) -> bool:
@@ -174,6 +181,11 @@ class Description(SingleInstanceColumn):
                 return False
         return True
 
+    def count(self, tok: str) -> int:
+        """ Returns the number of instances `tok` is found in `self.tokens`.
+        """
+        return self.tokens.count(tok)
+
     def isEmpty(self) -> bool:
         return len(self.tokens) == 0
 
@@ -206,6 +218,21 @@ class Description(SingleInstanceColumn):
         # found = anytree.search.find(self.tokenTree, lambda node: node.name == tok)
         if not self.hasToken(tok): return pd.NA
         return [child.name for child in self.getSubTree(tok).children if child is not None]
+
+    def getParentToks(self, tok: str) -> Tuple[str]:
+        """
+        Returns the parent tokens of `tok` in `self.tokenTree`.
+        If `tok` is not found, returns an empty tuple.
+        Almost all the time, the length of the returned tuple will be 1.
+        In cases of duplicate tokens, the returned tuple may have length > 1.
+        """
+        # matches: tuple[anytree.Node] = anytree.search.findall(self.tokenTree, filter_=lambda node: node.name == tok)
+        return tuple(m.parent.name for m in anytree.search.findall(self.tokenTree, filter_=lambda node: node.name == tok))
+        # if len(matches) == 0:
+        #     raise KeyError(f"'{tok}' not found in Description object {self}.")
+        # if len(matches) > 1 and len({m.parent.name for m in matches}) > 1:
+        #     raise ValueError(f"'{tok}' appears multiple times in {self}, with differeing parent tokens.")
+        # return matches[0].parent.name
 
     @staticmethod
     def genTokenTree(toks: Iterable[str]):

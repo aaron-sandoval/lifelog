@@ -1,11 +1,11 @@
 import abc
 import datetime
-
+import anytree
 import pandas as pd
 from yamlable import YamlAble, yaml_info
 import portion
 import networkx as nx
-from typing import Union, Iterable, List, Tuple, Set
+from typing import Union, Iterable, List, Tuple, Set, Sequence
 
 from src.TimesheetDF import TimesheetDataFrame
 import src.TimesheetGlobals as Global
@@ -211,7 +211,7 @@ class Collectible(abc.ABC):
         # timesheetdf = detectUnpopulated()
 
     @classmethod
-    def tsdfPopulationFilter(cls, timesheetdf: TimesheetDataFrame, collxs: pd.Series) -> pd.Series:
+    def tsdfPopulationFilter(cls, timesheetdf: TimesheetDataFrame, collxs: pd.Series) -> Tuple[pd.Series, pd.Series]:
         """
         Filters a set of proposed Collxble instance populations encoded in `collxs` using the data in `timesheetdf`.
         This method should be overridden in subclasses only when `cls.POPULATION_TSQY` is insufficiently precise/powerful.
@@ -219,9 +219,12 @@ class Collectible(abc.ABC):
         Arguments are not mutated.
         :param collxs: pd.Series[int, Iterable(str)] An encoding of potential Collxble instances to be later populated in `timesheetdf`.
         Each row in `collxs` indicates a set of collxbles with names corresponding to those tokens should be added to the row in `timesheetdf` that shares that index.
-        :return: A subset of `collxs`.
+        :return: [0]: pd.Series[int, str] = A subset of `collxs` where each token appears exactly once in the task description in `timesheetdf`.
+        [1]: pd.Series[int, anytree.Node] = Covers rare cases when the token in `collxs` appears >1 time in the task description in `timesheetdf`.
+        In those instances, an entry is created in this series with similar data format as `return[0]`, 
+        except that the token is represented by its `anytree.Node` object rather than simply a string, to differentiate it from duplicate tokens.
         """
-        return collxs
+        return collxs, pd.Series([], dtype="object")
 
     @classmethod
     @abc.abstractmethod
@@ -687,6 +690,7 @@ class Audiobook(MonolithicMedia, Reviewable, AutofillPrevious):
     def rerunMinInterval(cls) -> datetime.timedelta:
         return datetime.timedelta(days=180)
 
+
 class Podcast(ConsumptionMedia, ManuallyReviewable):
     _DEFAULT_MEMBERS = {}
     _CATALOG_FIELDS = []
@@ -1088,8 +1092,6 @@ class Person(Collectible, IncompletePersistent, Global.ListColumn):
         raise Exception(f"{self.id}'s relationships {self.relationships} contain an unaccounted {sg.Relation()}.")
 
 
-
-
 class Food(AutofillPrevious, DAGCollectible, BareNameID, Global.ListColumn):
     """
     Unique DAG standards:
@@ -1227,9 +1229,17 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
 
     @classmethod
     def tsdfPopulationFilter(cls, timesheetdf: TimesheetDataFrame, collxs: pd.Series) -> pd.Series:
-        df = timesheetdf.df.loc[collxs.index,:]
-        collxs = collxs.explode()
-        return collxs
+        df = timesheetdf.df.loc[collxs.index.drop_duplicates(),:]
+        population_valid_parents = {"INVESTIGAR", "LEER", "COMPRAR", "TEMAS"}
+        df = collxs.rename("subject_matter", copy=False).to_frame().merge(df.description, how="inner", left_index=True, right_index=True)
+        has_valid_child = df.apply(lambda x: len(set(x.description.getParentToks(x.subject_matter)).intersection(population_valid_parents)) > 0, axis=1)
+        has_duplicate_tokens = df.apply(lambda x: x.description.count(x.subject_matter) > 1, axis=1)
+        tree_nodes = df.loc[has_duplicate_tokens].apply(lambda x: anytree.search.findall(x.description.tokenTree, filter_=lambda node: node.name == x.subject_matter and node.parent.name in population_valid_parents), axis=1)
+        if len(tree_nodes) > 0:
+            tree_nodes = tree_nodes.explode()
+        else:
+            tree_nodes = pd.Series([], dtype=object)
+        return collxs.loc[has_valid_child & ~has_duplicate_tokens], tree_nodes
 
     @classmethod
     def processingPrecedence(cls) -> int:

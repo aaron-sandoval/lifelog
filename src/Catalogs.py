@@ -108,14 +108,28 @@ class Catalog(abc.ABC):
         catNames = set(self.collxn.name)
         nameSer = pd.Series(clsCandRows.values & catNames, index=clsCandRows.index)
         nameSer = nameSer[nameSer.apply(lambda x: len(x) > 0)]
-        manyToMany = self.COLLXBLE_CLASS.tsdfPopulationFilter(timesheetdf, nameSer)
-        manyToMany = manyToMany.explode()
-        swapped = pd.Series(manyToMany.index.values, index=manyToMany.values)
+        many_to_many = nameSer.explode()
+        single_instances, multi_instances = self.COLLXBLE_CLASS.tsdfPopulationFilter(timesheetdf, many_to_many)
+        for tid, node in multi_instances.items():
+            collxble = self.getObjects(ids=self.collxn[self.collxn.name == node.name].index)
+            if len(collxble) > 1:
+                raise NotImplementedError(f"Support for duplicate names: {collxble} found in {self} not yet implemented.")
+            timesheetdf.df.loc[[tid],:].tsdf.addItem(collxble[0])
+            timesheetdf.df.at[tid, "description"].removeToken(node)
+            # TODO: populate and clear one token for each row in multi_instances
+        swapped = pd.Series(single_instances.index.values, index=single_instances.values)
         nameToTaskIDList = swapped.groupby(swapped.index.values).agg(list)
-        # TODO: improve performance by passing ids to `getObjects`. Only ids mapping to nameToTaskIDList.index
-        # TODO: add check on `BareNameID`, if True, call `getObjects(ids=nameToTaskIDList.index)`
-        nameObjMap = dict(zip(self.collxn.name.values, self.getObjects()))
-        # collxbleSer = nameSer.apply(lambda nameSet: [nameToObjMap[name] for name in nameSet])
+        if issubclass(self.COLLXBLE_CLASS, BareNameID):
+            cids: Sequence[str] = nameToTaskIDList.index
+            names = cids
+        else:
+            collxn_subset = self.collxn[self.collxn.name.isin(set(nameToTaskIDList.index))]
+            cids = collxn_subset.index
+            names = collxn_subset.name
+            if names.duplicated().any():
+                raise NotImplementedError(f"Support for duplicate names: {collxn_subset.index[names.duplicated(keep=False)]} found in {self} not yet implemented.")
+        # TODO: Calling a dict comprehension on names in `nameObjMap` doesn't support duplicate names. Revise. 
+        nameObjMap = dict(zip(names, self.getObjects(ids=cids)))
         for name, taskIDs in nameToTaskIDList.items():
             tsdfRows = timesheetdf.df.loc[taskIDs, :].tsdf
             tsdfRows.addItem(nameObjMap[name])
@@ -301,7 +315,7 @@ class Catalog(abc.ABC):
                     changedID = True
                     tsdfRows.tsdf.deleteItem(self.getObjects(ids=(cid,)))
                 firstFields = self.COLLXBLE_CLASS.getFirstFieldDicts(tsdfRows.head(1).tsdf)[0]
-                warnings.warn(f"Found an instance of {self.COLLXBLE_CLASS.__name__} {oldCid} "
+                warnings.warn(f"Found an instance of {self.COLLXBLE_CLASS.__name__}: '{cid}' "
                               f"older than the cataloged earliest instance.\n"
                               f"Cataloged first time: {self.collxn.at[cid, 'firstTime']}\n"
                               f"New first time: {firstFields['firstTime']}")
