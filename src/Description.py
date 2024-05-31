@@ -113,7 +113,7 @@ class Description(SingleInstanceColumn):
         """
         def removeTokenFromTree(treeRoot, tok: Union[str, anytree.Node]):
             """
-            Removes a token, if present, linking all orphan children to the parent node
+            Removes a token node, if present, linking all orphan children to the parent node
             :param treeRoot: Root node of the tree to be searched
             :param tok: Token to delete
             """
