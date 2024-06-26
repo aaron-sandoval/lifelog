@@ -209,14 +209,17 @@ class Description(SingleInstanceColumn):
         if not found: return None
         return found
 
-    def getChildToks(self, tok: str) -> list:
+    def getChildToks(self, tok: str) -> List[str]:
         """
-        Returns the children of a token in the token tree
+        Returns the children of a token in the token tree.
+        If >1 instances of `tok` are present, returns all children in a single list.
         :param tok: Token to check
         :return: List of children
         """
         # found = anytree.search.find(self.tokenTree, lambda node: node.name == tok)
         if not self.hasToken(tok): return pd.NA
+        if self.tokens.count(tok) > 1:
+            return [child.name for node in anytree.search.findall(self.tokenTree, lambda node: node.name == tok) for child in node.children]
         return [child.name for child in self.getSubTree(tok).children if child is not None]
 
     def getParentToks(self, tok: str) -> Tuple[str]:
