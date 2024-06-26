@@ -81,6 +81,13 @@ Project.RECREO_ELECTRÓNICO | Tag.NETFLIX | (('Investigar' | 'Leer' | 'Escribir'
 | 'Jugar, vídeo juegos' | 'Jugar, juegos del internet' 
 	: Tag.ELECTRÓNICA ;
 'Jugar' & 'Rock Band' : Tag.MÚSICA ; Tag.Elec ;
+'Investigar, música, YouTube' : # Reorder tokens in this somewhat common sequence which causes YouTube to be treated as a SubjectMatter
+	!'Investigar' ;
+	!'Música' ;
+	'Investigar' ;
+	'Música' ;
+	reloadDescription() ;
+	
 	
 """Post-Cornell Academics"""
 "Nand2Tetris" & !"Hack Assembly" & !"HDL" : Tag.En_Clase ;
@@ -93,7 +100,7 @@ Project.CS & 'AI Safety Fundamentals' & Tag.En_Clase : 'Leer, temas, seguridad d
 "NFL" : Tag.NFL ; # Don't delete token to preserve "TV, NFL" instances
 "Ejercicio" : Tag.Ejercicio ; !"Ejercicio" ;
 "Tren" | "Subte" : Tag.Tren ; !'Tren' ;
-"Auto" & ( Project.Transporte | Project.Errands | ! 'Investigar' ) : Tag.Auto ; !'Auto' ;
+"Auto" & ( Project.Transporte | Project.Errands | ! ('Investigar' | 'temas') ) : Tag.Auto ; !'Auto' ;
 "Avión" : Tag.Avión ; !'Avión' ;
 'Comer' | 'Merienda' : Tag.COMER ;
 'Dormir' & Project.COMER : Project.DORMIR ; Metaproject.Dormir ;
@@ -111,7 +118,6 @@ epoch < Epoch.e2018_Boulder_Solo :
 """ Misc descToken Filters """
 "Gimnasio" : Tag.Ejercicio ;
 "Cine" : Tag.Elec ; Tag.Netflix ;
-"Auto" : Tag.Auto ; !"Auto" ;
 'Clase' : Tag.EN_CLASE ;
 # "Iglesia" : Project.Errands_Afueras ;  # Not sure, could be Recreo_Social
 "Skype" | 'Videollamada' | 'Charlar' | 'Hablar' : Tag.Social_Grupo ;

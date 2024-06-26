@@ -1,0 +1,2057 @@
+- HEADER:
+    FILE TYPE: DAGCatalog
+    DATE WRITTEN: 2024-06-25
+    TASK ID RANGE: !CodecMisc/portion.Interval
+      atomicIntervals:
+      - - true
+        - 3584169
+        - 5031369
+        - true
+      - - true
+        - 5046309
+        - 19516079
+        - true
+    COLLECTIBLE TYPE: subjectmatter
+    CATALOG COUNT: 88
+- id: BICI
+  name: BICI
+  firstTaskID: 3595779
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 7
+    hour: 16
+    minute: 57
+  firstCircad: &id001 2017-09-07
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 3
+    seconds: 53640
+  taskCount: 81
+  lastTaskID: 19494009
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 15
+    hour: 18
+    minute: 31
+- id: PUESTOS
+  name: PUESTOS
+  firstTaskID: 3596099
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 7
+    hour: 17
+    minute: 29
+  firstCircad: *id001
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8100
+  taskCount: 3
+  lastTaskID: 5565629
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 22
+    hour: 12
+    minute: 10
+- id: EQUIPO DE CASA
+  name: EQUIPO DE CASA
+  firstTaskID: 3808929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 22
+    hour: 12
+    minute: 12
+  firstCircad: 2017-09-22
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 56820
+  taskCount: 18
+  lastTaskID: 17823269
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 22
+    hour: 18
+    minute: 16
+- id: TRANSPORTE
+  name: TRANSPORTE
+  firstTaskID: 3822339
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 23
+    hour: 10
+    minute: 33
+  firstCircad: 2017-09-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 25620
+  taskCount: 14
+  lastTaskID: 14541759
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 10
+    day: 7
+    hour: 20
+    minute: 46
+- id: INFORME DE CONTROLES
+  name: INFORME DE CONTROLES
+  firstTaskID: 3883849
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 27
+    hour: 17
+    minute: 4
+  firstCircad: 2017-09-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3180
+  taskCount: 1
+  lastTaskID: 3883849
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 9
+    day: 27
+    hour: 17
+    minute: 57
+- id: BENEFICIOS
+  name: BENEFICIOS
+  firstTaskID: 4975549
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2017
+    month: 12
+    day: 12
+    hour: 12
+    minute: 34
+  firstCircad: 2017-12-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7140
+  taskCount: 3
+  lastTaskID: 17661819
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 11
+    hour: 13
+    minute: 41
+- id: LIBROS
+  name: LIBROS
+  firstTaskID: 5525369
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 19
+    hour: 16
+    minute: 56
+  firstCircad: 2018-01-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 38700
+  taskCount: 17
+  lastTaskID: 18609739
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 7
+    day: 16
+    hour: 8
+    minute: 27
+- id: CORNELL
+  name: CORNELL
+  firstTaskID: 5551509
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 21
+    hour: 12
+    minute: 30
+  firstCircad: 2018-01-21
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 11580
+  taskCount: 5
+  lastTaskID: 16929999
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 3
+    day: 21
+    hour: 17
+    minute: 27
+- id: EQUIPO
+  name: EQUIPO
+  firstTaskID: 5623959
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 26
+    hour: 13
+    minute: 15
+  firstCircad: 2018-01-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1020
+  taskCount: 1
+  lastTaskID: 5623959
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 26
+    hour: 13
+    minute: 32
+- id: MANTENIMIENTO
+  name: MANTENIMIENTO
+  firstTaskID: 5652859
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 28
+    hour: 13
+    minute: 25
+  firstCircad: 2018-01-28
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 11940
+  taskCount: 2
+  lastTaskID: 7441919
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 1
+    hour: 22
+    minute: 10
+- id: PROYECTOS
+  name: PROYECTOS
+  firstTaskID: 5666979
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 1
+    day: 29
+    hour: 12
+    minute: 57
+  firstCircad: 2018-01-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4380
+  taskCount: 2
+  lastTaskID: 7539879
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 8
+    hour: 15
+    minute: 17
+- id: BICOPTER
+  name: BICOPTER
+  firstTaskID: 5856229
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 11
+    hour: 16
+    minute: 22
+  firstCircad: &id002 2018-02-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5820
+  taskCount: 1
+  lastTaskID: 5856229
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 11
+    hour: 17
+    minute: 59
+- id: MATLAB
+  name: MATLAB
+  firstTaskID: 5856229
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 11
+    hour: 16
+    minute: 22
+  firstCircad: *id002
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5820
+  taskCount: 1
+  lastTaskID: 5856229
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 11
+    hour: 17
+    minute: 59
+- id: "PEL\xCDCULAS"
+  name: "PEL\xCDCULAS"
+  firstTaskID: 5932199
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 16
+    hour: 22
+    minute: 59
+  firstCircad: 2018-02-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 35400
+  taskCount: 17
+  lastTaskID: 17725009
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 15
+    hour: 22
+    minute: 59
+- id: EQUIPO DE BICI
+  name: EQUIPO DE BICI
+  firstTaskID: 6030919
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 23
+    hour: 19
+    minute: 31
+  firstCircad: 2018-02-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 2
+    seconds: 17700
+  taskCount: 48
+  lastTaskID: 19363079
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 6
+    hour: 17
+    minute: 42
+- id: DEPARTAMENTOS
+  name: DEPARTAMENTOS
+  firstTaskID: 6104119
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 28
+    hour: 21
+    minute: 31
+  firstCircad: 2018-02-28
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 52140
+  taskCount: 16
+  lastTaskID: 16742139
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 3
+    day: 8
+    hour: 16
+    minute: 46
+- id: ADCS
+  name: ADCS
+  firstTaskID: 5972609
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 2
+    day: 19
+    hour: 18
+    minute: 20
+  firstCircad: 2018-02-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 32160
+  taskCount: 8
+  lastTaskID: 8144229
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 7
+    day: 20
+    hour: 13
+    minute: 51
+- id: RESTAURANTES
+  name: RESTAURANTES
+  firstTaskID: 6145309
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 3
+    hour: 18
+    minute: 10
+  firstCircad: 2018-03-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 31080
+  taskCount: 12
+  lastTaskID: 18227079
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 19
+    hour: 18
+    minute: 59
+- id: CURSOS
+  name: CURSOS
+  firstTaskID: 6357409
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 18
+    hour: 11
+    minute: 40
+  firstCircad: 2018-03-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5880
+  taskCount: 2
+  lastTaskID: 7768939
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 24
+    hour: 12
+    minute: 50
+- id: VACACIONES
+  name: VACACIONES
+  firstTaskID: 6378329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 19
+    hour: 22
+    minute: 32
+  firstCircad: &id003 2018-03-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 36660
+  taskCount: 10
+  lastTaskID: 13548159
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 7
+    day: 30
+    hour: 21
+    minute: 40
+- id: NYC
+  name: NYC
+  firstTaskID: 6378329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 19
+    hour: 22
+    minute: 32
+  firstCircad: *id003
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 10620
+  taskCount: 1
+  lastTaskID: 6378329
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 3
+    day: 20
+    hour: 1
+    minute: 29
+- id: REGALOS
+  name: REGALOS
+  firstTaskID: 6938839
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 4
+    day: 27
+    hour: 20
+    minute: 43
+  firstCircad: 2018-04-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 13020
+  taskCount: 5
+  lastTaskID: 10366869
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 12
+    day: 21
+    hour: 22
+    minute: 37
+- id: "DISE\xD1OS"
+  name: "DISE\xD1OS"
+  firstTaskID: 6995899
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 1
+    hour: 19
+    minute: 49
+  firstCircad: 2018-05-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 420
+  taskCount: 1
+  lastTaskID: 6995899
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 1
+    hour: 19
+    minute: 56
+- id: "EVALUACI\xD3N POR PARES"
+  name: "EVALUACI\xD3N POR PARES"
+  firstTaskID: 7108739
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 9
+    hour: 15
+    minute: 53
+  firstCircad: 2018-05-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1320
+  taskCount: 2
+  lastTaskID: 7112649
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 9
+    hour: 22
+    minute: 32
+- id: LEY DE ARRENDAMIENTO
+  name: LEY DE ARRENDAMIENTO
+  firstTaskID: 7124309
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 10
+    hour: 17
+    minute: 50
+  firstCircad: 2018-05-10
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4200
+  taskCount: 1
+  lastTaskID: 7124309
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 10
+    hour: 19
+- id: ITHACA
+  name: ITHACA
+  firstTaskID: 7286189
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 21
+    hour: 23
+    minute: 38
+  firstCircad: 2018-05-21
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1860
+  taskCount: 1
+  lastTaskID: 7286189
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 22
+    minute: 9
+- id: "GRADUACI\xD3N"
+  name: "GRADUACI\xD3N"
+  firstTaskID: 7342049
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 25
+    hour: 20
+    minute: 44
+  firstCircad: 2018-05-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3720
+  taskCount: 1
+  lastTaskID: 7342049
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 5
+    day: 25
+    hour: 21
+    minute: 46
+- id: COMPARTIMENTO DE AUTO
+  name: COMPARTIMENTO DE AUTO
+  firstTaskID: 7472559
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 3
+    hour: 22
+    minute: 15
+  firstCircad: 2018-06-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 900
+  taskCount: 1
+  lastTaskID: 7472559
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 3
+    hour: 22
+    minute: 30
+- id: "VOTACI\xD3N"
+  name: "VOTACI\xD3N"
+  firstTaskID: 7522419
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 7
+    hour: 9
+    minute: 21
+  firstCircad: 2018-06-07
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6180
+  taskCount: 2
+  lastTaskID: 7522879
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 7
+    hour: 11
+    minute: 5
+- id: ACCESORIOS
+  name: ACCESORIOS
+  firstTaskID: 7457359
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 2
+    hour: 20
+    minute: 55
+  firstCircad: &id005 2018-06-02
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 19080
+  taskCount: 3
+  lastTaskID: 8965109
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 15
+    hour: 15
+    minute: 4
+- id: "DIN\xC1MICA"
+  name: "DIN\xC1MICA"
+  firstTaskID: 7616619
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 13
+    hour: 22
+    minute: 21
+  firstCircad: 2018-06-13
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3300
+  taskCount: 1
+  lastTaskID: 7616619
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 13
+    hour: 23
+    minute: 16
+- id: "V\xCDDEO JUEGOS"
+  name: "V\xCDDEO JUEGOS"
+  firstTaskID: 7629219
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 14
+    hour: 19
+    minute: 21
+  firstCircad: 2018-06-14
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 23760
+  taskCount: 5
+  lastTaskID: 18251699
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 21
+    hour: 11
+    minute: 50
+- id: RECICLAJE
+  name: RECICLAJE
+  firstTaskID: 7637939
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 15
+    hour: 9
+    minute: 53
+  firstCircad: &id004 2018-06-15
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3360
+  taskCount: 1
+  lastTaskID: 7637939
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 15
+    hour: 10
+    minute: 49
+- id: PING PONG
+  name: PING PONG
+  firstTaskID: 7639529
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 15
+    hour: 12
+    minute: 32
+  firstCircad: *id004
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2940
+  taskCount: 1
+  lastTaskID: 7639529
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 15
+    hour: 13
+    minute: 21
+- id: BIBLIOTECA
+  name: BIBLIOTECA
+  firstTaskID: 7641929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 15
+    hour: 16
+    minute: 32
+  firstCircad: *id004
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4980
+  taskCount: 1
+  lastTaskID: 7641929
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 15
+    hour: 17
+    minute: 55
+- id: "GRUPOS DE INTER\xC9S"
+  name: "GRUPOS DE INTER\xC9S"
+  firstTaskID: 7685469
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 18
+    hour: 17
+    minute: 6
+  firstCircad: 2018-06-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1800
+  taskCount: 1
+  lastTaskID: 7685469
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 18
+    hour: 17
+    minute: 36
+- id: BARS
+  name: BARS
+  firstTaskID: 7744039
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 22
+    hour: 18
+    minute: 43
+  firstCircad: 2018-06-22
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1500
+  taskCount: 2
+  lastTaskID: 7941959
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 7
+    day: 6
+    hour: 12
+    minute: 40
+- id: FEA
+  name: FEA
+  firstTaskID: 7783109
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 25
+    hour: 11
+    minute: 50
+  firstCircad: 2018-06-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1740
+  taskCount: 1
+  lastTaskID: 7783109
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 25
+    hour: 12
+    minute: 19
+- id: "M\xDASICA"
+  name: "M\xDASICA"
+  firstTaskID: 7917029
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 7
+    day: 4
+    hour: 19
+    minute: 2
+  firstCircad: 2018-07-04
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 84000
+  taskCount: 21
+  lastTaskID: 19460269
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 13
+    hour: 11
+    minute: 18
+- id: TIENDAS
+  name: TIENDAS
+  firstTaskID: 7956859
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 7
+    day: 7
+    hour: 13
+    minute: 25
+  firstCircad: 2018-07-07
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9480
+  taskCount: 6
+  lastTaskID: 12177679
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 4
+    day: 26
+    hour: 16
+    minute: 23
+- id: TAMBORES
+  name: TAMBORES
+  firstTaskID: 7457359
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 2
+    hour: 20
+    minute: 55
+  firstCircad: *id005
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 31800
+  taskCount: 8
+  lastTaskID: 17591089
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 6
+    hour: 14
+    minute: 49
+- id: SQL
+  name: SQL
+  firstTaskID: 8274999
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 7
+    day: 29
+    hour: 15
+    minute: 39
+  firstCircad: &id006 2018-07-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 13620
+  taskCount: 3
+  lastTaskID: 8565879
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 18
+    hour: 21
+    minute: 49
+- id: PYTHON
+  name: PYTHON
+  firstTaskID: 8274999
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 7
+    day: 29
+    hour: 15
+    minute: 39
+  firstCircad: *id006
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 35460
+  taskCount: 4
+  lastTaskID: 8573859
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 19
+    hour: 15
+    minute: 49
+- id: JAZZ
+  name: JAZZ
+  firstTaskID: 8350939
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 3
+    hour: 22
+    minute: 13
+  firstCircad: 2018-08-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1740
+  taskCount: 1
+  lastTaskID: 8350939
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 3
+    hour: 22
+    minute: 42
+- id: INTERNET
+  name: INTERNET
+  firstTaskID: 7484929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 6
+    day: 4
+    hour: 18
+    minute: 52
+  firstCircad: 2018-06-04
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 12420
+  taskCount: 2
+  lastTaskID: 8494419
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 13
+    hour: 22
+    minute: 9
+- id: ESTRUCTURA
+  name: ESTRUCTURA
+  firstTaskID: 8042859
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 7
+    day: 13
+    hour: 12
+    minute: 45
+  firstCircad: 2018-07-13
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 16020
+  taskCount: 25
+  lastTaskID: 19389839
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 8
+    hour: 12
+    minute: 44
+- id: ACTIVIDADES
+  name: ACTIVIDADES
+  firstTaskID: 8536169
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 16
+    hour: 18
+    minute: 56
+  firstCircad: 2018-08-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 18060
+  taskCount: 6
+  lastTaskID: 15917179
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 1
+    day: 11
+    hour: 10
+    minute: 51
+- id: SALUD
+  name: SALUD
+  firstTaskID: 8595549
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 20
+    hour: 21
+    minute: 54
+  firstCircad: 2018-08-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 18480
+  taskCount: 7
+  lastTaskID: 17721319
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 15
+    hour: 16
+    minute: 42
+- id: CLIMA
+  name: CLIMA
+  firstTaskID: 8649109
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 24
+    hour: 15
+    minute: 10
+  firstCircad: 2018-08-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1920
+  taskCount: 1
+  lastTaskID: 8649109
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 24
+    hour: 15
+    minute: 42
+- id: "ROB\xD3TICA"
+  name: "ROB\xD3TICA"
+  firstTaskID: 8724789
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 8
+    day: 29
+    hour: 21
+    minute: 18
+  firstCircad: 2018-08-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 13260
+  taskCount: 3
+  lastTaskID: 8965849
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 15
+    hour: 15
+    minute: 45
+- id: COMPONENTES
+  name: COMPONENTES
+  firstTaskID: 8778779
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 2
+    hour: 15
+    minute: 17
+  firstCircad: 2018-09-02
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 17400
+  taskCount: 2
+  lastTaskID: 8790999
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 3
+    hour: 12
+    minute: 27
+- id: INSTRUMENTOS
+  name: INSTRUMENTOS
+  firstTaskID: 8850769
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 7
+    hour: 15
+    minute: 16
+  firstCircad: 2018-09-07
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 17520
+  taskCount: 5
+  lastTaskID: 11684539
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 23
+    hour: 11
+    minute: 9
+- id: EVENTOS
+  name: EVENTOS
+  firstTaskID: 8883419
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 9
+    hour: 21
+    minute: 41
+  firstCircad: 2018-09-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 46800
+  taskCount: 14
+  lastTaskID: 14291349
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 9
+    day: 20
+    hour: 11
+    minute: 20
+- id: CICLISMO
+  name: CICLISMO
+  firstTaskID: 8911299
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 11
+    hour: 20
+    minute: 9
+  firstCircad: 2018-09-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9540
+  taskCount: 2
+  lastTaskID: 16020929
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 1
+    day: 18
+    hour: 13
+    minute: 58
+- id: VIAJES
+  name: VIAJES
+  firstTaskID: 9098979
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 24
+    hour: 20
+    minute: 57
+  firstCircad: &id007 2018-09-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7560
+  taskCount: 1
+  lastTaskID: 9098979
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 24
+    hour: 23
+    minute: 3
+- id: AUTO
+  name: AUTO
+  firstTaskID: 9415309
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 10
+    day: 16
+    hour: 20
+    minute: 10
+  firstCircad: 2018-10-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 67560
+  taskCount: 19
+  lastTaskID: 17506019
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 4
+    day: 30
+    hour: 17
+    minute: 31
+- id: NX
+  name: NX
+  firstTaskID: 9754459
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 9
+    hour: 9
+    minute: 25
+  firstCircad: 2018-11-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 12060
+  taskCount: 1
+  lastTaskID: 9754459
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 9
+    hour: 12
+    minute: 46
+- id: DIVORCIO
+  name: DIVORCIO
+  firstTaskID: 9774929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 10
+    hour: 19
+    minute: 32
+  firstCircad: 2018-11-10
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4380
+  taskCount: 1
+  lastTaskID: 9774929
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 10
+    hour: 20
+    minute: 45
+- id: "BICI EL\xC9CTRICA"
+  name: "BICI EL\xC9CTRICA"
+  firstTaskID: 9871159
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 17
+    hour: 11
+    minute: 55
+  firstCircad: 2018-11-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 21900
+  taskCount: 7
+  lastTaskID: 12929559
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 6
+    day: 17
+    hour: 21
+    minute: 36
+- id: NFL
+  name: NFL
+  firstTaskID: 9098239
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 9
+    day: 24
+    hour: 19
+    minute: 43
+  firstCircad: *id007
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 20460
+  taskCount: 7
+  lastTaskID: 10993479
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 2
+    day: 3
+    hour: 11
+    minute: 3
+- id: "T\xC9CNICAS"
+  name: "T\xC9CNICAS"
+  firstTaskID: 9972869
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 24
+    hour: 13
+    minute: 26
+  firstCircad: 2018-11-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2640
+  taskCount: 1
+  lastTaskID: 9972869
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 24
+    hour: 14
+    minute: 10
+- id: JUEGOS DE MESA
+  name: JUEGOS DE MESA
+  firstTaskID: 10006059
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 11
+    day: 26
+    hour: 20
+    minute: 45
+  firstCircad: 2018-11-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 14040
+  taskCount: 3
+  lastTaskID: 10651639
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 1
+    day: 10
+    hour: 17
+    minute: 46
+- id: SENDEROS
+  name: SENDEROS
+  firstTaskID: 10288209
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 12
+    day: 16
+    hour: 11
+  firstCircad: 2018-12-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 17880
+  taskCount: 6
+  lastTaskID: 18209559
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 18
+    hour: 13
+    minute: 46
+- id: RUTAS
+  name: RUTAS
+  firstTaskID: 10388179
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2018
+    month: 12
+    day: 23
+    hour: 9
+    minute: 37
+  firstCircad: 2018-12-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 45480
+  taskCount: 12
+  lastTaskID: 19101479
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 8
+    day: 19
+    hour: 12
+    minute: 48
+- id: CICLOTURISMO
+  name: CICLOTURISMO
+  firstTaskID: 10668739
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 1
+    day: 11
+    hour: 21
+    minute: 13
+  firstCircad: 2019-01-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 57360
+  taskCount: 15
+  lastTaskID: 13516989
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 7
+    day: 28
+    hour: 18
+    minute: 8
+- id: VOLUNTARIO
+  name: VOLUNTARIO
+  firstTaskID: 10784359
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 1
+    day: 19
+    hour: 21
+    minute: 55
+  firstCircad: 2019-01-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 26220
+  taskCount: 8
+  lastTaskID: 14029959
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 9
+    day: 2
+    hour: 8
+    minute: 5
+- id: CAD
+  name: CAD
+  firstTaskID: 11280749
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 2
+    day: 23
+    hour: 9
+    minute: 14
+  firstCircad: 2019-02-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2220
+  taskCount: 1
+  lastTaskID: 11280749
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 2
+    day: 23
+    hour: 9
+    minute: 51
+- id: COLORADO
+  name: COLORADO
+  firstTaskID: 11483459
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 9
+    hour: 11
+    minute: 5
+  firstCircad: 2019-03-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 15660
+  taskCount: 4
+  lastTaskID: 13287849
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 7
+    day: 12
+    hour: 19
+    minute: 7
+- id: CARRERAS DE BICI
+  name: CARRERAS DE BICI
+  firstTaskID: 11647149
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 20
+    hour: 19
+    minute: 54
+  firstCircad: 2019-03-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5700
+  taskCount: 1
+  lastTaskID: 11647149
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 20
+    hour: 21
+    minute: 29
+- id: HISTORIA
+  name: HISTORIA
+  firstTaskID: 11683809
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 3
+    day: 23
+    hour: 9
+  firstCircad: 2019-03-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6300
+  taskCount: 3
+  lastTaskID: 18270549
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 22
+    hour: 19
+    minute: 26
+- id: EQUIPO DE CICLOTURISMO
+  name: EQUIPO DE CICLOTURISMO
+  firstTaskID: 12051339
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 4
+    day: 17
+    hour: 21
+    minute: 33
+  firstCircad: 2019-04-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 1
+    seconds: 28680
+  taskCount: 24
+  lastTaskID: 17981749
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 2
+    hour: 18
+    minute: 9
+- id: BAJO
+  name: BAJO
+  firstTaskID: 13821779
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 8
+    day: 18
+    hour: 20
+    minute: 17
+  firstCircad: 2019-08-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 31140
+  taskCount: 9
+  lastTaskID: 17644999
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 10
+    hour: 9
+    minute: 14
+- id: RELACIONES
+  name: RELACIONES
+  firstTaskID: 13993259
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 8
+    day: 30
+    hour: 18
+    minute: 5
+  firstCircad: 2019-08-30
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 74400
+  taskCount: 16
+  lastTaskID: 19407569
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 9
+    hour: 19
+    minute: 31
+- id: "POL\xCDTICA"
+  name: "POL\xCDTICA"
+  firstTaskID: 14570549
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 10
+    day: 9
+    hour: 20
+    minute: 14
+  firstCircad: 2019-10-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 19380
+  taskCount: 6
+  lastTaskID: 16587059
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 2
+    day: 26
+    hour: 22
+    minute: 16
+- id: "POL\xCDTICA DE BOULDER"
+  name: "POL\xCDTICA DE BOULDER"
+  firstTaskID: 14721889
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 10
+    day: 20
+    hour: 8
+    minute: 28
+  firstCircad: 2019-10-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 2
+    seconds: 85500
+  taskCount: 95
+  lastTaskID: 19416089
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 10
+    hour: 8
+    minute: 26
+- id: "EQUIPO DE M\xDASICA"
+  name: "EQUIPO DE M\xDASICA"
+  firstTaskID: 14787019
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 10
+    day: 24
+    hour: 21
+    minute: 1
+  firstCircad: 2019-10-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 45300
+  taskCount: 11
+  lastTaskID: 19363079
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 6
+    hour: 17
+    minute: 42
+- id: EUROPA
+  name: EUROPA
+  firstTaskID: 14822259
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 10
+    day: 27
+    hour: 7
+    minute: 45
+  firstCircad: 2019-10-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4080
+  taskCount: 1
+  lastTaskID: 14822259
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 10
+    day: 27
+    hour: 8
+    minute: 53
+- id: "TECNOLOG\xCDA"
+  name: "TECNOLOG\xCDA"
+  firstTaskID: 16139369
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 1
+    day: 26
+    hour: 18
+    minute: 56
+  firstCircad: 2020-01-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3120
+  taskCount: 1
+  lastTaskID: 16139369
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 1
+    day: 26
+    hour: 19
+    minute: 48
+- id: COVID-19
+  name: COVID-19
+  firstTaskID: 16939309
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 3
+    day: 22
+    hour: 8
+    minute: 10
+  firstCircad: 2020-03-22
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 17580
+  taskCount: 8
+  lastTaskID: 19473589
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 14
+    hour: 8
+    minute: 34
+- id: COMIDA
+  name: COMIDA
+  firstTaskID: 14275059
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2019
+    month: 9
+    day: 19
+    hour: 7
+    minute: 45
+  firstCircad: 2019-09-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 22920
+  taskCount: 12
+  lastTaskID: 19046539
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 8
+    day: 15
+    hour: 17
+    minute: 8
+- id: "GRABACI\xD3N"
+  name: "GRABACI\xD3N"
+  firstTaskID: 17849369
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 24
+    hour: 12
+    minute: 56
+  firstCircad: 2020-05-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7020
+  taskCount: 2
+  lastTaskID: 17849769
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 24
+    hour: 14
+    minute: 53
+- id: DONACIONES
+  name: DONACIONES
+  firstTaskID: 17917469
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 29
+    hour: 6
+    minute: 26
+  firstCircad: 2020-05-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1380
+  taskCount: 1
+  lastTaskID: 17917469
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 29
+    hour: 6
+    minute: 49
+- id: SERVICIOS
+  name: SERVICIOS
+  firstTaskID: 17947819
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 31
+    hour: 9
+    minute: 1
+  firstCircad: 2020-05-31
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2700
+  taskCount: 1
+  lastTaskID: 17947819
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 5
+    day: 31
+    hour: 9
+    minute: 46
+- id: ROCK BAND
+  name: ROCK BAND
+  firstTaskID: 18252609
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 21
+    hour: 13
+  firstCircad: 2020-06-21
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7020
+  taskCount: 2
+  lastTaskID: 18350879
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 6
+    day: 28
+    hour: 10
+    minute: 29
+- id: CHINCHES
+  name: CHINCHES
+  firstTaskID: 18541259
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 7
+    day: 11
+    hour: 14
+    minute: 5
+  firstCircad: 2020-07-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 21240
+  taskCount: 1
+  lastTaskID: 18541259
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 7
+    day: 11
+    hour: 19
+    minute: 59
+- id: TECLADO
+  name: TECLADO
+  firstTaskID: 19004539
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 8
+    day: 12
+    hour: 18
+    minute: 13
+  firstCircad: 2020-08-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3600
+  taskCount: 2
+  lastTaskID: 19161739
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 8
+    day: 23
+    hour: 16
+    minute: 53
+- id: "CITAS EN L\xCDNEA"
+  name: "CITAS EN L\xCDNEA"
+  firstTaskID: 19259029
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 8
+    day: 30
+    hour: 10
+    minute: 22
+  firstCircad: 2020-08-30
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 15180
+  taskCount: 1
+  lastTaskID: 19259029
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 8
+    day: 30
+    hour: 14
+    minute: 35
+- id: SOCIEDAD
+  name: SOCIEDAD
+  firstTaskID: 19362359
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 6
+    hour: 14
+    minute: 35
+  firstCircad: 2020-09-06
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1020
+  taskCount: 1
+  lastTaskID: 19362359
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2020
+    month: 9
+    day: 6
+    hour: 14
+    minute: 52
+---
+adj:
+  $SUBJECTMATTER: {}
+  $SUBJECTMATTER_UNDEFINED:
+    $SUBJECTMATTER:
+      p: 0
+  "FILOSOF\xCDA":
+    $SUBJECTMATTER:
+      p: 0
+  CIENCIAS:
+    $SUBJECTMATTER:
+      p: 0
+  SOCIEDAD:
+    $SUBJECTMATTER:
+      p: 0
+  PROBLEMAS:
+    $SUBJECTMATTER:
+      p: 0
+  ASUNTO PERSONAL:
+    $SUBJECTMATTER:
+      p: 0
+  BICI:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  PUESTOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  EQUIPO DE CASA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  TRANSPORTE:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  INFORME DE CONTROLES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  BENEFICIOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  LIBROS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CORNELL:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  EQUIPO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  MANTENIMIENTO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  PROYECTOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  BICOPTER:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  MATLAB:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "PEL\xCDCULAS":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  EQUIPO DE BICI:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  DEPARTAMENTOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ADCS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  RESTAURANTES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CURSOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  VACACIONES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  NYC:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  REGALOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "DISE\xD1OS":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "EVALUACI\xD3N POR PARES":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  LEY DE ARRENDAMIENTO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ITHACA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "GRADUACI\xD3N":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  COMPARTIMENTO DE AUTO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "VOTACI\xD3N":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ACCESORIOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "DIN\xC1MICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "V\xCDDEO JUEGOS":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  RECICLAJE:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  PING PONG:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  BIBLIOTECA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "GRUPOS DE INTER\xC9S":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  BARS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  FEA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "M\xDASICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  TIENDAS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  TAMBORES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  SQL:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  PYTHON:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  JAZZ:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  INTERNET:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ESTRUCTURA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ACTIVIDADES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  SALUD:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CLIMA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "ROB\xD3TICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  COMPONENTES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  INSTRUMENTOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  EVENTOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CICLISMO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  VIAJES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  AUTO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  NX:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  DIVORCIO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "BICI EL\xC9CTRICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  NFL:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "T\xC9CNICAS":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  JUEGOS DE MESA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  SENDEROS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  RUTAS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CICLOTURISMO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  VOLUNTARIO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CAD:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  COLORADO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CARRERAS DE BICI:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  HISTORIA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  EQUIPO DE CICLOTURISMO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  BAJO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  RELACIONES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "POL\xCDTICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "POL\xCDTICA DE BOULDER":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "EQUIPO DE M\xDASICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  EUROPA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "TECNOLOG\xCDA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  COVID-19:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  COMIDA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "GRABACI\xD3N":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  DONACIONES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  SERVICIOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ROCK BAND:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CHINCHES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  TECLADO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "CITAS EN L\xCDNEA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0

@@ -295,9 +295,9 @@ class Description(SingleInstanceColumn):
                 not any([t in DT for t in Podcast.INITIALIZATION_TOKENS()]):
             DT.insert(collxbleInds.index(True), Podcast.tempInitToken())
             cls._collxTokensMarked.update([DT[1:][i] for i, b in enumerate(collxbleInds) if b])
-        collxbleInds = [tok in STDList.STD_FOODS for tok in DT]  # Food
-        if any(collxbleInds) and 'COMER' not in DT:
-            DT.insert(collxbleInds.index(True), 'COMER')
+        # collxbleInds = [tok in STDList.STD_FOODS - STDList.STD_SUBJECT_MATTERS for tok in DT]  # Food
+        # if any(collxbleInds) and 'COMER' not in DT:
+        #     DT.insert(collxbleInds.index(True), 'COMER')
         # cls._collxTokensMarked.update([tok for i, tok in enumerate(DT[1:]) if peopleInds[i]])
         # if any([tok in STDList.PODCASTS for tok in DT]) and\
         #         not any([t in DT for t in (Podcast.INITIALIZATION_TOKENS() + (Podcast.tempInitToken(),))]):
@@ -315,12 +315,13 @@ def rejectChild(parent: str, tok: str):
     if parent in {'INVESTIGAR', 'LEER', 'TEMAS'}:
         if tok in STDList.SOFTWARE_ALL: return False
     # TODO: A bunch of special cases to be added. COMER case is an example.
-    if (parent not in Person.INITIALIZATION_TOKENS() and tok in STDList.PEOPLE_ALL)\
-        or (parent in Person.INITIALIZATION_TOKENS()
-            and (re.search('[0-9]', tok) or tok in (STDList.COLLXBLE_INSTANCES-STDList.PEOPLE_ALL)))\
-        or (parent == 'COMER' and tok not in STDList.STD_FOODS)\
-        or (parent in Podcast.INITIALIZATION_TOKENS()
-            and tok in (STDList.COLLXBLE_INSTANCES-STDList.PODCASTS)):
+    if (parent not in Person.INITIALIZATION_TOKENS() and tok in STDList.PEOPLE_ALL):
+        return True
+    if parent in Person.INITIALIZATION_TOKENS() and (re.search('[0-9]', tok) or tok in (STDList.COLLXBLE_INSTANCES-STDList.PEOPLE_ALL)):
+        return True
+    if parent == 'COMER' and tok not in STDList.STD_FOODS:
+        return True
+    if parent in Podcast.INITIALIZATION_TOKENS() and tok in (STDList.COLLXBLE_INSTANCES-STDList.PODCASTS):
         return True
     return False
 

@@ -89,6 +89,7 @@ STD_DICTION = _appendPriv(STD_DICTION, 'STD_DICTION')
 # A dictionary of words whose plural nature is standardized
 STD_PLURAL = {
     'SOLICITUD': 'SOLICITUDES',
+    'VOLUNTARIOS': 'VOLUNTARIO',
     # 'CARTAS': 'CARTA', # TODO: prob delete this, sometimes cartas is for 'jugar, cartas'
 }
 
@@ -212,6 +213,7 @@ STD_ROOTS_DELIMIT = {  # Tokens which are rejected as children of any other toke
     'HABLAR',
     'VIDEOLLAMADA',
     'PRACTICAR',
+    'APRENDER',
     'EMPACAR',
     'REUNIÓN',
     'VOLUNTAR',
@@ -222,6 +224,8 @@ STD_ROOTS_DELIMIT = {  # Tokens which are rejected as children of any other toke
     'SACAR',
     'LIMPIAR',
     'LAVAR',
+    'REPASO SEMANAL',
+    'REPASO A LARGO PLAZO',
     # 'CASA A CORNELL',
     # 'CORNELL A CASA',
     'JUGAR',
@@ -262,7 +266,7 @@ STD_ROOTS_DELIMIT = {  # Tokens which are rejected as children of any other toke
     }
 
 STD_ROOTS_NO_DELIMIT = {
-    'AUTO',
+    # 'AUTO',
     'TREN',
     'BARCO',
     'TV',
@@ -273,6 +277,7 @@ STD_ROOTS_NO_DELIMIT = {
     'MEDITAR',
     'TOCAR',
     'FFL',
+    'VER',
 }
 
 STD_ROOTS = STD_ROOTS_DELIMIT.union(STD_ROOTS_NO_DELIMIT)
@@ -291,6 +296,8 @@ STD_SUBJECT_MATTERS = {  # Temporary list of subject matters, all uses to be rep
     'BICI',
     'CONTROLES',
     'NEGOCIO',
+    "COMIDA",
+    "ESPAÑOL",
     }
 
 STD_FOODS = {  # Comprehensive set of acceptable food tokens. No other tokens can be children of 'COMER'.
@@ -359,6 +366,7 @@ DC_ONE_OFF_TOKEN_REPLACEMENT_LIST = {  # TODO: fill this
     9039019: 'COMER, GRATIS, AMERICANO, CHARLAR',
     9381849: 'TV, NFL',
     9676779: '$TVSHOW, HOUSE OF CARDS',
+    10323359: 'YOUTUBE, INVESTIGAR, TIENDAS',
     13454159: 'HABLAR, TEMAS, EQUIPO DE CASA',
     14679229: 'AVIÓN, LOS ANGELES A DENVER, $MOVIE, TOY STORY 4',
     15128249: 'COMER, AMERICANA',

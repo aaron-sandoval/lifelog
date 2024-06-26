@@ -1228,7 +1228,7 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
         return f'"INVESTIGAR, " | "LEER, " | ("COMPRAR, " & Tag.Elec) | ("COMPRAR, " & ! "COMESTIBLES" & Tag.Social ) | "TEMAS, " | "{cls.tempInitToken()}" : ;'
 
     @classmethod
-    def tsdfPopulationFilter(cls, timesheetdf: TimesheetDataFrame, collxs: pd.Series) -> pd.Series:
+    def tsdfPopulationFilter(cls, timesheetdf: TimesheetDataFrame, collxs: pd.Series) -> Tuple[pd.Series, pd.Series]:
         df = timesheetdf.df.loc[collxs.index.drop_duplicates(),:]
         population_valid_parents = {"INVESTIGAR", "LEER", "COMPRAR", "TEMAS"}
         df = collxs.rename("subject_matter", copy=False).to_frame().merge(df.description, how="inner", left_index=True, right_index=True)

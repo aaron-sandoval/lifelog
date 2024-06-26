@@ -22,6 +22,7 @@ Catalogs/Catalog*
 !Catalogs/Catalog_Movie.yaml
 !Catalogs/Catalog_Podcast.yaml
 !Catalogs/Catalog_TVShow.yaml
+!Catalogs/Catalog_SubjectMatter.yaml
 !Catalogs/Catalog_*test5*.yaml
 !Catalogs/Catalog_*test4*.yaml
 Catalogs/Catalog_*_W.yaml
