@@ -871,10 +871,10 @@
     hour: 12
     minute: 7
   startTaskIDs: !!set
-    19739169: null
     18557769: null
-    31285559: null
     10855159: null
+    31285559: null
+    19739169: null
 - id: ARGENTINA
   name: ARGENTINA
   firstTaskID: 8589529
