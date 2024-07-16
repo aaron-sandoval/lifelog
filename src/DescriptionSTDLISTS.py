@@ -92,7 +92,6 @@ STD_PLURAL = {
     'VOLUNTARIOS': 'VOLUNTARIO',
     'RUTA': 'RUTAS',
     'IDIOMAS': 'IDIOMA',
-    # 'CARTAS': 'CARTA', # TODO: prob delete this, sometimes cartas is for 'jugar, cartas'
 }
 
 # Productive software

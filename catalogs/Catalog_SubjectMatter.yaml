@@ -1,6 +1,6 @@
 - HEADER:
     FILE TYPE: DAGCatalog
-    DATE WRITTEN: 2024-06-25
+    DATE WRITTEN: 2024-07-16
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
@@ -9,10 +9,10 @@
         - true
       - - true
         - 5046309
-        - 27612659
+        - 34155799
         - true
     COLLECTIBLE TYPE: subjectmatter
-    CATALOG COUNT: 101
+    CATALOG COUNT: 160
 - id: BICI
   name: BICI
   firstTaskID: 3595779
@@ -25,15 +25,15 @@
   firstCircad: &id001 2017-09-07
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 4
-    seconds: 14220
-  taskCount: 97
-  lastTaskID: 26386869
+    seconds: 51360
+  taskCount: 103
+  lastTaskID: 34075079
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 1
-    day: 7
-    hour: 11
-    minute: 21
+    year: 2023
+    month: 6
+    day: 25
+    hour: 10
+    minute: 41
 - id: PUESTOS
   name: PUESTOS
   firstTaskID: 3596099
@@ -45,15 +45,15 @@
     minute: 29
   firstCircad: *id001
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 9180
-  taskCount: 4
-  lastTaskID: 24965379
+    seconds: 26220
+  taskCount: 6
+  lastTaskID: 34133669
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 9
-    day: 30
-    hour: 17
-    minute: 15
+    year: 2023
+    month: 6
+    day: 29
+    hour: 11
+    minute: 34
 - id: EQUIPO DE CASA
   name: EQUIPO DE CASA
   firstTaskID: 3808929
@@ -66,15 +66,15 @@
   firstCircad: 2017-09-22
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 31860
-  taskCount: 30
-  lastTaskID: 27265869
+    seconds: 42060
+  taskCount: 34
+  lastTaskID: 33847239
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 3
+    year: 2023
+    month: 6
     day: 9
-    hour: 15
-    minute: 1
+    hour: 12
+    minute: 28
 - id: TRANSPORTE
   name: TRANSPORTE
   firstTaskID: 3822339
@@ -86,16 +86,16 @@
     minute: 33
   firstCircad: 2017-09-23
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 1
-    seconds: 18060
-  taskCount: 33
-  lastTaskID: 27574839
+    days: 3
+    seconds: 26940
+  taskCount: 65
+  lastTaskID: 33601609
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 3
-    day: 30
-    hour: 23
-    minute: 12
+    year: 2023
+    month: 5
+    day: 23
+    hour: 11
+    minute: 8
 - id: INFORME DE CONTROLES
   name: INFORME DE CONTROLES
   firstTaskID: 3883849
@@ -127,15 +127,15 @@
     minute: 34
   firstCircad: 2017-12-12
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 14880
-  taskCount: 7
-  lastTaskID: 25452859
+    seconds: 16800
+  taskCount: 8
+  lastTaskID: 30810069
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
+    year: 2022
     month: 11
-    day: 3
-    hour: 13
-    minute: 56
+    day: 10
+    hour: 14
+    minute: 38
 - id: LIBROS
   name: LIBROS
   firstTaskID: 5525369
@@ -287,15 +287,15 @@
     minute: 59
   firstCircad: 2018-02-16
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 38520
-  taskCount: 19
-  lastTaskID: 26176869
+    seconds: 42240
+  taskCount: 21
+  lastTaskID: 33506409
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 12
-    day: 23
+    year: 2023
+    month: 5
+    day: 16
     hour: 20
-    minute: 24
+    minute: 20
 - id: EQUIPO DE BICI
   name: EQUIPO DE BICI
   firstTaskID: 6030919
@@ -308,15 +308,15 @@
   firstCircad: 2018-02-23
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 2
-    seconds: 57360
-  taskCount: 62
-  lastTaskID: 27567149
+    seconds: 70260
+  taskCount: 69
+  lastTaskID: 33316639
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 3
-    day: 30
-    hour: 10
-    minute: 9
+    year: 2023
+    month: 5
+    day: 3
+    hour: 15
+    minute: 52
 - id: DEPARTAMENTOS
   name: DEPARTAMENTOS
   firstTaskID: 6104119
@@ -328,15 +328,15 @@
     minute: 31
   firstCircad: 2018-02-28
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 52140
-  taskCount: 16
-  lastTaskID: 16742139
+    seconds: 65580
+  taskCount: 19
+  lastTaskID: 33835609
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2020
-    month: 3
+    year: 2023
+    month: 6
     day: 8
-    hour: 16
-    minute: 46
+    hour: 17
+    minute: 18
 - id: ADCS
   name: ADCS
   firstTaskID: 5972609
@@ -368,15 +368,15 @@
     minute: 10
   firstCircad: 2018-03-03
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 47700
-  taskCount: 20
-  lastTaskID: 27225449
+    seconds: 81180
+  taskCount: 32
+  lastTaskID: 33267389
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 3
-    day: 6
-    hour: 16
-    minute: 33
+    year: 2023
+    month: 4
+    day: 30
+    hour: 6
+    minute: 39
 - id: CURSOS
   name: CURSOS
   firstTaskID: 6357409
@@ -388,15 +388,15 @@
     minute: 40
   firstCircad: 2018-03-18
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 5880
-  taskCount: 2
-  lastTaskID: 7768939
+    seconds: 14520
+  taskCount: 5
+  lastTaskID: 33140359
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2018
-    month: 6
-    day: 24
-    hour: 12
-    minute: 50
+    year: 2023
+    month: 4
+    day: 21
+    hour: 10
+    minute: 42
 - id: VACACIONES
   name: VACACIONES
   firstTaskID: 6378329
@@ -408,15 +408,15 @@
     minute: 32
   firstCircad: &id003 2018-03-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 76260
-  taskCount: 18
-  lastTaskID: 26849859
+    seconds: 78600
+  taskCount: 19
+  lastTaskID: 33631109
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 2
-    day: 8
-    hour: 17
-    minute: 50
+    year: 2023
+    month: 5
+    day: 25
+    hour: 12
+    minute: 29
 - id: NYC
   name: NYC
   firstTaskID: 6378329
@@ -448,15 +448,15 @@
     minute: 43
   firstCircad: 2018-04-27
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 14640
-  taskCount: 6
-  lastTaskID: 25941229
+    seconds: 29880
+  taskCount: 10
+  lastTaskID: 32655879
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 12
-    day: 7
-    hour: 11
-    minute: 49
+    year: 2023
+    month: 3
+    day: 18
+    hour: 19
+    minute: 25
 - id: "DISE\xD1OS"
   name: "DISE\xD1OS"
   firstTaskID: 6995899
@@ -508,14 +508,15 @@
     minute: 50
   firstCircad: 2018-05-10
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 4200
-  taskCount: 1
-  lastTaskID: 7124309
+    seconds: 7440
+  taskCount: 3
+  lastTaskID: 33547309
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2018
+    year: 2023
     month: 5
-    day: 10
-    hour: 19
+    day: 19
+    hour: 16
+    minute: 26
 - id: ITHACA
   name: ITHACA
   firstTaskID: 7286189
@@ -786,16 +787,16 @@
     minute: 2
   firstCircad: 2018-07-04
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 1
-    seconds: 70200
-  taskCount: 45
-  lastTaskID: 26343089
+    days: 2
+    seconds: 50700
+  taskCount: 68
+  lastTaskID: 33875379
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 1
-    day: 4
-    hour: 9
-    minute: 42
+    year: 2023
+    month: 6
+    day: 11
+    hour: 11
+    minute: 44
 - id: TIENDAS
   name: TIENDAS
   firstTaskID: 7956859
@@ -807,15 +808,16 @@
     minute: 25
   firstCircad: 2018-07-07
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 75360
-  taskCount: 21
-  lastTaskID: 27526859
+    days: 1
+    seconds: 28440
+  taskCount: 39
+  lastTaskID: 30735249
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2022
-    month: 3
-    day: 27
-    hour: 14
-    minute: 36
+    month: 11
+    day: 5
+    hour: 10
+    minute: 13
 - id: TAMBORES
   name: TAMBORES
   firstTaskID: 7457359
@@ -827,15 +829,15 @@
     minute: 55
   firstCircad: *id005
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 51900
-  taskCount: 14
-  lastTaskID: 21048149
+    seconds: 71880
+  taskCount: 17
+  lastTaskID: 32812919
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 1
-    day: 1
-    hour: 17
-    minute: 15
+    year: 2023
+    month: 3
+    day: 29
+    hour: 18
+    minute: 23
 - id: SQL
   name: SQL
   firstTaskID: 8274999
@@ -867,15 +869,15 @@
     minute: 39
   firstCircad: *id006
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 35460
-  taskCount: 4
-  lastTaskID: 8573859
+    seconds: 76140
+  taskCount: 12
+  lastTaskID: 34037339
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2018
-    month: 8
-    day: 19
-    hour: 15
-    minute: 49
+    year: 2023
+    month: 6
+    day: 22
+    hour: 17
+    minute: 15
 - id: JAZZ
   name: JAZZ
   firstTaskID: 8350939
@@ -907,15 +909,14 @@
     minute: 52
   firstCircad: 2018-06-04
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 12420
-  taskCount: 2
-  lastTaskID: 8494419
+    seconds: 17760
+  taskCount: 3
+  lastTaskID: 33868449
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2018
-    month: 8
-    day: 13
-    hour: 22
-    minute: 9
+    year: 2023
+    month: 6
+    day: 11
+    minute: 53
 - id: ESTRUCTURA
   name: ESTRUCTURA
   firstTaskID: 8042859
@@ -948,15 +949,16 @@
     minute: 56
   firstCircad: 2018-08-16
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 65220
-  taskCount: 22
-  lastTaskID: 27574839
+    days: 2
+    seconds: 32040
+  taskCount: 70
+  lastTaskID: 33932139
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 3
-    day: 30
-    hour: 23
-    minute: 12
+    year: 2023
+    month: 6
+    day: 15
+    hour: 11
+    minute: 2
 - id: SALUD
   name: SALUD
   firstTaskID: 8595549
@@ -968,15 +970,15 @@
     minute: 54
   firstCircad: 2018-08-20
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 48780
-  taskCount: 13
-  lastTaskID: 26314979
+    seconds: 64860
+  taskCount: 16
+  lastTaskID: 32998289
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 1
-    day: 2
-    hour: 10
-    minute: 35
+    year: 2023
+    month: 4
+    day: 11
+    hour: 14
+    minute: 12
 - id: CLIMA
   name: CLIMA
   firstTaskID: 8649109
@@ -1267,15 +1269,15 @@
     hour: 11
   firstCircad: 2018-12-16
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 32400
-  taskCount: 10
-  lastTaskID: 23693029
+    seconds: 34980
+  taskCount: 11
+  lastTaskID: 31600449
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 7
+    year: 2023
+    month: 1
     day: 4
-    hour: 9
-    minute: 56
+    hour: 12
+    minute: 7
 - id: RUTAS
   name: RUTAS
   firstTaskID: 10388179
@@ -1287,16 +1289,16 @@
     minute: 37
   firstCircad: 2018-12-23
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 1
-    seconds: 81720
-  taskCount: 38
-  lastTaskID: 27408789
+    days: 4
+    seconds: 82980
+  taskCount: 87
+  lastTaskID: 34145959
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 3
-    day: 19
-    hour: 12
-    minute: 37
+    year: 2023
+    month: 6
+    day: 30
+    hour: 6
+    minute: 8
 - id: CICLOTURISMO
   name: CICLOTURISMO
   firstTaskID: 10668739
@@ -1309,15 +1311,15 @@
   firstCircad: 2019-01-11
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 2
-    seconds: 34980
-  taskCount: 55
-  lastTaskID: 26823449
+    seconds: 46440
+  taskCount: 60
+  lastTaskID: 33544959
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 2
-    day: 6
-    hour: 18
-    minute: 16
+    year: 2023
+    month: 5
+    day: 19
+    hour: 12
+    minute: 40
 - id: VOLUNTARIO
   name: VOLUNTARIO
   firstTaskID: 10784359
@@ -1329,15 +1331,15 @@
     minute: 55
   firstCircad: 2019-01-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 26220
-  taskCount: 8
-  lastTaskID: 14029959
+    seconds: 34080
+  taskCount: 11
+  lastTaskID: 33614449
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2019
-    month: 9
-    day: 2
+    year: 2023
+    month: 5
+    day: 24
     hour: 8
-    minute: 5
+    minute: 51
 - id: CAD
   name: CAD
   firstTaskID: 11280749
@@ -1408,15 +1410,15 @@
     hour: 9
   firstCircad: 2019-03-23
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 11400
-  taskCount: 5
-  lastTaskID: 21422329
+    seconds: 33240
+  taskCount: 12
+  lastTaskID: 31730919
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
+    year: 2023
     month: 1
-    day: 27
-    hour: 16
-    minute: 26
+    day: 13
+    hour: 14
+    minute: 34
 - id: EQUIPO DE CICLOTURISMO
   name: EQUIPO DE CICLOTURISMO
   firstTaskID: 12051339
@@ -1429,15 +1431,15 @@
   firstCircad: 2019-04-17
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 3
-    seconds: 3420
-  taskCount: 56
-  lastTaskID: 27411369
+    seconds: 14820
+  taskCount: 60
+  lastTaskID: 30176449
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2022
-    month: 3
-    day: 19
-    hour: 16
-    minute: 1
+    month: 9
+    day: 27
+    hour: 15
+    minute: 7
 - id: BAJO
   name: BAJO
   firstTaskID: 13821779
@@ -1449,15 +1451,15 @@
     minute: 17
   firstCircad: 2019-08-18
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 31140
-  taskCount: 9
-  lastTaskID: 17644999
+    seconds: 39300
+  taskCount: 11
+  lastTaskID: 32246969
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2020
-    month: 5
-    day: 10
-    hour: 9
-    minute: 14
+    year: 2023
+    month: 2
+    day: 18
+    hour: 10
+    minute: 12
 - id: RELACIONES
   name: RELACIONES
   firstTaskID: 13993259
@@ -1469,15 +1471,16 @@
     minute: 5
   firstCircad: 2019-08-30
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 78960
-  taskCount: 18
-  lastTaskID: 23006789
+    days: 1
+    seconds: 31320
+  taskCount: 27
+  lastTaskID: 34125219
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 5
-    day: 17
-    hour: 17
-    minute: 7
+    year: 2023
+    month: 6
+    day: 28
+    hour: 21
+    minute: 1
 - id: "POL\xCDTICA"
   name: "POL\xCDTICA"
   firstTaskID: 14570549
@@ -1489,15 +1492,15 @@
     minute: 14
   firstCircad: 2019-10-09
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 54840
-  taskCount: 14
-  lastTaskID: 25395479
+    seconds: 67320
+  taskCount: 15
+  lastTaskID: 29311219
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 10
-    day: 30
-    hour: 14
-    minute: 42
+    year: 2022
+    month: 7
+    day: 29
+    hour: 15
+    minute: 29
 - id: "POL\xCDTICA DE BOULDER"
   name: "POL\xCDTICA DE BOULDER"
   firstTaskID: 14721889
@@ -1509,16 +1512,16 @@
     minute: 28
   firstCircad: 2019-10-20
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 3
-    seconds: 37440
-  taskCount: 111
-  lastTaskID: 25393529
+    days: 4
+    seconds: 31260
+  taskCount: 139
+  lastTaskID: 33629369
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 10
-    day: 30
+    year: 2023
+    month: 5
+    day: 25
     hour: 11
-    minute: 20
+    minute: 49
 - id: "EQUIPO DE M\xDASICA"
   name: "EQUIPO DE M\xDASICA"
   firstTaskID: 14787019
@@ -1530,14 +1533,15 @@
     minute: 1
   firstCircad: 2019-10-24
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 48120
-  taskCount: 12
-  lastTaskID: 20726539
+    seconds: 56220
+  taskCount: 16
+  lastTaskID: 32900719
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2020
-    month: 12
-    day: 10
-    hour: 9
+    year: 2023
+    month: 4
+    day: 4
+    hour: 19
+    minute: 19
 - id: EUROPA
   name: EUROPA
   firstTaskID: 14822259
@@ -1569,15 +1573,14 @@
     minute: 56
   firstCircad: 2020-01-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 3120
-  taskCount: 1
-  lastTaskID: 16139369
+    seconds: 10500
+  taskCount: 3
+  lastTaskID: 33795989
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2020
-    month: 1
-    day: 26
-    hour: 19
-    minute: 48
+    year: 2023
+    month: 6
+    day: 6
+    minute: 9
 - id: COVID-19
   name: COVID-19
   firstTaskID: 16939309
@@ -1609,15 +1612,15 @@
     minute: 45
   firstCircad: 2019-09-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 70680
-  taskCount: 33
-  lastTaskID: 26068279
+    seconds: 79500
+  taskCount: 37
+  lastTaskID: 33908449
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 12
-    day: 16
-    hour: 8
-    minute: 8
+    year: 2023
+    month: 6
+    day: 13
+    hour: 19
+    minute: 4
 - id: "GRABACI\xD3N"
   name: "GRABACI\xD3N"
   firstTaskID: 17849369
@@ -1649,15 +1652,15 @@
     minute: 26
   firstCircad: 2020-05-29
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1380
-  taskCount: 1
-  lastTaskID: 17917469
+    seconds: 2640
+  taskCount: 2
+  lastTaskID: 33200349
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2020
-    month: 5
-    day: 29
-    hour: 6
-    minute: 49
+    year: 2023
+    month: 4
+    day: 25
+    hour: 14
+    minute: 15
 - id: SERVICIOS
   name: SERVICIOS
   firstTaskID: 17947819
@@ -1669,15 +1672,15 @@
     minute: 1
   firstCircad: 2020-05-31
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 12780
-  taskCount: 3
-  lastTaskID: 26878839
+    seconds: 24360
+  taskCount: 5
+  lastTaskID: 28706249
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2022
-    month: 2
-    day: 10
-    hour: 15
-    minute: 5
+    month: 6
+    day: 17
+    hour: 12
+    minute: 53
 - id: ROCK BAND
   name: ROCK BAND
   firstTaskID: 18252609
@@ -1688,15 +1691,15 @@
     hour: 13
   firstCircad: 2020-06-21
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 63660
-  taskCount: 12
-  lastTaskID: 23376869
+    seconds: 66480
+  taskCount: 14
+  lastTaskID: 33963049
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
+    year: 2023
     month: 6
-    day: 12
-    hour: 9
-    minute: 53
+    day: 17
+    hour: 13
+    minute: 36
 - id: CHINCHES
   name: CHINCHES
   firstTaskID: 18541259
@@ -1768,15 +1771,15 @@
     minute: 35
   firstCircad: 2020-09-06
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1020
-  taskCount: 1
-  lastTaskID: 19362359
+    seconds: 5220
+  taskCount: 2
+  lastTaskID: 33534919
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2020
-    month: 9
-    day: 6
-    hour: 14
-    minute: 52
+    year: 2023
+    month: 5
+    day: 18
+    hour: 20
+    minute: 41
 - id: MEMES
   name: MEMES
   firstTaskID: 21460609
@@ -1808,15 +1811,15 @@
     minute: 55
   firstCircad: 2021-03-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 2040
-  taskCount: 1
-  lastTaskID: 22155559
+    seconds: 18000
+  taskCount: 6
+  lastTaskID: 34149289
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 3
-    day: 19
-    hour: 14
-    minute: 29
+    year: 2023
+    month: 6
+    day: 30
+    hour: 11
+    minute: 58
 - id: "INVERSI\xD3N"
   name: "INVERSI\xD3N"
   firstTaskID: 22374679
@@ -1908,15 +1911,15 @@
     minute: 54
   firstCircad: 2021-10-06
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 27960
-  taskCount: 7
-  lastTaskID: 27076969
+    seconds: 63240
+  taskCount: 16
+  lastTaskID: 34079409
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 2
-    day: 24
-    hour: 9
-    minute: 12
+    year: 2023
+    month: 6
+    day: 25
+    hour: 18
+    minute: 57
 - id: CARRERA
   name: CARRERA
   firstTaskID: 25220479
@@ -1928,15 +1931,16 @@
     minute: 7
   firstCircad: 2021-10-18
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 720
-  taskCount: 1
-  lastTaskID: 25220479
+    days: 1
+    seconds: 62640
+  taskCount: 31
+  lastTaskID: 34138959
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 10
-    day: 18
-    hour: 10
-    minute: 19
+    year: 2023
+    month: 6
+    day: 29
+    hour: 18
+    minute: 57
 - id: "AUTOR\xCDA DE ROCK BAND"
   name: "AUTOR\xCDA DE ROCK BAND"
   firstTaskID: 25630899
@@ -1967,15 +1971,16 @@
     minute: 41
   firstCircad: 2022-01-06
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 82860
-  taskCount: 16
-  lastTaskID: 27570919
+    days: 3
+    seconds: 1020
+  taskCount: 86
+  lastTaskID: 33601609
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 3
-    day: 30
-    hour: 16
-    minute: 21
+    year: 2023
+    month: 5
+    day: 23
+    hour: 11
+    minute: 8
 - id: VISADOS
   name: VISADOS
   firstTaskID: 26588469
@@ -1987,15 +1992,15 @@
     minute: 6
   firstCircad: 2022-01-21
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 62700
-  taskCount: 7
-  lastTaskID: 26752009
+    seconds: 81060
+  taskCount: 11
+  lastTaskID: 27714959
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2022
-    month: 2
-    day: 1
-    hour: 19
-    minute: 34
+    month: 4
+    day: 9
+    hour: 17
+    minute: 10
 - id: "TEL\xC9FONO"
   name: "TEL\xC9FONO"
   firstTaskID: 26860949
@@ -2007,15 +2012,15 @@
     minute: 14
   firstCircad: 2022-02-09
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 10740
-  taskCount: 1
-  lastTaskID: 26860949
+    seconds: 51240
+  taskCount: 8
+  lastTaskID: 32610689
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 2
-    day: 9
-    hour: 11
-    minute: 13
+    year: 2023
+    month: 3
+    day: 15
+    hour: 15
+    minute: 28
 - id: "LOG\xCDSTICA"
   name: "LOG\xCDSTICA"
   firstTaskID: 27249739
@@ -2027,14 +2032,1189 @@
     minute: 13
   firstCircad: 2022-03-08
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 16260
-  taskCount: 2
-  lastTaskID: 27307589
+    seconds: 29580
+  taskCount: 5
+  lastTaskID: 30753139
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2022
-    month: 3
-    day: 12
+    month: 11
+    day: 6
+    hour: 15
+    minute: 29
+- id: HOSPEDAJE
+  name: HOSPEDAJE
+  firstTaskID: 28736159
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 6
+    day: 19
+    hour: 13
+    minute: 35
+  firstCircad: 2022-06-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1560
+  taskCount: 1
+  lastTaskID: 28736159
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 6
+    day: 19
+    hour: 14
+    minute: 1
+- id: LEY
+  name: LEY
+  firstTaskID: 29269269
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 7
+    day: 26
+    hour: 14
+    minute: 6
+  firstCircad: 2022-07-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1140
+  taskCount: 1
+  lastTaskID: 29269269
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 7
+    day: 26
+    hour: 14
+    minute: 25
+- id: TODOIST
+  name: TODOIST
+  firstTaskID: 29856459
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 9
+    day: 5
     hour: 8
+    minute: 45
+  firstCircad: 2022-09-05
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5820
+  taskCount: 1
+  lastTaskID: 29856459
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 9
+    day: 5
+    hour: 10
+    minute: 22
+- id: CIUDADES
+  name: CIUDADES
+  firstTaskID: 30028869
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 9
+    day: 17
+    hour: 8
+    minute: 6
+  firstCircad: 2022-09-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6060
+  taskCount: 3
+  lastTaskID: 32318729
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 23
+    hour: 9
+    minute: 16
+- id: GOOGLE SHEETS
+  name: GOOGLE SHEETS
+  firstTaskID: 30277619
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 10
+    day: 4
+    hour: 14
+    minute: 41
+  firstCircad: &id008 2022-10-04
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5820
+  taskCount: 1
+  lastTaskID: 30277619
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 10
+    day: 4
+    hour: 16
+    minute: 18
+- id: STRAVA
+  name: STRAVA
+  firstTaskID: 30277619
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 10
+    day: 4
+    hour: 14
+    minute: 41
+  firstCircad: *id008
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5820
+  taskCount: 1
+  lastTaskID: 30277619
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2022
+    month: 10
+    day: 4
+    hour: 16
+    minute: 18
+- id: PODCASTS
+  name: PODCASTS
+  firstTaskID: 31560489
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 1
+    day: 1
+    hour: 16
+    minute: 48
+  firstCircad: 2023-01-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 11400
+  taskCount: 5
+  lastTaskID: 33758089
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 3
+    hour: 7
+    minute: 50
+- id: SEGURO
+  name: SEGURO
+  firstTaskID: 31584539
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 1
+    day: 3
+    hour: 8
+    minute: 53
+  firstCircad: &id009 2023-01-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 10800
+  taskCount: 5
+  lastTaskID: 31891049
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 1
+    day: 24
+    hour: 16
+    minute: 42
+- id: ROCKSMITH
+  name: ROCKSMITH
+  firstTaskID: 31587259
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 1
+    day: 3
+    hour: 13
+    minute: 25
+  firstCircad: *id009
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 12360
+  taskCount: 3
+  lastTaskID: 32020599
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 2
+    hour: 16
+    minute: 9
+- id: "IMPROVISACI\xD3N"
+  name: "IMPROVISACI\xD3N"
+  firstTaskID: 32062529
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 5
+    hour: 13
+    minute: 32
+  firstCircad: 2023-02-05
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 10380
+  taskCount: 1
+  lastTaskID: 32062529
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 5
+    hour: 16
+    minute: 25
+- id: COLABORACIONES
+  name: COLABORACIONES
+  firstTaskID: 32235089
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 17
+    hour: 13
+    minute: 8
+  firstCircad: 2023-02-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 12420
+  taskCount: 5
+  lastTaskID: 33789089
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 5
+    hour: 11
+    minute: 26
+- id: ESTRATEGIAS
+  name: ESTRATEGIAS
+  firstTaskID: 32364709
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 26
+    hour: 13
+    minute: 10
+  firstCircad: 2023-02-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2160
+  taskCount: 1
+  lastTaskID: 32364709
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 26
+    hour: 13
+    minute: 46
+- id: ALGORITMOS
+  name: ALGORITMOS
+  firstTaskID: 32622639
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 3
+    day: 16
+    hour: 11
+    minute: 3
+  firstCircad: 2023-03-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8220
+  taskCount: 3
+  lastTaskID: 34048379
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 23
+    hour: 11
+    minute: 49
+- id: URBANISMO
+  name: URBANISMO
+  firstTaskID: 32592999
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 3
+    day: 14
+    hour: 9
+    minute: 39
+  firstCircad: 2023-03-14
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 30060
+  taskCount: 14
+  lastTaskID: 33548679
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 19
+    hour: 18
+    minute: 44
+- id: "FILOSOF\xCDA"
+  name: "FILOSOF\xCDA"
+  firstTaskID: 32772609
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 3
+    day: 26
+    hour: 21
+  firstCircad: 2023-03-26
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 62400
+  taskCount: 10
+  lastTaskID: 34131739
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 29
+    hour: 6
+    minute: 49
+- id: "AN\xC1LISIS DE DATOS"
+  name: "AN\xC1LISIS DE DATOS"
+  firstTaskID: 33471609
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 14
+    hour: 10
+  firstCircad: 2023-05-14
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9840
+  taskCount: 1
+  lastTaskID: 33471609
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 14
+    hour: 12
+    minute: 44
+- id: "INFORM\xC1TICA"
+  name: "INFORM\xC1TICA"
+  firstTaskID: 33601889
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 23
+    hour: 11
+    minute: 8
+  firstCircad: 2023-05-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 26760
+  taskCount: 5
+  lastTaskID: 34105199
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 27
+    hour: 11
+    minute: 22
+- id: COMUNIDADES
+  name: COMUNIDADES
+  firstTaskID: 33618179
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 24
+    hour: 14
+    minute: 17
+  firstCircad: 2023-05-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2160
+  taskCount: 1
+  lastTaskID: 33618179
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 24
+    hour: 14
+    minute: 53
+- id: ALTRUISMO EFECTIVO
+  name: ALTRUISMO EFECTIVO
+  firstTaskID: 33631779
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 25
+    hour: 12
+    minute: 57
+  firstCircad: 2023-05-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 66360
+  taskCount: 17
+  lastTaskID: 34126219
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 28
+    hour: 22
+    minute: 28
+- id: REFUGIADOS
+  name: REFUGIADOS
+  firstTaskID: 33657149
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 27
+    hour: 7
+    minute: 14
+  firstCircad: &id010 2023-05-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3960
+  taskCount: 2
+  lastTaskID: 33659979
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 27
+    hour: 12
+    minute: 27
+- id: "POL\xCDTICA GLOBAL"
+  name: "POL\xCDTICA GLOBAL"
+  firstTaskID: 33659979
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 27
+    hour: 11
+    minute: 57
+  firstCircad: *id010
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 22500
+  taskCount: 8
+  lastTaskID: 34139379
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 29
+    hour: 19
+    minute: 42
+- id: IDIOMA
+  name: IDIOMA
+  firstTaskID: 33676929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 28
+    hour: 16
+    minute: 12
+  firstCircad: 2023-05-28
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7080
+  taskCount: 2
+  lastTaskID: 33766239
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 3
+    hour: 22
+    minute: 37
+- id: "BIOLOG\xCDA, CIENCIA"
+  name: "BIOLOG\xCDA, CIENCIA"
+  firstTaskID: 33685739
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 29
+    hour: 6
+    minute: 53
+  firstCircad: &id011 2023-05-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1980
+  taskCount: 1
+  lastTaskID: 33685739
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 29
+    hour: 7
+    minute: 26
+- id: "GEN\xC9TICA, BIOLOG\xCDA"
+  name: "GEN\xC9TICA, BIOLOG\xCDA"
+  firstTaskID: 33688959
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 29
+    hour: 12
+    minute: 15
+  firstCircad: *id011
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1500
+  taskCount: 1
+  lastTaskID: 33688959
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 29
+    hour: 12
+    minute: 40
+- id: URBANISMO LOCAL, URBANISMO
+  name: URBANISMO LOCAL, URBANISMO
+  firstTaskID: 33701949
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 30
+    hour: 9
+    minute: 54
+  firstCircad: &id012 2023-05-30
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3540
+  taskCount: 1
+  lastTaskID: 33701949
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 30
+    hour: 10
+    minute: 53
+- id: "MATEM\xC1TICAS"
+  name: "MATEM\xC1TICAS"
+  firstTaskID: 33703199
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 30
+    hour: 11
+    minute: 59
+  firstCircad: *id012
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4260
+  taskCount: 1
+  lastTaskID: 33703199
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 30
+    hour: 13
+    minute: 10
+- id: RACIONALIDAD
+  name: RACIONALIDAD
+  firstTaskID: 33703199
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 30
+    hour: 11
+    minute: 59
+  firstCircad: *id012
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 11760
+  taskCount: 4
+  lastTaskID: 34091399
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 26
+    hour: 11
+    minute: 59
+- id: URBANISMO LOCAL
+  name: URBANISMO LOCAL
+  firstTaskID: 33716459
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 31
+    hour: 10
+    minute: 5
+  firstCircad: &id013 2023-05-31
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 36660
+  taskCount: 9
+  lastTaskID: 33981469
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 18
+    hour: 20
+    minute: 40
+- id: CULTURAS MUNDIALES
+  name: CULTURAS MUNDIALES
+  firstTaskID: 33718369
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 31
+    hour: 13
+    minute: 16
+  firstCircad: *id013
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7860
+  taskCount: 2
+  lastTaskID: 33720819
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 31
+    hour: 18
+    minute: 51
+- id: "EVOLUCI\xD3N HUMANA"
+  name: "EVOLUCI\xD3N HUMANA"
+  firstTaskID: 33718369
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 31
+    hour: 13
+    minute: 16
+  firstCircad: *id013
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7860
+  taskCount: 2
+  lastTaskID: 33720819
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 31
+    hour: 18
+    minute: 51
+- id: "H\xC1BITOS"
+  name: "H\xC1BITOS"
+  firstTaskID: 33723879
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 31
+    hour: 22
+    minute: 27
+  firstCircad: *id013
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 13260
+  taskCount: 3
+  lastTaskID: 33952729
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 16
+    hour: 22
+    minute: 18
+- id: "ANTROPOLOG\xCDA"
+  name: "ANTROPOLOG\xCDA"
+  firstTaskID: 33744839
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 2
+    hour: 9
+    minute: 23
+  firstCircad: &id014 2023-06-02
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7380
+  taskCount: 4
+  lastTaskID: 33801929
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 6
+    hour: 9
+    minute: 5
+- id: "GEOGRAF\xCDA"
+  name: "GEOGRAF\xCDA"
+  firstTaskID: 33744839
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 2
+    hour: 9
+    minute: 23
+  firstCircad: *id014
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8520
+  taskCount: 4
+  lastTaskID: 34006059
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 20
+    hour: 13
+    minute: 37
+- id: HISTORIA ANTIGUA
+  name: HISTORIA ANTIGUA
+  firstTaskID: 33744839
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 2
+    hour: 9
+    minute: 23
+  firstCircad: *id014
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5400
+  taskCount: 3
+  lastTaskID: 33746629
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 2
+    hour: 12
+    minute: 56
+- id: HISTORIA MODERNA
+  name: HISTORIA MODERNA
+  firstTaskID: 33746629
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 2
+    hour: 12
+    minute: 22
+  firstCircad: *id014
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5760
+  taskCount: 3
+  lastTaskID: 33801929
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 6
+    hour: 9
+    minute: 5
+- id: INTELIGENCIA ARTIFICIAL
+  name: INTELIGENCIA ARTIFICIAL
+  firstTaskID: 33758699
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 3
+    hour: 8
+    minute: 29
+  firstCircad: 2023-06-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 41580
+  taskCount: 13
+  lastTaskID: 34106819
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 27
+    hour: 13
+    minute: 29
+- id: CANCIONES
+  name: CANCIONES
+  firstTaskID: 33789089
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 5
+    hour: 11
+    minute: 8
+  firstCircad: &id015 2023-06-05
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1080
+  taskCount: 1
+  lastTaskID: 33789089
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 5
+    hour: 11
+    minute: 26
+- id: HISTORIA RECIENTE
+  name: HISTORIA RECIENTE
+  firstTaskID: 33790179
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 5
+    hour: 12
+    minute: 57
+  firstCircad: *id015
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6720
+  taskCount: 2
+  lastTaskID: 33810059
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 6
+    hour: 23
+    minute: 28
+- id: "RELIGI\xD3N"
+  name: "RELIGI\xD3N"
+  firstTaskID: 33801929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 6
+    hour: 8
+    minute: 32
+  firstCircad: &id016 2023-06-06
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1980
+  taskCount: 1
+  lastTaskID: 33801929
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 6
+    hour: 9
+    minute: 5
+- id: ARMAS NUCLEARES
+  name: ARMAS NUCLEARES
+  firstTaskID: 33810059
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 6
+    hour: 22
+    minute: 5
+  firstCircad: *id016
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8760
+  taskCount: 3
+  lastTaskID: 33819679
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 7
+    hour: 14
+    minute: 36
+- id: FAMILIA
+  name: FAMILIA
+  firstTaskID: 33837679
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 8
+    hour: 20
+    minute: 7
+  firstCircad: 2023-06-08
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2760
+  taskCount: 1
+  lastTaskID: 33837679
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 8
+    hour: 20
+    minute: 53
+- id: CIBERSEGURIDAD
+  name: CIBERSEGURIDAD
+  firstTaskID: 33868449
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 10
+    hour: 23
+    minute: 24
+  firstCircad: 2023-06-10
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5340
+  taskCount: 1
+  lastTaskID: 33868449
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 11
+    minute: 53
+- id: CIENCIA DE LA TIERRA
+  name: CIENCIA DE LA TIERRA
+  firstTaskID: 33880789
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 11
+    hour: 19
+    minute: 58
+  firstCircad: 2023-06-11
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6960
+  taskCount: 1
+  lastTaskID: 33880789
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 11
+    hour: 21
+    minute: 54
+- id: ESTRUCTURA SOCIAL
+  name: ESTRUCTURA SOCIAL
+  firstTaskID: 33949619
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 16
+    hour: 14
+    minute: 41
+  firstCircad: 2023-06-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5340
+  taskCount: 2
+  lastTaskID: 33957279
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 17
+    hour: 3
+    minute: 52
+- id: "ACAD\xC9MICA"
+  name: "ACAD\xC9MICA"
+  firstTaskID: 33957759
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 17
+    hour: 4
+    minute: 15
+  firstCircad: 2023-06-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 28140
+  taskCount: 3
+  lastTaskID: 34033509
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 22
+    hour: 13
+    minute: 11
+- id: "POL\xCDTICA ESTADOUNIDENSE"
+  name: "POL\xCDTICA ESTADOUNIDENSE"
+  firstTaskID: 33961479
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 17
+    hour: 10
+    minute: 27
+  firstCircad: 2023-06-17
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1500
+  taskCount: 1
+  lastTaskID: 33961479
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 17
+    hour: 10
+    minute: 52
+- id: "POL\xCDTICA LOCAL"
+  name: "POL\xCDTICA LOCAL"
+  firstTaskID: 33981469
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 18
+    hour: 19
+    minute: 46
+  firstCircad: 2023-06-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3240
+  taskCount: 1
+  lastTaskID: 33981469
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 18
+    hour: 20
+    minute: 40
+- id: MISOGINIA
+  name: MISOGINIA
+  firstTaskID: 33988959
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 19
+    hour: 8
+    minute: 15
+  firstCircad: 2023-06-19
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5820
+  taskCount: 3
+  lastTaskID: 34002629
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 20
+    hour: 7
+    minute: 42
+- id: "INGENIER\xCDA"
+  name: "INGENIER\xCDA"
+  firstTaskID: 34010379
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 20
+    hour: 19
+    minute: 57
+  firstCircad: 2023-06-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2640
+  taskCount: 1
+  lastTaskID: 34010379
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 20
+    hour: 20
+    minute: 41
+- id: CAMBIO
+  name: CAMBIO
+  firstTaskID: 34017289
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 21
+    hour: 7
+    minute: 28
+  firstCircad: &id017 2023-06-21
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2100
+  taskCount: 1
+  lastTaskID: 34017289
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 21
+    hour: 8
+    minute: 3
+- id: "POL\xCDTICA NACIONAL"
+  name: "POL\xCDTICA NACIONAL"
+  firstTaskID: 34017289
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 21
+    hour: 7
+    minute: 28
+  firstCircad: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2100
+  taskCount: 1
+  lastTaskID: 34017289
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 21
+    hour: 8
+    minute: 3
+- id: METAS PERSONALES
+  name: METAS PERSONALES
+  firstTaskID: 34079409
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 25
+    hour: 15
+  firstCircad: &id018 2023-06-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 14220
+  taskCount: 1
+  lastTaskID: 34079409
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 25
+    hour: 18
+    minute: 57
+- id: RIESGOS EXISTENCIALES
+  name: RIESGOS EXISTENCIALES
+  firstTaskID: 34079409
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 25
+    hour: 15
+  firstCircad: *id018
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 21120
+  taskCount: 2
+  lastTaskID: 34149589
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 30
+    hour: 13
+    minute: 53
+- id: TALLER
+  name: TALLER
+  firstTaskID: 34104589
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 27
+    hour: 8
+    minute: 58
+  firstCircad: 2023-06-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3660
+  taskCount: 1
+  lastTaskID: 34104589
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 27
+    hour: 9
+    minute: 59
+- id: "PSICOLOG\xCDA"
+  name: "PSICOLOG\xCDA"
+  firstTaskID: 34131739
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 29
+    hour: 6
+    minute: 13
+  firstCircad: &id019 2023-06-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8340
+  taskCount: 4
+  lastTaskID: 34149289
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 30
+    hour: 11
+    minute: 58
+- id: "MEDITACI\xD3N"
+  name: "MEDITACI\xD3N"
+  firstTaskID: 34134949
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 29
+    hour: 11
+    minute: 34
+  firstCircad: *id019
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4380
+  taskCount: 2
+  lastTaskID: 34146089
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 30
+    hour: 6
+    minute: 47
+- id: REGISTRO DE VIDA
+  name: REGISTRO DE VIDA
+  firstTaskID: 34138229
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 29
+    hour: 17
+    minute: 2
+  firstCircad: *id019
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1740
+  taskCount: 1
+  lastTaskID: 34138229
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 29
+    hour: 17
+    minute: 31
+- id: GUERRA
+  name: GUERRA
+  firstTaskID: 34139379
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 29
+    hour: 18
+    minute: 57
+  firstCircad: *id019
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2700
+  taskCount: 1
+  lastTaskID: 34139379
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 29
+    hour: 19
+    minute: 42
+- id: "AUTORREALIZACI\xD3N"
+  name: "AUTORREALIZACI\xD3N"
+  firstTaskID: 34149289
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 30
+    hour: 11
+    minute: 28
+  firstCircad: 2023-06-30
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1800
+  taskCount: 1
+  lastTaskID: 34149289
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 6
+    day: 30
+    hour: 11
     minute: 58
 ---
 adj:
@@ -2355,5 +3535,179 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "LOG\xCDSTICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  HOSPEDAJE:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  LEY:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  TODOIST:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CIUDADES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  GOOGLE SHEETS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  STRAVA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  PODCASTS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  SEGURO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ROCKSMITH:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "IMPROVISACI\xD3N":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  COLABORACIONES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ESTRATEGIAS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ALGORITMOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  URBANISMO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "AN\xC1LISIS DE DATOS":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "INFORM\xC1TICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  COMUNIDADES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ALTRUISMO EFECTIVO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  REFUGIADOS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "POL\xCDTICA GLOBAL":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  IDIOMA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "BIOLOG\xCDA, CIENCIA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "GEN\xC9TICA, BIOLOG\xCDA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  URBANISMO LOCAL, URBANISMO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "MATEM\xC1TICAS":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  RACIONALIDAD:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  URBANISMO LOCAL:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CULTURAS MUNDIALES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "EVOLUCI\xD3N HUMANA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "H\xC1BITOS":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "ANTROPOLOG\xCDA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "GEOGRAF\xCDA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  HISTORIA ANTIGUA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  HISTORIA MODERNA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  INTELIGENCIA ARTIFICIAL:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CANCIONES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  HISTORIA RECIENTE:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "RELIGI\xD3N":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ARMAS NUCLEARES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  FAMILIA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CIBERSEGURIDAD:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CIENCIA DE LA TIERRA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  ESTRUCTURA SOCIAL:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "ACAD\xC9MICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "POL\xCDTICA ESTADOUNIDENSE":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "POL\xCDTICA LOCAL":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  MISOGINIA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "INGENIER\xCDA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  CAMBIO:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "POL\xCDTICA NACIONAL":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  METAS PERSONALES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  RIESGOS EXISTENCIALES:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  TALLER:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "PSICOLOG\xCDA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "MEDITACI\xD3N":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  REGISTRO DE VIDA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  GUERRA:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "AUTORREALIZACI\xD3N":
     $SUBJECTMATTER_UNDEFINED:
       p: 0
