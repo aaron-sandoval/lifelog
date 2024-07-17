@@ -245,7 +245,7 @@ class Description(SingleInstanceColumn):
             return treeRoot
         # nodes = [anytree.Node] * len(toks)
         parent = treeRoot
-        for i, tok in enumerate(toks):
+        for tok in toks:
             while rejectChild(parent.name, tok):
                 parent = parent.parent
             node = anytree.Node(tok, parent=parent)
@@ -298,6 +298,14 @@ class Description(SingleInstanceColumn):
                 not any([t in DT for t in Podcast.INITIALIZATION_TOKENS()]):
             DT.insert(collxbleInds.index(True), Podcast.tempInitToken())
             cls._collxTokensMarked.update([DT[1:][i] for i, b in enumerate(collxbleInds) if b])
+        collxbleInds = [tok in STDList.PODCASTS for tok in DT[:-1]]  # Not applicable if the only podcast is the final token
+        if any(collxbleInds):
+            for i in range(len(DT)-2,-1,-1):
+                if collxbleInds[i] and \
+                DT[i+1] != 'TEMAS' and \
+                DT[i+1] not in STDList.STD_ROOTS.union(STDList.PODCASTS):
+                    if DT[i+1] not in (STDList.COLLXBLE_INSTANCES.union(STDList.STD_ROOTS) - STDList.STD_SUBJECT_MATTERS):
+                        DT.insert(i+1, "TEMAS")
         # collxbleInds = [tok in STDList.STD_FOODS - STDList.STD_SUBJECT_MATTERS for tok in DT]  # Food
         # if any(collxbleInds) and 'COMER' not in DT:
         #     DT.insert(collxbleInds.index(True), 'COMER')
@@ -326,6 +334,8 @@ def rejectChild(parent: str, tok: str):
         return True
     if parent in Podcast.INITIALIZATION_TOKENS() and tok in (STDList.COLLXBLE_INSTANCES-STDList.PODCASTS):
         return True
+    # if parent in STDList.PODCASTS and tok not in (STDList.COLLXBLE_INSTANCES.union(STDList.STD_ROOTs) - STDList.STD_SUBJECT_MATTERS):
+    #     return False
     return False
 
 # Replaces certain words according to a reference list to standardize the

@@ -1251,7 +1251,7 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
         p = {'p': 0}  # Sorting key for parental precedence
         out.add_edges_from([
             ('FILOSOFÍA', cls.rootVertex(), p),
-            ('CIENCIAS', cls.rootVertex(), p),
+            ('CIENCIA', cls.rootVertex(), p),
             ('SOCIEDAD', cls.rootVertex(), p),
             ('PROBLEMAS', cls.rootVertex(), p),
             ('ASUNTO PERSONAL', cls.rootVertex(), p),

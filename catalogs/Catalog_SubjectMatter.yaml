@@ -12,7 +12,7 @@
         - 34155799
         - true
     COLLECTIBLE TYPE: subjectmatter
-    CATALOG COUNT: 160
+    CATALOG COUNT: 167
 - id: BICI
   name: BICI
   firstTaskID: 3595779
@@ -1575,12 +1575,13 @@
   timeSpent: !CodecDatetimes/pd.Timedelta
     seconds: 10500
   taskCount: 3
-  lastTaskID: 33795989
+  lastTaskID: 33974729
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 6
-    day: 6
-    minute: 9
+    day: 18
+    hour: 9
+    minute: 4
 - id: COVID-19
   name: COVID-19
   firstTaskID: 16939309
@@ -2121,46 +2122,6 @@
     day: 23
     hour: 9
     minute: 16
-- id: GOOGLE SHEETS
-  name: GOOGLE SHEETS
-  firstTaskID: 30277619
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 10
-    day: 4
-    hour: 14
-    minute: 41
-  firstCircad: &id008 2022-10-04
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 5820
-  taskCount: 1
-  lastTaskID: 30277619
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 10
-    day: 4
-    hour: 16
-    minute: 18
-- id: STRAVA
-  name: STRAVA
-  firstTaskID: 30277619
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 10
-    day: 4
-    hour: 14
-    minute: 41
-  firstCircad: *id008
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 5820
-  taskCount: 1
-  lastTaskID: 30277619
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2022
-    month: 10
-    day: 4
-    hour: 16
-    minute: 18
 - id: PODCASTS
   name: PODCASTS
   firstTaskID: 31560489
@@ -2314,13 +2275,13 @@
   timeSpent: !CodecDatetimes/pd.Timedelta
     seconds: 30060
   taskCount: 14
-  lastTaskID: 33548679
+  lastTaskID: 33675279
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 5
-    day: 19
-    hour: 18
-    minute: 44
+    day: 28
+    hour: 13
+    minute: 45
 - id: "FILOSOF\xCDA"
   name: "FILOSOF\xCDA"
   firstTaskID: 32772609
@@ -2479,46 +2440,6 @@
     day: 3
     hour: 22
     minute: 37
-- id: "BIOLOG\xCDA, CIENCIA"
-  name: "BIOLOG\xCDA, CIENCIA"
-  firstTaskID: 33685739
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 5
-    day: 29
-    hour: 6
-    minute: 53
-  firstCircad: &id011 2023-05-29
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1980
-  taskCount: 1
-  lastTaskID: 33685739
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 5
-    day: 29
-    hour: 7
-    minute: 26
-- id: "GEN\xC9TICA, BIOLOG\xCDA"
-  name: "GEN\xC9TICA, BIOLOG\xCDA"
-  firstTaskID: 33688959
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 5
-    day: 29
-    hour: 12
-    minute: 15
-  firstCircad: *id011
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1500
-  taskCount: 1
-  lastTaskID: 33688959
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 5
-    day: 29
-    hour: 12
-    minute: 40
 - id: URBANISMO LOCAL, URBANISMO
   name: URBANISMO LOCAL, URBANISMO
   firstTaskID: 33701949
@@ -2541,14 +2462,14 @@
     minute: 53
 - id: "MATEM\xC1TICAS"
   name: "MATEM\xC1TICAS"
-  firstTaskID: 33703199
+  firstTaskID: 33441639
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 5
-    day: 30
-    hour: 11
-    minute: 59
-  firstCircad: *id012
+    day: 12
+    hour: 8
+    minute: 3
+  firstCircad: 2023-05-12
   timeSpent: !CodecDatetimes/pd.Timedelta
     seconds: 4260
   taskCount: 1
@@ -2632,13 +2553,13 @@
   timeSpent: !CodecDatetimes/pd.Timedelta
     seconds: 7860
   taskCount: 2
-  lastTaskID: 33720819
+  lastTaskID: 33787189
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
-    month: 5
-    day: 31
-    hour: 18
-    minute: 51
+    month: 6
+    day: 5
+    hour: 8
+    minute: 29
 - id: "H\xC1BITOS"
   name: "H\xC1BITOS"
   firstTaskID: 33723879
@@ -2712,13 +2633,13 @@
   timeSpent: !CodecDatetimes/pd.Timedelta
     seconds: 5400
   taskCount: 3
-  lastTaskID: 33746629
+  lastTaskID: 33787189
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 6
-    day: 2
-    hour: 12
-    minute: 56
+    day: 5
+    hour: 8
+    minute: 29
 - id: HISTORIA MODERNA
   name: HISTORIA MODERNA
   firstTaskID: 33746629
@@ -2872,12 +2793,13 @@
   timeSpent: !CodecDatetimes/pd.Timedelta
     seconds: 5340
   taskCount: 1
-  lastTaskID: 33868449
+  lastTaskID: 33949329
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 6
-    day: 11
-    minute: 53
+    day: 16
+    hour: 14
+    minute: 41
 - id: CIENCIA DE LA TIERRA
   name: CIENCIA DE LA TIERRA
   firstTaskID: 33880789
@@ -3216,6 +3138,146 @@
     day: 30
     hour: 11
     minute: 58
+- id: CIENCIA
+  name: CIENCIA
+  firstTaskID: 32322259
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 2
+    day: 23
+    hour: 14
+    minute: 25
+  firstCircad: 2023-02-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 13740
+  taskCount: 8
+  lastTaskID: 33685739
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 29
+    hour: 7
+    minute: 26
+- id: "CAMBIO CLIM\xC1TICO"
+  name: "CAMBIO CLIM\xC1TICO"
+  firstTaskID: 33398419
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 9
+    hour: 8
+    minute: 1
+  firstCircad: 2023-05-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9600
+  taskCount: 5
+  lastTaskID: 33430079
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 11
+    hour: 13
+    minute: 21
+- id: "CIENCIA ECON\xD3MICA"
+  name: "CIENCIA ECON\xD3MICA"
+  firstTaskID: 33526289
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 18
+    hour: 5
+    minute: 8
+  firstCircad: 2023-05-18
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3360
+  taskCount: 2
+  lastTaskID: 33530349
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 18
+    hour: 12
+    minute: 19
+- id: JUVENTUD
+  name: JUVENTUD
+  firstTaskID: 33586079
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 22
+    hour: 8
+    minute: 47
+  firstCircad: &id020 2023-05-22
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 10860
+  taskCount: 5
+  lastTaskID: 33605909
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 23
+    hour: 18
+    minute: 34
+- id: "SALUD P\xDABLICA"
+  name: "SALUD P\xDABLICA"
+  firstTaskID: 33586079
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 22
+    hour: 8
+    minute: 47
+  firstCircad: *id020
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 12180
+  taskCount: 6
+  lastTaskID: 33660839
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 27
+    hour: 13
+    minute: 45
+- id: "BIOLOG\xCDA"
+  name: "BIOLOG\xCDA"
+  firstTaskID: 33685739
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 29
+    hour: 6
+    minute: 53
+  firstCircad: &id021 2023-05-29
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3480
+  taskCount: 2
+  lastTaskID: 33688959
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 29
+    hour: 12
+    minute: 40
+- id: "GEN\xC9TICA"
+  name: "GEN\xC9TICA"
+  firstTaskID: 33688959
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 29
+    hour: 12
+    minute: 15
+  firstCircad: *id021
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6840
+  taskCount: 3
+  lastTaskID: 33700099
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2023
+    month: 5
+    day: 30
+    hour: 7
+    minute: 33
 ---
 adj:
   $SUBJECTMATTER: {}
@@ -3225,7 +3287,7 @@ adj:
   "FILOSOF\xCDA":
     $SUBJECTMATTER:
       p: 0
-  CIENCIAS:
+  CIENCIA:
     $SUBJECTMATTER:
       p: 0
   SOCIEDAD:
@@ -3549,12 +3611,6 @@ adj:
   CIUDADES:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
-  GOOGLE SHEETS:
-    $SUBJECTMATTER_UNDEFINED:
-      p: 0
-  STRAVA:
-    $SUBJECTMATTER_UNDEFINED:
-      p: 0
   PODCASTS:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
@@ -3598,12 +3654,6 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   IDIOMA:
-    $SUBJECTMATTER_UNDEFINED:
-      p: 0
-  "BIOLOG\xCDA, CIENCIA":
-    $SUBJECTMATTER_UNDEFINED:
-      p: 0
-  "GEN\xC9TICA, BIOLOG\xCDA":
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   URBANISMO LOCAL, URBANISMO:
@@ -3709,5 +3759,23 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "AUTORREALIZACI\xD3N":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "CAMBIO CLIM\xC1TICO":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "CIENCIA ECON\xD3MICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  JUVENTUD:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "SALUD P\xDABLICA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "BIOLOG\xCDA":
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  "GEN\xC9TICA":
     $SUBJECTMATTER_UNDEFINED:
       p: 0
