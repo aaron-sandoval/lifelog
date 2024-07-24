@@ -429,3 +429,14 @@ _('Grad\nSchool')
 _('First\nJob')
 _('2022\nCycle Tour')
 _('2023\nCareer Pivot')
+
+***WRITE*** 2024-07-23 23:10:38.722005
+EXTRACTION SUMMARY (MANUAL ENTRY): 
+_('$\\mathdefault{10^{-2}}$')
+_('$\\mathdefault{10^{-1}}$')
+_('$\\mathdefault{10^{0}}$')
+_('$\\mathdefault{10^{1}}$')
+_('$\\mathdefault{10^{2}}$')
+_('$\\mathdefault{10^{3}}$')
+_('$\\mathdefault{10^{4}}$')
+_('$\\mathdefault{10^{5}}$')
