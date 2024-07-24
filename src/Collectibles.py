@@ -1052,20 +1052,11 @@ class Person(Collectible, IncompletePersistent, Global.ListColumn):
     def constructObjects(cls, timesheetdf: TimesheetDataFrame, *args) -> List[Collectible]:
         hasPrefixRows = timesheetdf.tsquery(cls.INITIALIZATION_TSQY())  # Rows which contain the trigger prefix
         personTokDFs = [hasPrefixRows.getDescTokenChildren(prefix).dropna() for prefix in cls.INITIALIZATION_TOKENS()]
-        initingRows = pd.concat(personTokDFs).sort_index().drop_duplicates(keep='first')
-        initingRows.drop(initingRows.index[initingRows.apply(lambda x: len(x) == 0)], inplace=True)
-        if all(initingRows.apply(len) == 0):  # Series has no tokens in its lists
-            kiwilib.popAndClear(initingRows, iterNest=0)  # TODO: replace popandclear with something more efficient
-            assert len(initingRows) == 0, f'Indication of empty Series was wrong. Recode this conditional.'
-            return []
-        people = []
-        while len(initingRows) > 0:
-            taskID = initingRows.index[0]
-            name = kiwilib.popAndClear(initingRows, iterNest=1)
-            people.append(Person(**{'name': name},
-                                 **cls.getFirstFieldDicts(timesheetdf.df.loc[[taskID]].tsdf)[0]))
-            initingRows.drop_duplicates(inplace=True)
-        return people
+        initingRows = pd.concat(personTokDFs).sort_index().explode().dropna().drop_duplicates(keep='first')
+        return [Person(
+            **{'name': name},
+            **cls.getFirstFieldDicts(timesheetdf.df.loc[[taskID]].tsdf)[0]
+            ) for taskID, name in initingRows.items()]
 
     @classmethod
     def processingPrecedence(cls) -> int:
@@ -1141,20 +1132,11 @@ class Food(AutofillPrevious, DAGCollectible, BareNameID, Global.ListColumn):
     def constructObjects(cls, timesheetdf: TimesheetDataFrame, *args) -> list:
         hasPrefixRows = timesheetdf.tsquery(cls.INITIALIZATION_TSQY())  # Rows which contain the trigger prefix
         tokDFs = [hasPrefixRows.getDescTokenChildren(prefix).dropna() for prefix in cls.INITIALIZATION_TOKENS()]
-        initingRows = pd.concat(tokDFs).sort_index().drop_duplicates(keep='first')
-        initingRows.drop(initingRows.index[initingRows.apply(lambda x: len(x) == 0)], inplace=True)
-        if all(initingRows.apply(lambda x: len(x) == 0)):  # Series has no tokens in its lists
-            kiwilib.popAndClear(initingRows, iterNest=0)  # TODO: replace popandclear with something more efficient
-            assert len(initingRows) == 0, f'Indication of empty Series was wrong. Recode this conditional.'
-            return []
-        collxbles = []
-        while len(initingRows) > 0:
-            taskID = initingRows.index[0]
-            name = kiwilib.popAndClear(initingRows, iterNest=1)
-            collxbles.append(cls(**{'name': name},
-                                 **cls.getFirstFieldDicts(timesheetdf.df.loc[[taskID]].tsdf)[0]))
-            initingRows.drop_duplicates(inplace=True)
-        return collxbles
+        initingRows = pd.concat(tokDFs).sort_index().explode().dropna().drop_duplicates(keep='first')
+        return [Food(
+            **{'name': name},
+            **cls.getFirstFieldDicts(timesheetdf.df.loc[[taskID]].tsdf)[0]
+            ) for taskID, name in initingRows.items()]
 
     @classmethod
     def processingPrecedence(cls) -> int:
@@ -1261,17 +1243,9 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
     def constructObjects(cls, timesheetdf: TimesheetDataFrame, *args) -> List['SubjectMatter']:
         hasPrefixRows: TimesheetDataFrame = timesheetdf.tsquery(cls.INITIALIZATION_TSQY())  # Rows which contain the trigger prefix
         tokDFs = [hasPrefixRows.getDescTokenChildren(prefix).dropna() for prefix in cls.INITIALIZATION_TOKENS()]
-        initingRows = pd.concat(tokDFs).sort_index().drop_duplicates(keep='first')
-        initingRows.drop(initingRows.index[initingRows.apply(lambda x: len(x) == 0)], inplace=True)
-        if all(initingRows.apply(lambda x: len(x) == 0)):  # Series has no tokens in its lists
-            kiwilib.popAndClear(initingRows, iterNest=0)  # TODO: replace popandclear with something more efficient
-            assert len(initingRows) == 0, f'Indication of empty Series was wrong. Recode this conditional.'
-            return []
-        collxbles = []
-        while len(initingRows) > 0:
-            taskID = initingRows.index[0]
-            name = kiwilib.popAndClear(initingRows, iterNest=1)
-            collxbles.append(cls(**{'name': name},
-                                 **cls.getFirstFieldDicts(timesheetdf.df.loc[[taskID]].tsdf)[0]))
-            initingRows.drop_duplicates(inplace=True)
-        return collxbles
+        initingRows = pd.concat(tokDFs).sort_index().explode().dropna().drop_duplicates(keep='first')
+        return [cls(
+            **{'name': name},
+            **cls.getFirstFieldDicts(timesheetdf.df.loc[[taskID]].tsdf)[0]
+            ) for taskID, name in initingRows.items()]
+        

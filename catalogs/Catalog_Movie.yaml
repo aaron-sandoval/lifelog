@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-07-16
+    DATE WRITTEN: 2024-07-23
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 38116179
+        - 39426929
         - true
     COLLECTIBLE TYPE: movie
-    CATALOG COUNT: 212
+    CATALOG COUNT: 220
 - id: LUCKY NUMBER SLEVIN_00257
   name: LUCKY NUMBER SLEVIN
   firstTaskID: 3715139
@@ -1869,8 +1869,8 @@
     hour: 21
     minute: 2
   startTaskIDs: !!set
-    31446619: null
     10512979: null
+    31446619: null
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -6493,5 +6493,245 @@
   review: *id015
   externalReview: .nan
   subjectMatters: *id023
+  duration: .nan
+  numReruns: 1
+- id: THE GREAT GATSBY_02666
+  name: THE GREAT GATSBY
+  firstTaskID: 38402559
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 20
+    hour: 20
+    minute: 15
+  firstCircad: 2024-04-20
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9000
+  taskCount: 1
+  lastTaskID: 38402559.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 20
+    hour: 22
+    minute: 45
+  startTaskIDs: !!set
+    38402559: null
+  creator: .nan
+  creationTime: .nan
+  genres: &id024 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: *id003
+  externalReview: .nan
+  subjectMatters: &id025 !!set {}
+  duration: .nan
+  numReruns: 1
+- id: HANS ZIMMER HOLLYWOOD REBEL_02670
+  name: HANS ZIMMER HOLLYWOOD REBEL
+  firstTaskID: 38460639
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 24
+    hour: 21
+    minute: 3
+  firstCircad: 2024-04-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3540
+  taskCount: 1
+  lastTaskID: 38460639.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 24
+    hour: 22
+    minute: 2
+  startTaskIDs: !!set
+    38460639: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id024
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id025
+  duration: .nan
+  numReruns: 1
+- id: YOU'VE GOT MAIL_02679
+  name: YOU'VE GOT MAIL
+  firstTaskID: 38590069
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 3
+    hour: 20
+    minute: 46
+  firstCircad: 2024-05-03
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7560
+  taskCount: 1
+  lastTaskID: 38590069.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 3
+    hour: 22
+    minute: 52
+  startTaskIDs: !!set
+    38590069: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id024
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id025
+  duration: .nan
+  numReruns: 1
+- id: HELLBOY_02686
+  name: HELLBOY
+  firstTaskID: 38691159
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 10
+    hour: 21
+    minute: 15
+  firstCircad: 2024-05-10
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6480
+  taskCount: 1
+  lastTaskID: 38691159.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 10
+    hour: 23
+    minute: 3
+  startTaskIDs: !!set
+    38691159: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id024
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id025
+  duration: .nan
+  numReruns: 1
+- id: COUNT ME IN_02709
+  name: COUNT ME IN
+  firstTaskID: 39022729
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 2
+    hour: 21
+    minute: 52
+  firstCircad: 2024-06-02
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4620
+  taskCount: 1
+  lastTaskID: 39022729.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 2
+    hour: 23
+    minute: 9
+  startTaskIDs: !!set
+    39022729: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id024
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id025
+  duration: .nan
+  numReruns: 1
+- id: REPO MAN_02711
+  name: REPO MAN
+  firstTaskID: 39051419
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 4
+    hour: 21
+    minute: 41
+  firstCircad: 2024-06-04
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5340
+  taskCount: 1
+  lastTaskID: 39051419.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 4
+    hour: 23
+    minute: 10
+  startTaskIDs: !!set
+    39051419: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id024
+  review: *id009
+  externalReview: .nan
+  subjectMatters: *id025
+  duration: .nan
+  numReruns: 1
+- id: STARSHIP TROOPERS_02723
+  name: STARSHIP TROOPERS
+  firstTaskID: 39224199
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 16
+    hour: 21
+    minute: 39
+  firstCircad: 2024-06-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7500
+  taskCount: 1
+  lastTaskID: 39224199.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 16
+    hour: 23
+    minute: 44
+  startTaskIDs: !!set
+    39224199: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id024
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id025
+  duration: .nan
+  numReruns: 2
+- id: AMADEUS_02734
+  name: AMADEUS
+  firstTaskID: 39382799
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 27
+    hour: 21
+    minute: 59
+  firstCircad: 2024-06-27
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 10680
+  taskCount: 1
+  lastTaskID: 39382799.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 28
+    minute: 57
+  startTaskIDs: !!set
+    39382799: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id024
+  review: *id003
+  externalReview: .nan
+  subjectMatters: *id025
   duration: .nan
   numReruns: 1

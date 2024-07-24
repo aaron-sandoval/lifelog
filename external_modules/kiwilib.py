@@ -160,37 +160,6 @@ def listEquals(list1: list, list2: list) -> bool:
         return True
 
 
-def popAndClear(ser: pd.Series, iterNest=0):
-    """
-    Pops the first element from ser and clears out all duplicate instances from the rest of ser.
-    :param ser: Series to pop from. Could later be expanded to support other iterables.
-    :param iterNest: Level of nesting to pop from. 0: outermost level (entries in the Series).
-    1: return ser.head(1)[0], clear ser.head(1)[0] from all ser[i] and delete rows containing empty lists
-    :return: First element
-    """
-    def removeIfPresent(tokList):
-        nonlocal val
-        if val in tokList:
-            tokList.remove(val)
-
-    if iterNest > 1:
-        raise NotImplementedError('iterNest > 1 not implemented')
-    elif iterNest == 0:
-        if len(ser) == 0:
-            return None
-        val = ser.head(1).values[0]
-        ser.drop(ser.index[ser.apply(lambda x: x == val)], inplace=True)
-    elif iterNest == 1:
-        nest0 = ser.head(1).values[0]
-        if nest0 is None or len(nest0) == 0:
-            val = None
-        else:
-            val = nest0[0]
-        ser.apply(removeIfPresent)
-        ser.drop(ser.index[ser.apply(lambda x: len(x) == 0)], inplace=True)
-    return val
-
-
 def consolidateInterval(iv: portion.Interval, minIv) -> portion.Interval:
     """
     Consolidates AtomicIntervals in an Interval such that there is no gap less than minIv between any atomicIntervals.

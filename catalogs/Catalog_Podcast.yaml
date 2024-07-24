@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-07-16
+    DATE WRITTEN: 2024-07-23
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 38116179
+        - 39426929
         - true
     COLLECTIBLE TYPE: podcast
-    CATALOG COUNT: 18
+    CATALOG COUNT: 21
 - id: THE WAR ON CARS_01126
   name: THE WAR ON CARS
   firstTaskID: 16224269
@@ -21,15 +21,15 @@
   firstCircad: 2020-02-01
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 4
-    seconds: 17460
-  taskCount: 100.0
-  lastTaskID: 37978829.0
+    seconds: 24660
+  taskCount: 104.0
+  lastTaskID: 38844739.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 3
-    day: 22
-    hour: 10
-    minute: 43
+    month: 5
+    day: 21
+    hour: 13
+    minute: 21
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -76,15 +76,15 @@
   firstCircad: 2020-02-28
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 25
-    seconds: 49440
-  taskCount: 639.0
-  lastTaskID: 37966719.0
+    seconds: 51780
+  taskCount: 640.0
+  lastTaskID: 38760589.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 3
-    day: 21
-    hour: 14
-    minute: 18
+    month: 5
+    day: 15
+    hour: 17
+    minute: 37
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -104,15 +104,15 @@
   firstCircad: 2020-03-14
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 14
-    seconds: 46200
-  taskCount: 321.0
-  lastTaskID: 38006109.0
+    seconds: 66780
+  taskCount: 332.0
+  lastTaskID: 39338059.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 3
+    month: 6
     day: 24
-    hour: 8
-    minute: 10
+    hour: 20
+    minute: 1
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -185,15 +185,15 @@
     minute: 40
   firstCircad: 2021-08-11
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 9
-    seconds: 83700
-  taskCount: 232.0
-  lastTaskID: 38035059.0
+    days: 10
+    seconds: 39360
+  taskCount: 247.0
+  lastTaskID: 39425639.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 3
-    day: 26
-    hour: 8
+    month: 6
+    day: 30
+    hour: 22
     minute: 28
   creator: .nan
   creationTime: .nan
@@ -240,16 +240,16 @@
     minute: 47
   firstCircad: 2021-12-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 10
-    seconds: 30060
-  taskCount: 278.0
-  lastTaskID: 37995699.0
+    days: 11
+    seconds: 900
+  taskCount: 296.0
+  lastTaskID: 39338419.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 3
-    day: 23
-    hour: 14
-    minute: 43
+    month: 6
+    day: 24
+    hour: 22
+    minute: 19
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -297,15 +297,15 @@
   firstCircad: 2023-05-01
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 8
-    seconds: 10620
-  taskCount: 253.0
-  lastTaskID: 37956429.0
+    seconds: 68220
+  taskCount: 272.0
+  lastTaskID: 39425639.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 3
-    day: 20
-    hour: 21
-    minute: 51
+    month: 6
+    day: 30
+    hour: 22
+    minute: 28
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -405,15 +405,15 @@
     minute: 14
   firstCircad: 2023-10-13
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 61500
-  taskCount: 26.0
-  lastTaskID: 38081079.0
+    seconds: 64380
+  taskCount: 27.0
+  lastTaskID: 38121269.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 3
-    day: 29
-    hour: 12
-    minute: 54
+    month: 4
+    day: 1
+    hour: 8
+    minute: 14
   creator: .nan
   creationTime: .nan
   genres: *id004
@@ -499,3 +499,82 @@
   review: .nan
   externalReview: .nan
   subjectMatters: !!set {}
+- id: ASTRAL CODEX TEN PODCAST_02690
+  name: ASTRAL CODEX TEN PODCAST
+  firstTaskID: 38740389
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 14
+    hour: 7
+    minute: 18
+  firstCircad: 2024-05-14
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2880
+  taskCount: 1.0
+  lastTaskID: 38740389.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 14
+    hour: 8
+    minute: 6
+  creator: .nan
+  creationTime: .nan
+  genres: &id006 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: &id007 !!set {}
+- id: FUTURE OF LIFE INSTITUTE PODCAST_02717
+  name: FUTURE OF LIFE INSTITUTE PODCAST
+  firstTaskID: 39129999
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 10
+    hour: 8
+    minute: 39
+  firstCircad: 2024-06-10
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 42780
+  taskCount: 17.0
+  lastTaskID: 39389719.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 28
+    hour: 10
+    minute: 12
+  creator: .nan
+  creationTime: .nan
+  genres: *id006
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id007
+- id: RATIONALLY SPEAKING_02732
+  name: RATIONALLY SPEAKING
+  firstTaskID: 39346409
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 25
+    hour: 9
+    minute: 20
+  firstCircad: 2024-06-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2340
+  taskCount: 1.0
+  lastTaskID: 39346409.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 25
+    hour: 9
+    minute: 59
+  creator: .nan
+  creationTime: .nan
+  genres: *id006
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id007

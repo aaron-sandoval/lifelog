@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-07-16
+    DATE WRITTEN: 2024-07-23
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 38116179
+        - 39426929
         - true
     COLLECTIBLE TYPE: tvshow
-    CATALOG COUNT: 32
+    CATALOG COUNT: 34
 - id: 3%_00248
   name: 3%
   firstTaskID: 3585359
@@ -866,3 +866,55 @@
   review: .nan
   externalReview: .nan
   subjectMatters: *id007
+- id: THE THREE BODY PROBLEMM_02688
+  name: THE THREE BODY PROBLEMM
+  firstTaskID: 38720329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 12
+    hour: 21
+    minute: 52
+  firstCircad: 2024-05-12
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 21120
+  taskCount: 8
+  lastTaskID: 38936179.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 27
+    hour: 22
+    minute: 34
+  creator: .nan
+  creationTime: .nan
+  genres: &id008 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  externalReview: .nan
+  subjectMatters: &id009 !!set {}
+- id: THE QUEEN'S GAMBIT_02730
+  name: THE QUEEN'S GAMBIT
+  firstTaskID: 39325899
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 23
+    hour: 23
+    minute: 9
+  firstCircad: 2024-06-23
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 14580
+  taskCount: 4
+  lastTaskID: 39426929.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 7
+    day: 1
+    minute: 26
+  creator: .nan
+  creationTime: .nan
+  genres: *id008
+  review: .nan
+  externalReview: .nan
+  subjectMatters: *id009

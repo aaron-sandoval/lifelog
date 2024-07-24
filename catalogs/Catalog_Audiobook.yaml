@@ -1,14 +1,14 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-07-16
+    DATE WRITTEN: 2024-07-23
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
         - 3584169
-        - 38116179
+        - 39426929
         - true
     COLLECTIBLE TYPE: audiobook
-    CATALOG COUNT: 248
+    CATALOG COUNT: 256
 - id: SPEAKER FOR THE DEAD_00347
   name: SPEAKER FOR THE DEAD
   firstTaskID: 5023259
@@ -64,8 +64,8 @@
     hour: 19
     minute: 59
   startTaskIDs: !!set
-    29310069: null
     5327189: null
+    29310069: null
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -7674,15 +7674,15 @@
     minute: 6
   firstCircad: 2024-03-30
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 8640
-  taskCount: 4
-  lastTaskID: 38107299.0
+    seconds: 39900
+  taskCount: 14
+  lastTaskID: 38193749.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
-    month: 3
-    day: 31
+    month: 4
+    day: 6
     hour: 8
-    minute: 58
+    minute: 48
   startTaskIDs: !!set
     38092869: null
   creator: .nan
@@ -7691,5 +7691,248 @@
   review: *id002
   externalReview: .nan
   subjectMatters: *id018
+  duration: .nan
+  numReruns: 1
+- id: "NOT THE END OF THE WORLD, HANNAH RITCHIE, EDUCACIONAL, TEMAS, CAMBIO CLIM\xC1\
+    TICO, CONTAMINACI\xD3N DEL AIRE, ECOLOG\xCDA, PRON\xD3STICO_02653"
+  name: "NOT THE END OF THE WORLD, HANNAH RITCHIE, EDUCACIONAL, TEMAS, CAMBIO CLIM\xC1\
+    TICO, CONTAMINACI\xD3N DEL AIRE, ECOLOG\xCDA, PRON\xD3STICO"
+  firstTaskID: 38208329
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 7
+    hour: 8
+    minute: 32
+  firstCircad: 2024-04-07
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 33540
+  taskCount: 12
+  lastTaskID: 38322989.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 15
+    hour: 8
+    minute: 14
+  startTaskIDs: !!set
+    38208329: null
+  creator: .nan
+  creationTime: .nan
+  genres: &id019 !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: *id002
+  externalReview: .nan
+  subjectMatters: &id020 !!set {}
+  duration: .nan
+  numReruns: 1
+- id: BLINDSIGHT, PETER WATTS, SCIFI_02667
+  name: BLINDSIGHT, PETER WATTS, SCIFI
+  firstTaskID: 38409629
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 21
+    hour: 8
+    minute: 2
+  firstCircad: 2024-04-21
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 36180
+  taskCount: 18
+  lastTaskID: 38524729.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 29
+    hour: 8
+    minute: 10
+  startTaskIDs: !!set
+    38409629: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id019
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id020
+  duration: .nan
+  numReruns: 1
+- id: "THE FIRST FIFTEEN LIVES OF HARRY AUGUST, CLAIRE NORTH, FANTAS\xCDA_02676"
+  name: "THE FIRST FIFTEEN LIVES OF HARRY AUGUST, CLAIRE NORTH, FANTAS\xCDA"
+  firstTaskID: 38538859
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 4
+    day: 30
+    hour: 7
+    minute: 25
+  firstCircad: 2024-04-30
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 48000
+  taskCount: 13
+  lastTaskID: 38618749.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 5
+    hour: 21
+    minute: 37
+  startTaskIDs: !!set
+    38538859: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id019
+  review: *id007
+  externalReview: .nan
+  subjectMatters: *id020
+  duration: .nan
+  numReruns: 1
+- id: DAWN, OCTAVIA BUTLER, SCIFI_02682
+  name: DAWN, OCTAVIA BUTLER, SCIFI
+  firstTaskID: 38625199
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 6
+    hour: 7
+    minute: 19
+  firstCircad: 2024-05-06
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 33240
+  taskCount: 14
+  lastTaskID: 38729299.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 13
+    hour: 13
+    minute: 30
+  startTaskIDs: !!set
+    38625199: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id019
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id020
+  duration: .nan
+  numReruns: 1
+- id: TO HOLD UP THE SKY, CIXIN LIU, SCIFI_02692
+  name: TO HOLD UP THE SKY, CIXIN LIU, SCIFI
+  firstTaskID: 38769249
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 16
+    hour: 7
+    minute: 24
+  firstCircad: 2024-05-16
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 45720
+  taskCount: 17
+  lastTaskID: 38887659.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 24
+    hour: 13
+    minute: 21
+  startTaskIDs: !!set
+    38769249: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id019
+  review: *id009
+  externalReview: .nan
+  subjectMatters: *id020
+  duration: .nan
+  numReruns: 1
+- id: HOW TO NOT DIE ALONE, LOGAN URY, AUTOAYUDA, TEMAS, RELACIONES_02701
+  name: HOW TO NOT DIE ALONE, LOGAN URY, AUTOAYUDA, TEMAS, RELACIONES
+  firstTaskID: 38899219
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 25
+    hour: 8
+    minute: 1
+  firstCircad: 2024-05-25
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 26940
+  taskCount: 11
+  lastTaskID: 38962119.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 29
+    hour: 17
+    minute: 10
+  startTaskIDs: !!set
+    38899219: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id019
+  review: *id002
+  externalReview: .nan
+  subjectMatters: *id020
+  duration: .nan
+  numReruns: 1
+- id: THE BUTLERIAN JIHAD, BRIAN HERBERT, SCIFI_02706
+  name: THE BUTLERIAN JIHAD, BRIAN HERBERT, SCIFI
+  firstTaskID: 38971549
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 5
+    day: 30
+    hour: 8
+    minute: 34
+  firstCircad: 2024-05-30
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 63780
+  taskCount: 25
+  lastTaskID: 39187339.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 14
+    hour: 9
+    minute: 1
+  startTaskIDs: !!set
+    38971549: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id019
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id020
+  duration: .nan
+  numReruns: 1
+- id: THE WANDERING EARTH, CIXIN LIU, SCIFI_02722
+  name: THE WANDERING EARTH, CIXIN LIU, SCIFI
+  firstTaskID: 39202079
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 15
+    hour: 8
+    minute: 47
+  firstCircad: 2024-06-15
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 41820
+  taskCount: 21
+  lastTaskID: 39421529.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 6
+    day: 30
+    hour: 15
+    minute: 10
+  startTaskIDs: !!set
+    39202079: null
+  creator: .nan
+  creationTime: .nan
+  genres: *id019
+  review: *id008
+  externalReview: .nan
+  subjectMatters: *id020
   duration: .nan
   numReruns: 1
