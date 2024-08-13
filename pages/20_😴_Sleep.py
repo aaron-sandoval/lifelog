@@ -11,10 +11,10 @@ import os
 import sys
 sys.path.append(os.curdir)
 import src.TimesheetGlobals as Global
-from scripts import Visualize, Exhibit
+from . import Visualizations, Exhibit
 
 # Section parameters
-SECTION = Visualize.ExhibitSection.SLEEP
+SECTION = Visualizations.ExhibitSection.SLEEP
 
 def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):
     st.title(_k('Sleep'))

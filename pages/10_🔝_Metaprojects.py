@@ -12,9 +12,9 @@ import os
 import sys
 sys.path.append(os.curdir)
 import src.TimesheetGlobals as Global
-from scripts import Visualize, Exhibit
+from . import Visualizations, Exhibit
 
-SECTION = Visualize.ExhibitSection.METAPROJECT
+SECTION = Visualizations.ExhibitSection.METAPROJECT
 
 def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):
     # Section parameters

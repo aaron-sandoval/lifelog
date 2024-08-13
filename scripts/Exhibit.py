@@ -4,8 +4,9 @@ from typing import List
 import os
 import sys
 sys.path.append(os.curdir)
+from Visualization import GraphicExhibit
 from src.TimesheetGlobals import rootProjectPath, Privacy
-from scripts.Visualize import GraphicExhibit, babelx
+from scripts.Visualize import babelx
 from i18n_l10n.internationalization import lang_en, lang_es
 
 

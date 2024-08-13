@@ -13,10 +13,10 @@ import sys
 sys.path.append(os.curdir)
 import src.TimesheetGlobals as Global
 import catalogs.SocialGroups as sg
-from scripts import Visualize, Exhibit
+from . import Visualizations, Exhibit
 
 # Section parameters
-SECTION = Visualize.ExhibitSection.PEOPLE
+SECTION = Visualizations.ExhibitSection.PEOPLE
 
 def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):
     st.title(_k('People'))
