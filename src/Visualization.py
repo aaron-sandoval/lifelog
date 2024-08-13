@@ -4,17 +4,36 @@ Reusable procedures and classes related to visualization
 
 from enum import Enum
 from itertools import accumulate
-from typing import Any, Iterable, List, NamedTuple, Tuple
-import matplotlib as plt
+from typing import Any, Iterable, List, NamedTuple, Tuple, Dict, Set, Union
+import re
+import matplotlib
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import pandas as pd
+from pandas.core.dtypes.inference import is_list_like
 import streamlit as st
-from TimesheetDataset import Global, Iterable, List, Tuple, abc, datetime, np, os, pd
-from TimesheetGlobals import VSPath
-from datetime import date
+from external_modules import kiwilib
 
-from scripts.Visualize import _enum_alias_map, _hier_enum_alias_map
+from i18n_l10n import internationalization as i18n
+from src.TimesheetDataset import Global, Iterable, List, Tuple, abc, datetime, np, os, pd
+
+
+global babelx  # Babel extractor wrapper, must be accessible everywhere in the module
+babelx = i18n.babelx
+STR_BACKEND = _k('👀 *Peek into the Backend*') # type: ignore
+
+_enum_alias_map: Dict[str, kiwilib.AliasableEnum] = \
+    kiwilib.AliasableEnum.aliases_to_members_deep(alias_func=_e) # type: ignore
+# Also add keys for the alternative language since the dict isn't updated upon a change in language selection
+babelx.setLang(i18n.lang_es)
+_enum_alias_map.update(kiwilib.AliasableEnum.aliases_to_members_deep(alias_func=_e)) # type: ignore
+
+babelx.setLang(i18n.lang_en)
+_hier_enum_alias_map: Dict[str, kiwilib.AliasableHierEnum] = \
+    kiwilib.AliasableHierEnum.aliases_to_members(alias_func=_e) # type: ignore
+babelx.setLang(i18n.lang_es)
+_hier_enum_alias_map.update(kiwilib.AliasableHierEnum.aliases_to_members(alias_func=_e)) # type: ignore
+babelx.setLang(i18n.lang_en)
 
 
 class XHSectionData(NamedTuple):
@@ -101,11 +120,11 @@ class MatplotlibVisual(Visual):
         for artist in text_artists:
             t: str = artist.get_text()
             if t in _enum_alias_map:
-                artist.set_text(_e(_enum_alias_map[t]))
+                artist.set_text(_e(_enum_alias_map[t])) # type: ignore
             elif t in _hier_enum_alias_map:
-                artist.set_text(_e(_hier_enum_alias_map[t]()))
+                artist.set_text(_e(_hier_enum_alias_map[t]())) # type: ignore
             else:
-                artist.set_text(_k(t))
+                artist.set_text(_k(t)) # type: ignore
 
 
 def getWeekDate(ser):
@@ -128,7 +147,7 @@ class SingleAxisStaticVisual(MatplotlibVisual):
         if any(ser.index > 7) or any(ser.index < 0):
             print('ERROR: incorrect indices for weekday domain.')
             return ser
-        vals = [_a(x) for x in ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']]
+        vals = [_a(x) for x in ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']] # type: ignore
         keys = [6, 0, 1, 2, 3, 4, 5]
         weekdayMap = dict(zip(keys, vals))
         ser.index = ser.index.map(weekdayMap)
@@ -137,7 +156,7 @@ class SingleAxisStaticVisual(MatplotlibVisual):
 
     @staticmethod
     def workdayDomain(ser):
-        return SingleAxisStaticVisual.weekdayDomain(ser).drop([_a('Sat'), _a('Sun')])
+        return SingleAxisStaticVisual.weekdayDomain(ser).drop([_a('Sat'), _a('Sun')]) # type: ignore
 
     @staticmethod
     def realTimeDomain(ser):
@@ -242,8 +261,8 @@ class SingleAxisStaticVisual(MatplotlibVisual):
             plt.text(textX, textY, text, ha=ha, va=va, transform=self.ax.transAxes,
                      bbox={'facecolor': 'white', 'alpha': .6})
         if title:           plt.title(title)
-        if xlabel:          plt.xlabel(_k(xlabel))
-        if ylabel:          plt.ylabel(_k(ylabel))
+        if xlabel:          plt.xlabel(_k(xlabel)) # type: ignore
+        if ylabel:          plt.ylabel(_k(ylabel)) # type: ignore
         if show:            self.show()
 
 

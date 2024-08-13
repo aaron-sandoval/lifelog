@@ -17,12 +17,13 @@ import seaborn as sns
 from src.TimesheetDataset import *
 from i18n_l10n import internationalization as i18n
 
-from Visualization import (
+from src.Visualization import (
     ExhibitSection,
     ArtistAlignment,
     MatplotlibVisual,
     SingleAxisStaticVisual,
     GraphicExhibit,
+    babelx,
     stackplot_and_totals_stackbar,
     getDateRangeString,
     getWeekday,
@@ -30,22 +31,6 @@ from Visualization import (
 )
 
 
-global babelx  # Babel extractor wrapper, must be accessible everywhere in the module
-babelx = i18n.babelx
-STR_BACKEND = _k('👀 *Peek into the Backend*')
-
-_enum_alias_map: Dict[str, kiwilib.AliasableEnum] = \
-    kiwilib.AliasableEnum.aliases_to_members_deep(alias_func=_e)
-# Also add keys for the alternative language since the dict isn't updated upon a change in language selection
-babelx.setLang(i18n.lang_es)
-_enum_alias_map.update(kiwilib.AliasableEnum.aliases_to_members_deep(alias_func=_e))
-
-babelx.setLang(i18n.lang_en)
-_hier_enum_alias_map: Dict[str, kiwilib.AliasableHierEnum] = \
-    kiwilib.AliasableHierEnum.aliases_to_members(alias_func=_e)
-babelx.setLang(i18n.lang_es)
-_hier_enum_alias_map.update(kiwilib.AliasableHierEnum.aliases_to_members(alias_func=_e))
-babelx.setLang(i18n.lang_en)
 
 def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Privacy.PUBLIC):
 
