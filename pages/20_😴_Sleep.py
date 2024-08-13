@@ -13,13 +13,13 @@ sys.path.append(os.curdir)
 import src.TimesheetGlobals as Global
 from scripts import Visualize, Exhibit
 
+# Section parameters
+SECTION = Visualize.ExhibitSection.SLEEP
 
 def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):
-    # Section parameters
-    section = Visualize.ExhibitSection.SLEEP
     st.title(_k('Sleep'))
 
-    gxhs = filter(lambda x: x.section == section, Exhibit.loadData(path))
+    gxhs = filter(lambda x: x.section == SECTION, Exhibit.loadData(path))
 
     # Section introduction
     st.markdown(_k(

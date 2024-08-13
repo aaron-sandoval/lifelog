@@ -15,13 +15,13 @@ import src.TimesheetGlobals as Global
 import catalogs.SocialGroups as sg
 from scripts import Visualize, Exhibit
 
+# Section parameters
+SECTION = Visualize.ExhibitSection.PEOPLE
 
 def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'figs_PUBL.pkl')):
-    # Section parameters
-    section = Visualize.ExhibitSection.PEOPLE
     st.title(_k('People'))
 
-    gxhs = filter(lambda x: x.section == section, Exhibit.loadData(path))
+    gxhs = filter(lambda x: x.section == SECTION, Exhibit.loadData(path))
 
     # Section introduction
     st.markdown(_k(

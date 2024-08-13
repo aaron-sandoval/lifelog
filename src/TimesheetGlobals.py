@@ -676,6 +676,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
     e2024_AISC =              36
     e2018_Data_Log_Person =   37
     e2024_SpChg_JW_End =      38
+    e2024_SpChg_CN_Start =    39
     
     @classmethod
     def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
@@ -712,12 +713,13 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
             cls.e2022_MEX_GER_TZ_SHIFT:  c(start=datetime(2022, 4, 2, 0, 0), es_MX='2022 MEX ALE ZH CAMBIO'), # Marks time zone shift in data
             cls.e2022_ESP_USA_TZ_SHIFT:  c(start=datetime(2022, 12, 15, 7, 42), es_MX='2022 ESP EEUU ZH CAMBIO'), # Marks time zone shift in data
             cls.e2023_EA_Discovery:      c(start=datetime(2023, 4, 17, 9, 51), es_MX='2023 EA Descubrimiento'), # Podcast triggers EA interest
-            cls.e2019_SpChg_Glenn_End:   c(start=datetime(2019, 4, 1, 0, 0), es_MX='2019 SpChg Fin con Glenn'), # Glenn leaves Spare Change
-            cls.e2019_SpChg_Alex_End:    c(start=datetime(2019, 11, 1, 0, 0), es_MX='2019 SpChg Fin con Alex'), # Alex leaves, Steve joins Spare Change
-            cls.e2019_SpChg_Nick_End:    c(start=datetime(2020, 1, 1, 0, 0), es_MX='2019 SpChg Fin con Nick'), # Nick leaves, George joins Spare Change
-            cls.e2021_SpChg_KO_Start:    c(start=datetime(2021, 9, 10, 0, 0), es_MX='2021 SpChg Inicio con KO'), # Kristin joins Spare Change
-            cls.e2022_SpChg_JW_KS_Start: c(start=datetime(2022, 9, 1, 0, 0), es_MX='2022 SpChg Inicio con JW KS'), # Kirsten, Jonathan join Spare Change
-            cls.e2024_SpChg_JW_End:      c(start=datetime(2024, 3, 1, 0, 0), es_MX='2022 SpChg Fin con JW'), # Jonathan leaves Spare Change
+            cls.e2019_SpChg_Glenn_End:   c(start=datetime(2019, 4, 1, 0, 0), es_MX='2019 SpChg Fin con Glenn'), # -Glenn Spare Change
+            cls.e2019_SpChg_Alex_End:    c(start=datetime(2019, 11, 1, 0, 0), es_MX='2019 SpChg Fin con Alex'), # -Alex, +Steve Spare Change
+            cls.e2019_SpChg_Nick_End:    c(start=datetime(2020, 1, 1, 0, 0), es_MX='2019 SpChg Fin con Nick'), # -Nick, +George Spare Change
+            cls.e2021_SpChg_KO_Start:    c(start=datetime(2021, 9, 10, 0, 0), es_MX='2021 SpChg Inicio con KO'), # +Kristin Spare Change
+            cls.e2022_SpChg_JW_KS_Start: c(start=datetime(2022, 9, 1, 0, 0), es_MX='2022 SpChg Inicio con JW KS'), # +Kirsten, +Jonathan Spare Change
+            cls.e2024_SpChg_JW_End:      c(start=datetime(2024, 3, 1, 0, 0), es_MX='2022 SpChg Fin con JW'), # -Jonathan, -George +Barry Spare Change
+            cls.e2024_SpChg_CN_Start:    c(start=datetime(2024, 7, 20, 0, 0), es_MX='2022 SpChg Inicio con CN'), # +Crystal Spare Change
             cls.e2024_AISC:              c(start=datetime(2024, 1, 13, 3, 0), es_MX='2023 Campamento de Securidad de IA'), # AISC starts
             cls.e2018_Data_Log_Person:   c(start=datetime(2018, 2, 10, 3), es_MX='2018 Datos Persona'), # Data on time spent with individuals somewhat consistent
         }
@@ -874,8 +876,12 @@ class EpochScheme(i18n.EnglishSpanishEnum):
                         : (3, 'Spare Change with George', 'Spare Change con George'),
                         P.closedopen(Epoch.e2021_SpChg_KO_Start.dt(), Epoch.e2022_SpChg_JW_KS_Start.dt())
                         : (4, 'Spare Change with Kristin', 'Spare Change con Kristin'),
+                        P.closedopen(Epoch.e2022_SpChg_JW_KS_Start.dt(), Epoch.e2024_SpChg_JW_End.dt())
+                        : (5, 'Spare Change with Jonathan and Kirsten', 'Spare Change con Jonathan y Kirsten'),
+                        P.closedopen(Epoch.e2022_SpChg_JW_KS_Start.dt(), Epoch.e2024_SpChg_JW_End.dt())
+                        : (6, 'Spare Change with Barry', 'Spare Change con Barry'),
                     }),
-                    complementVal=(5, 'Spare Change with Jonathan and Kirsten', 'Spare Change con Jonathan y Kirsten')
+                    complementVal=(7, 'Spare Change with Crystal', 'Spare Change con Crystal')
                 ),
                 es_MX='SPARE CHANGE PERSONAL',
             ),
