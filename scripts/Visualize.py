@@ -37,8 +37,8 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
     def babelExtractEnumLike() -> None:
         # classes = kiwilib.getAllSubclasses(kiwilib.HierarchicalEnum)
         for c in kiwilib.getAllSubclasses(kiwilib.HierarchicalEnum):
-            _e(c())
-            # _a(c)
+            _e(c()) # type: ignore
+            # _a(c) # type: ignore
         babelx.flush()
 
     def babelExtractTSDS(tsds: TimesheetDataset, minTokCount=5) -> None:
@@ -51,7 +51,7 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
         toks = tsds.timesheetdf.tokenCounter()
         toks = toks[:bisect_right(-toks.values, -minTokCount)]
         for tok in toks.index:
-            _t(tok)
+            _t(tok) # type: ignore
         babelx.flush()
 
     global babelx
@@ -119,10 +119,10 @@ class _GraphicMaker:
         visData = timeToFloat(visData, 'hour')
         visData = visData[[col for col in epochScheme.sortedEpochGroupNames() if col in visData.columns]]
         # visData.rename(lambda x: Global.Epoch[x].alias(), axis=1)
-        title = _k('Avg Sleep Duration by Weekday and Life Phase')  # + ': ' + epochScheme.alias()
+        title = _k('Avg Sleep Duration by Weekday and Life Phase') # type: ignore
         auxText = getDateRangeString(tsds.timesheetdf.df)
         graphic = SingleAxisStaticVisual(data=visData, kind='clusteredBar', domain='weekday',
-                                         title=title, ylabel=_k('[hours]'), grid='on', text=auxText,
+                                         title=title, ylabel=_k('[hours]'), grid='on', text=auxText, # type: ignore
                                          textPos=ArtistAlignment.SW, figsize=(10, 5))
         # sleep_epoch_wkday_VIS.show()
         graphic.save(fileName=auxText + '_' + title)
