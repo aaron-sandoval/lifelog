@@ -70,7 +70,7 @@ def main(paths: List[str], catalogSuffix='', locale='en_US', audience=Global.Pri
     return Global.writePersistent(figs, 4, privacy=audience)
 
 
-def _loadAndMergeDatasets(paths: List[str], fileSuffix='') -> TimesheetDataset:
+def _loadAndMergeDatasets(paths: list[str], fileSuffix='') -> TimesheetDataset:
     """
     Loads one or more TimesheetDataset objects from pickle files.
     If >1 file specified, merges the TimesheetDataFrame objects and writes the merged tsdf to a pickle.
