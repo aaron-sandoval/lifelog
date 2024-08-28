@@ -25,7 +25,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
     # dataFiles = ['20230201-20230403.csv', '20230401_20230701.csv', '20230601-20231001.csv']
     # dataFiles = ['timesheet_2017-12-16.csv']
     # dataFiles = ['timesheet_2018-08-01_2018-08-22.csv']
-    # dataFiles = ['20230601-20231001.csv', '20230901-20240101.csv', '20231231_20240331.csv', '20240301-20240630.csv']
+    dataFiles = ['20231231_20240331.csv', '20240301-20240630.csv']
     # dataFiles = ['timesheet_2017-12-16.csv', 'timesheet_20180822202600.csv']
     # dataFiles = ['timesheet_20180822202600.csv']
     # dataFiles = ['sample_RAW_PUBLIC.csv']
@@ -80,10 +80,10 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
         DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
         # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
     else:
-        # FM_filePath = FM.main(dataFiles)
-        # PP_filePath = PP.main(FM_filePath)
-        # DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
-        VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
+        FM_filePath = FM.main(dataFiles)
+        PP_filePath = PP.main(FM_filePath)
+        DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
+        # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
 
     # XH.main(VS_filePath)
 
