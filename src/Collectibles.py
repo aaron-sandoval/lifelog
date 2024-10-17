@@ -1238,6 +1238,13 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
             ('PROBLEMAS', cls.rootVertex(), p),
             ('ASUNTO PERSONAL', cls.rootVertex(), p),
         ])
+        out.add_edges_from([
+            ("CIENCIA FORMAL", "CIENCIA", p),
+            ("CIENCIA NATURAL", "CIENCIA", p),
+        ])
+        out.add_edges_from([
+            ("CIENCIA FÍSICA", "CIENCIA FORMAL", p),
+        ])
         return out
     @classmethod
     def constructObjects(cls, timesheetdf: TimesheetDataFrame, *args) -> List['SubjectMatter']:
