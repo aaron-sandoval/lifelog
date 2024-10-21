@@ -2190,26 +2190,6 @@
     day: 5
     hour: 11
     minute: 26
-- id: ESTRATEGIAS
-  name: ESTRATEGIAS
-  firstTaskID: 32364709
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 2
-    day: 26
-    hour: 13
-    minute: 10
-  firstCircad: 2023-02-26
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 2160
-  taskCount: 1
-  lastTaskID: 32364709
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 2
-    day: 26
-    hour: 13
-    minute: 46
 - id: ALGORITMOS
   name: ALGORITMOS
   firstTaskID: 32622639
@@ -2413,26 +2393,6 @@
     day: 12
     hour: 20
     minute: 45
-- id: URBANISMO LOCAL, URBANISMO
-  name: URBANISMO LOCAL, URBANISMO
-  firstTaskID: 33701949
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 5
-    day: 30
-    hour: 9
-    minute: 54
-  firstCircad: &id010 2023-05-30
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 3540
-  taskCount: 1
-  lastTaskID: 33701949
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 5
-    day: 30
-    hour: 10
-    minute: 53
 - id: "MATEM\xC1TICAS"
   name: "MATEM\xC1TICAS"
   firstTaskID: 33441639
@@ -4814,26 +4774,6 @@
     day: 25
     hour: 13
     minute: 6
-- id: NOTICIAS
-  name: NOTICIAS
-  firstTaskID: 34886689
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 8
-    day: 20
-    hour: 16
-    minute: 28
-  firstCircad: *id041
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 24360
-  taskCount: 11
-  lastTaskID: 37387929
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2024
-    month: 2
-    day: 10
-    hour: 9
-    minute: 44
 - id: "LIBERACI\xD3N ANIMAL"
   name: "LIBERACI\xD3N ANIMAL"
   firstTaskID: 36378959
@@ -4914,8 +4854,8 @@
     day: 26
     hour: 9
     minute: 52
-- id: "LUGARES DE M\xDASICA"
-  name: "LUGARES DE M\xDASICA"
+- id: "SALAS DE M\xDASICA"
+  name: "SALAS DE M\xDASICA"
   firstTaskID: 36888289
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4954,26 +4894,6 @@
     day: 6
     hour: 19
     minute: 55
-- id: PROYECTO MUSICAL
-  name: PROYECTO MUSICAL
-  firstTaskID: 36926869
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2024
-    month: 1
-    day: 9
-    hour: 8
-    minute: 46
-  firstCircad: &id043 2024-01-09
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 4920
-  taskCount: 2
-  lastTaskID: 37344009
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2024
-    month: 2
-    day: 7
-    hour: 8
-    minute: 22
 - id: YOUTUBE
   name: YOUTUBE
   firstTaskID: 36934369
@@ -5429,7 +5349,7 @@ adj:
     CONTROLES:
       p: 0
   MATLAB:
-    $SUBJECTMATTER_UNDEFINED:
+    "LENGUAJE DE PROGRAMACI\xD3N":
       p: 0
   "PEL\xCDCULAS":
     ENTRETENIMIENTO:
@@ -5486,7 +5406,7 @@ adj:
     "INGENIER\xCDA MEC\xC1NICA":
       p: 0
   "V\xCDDEO JUEGOS":
-    ENTRETENIMIENTO:
+    JUEGOS:
       p: 0
   RECICLAJE:
     "SERVICIOS P\xCDBLICOS":
@@ -5570,7 +5490,7 @@ adj:
     DEPORTES:
       p: 0
   JUEGOS DE MESA:
-    ENTRETENIMIENTO:
+    JUEGOS:
       p: 0
   SENDEROS:
     DEPORTES:
@@ -5710,9 +5630,6 @@ adj:
   "COMUNIDAD DE M\xDASICA":
     "M\xDASICA":
       p: 0
-  ESTRATEGIAS:
-    $SUBJECTMATTER_UNDEFINED:
-      p: 0
   ALGORITMOS:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
@@ -5740,9 +5657,6 @@ adj:
   IDIOMA:
     CULTURAS MUNDIALES:
       p: 0
-  URBANISMO LOCAL, URBANISMO:
-    $SUBJECTMATTER_UNDEFINED:
-      p: 0
   "MATEM\xC1TICAS":
     CIENCIA FORMAL:
       p: 0
@@ -5762,7 +5676,7 @@ adj:
     ESTILO DE VIDA:
       p: 0
   "ANTROPOLOG\xCDA":
-    $SUBJECTMATTER_UNDEFINED:
+    CIENCIA SOCIAL:
       p: 0
   "GEOGRAF\xCDA":
     CIENCIA DE LA TIERRA:
@@ -5777,7 +5691,7 @@ adj:
     "INFORM\xC1TICA":
       p: 0
   CANCIONES:
-    $SUBJECTMATTER_UNDEFINED:
+    "M\xDASICA":
       p: 0
   HISTORIA RECIENTE:
     HISTORIA:
@@ -5828,16 +5742,16 @@ adj:
     PROBLEMAS GLOBALES:
       p: 0
   TALLER:
-    $SUBJECTMATTER_UNDEFINED:
+    EVENTOS:
       p: 0
   "PSICOLOG\xCDA":
-    $SUBJECTMATTER_UNDEFINED:
+    CIENCIA SOCIAL:
       p: 0
   "MEDITACI\xD3N":
     ESPIRITUALIDAD:
       p: 0
   REGISTRO DE VIDA:
-    $SUBJECTMATTER_UNDEFINED:
+    ACTIVIDADES:
       p: 0
   GUERRA:
     PROBLEMAS:
@@ -5849,7 +5763,7 @@ adj:
     CIENCIA DE LA TIERRA:
       p: 0
   "CIENCIA ECON\xD3MICA":
-    $SUBJECTMATTER_UNDEFINED:
+    CIENCIA SOCIAL:
       p: 0
   JUVENTUD:
     ESTRUCTURA SOCIAL:
@@ -5864,10 +5778,10 @@ adj:
     "BIOLOG\xCDA":
       p: 0
   CITA:
-    $SUBJECTMATTER_UNDEFINED:
+    SERVICIOS:
       p: 0
   RACISMO:
-    $SUBJECTMATTER_UNDEFINED:
+    ESTRUCTURA SOCIAL:
       p: 0
   CONCIENCIA:
     "FILOSOF\xCDA":
@@ -5936,7 +5850,7 @@ adj:
     "CIENCIA F\xCDSICA":
       p: 0
   NEGOCIO:
-    SOCIEDAD:
+    "ECONOM\xCDA":
       p: 0
   GENTE SIN HOGAR:
     ESTRUCTURA SOCIAL:
@@ -5969,7 +5883,7 @@ adj:
     CULTURA:
       p: 0
   "SOCIOLOG\xCDA":
-    $SUBJECTMATTER_UNDEFINED:
+    CIENCIA SOCIAL:
       p: 0
   DIETA:
     SALUD:
@@ -5978,7 +5892,7 @@ adj:
     SALUD:
       p: 0
   CULTURA:
-    $SUBJECTMATTER_UNDEFINED:
+    SOCIEDAD:
       p: 0
   CASA:
     VIVIENDA:
@@ -5999,13 +5913,13 @@ adj:
     RIESGOS EXISTENCIALES:
       p: 0
   CARERRA:
-    $SUBJECTMATTER_UNDEFINED:
+    ASUNTO PERSONAL:
       p: 0
   EQUIPO MUSICAL:
     EQUIPO:
       p: 0
   ENTRETENIMIENTO:
-    $SUBJECTMATTER_UNDEFINED:
+    ESTILO DE VIDA:
       p: 0
   POBREZA:
     ESTRUCTURA SOCIAL:
@@ -6023,7 +5937,7 @@ adj:
     "GEN\xC9TICA":
       p: 0
   JUEGOS:
-    $SUBJECTMATTER_UNDEFINED:
+    ENTRETENIMIENTO:
       p: 0
   "SERVICIOS P\xDABLICOS":
     GOBIERNO:
@@ -6032,7 +5946,7 @@ adj:
     "FILOSOF\xCDA":
       p: 0
   GO:
-    $SUBJECTMATTER_UNDEFINED:
+    $JUEGOS DE MESA:
       p: 0
   MUJERES:
     ESTRUCTURA SOCIAL:
@@ -6053,7 +5967,7 @@ adj:
     "\xC9TICA":
       p: 0
   "INGENIER\xCDA ESPACIAL":
-    $SUBJECTMATTER_UNDEFINED:
+    "INGENIER\xCDA MEC\xC1NICA":
       p: 0
   BIOSEGURIDAD:
     "BIOINGENIER\xCDA":
@@ -6083,10 +5997,10 @@ adj:
     "INGENIER\xCDA AEROESPACIAL":
       p: 0
   CAPITALISMO:
-    $SUBJECTMATTER_UNDEFINED:
+    "ECONOM\xCDA":
       p: 0
   CONFERENCIA:
-    $SUBJECTMATTER_UNDEFINED:
+    "ACAD\xC9MICA":
       p: 0
   "TECNOLOG\xCDA INDUSTRIAL":
     "TECNOLOG\xCDA":
@@ -6096,9 +6010,6 @@ adj:
       p: 0
   ALTRUISMO:
     "\xC9TICA":
-      p: 0
-  NOTICIAS:
-    $SUBJECTMATTER_UNDEFINED:
       p: 0
   "LIBERACI\xD3N ANIMAL":
     MOVIMIENTO SOCIAL:
@@ -6110,16 +6021,13 @@ adj:
     CULTURA:
       p: 0
   AISC:
-    $SUBJECTMATTER_UNDEFINED:
+    EDUCACIÓN:
       p: 0
-  "LUGARES DE M\xDASICA":
-    $SUBJECTMATTER_UNDEFINED:
+  "SALAS DE M\xDASICA":
+    $LUGARES:
       p: 0
   COCINA:
     COMIDA:
-      p: 0
-  PROYECTO MUSICAL:
-    $SUBJECTMATTER_UNDEFINED:
       p: 0
   YOUTUBE:
     $SUBJECTMATTER_UNDEFINED:

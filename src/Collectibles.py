@@ -1243,6 +1243,7 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
             ("CIENCIA NATURAL", "CIENCIA", p),
             ("CIENCIA SOCIAL", "SOCIEDAD", p),
             ("CULTURA", "SOCIEDAD", p),
+            ("ECONOMÍA", "SOCIEDAD", p),
             ("LUGARES", "SOCIEDAD", p),
             ("RECREO", "ASUNTO PERSONAL", p),
             ("LOGÍSTICA", "ASUNTO PERSONAL", p),

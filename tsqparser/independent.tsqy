@@ -114,6 +114,7 @@ epoch < Epoch.e2021_Tour_Start :
 	'Meditar'.replace('íntimo') ;
 epoch < Epoch.e2018_Boulder_Solo :
 	'Salas'.replace('Cornell') ;
+start < datetime(2024,4,1,0) & "Proyecto musical" & !"Audacity" : 'MEZCLA DE MÚSICA'.replace('PROYECTO MUSICAL') ;
 
 """ Misc descToken Filters """
 "Gimnasio" : Tag.Ejercicio ;
