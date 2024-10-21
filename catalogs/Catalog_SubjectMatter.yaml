@@ -1205,26 +1205,6 @@
     day: 3
     hour: 11
     minute: 3
-- id: "T\xC9CNICAS"
-  name: "T\xC9CNICAS"
-  firstTaskID: 9972869
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2018
-    month: 11
-    day: 24
-    hour: 13
-    minute: 26
-  firstCircad: 2018-11-24
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 8640
-  taskCount: 2
-  lastTaskID: 37619419
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2024
-    month: 2
-    day: 26
-    hour: 12
-    minute: 41
 - id: JUEGOS DE MESA
   name: JUEGOS DE MESA
   firstTaskID: 10006059
@@ -5588,9 +5568,6 @@ adj:
       p: 0
   NFL:
     $DEPORTES:
-      p: 0
-  "T\xC9CNICAS":
-    $SUBJECTMATTER_UNDEFINED:
       p: 0
   JUEGOS DE MESA:
     $SUBJECTMATTER_UNDEFINED:
