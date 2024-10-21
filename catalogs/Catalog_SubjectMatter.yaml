@@ -1025,26 +1025,6 @@
     day: 15
     hour: 15
     minute: 45
-- id: COMPONENTES
-  name: COMPONENTES
-  firstTaskID: 8778779
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2018
-    month: 9
-    day: 2
-    hour: 15
-    minute: 17
-  firstCircad: 2018-09-02
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 17400
-  taskCount: 2
-  lastTaskID: 8790999
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2018
-    month: 9
-    day: 3
-    hour: 12
-    minute: 27
 - id: INSTRUMENTOS
   name: INSTRUMENTOS
   firstTaskID: 8850769
@@ -5581,9 +5561,6 @@ adj:
       p: 0
   "ROB\xD3TICA":
     $ELECTR\xD3NICA:
-      p: 0
-  COMPONENTES:
-    $SUBJECTMATTER_UNDEFINED:
       p: 0
   INSTRUMENTOS:
     $SUBJECTMATTER_UNDEFINED:
