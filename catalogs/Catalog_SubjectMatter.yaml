@@ -5442,7 +5442,7 @@ adj:
     $CASA:
       p: 0
   TRANSPORTE:
-    $LOG\xCDSTICA:
+    $SERVICIOS:
       p: 0
   INFORME DE CONTROLES:
     $CONTROLES:
@@ -5481,10 +5481,10 @@ adj:
     $CASA:
       p: 0
   ADCS:
-    $SUBJECTMATTER_UNDEFINED:
+    $CONTROLES:
       p: 0
   RESTAURANTES:
-    $SUBJECTMATTER_UNDEFINED:
+    $SERVICIOS:
       p: 0
   CURSOS:
     $ACAD\xCDMICA:
@@ -5493,7 +5493,7 @@ adj:
     $RECREO:
       p: 0
   NYC:
-    $SUBJECTMATTER_UNDEFINED:
+    $LUGARES:
       p: 0
   REGALOS:
     $SUBJECTMATTER_UNDEFINED:
