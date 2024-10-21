@@ -5413,7 +5413,7 @@ adj:
     $EQUIPO:
       p: 0
   BICI:
-    $DEPORTES:
+    $CICLISMO:
       p: 0
   PUESTOS:
     $CARRERA:
@@ -5455,7 +5455,7 @@ adj:
     $ENTRETENIMIENTO:
       p: 0
   EQUIPO DE BICI:
-    $BICI:
+    $CICLISMO:
       p: 0
   DEPARTAMENTOS:
     $CASA:
@@ -5494,7 +5494,7 @@ adj:
     $EDUCACI\xD3N:
       p: 0
   COMPARTIMENTO DE AUTO:
-    $TRANSPORTE:
+    $AUTO:
       p: 0
   "VOTACI\xD3N":
     $LOG\xCDSTICA:
@@ -5563,31 +5563,31 @@ adj:
     $ELECTR\xD3NICA:
       p: 0
   INSTRUMENTOS:
-    $SUBJECTMATTER_UNDEFINED:
+    $EQUIPO DE M\xDASICA:
       p: 0
   EVENTOS:
     $RECREO:
       p: 0
   CICLISMO:
-    $SUBJECTMATTER_UNDEFINED:
+    $DEPORTES:A
       p: 0
   VIAJES:
-    $SUBJECTMATTER_UNDEFINED:
+    $VACACIONES:
       p: 0
   AUTO:
-    $SUBJECTMATTER_UNDEFINED:
+    $TRANSPORTE:
       p: 0
   NX:
-    $SUBJECTMATTER_UNDEFINED:
+    $INGENIER\xCDA MEC\xC1NICA:
       p: 0
   DIVORCIO:
-    $SUBJECTMATTER_UNDEFINED:
+    $FAMILIA:
       p: 0
   "BICI EL\xC9CTRICA":
-    $SUBJECTMATTER_UNDEFINED:
+    $BICI:
       p: 0
   NFL:
-    $SUBJECTMATTER_UNDEFINED:
+    $DEPORTES:
       p: 0
   "T\xC9CNICAS":
     $SUBJECTMATTER_UNDEFINED:
@@ -5602,7 +5602,7 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   CICLOTURISMO:
-    $BICI:
+    $CICLISMO:
       p: 0
   VOLUNTARIO:
     $SUBJECTMATTER_UNDEFINED:
@@ -5614,7 +5614,7 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   CARRERAS DE BICI:
-    $SUBJECTMATTER_UNDEFINED:
+    $EVENTOS:
       p: 0
   HISTORIA:
     $SOCIEDAD:
@@ -5635,7 +5635,7 @@ adj:
     $POL\xCDTICA LOCAL:
       p: 0
   "EQUIPO DE M\xDASICA":
-    $EQUIPO:
+    $M\xDASICA:
       p: 0
   EUROPA:
     $SUBJECTMATTER_UNDEFINED:
