@@ -5375,340 +5375,340 @@ adj:
     $SUBJECTMATTER:
       p: 0
   CIENCIA FORMAL:
-    $CIENCIA:
+    CIENCIA:
       p: 0
   CIENCIA NATURAL:
-    $CIENCIA:
+    CIENCIA:
       p: 0
-  CIENCIA F\xCDSICA:
-    $CIENCIA FORMAL:
+  "CIENCIA F\xCDSICA":
+    CIENCIA FORMAL:
       p: 0
   RECREO:
-    $ASUNTO PERSONAL:
+    ASUNTO PERSONAL:
       p: 0
   GENTE CONOCIDA:
-    $ASUNTO PERSONAL:
+    ASUNTO PERSONAL:
       p: 0
   SOFTWARE:
-    $EQUIPO:
+    EQUIPO:
       p: 0
   BICI:
-    $CICLISMO:
+    CICLISMO:
       p: 0
   PUESTOS:
-    $CARRERA:
+    CARRERA:
       p: 0
   EQUIPO DE CASA:
-    $CASA:
+    CASA:
       p: 0
   TRANSPORTE:
-    $SERVICIOS:
+    SERVICIOS:
       p: 0
   INFORME DE CONTROLES:
-    $CONTROLES:
+    CONTROLES:
       p: 0
   BENEFICIOS:
-    $TRABAJO:
+    TRABAJO:
       p: 0
   LIBROS:
-    $ENTRETENIMIENTO:
+    ENTRETENIMIENTO:
       p: 0
   CORNELL:
-    $EDUCACI\xD3N:
+    "EDUCACI\xD3N":
       p: 0
   EQUIPO:
-    $LOG\xCDSTICA:
+    "LOG\xCDSTICA":
       p: 0
   MANTENIMIENTO:
-    $LOG\xCDSTICA:
+    "LOG\xCDSTICA":
       p: 0
   PROYECTOS:
-    $ACAD\xCDMICA:
+    "ACAD\xCDMICA":
       p: 0
   BICOPTER:
-    $CONTROLES:
+    CONTROLES:
       p: 0
   MATLAB:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "PEL\xCDCULAS":
-    $ENTRETENIMIENTO:
+    ENTRETENIMIENTO:
       p: 0
   EQUIPO DE BICI:
-    $CICLISMO:
+    CICLISMO:
       p: 0
   DEPARTAMENTOS:
-    $CASA:
+    CASA:
       p: 0
   ADCS:
-    $CONTROLES:
+    CONTROLES:
       p: 0
   RESTAURANTES:
-    $ESPACIOS P\xCDBBLICOS:
+    "ESPACIOS P\xCDBBLICOS":
       p: 0
   CURSOS:
-    $ACAD\xCDMICA:
+    "ACAD\xCDMICA":
       p: 0
   VACACIONES:
-    $RECREO:
+    RECREO:
       p: 0
   NYC:
-    $LUGARES:
+    LUGARES:
       p: 0
   REGALOS:
-    $GENTE CONOCIDA:
+    GENTE CONOCIDA:
       p: 0
   "DISE\xD1OS":
-    $INGENIER\xCDA MEC\xC1NICA:
+    "INGENIER\xCDA MEC\xC1NICA":
       p: 0
   "EVALUACI\xD3N POR PARES":
-    $CURSOS:
+    CURSOS:
       p: 0
   LEY DE ARRENDAMIENTO:
-    $CASA:
+    CASA:
       p: 0
   ITHACA:
-    $LUGARES:
+    LUGARES:
       p: 0
   "GRADUACI\xD3N":
-    $EDUCACI\xD3N:
+    "EDUCACI\xD3N":
       p: 0
   COMPARTIMENTO DE AUTO:
-    $AUTO:
+    AUTO:
       p: 0
   "VOTACI\xD3N":
-    $LOG\xCDSTICA:
+    "LOG\xCDSTICA":
       p: 0
   ACCESORIOS:
-    $EQUIPO:
+    EQUIPO:
       p: 0
   "DIN\xC1MICA":
-    $INGENIER\xCDA MEC\xC1NICA:
+    "INGENIER\xCDA MEC\xC1NICA":
       p: 0
   "V\xCDDEO JUEGOS":
-    $ENTRETENIMIENTO:
+    ENTRETENIMIENTO:
       p: 0
   RECICLAJE:
-    $SERVICIOS P\xCDBLICOS:
+    "SERVICIOS P\xCDBLICOS":
       p: 0
   PING PONG:
-    $DEPORTES:
+    DEPORTES:
       p: 0
   BIBLIOTECA:
-    $ESPACIOS P\xCDBBLICOS:
+    "ESPACIOS P\xCDBBLICOS":
       p: 0
   "GRUPOS DE INTER\xC9S":
-    $TRABAJO:
+    TRABAJO:
       p: 0
   BARS:
-    $ESPACIOS P\xCDBBLICOS:
+    "ESPACIOS P\xCDBBLICOS":
       p: 0
   FEA:
-    $ESTRUCTURA:
+    ESTRUCTURA:
       p: 0
   "M\xDASICA":
-    $ENTRETENIMIENTO:
+    ENTRETENIMIENTO:
       p: 0
   TIENDAS:
-    $ESPACIOS P\xCDBBLICOS:
+    "ESPACIOS P\xCDBBLICOS":
       p: 0
   TAMBORES:
-    $INSTRUMENTOS:
+    INSTRUMENTOS:
       p: 0
   SQL:
-    $LENGUAJE DE PROGRAMACI\xD3N:
+    "LENGUAJE DE PROGRAMACI\xD3N":
       p: 0
   PYTHON:
-    $LENGUAJE DE PROGRAMACI\xD3N:
+    "LENGUAJE DE PROGRAMACI\xD3N":
       p: 0
   JAZZ:
-    $M\xDASICA:
+    "M\xDASICA":
       p: 0
   INTERNET:
-    $INFORM\xC1TICA:
+    "INFORM\xC1TICA":
       p: 0
   ESTRUCTURA:
-    $INGENIER\xCDA MEC\xC1NICA:
+    "INGENIER\xCDA MEC\xC1NICA":
       p: 0
   ACTIVIDADES:
-    $ESTILO DE VIDA:
+    ESTILO DE VIDA:
       p: 0
   SALUD:
-    $BIOLOG\xCDA:
+    "BIOLOG\xCDA":
       p: 0
   CLIMA:
-    $CIENCIA ATMOSF\xC9RICA:
+    "CIENCIA ATMOSF\xC9RICA":
       p: 0
   "ROB\xD3TICA":
-    $ELECTR\xD3NICA:
+    "ELECTR\xD3NICA":
       p: 0
   INSTRUMENTOS:
-    $M\xDASICA:
+    "M\xDASICA":
       p: 0
   EVENTOS:
-    $RECREO:
+    RECREO:
       p: 0
   CICLISMO:
-    $DEPORTES:A
+    DEPORTES:A
       p: 0
   VIAJES:
-    $VACACIONES:
+    VACACIONES:
       p: 0
   AUTO:
-    $TRANSPORTE:
+    TRANSPORTE:
       p: 0
   NX:
-    $CAD:
+    CAD:
       p: 0
   DIVORCIO:
-    $FAMILIA:
+    FAMILIA:
       p: 0
   "BICI EL\xC9CTRICA":
-    $BICI:
+    BICI:
       p: 0
   NFL:
-    $DEPORTES:
+    DEPORTES:
       p: 0
   JUEGOS DE MESA:
-    $ENTRETENIMIENTO:
+    ENTRETENIMIENTO:
       p: 0
   SENDEROS:
-    $DEPORTES:
+    DEPORTES:
       p: 0
   RUTAS:
-    $CICLISMO:
+    CICLISMO:
       p: 0
   CICLOTURISMO:
-    $CICLISMO:
+    CICLISMO:
       p: 0
   VOLUNTARIO:
-    $RECREO:
+    RECREO:
       p: 0
   CAD:
-    $INGENIER\xCDA MEC\xC1NICA:
+    "INGENIER\xCDA MEC\xC1NICA":
       p: 0
   COLORADO:
-    $LUGARES:
+    LUGARES:
       p: 0
   CARRERAS DE BICI:
-    $EVENTOS:
+    EVENTOS:
       p: 0
   HISTORIA:
-    $SOCIEDAD:
+    SOCIEDAD:
       p: 0
   EQUIPO DE CICLOTURISMO:
-    $CICLOTURISMO:
+    CICLOTURISMO:
       p: 0
   BAJO:
-    $INSTRUMENTOS:
+    INSTRUMENTOS:
       p: 0
   RELACIONES:
-    $ESTRUCTURA SOCIAL:
+    ESTRUCTURA SOCIAL:
       p: 0
   "POL\xCDTICA":
-    $GOBIERNO:
+    GOBIERNO:
       p: 0
   "POL\xCDTICA DE BOULDER":
-    $POL\xCDTICA LOCAL:
+    "POL\xCDTICA LOCAL":
       p: 0
   "EQUIPO DE M\xDASICA":
-    $M\xDASICA:
+    "M\xDASICA":
       p: 0
   EUROPA:
-    $LUGARES:
+    LUGARES:
       p: 0
   "TECNOLOG\xCDA":
-    $CIENCIA:
+    CIENCIA:
       p: 0
   COVID-19:
-    $SALUD P\xDABLICA:
+    "SALUD P\xDABLICA":
       p: 0
   COMIDA:
-    $ESTILO DE VIDA:
+    ESTILO DE VIDA:
       p: 0
   "GRABACI\xD3N":
-    $M\xDASICA:
+    "M\xDASICA":
       p: 0
   DONACIONES:
-    $SERVICIOS:
+    SERVICIOS:
       p: 0
   SERVICIOS:
-    $LOG\xCDSTICA:
+    "LOG\xCDSTICA":
       p: 0
   ROCK BAND:
-    $V\xCDDEO JUEGOS:
+    "V\xCDDEO JUEGOS":
       p: 0
   CHINCHES:
-    $CASA:
+    CASA:
       p: 0
   TECLADO:
-    $INSTRUMENTOS:
+    INSTRUMENTOS:
       p: 0
   "CITAS EN L\xCDNEA":
-    $RELACIONES:
+    RELACIONES:
       p: 0
   MEMES:
-    $ENTRETENIMIENTO:
+    ENTRETENIMIENTO:
       p: 0
   "EDUCACI\xD3N":
-    $ACAD\xCDMICA:
+    "ACAD\xCDMICA":
       p: 0
   "INVERSI\xD3N":
-    $FINANZAS:
+    FINANZAS:
       p: 0
   COMPUTADORA:
-    $EQUIPO DE CASA:
+    EQUIPO DE CASA:
       p: 0
   DEPORTES:
-    $ACTIVIDADES:
+    ACTIVIDADES:
       p: 0
   FINANZAS:
-    $LOG\xCDSTICA:
+    "LOG\xCDSTICA":
       p: 0
   CARRERA:
-    $ASUNTO PERSONAL:
+    ASUNTO PERSONAL:
       p: 0
   "AUTOR\xCDA DE ROCK BAND":
-    $ROCK BAND:
+    ROCK BAND:
       p: 0
   ALOJAMIENTO:
-    $VIAJES:
+    VIAJES:
       p: 0
   VISADOS:
-    $VIAJES:
+    VIAJES:
       p: 0
   "TEL\xC9FONO":
-    $EQUIPO DE CASA:
+    EQUIPO DE CASA:
       p: 0
   "LOG\xCDSTICA":
-    $ASUNTO PERSONAL:
+    ASUNTO PERSONAL:
       p: 0
   HOSPEDAJE:
-    $ALOJAMIENTO:
+    ALOJAMIENTO:
       p: 0
   LEY:
-    $GOBIERNO:
+    GOBIERNO:
       p: 0
   TODOIST:
-    $PRODUCTIVIDAD:
+    PRODUCTIVIDAD:
       p: 0
   CIUDADES:
-    $LUGARES:
+    LUGARES:
       p: 0
   PODCASTS:
-    $ENTRETENIMIENTO:
+    ENTRETENIMIENTO:
       p: 0
   SEGURO:
-    $SERVICIOS:
+    SERVICIOS:
       p: 0
   ROCKSMITH:
-    $V\xCDDEO JUEGOS:
+    "V\xCDDEO JUEGOS":
       p: 0
   "IMPROVISACI\xD3N":
-    $ENTRETENIMIENTO:
+    ENTRETENIMIENTO:
       p: 0
   "COMUNIDAD DE M\xDASICA":
-    $M\xDASICA:
+    "M\xDASICA":
       p: 0
   ESTRATEGIAS:
     $SUBJECTMATTER_UNDEFINED:
@@ -5717,115 +5717,115 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   URBANISMO:
-    $SOCIEDAD:
+    SOCIEDAD:
       p: 0
   "AN\xC1LISIS DE DATOS":
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "INFORM\xC1TICA":
-    $TECNOLOG\xCDA:
+    "TECNOLOG\xCDA":
       p: 0
   COMUNIDADES:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   ALTRUISMO EFECTIVO:
-    $MOVIMIENTO SOCIAL:
+    MOVIMIENTO SOCIAL:
       p: 0
   REFUGIADOS:
-    $ESTRUCTURA SOCIAL:
+    ESTRUCTURA SOCIAL:
       p: 0
   "POL\xCDTICA GLOBAL":
-    $POL\xCDTICA:
+    "POL\xCDTICA":
       p: 0
   IDIOMA:
-    $CULTURAS MUNDIALES:
+    CULTURAS MUNDIALES:
       p: 0
   URBANISMO LOCAL, URBANISMO:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "MATEM\xC1TICAS":
-    $CIENCIA FORMAL:
+    CIENCIA FORMAL:
       p: 0
   RACIONALIDAD:
-    $CIENCIA FORMAL:
+    CIENCIA FORMAL:
       p: 0
   URBANISMO LOCAL:
-    $URBANISMO:
+    URBANISMO:
       p: 0
   CULTURAS MUNDIALES:
-    $CULTURA:
+    CULTURA:
       p: 0
   "EVOLUCI\xD3N HUMANA":
-    $ANTROPOLOG\xCDA:
+    "ANTROPOLOG\xCDA":
       p: 0
   "H\xC1BITOS":
-    $ESTILO DE VIDA:
+    ESTILO DE VIDA:
       p: 0
   "ANTROPOLOG\xCDA":
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "GEOGRAF\xCDA":
-    $CIENCIA DE LA TIERRA:
+    CIENCIA DE LA TIERRA:
       p: 0
   HISTORIA ANTIGUA:
-    $HISTORIA:
+    HISTORIA:
       p: 0
   HISTORIA MODERNA:
-    $HISTORIA:
+    HISTORIA:
       p: 0
   INTELIGENCIA ARTIFICIAL:
-    $INFORM\xC1TICA:
+    "INFORM\xC1TICA":
       p: 0
   CANCIONES:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   HISTORIA RECIENTE:
-    $HISTORIA:
+    HISTORIA:
       p: 0
   "RELIGI\xD3N":
-    $FILOSOF\xCDA:
+    "FILOSOF\xCDA":
       p: 0
   ARMAS NUCLEARES:
-    $TECNOLOG\xCDA:
+    "TECNOLOG\xCDA":
       p: 0
   FAMILIA:
-    $ESTRUCTURA SOCIAL:
+    ESTRUCTURA SOCIAL:
       p: 0
   CIBERSEGURIDAD:
-    $INFORM\xC1TICA:
+    "INFORM\xC1TICA":
       p: 0
   CIENCIA DE LA TIERRA:
-    $CIENCIA NATURAL:
+    CIENCIA NATURAL:
       p: 0
   ESTRUCTURA SOCIAL:
-    $SOCIEDAD:
+    SOCIEDAD:
       p: 0
   "ACAD\xC9MICA":
-    $ASUNTO PERSONAL:
+    ASUNTO PERSONAL:
       p: 0
   "POL\xCDTICA ESTADOUNIDENSE":
-    $POL\xCDTICA NACIONAL:
+    "POL\xCDTICA NACIONAL":
       p: 0
   "POL\xCDTICA LOCAL":
-    $POL\xCDTICA:
+    "POL\xCDTICA":
       p: 0
   MISOGINIA:
-    $MUJERES:
+    MUJERES:
       p: 0
   "INGENIER\xCDA":
-    $TECNOLOG\xCDA:
+    "TECNOLOG\xCDA":
       p: 0
   CAMBIO:
-    $CIENCIA DE LA TIERRA:
+    CIENCIA DE LA TIERRA:
       p: 0
   "POL\xCDTICA NACIONAL":
-    $POL\xCDTICA:
+    "POL\xCDTICA":
       p: 0
   METAS PERSONALES:
-    $ASUNTO PERSONAL:
+    ASUNTO PERSONAL:
       p: 0
   RIESGOS EXISTENCIALES:
-    $PROBLEMAS GLOBALES:
+    PROBLEMAS GLOBALES:
       p: 0
   TALLER:
     $SUBJECTMATTER_UNDEFINED:
@@ -5834,34 +5834,34 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "MEDITACI\xD3N":
-    $ESPIRITUALIDAD:
+    ESPIRITUALIDAD:
       p: 0
   REGISTRO DE VIDA:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   GUERRA:
-    $PROBLEMAS:
+    PROBLEMAS:
       p: 0
   "AUTORREALIZACI\xD3N":
-    $BIENESTAR:
+    BIENESTAR:
       p: 0
   "CAMBIO CLIM\xC1TICO":
-    $CIENCIA DE LA TIERRA:
+    CIENCIA DE LA TIERRA:
       p: 0
   "CIENCIA ECON\xD3MICA":
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   JUVENTUD:
-    $ESTRUCTURA SOCIAL:
+    ESTRUCTURA SOCIAL:
       p: 0
   "SALUD P\xDABLICA":
-    $SOCIEDAD:
+    SOCIEDAD:
       p: 0
   "BIOLOG\xCDA":
-    $CIENCIA F\xCDSICA:
+    "CIENCIA F\xCDSICA":
       p: 0
   "GEN\xC9TICA":
-    $BIOLOG\xCDA:
+    "BIOLOG\xCDA":
       p: 0
   CITA:
     $SUBJECTMATTER_UNDEFINED:
@@ -5870,217 +5870,217 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   CONCIENCIA:
-    $FILOSOF\xCDA:
+    "FILOSOF\xCDA":
       p: 0
   "\xC9TICA":
-    $FILOSOF\xCDA:
+    "FILOSOF\xCDA":
       p: 0
   "EPISTEMOLOG\xCDA":
-    $FILOSOF\xCDA:
+    "FILOSOF\xCDA":
       p: 0
   CIENCIA DE DATOS:
-    $INFORM\xC1TICA:
+    "INFORM\xC1TICA":
       p: 0
   "TECNOLOG\xCDA ENERG\xC9TICA":
-    $TECNOLOG\xCDA INDUSTRIAL:
+    "TECNOLOG\xCDA INDUSTRIAL":
       p: 0
   PROBLEMAS GLOBALES:
-    $PROBLEMAS:
+    PROBLEMAS:
       p: 0
   PRIVACIDAD DIGITAL:
-    $INTERNET:
+    INTERNET:
       p: 0
   APOCALIPSIS:
-    $PROBLEMAS GLOBALES:
+    PROBLEMAS GLOBALES:
       p: 0
   "CR\xCDA INTENSIVA":
-    $TECNOLOG\xCDA AGR\xCDCOLA:
+    "TECNOLOG\xCDA AGR\xCDCOLA":
       p: 0
   VEGANISMO:
-    $MOVIMIENTO SOCIAL:
+    MOVIMIENTO SOCIAL:
       p: 0
   "TECNOLOG\xCDA AGR\xCDCOLA":
-    $TECNOLOG\xCDA:
+    "TECNOLOG\xCDA":
       p: 0
   LARGOPLACISMO:
-    $\xC9TICA:
+    "\xC9TICA":
       p: 0
   AGOTAMIENTO:
-    $SALUD MENTAL:
+    SALUD MENTAL:
       p: 0
   EMPRENDIMIENTO:
-    $NEGOCIO:
+    NEGOCIO:
       p: 0
   NO LUCRATIVO:
-    $NEGOCIO:
+    NEGOCIO:
       p: 0
   "COLONIZACI\xD3N ESPACIAL":
-    $INGENIER\xCDA AEROESPACIAL:
+    "INGENIER\xCDA AEROESPACIAL":
       p: 0
   REACCIONES:
-    $MITIGACIONES:
+    MITIGACIONES:
       p: 0
   "METAF\xCDSICA":
-    $FILOSOF\xCDA:
+    "FILOSOF\xCDA":
       p: 0
   MINIMALISMO:
-    $ESTILO DE VIDA:
+    ESTILO DE VIDA:
       p: 0
   ASUNTO FAMILIAR:
-    $GENTE CONOCIDA:
+    GENTE CONOCIDA:
       p: 0
   "INGENIER\xCDA INDUSTRIAL":
-    $INGENIER\xCDA:
+    "INGENIER\xCDA":
       p: 0
   "ASTRONOM\xCDA":
-    $CIENCIA F\xCDSICA:
+    "CIENCIA F\xCDSICA":
       p: 0
   NEGOCIO:
-    $SOCIEDAD:
+    SOCIEDAD:
       p: 0
   GENTE SIN HOGAR:
-    $ESTRUCTURA SOCIAL:
+    ESTRUCTURA SOCIAL:
       p: 0
   IGUALITARISMO:
-    $\xC9TICA:
+    "\xC9TICA":
       p: 0
   RIESGOS DE SUFRIMIENTO:
-    $PROBLEMAS GLOBALES:
+    PROBLEMAS GLOBALES:
       p: 0
   TRABAJO:
-    $CARRERA:
+    CARRERA:
       p: 0
   EJERCICIOS:
-    $DEPORTES:
+    DEPORTES:
       p: 0
   "PRON\xD3STICO":
-    $RACIONALIDAD:
+    RACIONALIDAD:
       p: 0
   DEMOCRACIA:
-    $LIBERALISMO:
+    LIBERALISMO:
       p: 0
   "INGENIER\xCDA AEROESPACIAL":
-    $INGENIER\xCDA MEC\xC1NICA:
+    "INGENIER\xCDA MEC\xC1NICA":
       p: 0
   SEGURIDAD DE INTELIGENCIA ARTIFICIAL:
-    $INTELIGENCIA ARTIFICIAL:
+    INTELIGENCIA ARTIFICIAL:
       p: 0
   ESTILO DE VIDA:
-    $CULTURA:
+    CULTURA:
       p: 0
   "SOCIOLOG\xCDA":
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   DIETA:
-    $SALUD:
+    SALUD:
       p: 0
   MEDICINA:
-    $SALUD:
+    SALUD:
       p: 0
   CULTURA:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   CASA:
-    $VIVIENDA:
+    VIVIENDA:
       p: 0
   "BIOINGENIER\xCDA":
-    $INGENIER\xCDA:
+    "INGENIER\xCDA":
       p: 0
   MITIGACIONES:
-    $PROBLEMAS:
+    PROBLEMAS:
       p: 0
   "ELECTR\xD3NICA":
-    $TECNOLOG\xCDA:
+    "TECNOLOG\xCDA":
       p: 0
   SALUD GLOBAL:
-    $SALUD P\xDABLICA:
+    "SALUD P\xDABLICA":
       p: 0
   MITIGACIONES DE RIESGOS-X:
-    $RIESGOS EXISTENCIALES:
+    RIESGOS EXISTENCIALES:
       p: 0
   CARERRA:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   EQUIPO MUSICAL:
-    $EQUIPO:
+    EQUIPO:
       p: 0
   ENTRETENIMIENTO:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   POBREZA:
-    $ESTRUCTURA SOCIAL:
+    ESTRUCTURA SOCIAL:
       p: 0
   SALUD MENTAL:
-    $BIENESTAR:
+    BIENESTAR:
       p: 0
   "CIENCIA ATMOSF\xC9RICA":
-    $CIENCIA DE LA TIERRA:
+    CIENCIA DE LA TIERRA:
       p: 0
   SOLUCIONES:
-    $MITIGACIONES:
+    MITIGACIONES:
       p: 0
   "EVOLUCI\xD3N":
-    $GEN\xC9TICA:
+    "GEN\xC9TICA":
       p: 0
   JUEGOS:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "SERVICIOS P\xDABLICOS":
-    $GOBIERNO:
+    GOBIERNO:
       p: 0
   BIENESTAR:
-    $FILOSOF\xCDA:
+    "FILOSOF\xCDA":
       p: 0
   GO:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   MUJERES:
-    $ESTRUCTURA SOCIAL:
+    ESTRUCTURA SOCIAL:
       p: 0
   "F\xCDSICA":
-    $CIENCIA F\xCDSICA:
+    "CIENCIA F\xCDSICA":
       p: 0
   ESPIRITUALIDAD:
-    $AUTORREALIZACI\xD3N:
+    "AUTORREALIZACI\xD3N":
       p: 0
   FEMINISMO:
-    $MOVIMIENTO SOCIAL:
+    MOVIMIENTO SOCIAL:
       p: 0
   TRANSHUMANISMO:
-    $AUTORREALIZACI\xD3N:
+    "AUTORREALIZACI\xD3N":
       p: 0
   "AXIOLOG\xCDA":
-    $\xC9TICA:
+    "\xC9TICA":
       p: 0
   "INGENIER\xCDA ESPACIAL":
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   BIOSEGURIDAD:
-    $BIOINGENIER\xCDA:
+    "BIOINGENIER\xCDA":
       p: 0
   GENOCIDIO:
-    $PROBLEMAS:
+    PROBLEMAS:
       p: 0
   COMBUSTIBLE:
-    $TECNOLOG\xCDA ENERG\xC9TICA:
+    "TECNOLOG\xCDA ENERG\xC9TICA":
       p: 0
   VIVIENDA:
-    $LOG\xCDSTICA:
+    "LOG\xCDSTICA":
       p: 0
   "INGENIER\xCDA MEC\xC1NICA":
-    $INGENIER\xCDA:
+    "INGENIER\xCDA":
       p: 0
   "MEM\xC9TICA":
-    $SOCIOLOG\xCDA:
+    "SOCIOLOG\xCDA":
       p: 0
   "COMBUSTIBLE F\xD3SIL":
-    $COMBUSTIBLE:
+    COMBUSTIBLE:
       p: 0
   "CONTAMINACI\xD3N DEL AIRE":
-    $SALUD P\xDABLICA:
+    "SALUD P\xDABLICA":
       p: 0
   CONTROLES:
-    $INGENIER\xCDA AEROESPACIAL:
+    "INGENIER\xCDA AEROESPACIAL":
       p: 0
   CAPITALISMO:
     $SUBJECTMATTER_UNDEFINED:
@@ -6089,25 +6089,25 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "TECNOLOG\xCDA INDUSTRIAL":
-    $TECNOLOG\xCDA:
+    "TECNOLOG\xCDA":
       p: 0
   PROBLEMAS CULTURALES:
-    $PROBLEMAS:
+    PROBLEMAS:
       p: 0
   ALTRUISMO:
-    $\xC9TICA:
+    "\xC9TICA":
       p: 0
   NOTICIAS:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "LIBERACI\xD3N ANIMAL":
-    $MOVIMIENTO SOCIAL:
+    MOVIMIENTO SOCIAL:
       p: 0
   MUDANZA:
-    $CASA:
+    CASA:
       p: 0
   GOBIERNO:
-    $CULTURA:
+    CULTURA:
       p: 0
   AISC:
     $SUBJECTMATTER_UNDEFINED:
@@ -6116,7 +6116,7 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   COCINA:
-    $COMIDA:
+    COMIDA:
       p: 0
   PROYECTO MUSICAL:
     $SUBJECTMATTER_UNDEFINED:
@@ -6128,37 +6128,37 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   PERIODISMO:
-    $CULTURA:
+    CULTURA:
       p: 0
   LUGAR DE TRABAJO:
-    $ESTILO DE VIDA:
+    ESTILO DE VIDA:
       p: 0
   LIBERALISMO:
-    $GOBIERNO:
+    GOBIERNO:
       p: 0
   "ATE\xCDSMO":
-    $RELIGI\xD3N:
+    "RELIGI\xD3N":
       p: 0
   "INGENIER\xCDA CIVIL":
-    $INGENIER\xCDA:
+    "INGENIER\xCDA":
       p: 0
   RED SOCIAL:
-    $INTERNET:
+    INTERNET:
       p: 0
   SOSTENIBILIDAD:
-    $SOLUCIONES:
+    SOLUCIONES:
       p: 0
   PRODUCTIVIDAD:
-    $GESTI\xD3N:
+    "GESTI\xD3N":
       p: 0
   CLASES:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   COLEGAS:
-    $GENTE CONOCIDA:
+    GENTE CONOCIDA:
       p: 0
   "GESTI\xD3N":
-    $SOCIEDAD:
+    SOCIEDAD:
       p: 0
   ESCRITURA:
     $SUBJECTMATTER_UNDEFINED:
@@ -6173,5 +6173,5 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   "MACROECON\xD3MICA":
-    $CIENCIA ECON\xD3MICA:
+    "CIENCIA ECON\xD3MICA":
       p: 0
