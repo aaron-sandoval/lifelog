@@ -4894,26 +4894,6 @@
     day: 6
     hour: 19
     minute: 55
-- id: YOUTUBE
-  name: YOUTUBE
-  firstTaskID: 36934369
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2024
-    month: 1
-    day: 9
-    hour: 21
-    minute: 16
-  firstCircad: *id043
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 2580
-  taskCount: 1
-  lastTaskID: 36934369
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2024
-    month: 1
-    day: 9
-    hour: 21
-    minute: 59
 - id: "MEZCLA DE M\xDASICA"
   name: "MEZCLA DE M\xDASICA"
   firstTaskID: 37120119
@@ -5113,26 +5093,6 @@
     day: 30
     hour: 20
     minute: 30
-- id: CLASES
-  name: CLASES
-  firstTaskID: 38985589
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2024
-    month: 5
-    day: 31
-    hour: 7
-    minute: 58
-  firstCircad: 2024-05-31
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1620
-  taskCount: 1
-  lastTaskID: 38985589
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2024
-    month: 5
-    day: 31
-    hour: 8
-    minute: 25
 - id: COLEGAS
   name: COLEGAS
   firstTaskID: 39008819
@@ -5631,13 +5591,13 @@ adj:
     "M\xDASICA":
       p: 0
   ALGORITMOS:
-    $SUBJECTMATTER_UNDEFINED:
+    "INFORM\xC1TICA":
       p: 0
   URBANISMO:
     SOCIEDAD:
       p: 0
   "AN\xC1LISIS DE DATOS":
-    $SUBJECTMATTER_UNDEFINED:
+    "INFORM\xC1TICA":
       p: 0
   "INFORM\xC1TICA":
     "TECNOLOG\xCDA":
@@ -6029,14 +5989,11 @@ adj:
   COCINA:
     COMIDA:
       p: 0
-  YOUTUBE:
-    $SUBJECTMATTER_UNDEFINED:
-      p: 0
   "MEZCLA DE M\xDASICA":
-    $SUBJECTMATTER_UNDEFINED:
+    "M\xDASICA":
       p: 0
   PERIODISMO:
-    CULTURA:
+    ESCRITURA:
       p: 0
   LUGAR DE TRABAJO:
     ESTILO DE VIDA:
@@ -6059,9 +6016,6 @@ adj:
   PRODUCTIVIDAD:
     "GESTI\xD3N":
       p: 0
-  CLASES:
-    $SUBJECTMATTER_UNDEFINED:
-      p: 0
   COLEGAS:
     GENTE CONOCIDA:
       p: 0
@@ -6075,10 +6029,10 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   DERECHOS HUMANOS:
-    $SUBJECTMATTER_UNDEFINED:
+    "\xC9TICA":
       p: 0
   AJEDREZ:
-    $SUBJECTMATTER_UNDEFINED:
+    $JUEGOS DE MESA:
       p: 0
   "MACROECON\xD3MICA":
     "CIENCIA ECON\xD3MICA":
