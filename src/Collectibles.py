@@ -1252,6 +1252,7 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
             ("CIENCIA FÍSICA", "CIENCIA FORMAL", p),
             ("MOVIMIENTO SOCIAL", "CULTURA", p),
             ("EQUIPO", "LOGÍSTICA", p),
+            ("ESPACIOS PÚBLICOS", "LUGARES", p),
         ])
         out.add_edges_from([
             ("SOFTWARE", "EQUIPO", p),
