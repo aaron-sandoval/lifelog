@@ -8,6 +8,9 @@ Created on Wed Jan 10 2018
 import sys
 import os
 from pathlib import Path
+
+import pandas as pd
+
 sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent.absolute()))
 from scripts import FileManagement as FM, Preprocess as PP, Visualize as VS
 from scripts.DataCorrection import main as DCmain
@@ -16,6 +19,7 @@ from src.TimesheetGlobals import PPPath, rootProjectPath, Privacy
 
 
 def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=True):
+    pd.set_option('display.width', 250)
 
     # dataFiles = ['timesheet_20180822202600.csv']
     # dataFiles = ['timesheet_2017-12-16.csv', '2017_20230207.csv', '20230201-20230403.csv', '20230401_20230701.csv',
@@ -32,7 +36,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
 
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_test3.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2020-09-17-0747_2021-01-05-1222.csv')
-    # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2024-01-01-0144.csv')
+    FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2024-01-01-0144.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2023-10-01-0906.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2018-02-10-2211.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2017-09-06-2136_2017-12-16-1700.csv')
@@ -43,7 +47,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2020-09-17-0647_2021-12-14-2208.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2021-12-14-2201_2022-04-02-1327.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2022-04-02-1305_2023-06-30-2228.csv')
-    FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2023-06-01-0511_2024-07-01-0026.csv')
+    # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2023-06-01-0511_2024-07-01-0026.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2023-02-01-0005_2023-10-01-0906.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2023-09-01-0650_2024-01-01-0144.csv')
     # FM_filePath = os.path.join(rootProjectPath(), 'FM_CSVs', 'FM_2023-12-31-0029_2024-04-01-0726.csv')
@@ -58,8 +62,8 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
     # PP_filePath = os.path.join(PPPath(), 'PP_2019-09-02-1625_2020-09-17-0747.pkl')
     # PP_filePath = os.path.join(PPPath(), 'PP_2020-09-17-0647_2021-12-14-2208.pkl')
     # PP_filePath = os.path.join(PPPath(), "PP_2021-12-14-2201_2022-04-02-1327.pkl")
-    PP_filePath = os.path.join(PPPath(), 'PP_2023-06-01-0511_2024-07-01-0026.pkl')
-    # PP_filePath = os.path.join(PPPath(), 'PP_2017-09-06-2136_2024-01-01-0144.pkl')
+    # PP_filePath = os.path.join(PPPath(), 'PP_2023-06-01-0511_2024-07-01-0026.pkl')
+    PP_filePath = os.path.join(PPPath(), 'PP_2017-09-06-2136_2024-01-01-0144.pkl')
 
     # DC_filePath = rootProjectPath() + 'DC_Persistent\\DC_2022-04-02-1305_2023-06-30-2228.pkl'
     DC_filePaths = list(map(lambda x: os.path.join(rootProjectPath(), 'DC_Persistent', x + '.pkl'),
@@ -81,9 +85,9 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
         # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
     else:
         # FM_filePath = FM.main(dataFiles)
-        # PP_filePath = PP.main(FM_filePath)
-        # DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
-        VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
+        PP_filePath = PP.main(FM_filePath)
+        DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
+        # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
 
     # XH.main(VS_filePath)
 

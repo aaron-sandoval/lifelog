@@ -272,7 +272,7 @@ class Catalog(abc.ABC):
     #         ind = byFirst['firstTime'].searchsorted(dt, side='right')
     #         return self.getObjects(byFirst.iloc[[ind - 1]])[0]
 
-    def updateScalingFields(self, timesheetdf: TimesheetDataFrame, reset=tuple()) -> None:
+    def updateScalingFields(self, timesheetdf: TimesheetDataFrame, reset: Iterable[str] = tuple()) -> None:
         """
         Updates the set of Catalog fields which may change as new instances of Collectibles are found in the dataset
         over time.
