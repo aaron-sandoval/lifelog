@@ -276,8 +276,8 @@
     day: 11
     hour: 17
     minute: 59
-- id: "PEL\xCDCULAS"
-  name: "PEL\xCDCULAS"
+- id: "PELÍCULAS"
+  name: "PELÍCULAS"
   firstTaskID: 5932199
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -460,8 +460,8 @@
     day: 24
     hour: 17
     minute: 46
-- id: "DISE\xD1OS"
-  name: "DISE\xD1OS"
+- id: "DISEÑOS"
+  name: "DISEÑOS"
   firstTaskID: 6995899
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -480,8 +480,8 @@
     day: 1
     hour: 19
     minute: 56
-- id: "EVALUACI\xD3N POR PARES"
-  name: "EVALUACI\xD3N POR PARES"
+- id: "EVALUACIÓN POR PARES"
+  name: "EVALUACIÓN POR PARES"
   firstTaskID: 7108739
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -539,8 +539,8 @@
     month: 5
     day: 22
     minute: 9
-- id: "GRADUACI\xD3N"
-  name: "GRADUACI\xD3N"
+- id: "GRADUACIÓN"
+  name: "GRADUACIÓN"
   firstTaskID: 7342049
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -579,8 +579,8 @@
     day: 3
     hour: 22
     minute: 30
-- id: "VOTACI\xD3N"
-  name: "VOTACI\xD3N"
+- id: "VOTACIÓN"
+  name: "VOTACIÓN"
   firstTaskID: 7522419
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -619,8 +619,8 @@
     day: 15
     hour: 15
     minute: 4
-- id: "DIN\xC1MICA"
-  name: "DIN\xC1MICA"
+- id: "DINÁMICA"
+  name: "DINÁMICA"
   firstTaskID: 7616619
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -639,8 +639,8 @@
     day: 13
     hour: 23
     minute: 16
-- id: "V\xCDDEO JUEGOS"
-  name: "V\xCDDEO JUEGOS"
+- id: "VÍDEO JUEGOS"
+  name: "VÍDEO JUEGOS"
   firstTaskID: 7629219
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -719,8 +719,8 @@
     day: 11
     hour: 17
     minute: 28
-- id: "GRUPOS DE INTER\xC9S"
-  name: "GRUPOS DE INTER\xC9S"
+- id: "GRUPOS DE INTERÉS"
+  name: "GRUPOS DE INTERÉS"
   firstTaskID: 7685469
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -779,8 +779,8 @@
     day: 25
     hour: 12
     minute: 19
-- id: "M\xDASICA"
-  name: "M\xDASICA"
+- id: "MÚSICA"
+  name: "MÚSICA"
   firstTaskID: 7917029
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -1005,8 +1005,8 @@
     day: 24
     hour: 15
     minute: 42
-- id: "ROB\xD3TICA"
-  name: "ROB\xD3TICA"
+- id: "ROBÓTICA"
+  name: "ROBÓTICA"
   firstTaskID: 8724789
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -1165,8 +1165,8 @@
     day: 10
     hour: 20
     minute: 45
-- id: "BICI EL\xC9CTRICA"
-  name: "BICI EL\xC9CTRICA"
+- id: "BICI ELÉCTRICA"
+  name: "BICI ELÉCTRICA"
   firstTaskID: 9871159
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -1447,8 +1447,8 @@
     day: 23
     hour: 12
     minute: 53
-- id: "POL\xCDTICA"
-  name: "POL\xCDTICA"
+- id: "POLÍTICA"
+  name: "POLÍTICA"
   firstTaskID: 14570549
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2019
@@ -1467,8 +1467,8 @@
     day: 6
     hour: 22
     minute: 18
-- id: "POL\xCDTICA DE BOULDER"
-  name: "POL\xCDTICA DE BOULDER"
+- id: "POLÍTICA DE BOULDER"
+  name: "POLÍTICA DE BOULDER"
   firstTaskID: 14721889
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2019
@@ -1488,8 +1488,8 @@
     day: 25
     hour: 11
     minute: 49
-- id: "EQUIPO DE M\xDASICA"
-  name: "EQUIPO DE M\xDASICA"
+- id: "EQUIPO DE MÚSICA"
+  name: "EQUIPO DE MÚSICA"
   firstTaskID: 14787019
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2019
@@ -1528,8 +1528,8 @@
     day: 27
     hour: 8
     minute: 53
-- id: "TECNOLOG\xCDA"
-  name: "TECNOLOG\xCDA"
+- id: "TECNOLOGÍA"
+  name: "TECNOLOGÍA"
   firstTaskID: 16139369
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -1589,8 +1589,8 @@
     day: 5
     hour: 18
     minute: 16
-- id: "GRABACI\xD3N"
-  name: "GRABACI\xD3N"
+- id: "GRABACIÓN"
+  name: "GRABACIÓN"
   firstTaskID: 17849369
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -1708,8 +1708,8 @@
     day: 23
     hour: 16
     minute: 53
-- id: "CITAS EN L\xCDNEA"
-  name: "CITAS EN L\xCDNEA"
+- id: "CITAS EN LÍNEA"
+  name: "CITAS EN LÍNEA"
   firstTaskID: 19259029
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -1768,8 +1768,8 @@
     day: 30
     hour: 7
     minute: 57
-- id: "EDUCACI\xD3N"
-  name: "EDUCACI\xD3N"
+- id: "EDUCACIÓN"
+  name: "EDUCACIÓN"
   firstTaskID: 22155559
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2021
@@ -1788,8 +1788,8 @@
     day: 10
     hour: 14
     minute: 31
-- id: "INVERSI\xD3N"
-  name: "INVERSI\xD3N"
+- id: "INVERSIÓN"
+  name: "INVERSIÓN"
   firstTaskID: 22374679
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2021
@@ -1910,8 +1910,8 @@
     day: 16
     hour: 21
     minute: 38
-- id: "AUTOR\xCDA DE ROCK BAND"
-  name: "AUTOR\xCDA DE ROCK BAND"
+- id: "AUTORÍA DE ROCK BAND"
+  name: "AUTORÍA DE ROCK BAND"
   firstTaskID: 25630899
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2021
@@ -1970,8 +1970,8 @@
     day: 9
     hour: 17
     minute: 10
-- id: "TEL\xC9FONO"
-  name: "TEL\xC9FONO"
+- id: "TELÉFONO"
+  name: "TELÉFONO"
   firstTaskID: 26860949
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2022
@@ -1990,8 +1990,8 @@
     day: 15
     hour: 15
     minute: 28
-- id: "LOG\xCDSTICA"
-  name: "LOG\xCDSTICA"
+- id: "LOGÍSTICA"
+  name: "LOGÍSTICA"
   firstTaskID: 27249739
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2022
@@ -2150,8 +2150,8 @@
     day: 23
     hour: 19
     minute: 13
-- id: "IMPROVISACI\xD3N"
-  name: "IMPROVISACI\xD3N"
+- id: "IMPROVISACIÓN"
+  name: "IMPROVISACIÓN"
   firstTaskID: 32062529
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2231,8 +2231,8 @@
     day: 3
     hour: 22
     minute: 55
-- id: "FILOSOF\xCDA"
-  name: "FILOSOF\xCDA"
+- id: "FILOSOFÍA"
+  name: "FILOSOFÍA"
   firstTaskID: 32772609
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2251,8 +2251,8 @@
     day: 8
     hour: 22
     minute: 15
-- id: "AN\xC1LISIS DE DATOS"
-  name: "AN\xC1LISIS DE DATOS"
+- id: "ANÁLISIS DE DATOS"
+  name: "ANÁLISIS DE DATOS"
   firstTaskID: 33471609
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2270,8 +2270,8 @@
     day: 14
     hour: 12
     minute: 44
-- id: "INFORM\xC1TICA"
-  name: "INFORM\xC1TICA"
+- id: "INFORMÁTICA"
+  name: "INFORMÁTICA"
   firstTaskID: 33601889
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2352,8 +2352,8 @@
     day: 27
     hour: 12
     minute: 27
-- id: "POL\xCDTICA GLOBAL"
-  name: "POL\xCDTICA GLOBAL"
+- id: "POLÍTICA GLOBAL"
+  name: "POLÍTICA GLOBAL"
   firstTaskID: 33659979
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2393,8 +2393,8 @@
     day: 12
     hour: 20
     minute: 45
-- id: "MATEM\xC1TICAS"
-  name: "MATEM\xC1TICAS"
+- id: "MATEMÁTICAS"
+  name: "MATEMÁTICAS"
   firstTaskID: 33441639
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2422,7 +2422,7 @@
     day: 30
     hour: 11
     minute: 59
-  firstCircad: *id010
+  firstCircad: 2023-05-30
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
     seconds: 86340
@@ -2474,8 +2474,8 @@
     day: 10
     hour: 21
     minute: 46
-- id: "EVOLUCI\xD3N HUMANA"
-  name: "EVOLUCI\xD3N HUMANA"
+- id: "EVOLUCIÓN HUMANA"
+  name: "EVOLUCIÓN HUMANA"
   firstTaskID: 33718369
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2494,8 +2494,8 @@
     day: 25
     hour: 9
     minute: 59
-- id: "H\xC1BITOS"
-  name: "H\xC1BITOS"
+- id: "HÁBITOS"
+  name: "HÁBITOS"
   firstTaskID: 33723879
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2514,8 +2514,8 @@
     day: 28
     hour: 20
     minute: 59
-- id: "ANTROPOLOG\xCDA"
-  name: "ANTROPOLOG\xCDA"
+- id: "ANTROPOLOGÍA"
+  name: "ANTROPOLOGÍA"
   firstTaskID: 33744839
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2534,8 +2534,8 @@
     day: 10
     hour: 13
     minute: 37
-- id: "GEOGRAF\xCDA"
-  name: "GEOGRAF\xCDA"
+- id: "GEOGRAFÍA"
+  name: "GEOGRAFÍA"
   firstTaskID: 33744839
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2655,8 +2655,8 @@
     day: 21
     hour: 9
     minute: 21
-- id: "RELIGI\xD3N"
-  name: "RELIGI\xD3N"
+- id: "RELIGIÓN"
+  name: "RELIGIÓN"
   firstTaskID: 33801929
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2775,8 +2775,8 @@
     day: 17
     hour: 3
     minute: 52
-- id: "ACAD\xC9MICA"
-  name: "ACAD\xC9MICA"
+- id: "ACADÉMICA"
+  name: "ACADÉMICA"
   firstTaskID: 33957759
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2795,8 +2795,8 @@
     day: 10
     hour: 13
     minute: 30
-- id: "POL\xCDTICA ESTADOUNIDENSE"
-  name: "POL\xCDTICA ESTADOUNIDENSE"
+- id: "POLÍTICA ESTADOUNIDENSE"
+  name: "POLÍTICA ESTADOUNIDENSE"
   firstTaskID: 33961479
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2815,8 +2815,8 @@
     day: 11
     hour: 9
     minute: 1
-- id: "POL\xCDTICA LOCAL"
-  name: "POL\xCDTICA LOCAL"
+- id: "POLÍTICA LOCAL"
+  name: "POLÍTICA LOCAL"
   firstTaskID: 33981469
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2855,8 +2855,8 @@
     day: 24
     hour: 22
     minute: 19
-- id: "INGENIER\xCDA"
-  name: "INGENIER\xCDA"
+- id: "INGENIERÍA"
+  name: "INGENIERÍA"
   firstTaskID: 34010379
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2895,8 +2895,8 @@
     day: 21
     hour: 8
     minute: 3
-- id: "POL\xCDTICA NACIONAL"
-  name: "POL\xCDTICA NACIONAL"
+- id: "POLÍTICA NACIONAL"
+  name: "POLÍTICA NACIONAL"
   firstTaskID: 34017289
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2973,8 +2973,8 @@
     day: 27
     hour: 9
     minute: 59
-- id: "PSICOLOG\xCDA"
-  name: "PSICOLOG\xCDA"
+- id: "PSICOLOGÍA"
+  name: "PSICOLOGÍA"
   firstTaskID: 34131739
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -2993,8 +2993,8 @@
     day: 1
     hour: 14
     minute: 38
-- id: "MEDITACI\xD3N"
-  name: "MEDITACI\xD3N"
+- id: "MEDITACIÓN"
+  name: "MEDITACIÓN"
   firstTaskID: 34134949
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3053,8 +3053,8 @@
     day: 18
     hour: 13
     minute: 55
-- id: "AUTORREALIZACI\xD3N"
-  name: "AUTORREALIZACI\xD3N"
+- id: "AUTORREALIZACIÓN"
+  name: "AUTORREALIZACIÓN"
   firstTaskID: 34149289
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3093,8 +3093,8 @@
     day: 10
     hour: 14
     minute: 31
-- id: "CAMBIO CLIM\xC1TICO"
-  name: "CAMBIO CLIM\xC1TICO"
+- id: "CAMBIO CLIMÁTICO"
+  name: "CAMBIO CLIMÁTICO"
   firstTaskID: 33398419
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3113,8 +3113,8 @@
     day: 15
     hour: 17
     minute: 37
-- id: "CIENCIA ECON\xD3MICA"
-  name: "CIENCIA ECON\xD3MICA"
+- id: "CIENCIA ECONÓMICA"
+  name: "CIENCIA ECONÓMICA"
   firstTaskID: 33526289
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3154,8 +3154,8 @@
     day: 13
     hour: 8
     minute: 11
-- id: "SALUD P\xDABLICA"
-  name: "SALUD P\xDABLICA"
+- id: "SALUD PÚBLICA"
+  name: "SALUD PÚBLICA"
   firstTaskID: 33586079
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3174,8 +3174,8 @@
     day: 15
     hour: 8
     minute: 29
-- id: "BIOLOG\xCDA"
-  name: "BIOLOG\xCDA"
+- id: "BIOLOGÍA"
+  name: "BIOLOGÍA"
   firstTaskID: 33685739
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3194,8 +3194,8 @@
     day: 25
     hour: 9
     minute: 59
-- id: "GEN\xC9TICA"
-  name: "GEN\xC9TICA"
+- id: "GENÉTICA"
+  name: "GENÉTICA"
   firstTaskID: 33688959
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3274,8 +3274,8 @@
     day: 30
     hour: 22
     minute: 28
-- id: "\xC9TICA"
-  name: "\xC9TICA"
+- id: "ÉTICA"
+  name: "ÉTICA"
   firstTaskID: 34168619
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3295,8 +3295,8 @@
     day: 1
     hour: 14
     minute: 38
-- id: "EPISTEMOLOG\xCDA"
-  name: "EPISTEMOLOG\xCDA"
+- id: "EPISTEMOLOGÍA"
+  name: "EPISTEMOLOGÍA"
   firstTaskID: 34240649
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3335,8 +3335,8 @@
     day: 23
     hour: 16
     minute: 36
-- id: "TECNOLOG\xCDA ENERG\xC9TICA"
-  name: "TECNOLOG\xCDA ENERG\xC9TICA"
+- id: "TECNOLOGÍA ENERGÉTICA"
+  name: "TECNOLOGÍA ENERGÉTICA"
   firstTaskID: 34290319
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3415,8 +3415,8 @@
     day: 12
     hour: 23
     minute: 56
-- id: "CR\xCDA INTENSIVA"
-  name: "CR\xCDA INTENSIVA"
+- id: "CRÍA INTENSIVA"
+  name: "CRÍA INTENSIVA"
   firstTaskID: 34351089
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3455,8 +3455,8 @@
     day: 20
     hour: 14
     minute: 13
-- id: "TECNOLOG\xCDA AGR\xCDCOLA"
-  name: "TECNOLOG\xCDA AGR\xCDCOLA"
+- id: "TECNOLOGÍA AGRÍCOLA"
+  name: "TECNOLOGÍA AGRÍCOLA"
   firstTaskID: 34352089
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3555,8 +3555,8 @@
     day: 19
     hour: 8
     minute: 55
-- id: "COLONIZACI\xD3N ESPACIAL"
-  name: "COLONIZACI\xD3N ESPACIAL"
+- id: "COLONIZACIÓN ESPACIAL"
+  name: "COLONIZACIÓN ESPACIAL"
   firstTaskID: 34437509
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3595,8 +3595,8 @@
     day: 6
     hour: 8
     minute: 40
-- id: "METAF\xCDSICA"
-  name: "METAF\xCDSICA"
+- id: "METAFÍSICA"
+  name: "METAFÍSICA"
   firstTaskID: 34449849
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3655,8 +3655,8 @@
     day: 30
     hour: 21
     minute: 8
-- id: "INGENIER\xCDA INDUSTRIAL"
-  name: "INGENIER\xCDA INDUSTRIAL"
+- id: "INGENIERÍA INDUSTRIAL"
+  name: "INGENIERÍA INDUSTRIAL"
   firstTaskID: 34478589
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3675,8 +3675,8 @@
     day: 13
     hour: 13
     minute: 44
-- id: "ASTRONOM\xCDA"
-  name: "ASTRONOM\xCDA"
+- id: "ASTRONOMÍA"
+  name: "ASTRONOMÍA"
   firstTaskID: 34487609
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3815,8 +3815,8 @@
     day: 26
     hour: 12
     minute: 41
-- id: "PRON\xD3STICO"
-  name: "PRON\xD3STICO"
+- id: "PRONÓSTICO"
+  name: "PRONÓSTICO"
   firstTaskID: 34593909
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3855,8 +3855,8 @@
     day: 15
     hour: 11
     minute: 22
-- id: "INGENIER\xCDA AEROESPACIAL"
-  name: "INGENIER\xCDA AEROESPACIAL"
+- id: "INGENIERÍA AEROESPACIAL"
+  name: "INGENIERÍA AEROESPACIAL"
   firstTaskID: 34782179
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -3915,8 +3915,8 @@
     day: 29
     hour: 21
     minute: 18
-- id: "SOCIOLOG\xCDA"
-  name: "SOCIOLOG\xCDA"
+- id: "SOCIOLOGÍA"
+  name: "SOCIOLOGÍA"
   firstTaskID: 34798859
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4015,8 +4015,8 @@
     day: 14
     hour: 20
     minute: 15
-- id: "BIOINGENIER\xCDA"
-  name: "BIOINGENIER\xCDA"
+- id: "BIOINGENIERÍA"
+  name: "BIOINGENIERÍA"
   firstTaskID: 34842459
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4055,8 +4055,8 @@
     day: 20
     hour: 19
     minute: 24
-- id: "ELECTR\xD3NICA"
-  name: "ELECTR\xD3NICA"
+- id: "ELECTRÓNICA"
+  name: "ELECTRÓNICA"
   firstTaskID: 34847429
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4215,8 +4215,8 @@
     day: 12
     hour: 23
     minute: 41
-- id: "CIENCIA ATMOSF\xC9RICA"
-  name: "CIENCIA ATMOSF\xC9RICA"
+- id: "CIENCIA ATMOSFÉRICA"
+  name: "CIENCIA ATMOSFÉRICA"
   firstTaskID: 35033429
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4255,8 +4255,8 @@
     day: 18
     hour: 10
     minute: 27
-- id: "EVOLUCI\xD3N"
-  name: "EVOLUCI\xD3N"
+- id: "EVOLUCIÓN"
+  name: "EVOLUCIÓN"
   firstTaskID: 35090399
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4295,8 +4295,8 @@
     day: 11
     hour: 16
     minute: 55
-- id: "SERVICIOS P\xDABLICOS"
-  name: "SERVICIOS P\xDABLICOS"
+- id: "SERVICIOS PÚBLICOS"
+  name: "SERVICIOS PÚBLICOS"
   firstTaskID: 35299619
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4375,8 +4375,8 @@
     day: 25
     hour: 9
     minute: 59
-- id: "F\xCDSICA"
-  name: "F\xCDSICA"
+- id: "FÍSICA"
+  name: "FÍSICA"
   firstTaskID: 35417779
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4455,8 +4455,8 @@
     day: 31
     hour: 15
     minute: 57
-- id: "AXIOLOG\xCDA"
-  name: "AXIOLOG\xCDA"
+- id: "AXIOLOGÍA"
+  name: "AXIOLOGÍA"
   firstTaskID: 35716709
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4475,8 +4475,8 @@
     day: 1
     hour: 21
     minute: 7
-- id: "INGENIER\xCDA ESPACIAL"
-  name: "INGENIER\xCDA ESPACIAL"
+- id: "INGENIERÍA ESPACIAL"
+  name: "INGENIERÍA ESPACIAL"
   firstTaskID: 35716709
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4574,8 +4574,8 @@
     day: 28
     hour: 9
     minute: 24
-- id: "INGENIER\xCDA MEC\xC1NICA"
-  name: "INGENIER\xCDA MEC\xC1NICA"
+- id: "INGENIERÍA MECÁNICA"
+  name: "INGENIERÍA MECÁNICA"
   firstTaskID: 35894679
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4594,8 +4594,8 @@
     day: 7
     hour: 21
     minute: 55
-- id: "MEM\xC9TICA"
-  name: "MEM\xC9TICA"
+- id: "MEMÉTICA"
+  name: "MEMÉTICA"
   firstTaskID: 35935709
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4614,8 +4614,8 @@
     day: 15
     hour: 11
     minute: 22
-- id: "COMBUSTIBLE F\xD3SIL"
-  name: "COMBUSTIBLE F\xD3SIL"
+- id: "COMBUSTIBLE FÓSIL"
+  name: "COMBUSTIBLE FÓSIL"
   firstTaskID: 35949989
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4634,8 +4634,8 @@
     day: 3
     hour: 23
     minute: 11
-- id: "CONTAMINACI\xD3N DEL AIRE"
-  name: "CONTAMINACI\xD3N DEL AIRE"
+- id: "CONTAMINACIÓN DEL AIRE"
+  name: "CONTAMINACIÓN DEL AIRE"
   firstTaskID: 35949989
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4714,8 +4714,8 @@
     day: 16
     hour: 7
     minute: 40
-- id: "TECNOLOG\xCDA INDUSTRIAL"
-  name: "TECNOLOG\xCDA INDUSTRIAL"
+- id: "TECNOLOGÍA INDUSTRIAL"
+  name: "TECNOLOGÍA INDUSTRIAL"
   firstTaskID: 36099249
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4774,8 +4774,8 @@
     day: 25
     hour: 13
     minute: 6
-- id: "LIBERACI\xD3N ANIMAL"
-  name: "LIBERACI\xD3N ANIMAL"
+- id: "LIBERACIÓN ANIMAL"
+  name: "LIBERACIÓN ANIMAL"
   firstTaskID: 36378959
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -4854,8 +4854,8 @@
     day: 26
     hour: 9
     minute: 52
-- id: "SALAS DE M\xDASICA"
-  name: "SALAS DE M\xDASICA"
+- id: "SALAS DE MÚSICA"
+  name: "SALAS DE MÚSICA"
   firstTaskID: 36888289
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4894,8 +4894,8 @@
     day: 6
     hour: 19
     minute: 55
-- id: "MEZCLA DE M\xDASICA"
-  name: "MEZCLA DE M\xDASICA"
+- id: "MEZCLA DE MÚSICA"
+  name: "MEZCLA DE MÚSICA"
   firstTaskID: 37120119
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4973,8 +4973,8 @@
     day: 16
     hour: 13
     minute: 23
-- id: "ATE\xCDSMO"
-  name: "ATE\xCDSMO"
+- id: "ATEÍSMO"
+  name: "ATEÍSMO"
   firstTaskID: 37719939
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4993,8 +4993,8 @@
     day: 4
     hour: 11
     minute: 41
-- id: "INGENIER\xCDA CIVIL"
-  name: "INGENIER\xCDA CIVIL"
+- id: "INGENIERÍA CIVIL"
+  name: "INGENIERÍA CIVIL"
   firstTaskID: 37784749
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5113,8 +5113,8 @@
     day: 1
     hour: 23
     minute: 51
-- id: "GESTI\xD3N"
-  name: "GESTI\xD3N"
+- id: "GESTIÓN"
+  name: "GESTIÓN"
   firstTaskID: 39008819
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5213,8 +5213,8 @@
     day: 29
     hour: 11
     minute: 57
-- id: "MACROECON\xD3MICA"
-  name: "MACROECON\xD3MICA"
+- id: "MACROECONÓMICA"
+  name: "MACROECONÓMICA"
   firstTaskID: 39425639
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5239,7 +5239,7 @@ adj:
   $SUBJECTMATTER_UNDEFINED:
     $SUBJECTMATTER:
       p: 0
-  "FILOSOF\xCDA":
+  "FILOSOFÍA":
     $SUBJECTMATTER:
       p: 0
   CIENCIA:
@@ -5260,7 +5260,7 @@ adj:
   CIENCIA NATURAL:
     CIENCIA:
       p: 0
-  "CIENCIA F\xCDSICA":
+  "CIENCIA FÍSICA":
     CIENCIA FORMAL:
       p: 0
   RECREO:
@@ -5294,24 +5294,24 @@ adj:
     ENTRETENIMIENTO:
       p: 0
   CORNELL:
-    "EDUCACI\xD3N":
+    "EDUCACIÓN":
       p: 0
   EQUIPO:
-    "LOG\xCDSTICA":
+    "LOGÍSTICA":
       p: 0
   MANTENIMIENTO:
-    "LOG\xCDSTICA":
+    "LOGÍSTICA":
       p: 0
   PROYECTOS:
-    "ACAD\xCDMICA":
+    "ACADÍMICA":
       p: 0
   BICOPTER:
     CONTROLES:
       p: 0
   MATLAB:
-    "LENGUAJE DE PROGRAMACI\xD3N":
+    "LENGUAJE DE PROGRAMACIÓN":
       p: 0
-  "PEL\xCDCULAS":
+  "PELÍCULAS":
     ENTRETENIMIENTO:
       p: 0
   EQUIPO DE BICI:
@@ -5324,10 +5324,10 @@ adj:
     CONTROLES:
       p: 0
   RESTAURANTES:
-    "ESPACIOS P\xCDBBLICOS":
+    "ESPACIOS PÍBBLICOS":
       p: 0
   CURSOS:
-    "ACAD\xCDMICA":
+    "ACADÍMICA":
       p: 0
   VACACIONES:
     RECREO:
@@ -5338,10 +5338,10 @@ adj:
   REGALOS:
     GENTE CONOCIDA:
       p: 0
-  "DISE\xD1OS":
-    "INGENIER\xCDA MEC\xC1NICA":
+  "DISEÑOS":
+    "INGENIERÍA MECÁNICA":
       p: 0
-  "EVALUACI\xD3N POR PARES":
+  "EVALUACIÓN POR PARES":
     CURSOS:
       p: 0
   LEY DE ARRENDAMIENTO:
@@ -5350,86 +5350,86 @@ adj:
   ITHACA:
     LUGARES:
       p: 0
-  "GRADUACI\xD3N":
-    "EDUCACI\xD3N":
+  "GRADUACIÓN":
+    "EDUCACIÓN":
       p: 0
   COMPARTIMENTO DE AUTO:
     AUTO:
       p: 0
-  "VOTACI\xD3N":
-    "LOG\xCDSTICA":
+  "VOTACIÓN":
+    "LOGÍSTICA":
       p: 0
   ACCESORIOS:
     EQUIPO:
       p: 0
-  "DIN\xC1MICA":
-    "INGENIER\xCDA MEC\xC1NICA":
+  "DINÁMICA":
+    "INGENIERÍA MECÁNICA":
       p: 0
-  "V\xCDDEO JUEGOS":
+  "VÍDEO JUEGOS":
     JUEGOS:
       p: 0
   RECICLAJE:
-    "SERVICIOS P\xCDBLICOS":
+    "SERVICIOS PÚBLICOS":
       p: 0
   PING PONG:
     DEPORTES:
       p: 0
   BIBLIOTECA:
-    "ESPACIOS P\xCDBBLICOS":
+    "ESPACIOS PÚBLICOS":
       p: 0
-  "GRUPOS DE INTER\xC9S":
+  "GRUPOS DE INTERÉS":
     TRABAJO:
       p: 0
   BARS:
-    "ESPACIOS P\xCDBBLICOS":
+    "ESPACIOS PÍBBLICOS":
       p: 0
   FEA:
     ESTRUCTURA:
       p: 0
-  "M\xDASICA":
+  "MÚSICA":
     ENTRETENIMIENTO:
       p: 0
   TIENDAS:
-    "ESPACIOS P\xCDBBLICOS":
+    "ESPACIOS PÍBBLICOS":
       p: 0
   TAMBORES:
     INSTRUMENTOS:
       p: 0
   SQL:
-    "LENGUAJE DE PROGRAMACI\xD3N":
+    "LENGUAJE DE PROGRAMACIÓN":
       p: 0
   PYTHON:
-    "LENGUAJE DE PROGRAMACI\xD3N":
+    "LENGUAJE DE PROGRAMACIÓN":
       p: 0
   JAZZ:
-    "M\xDASICA":
+    "MÚSICA":
       p: 0
   INTERNET:
-    "INFORM\xC1TICA":
+    "INFORMÁTICA":
       p: 0
   ESTRUCTURA:
-    "INGENIER\xCDA MEC\xC1NICA":
+    "INGENIERÍA MECÁNICA":
       p: 0
   ACTIVIDADES:
     ESTILO DE VIDA:
       p: 0
   SALUD:
-    "BIOLOG\xCDA":
+    "BIOLOGÍA":
       p: 0
   CLIMA:
-    "CIENCIA ATMOSF\xC9RICA":
+    "CIENCIA ATMOSFÉRICA":
       p: 0
-  "ROB\xD3TICA":
-    "ELECTR\xD3NICA":
+  "ROBÓTICA":
+    "ELECTRÓNICA":
       p: 0
   INSTRUMENTOS:
-    "M\xDASICA":
+    "MÚSICA":
       p: 0
   EVENTOS:
     RECREO:
       p: 0
   CICLISMO:
-    DEPORTES:A
+    DEPORTES:
       p: 0
   VIAJES:
     VACACIONES:
@@ -5443,7 +5443,7 @@ adj:
   DIVORCIO:
     FAMILIA:
       p: 0
-  "BICI EL\xC9CTRICA":
+  "BICI ELÉCTRICA":
     BICI:
       p: 0
   NFL:
@@ -5465,7 +5465,7 @@ adj:
     RECREO:
       p: 0
   CAD:
-    "INGENIER\xCDA MEC\xC1NICA":
+    "INGENIERÍA MECÁNICA":
       p: 0
   COLORADO:
     LUGARES:
@@ -5485,38 +5485,38 @@ adj:
   RELACIONES:
     ESTRUCTURA SOCIAL:
       p: 0
-  "POL\xCDTICA":
+  "POLÍTICA":
     GOBIERNO:
       p: 0
-  "POL\xCDTICA DE BOULDER":
-    "POL\xCDTICA LOCAL":
+  "POLÍTICA DE BOULDER":
+    "POLÍTICA LOCAL":
       p: 0
-  "EQUIPO DE M\xDASICA":
-    "M\xDASICA":
+  "EQUIPO DE MÚSICA":
+    "MÚSICA":
       p: 0
   EUROPA:
     LUGARES:
       p: 0
-  "TECNOLOG\xCDA":
+  "TECNOLOGÍA":
     CIENCIA:
       p: 0
   COVID-19:
-    "SALUD P\xDABLICA":
+    "SALUD PÚBLICA":
       p: 0
   COMIDA:
     ESTILO DE VIDA:
       p: 0
-  "GRABACI\xD3N":
-    "M\xDASICA":
+  "GRABACIÓN":
+    "MÚSICA":
       p: 0
   DONACIONES:
     SERVICIOS:
       p: 0
   SERVICIOS:
-    "LOG\xCDSTICA":
+    "LOGÍSTICA":
       p: 0
   ROCK BAND:
-    "V\xCDDEO JUEGOS":
+    "VÍDEO JUEGOS":
       p: 0
   CHINCHES:
     CASA:
@@ -5524,16 +5524,16 @@ adj:
   TECLADO:
     INSTRUMENTOS:
       p: 0
-  "CITAS EN L\xCDNEA":
+  "CITAS EN LÍNEA":
     RELACIONES:
       p: 0
   MEMES:
     ENTRETENIMIENTO:
       p: 0
-  "EDUCACI\xD3N":
-    "ACAD\xCDMICA":
+  "EDUCACIÓN":
+    "ACADÍMICA":
       p: 0
-  "INVERSI\xD3N":
+  "INVERSIÓN":
     FINANZAS:
       p: 0
   COMPUTADORA:
@@ -5543,12 +5543,12 @@ adj:
     ACTIVIDADES:
       p: 0
   FINANZAS:
-    "LOG\xCDSTICA":
+    "LOGÍSTICA":
       p: 0
   CARRERA:
     ASUNTO PERSONAL:
       p: 0
-  "AUTOR\xCDA DE ROCK BAND":
+  "AUTORÍA DE ROCK BAND":
     ROCK BAND:
       p: 0
   ALOJAMIENTO:
@@ -5557,10 +5557,10 @@ adj:
   VISADOS:
     VIAJES:
       p: 0
-  "TEL\xC9FONO":
+  "TELÉFONO":
     EQUIPO DE CASA:
       p: 0
-  "LOG\xCDSTICA":
+  "LOGÍSTICA":
     ASUNTO PERSONAL:
       p: 0
   HOSPEDAJE:
@@ -5582,25 +5582,25 @@ adj:
     SERVICIOS:
       p: 0
   ROCKSMITH:
-    "V\xCDDEO JUEGOS":
+    "VÍDEO JUEGOS":
       p: 0
-  "IMPROVISACI\xD3N":
+  "IMPROVISACIÓN":
     ENTRETENIMIENTO:
       p: 0
-  "COMUNIDAD DE M\xDASICA":
-    "M\xDASICA":
+  "COMUNIDAD DE MÚSICA":
+    "MÚSICA":
       p: 0
   ALGORITMOS:
-    "INFORM\xC1TICA":
+    "INFORMÁTICA":
       p: 0
   URBANISMO:
     SOCIEDAD:
       p: 0
-  "AN\xC1LISIS DE DATOS":
-    "INFORM\xC1TICA":
+  "ANÁLISIS DE DATOS":
+    "INFORMÁTICA":
       p: 0
-  "INFORM\xC1TICA":
-    "TECNOLOG\xCDA":
+  "INFORMÁTICA":
+    "TECNOLOGÍA":
       p: 0
   COMUNIDADES:
     $SUBJECTMATTER_UNDEFINED:
@@ -5611,13 +5611,13 @@ adj:
   REFUGIADOS:
     ESTRUCTURA SOCIAL:
       p: 0
-  "POL\xCDTICA GLOBAL":
-    "POL\xCDTICA":
+  "POLÍTICA GLOBAL":
+    "POLÍTICA":
       p: 0
   IDIOMA:
     CULTURAS MUNDIALES:
       p: 0
-  "MATEM\xC1TICAS":
+  "MATEMÁTICAS":
     CIENCIA FORMAL:
       p: 0
   RACIONALIDAD:
@@ -5629,16 +5629,16 @@ adj:
   CULTURAS MUNDIALES:
     CULTURA:
       p: 0
-  "EVOLUCI\xD3N HUMANA":
-    "ANTROPOLOG\xCDA":
+  "EVOLUCIÓN HUMANA":
+    "ANTROPOLOGÍA":
       p: 0
-  "H\xC1BITOS":
+  "HÁBITOS":
     ESTILO DE VIDA:
       p: 0
-  "ANTROPOLOG\xCDA":
+  "ANTROPOLOGÍA":
     CIENCIA SOCIAL:
       p: 0
-  "GEOGRAF\xCDA":
+  "GEOGRAFÍA":
     CIENCIA DE LA TIERRA:
       p: 0
   HISTORIA ANTIGUA:
@@ -5648,25 +5648,25 @@ adj:
     HISTORIA:
       p: 0
   INTELIGENCIA ARTIFICIAL:
-    "INFORM\xC1TICA":
+    "INFORMÁTICA":
       p: 0
   CANCIONES:
-    "M\xDASICA":
+    "MÚSICA":
       p: 0
   HISTORIA RECIENTE:
     HISTORIA:
       p: 0
-  "RELIGI\xD3N":
-    "FILOSOF\xCDA":
+  "RELIGIÓN":
+    "FILOSOFÍA":
       p: 0
   ARMAS NUCLEARES:
-    "TECNOLOG\xCDA":
+    "TECNOLOGÍA":
       p: 0
   FAMILIA:
     ESTRUCTURA SOCIAL:
       p: 0
   CIBERSEGURIDAD:
-    "INFORM\xC1TICA":
+    "INFORMÁTICA":
       p: 0
   CIENCIA DE LA TIERRA:
     CIENCIA NATURAL:
@@ -5674,26 +5674,26 @@ adj:
   ESTRUCTURA SOCIAL:
     SOCIEDAD:
       p: 0
-  "ACAD\xC9MICA":
+  "ACADÉMICA":
     ASUNTO PERSONAL:
       p: 0
-  "POL\xCDTICA ESTADOUNIDENSE":
-    "POL\xCDTICA NACIONAL":
+  "POLÍTICA ESTADOUNIDENSE":
+    "POLÍTICA NACIONAL":
       p: 0
-  "POL\xCDTICA LOCAL":
-    "POL\xCDTICA":
+  "POLÍTICA LOCAL":
+    "POLÍTICA":
       p: 0
   MISOGINIA:
     MUJERES:
       p: 0
-  "INGENIER\xCDA":
-    "TECNOLOG\xCDA":
+  "INGENIERÍA":
+    "TECNOLOGÍA":
       p: 0
   CAMBIO:
     CIENCIA DE LA TIERRA:
       p: 0
-  "POL\xCDTICA NACIONAL":
-    "POL\xCDTICA":
+  "POLÍTICA NACIONAL":
+    "POLÍTICA":
       p: 0
   METAS PERSONALES:
     ASUNTO PERSONAL:
@@ -5704,10 +5704,10 @@ adj:
   TALLER:
     EVENTOS:
       p: 0
-  "PSICOLOG\xCDA":
+  "PSICOLOGÍA":
     CIENCIA SOCIAL:
       p: 0
-  "MEDITACI\xD3N":
+  "MEDITACIÓN":
     ESPIRITUALIDAD:
       p: 0
   REGISTRO DE VIDA:
@@ -5716,26 +5716,26 @@ adj:
   GUERRA:
     PROBLEMAS:
       p: 0
-  "AUTORREALIZACI\xD3N":
+  "AUTORREALIZACIÓN":
     BIENESTAR:
       p: 0
-  "CAMBIO CLIM\xC1TICO":
+  "CAMBIO CLIMÁTICO":
     CIENCIA DE LA TIERRA:
       p: 0
-  "CIENCIA ECON\xD3MICA":
+  "CIENCIA ECONÓMICA":
     CIENCIA SOCIAL:
       p: 0
   JUVENTUD:
     ESTRUCTURA SOCIAL:
       p: 0
-  "SALUD P\xDABLICA":
+  "SALUD PÚBLICA":
     SOCIEDAD:
       p: 0
-  "BIOLOG\xCDA":
-    "CIENCIA F\xCDSICA":
+  "BIOLOGÍA":
+    "CIENCIA FÍSICA":
       p: 0
-  "GEN\xC9TICA":
-    "BIOLOG\xCDA":
+  "GENÉTICA":
+    "BIOLOGÍA":
       p: 0
   CITA:
     SERVICIOS:
@@ -5744,19 +5744,19 @@ adj:
     ESTRUCTURA SOCIAL:
       p: 0
   CONCIENCIA:
-    "FILOSOF\xCDA":
+    "FILOSOFÍA":
       p: 0
-  "\xC9TICA":
-    "FILOSOF\xCDA":
+  "ÉTICA":
+    "FILOSOFÍA":
       p: 0
-  "EPISTEMOLOG\xCDA":
-    "FILOSOF\xCDA":
+  "EPISTEMOLOGÍA":
+    "FILOSOFÍA":
       p: 0
   CIENCIA DE DATOS:
-    "INFORM\xC1TICA":
+    "INFORMÁTICA":
       p: 0
-  "TECNOLOG\xCDA ENERG\xC9TICA":
-    "TECNOLOG\xCDA INDUSTRIAL":
+  "TECNOLOGÍA ENERGÉTICA":
+    "TECNOLOGÍA INDUSTRIAL":
       p: 0
   PROBLEMAS GLOBALES:
     PROBLEMAS:
@@ -5767,17 +5767,17 @@ adj:
   APOCALIPSIS:
     PROBLEMAS GLOBALES:
       p: 0
-  "CR\xCDA INTENSIVA":
-    "TECNOLOG\xCDA AGR\xCDCOLA":
+  "CRÍA INTENSIVA":
+    "TECNOLOGÍA AGRÍCOLA":
       p: 0
   VEGANISMO:
     MOVIMIENTO SOCIAL:
       p: 0
-  "TECNOLOG\xCDA AGR\xCDCOLA":
-    "TECNOLOG\xCDA":
+  "TECNOLOGÍA AGRÍCOLA":
+    "TECNOLOGÍA":
       p: 0
   LARGOPLACISMO:
-    "\xC9TICA":
+    "ÉTICA":
       p: 0
   AGOTAMIENTO:
     SALUD MENTAL:
@@ -5788,14 +5788,14 @@ adj:
   NO LUCRATIVO:
     NEGOCIO:
       p: 0
-  "COLONIZACI\xD3N ESPACIAL":
-    "INGENIER\xCDA AEROESPACIAL":
+  "COLONIZACIÓN ESPACIAL":
+    "INGENIERÍA AEROESPACIAL":
       p: 0
   REACCIONES:
     MITIGACIONES:
       p: 0
-  "METAF\xCDSICA":
-    "FILOSOF\xCDA":
+  "METAFÍSICA":
+    "FILOSOFÍA":
       p: 0
   MINIMALISMO:
     ESTILO DE VIDA:
@@ -5803,20 +5803,20 @@ adj:
   ASUNTO FAMILIAR:
     GENTE CONOCIDA:
       p: 0
-  "INGENIER\xCDA INDUSTRIAL":
-    "INGENIER\xCDA":
+  "INGENIERÍA INDUSTRIAL":
+    "INGENIERÍA":
       p: 0
-  "ASTRONOM\xCDA":
-    "CIENCIA F\xCDSICA":
+  "ASTRONOMÍA":
+    "CIENCIA FÍSICA":
       p: 0
   NEGOCIO:
-    "ECONOM\xCDA":
+    "ECONOMÍA":
       p: 0
   GENTE SIN HOGAR:
     ESTRUCTURA SOCIAL:
       p: 0
   IGUALITARISMO:
-    "\xC9TICA":
+    "ÉTICA":
       p: 0
   RIESGOS DE SUFRIMIENTO:
     PROBLEMAS GLOBALES:
@@ -5827,14 +5827,14 @@ adj:
   EJERCICIOS:
     DEPORTES:
       p: 0
-  "PRON\xD3STICO":
+  "PRONÓSTICO":
     RACIONALIDAD:
       p: 0
   DEMOCRACIA:
     LIBERALISMO:
       p: 0
-  "INGENIER\xCDA AEROESPACIAL":
-    "INGENIER\xCDA MEC\xC1NICA":
+  "INGENIERÍA AEROESPACIAL":
+    "INGENIERÍA MECÁNICA":
       p: 0
   SEGURIDAD DE INTELIGENCIA ARTIFICIAL:
     INTELIGENCIA ARTIFICIAL:
@@ -5842,7 +5842,7 @@ adj:
   ESTILO DE VIDA:
     CULTURA:
       p: 0
-  "SOCIOLOG\xCDA":
+  "SOCIOLOGÍA":
     CIENCIA SOCIAL:
       p: 0
   DIETA:
@@ -5857,17 +5857,17 @@ adj:
   CASA:
     VIVIENDA:
       p: 0
-  "BIOINGENIER\xCDA":
-    "INGENIER\xCDA":
+  "BIOINGENIERÍA":
+    "INGENIERÍA":
       p: 0
   MITIGACIONES:
     PROBLEMAS:
       p: 0
-  "ELECTR\xD3NICA":
-    "TECNOLOG\xCDA":
+  "ELECTRÓNICA":
+    "TECNOLOGÍA":
       p: 0
   SALUD GLOBAL:
-    "SALUD P\xDABLICA":
+    "SALUD PÚBLICA":
       p: 0
   MITIGACIONES DE RIESGOS-X:
     RIESGOS EXISTENCIALES:
@@ -5887,23 +5887,23 @@ adj:
   SALUD MENTAL:
     BIENESTAR:
       p: 0
-  "CIENCIA ATMOSF\xC9RICA":
+  "CIENCIA ATMOSFÉRICA":
     CIENCIA DE LA TIERRA:
       p: 0
   SOLUCIONES:
     MITIGACIONES:
       p: 0
-  "EVOLUCI\xD3N":
-    "GEN\xC9TICA":
+  "EVOLUCIÓN":
+    "GENÉTICA":
       p: 0
   JUEGOS:
     ENTRETENIMIENTO:
       p: 0
-  "SERVICIOS P\xDABLICOS":
+  "SERVICIOS PÚBLICOS":
     GOBIERNO:
       p: 0
   BIENESTAR:
-    "FILOSOF\xCDA":
+    "FILOSOFÍA":
       p: 0
   GO:
     $JUEGOS DE MESA:
@@ -5911,67 +5911,67 @@ adj:
   MUJERES:
     ESTRUCTURA SOCIAL:
       p: 0
-  "F\xCDSICA":
-    "CIENCIA F\xCDSICA":
+  "FÍSICA":
+    "CIENCIA FÍSICA":
       p: 0
   ESPIRITUALIDAD:
-    "AUTORREALIZACI\xD3N":
+    "AUTORREALIZACIÓN":
       p: 0
   FEMINISMO:
     MOVIMIENTO SOCIAL:
       p: 0
   TRANSHUMANISMO:
-    "AUTORREALIZACI\xD3N":
+    "AUTORREALIZACIÓN":
       p: 0
-  "AXIOLOG\xCDA":
-    "\xC9TICA":
+  "AXIOLOGÍA":
+    "ÉTICA":
       p: 0
-  "INGENIER\xCDA ESPACIAL":
-    "INGENIER\xCDA MEC\xC1NICA":
+  "INGENIERÍA ESPACIAL":
+    "INGENIERÍA MECÁNICA":
       p: 0
   BIOSEGURIDAD:
-    "BIOINGENIER\xCDA":
+    "BIOINGENIERÍA":
       p: 0
   GENOCIDIO:
     PROBLEMAS:
       p: 0
   COMBUSTIBLE:
-    "TECNOLOG\xCDA ENERG\xC9TICA":
+    "TECNOLOGÍA ENERGÉTICA":
       p: 0
   VIVIENDA:
-    "LOG\xCDSTICA":
+    "LOGÍSTICA":
       p: 0
-  "INGENIER\xCDA MEC\xC1NICA":
-    "INGENIER\xCDA":
+  "INGENIERÍA MECÁNICA":
+    "INGENIERÍA":
       p: 0
-  "MEM\xC9TICA":
-    "SOCIOLOG\xCDA":
+  "MEMÉTICA":
+    "SOCIOLOGÍA":
       p: 0
-  "COMBUSTIBLE F\xD3SIL":
+  "COMBUSTIBLE FÓSIL":
     COMBUSTIBLE:
       p: 0
-  "CONTAMINACI\xD3N DEL AIRE":
-    "SALUD P\xDABLICA":
+  "CONTAMINACIÓN DEL AIRE":
+    "SALUD PÚBLICA":
       p: 0
   CONTROLES:
-    "INGENIER\xCDA AEROESPACIAL":
+    "INGENIERÍA AEROESPACIAL":
       p: 0
   CAPITALISMO:
-    "ECONOM\xCDA":
+    "ECONOMÍA":
       p: 0
   CONFERENCIA:
-    "ACAD\xC9MICA":
+    "ACADÉMICA":
       p: 0
-  "TECNOLOG\xCDA INDUSTRIAL":
-    "TECNOLOG\xCDA":
+  "TECNOLOGÍA INDUSTRIAL":
+    "TECNOLOGÍA":
       p: 0
   PROBLEMAS CULTURALES:
     PROBLEMAS:
       p: 0
   ALTRUISMO:
-    "\xC9TICA":
+    "ÉTICA":
       p: 0
-  "LIBERACI\xD3N ANIMAL":
+  "LIBERACIÓN ANIMAL":
     MOVIMIENTO SOCIAL:
       p: 0
   MUDANZA:
@@ -5983,14 +5983,14 @@ adj:
   AISC:
     EDUCACIÓN:
       p: 0
-  "SALAS DE M\xDASICA":
+  "SALAS DE MÚSICA":
     $LUGARES:
       p: 0
   COCINA:
     COMIDA:
       p: 0
-  "MEZCLA DE M\xDASICA":
-    "M\xDASICA":
+  "MEZCLA DE MÚSICA":
+    "MÚSICA":
       p: 0
   PERIODISMO:
     ESCRITURA:
@@ -6001,11 +6001,11 @@ adj:
   LIBERALISMO:
     GOBIERNO:
       p: 0
-  "ATE\xCDSMO":
-    "RELIGI\xD3N":
+  "ATEÍSMO":
+    "RELIGIÓN":
       p: 0
-  "INGENIER\xCDA CIVIL":
-    "INGENIER\xCDA":
+  "INGENIERÍA CIVIL":
+    "INGENIERÍA":
       p: 0
   RED SOCIAL:
     INTERNET:
@@ -6014,12 +6014,12 @@ adj:
     SOLUCIONES:
       p: 0
   PRODUCTIVIDAD:
-    "GESTI\xD3N":
+    "GESTIÓN":
       p: 0
   COLEGAS:
     GENTE CONOCIDA:
       p: 0
-  "GESTI\xD3N":
+  "GESTIÓN":
     SOCIEDAD:
       p: 0
   ESCRITURA:
@@ -6029,11 +6029,11 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   DERECHOS HUMANOS:
-    "\xC9TICA":
+    "ÉTICA":
       p: 0
   AJEDREZ:
     $JUEGOS DE MESA:
       p: 0
-  "MACROECON\xD3MICA":
-    "CIENCIA ECON\xD3MICA":
+  "MACROECONÓMICA":
+    "CIENCIA ECONÓMICA":
       p: 0

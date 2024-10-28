@@ -190,7 +190,7 @@ class Catalog(abc.ABC):
         if not os.path.isfile(file):
             self.collxn = self.getEmptyCollxn()
             return None
-        with open(file, 'r') as yamlfile:
+        with open(file, 'r', encoding='utf-8') as yamlfile:
             yamlData = yaml.load(yamlfile.read(), Loader=yaml.SafeLoader)
         if not yamlData:
             self.collxn = self.getEmptyCollxn()
@@ -469,7 +469,7 @@ class DAGCatalog(Catalog):
             self.collxn = self.getEmptyCollxn()
             self.dag = self.COLLXBLE_CLASS.emptyDAG()
             return None
-        with open(file, 'r') as yamlfile:
+        with open(file, 'r', encoding='utf-8') as yamlfile:
             yamlData = [a for a in yaml.safe_load_all(yamlfile)]
         if not yamlData:
             self.collxn = self.getEmptyCollxn()

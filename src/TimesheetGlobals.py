@@ -14,16 +14,16 @@ from pathlib import Path
 import pickle
 from functools import cached_property, lru_cache
 from datetime import datetime, timedelta, date
-import portion as P
 from enum import Enum
+from collections import defaultdict
+from dataclasses import dataclass, field
+import abc
+from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple, Type
 
 import pandas as pd
 # import numpy as np
-from collections import defaultdict
 from pandas.core.dtypes.inference import is_list_like
-from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple, Type
-from dataclasses import dataclass
-import abc
+import portion as P
 
 import i18n_l10n.internationalization as i18n
 from src.TimePeriod import TimePeriod
@@ -756,7 +756,7 @@ class EpochScheme(i18n.EnglishSpanishEnum):
     def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
         class EpochSchemeDataclass(i18n.EnglishSpanishEnum.dataclass):
-            scheme: P.IntervalDict = P.IntervalDict({})  # Dummy default, must define in args
+            scheme: P.IntervalDict = field(default_factory=P.IntervalDict)  # Dummy default, must define in args
         return EpochSchemeDataclass
 
     def id(self, dt: Union[datetime, Iterable[datetime]]) -> Union[int, Iterable[int]]:
