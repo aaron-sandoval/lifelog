@@ -1237,6 +1237,7 @@ class SubjectMatter(DAGCollectible, BareNameID, Global.ListColumn):
             ('SOCIEDAD', cls.rootVertex(), p),
             ('PROBLEMAS', cls.rootVertex(), p),
             ('ASUNTO PERSONAL', cls.rootVertex(), p),
+            ("$ETIQUETAS", cls.rootVertex(), p),
         ])
         out.add_edges_from([
             ("CIENCIA FORMAL", "CIENCIA", p),

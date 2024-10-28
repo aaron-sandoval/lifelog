@@ -1085,8 +1085,8 @@
     day: 20
     hour: 15
     minute: 5
-- id: VIAJES
-  name: VIAJES
+- id: VIAJE
+  name: VIAJE
   firstTaskID: 9098979
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -5411,7 +5411,7 @@ adj:
   CICLISMO:
     DEPORTES:
       p: 0
-  VIAJES:
+  VIAJE:
     VACACIONES:
       p: 0
   AUTO:
@@ -5532,10 +5532,10 @@ adj:
     ROCK BAND:
       p: 0
   ALOJAMIENTO:
-    VIAJES:
+    VIAJE:
       p: 0
   VISADOS:
-    VIAJES:
+    VIAJE:
       p: 0
   "TELÉFONO":
     EQUIPO DE CASA:

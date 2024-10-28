@@ -719,7 +719,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
             cls.e2021_SpChg_KO_Start:    c(start=datetime(2021, 9, 10, 0, 0), es_MX='2021 SpChg Inicio con KO'), # +Kristin Spare Change
             cls.e2022_SpChg_JW_KS_Start: c(start=datetime(2022, 9, 1, 0, 0), es_MX='2022 SpChg Inicio con JW KS'), # +Kirsten, +Jonathan Spare Change
             cls.e2024_SpChg_JW_End:      c(start=datetime(2024, 3, 1, 0, 0), es_MX='2022 SpChg Fin con JW'), # -Jonathan, -George +Barry Spare Change
-            cls.e2024_SpChg_CN_Start:    c(start=datetime(2024, 7, 20, 0, 0), es_MX='2022 SpChg Inicio con CN'), # +Crystal Spare Change
+            cls.e2024_SpChg_CN_Start:    c(start=datetime(2024, 11, 20, 0, 0), es_MX='2022 SpChg Inicio con CN'), # +Crystal Spare Change
             cls.e2024_AISC:              c(start=datetime(2024, 1, 13, 3, 0), es_MX='2023 Campamento de Securidad de IA'), # AISC starts
             cls.e2018_Data_Log_Person:   c(start=datetime(2018, 2, 10, 3), es_MX='2018 Datos Persona'), # Data on time spent with individuals somewhat consistent
         }

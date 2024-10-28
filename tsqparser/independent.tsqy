@@ -34,6 +34,7 @@ When matching tokens, no erroneous partial word matches are possible.
 	'intimo'.replace('íntimo') ;
 	'francés'.replace('francesa') ;
 	'nueva mexicana'.replace('nuevo mexicana') ;
+	'VIAJES'.replace('VIAJE');
 epoch < Epoch.e2018_Boulder_Solo : 'Visitar'.replace('Charlar') ;
 
 """ Names & Titles """

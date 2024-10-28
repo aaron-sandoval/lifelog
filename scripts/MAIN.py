@@ -85,7 +85,7 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
         # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
     else:
         # FM_filePath = FM.main(dataFiles)
-        PP_filePath = PP.main(FM_filePath)
+        # PP_filePath = PP.main(FM_filePath)
         DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
         # VS_filePath = VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
 
