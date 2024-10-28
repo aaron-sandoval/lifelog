@@ -496,7 +496,7 @@ class DAGCatalog(Catalog):
         elif 'adj' in yamlData[1] and len(yamlData[1]['adj']) > 0:  # If there is some data in yaml adj
             self.collxn = pd.DataFrame.from_records(yamlData[0])
             self.collxn.set_index('id', inplace=True)
-            self.dag = nx.DiGraph(yamlData[1]['adj'])
+            self.dag = nx.compose(self.COLLXBLE_CLASS.emptyDAG(), nx.DiGraph(yamlData[1]['adj']))
         else:
             self.dag = self.COLLXBLE_CLASS.emptyDAG()
             self.collect([self.COLLXBLE_CLASS(**d) for d in yamlData[0]])

@@ -1848,26 +1848,6 @@
     day: 31
     hour: 20
     minute: 36
-- id: EQUIPO CICLOTURISMO
-  name: EQUIPO CICLOTURISMO
-  firstTaskID: 24067169
-  firstTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 7
-    day: 30
-    hour: 7
-    minute: 56
-  firstCircad: 2021-07-30
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 3000
-  taskCount: 1
-  lastTaskID: 24067169
-  lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2021
-    month: 7
-    day: 30
-    hour: 8
-    minute: 46
 - id: FINANZAS
   name: FINANZAS
   firstTaskID: 25054149
@@ -2170,8 +2150,8 @@
     day: 5
     hour: 16
     minute: 25
-- id: COLABORACIONES
-  name: COLABORACIONES
+- id: COMUNIDAD DE MÚSICA
+  name: COMUNIDAD DE MÚSICA
   firstTaskID: 32235089
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -5303,7 +5283,7 @@ adj:
     "LOGÍSTICA":
       p: 0
   PROYECTOS:
-    "ACADÍMICA":
+    "ACADÉMICA":
       p: 0
   BICOPTER:
     CONTROLES:
@@ -5324,16 +5304,16 @@ adj:
     CONTROLES:
       p: 0
   RESTAURANTES:
-    "ESPACIOS PÍBBLICOS":
+    "ESPACIOS PÚBLICOS":
       p: 0
   CURSOS:
-    "ACADÍMICA":
+    "ACADÉMICA":
       p: 0
   VACACIONES:
     RECREO:
       p: 0
   NYC:
-    LUGARES:
+    $LUGARES:
       p: 0
   REGALOS:
     GENTE CONOCIDA:
@@ -5348,7 +5328,7 @@ adj:
     CASA:
       p: 0
   ITHACA:
-    LUGARES:
+    $LUGARES:
       p: 0
   "GRADUACIÓN":
     "EDUCACIÓN":
@@ -5381,7 +5361,7 @@ adj:
     TRABAJO:
       p: 0
   BARS:
-    "ESPACIOS PÍBBLICOS":
+    "ESPACIOS PÚBLICOS":
       p: 0
   FEA:
     ESTRUCTURA:
@@ -5390,7 +5370,7 @@ adj:
     ENTRETENIMIENTO:
       p: 0
   TIENDAS:
-    "ESPACIOS PÍBBLICOS":
+    "ESPACIOS PÚBLICOS":
       p: 0
   TAMBORES:
     INSTRUMENTOS:
@@ -5468,7 +5448,7 @@ adj:
     "INGENIERÍA MECÁNICA":
       p: 0
   COLORADO:
-    LUGARES:
+    $LUGARES:
       p: 0
   CARRERAS DE BICI:
     EVENTOS:
@@ -5495,7 +5475,7 @@ adj:
     "MÚSICA":
       p: 0
   EUROPA:
-    LUGARES:
+    $LUGARES:
       p: 0
   "TECNOLOGÍA":
     CIENCIA:
@@ -5531,7 +5511,7 @@ adj:
     ENTRETENIMIENTO:
       p: 0
   "EDUCACIÓN":
-    "ACADÍMICA":
+    "ACADÉMICA":
       p: 0
   "INVERSIÓN":
     FINANZAS:
@@ -5573,7 +5553,7 @@ adj:
     PRODUCTIVIDAD:
       p: 0
   CIUDADES:
-    LUGARES:
+    $LUGARES:
       p: 0
   PODCASTS:
     ENTRETENIMIENTO:
@@ -5906,7 +5886,7 @@ adj:
     "FILOSOFÍA":
       p: 0
   GO:
-    $JUEGOS DE MESA:
+    JUEGOS DE MESA:
       p: 0
   MUJERES:
     ESTRUCTURA SOCIAL:
@@ -6032,7 +6012,7 @@ adj:
     "ÉTICA":
       p: 0
   AJEDREZ:
-    $JUEGOS DE MESA:
+    JUEGOS DE MESA:
       p: 0
   "MACROECONÓMICA":
     "CIENCIA ECONÓMICA":
