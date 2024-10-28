@@ -1,6 +1,6 @@
 - HEADER:
     FILE TYPE: DAGCatalog
-    DATE WRITTEN: 2024-08-13
+    DATE WRITTEN: 2024-10-28
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
@@ -122,15 +122,15 @@
     minute: 18
   startTaskIDs: !!set
     14007969: null
-    5583319: null
-    31762649: null
+    9786489: null
     8578949: null
     19048229: null
     7961039: null
+    6260599: null
     22475409: null
     7069109: null
-    6260599: null
-    9786489: null
+    5583319: null
+    31762649: null
     10678329: null
 - id: POROTOS
   name: POROTOS
@@ -158,12 +158,12 @@
     8578949: null
     14930309: null
     30352519: null
-    6260599: null
     22475409: null
     6030739: null
     36859679: null
     14007969: null
     28726689: null
+    16323839: null
     19048229: null
     31215909: null
     27083429: null
@@ -194,9 +194,9 @@
     5583319: null
     33082839: null
     31762649: null
-    36297599: null
     31173339: null
     31029219: null
+    9486839: null
     13114469: null
     34815079: null
     39037159: null
@@ -206,9 +206,9 @@
     27811309: null
     27904369: null
     33677169: null
-    9486839: null
+    6260599: null
     9786489: null
-    16323839: null
+    36297599: null
 - id: PAPAS
   name: PAPAS
   firstTaskID: 5583319
@@ -231,19 +231,19 @@
     hour: 13
     minute: 54
   startTaskIDs: !!set
-    5959839: null
+    5583319: null
+    16323839: null
     19048229: null
     37820199: null
     7961039: null
-    6260599: null
     22475409: null
     27629779: null
     7069109: null
-    5583319: null
+    6260599: null
     17867069: null
-    16323839: null
-- id: "BR\xD3COLI"
-  name: "BR\xD3COLI"
+    5959839: null
+- id: BRÓCOLI
+  name: BRÓCOLI
   firstTaskID: 5583319
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -264,9 +264,9 @@
     hour: 18
     minute: 48
   startTaskIDs: !!set
+    9786489: null
     8578949: null
     14930309: null
-    6260599: null
     16902929: null
     6030739: null
     12107799: null
@@ -274,7 +274,6 @@
     37820199: null
     39047719: null
     12539179: null
-    38324729: null
     10291759: null
     8983089: null
     7069109: null
@@ -290,12 +289,13 @@
     5583319: null
     13807319: null
     12508889: null
+    9486839: null
     13114469: null
     8272239: null
     31587059: null
     11517429: null
-    9486839: null
-    9786489: null
+    6260599: null
+    38324729: null
     16323839: null
 - id: COMIDA
   name: COMIDA
@@ -363,10 +363,10 @@
     hour: 22
     minute: 27
   startTaskIDs: !!set
+    5959839: null
     30150259: null
     30265709: null
     30231159: null
-    5959839: null
 - id: PASTA
   name: PASTA
   firstTaskID: 6030739
@@ -416,8 +416,6 @@
     29920309: null
     27702709: null
     30452919: null
-    18918519: null
-    20215679: null
     28309309: null
     6735939: null
     27112389: null
@@ -428,6 +426,7 @@
     30208459: null
     28149329: null
     28020689: null
+    27933439: null
     29070169: null
     27661149: null
     28998749: null
@@ -435,6 +434,7 @@
     26708579: null
     31029219: null
     13114469: null
+    9486839: null
     27832679: null
     17837799: null
     39037159: null
@@ -444,9 +444,9 @@
     8272239: null
     24275439: null
     30150259: null
-    9486839: null
+    18918519: null
     28120189: null
-    27933439: null
+    20215679: null
 - id: ESPINACAS
   name: ESPINACAS
   firstTaskID: 6260599
@@ -491,8 +491,8 @@
     hour: 14
     minute: 2
   startTaskIDs: !!set {}
-- id: "MEDITERR\xC1NEA"
-  name: "MEDITERR\xC1NEA"
+- id: MEDITERRÁNEA
+  name: MEDITERRÁNEA
   firstTaskID: 6546829
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -629,8 +629,8 @@
     hour: 22
     minute: 40
   startTaskIDs: !!set
-    28969559: null
     23280399: null
+    28969559: null
 - id: ENSALADA
   name: ENSALADA
   firstTaskID: 6822599
@@ -686,8 +686,8 @@
     17448119: null
     21566299: null
     24892189: null
-- id: "ET\xCDOPE"
-  name: "ET\xCDOPE"
+- id: ETÍOPE
+  name: ETÍOPE
   firstTaskID: 7327789
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -771,12 +771,12 @@
     26777809: null
     28020689: null
     28149329: null
+    27933439: null
     29027029: null
     13807319: null
     28466009: null
     29070169: null
     21883229: null
-    34122879: null
     27832679: null
     7653739: null
     20270699: null
@@ -785,7 +785,7 @@
     11517429: null
     38324729: null
     28120189: null
-    27933439: null
+    34122879: null
 - id: COREANA
   name: COREANA
   firstTaskID: 7845599
@@ -877,10 +877,10 @@
     hour: 12
     minute: 7
   startTaskIDs: !!set
-    18557769: null
-    10855159: null
-    31285559: null
     19739169: null
+    18557769: null
+    31285559: null
+    10855159: null
 - id: ARGENTINA
   name: ARGENTINA
   firstTaskID: 8589529
@@ -901,8 +901,8 @@
     day: 5
     hour: 20
   startTaskIDs: !!set {}
-- id: "SAND\xCDA"
-  name: "SAND\xCDA"
+- id: SANDÍA
+  name: SANDÍA
   firstTaskID: 8791929
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -953,18 +953,18 @@
     13807319: null
     12107799: null
     12508889: null
-    36297599: null
     36859679: null
+    34122879: null
     39047719: null
-    15333689: null
     12539179: null
     37291499: null
+    38324729: null
     10291759: null
     8983089: null
     15759039: null
     31587059: null
-    38324729: null
-    34122879: null
+    15333689: null
+    36297599: null
 - id: RAJMA MASALA
   name: RAJMA MASALA
   firstTaskID: 10291759
@@ -1070,8 +1070,8 @@
     hour: 19
     minute: 42
   startTaskIDs: !!set
-    20270699: null
     11198539: null
+    20270699: null
 - id: TAMALES
   name: TAMALES
   firstTaskID: 11517429
@@ -1342,8 +1342,8 @@
     hour: 19
     minute: 41
   startTaskIDs: !!set
-    17837799: null
     18918519: null
+    17837799: null
 - id: SOPA DE LENTEJAS
   name: SOPA DE LENTEJAS
   firstTaskID: 17867069
@@ -1408,8 +1408,8 @@
     hour: 21
     minute: 31
   startTaskIDs: !!set {}
-- id: "\xC1RABE"
-  name: "\xC1RABE"
+- id: ÁRABE
+  name: ÁRABE
   firstTaskID: 19465559
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -1430,8 +1430,8 @@
     minute: 27
   startTaskIDs: !!set
     19465559: null
-- id: "BENGAL\xCD"
-  name: "BENGAL\xCD"
+- id: BENGALÍ
+  name: BENGALÍ
   firstTaskID: 19970889
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -1492,8 +1492,8 @@
     hour: 19
     minute: 46
   startTaskIDs: !!set {}
-- id: "PI\xD1A"
-  name: "PI\xD1A"
+- id: PIÑA
+  name: PIÑA
   firstTaskID: 22288649
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2021
@@ -1577,8 +1577,8 @@
     hour: 1
     minute: 13
   startTaskIDs: !!set {}
-- id: "BRIT\xC1NICA"
-  name: "BRIT\xC1NICA"
+- id: BRITÁNICA
+  name: BRITÁNICA
   firstTaskID: 26752549
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2022
@@ -1745,8 +1745,8 @@
     hour: 13
     minute: 56
   startTaskIDs: !!set {}
-- id: "ESPA\xD1OLA"
-  name: "ESPA\xD1OLA"
+- id: ESPAÑOLA
+  name: ESPAÑOLA
   firstTaskID: 30795259
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2022
@@ -1789,8 +1789,8 @@
     minute: 37
   startTaskIDs: !!set
     37820199: null
-- id: "ASI\xC1TICA"
-  name: "ASI\xC1TICA"
+- id: ASIÁTICA
+  name: ASIÁTICA
   firstTaskID: 34337439
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -1832,8 +1832,8 @@
     hour: 13
     minute: 49
   startTaskIDs: !!set
-    36297599: null
     35909999: null
+    36297599: null
 - id: CHILE ROJO
   name: CHILE ROJO
   firstTaskID: 37820199
@@ -1883,7 +1883,7 @@ adj:
   AFRICANA:
     $ETNIAS:
       p: 0
-  "ASI\xC1TICA":
+  ASIÁTICA:
     ORIENTAL:
       p: 0
   LATINOAMERICANA:
@@ -1912,7 +1912,7 @@ adj:
   PAPAS:
     $PRIMITIVAS:
       p: 0
-  "BR\xD3COLI":
+  BRÓCOLI:
     VEGETALES:
       p: 0
   COMIDA:
@@ -1937,7 +1937,7 @@ adj:
   COLOMBIANA:
     LATINOAMERICANA:
       p: 0
-  "MEDITERR\xC1NEA":
+  MEDITERRÁNEA:
     OCCIDENTAL:
       p: 0
   AMERICANA:
@@ -1949,10 +1949,10 @@ adj:
     AMERICANA:
       p: 20
   JAPONESA:
-    "ASI\xC1TICA":
+    ASIÁTICA:
       p: 0
   TAILANDESA:
-    "ASI\xC1TICA":
+    ASIÁTICA:
       p: 0
   MEXICANA:
     LATINOAMERICANA:
@@ -1963,9 +1963,9 @@ adj:
     VEGETALES:
       p: 40
   INDIA:
-    "ASI\xC1TICA":
+    ASIÁTICA:
       p: 0
-  "ET\xCDOPE":
+  ETÍOPE:
     AFRICANA:
       p: 0
   ITALIANA:
@@ -1979,7 +1979,7 @@ adj:
     INDIA:
       p: 20
   COREANA:
-    "ASI\xC1TICA":
+    ASIÁTICA:
       p: 0
   GUACAMOLE:
     $PLATOS:
@@ -1987,15 +1987,15 @@ adj:
     MEXICANA:
       p: 20
   VIETNAMITA:
-    "ASI\xC1TICA":
+    ASIÁTICA:
       p: 0
   CHINA:
-    "ASI\xC1TICA":
+    ASIÁTICA:
       p: 0
   ARGENTINA:
     LATINOAMERICANA:
       p: 0
-  "SAND\xCDA":
+  SANDÍA:
     FRUTA:
       p: 0
   ARROZ:
@@ -2037,7 +2037,7 @@ adj:
   TOFU:
     $PRIMITIVAS:
       p: 0
-    "ASI\xC1TICA":
+    ASIÁTICA:
       p: 20
   SHAHI TOFU:
     $PLATOS:
@@ -2060,7 +2060,7 @@ adj:
   HUMMUS:
     $PLATOS:
       p: 0
-    "MEDITERR\xC1NEA":
+    MEDITERRÁNEA:
       p: 20
   HUEVOS:
     $PLATOS:
@@ -2086,11 +2086,11 @@ adj:
   GUISO:
     $PLATOS:
       p: 0
-  "\xC1RABE":
-    "ASI\xC1TICA":
+  ÁRABE:
+    ASIÁTICA:
       p: 0
-  "BENGAL\xCD":
-    "ASI\xC1TICA":
+  BENGALÍ:
+    ASIÁTICA:
       p: 0
   GRANADA:
     FRUTA:
@@ -2100,7 +2100,7 @@ adj:
       p: 0
     PAPAS:
       p: 40
-  "PI\xD1A":
+  PIÑA:
     FRUTA:
       p: 0
   SALSA:
@@ -2114,14 +2114,14 @@ adj:
   PAN:
     $PRIMITIVAS:
       p: 0
-  "BRIT\xC1NICA":
+  BRITÁNICA:
     EUROPEA:
       p: 0
   FRUTA:
     $PRIMITIVAS:
       p: 0
   INDONESIA:
-    "ASI\xC1TICA":
+    ASIÁTICA:
       p: 0
   EUROPEA:
     OCCIDENTAL:
@@ -2138,7 +2138,7 @@ adj:
   POLACA:
     EUROPEA:
       p: 0
-  "ESPA\xD1OLA":
+  ESPAÑOLA:
     EUROPEA:
       p: 0
   NUEVO MEXICANA:

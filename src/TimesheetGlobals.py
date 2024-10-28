@@ -878,7 +878,7 @@ class EpochScheme(i18n.EnglishSpanishEnum):
                         : (4, 'Spare Change with Kristin', 'Spare Change con Kristin'),
                         P.closedopen(Epoch.e2022_SpChg_JW_KS_Start.dt(), Epoch.e2024_SpChg_JW_End.dt())
                         : (5, 'Spare Change with Jonathan and Kirsten', 'Spare Change con Jonathan y Kirsten'),
-                        P.closedopen(Epoch.e2022_SpChg_JW_KS_Start.dt(), Epoch.e2024_SpChg_JW_End.dt())
+                        P.closedopen(Epoch.e2024_SpChg_JW_End.dt(), Epoch.e2024_SpChg_CN_Start.dt())
                         : (6, 'Spare Change with Barry', 'Spare Change con Barry'),
                     }),
                     complementVal=(7, 'Spare Change with Crystal', 'Spare Change con Crystal')

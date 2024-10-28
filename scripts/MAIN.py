@@ -19,7 +19,7 @@ from src.TimesheetGlobals import PPPath, rootProjectPath, Privacy
 
 
 def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=True):
-    pd.set_option('display.width', 250)
+    pd.set_option('display.width', 210)
 
     # dataFiles = ['timesheet_20180822202600.csv']
     # dataFiles = ['timesheet_2017-12-16.csv', '2017_20230207.csv', '20230201-20230403.csv', '20230401_20230701.csv',

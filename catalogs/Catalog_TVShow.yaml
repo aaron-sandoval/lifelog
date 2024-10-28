@@ -1,6 +1,6 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-08-13
+    DATE WRITTEN: 2024-10-28
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
@@ -840,8 +840,8 @@
   review: .nan
   externalReview: .nan
   subjectMatters: *id007
-- id: "ROMPAN TODO: LA HISTORIA DEL ROCK EN AM\xC9RICA LATINA_02632"
-  name: "ROMPAN TODO: LA HISTORIA DEL ROCK EN AM\xC9RICA LATINA"
+- id: 'ROMPAN TODO: LA HISTORIA DEL ROCK EN AMÉRICA LATINA_02632'
+  name: 'ROMPAN TODO: LA HISTORIA DEL ROCK EN AMÉRICA LATINA'
   firstTaskID: 37914339
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024

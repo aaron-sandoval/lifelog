@@ -266,3 +266,4 @@ class TimesheetDataset:
         self.clearInitTokens()  # TODO: implement __sub__ for Catalogs, reduce clearing cat scope
 
 
+

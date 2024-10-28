@@ -176,8 +176,8 @@ class Catalog(abc.ABC):
                 raise KeyError(f'When writing to the default catalog file, fields:\n'
                                f'{set(data[1].keys()) - set(self.COLLXBLE_CLASS.CATALOG_FIELDS())}\nare not allowed')
             file = self.CATALOG_FILE
-        with open(file, 'w') as yamlfile:
-            yaml.dump(data, yamlfile, sort_keys=False)
+        with open(file, 'w', encoding='utf-8') as yamlfile:
+            yaml.dump(data, yamlfile, sort_keys=False, allow_unicode=True)
 
     def _readYaml(self, file: str = None) -> dict:
         """
@@ -451,8 +451,8 @@ class DAGCatalog(Catalog):
                 raise KeyError(f'When writing to the default catalog file, fields:\n'
                                f'{set(data[1].keys()) - set(self.COLLXBLE_CLASS.CATALOG_FIELDS())}\nare not allowed')
             file = self.CATALOG_FILE
-        with open(file, 'w') as yamlfile:
-            yaml.dump_all(data, yamlfile, sort_keys=False)
+        with open(file, 'w', encoding='utf-8') as yamlfile:
+            yaml.dump_all(data, yamlfile, sort_keys=False, allow_unicode=True)
 
     def _readYaml(self, file: str = None) -> dict:
         """
