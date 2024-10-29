@@ -63,7 +63,7 @@ commandFunc         : literalReplaceFunc | reloadDesc ;
 //field               : FIELD ;
 field               : 'description' | 'project' | 'tags' | 'id' | 'start' | 'end' | 'duration' | 'epoch'
                     | 'mood' | 'circad' | 'metaproject' | 'bodyparts'
-                    | 'Location' | 'Person' | 'Food' | 'Media' | 'Audiobook' | 'Podcast' | 'TVShow' | 'Movie' ;
+                    | 'Location' | 'Person' | 'Food' | 'Media' | 'Audiobook' | 'Podcast' | 'TVShow' | 'Movie' | 'SubjectMatter' ;
 literal             : singleInstLiteral | listElementLiteral | specialLiteral ;
 singleInstLiteral   : projectLiteral | epochLiteral | datetimeLiteral | timedeltaLiteral | metaprojectLiteral
                     | moodLiteral
