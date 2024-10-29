@@ -5240,6 +5240,8 @@ adj:
   CIENCIA SOCIAL:
     SOCIEDAD:
       p: 0
+    CIENCIA:
+      p: 1
   CULTURA:
     SOCIEDAD:
       p: 0
@@ -5285,6 +5287,8 @@ adj:
   EQUIPO DE CASA:
     CASA:
       p: 0
+    EQUIPO:
+      p: 1
   TRANSPORTE:
     SERVICIOS:
       p: 0
@@ -5300,6 +5304,8 @@ adj:
   CORNELL:
     EDUCACIÓN:
       p: 0
+    $LUGARES:
+      p: 1
   MANTENIMIENTO:
     LOGÍSTICA:
       p: 0
@@ -5318,6 +5324,8 @@ adj:
   EQUIPO DE BICI:
     CICLISMO:
       p: 0
+    EQUIPO:
+      p: 1
   DEPARTAMENTOS:
     CASA:
       p: 0
@@ -5327,6 +5335,8 @@ adj:
   RESTAURANTES:
     ESPACIOS PÚBLICOS:
       p: 0
+    COMIDA:
+      p: 1
   CURSOS:
     ACADÉMICA:
       p: 0
@@ -5348,6 +5358,8 @@ adj:
   LEY DE ARRENDAMIENTO:
     CASA:
       p: 0
+    LEY:
+      p: 1
   ITHACA:
     $LUGARES:
       p: 0
@@ -5372,6 +5384,8 @@ adj:
   RECICLAJE:
     SERVICIOS PÚBLICOS:
       p: 0
+    SOSTENIBILIDAD:
+      p: 1
   PING PONG:
     DEPORTES:
       p: 0
@@ -5393,6 +5407,8 @@ adj:
   TIENDAS:
     ESPACIOS PÚBLICOS:
       p: 0
+    EQUIPO:
+      p: 1
   TAMBORES:
     INSTRUMENTOS:
       p: 0
@@ -5423,6 +5439,8 @@ adj:
   ROBÓTICA:
     ELECTRÓNICA:
       p: 0
+    INGENIERÍA MECÁNICA:
+      p: 1
   INSTRUMENTOS:
     MÚSICA:
       p: 0
@@ -5450,6 +5468,8 @@ adj:
   NFL:
     DEPORTES:
       p: 0
+    ENTRETENIMIENTO:
+      p: 1
   JUEGOS DE MESA:
     JUEGOS:
       p: 0
@@ -5468,18 +5488,24 @@ adj:
   CAD:
     INGENIERÍA MECÁNICA:
       p: 0
+    SOFTWARE:
+      p: 1
   COLORADO:
     $LUGARES:
       p: 0
   CARRERAS DE BICI:
     EVENTOS:
       p: 0
+    CICLISMO:
+      p: 1
   HISTORIA:
     SOCIEDAD:
       p: 0
   EQUIPO DE CICLOTURISMO:
     CICLOTURISMO:
       p: 0
+    EQUIPO:
+      p: 1
   BAJO:
     INSTRUMENTOS:
       p: 0
@@ -5495,6 +5521,8 @@ adj:
   EQUIPO DE MÚSICA:
     MÚSICA:
       p: 0
+    EQUIPO:
+      p: 1
   EUROPA:
     $LUGARES:
       p: 0
@@ -5504,6 +5532,8 @@ adj:
   COVID-19:
     SALUD PÚBLICA:
       p: 0
+    PROBLEMAS GLOBALES:
+      p: 1
   COMIDA:
     ESTILO DE VIDA:
       p: 0
@@ -5519,6 +5549,8 @@ adj:
   ROCK BAND:
     VÍDEO JUEGOS:
       p: 0
+    MÚSICA:
+      p: 1
   CHINCHES:
     CASA:
       p: 0
@@ -5555,6 +5587,8 @@ adj:
   ALOJAMIENTO:
     VIAJE:
       p: 0
+    VIVIENDA:
+      p: 1
   VISADOS:
     VIAJE:
       p: 0
@@ -5570,6 +5604,8 @@ adj:
   TODOIST:
     PRODUCTIVIDAD:
       p: 0
+    SOFTWARE:
+      p: 1
   CIUDADES:
     $LUGARES:
       p: 0
@@ -5582,6 +5618,8 @@ adj:
   ROCKSMITH:
     VÍDEO JUEGOS:
       p: 0
+    BAJO:
+      p: 1
   IMPROVISACIÓN:
     ENTRETENIMIENTO:
       p: 0
@@ -5592,8 +5630,14 @@ adj:
     INFORMÁTICA:
       p: 0
   URBANISMO:
-    SOCIEDAD:
+    MOVIMIENTO SOCIAL:
       p: 0
+    ESTILO DE VIDA:
+      p: 1
+    INGENIERÍA CIVIL:
+      p: 2
+    SOSTENIBILIDAD:
+      p: 3
   ANÁLISIS DE DATOS:
     INFORMÁTICA:
       p: 0
@@ -5606,9 +5650,15 @@ adj:
   ALTRUISMO EFECTIVO:
     MOVIMIENTO SOCIAL:
       p: 0
+    ALTRUISMO:
+      p: 1
+    LARGOPLACISMO:
+      p: 2
   REFUGIADOS:
     ESTRUCTURA SOCIAL:
       p: 0
+    PROBLEMAS GLOBALES:
+      p: 1
   POLÍTICA GLOBAL:
     POLÍTICA:
       p: 0
@@ -5624,15 +5674,23 @@ adj:
   URBANISMO LOCAL:
     URBANISMO:
       p: 0
+    POLÍTICA LOCAL:
+      p: 1
   CULTURAS MUNDIALES:
     CULTURA:
       p: 0
+    ANTROPOLOGÍA:
+      p: 1
   EVOLUCIÓN HUMANA:
     ANTROPOLOGÍA:
       p: 0
+    EVOLUCIÓN:
+      p: 1
   HÁBITOS:
     ESTILO DE VIDA:
       p: 0
+    AUTORREALIZACIÓN:
+      p: 1
   ANTROPOLOGÍA:
     CIENCIA SOCIAL:
       p: 0
@@ -5657,9 +5715,15 @@ adj:
   RELIGIÓN:
     FILOSOFÍA:
       p: 0
+    ESPRITUALIDAD:
+      p: 1
+    CULTURAS MUNDIALES:
+      p: 2
   ARMAS NUCLEARES:
     TECNOLOGÍA:
       p: 0
+    RIESGOS EXISTENCIALES:
+      p: 1
   FAMILIA:
     ESTRUCTURA SOCIAL:
       p: 0
@@ -5684,6 +5748,8 @@ adj:
   MISOGINIA:
     MUJERES:
       p: 0
+    PROBLEMAS CULTURALES:
+      p: 1
   INGENIERÍA:
     TECNOLOGÍA:
       p: 0
@@ -5696,6 +5762,8 @@ adj:
   METAS PERSONALES:
     ASUNTO PERSONAL:
       p: 0
+    AUTORREALIZACIÓN:
+      p: 1
   RIESGOS EXISTENCIALES:
     PROBLEMAS GLOBALES:
       p: 0
@@ -5720,6 +5788,12 @@ adj:
   CAMBIO CLIMÁTICO:
     CIENCIA DE LA TIERRA:
       p: 0
+    PROBLEMAS GLOBALES:
+      p: 1
+    RIESGOS DE SUFRIMIENTO:
+      p: 2
+    SOSTENIBILIDAD:
+      p: 3
   CIENCIA ECONÓMICA:
     CIENCIA SOCIAL:
       p: 0
@@ -5729,6 +5803,8 @@ adj:
   SALUD PÚBLICA:
     SOCIEDAD:
       p: 0
+    SALUD:
+      p: 1
   BIOLOGÍA:
     CIENCIA FÍSICA:
       p: 0
@@ -5741,6 +5817,8 @@ adj:
   RACISMO:
     ESTRUCTURA SOCIAL:
       p: 0
+    PROBLEMAS CULTURALES:
+      p: 1
   CONCIENCIA:
     FILOSOFÍA:
       p: 0
@@ -5768,18 +5846,30 @@ adj:
   CRÍA INTENSIVA:
     TECNOLOGÍA AGRÍCOLA:
       p: 0
+    RIESGOS DE SUFRIMIENTO:
+      p: 1
   VEGANISMO:
     MOVIMIENTO SOCIAL:
       p: 0
+    COMIDA:
+      p: 1
+    SOSTENIBILIDAD:
+      p: 2
+    LIBERACIÓN ANIMAL:
+      p: 3
   TECNOLOGÍA AGRÍCOLA:
     TECNOLOGÍA:
       p: 0
+    COMIDA:
+      p: 1
   LARGOPLACISMO:
     ÉTICA:
       p: 0
   AGOTAMIENTO:
     SALUD MENTAL:
       p: 0
+    PROBLEMAS CULTURALES:
+      p: 1
   EMPRENDIMIENTO:
     NEGOCIO:
       p: 0
@@ -5789,15 +5879,21 @@ adj:
   COLONIZACIÓN ESPACIAL:
     INGENIERÍA AEROESPACIAL:
       p: 0
+    MITIGACIONES DE RIESGOS-X:
+      p: 1
   REACCIONES:
     MITIGACIONES:
       p: 0
   METAFÍSICA:
     FILOSOFÍA:
       p: 0
+    FÍSICA:
+      p: 1
   MINIMALISMO:
     ESTILO DE VIDA:
       p: 0
+    SOSTENIBILIDAD:
+      p: 1
   ASUNTO FAMILIAR:
     GENTE CONOCIDA:
       p: 0
@@ -5813,6 +5909,8 @@ adj:
   GENTE SIN HOGAR:
     ESTRUCTURA SOCIAL:
       p: 0
+    POBREZA:
+      p: 1
   IGUALITARISMO:
     ÉTICA:
       p: 0
@@ -5837,6 +5935,8 @@ adj:
   SEGURIDAD DE INTELIGENCIA ARTIFICIAL:
     INTELIGENCIA ARTIFICIAL:
       p: 0
+    MITIGACIONES DE RIESGOS-X:
+      p: 1
   ESTILO DE VIDA:
     CULTURA:
       p: 0
@@ -5846,6 +5946,8 @@ adj:
   DIETA:
     SALUD:
       p: 0
+    COMIDA:
+      p: 1
   MEDICINA:
     SALUD:
       p: 0
@@ -5855,6 +5957,8 @@ adj:
   BIOINGENIERÍA:
     INGENIERÍA:
       p: 0
+    BIOLOGÍA:
+      p: 1
   MITIGACIONES:
     PROBLEMAS:
       p: 0
@@ -5867,6 +5971,8 @@ adj:
   MITIGACIONES DE RIESGOS-X:
     RIESGOS EXISTENCIALES:
       p: 0
+    MITIGACIONES:
+      p: 1
   CARERRA:
     ASUNTO PERSONAL:
       p: 0
@@ -5879,9 +5985,17 @@ adj:
   POBREZA:
     ESTRUCTURA SOCIAL:
       p: 0
+    RIESGOS DE SUFRIMIENTO:
+      p: 1
+    ECONOMÍA:
+      p: 2
   SALUD MENTAL:
     BIENESTAR:
       p: 0
+    BIENESTAR:
+      p: 1
+    SALUD:
+      p: 2
   CIENCIA ATMOSFÉRICA:
     CIENCIA DE LA TIERRA:
       p: 0
@@ -5912,9 +6026,17 @@ adj:
   ESPIRITUALIDAD:
     AUTORREALIZACIÓN:
       p: 0
+    CONCIENCIA:
+      p: 1
+    PSICOLOGÍA:
+      p: 2
   FEMINISMO:
     MOVIMIENTO SOCIAL:
       p: 0
+    IGUALITARISMO:
+      p: 1
+    MUJERES:
+      p: 2
   TRANSHUMANISMO:
     AUTORREALIZACIÓN:
       p: 0
@@ -5927,6 +6049,8 @@ adj:
   BIOSEGURIDAD:
     BIOINGENIERÍA:
       p: 0
+    MITIGACIONES DE RIESGOS-X:
+      p: 1
   GENOCIDIO:
     PROBLEMAS:
       p: 0
@@ -5945,9 +6069,13 @@ adj:
   COMBUSTIBLE FÓSIL:
     COMBUSTIBLE:
       p: 0
+    RIESGOS DE SUFRIMIENTO:
+      p: 1
   CONTAMINACIÓN DEL AIRE:
     SALUD PÚBLICA:
       p: 0
+    COMBUSTIBLE FÓSIL:
+      p: 1
   CONTROLES:
     INGENIERÍA AEROESPACIAL:
       p: 0
@@ -5969,6 +6097,10 @@ adj:
   LIBERACIÓN ANIMAL:
     MOVIMIENTO SOCIAL:
       p: 0
+    ZOOLOGÍA:
+      p: 1
+    RIESGOS DE SUFRIMIENTO:
+      p: 2
   MUDANZA:
     CASA:
       p: 0
@@ -5978,12 +6110,18 @@ adj:
   AISC:
     EDUCACIÓN:
       p: 0
+    SEGURIDAD DE INTELIGENCIA ARTIFICIAL:
+      p: 1
   SALAS DE MÚSICA:
     $LUGARES:
       p: 0
+    MÚSICA:
+      p: 1
   COCINA:
     COMIDA:
       p: 0
+    ACTIVIDADES:
+      p: 1
   MEZCLA DE MÚSICA:
     MÚSICA:
       p: 0
