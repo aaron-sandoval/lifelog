@@ -5,7 +5,7 @@
       atomicIntervals:
       - - true
         - 3584169
-        - 36803699
+        - 39426929
         - true
     COLLECTIBLE TYPE: audiobook
     CATALOG COUNT: 257
@@ -64,8 +64,8 @@
     hour: 19
     minute: 59
   startTaskIDs: !!set
-    5327189: null
     29310069: null
+    5327189: null
   creator: .nan
   creationTime: .nan
   genres: !!set
@@ -7486,8 +7486,8 @@
   firstCircad: 2023-12-06
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 61020
-  taskCount: 44
+    seconds: 80760
+  taskCount: 52
   lastTaskID: 36847579.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7515,8 +7515,9 @@
     hour: 12
     minute: 49
   firstCircad: 2024-01-16
-  timeSpent: &id017 !CodecDatetimes/pd.NA {}
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 70080
+  taskCount: 32
   lastTaskID: 37273309.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7528,11 +7529,11 @@
     37030099: null
   creator: .nan
   creationTime: .nan
-  genres: &id018 !!set
+  genres: &id017 !!set
     !yamlable/Genre.GenreUndefined {}: null
   review: *id002
   externalReview: .nan
-  subjectMatters: &id019 !!set {}
+  subjectMatters: &id018 !!set {}
   duration: .nan
   numReruns: 1
 - id: SEVEN SURRENDERS, ADA PALMER, SCIFI_02589
@@ -7545,8 +7546,9 @@
     hour: 16
     minute: 29
   firstCircad: 2024-02-03
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 56340
+  taskCount: 25
   lastTaskID: 37520039.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7558,10 +7560,10 @@
     37291499: null
   creator: .nan
   creationTime: .nan
-  genres: *id018
+  genres: *id017
   review: *id007
   externalReview: .nan
-  subjectMatters: *id019
+  subjectMatters: *id018
   duration: .nan
   numReruns: 1
 - id: WHAT’S OUR PROBLEM, TIM URBAN, NO FICCIÓN, TEMAS, POLÍTICA ESTADOUNIDENSE, RACIONALIDAD,
@@ -7576,8 +7578,9 @@
     hour: 21
     minute: 1
   firstCircad: 2024-02-19
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 43860
+  taskCount: 17
   lastTaskID: 37664199.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7589,10 +7592,10 @@
     37524619: null
   creator: .nan
   creationTime: .nan
-  genres: *id018
+  genres: *id017
   review: *id002
   externalReview: .nan
-  subjectMatters: *id019
+  subjectMatters: *id018
   duration: .nan
   numReruns: 1
 - id: THE HIGH COST OF FREE PARKING, DONALD SHOUP, OPINIÓN, TEMAS, URBANISMO_02615
@@ -7605,8 +7608,9 @@
     hour: 21
     minute: 22
   firstCircad: 2024-02-29
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 84780
+  taskCount: 27
   lastTaskID: 37897729.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7618,10 +7622,10 @@
     37668829: null
   creator: .nan
   creationTime: .nan
-  genres: *id018
+  genres: *id017
   review: *id002
   externalReview: .nan
-  subjectMatters: *id019
+  subjectMatters: *id018
   duration: .nan
   numReruns: 1
 - id: AGAINST EMPATHY, PAUL BLOOM, OPINIÓN, TEMAS, ÉTICA, PSICOLOGÍA_02641
@@ -7634,8 +7638,9 @@
     hour: 12
     minute: 14
   firstCircad: 2024-03-26
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 24660
+  taskCount: 10
   lastTaskID: 38081079.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7647,10 +7652,10 @@
     38037749: null
   creator: .nan
   creationTime: .nan
-  genres: *id018
+  genres: *id017
   review: *id008
   externalReview: .nan
-  subjectMatters: *id019
+  subjectMatters: *id018
   duration: .nan
   numReruns: 1
 - id: HOW MINDS CHANGE, DAVID MCRANEY, EDUCACIONAL, TEMAS, PSICOLOGÍA_02645
@@ -7663,8 +7668,9 @@
     hour: 8
     minute: 6
   firstCircad: 2024-03-30
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 39900
+  taskCount: 14
   lastTaskID: 38193749.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7676,10 +7682,10 @@
     38092869: null
   creator: .nan
   creationTime: .nan
-  genres: *id018
+  genres: *id017
   review: *id002
   externalReview: .nan
-  subjectMatters: *id019
+  subjectMatters: *id018
   duration: .nan
   numReruns: 1
 - id: NOT THE END OF THE WORLD, HANNAH RITCHIE, EDUCACIONAL, TEMAS, CAMBIO CLIMÁTICO,
@@ -7694,8 +7700,9 @@
     hour: 8
     minute: 32
   firstCircad: 2024-04-07
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 33540
+  taskCount: 12
   lastTaskID: 38322989.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7707,11 +7714,11 @@
     38208329: null
   creator: .nan
   creationTime: .nan
-  genres: &id020 !!set
+  genres: &id019 !!set
     !yamlable/Genre.GenreUndefined {}: null
   review: *id002
   externalReview: .nan
-  subjectMatters: &id021 !!set {}
+  subjectMatters: &id020 !!set {}
   duration: .nan
   numReruns: 1
 - id: BLINDSIGHT, PETER WATTS, SCIFI_02667
@@ -7724,8 +7731,9 @@
     hour: 8
     minute: 2
   firstCircad: 2024-04-21
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 36180
+  taskCount: 18
   lastTaskID: 38524729.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7737,10 +7745,10 @@
     38409629: null
   creator: .nan
   creationTime: .nan
-  genres: *id020
+  genres: *id019
   review: *id008
   externalReview: .nan
-  subjectMatters: *id021
+  subjectMatters: *id020
   duration: .nan
   numReruns: 1
 - id: THE FIRST FIFTEEN LIVES OF HARRY AUGUST, CLAIRE NORTH, FANTASÍA_02676
@@ -7753,8 +7761,9 @@
     hour: 7
     minute: 25
   firstCircad: 2024-04-30
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 48000
+  taskCount: 13
   lastTaskID: 38618749.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7766,10 +7775,10 @@
     38538859: null
   creator: .nan
   creationTime: .nan
-  genres: *id020
+  genres: *id019
   review: *id007
   externalReview: .nan
-  subjectMatters: *id021
+  subjectMatters: *id020
   duration: .nan
   numReruns: 1
 - id: DAWN, OCTAVIA BUTLER, SCIFI_02682
@@ -7782,8 +7791,9 @@
     hour: 7
     minute: 19
   firstCircad: 2024-05-06
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 33240
+  taskCount: 14
   lastTaskID: 38729299.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7795,10 +7805,10 @@
     38625199: null
   creator: .nan
   creationTime: .nan
-  genres: *id020
+  genres: *id019
   review: *id008
   externalReview: .nan
-  subjectMatters: *id021
+  subjectMatters: *id020
   duration: .nan
   numReruns: 1
 - id: TO HOLD UP THE SKY, CIXIN LIU, SCIFI_02692
@@ -7811,8 +7821,9 @@
     hour: 7
     minute: 24
   firstCircad: 2024-05-16
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 45720
+  taskCount: 17
   lastTaskID: 38887659.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7824,10 +7835,10 @@
     38769249: null
   creator: .nan
   creationTime: .nan
-  genres: *id020
+  genres: *id019
   review: *id009
   externalReview: .nan
-  subjectMatters: *id021
+  subjectMatters: *id020
   duration: .nan
   numReruns: 1
 - id: HOW TO NOT DIE ALONE, LOGAN URY, AUTOAYUDA, TEMAS, RELACIONES_02701
@@ -7840,8 +7851,9 @@
     hour: 8
     minute: 1
   firstCircad: 2024-05-25
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 26940
+  taskCount: 11
   lastTaskID: 38962119.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7853,10 +7865,10 @@
     38899219: null
   creator: .nan
   creationTime: .nan
-  genres: *id020
+  genres: *id019
   review: *id002
   externalReview: .nan
-  subjectMatters: *id021
+  subjectMatters: *id020
   duration: .nan
   numReruns: 1
 - id: THE BUTLERIAN JIHAD, BRIAN HERBERT, SCIFI_02706
@@ -7869,8 +7881,9 @@
     hour: 8
     minute: 34
   firstCircad: 2024-05-30
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 63780
+  taskCount: 25
   lastTaskID: 39187339.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7882,10 +7895,10 @@
     38971549: null
   creator: .nan
   creationTime: .nan
-  genres: *id020
+  genres: *id019
   review: *id008
   externalReview: .nan
-  subjectMatters: *id021
+  subjectMatters: *id020
   duration: .nan
   numReruns: 1
 - id: THE WANDERING EARTH, CIXIN LIU, SCIFI_02722
@@ -7898,8 +7911,9 @@
     hour: 8
     minute: 47
   firstCircad: 2024-06-15
-  timeSpent: *id017
-  taskCount: *id017
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 41820
+  taskCount: 21
   lastTaskID: 39421529.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7911,10 +7925,10 @@
     39202079: null
   creator: .nan
   creationTime: .nan
-  genres: *id020
+  genres: *id019
   review: *id008
   externalReview: .nan
-  subjectMatters: *id021
+  subjectMatters: *id020
   duration: .nan
   numReruns: 1
 - id: HOW TO AVOID A CLIMATE DISASTER_01543

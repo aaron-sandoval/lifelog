@@ -5,10 +5,10 @@
       atomicIntervals:
       - - true
         - 3584169
-        - 36803699
+        - 39426929
         - true
     COLLECTIBLE TYPE: subjectmatter
-    CATALOG COUNT: 260
+    CATALOG COUNT: 261
 - id: BICI
   name: BICI
   firstTaskID: 3595779
@@ -20,9 +20,9 @@
     minute: 57
   firstCircad: &id001 2017-09-07
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 5
-    seconds: 62280
-  taskCount: 115
+    days: 6
+    seconds: 67860
+  taskCount: 128
   lastTaskID: 39303199
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -41,9 +41,9 @@
     minute: 29
   firstCircad: *id001
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 1
-    seconds: 40260
-  taskCount: 23
+    days: 2
+    seconds: 32820
+  taskCount: 40
   lastTaskID: 39028639
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -63,8 +63,8 @@
   firstCircad: 2017-09-22
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 52140
-  taskCount: 40
+    seconds: 79500
+  taskCount: 50
   lastTaskID: 37581759
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -84,8 +84,8 @@
   firstCircad: 2017-09-23
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 3
-    seconds: 62640
-  taskCount: 78
+    seconds: 70140
+  taskCount: 85
   lastTaskID: 39304339
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -144,8 +144,8 @@
     minute: 56
   firstCircad: 2018-01-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 47460
-  taskCount: 25
+    seconds: 62280
+  taskCount: 32
   lastTaskID: 39121849
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -224,8 +224,8 @@
     minute: 57
   firstCircad: 2018-01-29
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 4380
-  taskCount: 2
+    seconds: 16140
+  taskCount: 5
   lastTaskID: 39363229
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -283,8 +283,8 @@
     minute: 59
   firstCircad: 2018-02-16
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 64080
-  taskCount: 32
+    seconds: 85200
+  taskCount: 43
   lastTaskID: 39423269
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -304,8 +304,8 @@
   firstCircad: 2018-02-23
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 2
-    seconds: 72900
-  taskCount: 70
+    seconds: 80100
+  taskCount: 72
   lastTaskID: 38312379
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -365,8 +365,9 @@
     minute: 10
   firstCircad: 2018-03-03
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 83160
-  taskCount: 33
+    days: 1
+    seconds: 7560
+  taskCount: 37
   lastTaskID: 39051099
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -385,8 +386,8 @@
     minute: 40
   firstCircad: 2018-03-18
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 16500
-  taskCount: 6
+    seconds: 27720
+  taskCount: 9
   lastTaskID: 39144629
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -406,8 +407,8 @@
   firstCircad: &id003 2018-03-19
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 10800
-  taskCount: 22
+    seconds: 19440
+  taskCount: 25
   lastTaskID: 39195399
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -745,8 +746,8 @@
     minute: 43
   firstCircad: 2018-06-22
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1500
-  taskCount: 2
+    seconds: 3000
+  taskCount: 3
   lastTaskID: 39057439
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -785,9 +786,9 @@
     minute: 2
   firstCircad: 2018-07-04
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 3
-    seconds: 17640
-  taskCount: 85
+    days: 4
+    seconds: 10620
+  taskCount: 116
   lastTaskID: 39319339
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -807,8 +808,8 @@
   firstCircad: 2018-07-07
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 28440
-  taskCount: 39
+    seconds: 30960
+  taskCount: 40
   lastTaskID: 36892059
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -827,8 +828,9 @@
     minute: 55
   firstCircad: *id005
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 83580
-  taskCount: 19
+    days: 1
+    seconds: 42060
+  taskCount: 32
   lastTaskID: 38456429
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -847,8 +849,8 @@
     minute: 39
   firstCircad: &id006 2018-07-29
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 13620
-  taskCount: 3
+    seconds: 18000
+  taskCount: 4
   lastTaskID: 37983319
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -867,9 +869,9 @@
     minute: 39
   firstCircad: *id006
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 1
-    seconds: 63360
-  taskCount: 28
+    days: 2
+    seconds: 31980
+  taskCount: 38
   lastTaskID: 38973109
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -908,8 +910,8 @@
     minute: 52
   firstCircad: 2018-06-04
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 26340
-  taskCount: 7
+    seconds: 32760
+  taskCount: 10
   lastTaskID: 37159419
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -950,8 +952,8 @@
   firstCircad: 2018-08-16
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 2
-    seconds: 40440
-  taskCount: 72
+    seconds: 56580
+  taskCount: 78
   lastTaskID: 39360809
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -970,8 +972,8 @@
     minute: 54
   firstCircad: 2018-08-20
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 67260
-  taskCount: 17
+    seconds: 69240
+  taskCount: 18
   lastTaskID: 37796669
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1050,8 +1052,8 @@
     minute: 41
   firstCircad: 2018-09-09
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 73680
-  taskCount: 22
+    seconds: 86160
+  taskCount: 30
   lastTaskID: 39218049
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1070,8 +1072,8 @@
     minute: 9
   firstCircad: 2018-09-11
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 9540
-  taskCount: 2
+    seconds: 11100
+  taskCount: 3
   lastTaskID: 37952799
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1210,8 +1212,8 @@
     minute: 45
   firstCircad: 2018-11-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 23220
-  taskCount: 6
+    seconds: 34680
+  taskCount: 11
   lastTaskID: 39297229
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1250,8 +1252,8 @@
   firstCircad: 2018-12-23
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 5
-    seconds: 10560
-  taskCount: 92
+    seconds: 12480
+  taskCount: 94
   lastTaskID: 39249769
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1370,8 +1372,8 @@
     hour: 9
   firstCircad: 2019-03-23
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 36060
-  taskCount: 14
+    seconds: 42240
+  taskCount: 16
   lastTaskID: 38382119
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1411,8 +1413,8 @@
     minute: 17
   firstCircad: 2019-08-18
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 39300
-  taskCount: 11
+    seconds: 44280
+  taskCount: 13
   lastTaskID: 38718999
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1432,8 +1434,8 @@
   firstCircad: 2019-08-30
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 65880
-  taskCount: 33
+    seconds: 85020
+  taskCount: 37
   lastTaskID: 39319339
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1493,8 +1495,9 @@
     minute: 24
   firstCircad: 2019-08-22
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 83820
-  taskCount: 22
+    days: 1
+    seconds: 7200
+  taskCount: 28
   lastTaskID: 38888019
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1533,8 +1536,8 @@
     minute: 56
   firstCircad: 2020-01-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 77580
-  taskCount: 24
+    seconds: 79800
+  taskCount: 25
   lastTaskID: 39144249
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1553,8 +1556,8 @@
     minute: 10
   firstCircad: 2020-03-22
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 47760
-  taskCount: 19
+    seconds: 49500
+  taskCount: 20
   lastTaskID: 37747029
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1573,8 +1576,8 @@
   firstCircad: 2018-03-20
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 18660
-  taskCount: 58
+    seconds: 28320
+  taskCount: 62
   lastTaskID: 39063279
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1593,8 +1596,8 @@
     minute: 56
   firstCircad: 2020-05-24
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 38340
-  taskCount: 6
+    seconds: 46620
+  taskCount: 8
   lastTaskID: 37014939
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1652,8 +1655,8 @@
     minute: 6
   firstCircad: 2018-06-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 67800
-  taskCount: 15
+    seconds: 74280
+  taskCount: 18
   lastTaskID: 37926779
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1772,8 +1775,8 @@
     minute: 55
   firstCircad: 2021-03-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 71460
-  taskCount: 17
+    seconds: 76920
+  taskCount: 19
   lastTaskID: 39132919
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1812,8 +1815,8 @@
     minute: 19
   firstCircad: 2021-07-05
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 11940
-  taskCount: 3
+    seconds: 25380
+  taskCount: 9
   lastTaskID: 39189809
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1832,8 +1835,8 @@
     minute: 19
   firstCircad: 2021-07-22
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 2940
-  taskCount: 2
+    seconds: 5880
+  taskCount: 3
   lastTaskID: 38992679
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1853,8 +1856,8 @@
   firstCircad: 2019-12-01
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 9060
-  taskCount: 21
+    seconds: 21180
+  taskCount: 26
   lastTaskID: 39379619
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -1873,9 +1876,9 @@
     minute: 7
   firstCircad: 2021-10-18
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 5
-    seconds: 51360
-  taskCount: 111
+    days: 7
+    seconds: 34440
+  taskCount: 150
   lastTaskID: 39223359
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2074,8 +2077,8 @@
     minute: 48
   firstCircad: 2023-01-01
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 18600
-  taskCount: 12
+    seconds: 20820
+  taskCount: 15
   lastTaskID: 39201999
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2094,8 +2097,8 @@
     minute: 53
   firstCircad: &id007 2023-01-03
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 10800
-  taskCount: 5
+    seconds: 13260
+  taskCount: 6
   lastTaskID: 37978829
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2114,8 +2117,8 @@
     minute: 25
   firstCircad: *id007
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 12360
-  taskCount: 3
+    seconds: 15540
+  taskCount: 4
   lastTaskID: 37998209
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2195,8 +2198,8 @@
   firstCircad: 2023-03-14
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 840
-  taskCount: 30
+    seconds: 28860
+  taskCount: 40
   lastTaskID: 39037529
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2215,8 +2218,8 @@
   firstCircad: 2023-03-26
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 76920
-  taskCount: 52
+    seconds: 83520
+  taskCount: 54
   lastTaskID: 38662069
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2254,9 +2257,9 @@
     minute: 8
   firstCircad: 2023-05-23
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 1
-    seconds: 81840
-  taskCount: 44
+    days: 3
+    seconds: 83880
+  taskCount: 93
   lastTaskID: 39382509
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2295,9 +2298,9 @@
     minute: 57
   firstCircad: 2023-05-25
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 2
-    seconds: 63000
-  taskCount: 63
+    days: 3
+    seconds: 18720
+  taskCount: 78
   lastTaskID: 38784029
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2337,8 +2340,8 @@
   firstCircad: *id008
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 7260
-  taskCount: 26
+    seconds: 42540
+  taskCount: 38
   lastTaskID: 39338419
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2357,8 +2360,8 @@
     minute: 12
   firstCircad: 2023-05-28
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 19020
-  taskCount: 6
+    seconds: 36000
+  taskCount: 10
   lastTaskID: 39164789
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2377,8 +2380,8 @@
     minute: 3
   firstCircad: 2023-05-12
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 26220
-  taskCount: 9
+    seconds: 57240
+  taskCount: 24
   lastTaskID: 39341509
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2398,8 +2401,8 @@
   firstCircad: 2023-05-30
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 53880
-  taskCount: 41
+    seconds: 86340
+  taskCount: 52
   lastTaskID: 39152239
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2418,8 +2421,8 @@
     minute: 54
   firstCircad: 2023-05-30
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 77280
-  taskCount: 20
+    seconds: 85320
+  taskCount: 26
   lastTaskID: 39307049
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2438,8 +2441,8 @@
     minute: 16
   firstCircad: &id009 2023-05-31
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 28620
-  taskCount: 8
+    seconds: 43260
+  taskCount: 12
   lastTaskID: 39137199
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2458,8 +2461,8 @@
     minute: 16
   firstCircad: *id009
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 24840
-  taskCount: 7
+    seconds: 44460
+  taskCount: 16
   lastTaskID: 39346409
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2478,8 +2481,8 @@
     minute: 27
   firstCircad: *id009
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 30420
-  taskCount: 6
+    seconds: 50820
+  taskCount: 12
   lastTaskID: 38949859
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2498,8 +2501,8 @@
     minute: 23
   firstCircad: &id010 2023-06-02
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 7380
-  taskCount: 4
+    seconds: 8760
+  taskCount: 5
   lastTaskID: 36943949
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2518,8 +2521,8 @@
     minute: 23
   firstCircad: *id010
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 8520
-  taskCount: 4
+    seconds: 9960
+  taskCount: 5
   lastTaskID: 38777959
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2538,8 +2541,8 @@
     minute: 23
   firstCircad: *id010
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 41280
-  taskCount: 10
+    seconds: 44880
+  taskCount: 11
   lastTaskID: 39132919
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2558,8 +2561,8 @@
     minute: 22
   firstCircad: *id010
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 40440
-  taskCount: 9
+    seconds: 45720
+  taskCount: 11
   lastTaskID: 39063279
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2578,9 +2581,9 @@
     minute: 29
   firstCircad: 2023-06-03
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 3
-    seconds: 12900
-  taskCount: 86
+    days: 4
+    seconds: 53820
+  taskCount: 120
   lastTaskID: 39330269
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2599,8 +2602,8 @@
     minute: 8
   firstCircad: &id011 2023-06-05
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1080
-  taskCount: 1
+    seconds: 14760
+  taskCount: 3
   lastTaskID: 38453969
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2619,8 +2622,8 @@
     minute: 57
   firstCircad: *id011
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 51060
-  taskCount: 15
+    seconds: 72840
+  taskCount: 25
   lastTaskID: 39288439
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2639,8 +2642,8 @@
     minute: 32
   firstCircad: &id012 2023-06-06
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 29400
-  taskCount: 8
+    seconds: 53640
+  taskCount: 17
   lastTaskID: 39137199
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2679,8 +2682,8 @@
     minute: 7
   firstCircad: 2023-06-08
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 8100
-  taskCount: 4
+    seconds: 16860
+  taskCount: 6
   lastTaskID: 38028589
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2759,8 +2762,8 @@
     minute: 15
   firstCircad: 2023-06-17
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 47280
-  taskCount: 8
+    seconds: 69120
+  taskCount: 14
   lastTaskID: 39131719
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2779,8 +2782,8 @@
     minute: 27
   firstCircad: 2023-06-17
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 52740
-  taskCount: 21
+    seconds: 85560
+  taskCount: 34
   lastTaskID: 39144249
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2799,8 +2802,8 @@
     minute: 46
   firstCircad: 2023-06-18
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 15720
-  taskCount: 6
+    seconds: 17700
+  taskCount: 7
   lastTaskID: 38640219
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2819,8 +2822,8 @@
     minute: 15
   firstCircad: 2023-06-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 5820
-  taskCount: 3
+    seconds: 14100
+  taskCount: 4
   lastTaskID: 39338419
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2879,8 +2882,8 @@
     minute: 28
   firstCircad: *id013
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 14580
-  taskCount: 2
+    seconds: 16320
+  taskCount: 3
   lastTaskID: 37375719
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -2957,8 +2960,8 @@
     minute: 13
   firstCircad: &id015 2023-06-29
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 55560
-  taskCount: 19
+    seconds: 66180
+  taskCount: 21
   lastTaskID: 38557009
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3017,8 +3020,8 @@
     minute: 57
   firstCircad: *id015
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 36420
-  taskCount: 10
+    seconds: 47580
+  taskCount: 15
   lastTaskID: 38801619
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3037,8 +3040,8 @@
     minute: 28
   firstCircad: 2023-06-30
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 50160
-  taskCount: 11
+    seconds: 67860
+  taskCount: 17
   lastTaskID: 38431269
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3057,8 +3060,8 @@
     minute: 25
   firstCircad: 2023-02-23
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 66060
-  taskCount: 20
+    seconds: 83160
+  taskCount: 25
   lastTaskID: 39132919
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3077,8 +3080,8 @@
     minute: 1
   firstCircad: 2023-05-09
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 36420
-  taskCount: 14
+    seconds: 45960
+  taskCount: 18
   lastTaskID: 38760589
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3097,8 +3100,9 @@
     minute: 8
   firstCircad: 2023-05-18
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 65280
-  taskCount: 21
+    days: 1
+    seconds: 3600
+  taskCount: 30
   lastTaskID: 39144249
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3117,8 +3121,8 @@
     minute: 47
   firstCircad: &id016 2023-05-22
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 17520
-  taskCount: 6
+    seconds: 21780
+  taskCount: 8
   lastTaskID: 38726159
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3137,8 +3141,8 @@
     minute: 47
   firstCircad: *id016
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 64500
-  taskCount: 23
+    seconds: 82440
+  taskCount: 31
   lastTaskID: 38755309
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3157,8 +3161,8 @@
     minute: 53
   firstCircad: &id017 2023-05-29
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 7020
-  taskCount: 4
+    seconds: 9360
+  taskCount: 5
   lastTaskID: 39346409
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3217,8 +3221,8 @@
     minute: 4
   firstCircad: *id018
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 11820
-  taskCount: 3
+    seconds: 13860
+  taskCount: 4
   lastTaskID: 37142459
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3237,8 +3241,8 @@
     minute: 59
   firstCircad: *id018
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 38880
-  taskCount: 13
+    seconds: 68160
+  taskCount: 20
   lastTaskID: 39425639
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3257,9 +3261,9 @@
     minute: 41
   firstCircad: *id018
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 2
-    seconds: 57660
-  taskCount: 60
+    days: 3
+    seconds: 8640
+  taskCount: 74
   lastTaskID: 38557009
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3278,8 +3282,8 @@
     minute: 44
   firstCircad: 2023-07-06
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 36000
-  taskCount: 8
+    seconds: 49560
+  taskCount: 14
   lastTaskID: 37805529
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3318,8 +3322,8 @@
     minute: 31
   firstCircad: &id019 2023-07-10
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 16380
-  taskCount: 6
+    seconds: 18900
+  taskCount: 7
   lastTaskID: 38567749
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3418,8 +3422,8 @@
     minute: 48
   firstCircad: *id020
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 27840
-  taskCount: 11
+    seconds: 34620
+  taskCount: 14
   lastTaskID: 38398649
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3438,8 +3442,8 @@
     minute: 28
   firstCircad: *id020
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 33180
-  taskCount: 10
+    seconds: 35400
+  taskCount: 11
   lastTaskID: 38395569
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3458,8 +3462,8 @@
     minute: 12
   firstCircad: 2023-07-15
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 29100
-  taskCount: 13
+    seconds: 30780
+  taskCount: 14
   lastTaskID: 36955869
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3478,8 +3482,8 @@
     minute: 10
   firstCircad: &id021 2023-07-16
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 4680
-  taskCount: 2
+    seconds: 8340
+  taskCount: 4
   lastTaskID: 36898709
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3538,8 +3542,8 @@
     minute: 50
   firstCircad: &id022 2023-07-20
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 12600
-  taskCount: 4
+    seconds: 23100
+  taskCount: 9
   lastTaskID: 38759959
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3578,8 +3582,8 @@
     minute: 24
   firstCircad: &id023 2023-07-21
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 79020
-  taskCount: 19
+    seconds: 84960
+  taskCount: 22
   lastTaskID: 38121269
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3618,8 +3622,8 @@
     minute: 1
   firstCircad: 2023-07-22
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 37200
-  taskCount: 5
+    seconds: 53880
+  taskCount: 9
   lastTaskID: 39424789
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3658,8 +3662,8 @@
     minute: 20
   firstCircad: *id024
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 6240
-  taskCount: 1
+    seconds: 9120
+  taskCount: 2
   lastTaskID: 38229079
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3678,8 +3682,8 @@
     minute: 45
   firstCircad: &id025 2023-07-24
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 6900
-  taskCount: 4
+    seconds: 39600
+  taskCount: 15
   lastTaskID: 39421109
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3758,8 +3762,8 @@
     minute: 59
   firstCircad: &id027 2023-07-27
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 6480
-  taskCount: 2
+    seconds: 34860
+  taskCount: 9
   lastTaskID: 39121849
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3798,8 +3802,8 @@
     minute: 30
   firstCircad: 2023-07-31
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 29820
-  taskCount: 9
+    seconds: 61740
+  taskCount: 21
   lastTaskID: 39389719
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3838,8 +3842,8 @@
     minute: 17
   firstCircad: &id028 2023-08-13
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 15660
-  taskCount: 4
+    seconds: 20460
+  taskCount: 7
   lastTaskID: 39138709
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3858,9 +3862,9 @@
     minute: 3
   firstCircad: *id028
   timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 2
-    seconds: 27720
-  taskCount: 52
+    days: 6
+    seconds: 20340
+  taskCount: 136
   lastTaskID: 39389719
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3898,8 +3902,8 @@
     minute: 5
   firstCircad: *id029
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 12000
-  taskCount: 3
+    seconds: 18600
+  taskCount: 8
   lastTaskID: 37937639
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3918,8 +3922,8 @@
     minute: 23
   firstCircad: &id030 2023-08-16
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 10920
-  taskCount: 4
+    seconds: 12960
+  taskCount: 5
   lastTaskID: 38949859
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3938,8 +3942,8 @@
     minute: 23
   firstCircad: *id030
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 6780
-  taskCount: 2
+    seconds: 28800
+  taskCount: 12
   lastTaskID: 38820669
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3978,8 +3982,8 @@
     minute: 10
   firstCircad: &id031 2023-08-17
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 8460
-  taskCount: 4
+    seconds: 28560
+  taskCount: 10
   lastTaskID: 38747729
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -3998,8 +4002,8 @@
     minute: 45
   firstCircad: *id031
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 39540
-  taskCount: 10
+    seconds: 44280
+  taskCount: 12
   lastTaskID: 37866379
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4138,8 +4142,8 @@
     minute: 40
   firstCircad: *id033
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 6660
-  taskCount: 1
+    seconds: 10920
+  taskCount: 2
   lastTaskID: 37078259
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4178,8 +4182,8 @@
     minute: 46
   firstCircad: *id034
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 8160
-  taskCount: 1
+    seconds: 22680
+  taskCount: 8
   lastTaskID: 39167439
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4298,8 +4302,8 @@
     minute: 26
   firstCircad: &id035 2023-09-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 14280
-  taskCount: 5
+    seconds: 27180
+  taskCount: 8
   lastTaskID: 39338419
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4338,8 +4342,8 @@
     minute: 42
   firstCircad: 2023-09-20
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1920
-  taskCount: 1
+    seconds: 13920
+  taskCount: 6
   lastTaskID: 39346409
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4358,8 +4362,8 @@
     minute: 37
   firstCircad: 2023-09-26
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 29520
-  taskCount: 9
+    seconds: 32340
+  taskCount: 10
   lastTaskID: 38677259
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4398,8 +4402,8 @@
     minute: 57
   firstCircad: 2023-10-11
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 10140
-  taskCount: 1
+    seconds: 12420
+  taskCount: 2
   lastTaskID: 39288439
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4557,8 +4561,8 @@
     minute: 27
   firstCircad: 2023-10-29
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 4020
-  taskCount: 2
+    seconds: 15000
+  taskCount: 3
   lastTaskID: 38646529
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4597,8 +4601,8 @@
     minute: 38
   firstCircad: &id038 2023-11-02
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 8580
-  taskCount: 4
+    seconds: 11040
+  taskCount: 5
   lastTaskID: 38159109
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4617,8 +4621,8 @@
     minute: 38
   firstCircad: *id038
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 13140
-  taskCount: 6
+    seconds: 15660
+  taskCount: 7
   lastTaskID: 38567749
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4637,8 +4641,8 @@
     minute: 48
   firstCircad: 2019-03-29
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 7860
-  taskCount: 2
+    seconds: 8820
+  taskCount: 3
   lastTaskID: 38830759
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4717,8 +4721,8 @@
     minute: 37
   firstCircad: 2023-11-13
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 1860
-  taskCount: 1
+    seconds: 8040
+  taskCount: 4
   lastTaskID: 36984019
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4737,8 +4741,8 @@
     minute: 35
   firstCircad: 2023-11-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 11400
-  taskCount: 3
+    seconds: 17880
+  taskCount: 6
   lastTaskID: 37159419
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4757,8 +4761,8 @@
     minute: 35
   firstCircad: 2023-12-02
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 3600
-  taskCount: 2
+    seconds: 20520
+  taskCount: 9
   lastTaskID: 38409629
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4797,8 +4801,8 @@
     minute: 34
   firstCircad: 2023-12-05
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 6540
-  taskCount: 3
+    seconds: 16380
+  taskCount: 7
   lastTaskID: 36930559
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4835,9 +4839,10 @@
     day: 6
     hour: 16
     minute: 28
-  firstCircad: &id040 2024-01-06
-  timeSpent: &id039 !CodecDatetimes/pd.NA {}
-  taskCount: *id039
+  firstCircad: &id039 2024-01-06
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6420
+  taskCount: 1
   lastTaskID: 36888289
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4854,9 +4859,10 @@
     day: 6
     hour: 19
     minute: 23
-  firstCircad: *id040
-  timeSpent: *id039
-  taskCount: *id039
+  firstCircad: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1920
+  taskCount: 1
   lastTaskID: 36890039
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4874,8 +4880,9 @@
     hour: 18
     minute: 51
   firstCircad: 2024-01-22
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8640
+  taskCount: 5
   lastTaskID: 37451399
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4893,8 +4900,9 @@
     hour: 14
     minute: 29
   firstCircad: 2024-02-02
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4200
+  taskCount: 2
   lastTaskID: 37287029
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4911,8 +4919,9 @@
     day: 5
     hour: 13
   firstCircad: 2024-02-05
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 17040
+  taskCount: 5
   lastTaskID: 38366089
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4930,8 +4939,9 @@
     hour: 12
     minute: 5
   firstCircad: 2024-03-02
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 13560
+  taskCount: 6
   lastTaskID: 38340449
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4949,8 +4959,9 @@
     hour: 10
     minute: 33
   firstCircad: 2024-03-04
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4080
+  taskCount: 1
   lastTaskID: 37719939
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4968,8 +4979,9 @@
     hour: 22
     minute: 34
   firstCircad: 2024-03-08
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 9660
+  taskCount: 3
   lastTaskID: 38807309
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -4987,8 +4999,9 @@
     hour: 20
     minute: 51
   firstCircad: 2024-03-10
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1020
+  taskCount: 1
   lastTaskID: 37812519
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5006,8 +5019,9 @@
     hour: 18
     minute: 20
   firstCircad: 2024-04-17
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4980
+  taskCount: 2
   lastTaskID: 38359609
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5025,8 +5039,9 @@
     hour: 7
     minute: 34
   firstCircad: 2024-04-19
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2460
+  taskCount: 1
   lastTaskID: 38380549
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5044,8 +5059,9 @@
     hour: 20
     minute: 14
   firstCircad: 2024-05-30
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 960
+  taskCount: 1
   lastTaskID: 38978549
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5062,9 +5078,10 @@
     day: 1
     hour: 22
     minute: 41
-  firstCircad: &id041 2024-06-01
-  timeSpent: *id039
-  taskCount: *id039
+  firstCircad: &id040 2024-06-01
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4200
+  taskCount: 1
   lastTaskID: 39008819
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5081,9 +5098,10 @@
     day: 1
     hour: 22
     minute: 41
-  firstCircad: *id041
-  timeSpent: *id039
-  taskCount: *id039
+  firstCircad: *id040
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 4200
+  taskCount: 1
   lastTaskID: 39008819
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5101,8 +5119,9 @@
     hour: 17
     minute: 37
   firstCircad: 2024-06-12
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3600
+  taskCount: 1
   lastTaskID: 39164179
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5120,8 +5139,9 @@
     hour: 9
     minute: 55
   firstCircad: 2024-06-23
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 900
+  taskCount: 1
   lastTaskID: 39317959
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5139,8 +5159,9 @@
     hour: 20
     minute: 1
   firstCircad: 2024-06-24
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8280
+  taskCount: 1
   lastTaskID: 39338419
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5158,8 +5179,9 @@
     hour: 11
     minute: 38
   firstCircad: 2024-06-29
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 1140
+  taskCount: 1
   lastTaskID: 39405389
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5177,8 +5199,9 @@
     hour: 21
     minute: 23
   firstCircad: 2024-06-30
-  timeSpent: *id039
-  taskCount: *id039
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3900
+  taskCount: 1
   lastTaskID: 39425639
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -5198,15 +5221,35 @@
   firstCircad: 2020-07-07
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 6
-    seconds: 39720
-  taskCount: 195
-  lastTaskID: 36754249
+    seconds: 41640
+  taskCount: 196
+  lastTaskID: 37387929
   lastTime: !CodecDatetimes/pd.Timestamp
-    year: 2023
-    month: 12
-    day: 28
+    year: 2024
+    month: 2
+    day: 10
     hour: 9
-    minute: 57
+    minute: 44
+- id: PRODUCCIÓN DE MÚSICA
+  name: PRODUCCIÓN DE MÚSICA
+  firstTaskID: 36926869
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 1
+    day: 9
+    hour: 8
+    minute: 46
+  firstCircad: 2024-01-09
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 7500
+  taskCount: 3
+  lastTaskID: 37344009
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2024
+    month: 2
+    day: 7
+    hour: 8
+    minute: 22
 ---
 adj:
   $SUBJECTMATTER: {}
@@ -5991,8 +6034,6 @@ adj:
       p: 2
   SALUD MENTAL:
     BIENESTAR:
-      p: 0
-    BIENESTAR:
       p: 1
     SALUD:
       p: 2
@@ -6169,5 +6210,8 @@ adj:
     CIENCIA ECONÓMICA:
       p: 0
   NOTICIAS:
+    $SUBJECTMATTER_UNDEFINED:
+      p: 0
+  PRODUCCIÓN DE MÚSICA:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
