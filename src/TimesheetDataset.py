@@ -260,7 +260,7 @@ class TimesheetDataset:
                 catalog.populateDF(self.timesheetdf)
             if issubclass(catalog.COLLXBLE_CLASS, AutofillPrevious):
                 self.autofillPreviousCollectibles([catalog.COLLXBLE_CLASS])
-            catalog.updateScalingFields(self.timesheetdf, reset=('subjectmatter', 'audiobook'))
+            catalog.updateScalingFields(self.timesheetdf, reset=())
             catalog.headerData['TASK ID RANGE'] = catalog.headerData['TASK ID RANGE'] | \
                 portion.closed(int(self.timesheetdf.df.index[0]), int(self.timesheetdf.df.index[-1]))
         self.clearInitTokens()  # TODO: implement __sub__ for Catalogs, reduce clearing cat scope

@@ -118,6 +118,7 @@ epoch < Epoch.e2018_Boulder_Solo :
 	'Salas'.replace('Cornell') ;
 start < datetime(2024,4,1,0) & "Proyecto musical" & !"Audacity" : 'MEZCLA DE MÚSICA'.replace('PROYECTO MUSICAL') ;
 start < datetime(2023,6,6,0) & "COLABORACIONES" : "COLABORACIONES".replace("COMUNIDAD DE MÚSICA") ;
+start < datetime(2024,3,1,0) & "PROYECTO MUSICAL" : "PROYECTO MUSICAL".replace("PRODUCCIÓN DE MÚSICA") ;
 
 """ Misc descToken Filters """
 "Gimnasio" : Tag.Ejercicio ;

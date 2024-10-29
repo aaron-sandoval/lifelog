@@ -5715,7 +5715,7 @@ adj:
   RELIGIÓN:
     FILOSOFÍA:
       p: 0
-    ESPRITUALIDAD:
+    ESPIRITUALIDAD:
       p: 1
     CULTURAS MUNDIALES:
       p: 2
@@ -6097,8 +6097,6 @@ adj:
   LIBERACIÓN ANIMAL:
     MOVIMIENTO SOCIAL:
       p: 0
-    ZOOLOGÍA:
-      p: 1
     RIESGOS DE SUFRIMIENTO:
       p: 2
   MUDANZA:
