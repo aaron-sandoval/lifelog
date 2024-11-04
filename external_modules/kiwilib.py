@@ -375,7 +375,8 @@ def enum_counts(ser: pd.Series, enumCls: Union[Type[Enum], Iterable[Hierarchical
     enumList = list(enumCls)
     ser.apply(make_count, args=(enumList,))
     out = pd.DataFrame(np.vstack(ser.values), index=ser.index)
-    return out.rename(dict(zip(range(len(enumList)), enumList)), axis=1)
+    # TODO: bugfix: rename goes crazy on SocialGroups
+    return out.rename(columns=dict(zip(range(len(enumList)), enumList)))
 
 
 def backtrack(sol, cur):

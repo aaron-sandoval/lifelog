@@ -232,18 +232,19 @@ class _GraphicMaker:
         enumList = list(enumCls)
 
         df = pd.concat([df, kiwilib.enum_counts(genders, enumCls)], axis=1)
-        gend = df[['bin', 'duration'] + enumList]
+        gend_copy = df[['bin', 'duration'] + enumList].copy()
 
         # Compute the enum-hours for each enum instance. Enum-hours scale with the number of instances present in a row.
-        multNames = [g.name + '_mult' for g in enumCls]
-        if multNames[0] not in gend.columns:
-            for g, col in zip(enumList, multNames):
-                gend.loc[:, col] = gend.duration * gend[g]
-        gend = gend[['bin'] + multNames]
-        visData = gend.groupby('bin').sum()
+        # multNames = [g.name + '_mult' for g in enumCls]
+        # if multNames[0] not in gend_copy.columns:
+        for g in enumList:
+            gend_copy[g] = gend_copy.duration * gend_copy[g]
+
+        visData = gend_copy.groupby('bin').sum()
 
         # Total person-hours for subplot(1,2,2)
-        totals = visData[multNames].sum(axis=0) / np.timedelta64(1, 'h')  # float person-hours
+        # gend_names = [g.name for g in enumList]
+        totals = visData[enumList].sum(axis=0) / np.timedelta64(1, 'h')  # float person-hours
         # totalsAug = pd.concat([pd.Series([0]), totals])
         # totalsAug = pd.Series(accumulate(totalsAug), index=np.concatenate([[0], totals.index]))
 
@@ -255,7 +256,7 @@ class _GraphicMaker:
         titles = (_k('Average Person-Hours of Social Interaction per Day, by Gender'), _k('Total\nPerson-Hours'))
         graphic = stackplot_and_totals_stackbar(
             x,
-            visData[multNames],
+            visData[enumList],
             totals,
             stack_names=enumList,
             ylabels=(_k('[person-hours/day]'), None),
@@ -280,17 +281,16 @@ class _GraphicMaker:
 
         enumList = [c() for c in sg.Relation.__subclasses__()]
         df = pd.concat([df, kiwilib.enum_counts(rels, enumList)], axis=1)
-        df1 = df[['bin', 'duration'] + enumList]
+        df1 = df[['bin', 'duration'] + enumList].copy()
 
         # Compute the enum-hours for each enum instance. Enum-hours scale with the number of instances present in a row.
-        multNames = [g.alias('en_US') + '_mult' for g in enumList]
-        if multNames[0] not in df1.columns:
-            for g, col in zip(enumList, multNames):
-                df1.loc[:, col] = df1.duration * df1[g]
-        df1 = df1[['bin'] + multNames]
+        # multNames = [g.alias('en_US') + '_mult' for g in enumList]
+        # if multNames[0] not in df1.columns:
+        for g in enumList:
+            df1[g] = df1.duration * df1[g]
 
         visData = df1.groupby('bin').sum()
-        totals = visData[multNames].sum(axis=0) / np.timedelta64(1, 'h')  # float person-hours
+        totals = visData[enumList].sum(axis=0) / np.timedelta64(1, 'h')  # float person-hours
         visData = visData / np.timedelta64(1, 'h')  # Timedelta to float hours
         x = pd.arrays.IntervalArray(visData.index).left  # Get the start of each IntervalIndex for x coordinate in plots
         visData = (visData.T / pd.DatetimeIndex(x).daysinmonth).T  # Set units to hours per day

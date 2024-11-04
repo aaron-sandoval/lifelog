@@ -73,10 +73,10 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
                                 # 'DC_2017-09-06-2136_2019-09-02-1659',
                                 # 'DC_2019-09-02-1625_2020-09-17-0747',
                                 # 'DC_2020-09-17-0647_2021-12-14-2208',
-                                # 'DC_2021-12-14-2201_2022-04-02-1327',
+                                'DC_2023-12-31-0029_2024-07-01-0026',
                                 # 'DC_2022-04-02-1305_2023-06-30-2228',
                                 # 'DC_2017-09-06-2136_2024-04-01-0726',
-                                'DC_2017-09-06-2136_2024-07-01-0026',
+                                # 'DC_2017-09-06-2136_2024-07-01-0026',
                             ]))
 
     if runPublic:
@@ -87,8 +87,8 @@ def main(catalogSuffix='', locale='en_US', audience=Privacy.PUBLIC, runPublic=Tr
     else:
         # FM_filePath = FM.main(dataFiles)
         # PP_filePath = PP.main(FM_filePath)
-        DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
-        # VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
+        # DC_filePaths = [DCmain(PP_filePath, catalogSuffix=catalogSuffix)]
+        VS.main(DC_filePaths, catalogSuffix=catalogSuffix, locale=locale, audience=audience)
 
 
 if __name__ == '__main__':
