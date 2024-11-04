@@ -38,13 +38,13 @@ class TimesheetDataset:
         if self.fileSuffix is str or self.fileSuffix != fileSuffix:
             raise TypeError(f'fileSuffix assignment error: {fileSuffix=}, {self.fileSuffix=}')
         if isinstance(df, TimesheetDataFrame):
-            self.timesheetdf = df
+            self.timesheetdf: TimesheetDataFrame = df
         else:
-            self.timesheetdf = df.tsdf
+            self.timesheetdf: TimesheetDataFrame = df.tsdf
         if catalogs and isinstance(catalogs, dict):
-            self.cats = catalogs
+            self.cats: dict[str, Catalog] = catalogs
         else:
-            self.cats = dict()
+            self.cats: dict[str, Catalog] = dict()
 
     def __eq__(self, other):
         if not isinstance(other, TimesheetDataset):
@@ -264,5 +264,6 @@ class TimesheetDataset:
             catalog.headerData['TASK ID RANGE'] = catalog.headerData['TASK ID RANGE'] | \
                 portion.closed(int(self.timesheetdf.df.index[0]), int(self.timesheetdf.df.index[-1]))
         self.clearInitTokens()  # TODO: implement __sub__ for Catalogs, reduce clearing cat scope
+
 
 

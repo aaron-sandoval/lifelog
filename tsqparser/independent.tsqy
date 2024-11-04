@@ -34,6 +34,8 @@ When matching tokens, no erroneous partial word matches are possible.
 	'intimo'.replace('íntimo') ;
 	'francés'.replace('francesa') ;
 	'nueva mexicana'.replace('nuevo mexicana') ;
+	'VIAJES'.replace('VIAJE') ;
+	'Cartas' & 'Escribir' : 'Cartas'.replace('Carta') ;
 epoch < Epoch.e2018_Boulder_Solo : 'Visitar'.replace('Charlar') ;
 
 """ Names & Titles """
@@ -49,7 +51,7 @@ epoch < Epoch.e2018_Boulder_Solo :
 Tag.Bici & ! Tag.Colectivo : Tag.Ejercicio ;
 ! Tag.BICI_E & ('Montar' | 'cicloturismo') : Tag.Bici ;
 'FF1' : Tag.COLECTIVO ;
-
+"Auto" & ( Project.Transporte | Project.Errands | ! 'Investigar' ) : Tag.Auto ; !'Auto' ;
 
 """ Cornell Epoch """
 "HW" & Tag.Elec & Project.MAE_5730 : "MATLAB" ;
@@ -114,6 +116,9 @@ epoch < Epoch.e2021_Tour_Start :
 	'Meditar'.replace('íntimo') ;
 epoch < Epoch.e2018_Boulder_Solo :
 	'Salas'.replace('Cornell') ;
+start < datetime(2024,4,1,0) & "Proyecto musical" & !"Audacity" : 'MEZCLA DE MÚSICA'.replace('PROYECTO MUSICAL') ;
+start < datetime(2023,6,6,0) & "COLABORACIONES" : "COLABORACIONES".replace("COMUNIDAD DE MÚSICA") ;
+start < datetime(2024,3,1,0) & "PROYECTO MUSICAL" : "PROYECTO MUSICAL".replace("PRODUCCIÓN DE MÚSICA") ;
 
 """ Misc descToken Filters """
 "Gimnasio" : Tag.Ejercicio ;

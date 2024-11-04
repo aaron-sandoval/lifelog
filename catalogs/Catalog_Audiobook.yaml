@@ -1,6 +1,6 @@
 - HEADER:
     FILE TYPE: LinearCatalog
-    DATE WRITTEN: 2024-08-27
+    DATE WRITTEN: 2024-10-28
     TASK ID RANGE: !CodecMisc/portion.Interval
       atomicIntervals:
       - - true
@@ -8,7 +8,7 @@
         - 39426929
         - true
     COLLECTIBLE TYPE: audiobook
-    CATALOG COUNT: 256
+    CATALOG COUNT: 257
 - id: SPEAKER FOR THE DEAD_00347
   name: SPEAKER FOR THE DEAD
   firstTaskID: 5023259
@@ -86,7 +86,7 @@
     minute: 11
   firstCircad: 2018-01-21
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 27300
+    seconds: 27840
   taskCount: 8
   lastTaskID: 6840349.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -147,8 +147,8 @@
     minute: 21
   firstCircad: 2018-02-17
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 76680
-  taskCount: 20
+    seconds: 73800
+  taskCount: 19
   lastTaskID: 24376839.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2021
@@ -179,8 +179,8 @@
     minute: 42
   firstCircad: 2018-03-02
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 75600
-  taskCount: 22
+    seconds: 69420
+  taskCount: 20
   lastTaskID: 6621839.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -271,8 +271,8 @@
     minute: 54
   firstCircad: 2018-04-30
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 57540
-  taskCount: 26
+    seconds: 59700
+  taskCount: 25
   lastTaskID: 7407679.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -302,7 +302,7 @@
     minute: 49
   firstCircad: 2018-05-30
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 62340
+    seconds: 66960
   taskCount: 19
   lastTaskID: 7609289.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -456,8 +456,8 @@
     minute: 5
   firstCircad: 2018-07-25
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 12300
-  taskCount: 6
+    seconds: 14880
+  taskCount: 7
   lastTaskID: 8251069.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -516,7 +516,7 @@
     minute: 5
   firstCircad: 2018-08-01
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 50040
+    seconds: 51840
   taskCount: 19
   lastTaskID: 8423339.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -640,8 +640,8 @@
     minute: 5
   firstCircad: 2018-08-16
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 23340
-  taskCount: 10
+    seconds: 24960
+  taskCount: 11
   lastTaskID: 8562469.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -1070,7 +1070,7 @@
     hour: 7
   firstCircad: 2018-10-23
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 75840
+    seconds: 81660
   taskCount: 28
   lastTaskID: 24974039.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -1322,8 +1322,8 @@
   firstCircad: 2018-12-03
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 11100
-  taskCount: 39
+    seconds: 11040
+  taskCount: 38
   lastTaskID: 10291359.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2018
@@ -1477,8 +1477,8 @@
     minute: 22
   firstCircad: 2019-01-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 42780
-  taskCount: 19
+    seconds: 44640
+  taskCount: 20
   lastTaskID: 10842469.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2019
@@ -1570,7 +1570,7 @@
     minute: 4
   firstCircad: 2019-02-03
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 70740
+    seconds: 72000
   taskCount: 31
   lastTaskID: 11115229.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -1726,8 +1726,8 @@
     minute: 54
   firstCircad: 2019-04-11
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 62940
-  taskCount: 26
+    seconds: 66360
+  taskCount: 27
   lastTaskID: 12171879.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2019
@@ -1881,7 +1881,7 @@
     minute: 48
   firstCircad: 2019-05-19
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 52740
+    seconds: 50820
   taskCount: 22
   lastTaskID: 12590559.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -1912,7 +1912,7 @@
     minute: 25
   firstCircad: 2019-05-25
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 52500
+    seconds: 28800
   taskCount: 13
   lastTaskID: 12661559.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -2250,8 +2250,8 @@
     minute: 15
   firstCircad: 2019-08-21
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 29280
-  taskCount: 9
+    seconds: 32700
+  taskCount: 10
   lastTaskID: 13960369.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2019
@@ -2374,8 +2374,8 @@
     minute: 49
   firstCircad: 2018-06-22
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 72000
-  taskCount: 35
+    seconds: 74880
+  taskCount: 36
   lastTaskID: 14562259.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2019
@@ -3901,8 +3901,8 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: "HARRY POTTER Y LA C\xC1MARA SECRETA_01396"
-  name: "HARRY POTTER Y LA C\xC1MARA SECRETA"
+- id: HARRY POTTER Y LA CÁMARA SECRETA_01396
+  name: HARRY POTTER Y LA CÁMARA SECRETA
   firstTaskID: 20106169
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -3943,7 +3943,7 @@
     minute: 30
   firstCircad: 2020-11-07
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 60840
+    seconds: 61560
   taskCount: 20
   lastTaskID: 20355409.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -3963,8 +3963,8 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: "HARRY POTTER Y EL C\xC1LIZ DE FUEGO_01414"
-  name: "HARRY POTTER Y EL C\xC1LIZ DE FUEGO"
+- id: HARRY POTTER Y EL CÁLIZ DE FUEGO_01414
+  name: HARRY POTTER Y EL CÁLIZ DE FUEGO
   firstTaskID: 20366109
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -3995,8 +3995,8 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: "HARRY POTTER Y LA ORDEN DEL F\xC9NIX_01429"
-  name: "HARRY POTTER Y LA ORDEN DEL F\xC9NIX"
+- id: HARRY POTTER Y LA ORDEN DEL FÉNIX_01429
+  name: HARRY POTTER Y LA ORDEN DEL FÉNIX
   firstTaskID: 20581359
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -4026,8 +4026,8 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: "HARRY POTTER Y EL MISTERIO DEL PR\xCDNCIPE_01448"
-  name: "HARRY POTTER Y EL MISTERIO DEL PR\xCDNCIPE"
+- id: HARRY POTTER Y EL MISTERIO DEL PRÍNCIPE_01448
+  name: HARRY POTTER Y EL MISTERIO DEL PRÍNCIPE
   firstTaskID: 20856059
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
@@ -4101,7 +4101,7 @@
   firstCircad: 2021-01-01
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 30300
+    seconds: 30240
   taskCount: 41
   lastTaskID: 21215539.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -4319,8 +4319,8 @@
   firstCircad: 2021-03-13
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 33000
-  taskCount: 38
+    seconds: 1980
+  taskCount: 30
   lastTaskID: 22281129.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2021
@@ -4601,7 +4601,7 @@
     minute: 7
   firstCircad: 2021-08-23
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 58980
+    seconds: 59400
   taskCount: 16
   lastTaskID: 24486839.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -5129,8 +5129,8 @@
   firstCircad: 2022-01-09
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 26040
-  taskCount: 21
+    seconds: 25980
+  taskCount: 20
   lastTaskID: 26560809.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2022
@@ -5562,7 +5562,7 @@
   firstCircad: 2022-05-06
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 11760
+    seconds: 15180
   taskCount: 22
   lastTaskID: 28257359.0
   lastTime: !CodecDatetimes/pd.Timestamp
@@ -5718,8 +5718,8 @@
   firstCircad: 2022-06-11
   timeSpent: !CodecDatetimes/pd.Timedelta
     days: 1
-    seconds: 64920
-  taskCount: 37
+    seconds: 71220
+  taskCount: 38
   lastTaskID: 28899429.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2022
@@ -5997,8 +5997,8 @@
     minute: 38
   firstCircad: 2022-08-08
   timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 47460
-  taskCount: 14
+    seconds: 51540
+  taskCount: 15
   lastTaskID: 29499299.0
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2022
@@ -7040,8 +7040,8 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: "ETHICS IN THE REAL WORLD, PETER SINGER, FILOSOF\xCDA_02325"
-  name: "ETHICS IN THE REAL WORLD, PETER SINGER, FILOSOF\xCDA"
+- id: ETHICS IN THE REAL WORLD, PETER SINGER, FILOSOFÍA_02325
+  name: ETHICS IN THE REAL WORLD, PETER SINGER, FILOSOFÍA
   firstTaskID: 33485329
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -7102,10 +7102,10 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: "HOW THE WORLD REALLY WORKS, VACLAV SIL, TEMAS, CAMBIO CLIM\xC1TICO, HISTORIA\
-    \ MODERNA, HISTORIA RECIENTE, SALUD P\xDABLICA, TECNOLOG\xCDA ENERG\xC9TICA_02351"
-  name: "HOW THE WORLD REALLY WORKS, VACLAV SIL, TEMAS, CAMBIO CLIM\xC1TICO, HISTORIA\
-    \ MODERNA, HISTORIA RECIENTE, SALUD P\xDABLICA, TECNOLOG\xCDA ENERG\xC9TICA"
+- id: HOW THE WORLD REALLY WORKS, VACLAV SIL, TEMAS, CAMBIO CLIMÁTICO, HISTORIA MODERNA,
+    HISTORIA RECIENTE, SALUD PÚBLICA, TECNOLOGÍA ENERGÉTICA_02351
+  name: HOW THE WORLD REALLY WORKS, VACLAV SIL, TEMAS, CAMBIO CLIMÁTICO, HISTORIA
+    MODERNA, HISTORIA RECIENTE, SALUD PÚBLICA, TECNOLOGÍA ENERGÉTICA
   firstTaskID: 33857409
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -7167,8 +7167,8 @@
   subjectMatters: !!set {}
   duration: .nan
   numReruns: 1
-- id: "REASONS AND PERSONS, DEREK PARFIT, EDUCACIONAL, TEMAS, \xC9TICA, RACIONALIDAD_02381"
-  name: "REASONS AND PERSONS, DEREK PARFIT, EDUCACIONAL, TEMAS, \xC9TICA, RACIONALIDAD"
+- id: REASONS AND PERSONS, DEREK PARFIT, EDUCACIONAL, TEMAS, ÉTICA, RACIONALIDAD_02381
+  name: REASONS AND PERSONS, DEREK PARFIT, EDUCACIONAL, TEMAS, ÉTICA, RACIONALIDAD
   firstTaskID: 34296129
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -7258,10 +7258,8 @@
   subjectMatters: *id013
   duration: .nan
   numReruns: 1
-- id: "THE SWEET SPOT, PAUL BLOOM, EDUCACIONAL, TEMAS, AUTORREALIZACI\xD3N, PSICOLOG\xCD\
-    A_02406"
-  name: "THE SWEET SPOT, PAUL BLOOM, EDUCACIONAL, TEMAS, AUTORREALIZACI\xD3N, PSICOLOG\xCD\
-    A"
+- id: THE SWEET SPOT, PAUL BLOOM, EDUCACIONAL, TEMAS, AUTORREALIZACIÓN, PSICOLOGÍA_02406
+  name: THE SWEET SPOT, PAUL BLOOM, EDUCACIONAL, TEMAS, AUTORREALIZACIÓN, PSICOLOGÍA
   firstTaskID: 34654289
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -7320,12 +7318,10 @@
   subjectMatters: *id013
   duration: .nan
   numReruns: 1
-- id: "ORIGINS: HOW EARTH'S HISTORY SHAPED HUMAN HISTORY, LEWIS DARTNELL, EDUCACIONAL,\
-    \ TEMAS, HISTORIA ANTIGUA, HISTORIA MODERNA, EVOLUCI\xD3N HUMANA, GEOGRAF\xCD\
-    A, GEOLOG\xCDA_02425"
-  name: "ORIGINS: HOW EARTH'S HISTORY SHAPED HUMAN HISTORY, LEWIS DARTNELL, EDUCACIONAL,\
-    \ TEMAS, HISTORIA ANTIGUA, HISTORIA MODERNA, EVOLUCI\xD3N HUMANA, GEOGRAF\xCD\
-    A, GEOLOG\xCDA"
+- id: 'ORIGINS: HOW EARTH''S HISTORY SHAPED HUMAN HISTORY, LEWIS DARTNELL, EDUCACIONAL,
+    TEMAS, HISTORIA ANTIGUA, HISTORIA MODERNA, EVOLUCIÓN HUMANA, GEOGRAFÍA, GEOLOGÍA_02425'
+  name: 'ORIGINS: HOW EARTH''S HISTORY SHAPED HUMAN HISTORY, LEWIS DARTNELL, EDUCACIONAL,
+    TEMAS, HISTORIA ANTIGUA, HISTORIA MODERNA, EVOLUCIÓN HUMANA, GEOGRAFÍA, GEOLOGÍA'
   firstTaskID: 34930389
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -7384,9 +7380,8 @@
   subjectMatters: *id013
   duration: .nan
   numReruns: 1
-- id: "NOISE, DANIEL KAHNEMAN, EDUCACIONAL, TEMAS, PRON\xD3STICO, PSICOLOG\xCDA, RACIONALIDAD_02454"
-  name: "NOISE, DANIEL KAHNEMAN, EDUCACIONAL, TEMAS, PRON\xD3STICO, PSICOLOG\xCDA,\
-    \ RACIONALIDAD"
+- id: NOISE, DANIEL KAHNEMAN, EDUCACIONAL, TEMAS, PRONÓSTICO, PSICOLOGÍA, RACIONALIDAD_02454
+  name: NOISE, DANIEL KAHNEMAN, EDUCACIONAL, TEMAS, PRONÓSTICO, PSICOLOGÍA, RACIONALIDAD
   firstTaskID: 35342139
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
@@ -7571,10 +7566,10 @@
   subjectMatters: *id018
   duration: .nan
   numReruns: 1
-- id: "WHAT\u2019S OUR PROBLEM, TIM URBAN, NO FICCI\xD3N, TEMAS, POL\xCDTICA ESTADOUNIDENSE,\
-    \ RACIONALIDAD, RACISMO_02605"
-  name: "WHAT\u2019S OUR PROBLEM, TIM URBAN, NO FICCI\xD3N, TEMAS, POL\xCDTICA ESTADOUNIDENSE,\
-    \ RACIONALIDAD, RACISMO"
+- id: WHAT’S OUR PROBLEM, TIM URBAN, NO FICCIÓN, TEMAS, POLÍTICA ESTADOUNIDENSE, RACIONALIDAD,
+    RACISMO_02605
+  name: WHAT’S OUR PROBLEM, TIM URBAN, NO FICCIÓN, TEMAS, POLÍTICA ESTADOUNIDENSE,
+    RACIONALIDAD, RACISMO
   firstTaskID: 37524619
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7603,8 +7598,8 @@
   subjectMatters: *id018
   duration: .nan
   numReruns: 1
-- id: "THE HIGH COST OF FREE PARKING, DONALD SHOUP, OPINI\xD3N, TEMAS, URBANISMO_02615"
-  name: "THE HIGH COST OF FREE PARKING, DONALD SHOUP, OPINI\xD3N, TEMAS, URBANISMO"
+- id: THE HIGH COST OF FREE PARKING, DONALD SHOUP, OPINIÓN, TEMAS, URBANISMO_02615
+  name: THE HIGH COST OF FREE PARKING, DONALD SHOUP, OPINIÓN, TEMAS, URBANISMO
   firstTaskID: 37668829
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7633,8 +7628,8 @@
   subjectMatters: *id018
   duration: .nan
   numReruns: 1
-- id: "AGAINST EMPATHY, PAUL BLOOM, OPINI\xD3N, TEMAS, \xC9TICA, PSICOLOG\xCDA_02641"
-  name: "AGAINST EMPATHY, PAUL BLOOM, OPINI\xD3N, TEMAS, \xC9TICA, PSICOLOG\xCDA"
+- id: AGAINST EMPATHY, PAUL BLOOM, OPINIÓN, TEMAS, ÉTICA, PSICOLOGÍA_02641
+  name: AGAINST EMPATHY, PAUL BLOOM, OPINIÓN, TEMAS, ÉTICA, PSICOLOGÍA
   firstTaskID: 38037749
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7663,8 +7658,8 @@
   subjectMatters: *id018
   duration: .nan
   numReruns: 1
-- id: "HOW MINDS CHANGE, DAVID MCRANEY, EDUCACIONAL, TEMAS, PSICOLOG\xCDA_02645"
-  name: "HOW MINDS CHANGE, DAVID MCRANEY, EDUCACIONAL, TEMAS, PSICOLOG\xCDA"
+- id: HOW MINDS CHANGE, DAVID MCRANEY, EDUCACIONAL, TEMAS, PSICOLOGÍA_02645
+  name: HOW MINDS CHANGE, DAVID MCRANEY, EDUCACIONAL, TEMAS, PSICOLOGÍA
   firstTaskID: 38092869
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7693,10 +7688,10 @@
   subjectMatters: *id018
   duration: .nan
   numReruns: 1
-- id: "NOT THE END OF THE WORLD, HANNAH RITCHIE, EDUCACIONAL, TEMAS, CAMBIO CLIM\xC1\
-    TICO, CONTAMINACI\xD3N DEL AIRE, ECOLOG\xCDA, PRON\xD3STICO_02653"
-  name: "NOT THE END OF THE WORLD, HANNAH RITCHIE, EDUCACIONAL, TEMAS, CAMBIO CLIM\xC1\
-    TICO, CONTAMINACI\xD3N DEL AIRE, ECOLOG\xCDA, PRON\xD3STICO"
+- id: NOT THE END OF THE WORLD, HANNAH RITCHIE, EDUCACIONAL, TEMAS, CAMBIO CLIMÁTICO,
+    CONTAMINACIÓN DEL AIRE, ECOLOGÍA, PRONÓSTICO_02653
+  name: NOT THE END OF THE WORLD, HANNAH RITCHIE, EDUCACIONAL, TEMAS, CAMBIO CLIMÁTICO,
+    CONTAMINACIÓN DEL AIRE, ECOLOGÍA, PRONÓSTICO
   firstTaskID: 38208329
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7756,8 +7751,8 @@
   subjectMatters: *id020
   duration: .nan
   numReruns: 1
-- id: "THE FIRST FIFTEEN LIVES OF HARRY AUGUST, CLAIRE NORTH, FANTAS\xCDA_02676"
-  name: "THE FIRST FIFTEEN LIVES OF HARRY AUGUST, CLAIRE NORTH, FANTAS\xCDA"
+- id: THE FIRST FIFTEEN LIVES OF HARRY AUGUST, CLAIRE NORTH, FANTASÍA_02676
+  name: THE FIRST FIFTEEN LIVES OF HARRY AUGUST, CLAIRE NORTH, FANTASÍA
   firstTaskID: 38538859
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
@@ -7934,5 +7929,36 @@
   review: *id008
   externalReview: .nan
   subjectMatters: *id020
+  duration: .nan
+  numReruns: 1
+- id: HOW TO AVOID A CLIMATE DISASTER_01543
+  name: HOW TO AVOID A CLIMATE DISASTER
+  firstTaskID: 22222929
+  firstTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 3
+    day: 24
+    hour: 6
+    minute: 12
+  firstCircad: 2021-03-24
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 31020
+  taskCount: 8
+  lastTaskID: 22281129.0
+  lastTime: !CodecDatetimes/pd.Timestamp
+    year: 2021
+    month: 3
+    day: 28
+    hour: 8
+    minute: 11
+  startTaskIDs: !!set
+    22222929: null
+  creator: .nan
+  creationTime: .nan
+  genres: !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: *id008
+  externalReview: .nan
+  subjectMatters: !!set {}
   duration: .nan
   numReruns: 1

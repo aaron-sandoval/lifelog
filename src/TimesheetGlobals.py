@@ -14,16 +14,16 @@ from pathlib import Path
 import pickle
 from functools import cached_property, lru_cache
 from datetime import datetime, timedelta, date
-import portion as P
 from enum import Enum
+from collections import defaultdict
+from dataclasses import dataclass, field
+import abc
+from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple, Type
 
 import pandas as pd
 # import numpy as np
-from collections import defaultdict
 from pandas.core.dtypes.inference import is_list_like
-from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple, Type
-from dataclasses import dataclass
-import abc
+import portion as P
 
 import i18n_l10n.internationalization as i18n
 from src.TimePeriod import TimePeriod
@@ -719,7 +719,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
             cls.e2021_SpChg_KO_Start:    c(start=datetime(2021, 9, 10, 0, 0), es_MX='2021 SpChg Inicio con KO'), # +Kristin Spare Change
             cls.e2022_SpChg_JW_KS_Start: c(start=datetime(2022, 9, 1, 0, 0), es_MX='2022 SpChg Inicio con JW KS'), # +Kirsten, +Jonathan Spare Change
             cls.e2024_SpChg_JW_End:      c(start=datetime(2024, 3, 1, 0, 0), es_MX='2022 SpChg Fin con JW'), # -Jonathan, -George +Barry Spare Change
-            cls.e2024_SpChg_CN_Start:    c(start=datetime(2024, 7, 20, 0, 0), es_MX='2022 SpChg Inicio con CN'), # +Crystal Spare Change
+            cls.e2024_SpChg_CN_Start:    c(start=datetime(2024, 11, 20, 0, 0), es_MX='2022 SpChg Inicio con CN'), # +Crystal Spare Change
             cls.e2024_AISC:              c(start=datetime(2024, 1, 13, 3, 0), es_MX='2023 Campamento de Securidad de IA'), # AISC starts
             cls.e2018_Data_Log_Person:   c(start=datetime(2018, 2, 10, 3), es_MX='2018 Datos Persona'), # Data on time spent with individuals somewhat consistent
         }
@@ -756,7 +756,7 @@ class EpochScheme(i18n.EnglishSpanishEnum):
     def _get_dataclass() -> kiwilib.IsDataclass:
         @dataclass(frozen=True)
         class EpochSchemeDataclass(i18n.EnglishSpanishEnum.dataclass):
-            scheme: P.IntervalDict = P.IntervalDict({})  # Dummy default, must define in args
+            scheme: P.IntervalDict = field(default_factory=P.IntervalDict)  # Dummy default, must define in args
         return EpochSchemeDataclass
 
     def id(self, dt: Union[datetime, Iterable[datetime]]) -> Union[int, Iterable[int]]:
@@ -878,7 +878,7 @@ class EpochScheme(i18n.EnglishSpanishEnum):
                         : (4, 'Spare Change with Kristin', 'Spare Change con Kristin'),
                         P.closedopen(Epoch.e2022_SpChg_JW_KS_Start.dt(), Epoch.e2024_SpChg_JW_End.dt())
                         : (5, 'Spare Change with Jonathan and Kirsten', 'Spare Change con Jonathan y Kirsten'),
-                        P.closedopen(Epoch.e2022_SpChg_JW_KS_Start.dt(), Epoch.e2024_SpChg_JW_End.dt())
+                        P.closedopen(Epoch.e2024_SpChg_JW_End.dt(), Epoch.e2024_SpChg_CN_Start.dt())
                         : (6, 'Spare Change with Barry', 'Spare Change con Barry'),
                     }),
                     complementVal=(7, 'Spare Change with Crystal', 'Spare Change con Crystal')

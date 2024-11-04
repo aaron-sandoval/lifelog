@@ -176,8 +176,8 @@ class Catalog(abc.ABC):
                 raise KeyError(f'When writing to the default catalog file, fields:\n'
                                f'{set(data[1].keys()) - set(self.COLLXBLE_CLASS.CATALOG_FIELDS())}\nare not allowed')
             file = self.CATALOG_FILE
-        with open(file, 'w') as yamlfile:
-            yaml.dump(data, yamlfile, sort_keys=False)
+        with open(file, 'w', encoding='utf-8') as yamlfile:
+            yaml.dump(data, yamlfile, sort_keys=False, allow_unicode=True)
 
     def _readYaml(self, file: str = None) -> dict:
         """
@@ -190,7 +190,7 @@ class Catalog(abc.ABC):
         if not os.path.isfile(file):
             self.collxn = self.getEmptyCollxn()
             return None
-        with open(file, 'r') as yamlfile:
+        with open(file, 'r', encoding='utf-8') as yamlfile:
             yamlData = yaml.load(yamlfile.read(), Loader=yaml.SafeLoader)
         if not yamlData:
             self.collxn = self.getEmptyCollxn()
@@ -272,7 +272,7 @@ class Catalog(abc.ABC):
     #         ind = byFirst['firstTime'].searchsorted(dt, side='right')
     #         return self.getObjects(byFirst.iloc[[ind - 1]])[0]
 
-    def updateScalingFields(self, timesheetdf: TimesheetDataFrame, reset=tuple()) -> None:
+    def updateScalingFields(self, timesheetdf: TimesheetDataFrame, reset: Iterable[str] = tuple()) -> None:
         """
         Updates the set of Catalog fields which may change as new instances of Collectibles are found in the dataset
         over time.
@@ -451,8 +451,8 @@ class DAGCatalog(Catalog):
                 raise KeyError(f'When writing to the default catalog file, fields:\n'
                                f'{set(data[1].keys()) - set(self.COLLXBLE_CLASS.CATALOG_FIELDS())}\nare not allowed')
             file = self.CATALOG_FILE
-        with open(file, 'w') as yamlfile:
-            yaml.dump_all(data, yamlfile, sort_keys=False)
+        with open(file, 'w', encoding='utf-8') as yamlfile:
+            yaml.dump_all(data, yamlfile, sort_keys=False, allow_unicode=True)
 
     def _readYaml(self, file: str = None) -> dict:
         """
@@ -469,7 +469,7 @@ class DAGCatalog(Catalog):
             self.collxn = self.getEmptyCollxn()
             self.dag = self.COLLXBLE_CLASS.emptyDAG()
             return None
-        with open(file, 'r') as yamlfile:
+        with open(file, 'r', encoding='utf-8') as yamlfile:
             yamlData = [a for a in yaml.safe_load_all(yamlfile)]
         if not yamlData:
             self.collxn = self.getEmptyCollxn()
@@ -496,7 +496,7 @@ class DAGCatalog(Catalog):
         elif 'adj' in yamlData[1] and len(yamlData[1]['adj']) > 0:  # If there is some data in yaml adj
             self.collxn = pd.DataFrame.from_records(yamlData[0])
             self.collxn.set_index('id', inplace=True)
-            self.dag = nx.DiGraph(yamlData[1]['adj'])
+            self.dag = nx.compose(self.COLLXBLE_CLASS.emptyDAG(), nx.DiGraph(yamlData[1]['adj']))
         else:
             self.dag = self.COLLXBLE_CLASS.emptyDAG()
             self.collect([self.COLLXBLE_CLASS(**d) for d in yamlData[0]])

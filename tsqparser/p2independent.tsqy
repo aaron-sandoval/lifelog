@@ -24,4 +24,4 @@ Food & ! ('Cocinar' | 'Preparar') : Tag.Comer ; !'Comer' ;
 """ Temporary Rules.
 New/modified rules in independent.tsqy which should be applied to old DC datasets. """
 "Auto" & ( Project.Transporte | Project.Errands | ! 'Investigar' ) : Tag.Auto ; !'Auto' ;
-'Cartas' & ! 'Jugar' : 'Cartas'.replace('Carta') ;
+'Cartas' & 'Escribir' : 'Cartas'.replace('Carta') ;
