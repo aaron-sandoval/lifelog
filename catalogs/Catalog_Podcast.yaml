@@ -10,571 +10,571 @@
     COLLECTIBLE TYPE: podcast
     CATALOG COUNT: 21
 - id: THE WAR ON CARS_01126
+  externalReview: .nan
   name: THE WAR ON CARS
+  taskCount: 104.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 4
+    seconds: 24660
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 16224269
+  lastTaskID: 38844739.0
+  genres: !!set
+    &id001 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  firstCircad: 2020-02-01
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
     month: 2
     day: 1
     hour: 16
     minute: 26
-  firstCircad: 2020-02-01
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 4
-    seconds: 24660
-  taskCount: 104.0
-  lastTaskID: 38844739.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 5
     day: 21
     hour: 13
     minute: 21
-  creator: .nan
-  creationTime: .nan
-  genres: !!set
-    &id001 !yamlable/Genre.GenreUndefined {}: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
 - id: THE ANTHROPOCENE REVIEWED_01145
+  externalReview: .nan
   name: THE ANTHROPOCENE REVIEWED
+  taskCount: 10.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 43920
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 16500539
+  lastTaskID: 23668689.0
+  genres: !!set
+    *id001: null
+  review: .nan
+  firstCircad: 2020-02-20
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
     month: 2
     day: 20
     hour: 20
     minute: 53
-  firstCircad: 2020-02-20
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 43920
-  taskCount: 10.0
-  lastTaskID: 23668689.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2021
     month: 7
     day: 2
     hour: 19
     minute: 5
+- id: THE DAILY_01153
+  externalReview: .nan
+  name: THE DAILY
+  taskCount: 640.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 25
+    seconds: 51780
   creator: .nan
-  creationTime: .nan
+  subjectMatters: !!set {}
+  firstTaskID: 16617339
+  lastTaskID: 38760589.0
   genres: !!set
     *id001: null
   review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
-- id: THE DAILY_01153
-  name: THE DAILY
-  firstTaskID: 16617339
+  firstCircad: 2020-02-28
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
     month: 2
     day: 28
     hour: 23
     minute: 33
-  firstCircad: 2020-02-28
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 25
-    seconds: 51780
-  taskCount: 640.0
-  lastTaskID: 38760589.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 5
     day: 15
     hour: 17
     minute: 37
+- id: DEAR HANK AND JOHN_01168
+  externalReview: .nan
+  name: DEAR HANK AND JOHN
+  taskCount: 332.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 14
+    seconds: 66780
   creator: .nan
-  creationTime: .nan
+  subjectMatters: !!set {}
+  firstTaskID: 16826149
+  lastTaskID: 39338059.0
   genres: !!set
     *id001: null
   review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
-- id: DEAR HANK AND JOHN_01168
-  name: DEAR HANK AND JOHN
-  firstTaskID: 16826149
+  firstCircad: 2020-03-14
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
     month: 3
     day: 14
     hour: 11
     minute: 34
-  firstCircad: 2020-03-14
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 14
-    seconds: 66780
-  taskCount: 332.0
-  lastTaskID: 39338059.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 6
     day: 24
     hour: 20
     minute: 1
+- id: RABBIT HOLE_01211
+  externalReview: .nan
+  name: RABBIT HOLE
+  taskCount: 4.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 14640
   creator: .nan
-  creationTime: .nan
+  subjectMatters: !!set {}
+  firstTaskID: 17442409
+  lastTaskID: 18048969.0
   genres: !!set
     *id001: null
   review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
-- id: RABBIT HOLE_01211
-  name: RABBIT HOLE
-  firstTaskID: 17442409
+  firstCircad: 2020-04-26
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2020
     month: 4
     day: 26
     hour: 6
     minute: 40
-  firstCircad: 2020-04-26
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 14640
-  taskCount: 4.0
-  lastTaskID: 18048969.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2020
     month: 6
     day: 7
     hour: 10
     minute: 28
-  creator: .nan
-  creationTime: .nan
-  genres: !!set
-    *id001: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
 - id: THE PEDALSHIFT PROJECT_01659
+  externalReview: .nan
   name: THE PEDALSHIFT PROJECT
+  taskCount: 13.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 44940
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 23894999
+  lastTaskID: 25966929.0
+  genres: !!set
+    &id002 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  firstCircad: 2021-07-18
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2021
     month: 7
     day: 18
     hour: 8
     minute: 59
-  firstCircad: 2021-07-18
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 44940
-  taskCount: 13.0
-  lastTaskID: 25966929.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2021
     month: 12
     day: 9
     hour: 7
     minute: 2
-  creator: .nan
-  creationTime: .nan
-  genres: !!set
-    &id002 !yamlable/Genre.GenreUndefined {}: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
 - id: THE EZRA KLEIN SHOW_01683
+  externalReview: .nan
   name: THE EZRA KLEIN SHOW
+  taskCount: 247.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 10
+    seconds: 39360
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 24246409
+  lastTaskID: 39425639.0
+  genres: !!set
+    *id002: null
+  review: .nan
+  firstCircad: 2021-08-11
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2021
     month: 8
     day: 11
     hour: 18
     minute: 40
-  firstCircad: 2021-08-11
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 10
-    seconds: 39360
-  taskCount: 247.0
-  lastTaskID: 39425639.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 6
     day: 30
     hour: 22
     minute: 28
+- id: THE 3B1B PODCAST_01703
+  externalReview: .nan
+  name: THE 3B1B PODCAST
+  taskCount: 9.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 35580
   creator: .nan
-  creationTime: .nan
+  subjectMatters: !!set {}
+  firstTaskID: 24535979
+  lastTaskID: 24902779.0
   genres: !!set
     *id002: null
   review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
-- id: THE 3B1B PODCAST_01703
-  name: THE 3B1B PODCAST
-  firstTaskID: 24535979
+  firstCircad: 2021-08-31
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2021
     month: 8
     day: 31
     hour: 21
     minute: 17
-  firstCircad: 2021-08-31
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 35580
-  taskCount: 9.0
-  lastTaskID: 24902779.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2021
     month: 9
     day: 26
     hour: 9
     minute: 23
-  creator: .nan
-  creationTime: .nan
-  genres: !!set
-    *id002: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
 - id: MAKING SENSE WITH SAM HARRIS_01820
+  externalReview: .nan
   name: MAKING SENSE WITH SAM HARRIS
+  taskCount: 296.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 11
+    seconds: 900
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 26213279
+  lastTaskID: 39338419.0
+  genres: !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  firstCircad: 2021-12-26
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2021
     month: 12
     day: 26
     hour: 8
     minute: 47
-  firstCircad: 2021-12-26
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 11
-    seconds: 900
-  taskCount: 296.0
-  lastTaskID: 39338419.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 6
     day: 24
     hour: 22
     minute: 19
-  creator: .nan
-  creationTime: .nan
-  genres: !!set
-    !yamlable/Genre.GenreUndefined {}: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
 - id: BBC GLOBAL NEWS PODCAST_01934
+  externalReview: .nan
   name: BBC GLOBAL NEWS PODCAST
+  taskCount: 353.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 15
+    seconds: 54600
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 27861039
+  lastTaskID: 37387929.0
+  genres: !!set
+    &id003 !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  firstCircad: 2022-04-19
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2022
     month: 4
     day: 19
     hour: 19
     minute: 3
-  firstCircad: 2022-04-19
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 15
-    seconds: 54600
-  taskCount: 353.0
-  lastTaskID: 37387929.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 2
     day: 10
     hour: 9
     minute: 44
-  creator: .nan
-  creationTime: .nan
-  genres: !!set
-    &id003 !yamlable/Genre.GenreUndefined {}: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
 - id: 80000 HOURS_02311
+  externalReview: .nan
   name: 80000 HOURS
+  taskCount: 272.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    days: 8
+    seconds: 68220
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 33283479
+  lastTaskID: 39425639.0
+  genres: !!set
+    *id003: null
+  review: .nan
+  firstCircad: 2023-05-01
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 5
     day: 1
     hour: 8
     minute: 27
-  firstCircad: 2023-05-01
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    days: 8
-    seconds: 68220
-  taskCount: 272.0
-  lastTaskID: 39425639.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 6
     day: 30
     hour: 22
     minute: 28
+- id: EA FORUM PODCAST_02347
+  externalReview: .nan
+  name: EA FORUM PODCAST
+  taskCount: 13.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 26160
   creator: .nan
-  creationTime: .nan
+  subjectMatters: !!set {}
+  firstTaskID: 33805109
+  lastTaskID: 35244479.0
   genres: !!set
     *id003: null
   review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
-- id: EA FORUM PODCAST_02347
-  name: EA FORUM PODCAST
-  firstTaskID: 33805109
+  firstCircad: 2023-06-06
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 6
     day: 6
     hour: 13
     minute: 50
-  firstCircad: 2023-06-06
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 26160
-  taskCount: 13.0
-  lastTaskID: 35244479.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 9
     day: 14
     hour: 13
     minute: 16
-  creator: .nan
-  creationTime: .nan
-  genres: !!set
-    *id003: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
 - id: THE HAPPINESS LAB_02453
+  externalReview: .nan
   name: THE HAPPINESS LAB
+  taskCount: 2.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 8580
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 35331749
+  lastTaskID: 35335839.0
+  genres: !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  firstCircad: 2023-09-20
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 9
     day: 20
     hour: 14
     minute: 14
-  firstCircad: 2023-09-20
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 8580
-  taskCount: 2.0
-  lastTaskID: 35335839.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 9
     day: 20
     hour: 22
     minute: 53
+- id: YOUR UNDIVIDED ATTENTION_02474
+  externalReview: .nan
+  name: YOUR UNDIVIDED ATTENTION
+  taskCount: 1.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 6180
   creator: .nan
-  creationTime: .nan
-  genres: !!set
+  subjectMatters: &id004 !!set {}
+  firstTaskID: 35638669
+  lastTaskID: 35638669.0
+  genres: &id005 !!set
     !yamlable/Genre.GenreUndefined {}: null
   review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
-- id: YOUR UNDIVIDED ATTENTION_02474
-  name: YOUR UNDIVIDED ATTENTION
-  firstTaskID: 35638669
+  firstCircad: 2023-10-11
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 10
     day: 11
     hour: 21
     minute: 46
-  firstCircad: 2023-10-11
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 6180
-  taskCount: 1.0
-  lastTaskID: 35638669.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 10
     day: 11
     hour: 23
     minute: 29
-  creator: .nan
-  creationTime: .nan
-  genres: &id004 !!set
-    !yamlable/Genre.GenreUndefined {}: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: &id005 !!set {}
 - id: JOE CARLSMITH AUDIO_02476
+  externalReview: .nan
   name: JOE CARLSMITH AUDIO
+  taskCount: 27.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 64380
+  creator: .nan
+  subjectMatters: *id004
   firstTaskID: 35662349
+  lastTaskID: 38121269.0
+  genres: *id005
+  review: .nan
+  firstCircad: 2023-10-13
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 10
     day: 13
     hour: 13
     minute: 14
-  firstCircad: 2023-10-13
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 64380
-  taskCount: 27.0
-  lastTaskID: 38121269.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 4
     day: 1
     hour: 8
     minute: 14
-  creator: .nan
-  creationTime: .nan
-  genres: *id004
-  review: .nan
-  externalReview: .nan
-  subjectMatters: *id005
 - id: INTO AI SAFETY_02519
+  externalReview: .nan
   name: INTO AI SAFETY
+  taskCount: 1.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5040
+  creator: .nan
+  subjectMatters: *id004
   firstTaskID: 36278749
+  lastTaskID: 36278749.0
+  genres: *id005
+  review: .nan
+  firstCircad: 2023-11-25
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 11
     day: 25
     hour: 8
     minute: 34
-  firstCircad: 2023-11-25
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 5040
-  taskCount: 1.0
-  lastTaskID: 36278749.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 11
     day: 25
     hour: 9
     minute: 58
-  creator: .nan
-  creationTime: .nan
-  genres: *id004
-  review: .nan
-  externalReview: .nan
-  subjectMatters: *id005
 - id: ON PURPOSE WITH JAY SHETTY_02536
+  externalReview: .nan
   name: ON PURPOSE WITH JAY SHETTY
+  taskCount: 2.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 5640
+  creator: .nan
+  subjectMatters: *id004
   firstTaskID: 36523569
+  lastTaskID: 36527329.0
+  genres: *id005
+  review: .nan
+  firstCircad: 2023-12-12
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 12
     day: 12
     hour: 8
     minute: 36
-  firstCircad: 2023-12-12
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 5640
-  taskCount: 2.0
-  lastTaskID: 36527329.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2023
     month: 12
     day: 12
     hour: 15
     minute: 28
-  creator: .nan
-  creationTime: .nan
-  genres: *id004
-  review: .nan
-  externalReview: .nan
-  subjectMatters: *id005
 - id: WHAT NOW? WITH TREVOR NOAH_02567
+  externalReview: .nan
   name: WHAT NOW? WITH TREVOR NOAH
+  taskCount: 2.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 3720
+  creator: .nan
+  subjectMatters: !!set {}
   firstTaskID: 36973269
+  lastTaskID: 36984019.0
+  genres: !!set
+    !yamlable/Genre.GenreUndefined {}: null
+  review: .nan
+  firstCircad: 2024-01-12
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 1
     day: 12
     hour: 14
     minute: 6
-  firstCircad: 2024-01-12
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 3720
-  taskCount: 2.0
-  lastTaskID: 36984019.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 1
     day: 13
     hour: 8
     minute: 38
+- id: ASTRAL CODEX TEN PODCAST_02690
+  externalReview: .nan
+  name: ASTRAL CODEX TEN PODCAST
+  taskCount: 1.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2880
   creator: .nan
-  creationTime: .nan
-  genres: !!set
+  subjectMatters: &id006 !!set {}
+  firstTaskID: 38740389
+  lastTaskID: 38740389.0
+  genres: &id007 !!set
     !yamlable/Genre.GenreUndefined {}: null
   review: .nan
-  externalReview: .nan
-  subjectMatters: !!set {}
-- id: ASTRAL CODEX TEN PODCAST_02690
-  name: ASTRAL CODEX TEN PODCAST
-  firstTaskID: 38740389
+  firstCircad: 2024-05-14
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 5
     day: 14
     hour: 7
     minute: 18
-  firstCircad: 2024-05-14
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 2880
-  taskCount: 1.0
-  lastTaskID: 38740389.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 5
     day: 14
     hour: 8
     minute: 6
-  creator: .nan
-  creationTime: .nan
-  genres: &id006 !!set
-    !yamlable/Genre.GenreUndefined {}: null
-  review: .nan
-  externalReview: .nan
-  subjectMatters: &id007 !!set {}
 - id: FUTURE OF LIFE INSTITUTE PODCAST_02717
+  externalReview: .nan
   name: FUTURE OF LIFE INSTITUTE PODCAST
+  taskCount: 17.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 42780
+  creator: .nan
+  subjectMatters: *id006
   firstTaskID: 39129999
+  lastTaskID: 39389719.0
+  genres: *id007
+  review: .nan
+  firstCircad: 2024-06-10
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 6
     day: 10
     hour: 8
     minute: 39
-  firstCircad: 2024-06-10
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 42780
-  taskCount: 17.0
-  lastTaskID: 39389719.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 6
     day: 28
     hour: 10
     minute: 12
-  creator: .nan
-  creationTime: .nan
-  genres: *id006
-  review: .nan
-  externalReview: .nan
-  subjectMatters: *id007
 - id: RATIONALLY SPEAKING_02732
+  externalReview: .nan
   name: RATIONALLY SPEAKING
+  taskCount: 1.0
+  timeSpent: !CodecDatetimes/pd.Timedelta
+    seconds: 2340
+  creator: .nan
+  subjectMatters: *id006
   firstTaskID: 39346409
+  lastTaskID: 39346409.0
+  genres: *id007
+  review: .nan
+  firstCircad: 2024-06-25
   firstTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 6
     day: 25
     hour: 9
     minute: 20
-  firstCircad: 2024-06-25
-  timeSpent: !CodecDatetimes/pd.Timedelta
-    seconds: 2340
-  taskCount: 1.0
-  lastTaskID: 39346409.0
+  creationTime: .nan
   lastTime: !CodecDatetimes/pd.Timestamp
     year: 2024
     month: 6
     day: 25
     hour: 9
     minute: 59
-  creator: .nan
-  creationTime: .nan
-  genres: *id006
-  review: .nan
-  externalReview: .nan
-  subjectMatters: *id007

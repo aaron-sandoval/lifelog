@@ -75,7 +75,10 @@ class Catalog(abc.ABC):
         if 'id' not in collxbles[0].keys():
             for item in collxbles:
                 item['id'] = self.COLLXBLE_CLASS.generateID(**item)
-        self.collxn = pd.concat((self.collxn, pd.DataFrame(collxbles).set_index('id')))
+        if len(self.collxn) > 0:
+            self.collxn = pd.concat((self.collxn, pd.DataFrame(collxbles).set_index('id')), axis=0)
+        else:
+            self.collxn = pd.DataFrame(collxbles).set_index('id')
 
     def hasCollectible(self, collxble: Collectible) -> bool:
         return collxble.id in self.collxn.index
