@@ -1,4 +1,4 @@
-# Generated from TimesheetQuery.g4 by ANTLR 4.12.0
+# Generated from TimesheetQuery.g4 by ANTLR 4.13.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -10,7 +10,7 @@ else:
 
 def serializedATN():
     return [
-        4,1,64,258,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,65,258,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
@@ -32,7 +32,7 @@ def serializedATN():
         30,1,30,1,30,1,30,3,30,246,8,30,1,30,1,30,1,30,3,30,251,8,30,1,30,
         3,30,254,8,30,1,30,1,30,1,30,0,0,31,0,2,4,6,8,10,12,14,16,18,20,
         22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,0,4,
-        1,0,4,5,1,0,6,12,1,0,15,34,1,0,41,43,264,0,65,1,0,0,0,2,71,1,0,0,
+        1,0,4,5,1,0,6,12,1,0,15,35,1,0,42,44,264,0,65,1,0,0,0,2,71,1,0,0,
         0,4,86,1,0,0,0,6,92,1,0,0,0,8,94,1,0,0,0,10,96,1,0,0,0,12,98,1,0,
         0,0,14,100,1,0,0,0,16,112,1,0,0,0,18,125,1,0,0,0,20,131,1,0,0,0,
         22,134,1,0,0,0,24,145,1,0,0,0,26,147,1,0,0,0,28,151,1,0,0,0,30,153,
@@ -72,30 +72,30 @@ def serializedATN():
         164,167,3,48,24,0,165,167,3,56,28,0,166,160,1,0,0,0,166,161,1,0,
         0,0,166,162,1,0,0,0,166,163,1,0,0,0,166,164,1,0,0,0,166,165,1,0,
         0,0,167,35,1,0,0,0,168,169,3,50,25,0,169,37,1,0,0,0,170,174,3,54,
-        27,0,171,174,5,59,0,0,172,174,5,60,0,0,173,170,1,0,0,0,173,171,1,
+        27,0,171,174,5,60,0,0,172,174,5,61,0,0,173,170,1,0,0,0,173,171,1,
         0,0,0,173,172,1,0,0,0,174,39,1,0,0,0,175,176,3,32,16,0,176,177,5,
-        35,0,0,177,178,5,13,0,0,178,179,3,32,16,0,179,180,5,14,0,0,180,41,
-        1,0,0,0,181,182,5,36,0,0,182,187,5,61,0,0,183,184,5,37,0,0,184,185,
-        3,24,12,0,185,186,5,38,0,0,186,188,1,0,0,0,187,183,1,0,0,0,187,188,
-        1,0,0,0,188,43,1,0,0,0,189,190,5,39,0,0,190,45,1,0,0,0,191,192,5,
-        40,0,0,192,193,5,61,0,0,193,47,1,0,0,0,194,195,7,3,0,0,195,196,5,
-        61,0,0,196,49,1,0,0,0,197,198,5,44,0,0,198,199,5,61,0,0,199,51,1,
-        0,0,0,200,201,5,45,0,0,201,202,5,61,0,0,202,53,1,0,0,0,203,204,5,
-        55,0,0,204,55,1,0,0,0,205,208,5,46,0,0,206,209,5,61,0,0,207,209,
-        5,59,0,0,208,206,1,0,0,0,208,207,1,0,0,0,209,57,1,0,0,0,210,211,
-        5,47,0,0,211,216,5,59,0,0,212,213,5,48,0,0,213,215,5,59,0,0,214,
+        36,0,0,177,178,5,13,0,0,178,179,3,32,16,0,179,180,5,14,0,0,180,41,
+        1,0,0,0,181,182,5,37,0,0,182,187,5,62,0,0,183,184,5,38,0,0,184,185,
+        3,24,12,0,185,186,5,39,0,0,186,188,1,0,0,0,187,183,1,0,0,0,187,188,
+        1,0,0,0,188,43,1,0,0,0,189,190,5,40,0,0,190,45,1,0,0,0,191,192,5,
+        41,0,0,192,193,5,62,0,0,193,47,1,0,0,0,194,195,7,3,0,0,195,196,5,
+        62,0,0,196,49,1,0,0,0,197,198,5,45,0,0,198,199,5,62,0,0,199,51,1,
+        0,0,0,200,201,5,46,0,0,201,202,5,62,0,0,202,53,1,0,0,0,203,204,5,
+        56,0,0,204,55,1,0,0,0,205,208,5,47,0,0,206,209,5,62,0,0,207,209,
+        5,60,0,0,208,206,1,0,0,0,208,207,1,0,0,0,209,57,1,0,0,0,210,211,
+        5,48,0,0,211,216,5,60,0,0,212,213,5,49,0,0,213,215,5,60,0,0,214,
         212,1,0,0,0,215,218,1,0,0,0,216,214,1,0,0,0,216,217,1,0,0,0,217,
         219,1,0,0,0,218,216,1,0,0,0,219,220,5,14,0,0,220,59,1,0,0,0,221,
-        230,5,49,0,0,222,223,5,50,0,0,223,231,5,59,0,0,224,225,5,51,0,0,
-        225,231,5,59,0,0,226,227,5,52,0,0,227,231,5,59,0,0,228,229,5,53,
-        0,0,229,231,5,59,0,0,230,222,1,0,0,0,230,224,1,0,0,0,230,226,1,0,
-        0,0,230,228,1,0,0,0,231,235,1,0,0,0,232,233,5,48,0,0,233,234,5,50,
-        0,0,234,236,5,59,0,0,235,232,1,0,0,0,235,236,1,0,0,0,236,240,1,0,
-        0,0,237,238,5,48,0,0,238,239,5,51,0,0,239,241,5,59,0,0,240,237,1,
-        0,0,0,240,241,1,0,0,0,241,245,1,0,0,0,242,243,5,48,0,0,243,244,5,
-        52,0,0,244,246,5,59,0,0,245,242,1,0,0,0,245,246,1,0,0,0,246,250,
-        1,0,0,0,247,248,5,48,0,0,248,249,5,53,0,0,249,251,5,59,0,0,250,247,
-        1,0,0,0,250,251,1,0,0,0,251,253,1,0,0,0,252,254,5,48,0,0,253,252,
+        230,5,50,0,0,222,223,5,51,0,0,223,231,5,60,0,0,224,225,5,52,0,0,
+        225,231,5,60,0,0,226,227,5,53,0,0,227,231,5,60,0,0,228,229,5,54,
+        0,0,229,231,5,60,0,0,230,222,1,0,0,0,230,224,1,0,0,0,230,226,1,0,
+        0,0,230,228,1,0,0,0,231,235,1,0,0,0,232,233,5,49,0,0,233,234,5,51,
+        0,0,234,236,5,60,0,0,235,232,1,0,0,0,235,236,1,0,0,0,236,240,1,0,
+        0,0,237,238,5,49,0,0,238,239,5,52,0,0,239,241,5,60,0,0,240,237,1,
+        0,0,0,240,241,1,0,0,0,241,245,1,0,0,0,242,243,5,49,0,0,243,244,5,
+        53,0,0,244,246,5,60,0,0,245,242,1,0,0,0,245,246,1,0,0,0,246,250,
+        1,0,0,0,247,248,5,49,0,0,248,249,5,54,0,0,249,251,5,60,0,0,250,247,
+        1,0,0,0,250,251,1,0,0,0,251,253,1,0,0,0,252,254,5,49,0,0,253,252,
         1,0,0,0,253,254,1,0,0,0,254,255,1,0,0,0,255,256,5,14,0,0,256,61,
         1,0,0,0,25,65,71,79,82,92,106,112,125,131,134,141,145,151,158,166,
         173,187,208,216,230,235,240,245,250,253
@@ -117,11 +117,12 @@ class TimesheetQueryParser ( Parser ):
                      "'start'", "'end'", "'duration'", "'epoch'", "'mood'", 
                      "'circad'", "'metaproject'", "'bodyparts'", "'Location'", 
                      "'Person'", "'Food'", "'Media'", "'Audiobook'", "'Podcast'", 
-                     "'TVShow'", "'Movie'", "'.replace'", "'EpochScheme.'", 
-                     "'['", "']'", "'reloadDescription()'", "'Project.'", 
-                     "'Metaproject.'", "'Meta.'", "'MP.'", "'Tag.'", "'Epoch.'", 
-                     "'Mood.'", "'datetime('", "','", "'timedelta('", "'weeks='", 
-                     "'days='", "'hours='", "'minutes='" ]
+                     "'TVShow'", "'Movie'", "'SubjectMatter'", "'.replace'", 
+                     "'EpochScheme.'", "'['", "']'", "'reloadDescription()'", 
+                     "'Project.'", "'Metaproject.'", "'Meta.'", "'MP.'", 
+                     "'Tag.'", "'Epoch.'", "'Mood.'", "'datetime('", "','", 
+                     "'timedelta('", "'weeks='", "'days='", "'hours='", 
+                     "'minutes='" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
@@ -136,9 +137,10 @@ class TimesheetQueryParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "BLOCK_COMMENT", "STRING_LITERAL", 
-                      "STRING_LITERAL_DQ", "STRING_LITERAL_SQ", "INLINE_COMMENT", 
-                      "INT", "FLOAT", "NAME", "WHITESPACE", "NEWLINE", "ANY" ]
+                      "<INVALID>", "<INVALID>", "<INVALID>", "BLOCK_COMMENT", 
+                      "STRING_LITERAL", "STRING_LITERAL_DQ", "STRING_LITERAL_SQ", 
+                      "INLINE_COMMENT", "INT", "FLOAT", "NAME", "WHITESPACE", 
+                      "NEWLINE", "ANY" ]
 
     RULE_ruleList = 0
     RULE_rule = 1
@@ -236,21 +238,22 @@ class TimesheetQueryParser ( Parser ):
     T__50=51
     T__51=52
     T__52=53
-    BLOCK_COMMENT=54
-    STRING_LITERAL=55
-    STRING_LITERAL_DQ=56
-    STRING_LITERAL_SQ=57
-    INLINE_COMMENT=58
-    INT=59
-    FLOAT=60
-    NAME=61
-    WHITESPACE=62
-    NEWLINE=63
-    ANY=64
+    T__53=54
+    BLOCK_COMMENT=55
+    STRING_LITERAL=56
+    STRING_LITERAL_DQ=57
+    STRING_LITERAL_SQ=58
+    INLINE_COMMENT=59
+    INT=60
+    FLOAT=61
+    NAME=62
+    WHITESPACE=63
+    NEWLINE=64
+    ANY=65
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.12.0")
+        self.checkVersion("4.13.2")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -298,7 +301,7 @@ class TimesheetQueryParser ( Parser ):
             self.state = 65
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 1766254482426929162) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 3532508964853882890) != 0):
                 self.state = 62
                 self.rule_()
                 self.state = 67
@@ -358,7 +361,7 @@ class TimesheetQueryParser ( Parser ):
             self.state = 71
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 1766254482426929160) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 3532508964853882888) != 0):
                 self.state = 70
                 self.query()
 
@@ -368,7 +371,7 @@ class TimesheetQueryParser ( Parser ):
             self.state = 82
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 1766254929103552520) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 3532509858207105032) != 0):
                 self.state = 74
                 self.command()
                 self.state = 79
@@ -1001,25 +1004,25 @@ class TimesheetQueryParser ( Parser ):
             self.state = 131
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [40, 41, 42, 43, 45, 46, 47, 49]:
+            if token in [41, 42, 43, 44, 46, 47, 48, 50]:
                 localctx = TimesheetQueryParser.SingleInstanceImpliedExpContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 127
                 self.singleInstLiteral()
                 pass
-            elif token in [44]:
+            elif token in [45]:
                 localctx = TimesheetQueryParser.ListElementImpliedExpContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 128
                 self.listElementLiteral()
                 pass
-            elif token in [55, 59, 60]:
+            elif token in [56, 60, 61]:
                 localctx = TimesheetQueryParser.SpecialLiteralImpliedExpContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 129
                 self.specialLiteral()
                 pass
-            elif token in [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]:
+            elif token in [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]:
                 localctx = TimesheetQueryParser.FieldImpliedExpContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 130
@@ -1088,7 +1091,7 @@ class TimesheetQueryParser ( Parser ):
             self.state = 141
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 49, 55, 59, 60]:
+            if token in [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 41, 42, 43, 44, 45, 46, 47, 48, 50, 56, 60, 61]:
                 self.state = 136
                 self.impliedComparisonExp()
                 pass
@@ -1149,12 +1152,12 @@ class TimesheetQueryParser ( Parser ):
             self.state = 145
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]:
+            if token in [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 143
                 self.field()
                 pass
-            elif token in [36]:
+            elif token in [37]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 144
                 self.seriesFunc()
@@ -1250,12 +1253,12 @@ class TimesheetQueryParser ( Parser ):
             self.state = 151
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [40, 41, 42, 43, 44, 45, 46, 47, 49, 55, 59, 60]:
+            if token in [41, 42, 43, 44, 45, 46, 47, 48, 50, 56, 60, 61]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 149
                 self.literalReplaceFunc()
                 pass
-            elif token in [39]:
+            elif token in [40]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 150
                 self.reloadDesc()
@@ -1303,7 +1306,7 @@ class TimesheetQueryParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 153
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 34359705600) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 68719443968) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1358,17 +1361,17 @@ class TimesheetQueryParser ( Parser ):
             self.state = 158
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [40, 41, 42, 43, 45, 46, 47, 49]:
+            if token in [41, 42, 43, 44, 46, 47, 48, 50]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 155
                 self.singleInstLiteral()
                 pass
-            elif token in [44]:
+            elif token in [45]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 156
                 self.listElementLiteral()
                 pass
-            elif token in [55, 59, 60]:
+            elif token in [56, 60, 61]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 157
                 self.specialLiteral()
@@ -1438,32 +1441,32 @@ class TimesheetQueryParser ( Parser ):
             self.state = 166
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [40]:
+            if token in [41]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 160
                 self.projectLiteral()
                 pass
-            elif token in [45]:
+            elif token in [46]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 161
                 self.epochLiteral()
                 pass
-            elif token in [47]:
+            elif token in [48]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 162
                 self.datetimeLiteral()
                 pass
-            elif token in [49]:
+            elif token in [50]:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 163
                 self.timedeltaLiteral()
                 pass
-            elif token in [41, 42, 43]:
+            elif token in [42, 43, 44]:
                 self.enterOuterAlt(localctx, 5)
                 self.state = 164
                 self.metaprojectLiteral()
                 pass
-            elif token in [46]:
+            elif token in [47]:
                 self.enterOuterAlt(localctx, 6)
                 self.state = 165
                 self.moodLiteral()
@@ -1603,19 +1606,19 @@ class TimesheetQueryParser ( Parser ):
             self.state = 173
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [55]:
+            if token in [56]:
                 localctx = TimesheetQueryParser.StringContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 170
                 self.descToken()
                 pass
-            elif token in [59]:
+            elif token in [60]:
                 localctx = TimesheetQueryParser.IntPrimitiveContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 171
                 self.match(TimesheetQueryParser.INT)
                 pass
-            elif token in [60]:
+            elif token in [61]:
                 localctx = TimesheetQueryParser.FloatPrimitiveContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 172
@@ -1672,7 +1675,7 @@ class TimesheetQueryParser ( Parser ):
             self.state = 175
             localctx.old = self.literal()
             self.state = 176
-            self.match(TimesheetQueryParser.T__34)
+            self.match(TimesheetQueryParser.T__35)
             self.state = 177
             self.match(TimesheetQueryParser.T__12)
             self.state = 178
@@ -1726,19 +1729,19 @@ class TimesheetQueryParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 181
-            self.match(TimesheetQueryParser.T__35)
+            self.match(TimesheetQueryParser.T__36)
             self.state = 182
             localctx.scheme = self.match(TimesheetQueryParser.NAME)
             self.state = 187
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==37:
+            if _la==38:
                 self.state = 183
-                self.match(TimesheetQueryParser.T__36)
+                self.match(TimesheetQueryParser.T__37)
                 self.state = 184
                 localctx.key = self.series()
                 self.state = 185
-                self.match(TimesheetQueryParser.T__37)
+                self.match(TimesheetQueryParser.T__38)
 
 
         except RecognitionException as re:
@@ -1779,7 +1782,7 @@ class TimesheetQueryParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 189
-            self.match(TimesheetQueryParser.T__38)
+            self.match(TimesheetQueryParser.T__39)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1820,7 +1823,7 @@ class TimesheetQueryParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 191
-            self.match(TimesheetQueryParser.T__39)
+            self.match(TimesheetQueryParser.T__40)
             self.state = 192
             self.match(TimesheetQueryParser.NAME)
         except RecognitionException as re:
@@ -1865,7 +1868,7 @@ class TimesheetQueryParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 194
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 15393162788864) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 30786325577728) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1912,7 +1915,7 @@ class TimesheetQueryParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 197
-            self.match(TimesheetQueryParser.T__43)
+            self.match(TimesheetQueryParser.T__44)
             self.state = 198
             self.match(TimesheetQueryParser.NAME)
         except RecognitionException as re:
@@ -1955,7 +1958,7 @@ class TimesheetQueryParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 200
-            self.match(TimesheetQueryParser.T__44)
+            self.match(TimesheetQueryParser.T__45)
             self.state = 201
             self.match(TimesheetQueryParser.NAME)
         except RecognitionException as re:
@@ -2044,15 +2047,15 @@ class TimesheetQueryParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 205
-            self.match(TimesheetQueryParser.T__45)
+            self.match(TimesheetQueryParser.T__46)
             self.state = 208
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [61]:
+            if token in [62]:
                 self.state = 206
                 localctx.nameKey = self.match(TimesheetQueryParser.NAME)
                 pass
-            elif token in [59]:
+            elif token in [60]:
                 self.state = 207
                 localctx.intKey = self.match(TimesheetQueryParser.INT)
                 pass
@@ -2105,15 +2108,15 @@ class TimesheetQueryParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 210
-            self.match(TimesheetQueryParser.T__46)
+            self.match(TimesheetQueryParser.T__47)
             self.state = 211
             localctx.year = self.match(TimesheetQueryParser.INT)
             self.state = 216
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==48:
+            while _la==49:
                 self.state = 212
-                self.match(TimesheetQueryParser.T__47)
+                self.match(TimesheetQueryParser.T__48)
                 self.state = 213
                 localctx.moreArgs = self.match(TimesheetQueryParser.INT)
                 self.state = 218
@@ -2170,31 +2173,31 @@ class TimesheetQueryParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 221
-            self.match(TimesheetQueryParser.T__48)
+            self.match(TimesheetQueryParser.T__49)
             self.state = 230
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [50]:
+            if token in [51]:
                 self.state = 222
-                self.match(TimesheetQueryParser.T__49)
+                self.match(TimesheetQueryParser.T__50)
                 self.state = 223
                 localctx.weeks = self.match(TimesheetQueryParser.INT)
                 pass
-            elif token in [51]:
+            elif token in [52]:
                 self.state = 224
-                self.match(TimesheetQueryParser.T__50)
+                self.match(TimesheetQueryParser.T__51)
                 self.state = 225
                 localctx.days = self.match(TimesheetQueryParser.INT)
                 pass
-            elif token in [52]:
+            elif token in [53]:
                 self.state = 226
-                self.match(TimesheetQueryParser.T__51)
+                self.match(TimesheetQueryParser.T__52)
                 self.state = 227
                 localctx.hours = self.match(TimesheetQueryParser.INT)
                 pass
-            elif token in [53]:
+            elif token in [54]:
                 self.state = 228
-                self.match(TimesheetQueryParser.T__52)
+                self.match(TimesheetQueryParser.T__53)
                 self.state = 229
                 localctx.minutes = self.match(TimesheetQueryParser.INT)
                 pass
@@ -2206,9 +2209,9 @@ class TimesheetQueryParser ( Parser ):
             la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
             if la_ == 1:
                 self.state = 232
-                self.match(TimesheetQueryParser.T__47)
+                self.match(TimesheetQueryParser.T__48)
                 self.state = 233
-                self.match(TimesheetQueryParser.T__49)
+                self.match(TimesheetQueryParser.T__50)
                 self.state = 234
                 localctx.weeks = self.match(TimesheetQueryParser.INT)
 
@@ -2218,9 +2221,9 @@ class TimesheetQueryParser ( Parser ):
             la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
             if la_ == 1:
                 self.state = 237
-                self.match(TimesheetQueryParser.T__47)
+                self.match(TimesheetQueryParser.T__48)
                 self.state = 238
-                self.match(TimesheetQueryParser.T__50)
+                self.match(TimesheetQueryParser.T__51)
                 self.state = 239
                 localctx.days = self.match(TimesheetQueryParser.INT)
 
@@ -2230,9 +2233,9 @@ class TimesheetQueryParser ( Parser ):
             la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
             if la_ == 1:
                 self.state = 242
-                self.match(TimesheetQueryParser.T__47)
+                self.match(TimesheetQueryParser.T__48)
                 self.state = 243
-                self.match(TimesheetQueryParser.T__51)
+                self.match(TimesheetQueryParser.T__52)
                 self.state = 244
                 localctx.hours = self.match(TimesheetQueryParser.INT)
 
@@ -2242,9 +2245,9 @@ class TimesheetQueryParser ( Parser ):
             la_ = self._interp.adaptivePredict(self._input,23,self._ctx)
             if la_ == 1:
                 self.state = 247
-                self.match(TimesheetQueryParser.T__47)
+                self.match(TimesheetQueryParser.T__48)
                 self.state = 248
-                self.match(TimesheetQueryParser.T__52)
+                self.match(TimesheetQueryParser.T__53)
                 self.state = 249
                 localctx.minutes = self.match(TimesheetQueryParser.INT)
 
@@ -2252,9 +2255,9 @@ class TimesheetQueryParser ( Parser ):
             self.state = 253
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==48:
+            if _la==49:
                 self.state = 252
-                self.match(TimesheetQueryParser.T__47)
+                self.match(TimesheetQueryParser.T__48)
 
 
             self.state = 255
