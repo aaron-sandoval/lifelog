@@ -354,7 +354,7 @@ def date_range_bins(ser: pd.Series, freq: str = 'W', normalize: bool = True, **k
     return pd.cut(circ, right=False, **kwargs)
 
 
-def enum_counts(ser: pd.Series, enumCls: Union[Type[Enum], Iterable[HierarchicalEnum]]) -> pd.DataFrame:
+def enum_counts(ser: pd.Series, enumCls: Union[Type[Enum], Iterable[Type[HierarchicalEnum]]]) -> pd.DataFrame:
     """
     Counts the instances of `enumCls` members in a Series of iterables.
     :param ser: Series of Iterable[Any], possibly containing members of `enumCls`.
@@ -376,7 +376,11 @@ def enum_counts(ser: pd.Series, enumCls: Union[Type[Enum], Iterable[Hierarchical
     ser.apply(make_count, args=(enumList,))
     out = pd.DataFrame(np.vstack(ser.values), index=ser.index)
     # TODO: bugfix: rename goes crazy on SocialGroups
-    return out.rename(columns=dict(zip(range(len(enumList)), enumList)))
+    if isinstance(enumList[0], HierarchicalEnum):
+        target_names = [str(a) for a in enumList]
+    else:
+        target_names = [str(e) for e in list(enumList)]
+    return out.rename(columns=dict(zip(range(len(enumList)), target_names)))
 
 
 def backtrack(sol, cur):

@@ -440,3 +440,14 @@ _('$\\mathdefault{10^{2}}$')
 _('$\\mathdefault{10^{3}}$')
 _('$\\mathdefault{10^{4}}$')
 _('$\\mathdefault{10^{5}}$')
+
+***WRITE*** 2024-11-29 16:15:41.016862
+EXTRACTION SUMMARY (MANUAL ENTRY): 
+_('Ã\x8dndice de persona')
+_('[horas]')
+_('Tiempo Total Pasado\n con Individuos, Ordenado')
+_('Tiempo Total Pasado\n con Individuos, Ordenado, Escala Log')
+_('[persona-horas/dÃ\xada]')
+_('Promedio de Persona-Horas de InteracciÃ³n Social por DÃ\xada, por GÃ©nero')
+_('Persona-Horas\nen Total')
+_('Promedio de Persona-Horas de InteracciÃ³n Social por DÃ\xada, por RelaciÃ³n Principal')
