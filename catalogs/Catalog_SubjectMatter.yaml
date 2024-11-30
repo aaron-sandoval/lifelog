@@ -6034,9 +6034,9 @@ adj:
       p: 2
   SALUD MENTAL:
     BIENESTAR:
-      p: 1
-    SALUD:
       p: 2
+    SALUD:
+      p: 1
   CIENCIA ATMOSFÉRICA:
     CIENCIA DE LA TIERRA:
       p: 0
@@ -6198,7 +6198,7 @@ adj:
     $SUBJECTMATTER_UNDEFINED:
       p: 0
   ZOTERO:
-    $SUBJECTMATTER_UNDEFINED:
+    $SOFTWARE:
       p: 0
   DERECHOS HUMANOS:
     ÉTICA:
@@ -6210,8 +6210,8 @@ adj:
     CIENCIA ECONÓMICA:
       p: 0
   NOTICIAS:
-    $SUBJECTMATTER_UNDEFINED:
+    $ETIQUETAS:
       p: 0
   PRODUCCIÓN DE MÚSICA:
-    $SUBJECTMATTER_UNDEFINED:
+    MÚSICA:
       p: 0

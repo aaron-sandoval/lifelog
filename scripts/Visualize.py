@@ -374,7 +374,7 @@ class _GraphicMaker:
         df = df.explode('subjectmatter').dropna()
         
         # Calculate the total duration for each subject matter
-        subject_matter_freqs = df.groupby('subjectmatter')['duration'].sum().dt.total_seconds().to_dict()
+        subject_matter_freqs = (df.groupby('subjectmatter')['duration'].sum().dt.total_seconds()**0.5).to_dict()
         
         # Get the second-to-last parent for each subject matter
         df['parent'] = df['subjectmatter'].apply(
@@ -393,8 +393,8 @@ class _GraphicMaker:
         # Create a WordCloudVisual with the custom color function
         word_cloud_visual = WordCloudVisual(
             subject_matter_freqs,
-            relative_scaling=0.5,
-            width=800,
+            relative_scaling=0.85,
+            width=600,
             height=400,
             color_func=color_func
         )
@@ -435,5 +435,5 @@ def _getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicEx
     figFuncs = [v for _, v in inspect.getmembers(_GraphicMaker(), inspect.isfunction)
                 if v.__name__[-5:] in privacyMap[audience]]
     curFigFunc = _GraphicMaker.subject_matter_word_cloud_PUBL
-    return [curFigFunc(tsds)]
-    # return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
+    # return [curFigFunc(tsds)]
+    return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
