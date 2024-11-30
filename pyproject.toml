@@ -22,6 +22,7 @@ yamlable = "^1.1.1"
 PyYAML = "^6.0"
 portion = "^2.4.0"
 antlr4-tools = "^0.2.1"
+wordcloud = "^1.9.4"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.2"

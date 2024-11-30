@@ -436,6 +436,17 @@ def stackbarplot_and_totals(
     return graphic
 
 
+def word_cloud(words: pd.Series) -> Visual:
+    """
+    Returns a figure featuring a word cloud of the words in `words`.
+    The size of each word is proportional to its frequency in `words`.
+
+    # Arguments
+    - `words`: A Series of lists of strings
+    """
+    pass
+
+
 def getDateRangeString(df) -> str:
     """
     Produces a string representing the date range of a dataframe. Useful for title or auxiliary plot text
