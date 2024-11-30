@@ -13,6 +13,8 @@ import pandas as pd
 from pandas.core.dtypes.inference import is_list_like
 import streamlit as st
 from external_modules import kiwilib
+from wordcloud import WordCloud
+from pathlib import Path
 
 from i18n_l10n import internationalization as i18n
 from src.TimesheetDataset import Global, Iterable, List, Tuple, abc, datetime, np, os, pd
@@ -58,9 +60,10 @@ class ExhibitSection(Enum):
         if self.value.outro not in (None, ''):
             st.markdown(self.value.outro)
 
-    SLEEP = XHSectionData(sortKey=64)
-    PEOPLE = XHSectionData(sortKey=96)
-    METAPROJECT = XHSectionData(sortKey=8)
+    METAPROJECT = XHSectionData(sortKey=4)
+    PEOPLE = XHSectionData(sortKey=16)
+    SUBJECT_MATTER = XHSectionData(sortKey=32)
+    SLEEP = XHSectionData(sortKey=48)
 
 
 _ArtistAlignment = NamedTuple('_ArtistAlignment', [('name', str), ('x', float), ('y', float),
@@ -125,6 +128,36 @@ class MatplotlibVisual(Visual):
                 artist.set_text(_e(_hier_enum_alias_map[t]())) # type: ignore
             else:
                 artist.set_text(_k(t)) # type: ignore
+
+
+
+
+class WordCloudVisual(Visual):
+    """Visual representation of a word cloud using the wordcloud library."""
+
+    def __init__(self, words: pd.Series, **kwargs):
+        """
+        Initialize the WordCloudVisual with a series of words.
+
+        Args:
+            words (pd.Series): A Series of lists of strings.
+            **kwargs: Additional keyword arguments for WordCloud.
+        """
+        self.wordcloud = WordCloud(**kwargs).generate(' '.join(words.explode()))
+
+    def save(self, file_name: str) -> None:
+        """Save the word cloud image to a file."""
+        output_path = Path(Global.rootProjectPath()) / 'VS_Figures' / f'{file_name}.png'
+        self.wordcloud.to_file(output_path)
+
+    def localize(self) -> None:
+        """Localize the word cloud if necessary."""
+        # TODO: implement localization
+        pass
+
+    def exhibit(self) -> None:
+        """Display the word cloud using Streamlit."""
+        st.image(self.wordcloud.to_array(), use_column_width=True)
 
 
 def getWeekDate(ser):
@@ -436,15 +469,19 @@ def stackbarplot_and_totals(
     return graphic
 
 
-def word_cloud(words: pd.Series) -> Visual:
+def word_cloud(words: pd.Series, **kwargs) -> WordCloudVisual:
     """
-    Returns a figure featuring a word cloud of the words in `words`.
+    Returns a WordCloudVisual object featuring a word cloud of the words in `words`.
     The size of each word is proportional to its frequency in `words`.
 
-    # Arguments
-    - `words`: A Series of lists of strings
+    Args:
+        words (pd.Series): A Series of lists of strings.
+        **kwargs: Additional keyword arguments for WordCloud.
+
+    Returns:
+        WordCloudVisual: An instance of WordCloudVisual.
     """
-    pass
+    return WordCloudVisual(words, **kwargs)
 
 
 def getDateRangeString(df) -> str:

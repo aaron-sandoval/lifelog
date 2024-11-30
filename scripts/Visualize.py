@@ -21,6 +21,7 @@ from src.Visualization import (
     ExhibitSection,
     ArtistAlignment,
     MatplotlibVisual,
+    WordCloudVisual,
     SingleAxisStaticVisual,
     GraphicExhibit,
     babelx,
@@ -356,6 +357,39 @@ class _GraphicMaker:
                               section=ExhibitSection.METAPROJECT, sortKey=4)
 
 
+    @staticmethod
+    def subject_matter_word_cloud_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
+        """
+        Generates a word cloud from the 'subjectmatter' column of the TimesheetDataset.
+        
+        :param tsds: TimesheetDataset object containing the data.
+        :return: GraphicExhibit containing the word cloud visual.
+        """
+        # Extract the 'subjectmatter' column
+        subject_matter_series = tsds.timesheetdf.df['subjectmatter']
+        
+        # Create a WordCloudVisual
+        word_cloud_visual = WordCloudVisual(subject_matter_series, width=800, height=400)
+        
+        # Define the title and auxiliary text
+        title = _k('Subject Matter Word Cloud')
+        aux_text = getDateRangeString(tsds.timesheetdf.df)
+        
+        # Save the word cloud visual
+        word_cloud_visual.save(file_name=aux_text + '_' + title.replace(' ', '_'))
+        
+        # Return the GraphicExhibit
+        return GraphicExhibit(
+            graphic=word_cloud_visual,
+            privacy=Global.Privacy.PUBLIC,
+            section=ExhibitSection.SUBJECT_MATTER,
+            sortKey=4
+        )
+
+
+    
+
+
 def _getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicExhibit]:
     """
     Returns a list of full exhibit graphics data in the format expected by Exhibit.py.
@@ -372,6 +406,6 @@ def _getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicEx
     # inversePrivacyMap = {v[:5]: k for k,v in privacyMap.items()}
     figFuncs = [v for _, v in inspect.getmembers(_GraphicMaker(), inspect.isfunction)
                 if v.__name__[-5:] in privacyMap[audience]]
-    curFigFunc = _GraphicMaker.avg_social_interaction_by_primary_relation_PUBL
-    # return [curFigFunc(tsds)]
-    return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
+    curFigFunc = _GraphicMaker.subject_matter_word_cloud_PUBL
+    return [curFigFunc(tsds)]
+    # return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
