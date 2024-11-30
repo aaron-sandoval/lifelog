@@ -366,10 +366,16 @@ class _GraphicMaker:
         :return: GraphicExhibit containing the word cloud visual.
         """
         # Extract the 'subjectmatter' column
-        subject_matter_series = tsds.timesheetdf.df['subjectmatter']
+        subject_matter_series = tsds.timesheetdf.df['subjectmatter'].explode().dropna()
+        subject_matter_freqs = subject_matter_series.value_counts().astype(float).to_dict()
         
         # Create a WordCloudVisual
-        word_cloud_visual = WordCloudVisual(subject_matter_series, width=800, height=400)
+        word_cloud_visual = WordCloudVisual(
+            subject_matter_freqs,
+            relative_scaling=1.0,
+            width=800,
+            height=400
+        )
         
         # Define the title and auxiliary text
         title = _k('Subject Matter Word Cloud')

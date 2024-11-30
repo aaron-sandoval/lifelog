@@ -135,15 +135,18 @@ class MatplotlibVisual(Visual):
 class WordCloudVisual(Visual):
     """Visual representation of a word cloud using the wordcloud library."""
 
-    def __init__(self, words: pd.Series, **kwargs):
+    def __init__(self, words: dict[str, float] | pd.Series, **kwargs):
         """
         Initialize the WordCloudVisual with a series of words.
 
         Args:
-            words (pd.Series): A Series of lists of strings.
+            words (dict[str, float] | pd.Series): A dictionary of words and their frequencies or a Series of strings.
             **kwargs: Additional keyword arguments for WordCloud.
         """
-        self.wordcloud = WordCloud(**kwargs).generate(' '.join(words.explode()))
+        if isinstance(words, dict):
+            self.wordcloud = WordCloud(**kwargs).generate_from_frequencies(words)
+        else:
+            self.wordcloud = WordCloud(**kwargs).generate(' '.join(words))
 
     def save(self, file_name: str) -> None:
         """Save the word cloud image to a file."""
