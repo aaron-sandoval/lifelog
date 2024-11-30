@@ -451,3 +451,7 @@ _('[persona-horas/dÃ\xada]')
 _('Promedio de Persona-Horas de InteracciÃ³n Social por DÃ\xada, por GÃ©nero')
 _('Persona-Horas\nen Total')
 _('Promedio de Persona-Horas de InteracciÃ³n Social por DÃ\xada, por RelaciÃ³n Principal')
+
+***WRITE*** 2024-11-29 20:32:03.404743
+EXTRACTION SUMMARY (MANUAL ENTRY): 
+_('Subject Matter Word Cloud')

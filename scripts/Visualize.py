@@ -5,6 +5,7 @@ Created on Nov 22, 2018
 Holds functions used to collect datasets from database and create graphics from them.
 """
 import datetime
+from functools import partial
 
 import portion
 import matplotlib
@@ -105,6 +106,15 @@ class _GraphicMaker:
         '_PUBL',  # Resulting plot may be published for general public viewing.
     ]
     """
+    @staticmethod
+    def _sm_color_map(
+        word: str,
+        subject_matter_to_parent: dict[str, str],
+        parent_to_color: dict[str, tuple[float, float, float]]
+    ) -> str:
+        parent = subject_matter_to_parent[word]
+        return matplotlib.colors.rgb2hex(parent_to_color[parent])
+
     @staticmethod
     def avg_Sleep_by_Weekday_and_Epoch_Group_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         # df1 = tsds.timesheetdf.df[tsds.timesheetdf.df.project == Global.Project.DORMIR]
@@ -386,9 +396,9 @@ class _GraphicMaker:
         subject_matter_to_parent = df.set_index('subjectmatter')['parent'].to_dict()
         
         # Define a custom color function for the word cloud
-        def color_func(word, *args, **kwargs):
-            parent = subject_matter_to_parent[word]
-            return matplotlib.colors.rgb2hex(color_map.get(parent, (0, 0, 0)))
+        # color_func = lambda word, *args, **kwargs: matplotlib.colors.rgb2hex(color_map.get(subject_matter_to_parent[word], (0, 0, 0)))
+        color_func = partial(_GraphicMaker._sm_color_map, subject_matter_to_parent=subject_matter_to_parent, color_map=color_map)
+        # return matplotlib.colors.rgb2hex(color_map.get(parent, (0, 0, 0)))
         
         # Create a WordCloudVisual with the custom color function
         word_cloud_visual = WordCloudVisual(
@@ -435,5 +445,5 @@ def _getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicEx
     figFuncs = [v for _, v in inspect.getmembers(_GraphicMaker(), inspect.isfunction)
                 if v.__name__[-5:] in privacyMap[audience]]
     curFigFunc = _GraphicMaker.subject_matter_word_cloud_PUBL
-    # return [curFigFunc(tsds)]
-    return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
+    return [curFigFunc(tsds)]
+    # return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
