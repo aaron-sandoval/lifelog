@@ -7,6 +7,7 @@ Holds functions used to collect datasets from database and create graphics from 
 import datetime
 
 import portion
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from typing import Union, List, Set, Dict
@@ -360,21 +361,42 @@ class _GraphicMaker:
     @staticmethod
     def subject_matter_word_cloud_PUBL(tsds: TimesheetDataset) -> GraphicExhibit:
         """
-        Generates a word cloud from the 'subjectmatter' column of the TimesheetDataset.
+        Generates a word cloud from the 'subjectmatter' column of the TimesheetDataset,
+        where the size of each word is proportional to the total duration associated with it.
         
         :param tsds: TimesheetDataset object containing the data.
         :return: GraphicExhibit containing the word cloud visual.
         """
-        # Extract the 'subjectmatter' column
-        subject_matter_series = tsds.timesheetdf.df['subjectmatter'].explode().dropna()
-        subject_matter_freqs = subject_matter_series.value_counts().astype(float).to_dict()
+        # Extract the 'subjectmatter' and 'duration' columns
+        df = tsds.timesheetdf.df[['subjectmatter', 'duration']]
         
-        # Create a WordCloudVisual
+        # Explode the 'subjectmatter' column to handle lists of subject matters
+        df = df.explode('subjectmatter').dropna()
+        
+        # Calculate the total duration for each subject matter
+        subject_matter_freqs = df.groupby('subjectmatter')['duration'].sum().dt.total_seconds().to_dict()
+        
+        # Get the second-to-last parent for each subject matter
+        df['parent'] = df['subjectmatter'].apply(
+            lambda x: tsds.cats['subjectmatter'].parents(x, deep=True, primary=True, include_self=True)[-2])
+        
+        # Map each unique parent to a unique color
+        unique_parents = df['parent'].unique()
+        color_map = {parent: plt.cm.tab10(i) for i, parent in enumerate(unique_parents)}
+        subject_matter_to_parent = df.set_index('subjectmatter')['parent'].to_dict()
+        
+        # Define a custom color function for the word cloud
+        def color_func(word, *args, **kwargs):
+            parent = subject_matter_to_parent[word]
+            return matplotlib.colors.rgb2hex(color_map.get(parent, (0, 0, 0)))
+        
+        # Create a WordCloudVisual with the custom color function
         word_cloud_visual = WordCloudVisual(
             subject_matter_freqs,
-            relative_scaling=1.0,
+            relative_scaling=0.5,
             width=800,
-            height=400
+            height=400,
+            color_func=color_func
         )
         
         # Define the title and auxiliary text

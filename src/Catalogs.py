@@ -534,7 +534,13 @@ class DAGCatalog(Catalog):
         else:
             return sorted(list(self.dag.pred[cid]), key=lambda x: self.dag.pred[cid][x]['p'])
 
-    def parents(self, cid: str, deep: bool = False, sort: bool = False, primary: bool = False) -> List[str]:
+    def parents(
+            self,
+            cid: str,
+            deep: bool = False,
+            sort: bool = False,
+            primary: bool = False,
+            include_self: bool = False) -> List[str]:
         """
         Returns the parents of a given vertex.
         'Parents' is defined in the sense of the hierarchy, not the abstracted graph edge directionality.
@@ -551,34 +557,38 @@ class DAGCatalog(Catalog):
                 yield vertex
 
         if primary:
-            # Handle primary=True for deep and non-deep cases
-            path = []
+            # Handle primary=True for deep and non-deep cases. Sort is irrelevant.
+            out = []
             current = cid
             while True:
                 parents = list(self.dag.adj[current].keys())
                 if not parents:
                     break
-                # Select the parent with the smallest edge weight
-                primary_parent = min(parents, key=lambda x: self.dag.adj[current][x]['p'])
-                path.append(primary_parent)
+                if len(parents) == 1:
+                    primary_parent = parents[0]
+                else:
+                    # Select the parent with the smallest edge weight
+                    primary_parent = min(parents, key=lambda x: self.dag.adj[current][x]['p'])
+                out.append(primary_parent)
                 if not deep:
                     break
                 current = primary_parent
-            return path
-
-        if deep and not sort:
+        elif deep and not sort:
             # out = self.parents(cid, deep=False)
             # nx.bfs self.dag
-            return list(nx.descendants(self.dag, cid))
+            out = list(nx.descendants(self.dag, cid))
         elif deep and sort:
             # TODO: sorting is probably broken with call to `flatten`
-            return list(kiwilib.flatten(
+            out = list(kiwilib.flatten(
                 (a[1] for a in nx.bfs_successors(self.dag, cid, sort_neighbors=sortedGenerator(cid)))))
         elif not deep and not sort:
-            return list(self.dag.adj[cid].keys())
+            out = list(self.dag.adj[cid].keys())
         elif not deep and sort:
-            return sorted(self.parents(cid, deep=False, sort=False, primary=primary),
+            out = sorted(self.parents(cid, deep=False, sort=False, primary=primary),
                           key=lambda x: self.dag.adj[cid][x]['p'])
+        if include_self:
+            out.insert(0, cid)
+        return out
 
     def validate(self) -> None:
         """
