@@ -536,21 +536,36 @@ class DAGCatalog(Catalog):
 
     def parents(self, cid: str, deep: bool = False, sort: bool = False, primary: bool = False) -> List[str]:
         """
-        Same as children(), except in the opposite direction.
+        Returns the parents of a given vertex.
+        'Parents' is defined in the sense of the hierarchy, not the abstracted graph edge directionality.
+        
         :param cid: Collxble id as produced by collxble.generateID().
         :param deep: If True, returns all parents in the DAG up to and including the root vertex.
         :param sort: If True and deep==False, the list is sorted by edge weight.
         If deep==True, the ancestry list is sorted by nx.bfs_successors, each sublayer sorted by edge weight.
         :param primary: If True and deep=False, returns a length-1 list with the parent with the smallest edge weight.
-        If True and deep=True does this iteratively up the DAG until the root vertex.
+        If True and deep=True, does this iteratively up the DAG until the root vertex.
         """
         def sortedGenerator(cid1: str) -> typing.Generator:
             for vertex in sorted(list(self.dag.adj[cid1].keys()), key=lambda x: self.dag.adj[cid1][x]['p']):
                 yield vertex
 
         if primary:
-            # TODO: implement primary=True. Used for pseudo-mro, primary parental path.
-            raise NotImplementedError
+            # Handle primary=True for deep and non-deep cases
+            path = []
+            current = cid
+            while True:
+                parents = list(self.dag.adj[current].keys())
+                if not parents:
+                    break
+                # Select the parent with the smallest edge weight
+                primary_parent = min(parents, key=lambda x: self.dag.adj[current][x]['p'])
+                path.append(primary_parent)
+                if not deep:
+                    break
+                current = primary_parent
+            return path
+
         if deep and not sort:
             # out = self.parents(cid, deep=False)
             # nx.bfs self.dag
