@@ -513,7 +513,7 @@ msgstr ""
 
 #: babel_intermediate.txt:136
 msgid "ACTIVIDADES"
-msgstr ""
+msgstr "ACTIVITIES"
 
 #: babel_intermediate.txt:137
 msgid "INFORME"

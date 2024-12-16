@@ -4,7 +4,7 @@ import os
 import builtins
 from datetime import datetime
 from external_modules import kiwilib
-from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple
+from typing import Union, List, Iterable, Dict, Tuple, Set, Callable, NamedTuple, Literal
 from dataclasses import dataclass
 from pathlib import Path
 # import googletrans
@@ -36,6 +36,7 @@ localeDict = {
     'es_MX': lang_es,
 }
 locale_to_str = {v: k for k, v in localeDict.items()}
+LocaleStr = Literal['en_US', 'es_MX']
 # _google_locale_dict: Dict[gettext.GNUTranslations, str] = {
 #     lang_es: 'es',
 # }
@@ -117,7 +118,7 @@ class BabelIntermediateExtractor:
     #             self.flush()
     #     return locale.gettext(s)
 
-    def setLang(self, locale: gettext.GNUTranslations) -> None:
+    def setLang(self, locale: gettext.GNUTranslations | LocaleStr) -> None:
         """
         Sets the locale to be used by builtin translation functions.
         Sets bindings for several functions in builtins which are visible across all modules.
@@ -131,6 +132,8 @@ class BabelIntermediateExtractor:
         _t: 'tokens': Uses: Description tokens and strings, whose presented capitalization should be uniform.
         :param locale: Locale to set
         """
+        if isinstance(locale, str):
+            locale = localeDict[locale]
         self.curLocale = locale
         if not self.toExtract:  # Normal gettext functions
             builtins._a = locale.gettext

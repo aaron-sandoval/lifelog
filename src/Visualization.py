@@ -4,8 +4,21 @@ Reusable procedures and classes related to visualization
 
 from enum import Enum
 from itertools import accumulate
-from typing import Any, Iterable, List, NamedTuple, Tuple, Dict, Set, Union
+from typing import (
+    Any, 
+    Iterable, 
+    List, 
+    NamedTuple, 
+    Tuple, 
+    Dict, 
+     Set, 
+     Union,
+     get_args,
+)
 import re
+from pathlib import Path
+from PIL import Image
+
 import matplotlib
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
@@ -14,7 +27,6 @@ from pandas.core.dtypes.inference import is_list_like
 import streamlit as st
 from external_modules import kiwilib
 from wordcloud import WordCloud
-from pathlib import Path
 
 from i18n_l10n import internationalization as i18n
 from src.TimesheetDataset import Global, Iterable, List, Tuple, abc, datetime, np, os, pd
@@ -130,9 +142,38 @@ class MatplotlibVisual(Visual):
                 artist.set_text(_k(t)) # type: ignore
 
 
+class RasterVisual(Visual):
+    """Visual representation of raster images localized to different locales."""
+
+    def __init__(self, rasters: dict[i18n.LocaleStr, Image.Image]) -> None:
+        """
+        Initialize the RasterVisual with a dictionary of localized images.
+
+        Args:
+            rasters (Dict[str, Any]): A dictionary where keys are locale strings
+                                      and values are images localized to that locale.
+        """
+        self.rasters = rasters
+        self.localize()
+
+    def save(self, fileName: str) -> None:
+        """Save all images to files. File names include the locale strings."""
+        for locale, raster in self.rasters.items():
+            raster.save(os.path.join(Global.rootProjectPath(), 'VS_Figures', fileName + '_' + locale + '.png'), 'PNG')
+
+    def localize(self) -> None:
+        """Set the current locale based on babelx's current locale."""
+        self.locale_str: str = i18n.locale_to_str[babelx.curLocale]
+
+    def exhibit(self) -> None:
+        """Display the localized image using Streamlit."""
+        if self.locale_str in self.rasters:
+            st.image(self.rasters[self.locale_str], use_column_width=True)
+        else:
+            raise ValueError(f"No image available for locale: {self.locale_str}")
 
 
-class WordCloudVisual(Visual):
+class WordCloudVisual(RasterVisual):
     """Visual representation of a word cloud using the wordcloud library."""
 
     def __init__(self, words: dict[str, float] | pd.Series, **kwargs):
@@ -144,23 +185,17 @@ class WordCloudVisual(Visual):
             **kwargs: Additional keyword arguments for WordCloud.
         """
         if isinstance(words, dict):
-            self.wordcloud = WordCloud(**kwargs).generate_from_frequencies(words)
+            rasters: dict[i18n.LocaleStr, Image.Image] = {}
+            locale_state = babelx.curLocale
+            for locale in get_args(i18n.LocaleStr):
+                babelx.setLang(locale)
+                localized_words = {_t(k): v for k, v in words.items()}
+                rasters[locale] = WordCloud(**kwargs).generate_from_frequencies(localized_words).to_image()
+            babelx.setLang(locale_state)
         else:
-            self.wordcloud = WordCloud(**kwargs).generate(' '.join(words))
+            raise NotImplementedError('WordCloudVisual only supports dictionaries of words and frequencies.')
 
-    def save(self, file_name: str) -> None:
-        """Save the word cloud image to a file."""
-        output_path = Path(Global.rootProjectPath()) / 'VS_Figures' / f'{file_name}.png'
-        self.wordcloud.to_file(output_path)
-
-    def localize(self) -> None:
-        """Localize the word cloud if necessary."""
-        # TODO: implement localization
-        pass
-
-    def exhibit(self) -> None:
-        """Display the word cloud using Streamlit."""
-        st.image(self.wordcloud.to_array(), use_column_width=True)
+        super().__init__(rasters)
 
 
 def getWeekDate(ser):
@@ -470,21 +505,6 @@ def stackbarplot_and_totals(
     ax1.get_xaxis().set_visible(False)
 
     return graphic
-
-
-def word_cloud(words: pd.Series, **kwargs) -> WordCloudVisual:
-    """
-    Returns a WordCloudVisual object featuring a word cloud of the words in `words`.
-    The size of each word is proportional to its frequency in `words`.
-
-    Args:
-        words (pd.Series): A Series of lists of strings.
-        **kwargs: Additional keyword arguments for WordCloud.
-
-    Returns:
-        WordCloudVisual: An instance of WordCloudVisual.
-    """
-    return WordCloudVisual(words, **kwargs)
 
 
 def getDateRangeString(df) -> str:
