@@ -447,5 +447,5 @@ def _getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicEx
     figFuncs = [v for _, v in inspect.getmembers(_GraphicMaker(), inspect.isfunction)
                 if v.__name__[-5:] in privacyMap[audience]]
     curFigFunc = _GraphicMaker.subject_matter_word_cloud_PUBL
-    # return [curFigFunc(tsds)]
-    return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
+    return [curFigFunc(tsds)]
+    # return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))

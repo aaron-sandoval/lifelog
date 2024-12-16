@@ -101,22 +101,14 @@ class BabelIntermediateExtractor:
         if not isinstance(x, str):
             x = str(x)
         strings = x.split('\n\n')
-        # translated: List[str] = []
         for s in strings:
-            decoded = bytes(s, 'utf-8').decode('unicode_escape')
-            if decoded not in self.words and decoded not in self.newWords:
-                self.newWords[decoded] = None
-            # translated.append(locale.gettext(s))
-            # if translated[-1] == s and locale is not lang_en:  # Str is in another language and nothing provided in .po file
-            #     translated[-1] = _google_translator.translate(s, src='en', dest=_google_locale_dict[locale])
+            # Escape newlines but preserve non-ASCII characters
+            escaped = s.replace('\n', '\\n')
+            if escaped not in self.words and escaped not in self.newWords:
+                self.newWords[escaped] = None
         if len(self.newWords) >= self.bufferSize:
             self.flush()
         return '\n\n'.join([locale.gettext(s) for s in strings]) if len(strings) > 1 else locale.gettext(x)
-    #     if s not in self.words and s not in self.newWords:
-    #         self.newWords.add(s)
-    #         if len(self.newWords) >= self.bufferSize:
-    #             self.flush()
-    #     return locale.gettext(s)
 
     def setLang(self, locale: gettext.GNUTranslations | LocaleStr) -> None:
         """
@@ -141,7 +133,7 @@ class BabelIntermediateExtractor:
             builtins._k = locale.gettext
             builtins._e = lambda x: x.alias(locale_to_str[locale]).upper()
             builtins._ebt = lambda x: ''.join(['`', x.alias(locale_to_str[locale]).upper(), '`'])
-            builtins._t = lambda x: locale.gettext(x).capitalize()
+            builtins._t = lambda x: locale.gettext(x).upper()
             # locale.install()
         else:  # Extract and return normal gettext
             builtins._a = self.extract
@@ -149,7 +141,7 @@ class BabelIntermediateExtractor:
             builtins._k = self.extract
             builtins._e = lambda x: x.alias(locale_to_str[locale]).upper()
             builtins._ebt = lambda x: ''.join(['`', x.alias(locale_to_str[locale]).upper(), '`'])
-            builtins._t = lambda x: self.extract(x).capitalize()
+            builtins._t = lambda x: self.extract(x).upper()
         # print(f'***SETTING LOCALE***\n  _a(): {locale._info["language"]}\n'
         #       f'  _b(): {self.lang_alternative[locale][0]._info["language"]}\n')
 

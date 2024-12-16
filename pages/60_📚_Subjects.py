@@ -22,7 +22,13 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
 
     # Section introduction
     st.markdown(_k(
-        """Lemme tell you about some things."""
+        """
+        Lemme tell you about some things.\n\n
+        - Thing 1
+        - Thing 2
+        - Thing 3\n
+        That's all I've got.
+        """
     ))
     st.divider()
 
