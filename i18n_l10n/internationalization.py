@@ -103,9 +103,9 @@ class BabelIntermediateExtractor:
         strings = x.split('\n\n')
         for s in strings:
             # Escape newlines but preserve non-ASCII characters
-            escaped = s.replace('\n', '\\n')
-            if escaped not in self.words and escaped not in self.newWords:
-                self.newWords[escaped] = None
+            # s = s.replace('\n', '\\n')
+            if s not in self.words and s not in self.newWords:
+                self.newWords[s] = None
         if len(self.newWords) >= self.bufferSize:
             self.flush()
         return '\n\n'.join([locale.gettext(s) for s in strings]) if len(strings) > 1 else locale.gettext(x)

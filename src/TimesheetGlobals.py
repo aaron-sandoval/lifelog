@@ -682,7 +682,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
     def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
         c = cls.dataclass
         return {
-            cls.eEND:                    c(start=datetime(2025, 1, 1, 0, 0), es_MX='FIN'),
+            cls.eEND:                    c(start=datetime(2026, 1, 1, 0, 0), es_MX='FIN'),
             cls.e2017_Cornell:           c(start=datetime(2017, 9, 6, 0, 0), es_MX='2017 Cornell'), # Start of data collection
             cls.e2017_Winter:            c(start=datetime(2017, 12, 13, 9, 36), es_MX='2017 Invierno'), # Start winter break
             cls.e2018_Cornell:           c(start=datetime(2018, 1, 12, 21, 58), es_MX='2018 Cornell'), # Start semester
