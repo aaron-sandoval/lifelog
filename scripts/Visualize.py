@@ -394,8 +394,12 @@ class _GraphicMaker:
         unique_parents = df['parent'].unique()
         color_map = {parent: plt.cm.tab10(i) for i, parent in enumerate(unique_parents)}
         
-        df['subjectmatter'] = df['subjectmatter'].apply(_t)
+        langs = [i18n.lang_en, i18n.lang_es]
         subject_matter_to_parent = df.set_index('subjectmatter')['parent'].to_dict()
+        for lang in langs:  # HACK: hardcode languages for now
+            babelx.setLang(lang)
+            df[i18n.locale_to_str[lang]] = df['subjectmatter'].apply(_t)
+            subject_matter_to_parent.update(df.set_index(i18n.locale_to_str[lang])['parent'].to_dict())
         
         # Define a custom color function for the word cloud
         color_func = lambda word, *args, **kwargs: matplotlib.colors.rgb2hex(color_map.get(subject_matter_to_parent[word], (0, 0, 0)))
@@ -447,5 +451,5 @@ def _getFigs(tsds: TimesheetDataset, audience: Global.Privacy) -> List[GraphicEx
     figFuncs = [v for _, v in inspect.getmembers(_GraphicMaker(), inspect.isfunction)
                 if v.__name__[-5:] in privacyMap[audience]]
     curFigFunc = _GraphicMaker.subject_matter_word_cloud_PUBL
-    return [curFigFunc(tsds)]
-    # return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
+    # return [curFigFunc(tsds)]
+    return sorted([f(tsds) for f in figFuncs], key=lambda x: (x.section.value.sortKey, x.sortKey))
