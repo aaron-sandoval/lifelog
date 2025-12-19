@@ -23,11 +23,7 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
     # Section introduction
     st.markdown(_k(
         """
-        Lemme tell you about some things.\n\n
-        - Thing 1
-        - Thing 2
-        - Thing 3\n
-        That's all I've got.
+        Since Spring 2023, I've tracked the subject matters of the media that I consume and the things I research.
         """
     ))
     st.divider()
@@ -36,10 +32,19 @@ def main(path: str = os.path.join(Global.rootProjectPath(), 'VS_Persistent', 'fi
 
     # SM word cloud
     next(gxhs).exhibitStreamlit()
-    epsc = Global.EpochScheme.MP_COARSE_ATOMIC
     st.markdown(_k(
-        """Those are some nice subjects."""
+        """This word cloud shows a very rough approximation of the relative amount of time that I've spent engaged with each subject. The size of each word is supposed to be proportional to the square root of the time spent on that subject, but since the distribution is heavy-tailed and is over such a wide range, I think the sizes of some of them saturated.\n\n
+The color corresponds to the top-level category of the subject matter:\n\n
+- 🔵 Personal Matters 
+- 🔴 Hard Science and Technology
+- 🟠 Philosophy
+- 🟢 Social Sciences, Humanities, Culture
+- 🟤 Major Problems and Solutions
+- 🟣 Metadata tags about the information ("NEWS" is the only one so far)\n\n
+Some of these subjects are subsets of others. I organized every subject into a directed acyclic graph to structure those relationships, but this visualization just shows the raw data without any aggregation using the graph structure.
+"""
     ))
+    
 
     st.divider()
 

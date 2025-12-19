@@ -397,6 +397,7 @@ class _GraphicMaker:
         unique_parents = df['parent'].unique()
         color_map = {parent: plt.cm.tab10(i) for i, parent in enumerate(unique_parents)}
         
+        current_lang = babelx.curLocale
         langs = [i18n.lang_en, i18n.lang_es]
         subject_matter_to_parent = df.set_index('subjectmatter')['parent'].to_dict()
         for lang in langs:  # HACK: hardcode languages for now
@@ -404,6 +405,7 @@ class _GraphicMaker:
             df[i18n.locale_to_str[lang]] = df['subjectmatter'].apply(_t)
             subject_matter_to_parent.update(df.set_index(i18n.locale_to_str[lang])['parent'].to_dict())
         
+        babelx.setLang(current_lang)
         # Define a custom color function for the word cloud
         color_func = lambda word, *args, **kwargs: matplotlib.colors.rgb2hex(color_map.get(subject_matter_to_parent[word], (0, 0, 0)))
         # color_func = partial(_GraphicMaker._sm_color_map, subject_matter_to_parent=subject_matter_to_parent, color_map=color_map)

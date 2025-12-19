@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 15:30-0700\n"
+"POT-Creation-Date: 2025-12-18 18:03-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en_US\n"
@@ -144,6 +144,7 @@ msgid "SITIO DE CAMPING"
 msgstr "CAMPSITE"
 
 #: babel_intermediate.txt:44 babel_intermediate.txt:463
+#: babel_intermediate.txt:581
 msgid "MÚSICA"
 msgstr "MUSIC"
 
@@ -197,7 +198,7 @@ msgstr "FC"
 
 #: babel_intermediate.txt:57
 msgid "CASA A BCH"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:58
 msgid "COCINAR"
@@ -221,7 +222,7 @@ msgstr "YOUTUBE"
 
 #: babel_intermediate.txt:63
 msgid "CASA A RA-11"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:64
 msgid "RECICLAJE"
@@ -233,11 +234,11 @@ msgstr "HOME"
 
 #: babel_intermediate.txt:66
 msgid "CASA A BOULDER"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:67
 msgid "BOULDER A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:68
 msgid "AUTO"
@@ -245,11 +246,11 @@ msgstr "CAR"
 
 #: babel_intermediate.txt:69
 msgid "CORNELL A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:70
 msgid "CASA A CORNELL"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:71
 msgid "DOCUMENTOS"
@@ -257,17 +258,17 @@ msgstr "DOCUMENTS"
 
 #: babel_intermediate.txt:72
 msgid "NORTHGLENN A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:73
 msgid "BCH A NORTHGLENN"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:74
 msgid "ROCK BAND"
 msgstr "ROCK BAND"
 
-#: babel_intermediate.txt:75
+#: babel_intermediate.txt:75 babel_intermediate.txt:579
 msgid "POLÍTICA DE BOULDER"
 msgstr "BOULDER POLITICS"
 
@@ -277,7 +278,7 @@ msgstr "LOGISTICS"
 
 #: babel_intermediate.txt:77
 msgid "RA-11 A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:78
 msgid "CARRERA"
@@ -289,15 +290,15 @@ msgstr "IMPROVE"
 
 #: babel_intermediate.txt:80
 msgid "A"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:81
 msgid "BCH A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:82
 msgid "CASA A NORTHGLENN"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:83
 msgid "ADCS"
@@ -361,7 +362,7 @@ msgstr "MATLAB"
 
 #: babel_intermediate.txt:98
 msgid "NORTHGLENN A BOULDER"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:99
 msgid "BLOG"
@@ -493,9 +494,10 @@ msgstr "MAIL"
 
 #: babel_intermediate.txt:131
 msgid "BOULDER A NORTHGLENN"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:132 babel_intermediate.txt:534
+#: babel_intermediate.txt:578
 msgid "FILOSOFÍA"
 msgstr "PHILOSOPHY"
 
@@ -525,11 +527,11 @@ msgstr "EXERCISE"
 
 #: babel_intermediate.txt:139
 msgid "CCYCLES A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:140
 msgid "NORTHGLENN A NORTHGLENN"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:141
 msgid "LYFT"
@@ -553,7 +555,7 @@ msgstr "ARTIFICIAL INTELLIGENCE"
 
 #: babel_intermediate.txt:146
 msgid "CASA A CCYCLES"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:147
 msgid "HW06"
@@ -565,7 +567,7 @@ msgstr "COMPUTER"
 
 #: babel_intermediate.txt:149
 msgid "BCH A BOULDER"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:150
 msgid "CCYCLES"
@@ -644,10 +646,12 @@ msgid "VA ONE"
 msgstr "VA ONE"
 
 #: babel_intermediate.txt:169 babel_intermediate.txt:553
+#: babel_intermediate.txt:580
 msgid "TECNOLOGÍA"
 msgstr "TECHNOLOGY"
 
 #: babel_intermediate.txt:170 babel_intermediate.txt:504
+#: babel_intermediate.txt:678
 msgid "EQUIPO DE MÚSICA"
 msgstr "MUSIC EQUIPMENT"
 
@@ -665,7 +669,7 @@ msgstr "BOAT"
 
 #: babel_intermediate.txt:174
 msgid "CASA A DENVER"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:175
 msgid "ROPA"
@@ -696,10 +700,12 @@ msgid "SOLIDWORKS"
 msgstr "SOLIDWORKS"
 
 #: babel_intermediate.txt:182 babel_intermediate.txt:508
+#: babel_intermediate.txt:586
 msgid "PELÍCULAS"
 msgstr "MOVIES"
 
 #: babel_intermediate.txt:183 babel_intermediate.txt:483
+#: babel_intermediate.txt:620
 msgid "ÉTICA"
 msgstr "ETHICS"
 
@@ -725,7 +731,7 @@ msgstr "BUILD"
 
 #: babel_intermediate.txt:189
 msgid "A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:190
 msgid "BASIS"
@@ -768,6 +774,7 @@ msgid "MANEJAR"
 msgstr "DRIVE"
 
 #: babel_intermediate.txt:200 babel_intermediate.txt:465
+#: babel_intermediate.txt:590
 msgid "INFORMÁTICA"
 msgstr "COMPUTER SCIENCE"
 
@@ -833,7 +840,7 @@ msgstr "LIBRARY"
 
 #: babel_intermediate.txt:216
 msgid "DENVER A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:217
 msgid "LECCIONES"
@@ -933,7 +940,7 @@ msgstr "NYTIMES"
 
 #: babel_intermediate.txt:243
 msgid "BCH A BROOMFIELD"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:244
 msgid "SQL"
@@ -969,9 +976,10 @@ msgstr "INTERVIEW"
 
 #: babel_intermediate.txt:253
 msgid "BROOMFIELD A CASA"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:254 babel_intermediate.txt:501
+#: babel_intermediate.txt:593
 msgid "POLÍTICA GLOBAL"
 msgstr "GLOBAL POLITICS"
 
@@ -984,6 +992,7 @@ msgid "TIMESHEET ANÁLISIS"
 msgstr "TIMESHEET ANALYSIS"
 
 #: babel_intermediate.txt:257 babel_intermediate.txt:472
+#: babel_intermediate.txt:587
 msgid "CIENCIA ECONÓMICA"
 msgstr "ECONOMICS"
 
@@ -1027,7 +1036,7 @@ msgstr "BATHROOM"
 msgid "PING PONG"
 msgstr "PING PONG"
 
-#: babel_intermediate.txt:268
+#: babel_intermediate.txt:268 babel_intermediate.txt:622
 msgid "POLÍTICA"
 msgstr "POLITICS"
 
@@ -1064,10 +1073,12 @@ msgid "OFICINA"
 msgstr "OFFICE"
 
 #: babel_intermediate.txt:277 babel_intermediate.txt:524
+#: babel_intermediate.txt:614
 msgid "PSICOLOGÍA"
 msgstr "PSYCHOLOGY"
 
 #: babel_intermediate.txt:278 babel_intermediate.txt:529
+#: babel_intermediate.txt:589
 msgid "SALUD PÚBLICA"
 msgstr "PUBLIC HEALTH"
 
@@ -1077,9 +1088,10 @@ msgstr "ELAINE"
 
 #: babel_intermediate.txt:280
 msgid "NORTHGLENN A BERNALILLO"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:281 babel_intermediate.txt:527
+#: babel_intermediate.txt:582
 msgid "CAMBIO CLIMÁTICO"
 msgstr "CLIMATE CHANGE"
 
@@ -1088,6 +1100,7 @@ msgid "TUTORIAL"
 msgstr "TUTORIAL"
 
 #: babel_intermediate.txt:283 babel_intermediate.txt:478
+#: babel_intermediate.txt:685
 msgid "GRABACIÓN"
 msgstr "RECORDING"
 
@@ -1137,9 +1150,10 @@ msgstr "EXISTENTIAL RISKS"
 
 #: babel_intermediate.txt:296
 msgid "BCH A CCYCLES"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:297 babel_intermediate.txt:488
+#: babel_intermediate.txt:607
 msgid "POLÍTICA ESTADOUNIDENSE"
 msgstr "US POLITICS"
 
@@ -1153,7 +1167,7 @@ msgstr "TRAILS"
 
 #: babel_intermediate.txt:300
 msgid "LISBOA A"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:301
 msgid "RECLUTAMIENTO"
@@ -1169,7 +1183,7 @@ msgstr "GASOLINE"
 
 #: babel_intermediate.txt:304
 msgid "BERNALILLO A NORTHGLENN"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:305
 msgid "VISADOS"
@@ -1197,11 +1211,11 @@ msgstr "VENSIM"
 
 #: babel_intermediate.txt:311
 msgid "CASA A BROOMFIELD"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:312
 msgid "NORTHGLENN A BCH"
-msgstr ""  # ***LOCATIONS***
+msgstr "\"  # ***LOCATIONS**"
 
 #: babel_intermediate.txt:313
 msgid "ARQUITECTURA DE COMPUTADORAS"
@@ -1306,6 +1320,8 @@ msgid "Fall asleep"
 msgstr ""
 
 #: babel_intermediate.txt:347 babel_intermediate.txt:462
+#: babel_intermediate.txt:565 babel_intermediate.txt:577
+#: babel_intermediate.txt:694
 msgid "👀 *Peek into the Backend*"
 msgstr ""
 
@@ -1464,7 +1480,7 @@ msgstr ""
 #, python-format
 msgid ""
 "The {0} prevalence is obvious. The right subplot shows the overall "
-"proportion of time by gender, with {0} occupying around 75%% of the total."
+"proportion of time by gender, with {0} occupying around 75% of the total."
 " Grad school in the first half of 2018 was clearly {0}-dominated. That "
 "eased up in 2019, when, I hypothesize, my job became more collaborative "
 "within a gender-balanced team. Spikes around July, November, or December "
@@ -1840,23 +1856,27 @@ msgstr ""
 
 #: babel_intermediate.txt:448
 msgid "[horas]"
-msgstr ""
+msgstr "[hours]"
 
 #: babel_intermediate.txt:449
 msgid ""
 "Tiempo Total Pasado\n"
 " con Individuos, Ordenado"
 msgstr ""
+"Total Time Spent\n"
+" with Individual People, Sorted"
 
 #: babel_intermediate.txt:450
 msgid ""
 "Tiempo Total Pasado\n"
 " con Individuos, Ordenado, Escala Log"
 msgstr ""
+"Total Time Spent\n"
+" with Individual People, Sorted, Log Scale"
 
 #: babel_intermediate.txt:451
 msgid "[persona-horas/dÃ­a]"
-msgstr ""
+msgstr "[person-hours/day]"
 
 #: babel_intermediate.txt:452
 msgid "Promedio de Persona-Horas de InteracciÃ³n Social por DÃ­a, por GÃ©nero"
@@ -1886,7 +1906,7 @@ msgstr "AI SAFETY"
 msgid "AGOTAMIENTO"
 msgstr "BURNOUT"
 
-#: babel_intermediate.txt:467
+#: babel_intermediate.txt:467 babel_intermediate.txt:683
 msgid "SALAS DE MÚSICA"
 msgstr "MUSIC ROOMS"
 
@@ -1894,11 +1914,11 @@ msgstr "MUSIC ROOMS"
 msgid "COCINA"
 msgstr "COOKING"
 
-#: babel_intermediate.txt:469
+#: babel_intermediate.txt:469 babel_intermediate.txt:621
 msgid "EPISTEMOLOGÍA"
 msgstr "EPISTEMOLOGY"
 
-#: babel_intermediate.txt:470
+#: babel_intermediate.txt:470 babel_intermediate.txt:601
 msgid "RELIGIÓN"
 msgstr "RELIGION"
 
@@ -1914,7 +1934,7 @@ msgstr "BUSINESS"
 msgid "GOBIERNO"
 msgstr "GOVERNMENT"
 
-#: babel_intermediate.txt:475
+#: babel_intermediate.txt:475 babel_intermediate.txt:684
 msgid "PRODUCCIÓN DE MÚSICA"
 msgstr "MUSIC PRODUCTION"
 
@@ -1922,11 +1942,11 @@ msgstr "MUSIC PRODUCTION"
 msgid "CIENCIA"
 msgstr "SCIENCE"
 
-#: babel_intermediate.txt:477
+#: babel_intermediate.txt:477 babel_intermediate.txt:584
 msgid "MATEMÁTICAS"
 msgstr "MATHEMATICS"
 
-#: babel_intermediate.txt:479
+#: babel_intermediate.txt:479 babel_intermediate.txt:598
 msgid "ANTROPOLOGÍA"
 msgstr "ANTHROPOLOGY"
 
@@ -1938,7 +1958,7 @@ msgstr "RECENT HISTORY"
 msgid "LARGOPLACISMO"
 msgstr "LONGTERMISM"
 
-#: babel_intermediate.txt:482
+#: babel_intermediate.txt:482 babel_intermediate.txt:634
 msgid "METAFÍSICA"
 msgstr "METAPHYSICS"
 
@@ -1962,7 +1982,7 @@ msgstr "WORK"
 msgid "ENTRETENIMIENTO"
 msgstr "ENTERTAINMENT"
 
-#: babel_intermediate.txt:490
+#: babel_intermediate.txt:490 babel_intermediate.txt:686
 msgid "MEZCLA DE MÚSICA"
 msgstr "MUSIC MIXING"
 
@@ -1974,7 +1994,7 @@ msgstr "ALTRUISM"
 msgid "RACISMO"
 msgstr "RACISM"
 
-#: babel_intermediate.txt:493
+#: babel_intermediate.txt:493 babel_intermediate.txt:606
 msgid "ACADÉMICA"
 msgstr "ACADEMIC"
 
@@ -1982,7 +2002,7 @@ msgstr "ACADEMIC"
 msgid "ASUNTO FAMILIAR"
 msgstr "FAMILY MATTER"
 
-#: babel_intermediate.txt:495
+#: babel_intermediate.txt:495 babel_intermediate.txt:617
 msgid "AUTORREALIZACIÓN"
 msgstr "SELF-ACTUALIZATION"
 
@@ -1998,15 +2018,15 @@ msgstr "FOOD"
 msgid "LUGAR DE TRABAJO"
 msgstr "WORKPLACE"
 
-#: babel_intermediate.txt:499
+#: babel_intermediate.txt:499 babel_intermediate.txt:597
 msgid "HÁBITOS"
 msgstr "HABITS"
 
-#: babel_intermediate.txt:500
+#: babel_intermediate.txt:500 babel_intermediate.txt:611
 msgid "POLÍTICA NACIONAL"
 msgstr "NATIONAL POLITICS"
 
-#: babel_intermediate.txt:502
+#: babel_intermediate.txt:502 babel_intermediate.txt:596
 msgid "EVOLUCIÓN HUMANA"
 msgstr "HUMAN EVOLUTION"
 
@@ -2014,7 +2034,7 @@ msgstr "HUMAN EVOLUTION"
 msgid "MEDICINA"
 msgstr "MEDICINE"
 
-#: babel_intermediate.txt:505
+#: babel_intermediate.txt:505 babel_intermediate.txt:646
 msgid "SOCIOLOGÍA"
 msgstr "SOCIOLOGY"
 
@@ -2022,7 +2042,7 @@ msgstr "SOCIOLOGY"
 msgid "GUERRA"
 msgstr "WAR"
 
-#: babel_intermediate.txt:507
+#: babel_intermediate.txt:507 babel_intermediate.txt:618
 msgid "EDUCACIÓN"
 msgstr "EDUCATION"
 
@@ -2030,11 +2050,11 @@ msgstr "EDUCATION"
 msgid "LIBERALISMO"
 msgstr "LIBERALISM"
 
-#: babel_intermediate.txt:510
+#: babel_intermediate.txt:510 babel_intermediate.txt:687
 msgid "ATEÍSMO"
 msgstr "ATHEISM"
 
-#: babel_intermediate.txt:511
+#: babel_intermediate.txt:511 babel_intermediate.txt:688
 msgid "INGENIERÍA CIVIL"
 msgstr "CIVIL ENGINEERING"
 
@@ -2042,15 +2062,15 @@ msgstr "CIVIL ENGINEERING"
 msgid "ASUNTO PERSONAL"
 msgstr "PERSONAL MATTER"
 
-#: babel_intermediate.txt:513
+#: babel_intermediate.txt:513 babel_intermediate.txt:642
 msgid "PRONÓSTICO"
 msgstr "FORECASTING"
 
-#: babel_intermediate.txt:514
+#: babel_intermediate.txt:514 babel_intermediate.txt:648
 msgid "BIOINGENIERÍA"
 msgstr "BIOENGINEERING"
 
-#: babel_intermediate.txt:515
+#: babel_intermediate.txt:515 babel_intermediate.txt:680
 msgid "LIBERACIÓN ANIMAL"
 msgstr "ANIMAL LIBERATION"
 
@@ -2086,7 +2106,7 @@ msgstr "ROCKSMITH"
 msgid "FAMILIA"
 msgstr "FAMILY"
 
-#: babel_intermediate.txt:525
+#: babel_intermediate.txt:525 babel_intermediate.txt:644
 msgid "INGENIERÍA AEROESPACIAL"
 msgstr "AEROSPACE ENGINEERING"
 
@@ -2094,7 +2114,7 @@ msgstr "AEROSPACE ENGINEERING"
 msgid "VEGANISMO"
 msgstr "VEGANISM"
 
-#: babel_intermediate.txt:528
+#: babel_intermediate.txt:528 babel_intermediate.txt:673
 msgid "COMBUSTIBLE FÓSIL"
 msgstr "FOSSIL FUEL"
 
@@ -2102,7 +2122,7 @@ msgstr "FOSSIL FUEL"
 msgid "CONCIENCIA"
 msgstr "CONSCIOUSNESS"
 
-#: babel_intermediate.txt:531
+#: babel_intermediate.txt:531 babel_intermediate.txt:637
 msgid "ASTRONOMÍA"
 msgstr "ASTRONOMY"
 
@@ -2122,27 +2142,27 @@ msgstr "PERSONAL PROJECTS"
 msgid "SOSTENIBILIDAD"
 msgstr "SUSTAINABILITY"
 
-#: babel_intermediate.txt:537
+#: babel_intermediate.txt:537 babel_intermediate.txt:629
 msgid "TECNOLOGÍA AGRÍCOLA"
 msgstr "AGRICULTURAL TECHNOLOGY"
 
-#: babel_intermediate.txt:538
+#: babel_intermediate.txt:538 babel_intermediate.txt:674
 msgid "CONTAMINACIÓN DEL AIRE"
 msgstr "AIR POLLUTION"
 
-#: babel_intermediate.txt:539
+#: babel_intermediate.txt:539 babel_intermediate.txt:624
 msgid "TECNOLOGÍA ENERGÉTICA"
 msgstr "ENERGY TECHNOLOGY"
 
-#: babel_intermediate.txt:540
+#: babel_intermediate.txt:540 babel_intermediate.txt:608
 msgid "POLÍTICA LOCAL"
 msgstr "LOCAL POLITICS"
 
-#: babel_intermediate.txt:541
+#: babel_intermediate.txt:541 babel_intermediate.txt:671
 msgid "INGENIERÍA MECÁNICA"
 msgstr "MECHANICAL ENGINEERING"
 
-#: babel_intermediate.txt:542
+#: babel_intermediate.txt:542 babel_intermediate.txt:662
 msgid "FÍSICA"
 msgstr "PHYSICS"
 
@@ -2150,11 +2170,11 @@ msgstr "PHYSICS"
 msgid "JUVENTUD"
 msgstr "YOUTH"
 
-#: babel_intermediate.txt:544
+#: babel_intermediate.txt:544 babel_intermediate.txt:632
 msgid "COLONIZACIÓN ESPACIAL"
 msgstr "SPACE COLONIZATION"
 
-#: babel_intermediate.txt:545
+#: babel_intermediate.txt:545 babel_intermediate.txt:599
 msgid "GEOGRAFÍA"
 msgstr "GEOGRAPHY"
 
@@ -2175,7 +2195,7 @@ msgstr "PRODUCTIVITY"
 msgid "COLEGAS"
 msgstr "COLLEAGUES"
 
-#: babel_intermediate.txt:550
+#: babel_intermediate.txt:550 babel_intermediate.txt:689
 msgid "GESTIÓN"
 msgstr "MANAGEMENT"
 
@@ -2207,7 +2227,7 @@ msgstr "HUMAN RIGHTS"
 msgid "MISOGINIA"
 msgstr "MISOGYNY"
 
-#: babel_intermediate.txt:559
+#: babel_intermediate.txt:559 babel_intermediate.txt:594
 msgid "BIOLOGÍA"
 msgstr "BIOLOGY"
 
@@ -2215,6 +2235,286 @@ msgstr "BIOLOGY"
 msgid "AJEDREZ"
 msgstr "CHESS"
 
-#: babel_intermediate.txt:561
+#: babel_intermediate.txt:561 babel_intermediate.txt:690
 msgid "MACROECONÓMICA"
 msgstr "MACROECONOMICS"
+
+#: babel_intermediate.txt:569
+msgid "Subjects"
+msgstr ""
+
+#: babel_intermediate.txt:570
+msgid ""
+"\n"
+"        Lemme tell you about some things."
+msgstr ""
+
+#: babel_intermediate.txt:571
+msgid ""
+"\n"
+"        - Thing 1\n"
+"        - Thing 2\n"
+"        - Thing 3"
+msgstr ""
+
+#: babel_intermediate.txt:572
+msgid ""
+"        That's all I've got.\n"
+"        "
+msgstr ""
+
+#: babel_intermediate.txt:573
+msgid "Those are some nice subjects."
+msgstr ""
+
+#: babel_intermediate.txt:583
+msgid "LEY DE ARRENDAMIENTO"
+msgstr "RENTAL LAW"
+
+#: babel_intermediate.txt:585
+msgid "ANÁLISIS DE DATOS"
+msgstr "DATA ANALYSIS"
+
+#: babel_intermediate.txt:588
+msgid "SOCIEDAD"
+msgstr "SOCIETY"
+
+#: babel_intermediate.txt:591
+msgid "COMUNIDADES"
+msgstr "COMMUNITIES"
+
+#: babel_intermediate.txt:592
+msgid "REFUGIADOS"
+msgstr "REFUGEES"
+
+#: babel_intermediate.txt:595
+msgid "GENÉTICA"
+msgstr "GENETICS"
+
+#: babel_intermediate.txt:600
+msgid "COMUNIDAD DE MÚSICA"
+msgstr "MUSIC COMMUNITY"
+
+#: babel_intermediate.txt:602
+msgid "ARMAS NUCLEARES"
+msgstr "NUCLEAR WEAPONS"
+
+#: babel_intermediate.txt:603
+msgid "CIBERSEGURIDAD"
+msgstr "CYBERSECURITY"
+
+#: babel_intermediate.txt:604
+msgid "CIENCIA DE LA TIERRA"
+msgstr "EARTH SCIENCE"
+
+#: babel_intermediate.txt:605
+msgid "ESTRUCTURA SOCIAL"
+msgstr "SOCIAL STRUCTURE"
+
+#: babel_intermediate.txt:609
+msgid "INGENIERÍA"
+msgstr "ENGINEERING"
+
+#: babel_intermediate.txt:610
+msgid "CAMBIO"
+msgstr "CHANGE"
+
+#: babel_intermediate.txt:612
+msgid "METAS PERSONALES"
+msgstr "PERSONAL GOALS"
+
+#: babel_intermediate.txt:613
+msgid "TALLER"
+msgstr "WORKSHOP"
+
+#: babel_intermediate.txt:615
+msgid "MEDITACIÓN"
+msgstr "MEDITATION"
+
+#: babel_intermediate.txt:616
+msgid "REGISTRO DE VIDA"
+msgstr "LIFE LOG"
+
+#: babel_intermediate.txt:619
+msgid "CITA"
+msgstr "DATE"
+
+#: babel_intermediate.txt:623
+msgid "CIENCIA DE DATOS"
+msgstr "DATA SCIENCE"
+
+#: babel_intermediate.txt:625
+msgid "PROBLEMAS GLOBALES"
+msgstr "GLOBAL PROBLEMS"
+
+#: babel_intermediate.txt:626
+msgid "PRIVACIDAD DIGITAL"
+msgstr "DIGITAL PRIVACY"
+
+#: babel_intermediate.txt:627
+msgid "APOCALIPSIS"
+msgstr "APOCALYPSE"
+
+#: babel_intermediate.txt:628
+msgid "CRÍA INTENSIVA"
+msgstr "INTENSIVE FARMING"
+
+#: babel_intermediate.txt:630
+msgid "EMPRENDIMIENTO"
+msgstr "ENTREPRENEURSHIP"
+
+#: babel_intermediate.txt:631
+msgid "NO LUCRATIVO"
+msgstr "NONPROFIT"
+
+#: babel_intermediate.txt:633
+msgid "REACCIONES"
+msgstr "REACTIONS"
+
+#: babel_intermediate.txt:635
+msgid "MINIMALISMO"
+msgstr "MINIMALISM"
+
+#: babel_intermediate.txt:636
+msgid "INGENIERÍA INDUSTRIAL"
+msgstr "INDUSTRIAL ENGINEERING"
+
+#: babel_intermediate.txt:638
+msgid "GENTE SIN HOGAR"
+msgstr "HOMELESS PEOPLE"
+
+#: babel_intermediate.txt:639
+msgid "IGUALITARISMO"
+msgstr "EGALITARIANISM"
+
+#: babel_intermediate.txt:640
+msgid "RIESGOS DE SUFRIMIENTO"
+msgstr "SUFFERING RISKS"
+
+#: babel_intermediate.txt:641
+msgid "EJERCICIOS"
+msgstr "EXERCISES"
+
+#: babel_intermediate.txt:643
+msgid "DEMOCRACIA"
+msgstr "DEMOCRACY"
+
+#: babel_intermediate.txt:645
+msgid "ESTILO DE VIDA"
+msgstr "LIFESTYLE"
+
+#: babel_intermediate.txt:647
+msgid "CULTURA"
+msgstr "CULTURE"
+
+#: babel_intermediate.txt:649
+msgid "MITIGACIONES"
+msgstr "MITIGATIONS"
+
+#: babel_intermediate.txt:650
+msgid "ELECTRÓNICA"
+msgstr "ELECTRONICS"
+
+#: babel_intermediate.txt:651
+msgid "SALUD GLOBAL"
+msgstr "GLOBAL HEALTH"
+
+#: babel_intermediate.txt:652
+msgid "MITIGACIONES DE RIESGOS-X"
+msgstr "X-RISK MITIGATIONS"
+
+#: babel_intermediate.txt:653
+msgid "CARERRA"
+msgstr "CAREER"
+
+#: babel_intermediate.txt:654
+msgid "EQUIPO MUSICAL"
+msgstr "MUSIC EQUIPMENT"
+
+#: babel_intermediate.txt:655
+msgid "POBREZA"
+msgstr "POVERTY"
+
+#: babel_intermediate.txt:656
+msgid "CIENCIA ATMOSFÉRICA"
+msgstr "ATMOSPHERIC SCIENCE"
+
+#: babel_intermediate.txt:657
+msgid "SOLUCIONES"
+msgstr "SOLUTIONS"
+
+#: babel_intermediate.txt:658
+msgid "EVOLUCIÓN"
+msgstr "EVOLUTION"
+
+#: babel_intermediate.txt:659
+msgid "JUEGOS"
+msgstr "GAMES"
+
+#: babel_intermediate.txt:660
+msgid "SERVICIOS PÚBLICOS"
+msgstr "PUBLIC SERVICES"
+
+#: babel_intermediate.txt:661
+msgid "GO"
+msgstr "GO"
+
+#: babel_intermediate.txt:663
+msgid "ESPIRITUALIDAD"
+msgstr "SPIRITUALITY"
+
+#: babel_intermediate.txt:664
+msgid "TRANSHUMANISMO"
+msgstr "TRANSHUMANISM"
+
+#: babel_intermediate.txt:665
+msgid "AXIOLOGÍA"
+msgstr "AXIOLOGY"
+
+#: babel_intermediate.txt:666
+msgid "INGENIERÍA ESPACIAL"
+msgstr "SPACE ENGINEERING"
+
+#: babel_intermediate.txt:667
+msgid "BIOSEGURIDAD"
+msgstr "BIOSECURITY"
+
+#: babel_intermediate.txt:668
+msgid "COMBUSTIBLE"
+msgstr "FUEL"
+
+#: babel_intermediate.txt:669
+msgid "GENOCIDIO"
+msgstr "GENOCIDE"
+
+#: babel_intermediate.txt:670
+msgid "VIVIENDA"
+msgstr "HOUSING"
+
+#: babel_intermediate.txt:672
+msgid "MEMÉTICA"
+msgstr "MEMETICS"
+
+#: babel_intermediate.txt:675
+msgid "CAPITALISMO"
+msgstr "CAPITALISM"
+
+#: babel_intermediate.txt:676
+msgid "CONFERENCIA"
+msgstr "CONFERENCE"
+
+#: babel_intermediate.txt:677
+msgid "TECNOLOGÍA INDUSTRIAL"
+msgstr "INDUSTRIAL TECHNOLOGY"
+
+#: babel_intermediate.txt:679
+msgid "SERVICIOS"
+msgstr "SERVICES"
+
+#: babel_intermediate.txt:681
+msgid "MUDANZA"
+msgstr "MOVING"
+
+#: babel_intermediate.txt:682
+msgid "AISC"
+msgstr "AISC"
