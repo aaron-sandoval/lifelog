@@ -2210,7 +2210,7 @@ msgstr ""
 #: babel_intermediate.txt:535
 #, fuzzy
 msgid "PROYECTOS"
-msgstr "Metaproyectos"
+msgstr "PROYECTOS PERSONALES"
 
 #: babel_intermediate.txt:536
 msgid "SOSTENIBILIDAD"
@@ -2254,7 +2254,7 @@ msgstr ""
 
 #: babel_intermediate.txt:546
 msgid "CONTROLES"
-msgstr ""
+msgstr "SISTEMA DE CONTROL"
 
 #: babel_intermediate.txt:547
 msgid "DIETA"
@@ -2311,16 +2311,4 @@ msgstr ""
 #: babel_intermediate.txt:561
 msgid "MACROECONÓMICA"
 msgstr ""
-
-#~ msgid ""
-#~ "Spanish translations across the site are"
-#~ " in work. I apologize for any "
-#~ "confusion."
-#~ msgstr ""
-
-#~ msgid "A CHILD"
-#~ msgstr ""
-
-#~ msgid "CASA A A CHILD"
-#~ msgstr ""
-
+q

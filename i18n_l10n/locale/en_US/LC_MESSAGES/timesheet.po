@@ -545,7 +545,7 @@ msgstr ""
 
 #: babel_intermediate.txt:144
 msgid "TOCAR"
-msgstr ""
+msgstr "PLAY MUSIC"
 
 #: babel_intermediate.txt:145
 msgid "INTELIGENCIA ARTIFICIAL"
@@ -1876,7 +1876,7 @@ msgstr ""
 
 #: babel_intermediate.txt:458
 msgid "Subject Matter Word Cloud"
-msgstr ""
+msgstr "Subject Matter Word Cloud"
 
 #: babel_intermediate.txt:464
 msgid "SEGURIDAD DE INTELIGENCIA ARTIFICIAL"
@@ -1884,350 +1884,337 @@ msgstr "AI SAFETY"
 
 #: babel_intermediate.txt:466
 msgid "AGOTAMIENTO"
-msgstr ""
+msgstr "BURNOUT"
 
 #: babel_intermediate.txt:467
 msgid "SALAS DE MÚSICA"
-msgstr ""
+msgstr "MUSIC ROOMS"
 
 #: babel_intermediate.txt:468
 msgid "COCINA"
-msgstr ""
+msgstr "COOKING"
 
 #: babel_intermediate.txt:469
 msgid "EPISTEMOLOGÍA"
-msgstr ""
+msgstr "EPISTEMOLOGY"
 
 #: babel_intermediate.txt:470
 msgid "RELIGIÓN"
-msgstr ""
+msgstr "RELIGION"
 
 #: babel_intermediate.txt:471
 msgid "PROBLEMAS CULTURALES"
-msgstr ""
+msgstr "CULTURAL PROBLEMS"
 
 #: babel_intermediate.txt:473
 msgid "NEGOCIO"
-msgstr ""
+msgstr "BUSINESS"
 
 #: babel_intermediate.txt:474
 msgid "GOBIERNO"
-msgstr ""
+msgstr "GOVERNMENT"
 
 #: babel_intermediate.txt:475
 msgid "PRODUCCIÓN DE MÚSICA"
-msgstr ""
+msgstr "MUSIC PRODUCTION"
 
 #: babel_intermediate.txt:476
 msgid "CIENCIA"
-msgstr ""
+msgstr "SCIENCE"
 
 #: babel_intermediate.txt:477
 msgid "MATEMÁTICAS"
-msgstr ""
+msgstr "MATHEMATICS"
 
 #: babel_intermediate.txt:479
 msgid "ANTROPOLOGÍA"
-msgstr ""
+msgstr "ANTHROPOLOGY"
 
 #: babel_intermediate.txt:480
 msgid "HISTORIA RECIENTE"
-msgstr ""
+msgstr "RECENT HISTORY"
 
 #: babel_intermediate.txt:481
 msgid "LARGOPLACISMO"
-msgstr ""
+msgstr "LONGTERMISM"
 
 #: babel_intermediate.txt:482
 msgid "METAFÍSICA"
-msgstr ""
+msgstr "METAPHYSICS"
 
 #: babel_intermediate.txt:484
 msgid "INTERNET"
-msgstr ""
+msgstr "INTERNET"
 
 #: babel_intermediate.txt:485
 msgid "SALUD MENTAL"
-msgstr ""
+msgstr "MENTAL HEALTH"
 
 #: babel_intermediate.txt:486
 msgid "IDIOMA"
-msgstr ""
+msgstr "LANGUAGE"
 
 #: babel_intermediate.txt:487
 msgid "TRABAJO"
-msgstr ""
+msgstr "WORK"
 
 #: babel_intermediate.txt:489
 msgid "ENTRETENIMIENTO"
-msgstr ""
+msgstr "ENTERTAINMENT"
 
 #: babel_intermediate.txt:490
 msgid "MEZCLA DE MÚSICA"
-msgstr ""
+msgstr "MUSIC MIXING"
 
 #: babel_intermediate.txt:491
 msgid "ALTRUISMO"
-msgstr ""
+msgstr "ALTRUISM"
 
 #: babel_intermediate.txt:492
 msgid "RACISMO"
-msgstr ""
+msgstr "RACISM"
 
 #: babel_intermediate.txt:493
 msgid "ACADÉMICA"
-msgstr ""
+msgstr "ACADEMIC"
 
 #: babel_intermediate.txt:494
 msgid "ASUNTO FAMILIAR"
-msgstr ""
+msgstr "FAMILY MATTER"
 
 #: babel_intermediate.txt:495
 msgid "AUTORREALIZACIÓN"
-msgstr ""
+msgstr "SELF-ACTUALIZATION"
 
 #: babel_intermediate.txt:496
 msgid "PERIODISMO"
-msgstr ""
+msgstr "JOURNALISM"
 
 #: babel_intermediate.txt:497
 msgid "COMIDA"
-msgstr ""
+msgstr "FOOD"
 
 #: babel_intermediate.txt:498
 msgid "LUGAR DE TRABAJO"
-msgstr ""
+msgstr "WORKPLACE"
 
 #: babel_intermediate.txt:499
 msgid "HÁBITOS"
-msgstr ""
+msgstr "HABITS"
 
 #: babel_intermediate.txt:500
 msgid "POLÍTICA NACIONAL"
-msgstr ""
+msgstr "NATIONAL POLITICS"
 
 #: babel_intermediate.txt:502
 msgid "EVOLUCIÓN HUMANA"
-msgstr ""
+msgstr "HUMAN EVOLUTION"
 
 #: babel_intermediate.txt:503
 msgid "MEDICINA"
-msgstr ""
+msgstr "MEDICINE"
 
 #: babel_intermediate.txt:505
 msgid "SOCIOLOGÍA"
-msgstr ""
+msgstr "SOCIOLOGY"
 
 #: babel_intermediate.txt:506
 msgid "GUERRA"
-msgstr ""
+msgstr "WAR"
 
 #: babel_intermediate.txt:507
 msgid "EDUCACIÓN"
-msgstr ""
+msgstr "EDUCATION"
 
 #: babel_intermediate.txt:509
 msgid "LIBERALISMO"
-msgstr ""
+msgstr "LIBERALISM"
 
 #: babel_intermediate.txt:510
 msgid "ATEÍSMO"
-msgstr ""
+msgstr "ATHEISM"
 
 #: babel_intermediate.txt:511
 msgid "INGENIERÍA CIVIL"
-msgstr ""
+msgstr "CIVIL ENGINEERING"
 
 #: babel_intermediate.txt:512
 msgid "ASUNTO PERSONAL"
-msgstr ""
+msgstr "PERSONAL MATTER"
 
 #: babel_intermediate.txt:513
 msgid "PRONÓSTICO"
-msgstr ""
+msgstr "FORECASTING"
 
 #: babel_intermediate.txt:514
 msgid "BIOINGENIERÍA"
-msgstr ""
+msgstr "BIOENGINEERING"
 
 #: babel_intermediate.txt:515
 msgid "LIBERACIÓN ANIMAL"
-msgstr ""
+msgstr "ANIMAL LIBERATION"
 
 #: babel_intermediate.txt:516
 msgid "HISTORIA MODERNA"
-msgstr ""
+msgstr "MODERN HISTORY"
 
 #: babel_intermediate.txt:517
 msgid "CULTURAS MUNDIALES"
-msgstr ""
+msgstr "WORLD CULTURES"
 
 #: babel_intermediate.txt:518
 msgid "MUJERES"
-msgstr ""
+msgstr "WOMEN"
 
 #: babel_intermediate.txt:519
 msgid "BIENESTAR"
-msgstr ""
+msgstr "WELL-BEING"
 
 #: babel_intermediate.txt:520
 msgid "CICLISMO"
-msgstr ""
+msgstr "CYCLING"
 
 #: babel_intermediate.txt:521
 msgid "SEGURO"
-msgstr ""
+msgstr "INSURANCE"
 
 #: babel_intermediate.txt:522
 msgid "ROCKSMITH"
-msgstr ""
+msgstr "ROCKSMITH"
 
 #: babel_intermediate.txt:523
 msgid "FAMILIA"
-msgstr ""
+msgstr "FAMILY"
 
 #: babel_intermediate.txt:525
 msgid "INGENIERÍA AEROESPACIAL"
-msgstr ""
+msgstr "AEROSPACE ENGINEERING"
 
 #: babel_intermediate.txt:526
 msgid "VEGANISMO"
-msgstr ""
+msgstr "VEGANISM"
 
 #: babel_intermediate.txt:528
 msgid "COMBUSTIBLE FÓSIL"
-msgstr ""
+msgstr "FOSSIL FUEL"
 
 #: babel_intermediate.txt:530
 msgid "CONCIENCIA"
-msgstr ""
+msgstr "CONSCIOUSNESS"
 
 #: babel_intermediate.txt:531
 msgid "ASTRONOMÍA"
-msgstr ""
+msgstr "ASTRONOMY"
 
 #: babel_intermediate.txt:532
 msgid "CURSOS"
-msgstr ""
+msgstr "COURSES"
 
 #: babel_intermediate.txt:533
 msgid "RED SOCIAL"
-msgstr ""
+msgstr "SOCIAL NETWORK"
 
 #: babel_intermediate.txt:535
 msgid "PROYECTOS"
-msgstr ""
+msgstr "PERSONAL PROJECTS"
 
 #: babel_intermediate.txt:536
 msgid "SOSTENIBILIDAD"
-msgstr ""
+msgstr "SUSTAINABILITY"
 
 #: babel_intermediate.txt:537
 msgid "TECNOLOGÍA AGRÍCOLA"
-msgstr ""
+msgstr "AGRICULTURAL TECHNOLOGY"
 
 #: babel_intermediate.txt:538
 msgid "CONTAMINACIÓN DEL AIRE"
-msgstr ""
+msgstr "AIR POLLUTION"
 
 #: babel_intermediate.txt:539
 msgid "TECNOLOGÍA ENERGÉTICA"
-msgstr ""
+msgstr "ENERGY TECHNOLOGY"
 
 #: babel_intermediate.txt:540
 msgid "POLÍTICA LOCAL"
-msgstr ""
+msgstr "LOCAL POLITICS"
 
 #: babel_intermediate.txt:541
 msgid "INGENIERÍA MECÁNICA"
-msgstr ""
+msgstr "MECHANICAL ENGINEERING"
 
 #: babel_intermediate.txt:542
 msgid "FÍSICA"
-msgstr ""
+msgstr "PHYSICS"
 
 #: babel_intermediate.txt:543
 msgid "JUVENTUD"
-msgstr ""
+msgstr "YOUTH"
 
 #: babel_intermediate.txt:544
 msgid "COLONIZACIÓN ESPACIAL"
-msgstr ""
+msgstr "SPACE COLONIZATION"
 
 #: babel_intermediate.txt:545
 msgid "GEOGRAFÍA"
-msgstr ""
+msgstr "GEOGRAPHY"
 
 #: babel_intermediate.txt:546
 msgid "CONTROLES"
-msgstr ""
+msgstr "CONTROL SYSTEM"
 
 #: babel_intermediate.txt:547
 msgid "DIETA"
-msgstr ""
+msgstr "DIET"
 
 #: babel_intermediate.txt:548
 #, fuzzy
 msgid "PRODUCTIVIDAD"
-msgstr "ACTIVITIES"
+msgstr "PRODUCTIVITY"
 
 #: babel_intermediate.txt:549
 msgid "COLEGAS"
-msgstr ""
+msgstr "COLLEAGUES"
 
 #: babel_intermediate.txt:550
 msgid "GESTIÓN"
-msgstr ""
+msgstr "MANAGEMENT"
 
 #: babel_intermediate.txt:551
 msgid "BARS"
-msgstr ""
+msgstr "BARS"
 
 #: babel_intermediate.txt:552
 msgid "HISTORIA ANTIGUA"
-msgstr ""
+msgstr "ANCIENT HISTORY"
 
 #: babel_intermediate.txt:554
 msgid "ESCRITURA"
-msgstr ""
+msgstr "WRITING"
 
 #: babel_intermediate.txt:555
 msgid "FEMINISMO"
-msgstr ""
+msgstr "FEMINISM"
 
 #: babel_intermediate.txt:556
 msgid "ZOTERO"
-msgstr ""
+msgstr "ZOTERO"
 
 #: babel_intermediate.txt:557
 msgid "DERECHOS HUMANOS"
-msgstr ""
+msgstr "HUMAN RIGHTS"
 
 #: babel_intermediate.txt:558
 msgid "MISOGINIA"
-msgstr ""
+msgstr "MISOGYNY"
 
 #: babel_intermediate.txt:559
 msgid "BIOLOGÍA"
-msgstr ""
+msgstr "BIOLOGY"
 
 #: babel_intermediate.txt:560
 msgid "AJEDREZ"
-msgstr ""
+msgstr "CHESS"
 
 #: babel_intermediate.txt:561
 msgid "MACROECONÓMICA"
-msgstr ""
-
-#~ msgid ""
-#~ "Spanish translations across the site are"
-#~ " in work. I apologize for any "
-#~ "confusion."
-#~ msgstr ""
-
-#~ msgid "A CHILD"
-#~ msgstr ""
-
-#~ msgid "CASA A A CHILD"
-#~ msgstr ""
-
+msgstr "MACROECONOMICS"
