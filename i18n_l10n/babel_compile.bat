@@ -1,1 +1,1 @@
-pybabel compile --domain=timesheet --directory=locale --use-fuzzy
+poetry run pybabel compile --domain=timesheet --directory=locale --use-fuzzy
