@@ -377,8 +377,11 @@ class _GraphicMaker:
         :param tsds: TimesheetDataset object containing the data.
         :return: GraphicExhibit containing the word cloud visual.
         """
+        df = tsds.timesheetdf.df
+        df = df.loc[Global.Epoch.e2023_Data_Log_Subject < df.start]
+        
         # Extract the 'subjectmatter' and 'duration' columns
-        df = tsds.timesheetdf.df[['subjectmatter', 'duration']]
+        df = df[['subjectmatter', 'duration']]
         
         # Explode the 'subjectmatter' column to handle lists of subject matters
         df = df.explode('subjectmatter').dropna()

@@ -677,6 +677,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
     e2018_Data_Log_Person =   37
     e2024_SpChg_JW_End =      38
     e2024_SpChg_CN_Start =    39
+    e2023_Data_Log_Subject =  40
     
     @classmethod
     def _enum_data(cls) -> Dict[Enum, 'Type[DataclassValuedEnum]._DATACLASS']:
@@ -722,6 +723,7 @@ class Epoch(SingleInstanceColumn, ColoredAliasable):
             cls.e2024_SpChg_CN_Start:    c(start=datetime(2024, 11, 20, 0, 0), es_MX='2022 SpChg Inicio con CN'), # +Crystal Spare Change
             cls.e2024_AISC:              c(start=datetime(2024, 1, 13, 3, 0), es_MX='2023 Campamento de Securidad de IA'), # AISC starts
             cls.e2018_Data_Log_Person:   c(start=datetime(2018, 2, 10, 3), es_MX='2018 Datos Persona'), # Data on time spent with individuals somewhat consistent
+            cls.e2023_Data_Log_Subject:  c(start=datetime(2023, 4, 30, 0, 0), es_MX='2023 Datos Temas'), # Data on time spent on subjects somewhat consistent
         }
 # TODO: add epochs for data feature introductions
 # Naps: 2021-05-05

@@ -21,495 +21,495 @@ msgstr ""
 
 #: babel_intermediate.txt:13
 msgid "REUNIÓN"
-msgstr ""
+msgstr "MEETING"
 
 #: babel_intermediate.txt:14
 msgid "PPT"
-msgstr ""
+msgstr "PPT"
 
 #: babel_intermediate.txt:15
 msgid "TEMAS"
-msgstr ""
+msgstr "TOPICS"
 
 #: babel_intermediate.txt:16
 msgid "STRAVA"
-msgstr ""
+msgstr "STRAVA"
 
 #: babel_intermediate.txt:17
 msgid "GEOGUESSR"
-msgstr ""
+msgstr "GEOGUESSR"
 
 #: babel_intermediate.txt:18
 msgid "PLANEAR"
-msgstr ""
+msgstr "PLAN"
 
 #: babel_intermediate.txt:19
 msgid "SACAR"
-msgstr ""
+msgstr "FETCH"
 
 #: babel_intermediate.txt:20
 msgid "VOLUNTAR"
-msgstr ""
+msgstr "VOLUNTEER"
 
 #: babel_intermediate.txt:21
 msgid "REPASO SEMANAL"
-msgstr ""
+msgstr "WEEKLY REVIEW"
 
 #: babel_intermediate.txt:22
 msgid "DORMIR"
-msgstr ""
+msgstr "SLEEP"
 
 #: babel_intermediate.txt:23
 msgid "LAVAR"
-msgstr ""
+msgstr "WASH"
 
 #: babel_intermediate.txt:24
 msgid "PRACTICAR"
-msgstr ""
+msgstr "PRACTICE"
 
 #: babel_intermediate.txt:25
 msgid "LEER"
-msgstr ""
+msgstr "READ"
 
 #: babel_intermediate.txt:26
 msgid "JUGAR"
-msgstr ""
+msgstr "PLAY"
 
 #: babel_intermediate.txt:27
 msgid "HIGIENE"
-msgstr ""
+msgstr "HYGIENE"
 
 #: babel_intermediate.txt:28
 msgid "DUCHARSE"
-msgstr ""
+msgstr "SHOWER"
 
 #: babel_intermediate.txt:29
 msgid "DESEMPACAR"
-msgstr ""
+msgstr "UNPACK"
 
 #: babel_intermediate.txt:30
 msgid "MANTENER"
-msgstr ""
+msgstr "MAINTAIN"
 
 #: babel_intermediate.txt:31
 msgid "CHARLAR"
-msgstr ""
+msgstr "CHAT"
 
 #: babel_intermediate.txt:32
 msgid "MONTAR"
-msgstr ""
+msgstr "RIDE"
 
 #: babel_intermediate.txt:33
 msgid "FF1"
-msgstr ""
+msgstr "FF1"
 
 #: babel_intermediate.txt:34
 msgid "ESTIRARSE"
-msgstr ""
+msgstr "STRETCH"
 
 #: babel_intermediate.txt:35
 msgid "BICI"
-msgstr ""
+msgstr "BIKE"
 
 #: babel_intermediate.txt:36
 msgid "NX"
-msgstr ""
+msgstr "NX"
 
 #: babel_intermediate.txt:37
 msgid "INVESTIGAR"
-msgstr ""
+msgstr "RESEARCH"
 
 #: babel_intermediate.txt:38
 msgid "PERSONAL"
-msgstr ""
+msgstr "PERSONAL"
 
 #: babel_intermediate.txt:39
 msgid "PYTHON"
-msgstr ""
+msgstr "PYTHON"
 
 #: babel_intermediate.txt:40
 msgid "COMESTIBLES"
-msgstr ""
+msgstr "GROCERIES"
 
 #: babel_intermediate.txt:41
 msgid "ESCUCHAR"
-msgstr ""
+msgstr "LISTEN"
 
 #: babel_intermediate.txt:42
 msgid "EMAIL"
-msgstr ""
+msgstr "EMAIL"
 
 #: babel_intermediate.txt:43
 msgid "SITIO DE CAMPING"
-msgstr ""
+msgstr "CAMPSITE"
 
 #: babel_intermediate.txt:44 babel_intermediate.txt:463
 msgid "MÚSICA"
-msgstr ""
+msgstr "MUSIC"
 
 #: babel_intermediate.txt:45
 msgid "ARREGLAR"
-msgstr ""
+msgstr "FIX"
 
 #: babel_intermediate.txt:46
 msgid "CANCIONES"
-msgstr ""
+msgstr "SONGS"
 
 #: babel_intermediate.txt:47
 msgid "EL DÍA"
-msgstr ""
+msgstr "THE DAY"
 
 #: babel_intermediate.txt:48
 msgid "HABLAR"
-msgstr ""
+msgstr "TALK"
 
 #: babel_intermediate.txt:49
 msgid "COMPRAR"
-msgstr ""
+msgstr "BUY"
 
 #: babel_intermediate.txt:50
 msgid "EXCEL"
-msgstr ""
+msgstr "EXCEL"
 
 #: babel_intermediate.txt:51
 msgid "LA ROPA"
-msgstr ""
+msgstr "CLOTHES"
 
 #: babel_intermediate.txt:52
 msgid "CICLOTURISMO"
-msgstr ""
+msgstr "BIKE TOURING"
 
 #: babel_intermediate.txt:53
 msgid "TAMBORES"
-msgstr ""
+msgstr "DRUMS"
 
 #: babel_intermediate.txt:54
 msgid "PREPARAR"
-msgstr ""
+msgstr "PREPARE"
 
 #: babel_intermediate.txt:55
 msgid "EMPACAR"
-msgstr ""
+msgstr "PACK"
 
 #: babel_intermediate.txt:56
 msgid "FC"
-msgstr ""
+msgstr "FC"
 
 #: babel_intermediate.txt:57
 msgid "CASA A BCH"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:58
 msgid "COCINAR"
-msgstr ""
+msgstr "COOK"
 
 #: babel_intermediate.txt:59
 msgid "EXPLORAR"
-msgstr ""
+msgstr "EXPLORE"
 
 #: babel_intermediate.txt:60
 msgid "PENSAR"
-msgstr ""
+msgstr "THINK"
 
 #: babel_intermediate.txt:61
 msgid "ESCRIBIR"
-msgstr ""
+msgstr "WRITE"
 
 #: babel_intermediate.txt:62
 msgid "YOUTUBE"
-msgstr ""
+msgstr "YOUTUBE"
 
 #: babel_intermediate.txt:63
 msgid "CASA A RA-11"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:64
 msgid "RECICLAJE"
-msgstr ""
+msgstr "RECYCLING"
 
 #: babel_intermediate.txt:65
 msgid "CASA"
-msgstr ""
+msgstr "HOME"
 
 #: babel_intermediate.txt:66
 msgid "CASA A BOULDER"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:67
 msgid "BOULDER A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:68
 msgid "AUTO"
-msgstr ""
+msgstr "CAR"
 
 #: babel_intermediate.txt:69
 msgid "CORNELL A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:70
 msgid "CASA A CORNELL"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:71
 msgid "DOCUMENTOS"
-msgstr ""
+msgstr "DOCUMENTS"
 
 #: babel_intermediate.txt:72
 msgid "NORTHGLENN A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:73
 msgid "BCH A NORTHGLENN"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:74
 msgid "ROCK BAND"
-msgstr ""
+msgstr "ROCK BAND"
 
 #: babel_intermediate.txt:75
 msgid "POLÍTICA DE BOULDER"
-msgstr ""
+msgstr "BOULDER POLITICS"
 
 #: babel_intermediate.txt:76
 msgid "LOGÍSTICA"
-msgstr ""
+msgstr "LOGISTICS"
 
 #: babel_intermediate.txt:77
 msgid "RA-11 A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:78
 msgid "CARRERA"
-msgstr ""
+msgstr "CAREER"
 
 #: babel_intermediate.txt:79
 msgid "MEJORAR"
-msgstr ""
+msgstr "IMPROVE"
 
 #: babel_intermediate.txt:80
 msgid "A"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:81
 msgid "BCH A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:82
 msgid "CASA A NORTHGLENN"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:83
 msgid "ADCS"
-msgstr ""
+msgstr "ADCS"
 
 #: babel_intermediate.txt:84
 msgid "SIMULINK"
-msgstr ""
+msgstr "SIMULINK"
 
 #: babel_intermediate.txt:85
 msgid "CARTAS"
-msgstr ""
+msgstr "CARDS"
 
 #: babel_intermediate.txt:86
 msgid "BOULDER FOOD RESCUE"
-msgstr ""
+msgstr "BOULDER FOOD RESCUE"
 
 #: babel_intermediate.txt:87
 msgid "CITAS EN LÍNEA"
-msgstr ""
+msgstr "ONLINE DATING"
 
 #: babel_intermediate.txt:88
 msgid "EQUIPO DE CASA"
-msgstr ""
+msgstr "HOME EQUIPMENT"
 
 #: babel_intermediate.txt:89
 msgid "JUEGOS DE MESA"
-msgstr ""
+msgstr "BOARD GAMES"
 
 #: babel_intermediate.txt:90
 msgid "VIDEOLLAMADA"
-msgstr ""
+msgstr "VIDEO CALL"
 
 #: babel_intermediate.txt:91
 msgid "NOTICIAS"
-msgstr ""
+msgstr "NEWS"
 
 #: babel_intermediate.txt:92
 msgid "COMPOST"
-msgstr ""
+msgstr "COMPOST"
 
 #: babel_intermediate.txt:93
 msgid "ALOJAMIENTO"
-msgstr ""
+msgstr "ACCOMMODATION"
 
 #: babel_intermediate.txt:94
 msgid "RUTAS"
-msgstr ""
+msgstr "ROUTES"
 
 #: babel_intermediate.txt:95
 msgid "EQUIPO DE CICLOTURISMO"
-msgstr ""
+msgstr "BIKE TOURING EQUIPMENT"
 
 #: babel_intermediate.txt:96
 msgid "MENSAJEAR"
-msgstr ""
+msgstr "MESSAGE"
 
 #: babel_intermediate.txt:97
 msgid "MATLAB"
-msgstr ""
+msgstr "MATLAB"
 
 #: babel_intermediate.txt:98
 msgid "NORTHGLENN A BOULDER"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:99
 msgid "BLOG"
-msgstr ""
+msgstr "BLOG"
 
 #: babel_intermediate.txt:100
 msgid "VESTIRSE"
-msgstr ""
+msgstr "GET DRESSED"
 
 #: babel_intermediate.txt:101
 msgid "FRAP"
-msgstr ""
+msgstr "FRAP"
 
 #: babel_intermediate.txt:102
 msgid "FFL"
-msgstr ""
+msgstr "FFL"
 
 #: babel_intermediate.txt:103
 msgid "NOTEPAD++"
-msgstr ""
+msgstr "NOTEPAD++"
 
 #: babel_intermediate.txt:104
 msgid "VÍDEO JUEGOS"
-msgstr ""
+msgstr "VIDEO GAMES"
 
 #: babel_intermediate.txt:105
 msgid "EQUIPO DE BICI"
-msgstr ""
+msgstr "BIKE EQUIPMENT"
 
 #: babel_intermediate.txt:106
 msgid "LEETCODE"
-msgstr ""
+msgstr "LEETCODE"
 
 #: babel_intermediate.txt:107
 msgid "ALOJAMIENTO INTERIOR"
-msgstr ""
+msgstr "INDOOR ACCOMMODATION"
 
 #: babel_intermediate.txt:108
 msgid "DISCURSO"
-msgstr ""
+msgstr "SPEECH"
 
 #: babel_intermediate.txt:109
 msgid "TEORÍA"
-msgstr ""
+msgstr "THEORY"
 
 #: babel_intermediate.txt:110
 msgid "APRENDER"
-msgstr ""
+msgstr "LEARN"
 
 #: babel_intermediate.txt:111
 msgid "REDDIT"
-msgstr ""
+msgstr "REDDIT"
 
 #: babel_intermediate.txt:112
 msgid "LIMPIAR"
-msgstr ""
+msgstr "CLEAN"
 
 #: babel_intermediate.txt:113
 msgid "MAÑANA"
-msgstr ""
+msgstr "MORNING"
 
 #: babel_intermediate.txt:114
 msgid "DIARIO"
-msgstr ""
+msgstr "JOURNAL"
 
 #: babel_intermediate.txt:115
 msgid "TRANSPORTE"
-msgstr ""
+msgstr "TRANSPORTATION"
 
 #: babel_intermediate.txt:116
 msgid "TREN"
-msgstr ""
+msgstr "TRAIN"
 
 #: babel_intermediate.txt:117
 msgid "CARTA"
-msgstr ""
+msgstr "LETTER"
 
 #: babel_intermediate.txt:118
 msgid "SENDERISMO"
-msgstr ""
+msgstr "HIKING"
 
 #: babel_intermediate.txt:119
 msgid "ALTRUISMO EFECTIVO"
-msgstr ""
+msgstr "EFFECTIVE ALTRUISM"
 
 #: babel_intermediate.txt:120
 msgid "REPARAR"
-msgstr ""
+msgstr "REPAIR"
 
 #: babel_intermediate.txt:121
 msgid "AEROPUERTO"
-msgstr ""
+msgstr "AIRPORT"
 
 #: babel_intermediate.txt:122
 msgid "HW03"
-msgstr ""
+msgstr "HW03"
 
 #: babel_intermediate.txt:123
 msgid "EXAMEN"
-msgstr ""
+msgstr "EXAM"
 
 #: babel_intermediate.txt:124
 msgid "TIENDAS"
-msgstr ""
+msgstr "STORES"
 
 #: babel_intermediate.txt:125
 msgid "OPIR"
-msgstr ""
+msgstr "OPIR"
 
 #: babel_intermediate.txt:126
 msgid "VACACIONES"
-msgstr ""
+msgstr "VACATION"
 
 #: babel_intermediate.txt:127
 msgid "MUSEO"
-msgstr ""
+msgstr "MUSEUM"
 
 #: babel_intermediate.txt:128
 msgid "EN CAMPUS"
-msgstr ""
+msgstr "ON CAMPUS"
 
 #: babel_intermediate.txt:129
 msgid "MUDARSE"
-msgstr ""
+msgstr "MOVE"
 
 #: babel_intermediate.txt:130
 msgid "CORREO"
-msgstr ""
+msgstr "MAIL"
 
 #: babel_intermediate.txt:131
 msgid "BOULDER A NORTHGLENN"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:132 babel_intermediate.txt:534
 msgid "FILOSOFÍA"
-msgstr ""
+msgstr "PHILOSOPHY"
 
 #: babel_intermediate.txt:133
 msgid "ECONOMIST"
-msgstr ""
+msgstr "ECONOMIST"
 
 #: babel_intermediate.txt:134
 msgid "ENFRIARSE"
-msgstr ""
+msgstr "COOL DOWN"
 
 #: babel_intermediate.txt:135
 msgid "LIDERAZGO"
-msgstr ""
+msgstr "LEADERSHIP"
 
 #: babel_intermediate.txt:136
 msgid "ACTIVIDADES"
@@ -517,31 +517,31 @@ msgstr "ACTIVITIES"
 
 #: babel_intermediate.txt:137
 msgid "INFORME"
-msgstr ""
+msgstr "REPORT"
 
 #: babel_intermediate.txt:138
 msgid "EJERCICIO"
-msgstr ""
+msgstr "EXERCISE"
 
 #: babel_intermediate.txt:139
 msgid "CCYCLES A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:140
 msgid "NORTHGLENN A NORTHGLENN"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:141
 msgid "LYFT"
-msgstr ""
+msgstr "LYFT"
 
 #: babel_intermediate.txt:142
 msgid "HW04"
-msgstr ""
+msgstr "HW04"
 
 #: babel_intermediate.txt:143
 msgid "HW05"
-msgstr ""
+msgstr "HW05"
 
 #: babel_intermediate.txt:144
 msgid "TOCAR"
@@ -549,663 +549,663 @@ msgstr "PLAY MUSIC"
 
 #: babel_intermediate.txt:145
 msgid "INTELIGENCIA ARTIFICIAL"
-msgstr ""
+msgstr "ARTIFICIAL INTELLIGENCE"
 
 #: babel_intermediate.txt:146
 msgid "CASA A CCYCLES"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:147
 msgid "HW06"
-msgstr ""
+msgstr "HW06"
 
 #: babel_intermediate.txt:148
 msgid "COMPUTADORA"
-msgstr ""
+msgstr "COMPUTER"
 
 #: babel_intermediate.txt:149
 msgid "BCH A BOULDER"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:150
 msgid "CCYCLES"
-msgstr ""
+msgstr "CCYCLES"
 
 #: babel_intermediate.txt:151
 msgid "AUDACITY"
-msgstr ""
+msgstr "AUDACITY"
 
 #: babel_intermediate.txt:152
 msgid "BASURA"
-msgstr ""
+msgstr "TRASH"
 
 #: babel_intermediate.txt:153
 msgid "PRESENTACIÓN"
-msgstr ""
+msgstr "PRESENTATION"
 
 #: babel_intermediate.txt:154
 msgid "TECLADO"
-msgstr ""
+msgstr "KEYBOARD"
 
 #: babel_intermediate.txt:155
 msgid "AVIÓN"
-msgstr ""
+msgstr "PLANE"
 
 #: babel_intermediate.txt:156
 msgid "BUSCAR"
-msgstr ""
+msgstr "SEARCH"
 
 #: babel_intermediate.txt:157
 msgid "ESTRUCTURA"
-msgstr ""
+msgstr "STRUCTURE"
 
 #: babel_intermediate.txt:158
 msgid "GRABAR"
-msgstr ""
+msgstr "RECORD"
 
 #: babel_intermediate.txt:159
 msgid "GOOGLE SHEETS"
-msgstr ""
+msgstr "GOOGLE SHEETS"
 
 #: babel_intermediate.txt:160
 msgid "CITA MÉDICA"
-msgstr ""
+msgstr "DOCTOR APPOINTMENT"
 
 #: babel_intermediate.txt:161
 msgid "AYUDAR"
-msgstr ""
+msgstr "HELP"
 
 #: babel_intermediate.txt:162
 msgid "LOS PLATOS"
-msgstr ""
+msgstr "DISHES"
 
 #: babel_intermediate.txt:163
 msgid "DISCUSIÓN"
-msgstr ""
+msgstr "DISCUSSION"
 
 #: babel_intermediate.txt:164
 msgid "TERRAFORMING MARS"
-msgstr ""
+msgstr "TERRAFORMING MARS"
 
 #: babel_intermediate.txt:165
 msgid "FINANZAS"
-msgstr ""
+msgstr "FINANCE"
 
 #: babel_intermediate.txt:166
 msgid "EVENTOS"
-msgstr ""
+msgstr "EVENTS"
 
 #: babel_intermediate.txt:167
 msgid "FIESTA"
-msgstr ""
+msgstr "PARTY"
 
 #: babel_intermediate.txt:168
 msgid "VA ONE"
-msgstr ""
+msgstr "VA ONE"
 
 #: babel_intermediate.txt:169 babel_intermediate.txt:553
 msgid "TECNOLOGÍA"
-msgstr ""
+msgstr "TECHNOLOGY"
 
 #: babel_intermediate.txt:170 babel_intermediate.txt:504
 msgid "EQUIPO DE MÚSICA"
-msgstr ""
+msgstr "MUSIC EQUIPMENT"
 
 #: babel_intermediate.txt:171
 msgid "BALL AEROSPACE"
-msgstr ""
+msgstr "BALL AEROSPACE"
 
 #: babel_intermediate.txt:172
 msgid "BIKE TO WORK DAY"
-msgstr ""
+msgstr "BIKE TO WORK DAY"
 
 #: babel_intermediate.txt:173
 msgid "BARCO"
-msgstr ""
+msgstr "BOAT"
 
 #: babel_intermediate.txt:174
 msgid "CASA A DENVER"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:175
 msgid "ROPA"
-msgstr ""
+msgstr "CLOTHES"
 
 #: babel_intermediate.txt:176
 msgid "RESTAURANTES"
-msgstr ""
+msgstr "RESTAURANTS"
 
 #: babel_intermediate.txt:177
 msgid "MAE 5160"
-msgstr ""
+msgstr "MAE 5160"
 
 #: babel_intermediate.txt:178
 msgid "CAMINAR"
-msgstr ""
+msgstr "WALK"
 
 #: babel_intermediate.txt:179
 msgid "NAND2TETRIS"
-msgstr ""
+msgstr "NAND2TETRIS"
 
 #: babel_intermediate.txt:180
 msgid "MUSIC THEORY FOR THE BASS PLAYER"
-msgstr ""
+msgstr "MUSIC THEORY FOR THE BASS PLAYER"
 
 #: babel_intermediate.txt:181
 msgid "SOLIDWORKS"
-msgstr ""
+msgstr "SOLIDWORKS"
 
 #: babel_intermediate.txt:182 babel_intermediate.txt:508
 msgid "PELÍCULAS"
-msgstr ""
+msgstr "MOVIES"
 
 #: babel_intermediate.txt:183 babel_intermediate.txt:483
 msgid "ÉTICA"
-msgstr ""
+msgstr "ETHICS"
 
 #: babel_intermediate.txt:184
 msgid "LIBROS"
-msgstr ""
+msgstr "BOOKS"
 
 #: babel_intermediate.txt:185
 msgid "GRANOLA"
-msgstr ""
+msgstr "GRANOLA"
 
 #: babel_intermediate.txt:186
 msgid "BAR"
-msgstr ""
+msgstr "BAR"
 
 #: babel_intermediate.txt:187
 msgid "AGUA"
-msgstr ""
+msgstr "WATER"
 
 #: babel_intermediate.txt:188
 msgid "CONSTRUIR"
-msgstr ""
+msgstr "BUILD"
 
 #: babel_intermediate.txt:189
 msgid "A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:190
 msgid "BASIS"
-msgstr ""
+msgstr "BASIS"
 
 #: babel_intermediate.txt:191
 msgid "APUNTES"
-msgstr ""
+msgstr "NOTES"
 
 #: babel_intermediate.txt:192
 msgid "ALGORITMOS"
-msgstr ""
+msgstr "ALGORITHMS"
 
 #: babel_intermediate.txt:193
 msgid "NOSTALGIA"
-msgstr ""
+msgstr "NOSTALGIA"
 
 #: babel_intermediate.txt:194
 msgid "APRENDIZAJE PROFUNDO PARA PROGRAMADORES"
-msgstr ""
+msgstr "DEEP LEARNING FOR PROGRAMMERS"
 
 #: babel_intermediate.txt:195
 msgid "HW07"
-msgstr ""
+msgstr "HW07"
 
 #: babel_intermediate.txt:196
 msgid "RELACIONES"
-msgstr ""
+msgstr "RELATIONSHIPS"
 
 #: babel_intermediate.txt:197
 msgid "TELÉFONO"
-msgstr ""
+msgstr "PHONE"
 
 #: babel_intermediate.txt:198
 msgid "URBANISMO"
-msgstr ""
+msgstr "URBANISM"
 
 #: babel_intermediate.txt:199
 msgid "MANEJAR"
-msgstr ""
+msgstr "DRIVE"
 
 #: babel_intermediate.txt:200 babel_intermediate.txt:465
 msgid "INFORMÁTICA"
-msgstr ""
+msgstr "COMPUTER SCIENCE"
 
 #: babel_intermediate.txt:201
 msgid "BAJO"
-msgstr ""
+msgstr "BASS"
 
 #: babel_intermediate.txt:202
 msgid "GUARDAR"
-msgstr ""
+msgstr "SAVE"
 
 #: babel_intermediate.txt:203
 msgid "MAE 7999"
-msgstr ""
+msgstr "MAE 7999"
 
 #: babel_intermediate.txt:204
 msgid "ANSYS"
-msgstr ""
+msgstr "ANSYS"
 
 #: babel_intermediate.txt:205
 msgid "PRUEBA ESTRUCTURAL"
-msgstr ""
+msgstr "STRUCTURAL TEST"
 
 #: babel_intermediate.txt:206
 msgid "SUBTE"
-msgstr ""
+msgstr "SUBWAY"
 
 #: babel_intermediate.txt:207
 msgid "BANCO"
-msgstr ""
+msgstr "BANK"
 
 #: babel_intermediate.txt:208
 msgid "GIMNASIO"
-msgstr ""
+msgstr "GYM"
 
 #: babel_intermediate.txt:209
 msgid "NFL"
-msgstr ""
+msgstr "NFL"
 
 #: babel_intermediate.txt:210
 msgid "VS"
-msgstr ""
+msgstr "VS"
 
 #: babel_intermediate.txt:211
 msgid "PP"
-msgstr ""
+msgstr "PP"
 
 #: babel_intermediate.txt:212
 msgid "TODOIST"
-msgstr ""
+msgstr "TODOIST"
 
 #: babel_intermediate.txt:213
 msgid "DEPARTAMENTOS"
-msgstr ""
+msgstr "APARTMENTS"
 
 #: babel_intermediate.txt:214
 msgid "HW09"
-msgstr ""
+msgstr "HW09"
 
 #: babel_intermediate.txt:215
 msgid "BIBLIOTECA"
-msgstr ""
+msgstr "LIBRARY"
 
 #: babel_intermediate.txt:216
 msgid "DENVER A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:217
 msgid "LECCIONES"
-msgstr ""
+msgstr "LESSONS"
 
 #: babel_intermediate.txt:218
 msgid "COVID-19"
-msgstr ""
+msgstr "COVID-19"
 
 #: babel_intermediate.txt:219
 msgid "30"
-msgstr ""
+msgstr "30"
 
 #: babel_intermediate.txt:220
 msgid "SALUD"
-msgstr ""
+msgstr "HEALTH"
 
 #: babel_intermediate.txt:221
 msgid "AFEITARSE"
-msgstr ""
+msgstr "SHAVE"
 
 #: babel_intermediate.txt:222
 msgid "RACIONALIDAD"
-msgstr ""
+msgstr "RATIONALITY"
 
 #: babel_intermediate.txt:223
 msgid "HW02"
-msgstr ""
+msgstr "HW02"
 
 #: babel_intermediate.txt:224
 msgid "MAE 5190"
-msgstr ""
+msgstr "MAE 5190"
 
 #: babel_intermediate.txt:225
 msgid "REGALOS"
-msgstr ""
+msgstr "GIFTS"
 
 #: babel_intermediate.txt:228
 msgid "DUOLINGO"
-msgstr ""
+msgstr "DUOLINGO"
 
 #: babel_intermediate.txt:229
 msgid "EVENTO"
-msgstr ""
+msgstr "EVENT"
 
 #: babel_intermediate.txt:230
 msgid "INSTRUMENTOS"
-msgstr ""
+msgstr "INSTRUMENTS"
 
 #: babel_intermediate.txt:231
 msgid "HW10"
-msgstr ""
+msgstr "HW10"
 
 #: babel_intermediate.txt:232
 msgid "HOLANDÉS"
-msgstr ""
+msgstr "DUTCH"
 
 #: babel_intermediate.txt:233
 msgid "HW08"
-msgstr ""
+msgstr "HW08"
 
 #: babel_intermediate.txt:234
 msgid "CINE"
-msgstr ""
+msgstr "CINEMA"
 
 #: babel_intermediate.txt:235
 msgid "OH"
-msgstr ""
+msgstr "OH"
 
 #: babel_intermediate.txt:236
 msgid "DIBUJOS"
-msgstr ""
+msgstr "DRAWINGS"
 
 #: babel_intermediate.txt:237
 msgid "CLASE"
-msgstr ""
+msgstr "CLASS"
 
 #: babel_intermediate.txt:238
 msgid "BICOPTER CONTROL"
-msgstr ""
+msgstr "BICOPTER CONTROL"
 
 #: babel_intermediate.txt:239
 msgid "HW11"
-msgstr ""
+msgstr "HW11"
 
 #: babel_intermediate.txt:240
 msgid "ENCUESTA"
-msgstr ""
+msgstr "SURVEY"
 
 #: babel_intermediate.txt:241
 msgid "EA PROGRAMA VIRTUAL"
-msgstr ""
+msgstr "EA VIRTUAL PROGRAM"
 
 #: babel_intermediate.txt:242
 msgid "NYTIMES"
-msgstr ""
+msgstr "NYTIMES"
 
 #: babel_intermediate.txt:243
 msgid "BCH A BROOMFIELD"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:244
 msgid "SQL"
-msgstr ""
+msgstr "SQL"
 
 #: babel_intermediate.txt:245
 msgid "ENTRENAMIENTO"
-msgstr ""
+msgstr "TRAINING"
 
 #: babel_intermediate.txt:246
 msgid "URBANISMO LOCAL"
-msgstr ""
+msgstr "LOCAL URBAN PLANNING"
 
 #: babel_intermediate.txt:247
 msgid "ESTUDIAR"
-msgstr ""
+msgstr "STUDY"
 
 #: babel_intermediate.txt:248
 msgid "CORRER"
-msgstr ""
+msgstr "RUN"
 
 #: babel_intermediate.txt:249
 msgid "DIARIO AG"
-msgstr ""
+msgstr "CUAG JOURNAL"
 
 #: babel_intermediate.txt:250
 msgid "ESPAÑOL"
-msgstr ""
+msgstr "SPANISH"
 
 #: babel_intermediate.txt:251
 msgid "ENTREVISTA"
-msgstr ""
+msgstr "INTERVIEW"
 
 #: babel_intermediate.txt:253
 msgid "BROOMFIELD A CASA"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:254 babel_intermediate.txt:501
 msgid "POLÍTICA GLOBAL"
-msgstr ""
+msgstr "GLOBAL POLITICS"
 
 #: babel_intermediate.txt:255
 msgid "SOLICITUDES"
-msgstr ""
+msgstr "APPLICATIONS"
 
 #: babel_intermediate.txt:256
 msgid "TIMESHEET ANÁLISIS"
-msgstr ""
+msgstr "TIMESHEET ANALYSIS"
 
 #: babel_intermediate.txt:257 babel_intermediate.txt:472
 msgid "CIENCIA ECONÓMICA"
-msgstr ""
+msgstr "ECONOMICS"
 
 #: babel_intermediate.txt:258
 msgid "TEXTO"
-msgstr ""
+msgstr "TEXT"
 
 #: babel_intermediate.txt:259
 msgid "HISTORIA"
-msgstr ""
+msgstr "HISTORY"
 
 #: babel_intermediate.txt:260
 msgid "MUEBLES"
-msgstr ""
+msgstr "FURNITURE"
 
 #: babel_intermediate.txt:261
 msgid "COMMUNITY CYCLES"
-msgstr ""
+msgstr "COMMUNITY CYCLES"
 
 #: babel_intermediate.txt:262
 msgid "DEPORTES"
-msgstr ""
+msgstr "SPORTS"
 
 #: babel_intermediate.txt:263
 msgid "EXPERIMENTAR"
-msgstr ""
+msgstr "EXPERIMENT"
 
 #: babel_intermediate.txt:264
 msgid "PUESTOS"
-msgstr ""
+msgstr "JOBS"
 
 #: babel_intermediate.txt:265
 msgid "LATEX"
-msgstr ""
+msgstr "LATEX"
 
 #: babel_intermediate.txt:266
 msgid "BAÑO"
-msgstr ""
+msgstr "BATHROOM"
 
 #: babel_intermediate.txt:267
 msgid "PING PONG"
-msgstr ""
+msgstr "PING PONG"
 
 #: babel_intermediate.txt:268
 msgid "POLÍTICA"
-msgstr ""
+msgstr "POLITICS"
 
 #: babel_intermediate.txt:269
 msgid "HORAS DE OFICINA"
-msgstr ""
+msgstr "OFFICE HOURS"
 
 #: babel_intermediate.txt:270
 msgid "HW13"
-msgstr ""
+msgstr "HW13"
 
 #: babel_intermediate.txt:271
 msgid "FOTOS"
-msgstr ""
+msgstr "PHOTOS"
 
 #: babel_intermediate.txt:272
 msgid "VOLUNTARIO"
-msgstr ""
+msgstr "VOLUNTEER"
 
 #: babel_intermediate.txt:273
 msgid "ENSEÑAR"
-msgstr ""
+msgstr "TEACH"
 
 #: babel_intermediate.txt:274
 msgid "SOLUCIÓN"
-msgstr ""
+msgstr "SOLUTION"
 
 #: babel_intermediate.txt:275
 msgid "CORTAR EL PELO"
-msgstr ""
+msgstr "HAIRCUT"
 
 #: babel_intermediate.txt:276
 msgid "OFICINA"
-msgstr ""
+msgstr "OFFICE"
 
 #: babel_intermediate.txt:277 babel_intermediate.txt:524
 msgid "PSICOLOGÍA"
-msgstr ""
+msgstr "PSYCHOLOGY"
 
 #: babel_intermediate.txt:278 babel_intermediate.txt:529
 msgid "SALUD PÚBLICA"
-msgstr ""
+msgstr "PUBLIC HEALTH"
 
 #: babel_intermediate.txt:279
 msgid "ELAINE"
-msgstr ""
+msgstr "ELAINE"
 
 #: babel_intermediate.txt:280
 msgid "NORTHGLENN A BERNALILLO"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:281 babel_intermediate.txt:527
 msgid "CAMBIO CLIMÁTICO"
-msgstr ""
+msgstr "CLIMATE CHANGE"
 
 #: babel_intermediate.txt:282
 msgid "TUTORIAL"
-msgstr ""
+msgstr "TUTORIAL"
 
 #: babel_intermediate.txt:283 babel_intermediate.txt:478
 msgid "GRABACIÓN"
-msgstr ""
+msgstr "RECORDING"
 
 #: babel_intermediate.txt:284
 msgid "HW01"
-msgstr ""
+msgstr "HW01"
 
 #: babel_intermediate.txt:285
 msgid "ESTACIÓN DE TREN"
-msgstr ""
+msgstr "TRAIN STATION"
 
 #: babel_intermediate.txt:286
 msgid "BICI ELÉCTRICA"
-msgstr ""
+msgstr "ELECTRIC BIKE"
 
 #: babel_intermediate.txt:287
 msgid "TUCSON, AZ"
-msgstr ""
+msgstr "TUCSON, AZ"
 
 #: babel_intermediate.txt:288
 msgid "HISTORIA DE AMIGOS"
-msgstr ""
+msgstr "FRIEND'S WRITING"
 
 #: babel_intermediate.txt:290
 msgid "CHINCHES"
-msgstr ""
+msgstr "BEDBUGS"
 
 #: babel_intermediate.txt:291
 msgid "21"
-msgstr ""
+msgstr "21"
 
 #: babel_intermediate.txt:292
 msgid "PODCASTS"
-msgstr ""
+msgstr "PODCASTS"
 
 #: babel_intermediate.txt:293
 msgid "IMPRESIÓN 3D"
-msgstr ""
+msgstr "3D PRINTING"
 
 #: babel_intermediate.txt:294
 msgid "COLORADO"
-msgstr ""
+msgstr "COLORADO"
 
 #: babel_intermediate.txt:295
 msgid "RIESGOS EXISTENCIALES"
-msgstr ""
+msgstr "EXISTENTIAL RISKS"
 
 #: babel_intermediate.txt:296
 msgid "BCH A CCYCLES"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:297 babel_intermediate.txt:488
 msgid "POLÍTICA ESTADOUNIDENSE"
-msgstr ""
+msgstr "US POLITICS"
 
 #: babel_intermediate.txt:298
 msgid "BENEFICIOS"
-msgstr ""
+msgstr "BENEFITS"
 
 #: babel_intermediate.txt:299
 msgid "SENDEROS"
-msgstr ""
+msgstr "TRAILS"
 
 #: babel_intermediate.txt:300
 msgid "LISBOA A"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:301
 msgid "RECLUTAMIENTO"
-msgstr ""
+msgstr "RECRUITMENT"
 
 #: babel_intermediate.txt:302
 msgid "EVALUACIÓN"
-msgstr ""
+msgstr "EVALUATION"
 
 #: babel_intermediate.txt:303
 msgid "GASOLINA"
-msgstr ""
+msgstr "GASOLINE"
 
 #: babel_intermediate.txt:304
 msgid "BERNALILLO A NORTHGLENN"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:305
 msgid "VISADOS"
-msgstr ""
+msgstr "VISAS"
 
 #: babel_intermediate.txt:306
 msgid "CONCIERTO"
-msgstr ""
+msgstr "CONCERT"
 
 #: babel_intermediate.txt:307
 msgid "DOMINION"
-msgstr ""
+msgstr "DOMINION"
 
 #: babel_intermediate.txt:308
 msgid "BICOPTER PLANT"
-msgstr ""
+msgstr "BICOPTER PLANT"
 
 #: babel_intermediate.txt:309
 msgid "WARMSHOWERS"
-msgstr ""
+msgstr "WARMSHOWERS"
 
 #: babel_intermediate.txt:310
 msgid "VENSIM"
-msgstr ""
+msgstr "VENSIM"
 
 #: babel_intermediate.txt:311
 msgid "CASA A BROOMFIELD"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:312
 msgid "NORTHGLENN A BCH"
-msgstr ""
+msgstr ""  # ***LOCATIONS***
 
 #: babel_intermediate.txt:313
 msgid "ARQUITECTURA DE COMPUTADORAS"
-msgstr ""
+msgstr "COMPUTER ARCHITECTURE"
 
 #: babel_intermediate.txt:314
 msgid "BCH A RA-11"
